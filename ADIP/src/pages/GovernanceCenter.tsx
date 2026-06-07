@@ -1,4 +1,15 @@
-import { Box, Grid, Typography, LinearProgress } from '@mui/material';
+import {
+  Box,
+  Grid,
+  Typography,
+  LinearProgress,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material';
 import { KpiCard } from '../components/common/KpiCard';
 import { DrilldownTableRow } from '../components/common/DrilldownTableRow';
 import { GlassCard } from '../components/common/GlassCard';
@@ -13,6 +24,11 @@ import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 
 export function GovernanceCenter() {
   const { governance } = useFilteredSimulation();
+  const auditRows = [
+    { observation: 'Core banking maker-checker override approvals delayed', auditType: 'Internal Audit', owner: 'Core Ops Governance', status: 'Open' },
+    { observation: 'VAPT closure evidence missing for internet DMZ host group', auditType: 'Cyber Audit', owner: 'Platform Security', status: 'In Progress' },
+    { observation: 'Quarterly access recertification completed with documented sign-off', auditType: 'ITGC Audit', owner: 'IAM Governance', status: 'Closed' },
+  ];
 
   return (
     <Box>
@@ -91,6 +107,34 @@ export function GovernanceCenter() {
             <LinearProgress variant="determinate" value={s.score} sx={{ height: 6, borderRadius: 3, '& .MuiLinearProgress-bar': { bgcolor: s.score >= 90 ? colors.success : colors.warning } }} />
           </Box>
         ))}
+      </GlassCard>
+
+      <GlassCard sx={{ p: 2, mt: 1.5 }}>
+        <ModuleHeader title="Audit Observation Register" subtitle="Context: audit findings and remediation progress" />
+        <TableContainer>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ borderColor: colors.border.subtle, color: colors.text.muted, fontWeight: 600 }}>Observation</TableCell>
+                <TableCell sx={{ borderColor: colors.border.subtle, color: colors.text.muted, fontWeight: 600 }}>Audit Type</TableCell>
+                <TableCell sx={{ borderColor: colors.border.subtle, color: colors.text.muted, fontWeight: 600 }}>Owner</TableCell>
+                <TableCell sx={{ borderColor: colors.border.subtle, color: colors.text.muted, fontWeight: 600 }}>Status</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {auditRows.map((row) => (
+                <TableRow key={row.observation} hover sx={{ '&:hover td': { bgcolor: colors.bg.glass } }}>
+                  <TableCell sx={{ borderColor: colors.border.subtle }}>
+                    <Typography variant="caption" sx={{ color: colors.text.primary, fontWeight: 600 }}>{row.observation}</Typography>
+                  </TableCell>
+                  <TableCell sx={{ borderColor: colors.border.subtle, color: colors.text.secondary }}>{row.auditType}</TableCell>
+                  <TableCell sx={{ borderColor: colors.border.subtle, color: colors.text.secondary }}>{row.owner}</TableCell>
+                  <TableCell sx={{ borderColor: colors.border.subtle, color: colors.text.secondary }}>{row.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </GlassCard>
     </Box>
   );

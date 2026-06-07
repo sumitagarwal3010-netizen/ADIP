@@ -9,10 +9,21 @@ import { TestingHub } from '../pages/TestingHub';
 import { ReleaseCenter } from '../pages/ReleaseCenter';
 import { ProductionCenter } from '../pages/ProductionCenter';
 import { OperationsCenter } from '../pages/OperationsCenter';
+import { PortfolioHealthPage } from '../pages/PortfolioHealthPage';
 import { GovernanceCenter } from '../pages/GovernanceCenter';
+import { GovernanceCompliancePage } from '../pages/GovernanceCompliancePage';
+import { GovernanceRiskPage } from '../pages/GovernanceRiskPage';
+import { GovernanceEvidencePage } from '../pages/GovernanceEvidencePage';
 import { AIGovernanceHub } from '../pages/AIGovernanceHub';
+import { ModelInventory } from '../pages/ModelInventory';
+import { PromptGovernance } from '../pages/PromptGovernance';
+import { AIRiskDashboard } from '../pages/AIRiskDashboard';
+import { AIProgramStatusPage } from '../pages/AIProgramStatusPage';
 import { LearningHub } from '../pages/LearningHub';
 import { Reports } from '../pages/Reports';
+import { ComplianceReports } from '../pages/ComplianceReports';
+import { AuditReports } from '../pages/AuditReports';
+import { TrendAnalytics } from '../pages/TrendAnalytics';
 import { Administration } from '../pages/Administration';
 import { ComingSoon } from '../pages/ComingSoon';
 
@@ -31,25 +42,25 @@ export function AppRoutes() {
         <Route path="operations" element={<OperationsCenter />} />
         <Route path="operations/incidents" element={<ComingSoon title="Incidents" hub="Operations Hub" />} />
         <Route path="operations/availability" element={<ComingSoon title="Availability" hub="Operations Hub" />} />
-        <Route path="operations/capacity" element={<ComingSoon title="Capacity" hub="Operations Hub" />} />
+        <Route path="operations/capacity" element={<PortfolioHealthPage />} />
         <Route path="governance" element={<GovernanceCenter />} />
-        <Route path="governance/compliance" element={<ComingSoon title="Compliance" hub="Governance Hub" />} />
-        <Route path="governance/risk" element={<ComingSoon title="Risk" hub="Governance Hub" />} />
-        <Route path="governance/evidence" element={<ComingSoon title="Evidence" hub="Governance Hub" />} />
+        <Route path="governance/compliance" element={<GovernanceCompliancePage />} />
+        <Route path="governance/risk" element={<GovernanceRiskPage />} />
+        <Route path="governance/evidence" element={<GovernanceEvidencePage />} />
         <Route path="ai-governance" element={<AIGovernanceHub />} />
-        <Route path="ai-governance/model-inventory" element={<ComingSoon title="Model Inventory" hub="AI Governance Hub" />} />
-        <Route path="ai-governance/prompt-governance" element={<ComingSoon title="Prompt Governance" hub="AI Governance Hub" />} />
-        <Route path="ai-governance/ai-risk" element={<ComingSoon title="AI Risk" hub="AI Governance Hub" />} />
-        <Route path="ai-governance/ai-controls" element={<ComingSoon title="AI Controls" hub="AI Governance Hub" />} />
+        <Route path="ai-governance/model-inventory" element={<ModelInventory />} />
+        <Route path="ai-governance/prompt-governance" element={<PromptGovernance />} />
+        <Route path="ai-governance/ai-risk" element={<AIRiskDashboard />} />
+        <Route path="ai-governance/ai-controls" element={<AIProgramStatusPage />} />
         <Route path="ai-governance/ai-incidents" element={<ComingSoon title="AI Incidents" hub="AI Governance Hub" />} />
         <Route path="learning" element={<LearningHub />} />
         <Route path="knowledge/best-practices" element={<ComingSoon title="Best Practices" hub="Knowledge Hub" />} />
         <Route path="knowledge/reusable-assets" element={<ComingSoon title="Reusable Assets" hub="Knowledge Hub" />} />
         <Route path="knowledge/lessons-learned" element={<ComingSoon title="Lessons Learned" hub="Knowledge Hub" />} />
         <Route path="reports" element={<Reports />} />
-        <Route path="reports/compliance" element={<ComingSoon title="Compliance Reports" hub="Reports & Analytics" />} />
-        <Route path="reports/audit" element={<ComingSoon title="Audit Reports" hub="Reports & Analytics" />} />
-        <Route path="reports/trends" element={<ComingSoon title="Trend Analytics" hub="Reports & Analytics" />} />
+        <Route path="reports/compliance" element={<ComplianceReports />} />
+        <Route path="reports/audit" element={<AuditReports />} />
+        <Route path="reports/trends" element={<TrendAnalytics />} />
         <Route path="administration" element={<Administration />} />
       </Route>
     </Routes>
