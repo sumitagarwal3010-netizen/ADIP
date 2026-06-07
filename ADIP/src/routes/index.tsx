@@ -32,6 +32,11 @@ export function AppRoutes() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<ExecutiveControlTower />} />
+        <Route path="executive/portfolio-health" element={<PortfolioHealthPage />} />
+        <Route path="executive/program-status" element={<AIProgramStatusPage />} />
+        <Route path="executive/strategic-risks" element={<GovernanceRiskPage />} />
+        <Route path="executive/executive-summary" element={<ExecutiveControlTower />} />
+        <Route path="executive/board-reporting" element={<Reports />} />
         <Route path="delivery" element={<DeliveryHub />} />
         <Route path="requirements" element={<RequirementsHub />} />
         <Route path="architecture" element={<ArchitectureHub />} />

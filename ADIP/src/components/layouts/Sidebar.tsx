@@ -14,7 +14,6 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { motion } from 'framer-motion';
 import {
-  NAV_EXECUTIVE,
   NAV_HUBS,
   findHubForPath,
   isChildActive,
@@ -125,9 +124,6 @@ export function Sidebar() {
     );
   };
 
-  const executiveActive = location.pathname === NAV_EXECUTIVE.path;
-  const ExecutiveIcon = NAV_EXECUTIVE.icon;
-
   return (
     <Box
       component={motion.nav}
@@ -177,32 +173,6 @@ export function Sidebar() {
       </Box>
       <Divider sx={{ borderColor: colors.border.subtle }} />
       <List sx={{ flex: 1, py: 1, px: 1, overflow: 'auto' }}>
-        <ListItemButton
-          onClick={() => navigate(NAV_EXECUTIVE.path)}
-          sx={{
-            borderRadius: 1.5,
-            mb: 0.5,
-            py: 0.75,
-            px: 1.5,
-            bgcolor: executiveActive ? `${colors.primary}18` : 'transparent',
-            borderLeft: executiveActive ? `3px solid ${colors.primary}` : '3px solid transparent',
-            '&:hover': { bgcolor: `${colors.primary}12` },
-          }}
-        >
-          <ListItemIcon sx={{ minWidth: 32, color: executiveActive ? colors.primary : colors.text.muted }}>
-            <ExecutiveIcon sx={{ fontSize: 18 }} />
-          </ListItemIcon>
-          <ListItemText
-            primary={NAV_EXECUTIVE.label}
-            sx={{
-              '& .MuiListItemText-primary': {
-                fontSize: '0.8125rem',
-                fontWeight: executiveActive ? 600 : 400,
-                color: executiveActive ? colors.text.primary : colors.text.secondary,
-              },
-            }}
-          />
-        </ListItemButton>
         {NAV_HUBS.map(renderHub)}
       </List>
       <Box sx={{ p: 1.5, borderTop: `1px solid ${colors.border.subtle}` }}>

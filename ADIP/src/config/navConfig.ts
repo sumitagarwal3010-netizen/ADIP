@@ -44,19 +44,20 @@ export interface NavHub {
   children: NavChild[];
 }
 
-export interface NavTopItem {
-  path: string;
-  label: string;
-  icon: SvgIconComponent;
-}
-
-export const NAV_EXECUTIVE: NavTopItem = {
-  path: '/',
-  label: 'Executive Control Tower',
-  icon: DashboardIcon,
-};
-
 export const NAV_HUBS: NavHub[] = [
+  {
+    id: 'executive',
+    label: 'Executive Control Tower',
+    icon: DashboardIcon,
+    defaultExpanded: true,
+    children: [
+      { path: '/executive/portfolio-health', label: 'Portfolio Health', icon: StorageIcon },
+      { path: '/executive/program-status', label: 'AI Program Status', icon: PsychologyIcon },
+      { path: '/executive/strategic-risks', label: 'Strategic Risks', icon: WarningAmberIcon },
+      { path: '/executive/executive-summary', label: 'Executive Summary', icon: SummarizeIcon },
+      { path: '/executive/board-reporting', label: 'Board Reporting', icon: AssessmentIcon },
+    ],
+  },
   {
     id: 'sdlc',
     label: 'SDLC Lifecycle Hub',
