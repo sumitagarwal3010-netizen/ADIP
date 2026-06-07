@@ -1,14 +1,29 @@
+import type { ReactElement } from 'react';
 import { Box, Typography } from '@mui/material';
 import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { colors } from '../theme/colors';
+import { AIControlsModule, AIIncidentsModule, AIRiskModule, ModelInventoryModule, PromptGovernanceModule } from './aiGovernanceModules';
 
 interface ComingSoonProps {
   title: string;
   hub: string;
 }
 
+const AI_GOVERNANCE_MODULES: Record<string, () => ReactElement> = {
+  'Model Inventory': ModelInventoryModule,
+  'AI Risk': AIRiskModule,
+  'Prompt Governance': PromptGovernanceModule,
+  'AI Controls': AIControlsModule,
+  'AI Incidents': AIIncidentsModule,
+};
+
 export function ComingSoon({ title, hub }: ComingSoonProps) {
+  const ModuleView = AI_GOVERNANCE_MODULES[title];
+  if (ModuleView) {
+    return <ModuleView />;
+  }
+
   return (
     <Box>
       <GlassCard sx={{ p: 4, textAlign: 'center' }} glow="blue">
