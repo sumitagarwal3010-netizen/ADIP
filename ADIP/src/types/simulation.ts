@@ -70,6 +70,8 @@ export interface SimulationState {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   governance: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  aiGovernance: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   learning: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   reports: any;

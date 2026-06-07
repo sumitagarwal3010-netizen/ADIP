@@ -1,3 +1,5 @@
+import { AI_USE_CASES } from '../data/aiUseCaseRegistryMock.ts';
+
 /** @typedef {'netbanking' | 'mobile' | 'payments'} DomainId */
 
 export const DOMAINS = [
@@ -580,6 +582,10 @@ export function createInitialState() {
         { name: 'Splunk', status: 'healthy', lastSync: '30s ago' },
         { name: 'Dynatrace', status: 'healthy', lastSync: '2m ago' },
       ],
+    },
+
+    aiGovernance: {
+      useCases: AI_USE_CASES.map((u) => ({ ...u })),
     },
 
     payments: {

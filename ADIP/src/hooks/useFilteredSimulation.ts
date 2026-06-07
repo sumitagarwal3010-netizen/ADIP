@@ -43,6 +43,10 @@ export function useFilteredSimulation() {
         ...state.delivery,
         topRequirements: filterByDomain(state.delivery.topRequirements, 'domain', domain) as typeof state.delivery.topRequirements,
       },
+      aiGovernance: {
+        ...state.aiGovernance,
+        useCases: filterByDomain(state.aiGovernance?.useCases ?? [], 'domain', domain) as typeof state.aiGovernance.useCases,
+      },
     };
     return filtered as SimulationState;
   }, [state, selectedDomain]);

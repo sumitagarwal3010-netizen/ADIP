@@ -1,43 +1,132 @@
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
-  Box, List, ListItemButton, ListItemIcon, ListItemText, Typography, Divider,
+  Box,
+  Collapse,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+  Divider,
 } from '@mui/material';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { motion } from 'framer-motion';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import CodeIcon from '@mui/icons-material/Code';
-import ScienceIcon from '@mui/icons-material/Science';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
-import CloudIcon from '@mui/icons-material/Cloud';
-import SettingsIcon from '@mui/icons-material/Settings';
-import GavelIcon from '@mui/icons-material/Gavel';
-import SchoolIcon from '@mui/icons-material/School';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import {
+  NAV_EXECUTIVE,
+  NAV_HUBS,
+  findHubForPath,
+  isChildActive,
+  type NavHub,
+} from '../../config/navConfig';
 import { colors } from '../../theme/colors';
 import { layout } from '../../theme/theme';
 
-const navItems = [
-  { path: '/', label: 'Executive', icon: DashboardIcon },
-  { path: '/delivery', label: 'Delivery', icon: LocalShippingIcon },
-  { path: '/requirements', label: 'Requirements', icon: AssignmentIcon },
-  { path: '/architecture', label: 'Architecture', icon: AccountTreeIcon },
-  { path: '/development', label: 'Development', icon: CodeIcon },
-  { path: '/testing', label: 'Testing', icon: ScienceIcon },
-  { path: '/release', label: 'Release', icon: RocketLaunchIcon },
-  { path: '/production', label: 'Production', icon: CloudIcon },
-  { path: '/operations', label: 'Operations', icon: SettingsIcon },
-  { path: '/governance', label: 'Governance', icon: GavelIcon },
-  { path: '/learning', label: 'Learning', icon: SchoolIcon },
-  { path: '/reports', label: 'Reports', icon: AssessmentIcon },
-  { path: '/administration', label: 'Administration', icon: AdminPanelSettingsIcon },
-];
+function buildInitialExpanded(): Record<string, boolean> {
+  return NAV_HUBS.reduce<Record<string, boolean>>((acc, hub) => {
+    acc[hub.id] = hub.defaultExpanded ?? false;
+    return acc;
+  }, {});
+}
 
 export function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [expanded, setExpanded] = useState<Record<string, boolean>>(buildInitialExpanded);
+
+  useEffect(() => {
+    const activeHub = findHubForPath(location.pathname);
+    if (activeHub) {
+      setExpanded((prev) => ({ ...prev, [activeHub.id]: true }));
+    }
+  }, [location.pathname]);
+
+  const toggleHub = (hubId: string) => {
+    setExpanded((prev) => ({ ...prev, [hubId]: !prev[hubId] }));
+  };
+
+  const renderHub = (hub: NavHub) => {
+    const isOpen = expanded[hub.id] ?? false;
+    const HubIcon = hub.icon;
+    const hubActive = hub.children.some((child) => isChildActive(location.pathname, child.path));
+
+    return (
+      <Box key={hub.id}>
+        <ListItemButton
+          onClick={() => toggleHub(hub.id)}
+          sx={{
+            borderRadius: 1.5,
+            mb: 0.25,
+            py: 0.75,
+            px: 1.5,
+            bgcolor: hubActive && !isOpen ? `${colors.primary}10` : 'transparent',
+            '&:hover': { bgcolor: `${colors.primary}12` },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: 32, color: hubActive ? colors.primary : colors.text.muted }}>
+            <HubIcon sx={{ fontSize: 18 }} />
+          </ListItemIcon>
+          <ListItemText
+            primary={hub.label}
+            sx={{
+              '& .MuiListItemText-primary': {
+                fontSize: '0.8125rem',
+                fontWeight: hubActive ? 600 : 500,
+                color: hubActive ? colors.text.primary : colors.text.secondary,
+              },
+            }}
+          />
+          {isOpen ? (
+            <ExpandLessIcon sx={{ fontSize: 18, color: colors.text.muted }} />
+          ) : (
+            <ExpandMoreIcon sx={{ fontSize: 18, color: colors.text.muted }} />
+          )}
+        </ListItemButton>
+        <Collapse in={isOpen} timeout="auto" unmountOnExit>
+          <List disablePadding sx={{ pl: 1 }}>
+            {hub.children.map((child) => {
+              const active = isChildActive(location.pathname, child.path);
+              const ChildIcon = child.icon;
+              return (
+                <ListItemButton
+                  key={child.path}
+                  onClick={() => navigate(child.path)}
+                  sx={{
+                    borderRadius: 1.5,
+                    mb: 0.25,
+                    py: 0.6,
+                    pl: 2,
+                    pr: 1.5,
+                    bgcolor: active ? `${colors.primary}18` : 'transparent',
+                    borderLeft: active ? `3px solid ${colors.primary}` : '3px solid transparent',
+                    '&:hover': { bgcolor: `${colors.primary}12` },
+                  }}
+                >
+                  <ListItemIcon sx={{ minWidth: 28, color: active ? colors.primary : colors.text.muted }}>
+                    <ChildIcon sx={{ fontSize: 16 }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={child.label}
+                    sx={{
+                      '& .MuiListItemText-primary': {
+                        fontSize: '0.78rem',
+                        fontWeight: active ? 600 : 400,
+                        color: active ? colors.text.primary : colors.text.secondary,
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              );
+            })}
+          </List>
+        </Collapse>
+      </Box>
+    );
+  };
+
+  const executiveActive = location.pathname === NAV_EXECUTIVE.path;
+  const ExecutiveIcon = NAV_EXECUTIVE.icon;
 
   return (
     <Box
@@ -88,39 +177,33 @@ export function Sidebar() {
       </Box>
       <Divider sx={{ borderColor: colors.border.subtle }} />
       <List sx={{ flex: 1, py: 1, px: 1, overflow: 'auto' }}>
-        {navItems.map((item) => {
-          const active = location.pathname === item.path;
-          const Icon = item.icon;
-          return (
-            <ListItemButton
-              key={item.path}
-              onClick={() => navigate(item.path)}
-              sx={{
-                borderRadius: 1.5,
-                mb: 0.25,
-                py: 0.75,
-                px: 1.5,
-                bgcolor: active ? `${colors.primary}18` : 'transparent',
-                borderLeft: active ? `3px solid ${colors.primary}` : '3px solid transparent',
-                '&:hover': { bgcolor: `${colors.primary}12` },
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 32, color: active ? colors.primary : colors.text.muted }}>
-                <Icon sx={{ fontSize: 18 }} />
-              </ListItemIcon>
-              <ListItemText
-                primary={item.label}
-                sx={{
-                  '& .MuiListItemText-primary': {
-                    fontSize: '0.8125rem',
-                    fontWeight: active ? 600 : 400,
-                    color: active ? colors.text.primary : colors.text.secondary,
-                  },
-                }}
-              />
-            </ListItemButton>
-          );
-        })}
+        <ListItemButton
+          onClick={() => navigate(NAV_EXECUTIVE.path)}
+          sx={{
+            borderRadius: 1.5,
+            mb: 0.5,
+            py: 0.75,
+            px: 1.5,
+            bgcolor: executiveActive ? `${colors.primary}18` : 'transparent',
+            borderLeft: executiveActive ? `3px solid ${colors.primary}` : '3px solid transparent',
+            '&:hover': { bgcolor: `${colors.primary}12` },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: 32, color: executiveActive ? colors.primary : colors.text.muted }}>
+            <ExecutiveIcon sx={{ fontSize: 18 }} />
+          </ListItemIcon>
+          <ListItemText
+            primary={NAV_EXECUTIVE.label}
+            sx={{
+              '& .MuiListItemText-primary': {
+                fontSize: '0.8125rem',
+                fontWeight: executiveActive ? 600 : 400,
+                color: executiveActive ? colors.text.primary : colors.text.secondary,
+              },
+            }}
+          />
+        </ListItemButton>
+        {NAV_HUBS.map(renderHub)}
       </List>
       <Box sx={{ p: 1.5, borderTop: `1px solid ${colors.border.subtle}` }}>
         <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.65rem' }}>

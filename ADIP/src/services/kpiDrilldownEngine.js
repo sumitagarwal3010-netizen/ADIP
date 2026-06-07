@@ -42,6 +42,48 @@ function releasesFromState(state) {
 }
 
 /**
+ * @param {SimulationState} state
+ * @returns {import('../data/aiUseCaseRegistryMock').AIUseCase[]}
+ */
+function useCasesFromState(state) {
+  return state.aiGovernance?.useCases ?? [];
+}
+
+/**
+ * @param {SimulationState} state
+ * @param {import('../data/aiUseCaseRegistryMock').AIUseCase} uc
+ * @param {KpiDrilldownContext} ctx
+ * @returns {KpiDrilldownPayload}
+ */
+function buildUseCaseDrilldown(state, uc, ctx) {
+  return buildPayload(ctx, {
+    sourceRecords: uc.reviewHistory.map((r, i) => ({
+      id: `REV-${i + 1}`,
+      title: r.outcome,
+      detail: r.reviewer,
+      meta: r.date,
+    })),
+    supportingEvidence: [
+      uc.description,
+      `Model: ${uc.modelName} · Owner: ${uc.owner}`,
+      `Compliance: ${uc.complianceFramework}`,
+      `Data classification: ${uc.dataClassification}`,
+      ...uc.controls,
+    ],
+    relatedApplications: appsFromArchitecture(state).filter((a) =>
+      uc.domain === 'Payments' ? a.name.includes('UPI') || a.name.includes('Payment') || a.name.includes('Fraud')
+        : uc.domain === 'Mobile Banking' ? a.name.includes('Mobile') || a.name.includes('Auth')
+          : true,
+    ).slice(0, 4),
+    relatedIncidents: incidentsFromState(state).filter((i) =>
+      uc.riskTier === 'high' || i.domain === uc.domain,
+    ).slice(0, 3),
+    relatedReleases: releasesFromState(state).filter((r) => r.domain === uc.domain).slice(0, 3),
+    historicalTrend: sparkline7d(uc.riskTier === 'high' ? 72 : uc.riskTier === 'medium' ? 85 : 94),
+  });
+}
+
+/**
  * @param {KpiDrilldownContext} ctx
  * @param {Partial<KpiDrilldownPayload>} overrides
  * @returns {KpiDrilldownPayload}
@@ -935,6 +977,76 @@ const resolvers = {
       relatedReleases: releasesFromState(state),
       historicalTrend: sparkline7d(state.reports.scheduled * 10),
     }),
+
+  'Total AI Use Cases': (state, ctx) =>
+    buildPayload(ctx, {
+      sourceRecords: useCasesFromState(state).map((u) => ({
+        id: u.id,
+        title: u.name,
+        detail: u.domain,
+        meta: `${u.modelType} · ${u.status}`,
+      })),
+      supportingEvidence: [
+        `Approved: ${useCasesFromState(state).filter((u) => u.status === 'Approved').length}`,
+        `Pilot: ${useCasesFromState(state).filter((u) => u.status === 'Pilot').length}`,
+        `In review: ${useCasesFromState(state).filter((u) => u.status === 'Review').length}`,
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(useCasesFromState(state).length * 3),
+    }),
+
+  'Approved Models': (state, ctx) => {
+    const approved = useCasesFromState(state).filter((u) => u.status === 'Approved');
+    return buildPayload(ctx, {
+      sourceRecords: approved.map((u) => ({
+        id: u.id,
+        title: u.name,
+        detail: u.domain,
+        meta: `${u.modelName} · ${u.riskTier} risk`,
+      })),
+      supportingEvidence: approved.map((u) => `Last review: ${u.lastReview} — ${u.name}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(approved.length * 8),
+    });
+  },
+
+  'High Risk Use Cases': (state, ctx) => {
+    const highRisk = useCasesFromState(state).filter((u) => u.riskTier === 'high');
+    return buildPayload(ctx, {
+      sourceRecords: highRisk.map((u) => ({
+        id: u.id,
+        title: u.name,
+        detail: u.owner,
+        meta: `${u.status} · ${u.domain}`,
+      })),
+      supportingEvidence: highRisk.flatMap((u) => u.controls.slice(0, 2)),
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.status === 'critical'),
+      relatedIncidents: incidentsFromState(state).filter((i) => i.severity === 'critical' || i.severity === 'high'),
+      relatedReleases: releasesFromState(state).filter((r) => r.risk === 'high'),
+      historicalTrend: sparkline7d(highRisk.length * 10),
+    });
+  },
+
+  'Pending Review': (state, ctx) => {
+    const pending = useCasesFromState(state).filter((u) => u.status === 'Review');
+    return buildPayload(ctx, {
+      sourceRecords: pending.map((u) => ({
+        id: u.id,
+        title: u.name,
+        detail: u.owner,
+        meta: u.lastReview,
+      })),
+      supportingEvidence: pending.map((u) => u.reviewHistory[u.reviewHistory.length - 1]?.outcome ?? u.description),
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(pending.length * 12),
+    });
+  },
 };
 
 /** @type {Record<string, (state: SimulationState, ctx: KpiDrilldownContext) => KpiDrilldownPayload>} */
@@ -1267,6 +1379,20 @@ const chartResolvers = {
       relatedReleases: releasesFromState(state),
       historicalTrend: state.production.incidentTrend.map((p) => ({ day: p.day, value: p.count })),
     });
+  },
+
+  'ai-governance.use-case-registry': (state, ctx) => {
+    const uc = useCasesFromState(state).find((u) => u.id === ctx.segment);
+    if (!uc) {
+      return buildPayload(ctx, {
+        sourceRecords: [{ id: ctx.segment ?? '—', title: ctx.label, meta: String(ctx.value) }],
+        supportingEvidence: state.dynamicInsights.slice(0, 3),
+        relatedApplications: appsFromArchitecture(state),
+        relatedIncidents: incidentsFromState(state),
+        relatedReleases: releasesFromState(state),
+      });
+    }
+    return buildUseCaseDrilldown(state, uc, ctx);
   },
 };
 
