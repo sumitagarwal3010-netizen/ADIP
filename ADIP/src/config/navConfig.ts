@@ -1,0 +1,142 @@
+import type { SvgIconComponent } from '@mui/icons-material';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import SettingsIcon from '@mui/icons-material/Settings';
+import GavelIcon from '@mui/icons-material/Gavel';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import CodeIcon from '@mui/icons-material/Code';
+import ScienceIcon from '@mui/icons-material/Science';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import CloudIcon from '@mui/icons-material/Cloud';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import SpeedIcon from '@mui/icons-material/Speed';
+import StorageIcon from '@mui/icons-material/Storage';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
+import PolicyIcon from '@mui/icons-material/Policy';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import ShieldIcon from '@mui/icons-material/Shield';
+import SecurityIcon from '@mui/icons-material/Security';
+import BugReportIcon from '@mui/icons-material/BugReport';
+import SchoolIcon from '@mui/icons-material/School';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+
+export interface NavChild {
+  path: string;
+  label: string;
+  icon: SvgIconComponent;
+}
+
+export interface NavHub {
+  id: string;
+  label: string;
+  icon: SvgIconComponent;
+  defaultExpanded?: boolean;
+  children: NavChild[];
+}
+
+export interface NavTopItem {
+  path: string;
+  label: string;
+  icon: SvgIconComponent;
+}
+
+export const NAV_EXECUTIVE: NavTopItem = {
+  path: '/',
+  label: 'Executive Control Tower',
+  icon: DashboardIcon,
+};
+
+export const NAV_HUBS: NavHub[] = [
+  {
+    id: 'sdlc',
+    label: 'SDLC Lifecycle Hub',
+    icon: AccountTreeIcon,
+    defaultExpanded: true,
+    children: [
+      { path: '/requirements', label: 'Requirements', icon: AssignmentIcon },
+      { path: '/architecture', label: 'Architecture', icon: AccountTreeIcon },
+      { path: '/development', label: 'Development', icon: CodeIcon },
+      { path: '/testing', label: 'Testing', icon: ScienceIcon },
+      { path: '/release', label: 'Release', icon: RocketLaunchIcon },
+    ],
+  },
+  {
+    id: 'operations',
+    label: 'Operations Hub',
+    icon: SettingsIcon,
+    children: [
+      { path: '/production', label: 'Production', icon: CloudIcon },
+      { path: '/operations/incidents', label: 'Incidents', icon: ReportProblemIcon },
+      { path: '/operations/availability', label: 'Availability', icon: SpeedIcon },
+      { path: '/operations/capacity', label: 'Capacity', icon: StorageIcon },
+    ],
+  },
+  {
+    id: 'governance',
+    label: 'Governance Hub',
+    icon: GavelIcon,
+    children: [
+      { path: '/governance', label: 'Audit', icon: FactCheckIcon },
+      { path: '/governance/compliance', label: 'Compliance', icon: PolicyIcon },
+      { path: '/governance/risk', label: 'Risk', icon: WarningAmberIcon },
+      { path: '/governance/evidence', label: 'Evidence', icon: FolderSharedIcon },
+    ],
+  },
+  {
+    id: 'ai-governance',
+    label: 'AI Governance Hub',
+    icon: PsychologyIcon,
+    children: [
+      { path: '/ai-governance', label: 'Use Case Registry', icon: PsychologyIcon },
+      { path: '/ai-governance/model-inventory', label: 'Model Inventory', icon: InventoryIcon },
+      { path: '/ai-governance/prompt-governance', label: 'Prompt Governance', icon: EditNoteIcon },
+      { path: '/ai-governance/ai-risk', label: 'AI Risk', icon: WarningAmberIcon },
+      { path: '/ai-governance/ai-controls', label: 'AI Controls', icon: ShieldIcon },
+      { path: '/ai-governance/ai-incidents', label: 'AI Incidents', icon: BugReportIcon },
+    ],
+  },
+  {
+    id: 'knowledge',
+    label: 'Knowledge Hub',
+    icon: MenuBookIcon,
+    children: [
+      { path: '/learning', label: 'Learning', icon: SchoolIcon },
+      { path: '/knowledge/best-practices', label: 'Best Practices', icon: LightbulbIcon },
+      { path: '/knowledge/reusable-assets', label: 'Reusable Assets', icon: LibraryBooksIcon },
+      { path: '/knowledge/lessons-learned', label: 'Lessons Learned', icon: HistoryEduIcon },
+    ],
+  },
+  {
+    id: 'reports',
+    label: 'Reports & Analytics',
+    icon: AssessmentIcon,
+    children: [
+      { path: '/reports', label: 'Executive Reports', icon: SummarizeIcon },
+      { path: '/reports/compliance', label: 'Compliance Reports', icon: PolicyIcon },
+      { path: '/reports/audit', label: 'Audit Reports', icon: SecurityIcon },
+      { path: '/reports/trends', label: 'Trend Analytics', icon: TrendingUpIcon },
+    ],
+  },
+];
+
+export function findHubForPath(pathname: string): NavHub | undefined {
+  return NAV_HUBS.find((hub) =>
+    hub.children.some((child) =>
+      child.path === pathname || (child.path !== '/' && pathname.startsWith(`${child.path}/`)),
+    ),
+  );
+}
+
+export function isChildActive(pathname: string, childPath: string): boolean {
+  return pathname === childPath;
+}
