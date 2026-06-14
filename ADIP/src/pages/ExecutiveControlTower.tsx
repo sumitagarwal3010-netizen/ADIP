@@ -9,12 +9,24 @@ import { DonutChart } from '../components/charts/DonutChart';
 import { GaugeChart } from '../components/charts/GaugeChart';
 import { HorizontalBarChart } from '../components/charts/HorizontalBarChart';
 import { MultiLineChart } from '../components/charts/MultiLineChart';
+import { AIInsightBox } from '../components/common/AIInsightBox';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { useWorkflow } from '../context/WorkflowContext';
+import { WORKFLOW_EXEC_SUMMARY } from '../data/workflowOrchestrationMock';
+import { WORKFLOW_STAGE_LABEL } from '../data/unifiedLifecycleEngine';
 
 export function ExecutiveControlTower() {
   const { executive, release, governance, learning, dynamicInsights } = useFilteredSimulation();
+  const { kpis, workflows } = useWorkflow();
+
+  const approvalBottleneckData = kpis.workflowBottlenecks.slice(0, 5).map((b) => ({
+    name: WORKFLOW_STAGE_LABEL[b.stage],
+    value: b.count,
+  }));
+
+  const deliveryRiskWorkflows = workflows.filter((w) => w.deliveryRisk === 'high' || w.deliveryRisk === 'critical');
 
   return (
     <Box>
@@ -40,6 +52,51 @@ export function ExecutiveControlTower() {
           <KpiCard label="Portfolio Health" value={executive.portfolioHealth} trend={2.4} compact />
         </Grid>
       </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 3 }}>
+          <KpiCard label="Approval Bottlenecks" value={kpis.approvalBottlenecks} suffix="" trend={-8} compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 3 }}>
+          <KpiCard label="Workflow Bottlenecks" value={kpis.workflowBottlenecks[0]?.avgHours ?? 0} suffix="h" compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 3 }}>
+          <KpiCard label="Unified SLA Breaches" value={kpis.slaBreaches} suffix="" trend={kpis.slaBreaches > 0 ? -100 : 0} compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 3 }}>
+          <KpiCard label="Delivery Risk Items" value={kpis.deliveryRiskCount} suffix="" trend={-15} compact />
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 12, md: 8 }}>
+          <GlassCard sx={{ p: 2 }}>
+            <ModuleHeader title="Unified Lifecycle — Stage Bottlenecks" subtitle="Approval + workflow gates across SDLC hubs" />
+            <HorizontalBarChart data={approvalBottleneckData.length > 0 ? approvalBottleneckData : [{ name: 'Release', value: 2 }]} height={180} chartId="workflow.bottlenecks" />
+          </GlassCard>
+        </Grid>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <GlassCard sx={{ p: 2 }}>
+            <ModuleHeader title="Delivery Risk" subtitle="High/critical unified lifecycle items" />
+            {deliveryRiskWorkflows.length === 0 ? (
+              <Typography variant="caption" color="text.secondary">No elevated delivery risk</Typography>
+            ) : (
+              deliveryRiskWorkflows.map((w) => (
+                <Box key={w.id} sx={{ mb: 1, py: 0.5, borderBottom: `1px solid ${colors.border.subtle}` }}>
+                  <Typography variant="caption" sx={{ fontWeight: 700, display: 'block' }}>{w.title}</Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.65rem' }}>
+                    {w.lifecycleStatus} · {w.deliveryRisk} risk
+                  </Typography>
+                </Box>
+              ))
+            )}
+          </GlassCard>
+        </Grid>
+      </Grid>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Unified Lifecycle — Executive Summary" insight={WORKFLOW_EXEC_SUMMARY} />
+      </Box>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         {executive.domainHealth.map((d, i) => (

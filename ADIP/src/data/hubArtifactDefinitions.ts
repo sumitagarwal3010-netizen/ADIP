@@ -650,43 +650,7 @@ function executiveArtifacts(runId: string): Artifact[] {
 }
 
 function approvalWorkflowArtifacts(runId: string): Artifact[] {
-  return [
-    createArtifact({
-      id: `${runId}-decision`,
-      name: 'Approval_Decision_Report.docx',
-      generatedBy: 'Approval Workflow AI',
-      fileType: 'docx',
-      approvalStatus: 'Approved',
-      previewContent: `APPROVAL DECISION REPORT\n\nDecisions this period: 32 approved · 6 rejected · 4 escalated\nCritical path: UPI Fraud Model release (APR-001) — Under Review\nModel risk: APR-004 escalated to enterprise committee`,
-      executiveSummary: 'Approval decisions are concentrated in Release and AI Governance with two overdue SLA breaches requiring executive attention.',
-      context: { subject: 'Approval Decision' },
-    }),
-    createArtifact({
-      id: `${runId}-history`,
-      name: 'Review_History_Report.docx',
-      generatedBy: 'Approval Workflow AI',
-      fileType: 'docx',
-      previewContent: `REVIEW HISTORY REPORT\n\nActions logged: 124 this month\nAssign: 28 · Approve: 32 · Reject: 6 · Changes: 14 · Escalate: 4\nFull actor audit trail with status transitions attached`,
-      context: { subject: 'Review History' },
-    }),
-    createArtifact({
-      id: `${runId}-escalation`,
-      name: 'Escalation_Summary.docx',
-      generatedBy: 'Approval Workflow AI',
-      fileType: 'docx',
-      riskRating: 'High',
-      previewContent: `ESCALATION SUMMARY\n\nOpen escalations: 2\nAPR-004: Credit scoring fairness evidence\nAPR-031: AML model retrain — regulatory hold\nTrend: ↓ 33% vs prior month`,
-      context: { subject: 'Escalation Summary' },
-    }),
-    createArtifact({
-      id: `${runId}-audit-pkg`,
-      name: 'Approval_Audit_Package.docx',
-      generatedBy: 'Approval Workflow AI',
-      fileType: 'docx',
-      previewContent: `APPROVAL AUDIT PACKAGE\n\nMaker-checker evidence: 52 records\nSLA adherence: 82%\nRegulatory mapping: RBI · PCI · ISO 27001\nReady for internal audit and board review`,
-      context: { subject: 'Approval Audit Package' },
-    }),
-  ];
+  return workflowOrchestrationArtifacts(runId);
 }
 
 function authenticationArtifacts(runId: string): Artifact[] {
@@ -822,40 +786,40 @@ function traceabilityArtifacts(runId: string): Artifact[] {
 function workflowOrchestrationArtifacts(runId: string): Artifact[] {
   return [
     createArtifact({
-      id: `${runId}-status`,
-      name: 'Workflow_Status_Report.docx',
-      generatedBy: 'Orchestration AI',
+      id: `${runId}-lifecycle-approval`,
+      name: 'Lifecycle_Approval_Report.docx',
+      generatedBy: 'Unified Lifecycle AI',
       fileType: 'docx',
       approvalStatus: 'Approved',
-      previewContent: `WORKFLOW STATUS REPORT\n\nActive workflows: 5 · Completed: 1\nStages in progress: Requirements 1, Architecture 1, Development 1, Testing 1, Release 1\nBlocked: 1 (KYC Architecture)\nSLA breaches: 2`,
-      executiveSummary: 'Cross-hub orchestration shows UPI release at approval gate with two SLA breaches requiring executive attention.',
-      context: { subject: 'Workflow Status' },
+      previewContent: `LIFECYCLE APPROVAL REPORT\n\nUnified model: workflow + approval gates\nActive gates: 5 · Under Review: 2 · Escalated: 1\nEmbedded approval IDs linked to workflow instances\nSLA breaches: 2`,
+      executiveSummary: 'Single lifecycle model embeds approval state in workflow instances with synchronized gate transitions.',
+      context: { subject: 'Lifecycle Approval' },
     }),
     createArtifact({
-      id: `${runId}-lifecycle`,
-      name: 'Lifecycle_Completion_Report.docx',
-      generatedBy: 'Orchestration AI',
+      id: `${runId}-delivery-ready`,
+      name: 'Delivery_Readiness_Report.docx',
+      generatedBy: 'Unified Lifecycle AI',
       fileType: 'docx',
-      previewContent: `LIFECYCLE COMPLETION REPORT\n\nAverage completion: 68%\nFastest: UPI Limit Enhancement (85%)\nSlowest: KYC Onboarding (28%)\nBottleneck stages: Architecture (72h), Testing (52h)`,
-      context: { subject: 'Lifecycle Completion' },
+      previewContent: `DELIVERY READINESS REPORT\n\nDelivery risk: 2 high/critical\nReady for next stage: 1\nBlocked/Escalated: 1\nAverage completion: 68%`,
+      context: { subject: 'Delivery Readiness' },
     }),
     createArtifact({
-      id: `${runId}-approval-ready`,
-      name: 'Approval_Readiness_Report.docx',
-      generatedBy: 'Orchestration AI',
+      id: `${runId}-release-ready`,
+      name: 'Release_Readiness_Report.docx',
+      generatedBy: 'Unified Lifecycle AI',
       fileType: 'docx',
-      previewContent: `APPROVAL READINESS REPORT\n\nReady for approval: 1 (UPI Release 24.6)\nPending review: 1 (Biometric Login)\nBlocked: 1 (KYC Architecture)\nTraceability gaps: 2 workflows`,
-      context: { subject: 'Approval Readiness' },
+      previewContent: `RELEASE READINESS REPORT\n\nUPI Release 24.6: Under Review (CIO)\nGo/No-Go evidence: RBI notification attached\nTraceability: linked BR-001 → REL-246`,
+      context: { subject: 'Release Readiness' },
     }),
     createArtifact({
-      id: `${runId}-delivery`,
-      name: 'Executive_Delivery_Report.docx',
-      generatedBy: 'Orchestration AI',
+      id: `${runId}-exec-gov`,
+      name: 'Executive_Governance_Report.docx',
+      generatedBy: 'Unified Lifecycle AI',
       fileType: 'docx',
       approvalStatus: 'Approved',
-      previewContent: `EXECUTIVE DELIVERY REPORT\n\nPortfolio delivery health: 72%\nOn-time releases: 4 of 6\nApproval delays: 2\nRecommendation: Escalate WF-002 test remediation; unblock WF-003 NPCI integration`,
-      executiveSummary: 'Executive delivery posture is stable with targeted escalations needed on mobile biometric and KYC architecture threads.',
-      context: { subject: 'Executive Delivery' },
+      previewContent: `EXECUTIVE GOVERNANCE REPORT\n\nApproval bottlenecks: 1 (Release)\nWorkflow bottlenecks: Architecture (72h)\nUnified SLA breaches: 2\nDelivery risk items: 2\nRecommendation: Escalate WF-002, unblock WF-003`,
+      executiveSummary: 'Executive governance posture reflects unified approval-workflow lifecycle with targeted escalations.',
+      context: { subject: 'Executive Governance' },
     }),
   ];
 }
@@ -1087,7 +1051,7 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     generateLabel: 'Generate Orchestration Reports',
     generatedBy: 'Orchestration AI',
     glow: 'purple',
-    simulation: sim('Orchestration AI analyzing cross-hub lifecycles...', ['Workflow Status', 'Lifecycle Completion', 'Approval Readiness', 'Executive Delivery']),
+    simulation: sim('Unified Lifecycle AI analyzing embedded approval gates...', ['Lifecycle Approval', 'Delivery Readiness', 'Release Readiness', 'Executive Governance']),
     build: workflowOrchestrationArtifacts,
   },
 };

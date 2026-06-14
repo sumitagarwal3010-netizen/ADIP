@@ -2122,7 +2122,7 @@ const chartResolvers = {
         })),
       supportingEvidence: wf
         ? wf.traceabilityChain.map((l) => `${WORKFLOW_STAGE_LABEL[l.stage]}: ${l.label}`)
-        : WORKFLOW_ORCHESTRATION_MOCK.map((w) => w.approvalState),
+        : WORKFLOW_ORCHESTRATION_MOCK.map((w) => w.lifecycleStatus),
       relatedApplications: appsFromArchitecture(state).slice(0, 3),
       relatedIncidents: incidentsFromState(state).slice(0, 2),
       relatedReleases: releasesFromState(state).filter((r) => r.domain === wf?.domain).slice(0, 3),
@@ -2149,14 +2149,14 @@ const chartResolvers = {
 
   'workflow.approval-delays': (state, ctx) => {
     const delayed = WORKFLOW_ORCHESTRATION_MOCK.filter(
-      (w) => w.approvalState === 'Pending Approval' || w.approvalState === 'Pending Review',
+      (w) => ['Submitted', 'Assigned', 'Under Review', 'Changes Requested', 'Escalated'].includes(w.lifecycleStatus),
     );
     return buildPayload(ctx, {
       sourceRecords: delayed.map((w) => ({
         id: w.id,
         title: w.title,
         detail: w.reviewer ?? 'Unassigned',
-        meta: w.approvalState,
+        meta: w.lifecycleStatus,
       })),
       supportingEvidence: delayed.map((w) => w.pendingActions.join('; ')),
       relatedApplications: appsFromArchitecture(state).slice(0, 3),
@@ -2175,7 +2175,7 @@ const chartResolvers = {
         detail: WORKFLOW_STAGE_LABEL[w.currentStage],
         meta: w.domain,
       })),
-      supportingEvidence: active.map((w) => `${w.owner} · ${w.approvalState}`),
+      supportingEvidence: active.map((w) => `${w.owner} · ${w.lifecycleStatus}`),
       relatedApplications: appsFromArchitecture(state).slice(0, 4),
       relatedIncidents: incidentsFromState(state).slice(0, 2),
       relatedReleases: releasesFromState(state).slice(0, 3),

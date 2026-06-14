@@ -9,37 +9,58 @@ export type WorkflowLifecycleStage =
   | 'approval'
   | 'production';
 
-export type WorkflowApprovalState =
-  | 'Not Started'
-  | 'In Progress'
-  | 'Pending Review'
-  | 'Pending Approval'
+/** Unified lifecycle — single model for workflow orchestration and approval gates. */
+export type UnifiedLifecycleStatus =
+  | 'Draft'
+  | 'Submitted'
+  | 'Assigned'
+  | 'Under Review'
   | 'Approved'
   | 'Rejected'
-  | 'Blocked';
+  | 'Changes Requested'
+  | 'Escalated'
+  | 'Released'
+  | 'Production';
 
-export type WorkflowOrchestrationAction =
-  | 'submit_for_review'
-  | 'submit_for_approval'
-  | 'move_to_next_stage'
-  | 'approve'
-  | 'reject';
+export type UnifiedLifecycleAction =
+  | 'Submit'
+  | 'Assign Reviewer'
+  | 'Reassign Reviewer'
+  | 'Approve'
+  | 'Reject'
+  | 'Request Changes'
+  | 'Escalate'
+  | 'Release'
+  | 'Advance Stage';
+
+export interface WorkflowApprovalTask {
+  approvalId: string;
+  stageGate: WorkflowLifecycleStage;
+  assignedReviewer: string | null;
+  reviewerPersona: PersonaId | null;
+  reviewNotes: string[];
+  priority: 'critical' | 'high' | 'medium' | 'low';
+  relatedArtifacts: { id: string; name: string; type: string }[];
+}
 
 export interface WorkflowTraceabilityLink {
   stage: WorkflowLifecycleStage;
   nodeId: string;
   label: string;
   status: 'complete' | 'in_progress' | 'pending' | 'blocked';
+  approvalStatus?: UnifiedLifecycleStatus;
 }
 
 export interface WorkflowHistoryEntry {
   id: string;
   workflowId: string;
-  action: WorkflowOrchestrationAction | 'stage_advance';
+  action: UnifiedLifecycleAction | 'stage_advance';
   actor: string;
   timestamp: string;
   fromStage?: WorkflowLifecycleStage;
   toStage?: WorkflowLifecycleStage;
+  fromStatus?: UnifiedLifecycleStatus;
+  toStatus?: UnifiedLifecycleStatus;
   comment: string;
 }
 
@@ -50,7 +71,8 @@ export interface WorkflowInstance {
   currentStage: WorkflowLifecycleStage;
   previousStage: WorkflowLifecycleStage | null;
   nextStage: WorkflowLifecycleStage | null;
-  approvalState: WorkflowApprovalState;
+  lifecycleStatus: UnifiedLifecycleStatus;
+  approvalTask: WorkflowApprovalTask;
   owner: string;
   ownerPersona: PersonaId;
   reviewer: string | null;
@@ -64,14 +86,27 @@ export interface WorkflowInstance {
   traceabilityChain: WorkflowTraceabilityLink[];
   slaBreached: boolean;
   stageDurationHours: number;
+  deliveryRisk: 'low' | 'medium' | 'high' | 'critical';
 }
 
-export interface WorkflowOrchestrationKpis {
+export interface UnifiedLifecycleKpis {
   activeWorkflows: number;
   avgCompletionPct: number;
-  bottlenecks: { stage: WorkflowLifecycleStage; count: number; avgHours: number }[];
-  stageDurations: { stage: string; hours: number }[];
+  workflowBottlenecks: { stage: WorkflowLifecycleStage; count: number; avgHours: number }[];
+  approvalBottlenecks: number;
   approvalDelays: number;
   completionRate: number;
   slaBreaches: number;
+  deliveryRiskCount: number;
+  pendingApprovals: number;
+  escalatedReviews: number;
 }
+
+/** @deprecated Use UnifiedLifecycleStatus */
+export type WorkflowApprovalState = UnifiedLifecycleStatus;
+
+/** @deprecated Use UnifiedLifecycleAction */
+export type WorkflowOrchestrationAction = UnifiedLifecycleAction;
+
+/** @deprecated Use UnifiedLifecycleKpis */
+export type WorkflowOrchestrationKpis = UnifiedLifecycleKpis;

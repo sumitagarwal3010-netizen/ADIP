@@ -34,6 +34,7 @@ import { ApprovalActionDialog } from '../components/approval/ApprovalActionDialo
 import { ApprovalDetailsPanel } from '../components/approval/ApprovalDetailsPanel';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { usePersona } from '../context/PersonaContext';
+import { useWorkflow } from '../context/WorkflowContext';
 import { useEntitlement } from '../hooks/useEntitlement';
 import { useSimulation } from '../context/SimulationContext';
 import { colors } from '../theme/colors';
@@ -41,24 +42,21 @@ import type { TraceNode } from '../data/traceabilityModel';
 import {
   APPROVAL_DOMAINS,
   APPROVAL_EXEC_SUMMARY,
-  APPROVAL_HISTORY,
-  APPROVAL_REQUESTS,
   APPROVAL_STAGES,
   APPROVAL_TREND,
   APPROVALS_BY_STAGE,
   PENDING_STATUSES,
-  applyWorkflowAction,
   actionsForStatus,
   computeApprovalKpis,
   filterApprovalRequests,
   isOverdue,
   sortApprovalRequests,
-  type ApprovalHistoryEntry,
-  type ApprovalRequest,
   type ApprovalSortDir,
   type ApprovalSortKey,
   type ApprovalWorkflowAction,
 } from '../data/approvalWorkflowMock';
+import type { ApprovalRequest } from '../data/approvalWorkflowEngine';
+import type { UnifiedLifecycleAction } from '../types/workflowOrchestration';
 
 const ACTION_ICONS: Record<ApprovalWorkflowAction, typeof CheckCircleIcon> = {
   Submit: SendIcon,
@@ -92,10 +90,17 @@ export function ApprovalWorkflowDashboard() {
   const { persona } = usePersona();
   const { openKpiDrilldown } = useSimulation();
   const entitlement = useEntitlement();
+  const {
+    workflows,
+    getApprovalRequests,
+    getApprovalHistory,
+    applyLifecycleAction,
+    canPerformLifecycleAction,
+  } = useWorkflow();
   const navigate = useNavigate();
-  const [requests, setRequests] = useState<ApprovalRequest[]>(() => [...APPROVAL_REQUESTS]);
-  const [history, setHistory] = useState<ApprovalHistoryEntry[]>(() => [...APPROVAL_HISTORY]);
-  const [selectedId, setSelectedId] = useState<string | null>('APR-001');
+  const requests = getApprovalRequests();
+  const history = getApprovalHistory();
+  const [selectedId, setSelectedId] = useState<string | null>(requests[0]?.id ?? null);
   const [dialogAction, setDialogAction] = useState<ApprovalWorkflowAction | null>(null);
   const [dialogRequest, setDialogRequest] = useState<ApprovalRequest | null>(null);
   const [statusFilter, setStatusFilter] = useState('all');
@@ -138,21 +143,17 @@ export function ApprovalWorkflowDashboard() {
 
   const handleConfirmAction = (comment: string, reviewer?: string) => {
     if (!dialogRequest || !dialogAction) return;
-    const { request: updated, historyEntry } = applyWorkflowAction(
-      dialogRequest,
-      dialogAction,
-      persona.label,
-      comment,
-      reviewer,
-    );
-    setRequests((prev) => prev.map((r) => (r.id === updated.id ? updated : r)));
-    setHistory((prev) => [historyEntry, ...prev]);
+    const workflow = workflows.find((w) => w.approvalTask.approvalId === dialogRequest.id);
+    if (!workflow) return;
+    applyLifecycleAction(workflow.id, dialogAction as UnifiedLifecycleAction, comment, reviewer);
     setDialogAction(null);
     setDialogRequest(null);
   };
 
   const renderActions = (request: ApprovalRequest, compact = false) => {
-    const actions = actionsForStatus(request.status).filter((a) => entitlement.canPerformApprovalAction(a));
+    const actions = actionsForStatus(request.status).filter(
+      (a) => entitlement.canPerformApprovalAction(a) && canPerformLifecycleAction(a as UnifiedLifecycleAction),
+    );
     if (actions.length === 0) return null;
     return (
       <Stack direction="row" spacing={0.5} onClick={(e) => e.stopPropagation()}>

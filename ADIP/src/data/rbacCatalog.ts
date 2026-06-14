@@ -375,6 +375,7 @@ export const APPROVAL_ACTION_PERMISSIONS: Record<string, Permission> = {
   'Request Changes': 'review',
   Escalate: 'review',
   Close: 'approve',
+  Release: 'approve',
 };
 
 export const PERSONA_RBAC_ROLE: Record<string, RbacRoleId> = {

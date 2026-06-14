@@ -7,29 +7,38 @@ import {
   type ReactNode,
 } from 'react';
 import { usePersona } from './PersonaContext';
+import { useEntitlement } from '../hooks/useEntitlement';
+import type { ApprovalHistoryEntry, ApprovalRequest, ApprovalWorkflowAction } from '../data/approvalWorkflowEngine';
 import {
-  computeWorkflowKpis,
+  applyUnifiedLifecycleAction,
+  computeUnifiedKpis,
+  deriveApprovalRequests,
   filterWorkflowsByStage,
   filterWorkflowsForPersona,
-  moveToNextStage,
-  submitForApproval,
-  submitForReview,
-} from '../data/workflowOrchestrationEngine';
+  permissionForLifecycleAction,
+  workflowHistoryToApprovalHistory,
+} from '../data/unifiedLifecycleEngine';
 import { WORKFLOW_ORCHESTRATION_MOCK } from '../data/workflowOrchestrationMock';
 import type {
+  UnifiedLifecycleAction,
+  UnifiedLifecycleKpis,
+  UnifiedLifecycleStatus,
   WorkflowHistoryEntry,
   WorkflowInstance,
   WorkflowLifecycleStage,
-  WorkflowOrchestrationKpis,
 } from '../types/workflowOrchestration';
 
-const STORAGE_KEY = 'adip.workflow.orchestration';
+const STORAGE_KEY = 'adip.unified.lifecycle';
 
 function readPersisted(): WorkflowInstance[] | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as WorkflowInstance[];
+    const parsed = JSON.parse(raw) as WorkflowInstance[];
+    return parsed.map((w) => ({
+      ...w,
+      lifecycleStatus: (w.lifecycleStatus ?? (w as { approvalState?: UnifiedLifecycleStatus }).approvalState ?? 'Draft') as UnifiedLifecycleStatus,
+    }));
   } catch {
     return null;
   }
@@ -44,21 +53,26 @@ function persist(workflows: WorkflowInstance[]): void {
 interface WorkflowContextValue {
   workflows: WorkflowInstance[];
   history: WorkflowHistoryEntry[];
-  kpis: WorkflowOrchestrationKpis;
+  kpis: UnifiedLifecycleKpis;
   selectedWorkflowId: string | null;
   setSelectedWorkflowId: (id: string | null) => void;
   getWorkflow: (id: string) => WorkflowInstance | undefined;
   getWorkflowsForHub: (stage: WorkflowLifecycleStage) => WorkflowInstance[];
   getVisibleWorkflows: () => WorkflowInstance[];
-  submitForReview: (workflowId: string) => void;
-  submitForApproval: (workflowId: string) => void;
-  moveToNextStage: (workflowId: string) => void;
+  getApprovalRequests: () => ApprovalRequest[];
+  getApprovalHistory: () => ApprovalHistoryEntry[];
+  canPerformLifecycleAction: (action: UnifiedLifecycleAction) => boolean;
+  applyLifecycleAction: (workflowId: string, action: UnifiedLifecycleAction, comment?: string, reviewer?: string) => void;
+  /** @deprecated */ submitForReview: (workflowId: string) => void;
+  /** @deprecated */ submitForApproval: (workflowId: string) => void;
+  /** @deprecated */ moveToNextStage: (workflowId: string) => void;
 }
 
 const WorkflowContext = createContext<WorkflowContextValue | null>(null);
 
 export function WorkflowProvider({ children }: { children: ReactNode }) {
   const { persona } = usePersona();
+  const entitlement = useEntitlement();
   const [workflows, setWorkflows] = useState<WorkflowInstance[]>(() => readPersisted() ?? WORKFLOW_ORCHESTRATION_MOCK);
   const [history, setHistory] = useState<WorkflowHistoryEntry[]>([]);
   const [selectedWorkflowId, setSelectedWorkflowId] = useState<string | null>(WORKFLOW_ORCHESTRATION_MOCK[0]?.id ?? null);
@@ -76,28 +90,41 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
 
   const getWorkflow = useCallback((id: string) => workflows.find((w) => w.id === id), [workflows]);
 
-  const handleSubmitForReview = useCallback((workflowId: string) => {
+  const canPerformLifecycleAction = useCallback((action: UnifiedLifecycleAction) => {
+    const perm = permissionForLifecycleAction(action);
+    if (action === 'Approve' || action === 'Reject' || action === 'Escalate' || action === 'Release' || action === 'Advance Stage') {
+      return entitlement.can(perm, 'approvals');
+    }
+    return entitlement.canPerformApprovalAction(action as ApprovalWorkflowAction);
+  }, [entitlement]);
+
+  const applyLifecycleAction = useCallback((
+    workflowId: string,
+    action: UnifiedLifecycleAction,
+    comment = '',
+    reviewer?: string,
+  ) => {
     const wf = workflows.find((w) => w.id === workflowId);
-    if (!wf) return;
-    const result = submitForReview(wf, actor);
+    if (!wf || !canPerformLifecycleAction(action)) return;
+    const result = applyUnifiedLifecycleAction(wf, action, actor, comment, reviewer);
     updateWorkflow(result.workflow, result.history);
-  }, [workflows, actor, updateWorkflow]);
+  }, [workflows, actor, updateWorkflow, canPerformLifecycleAction]);
+
+  const handleSubmitForReview = useCallback((workflowId: string) => {
+    applyLifecycleAction(workflowId, 'Submit');
+  }, [applyLifecycleAction]);
 
   const handleSubmitForApproval = useCallback((workflowId: string) => {
-    const wf = workflows.find((w) => w.id === workflowId);
-    if (!wf) return;
-    const result = submitForApproval(wf, actor);
-    updateWorkflow(result.workflow, result.history);
-  }, [workflows, actor, updateWorkflow]);
+    applyLifecycleAction(workflowId, 'Assign Reviewer');
+  }, [applyLifecycleAction]);
 
   const handleMoveToNextStage = useCallback((workflowId: string) => {
-    const wf = workflows.find((w) => w.id === workflowId);
-    if (!wf) return;
-    const result = moveToNextStage(wf, actor);
-    updateWorkflow(result.workflow, result.history);
-  }, [workflows, actor, updateWorkflow]);
+    applyLifecycleAction(workflowId, 'Advance Stage');
+  }, [applyLifecycleAction]);
 
-  const kpis = useMemo(() => computeWorkflowKpis(workflows), [workflows]);
+  const kpis = useMemo(() => computeUnifiedKpis(workflows), [workflows]);
+  const approvalRequests = useMemo(() => deriveApprovalRequests(workflows), [workflows]);
+  const approvalHistory = useMemo(() => workflowHistoryToApprovalHistory(history), [history]);
 
   const value = useMemo<WorkflowContextValue>(() => ({
     workflows,
@@ -108,11 +135,16 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
     getWorkflow,
     getWorkflowsForHub: (stage) => filterWorkflowsByStage(workflows, stage),
     getVisibleWorkflows: () => filterWorkflowsForPersona(workflows, persona.id),
+    getApprovalRequests: () => approvalRequests,
+    getApprovalHistory: () => approvalHistory,
+    canPerformLifecycleAction,
+    applyLifecycleAction,
     submitForReview: handleSubmitForReview,
     submitForApproval: handleSubmitForApproval,
     moveToNextStage: handleMoveToNextStage,
   }), [
     workflows, history, kpis, selectedWorkflowId, getWorkflow, persona.id,
+    approvalRequests, approvalHistory, canPerformLifecycleAction, applyLifecycleAction,
     handleSubmitForReview, handleSubmitForApproval, handleMoveToNextStage,
   ]);
 

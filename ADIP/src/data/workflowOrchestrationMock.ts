@@ -1,9 +1,10 @@
 import type { WorkflowInstance } from '../types/workflowOrchestration';
-import type { WorkflowLifecycleStage } from '../types/workflowOrchestration';
-import { computeCompletionPct, WORKFLOW_STAGE_ORDER } from './workflowOrchestrationEngine';
+import type { WorkflowLifecycleStage, UnifiedLifecycleStatus } from '../types/workflowOrchestration';
+import { computeCompletionPct, computeDeliveryRisk, WORKFLOW_STAGE_ORDER } from './unifiedLifecycleEngine';
 
 function chainForStage(
   currentStage: WorkflowLifecycleStage,
+  lifecycleStatus: UnifiedLifecycleStatus,
   nodes: Partial<Record<WorkflowLifecycleStage, { nodeId: string; label: string }>>,
   blocked?: boolean,
 ): WorkflowInstance['traceabilityChain'] {
@@ -12,16 +13,39 @@ function chainForStage(
     const node = nodes[stage];
     let status: 'complete' | 'in_progress' | 'pending' | 'blocked' = 'pending';
     if (blocked && i === idx) status = 'blocked';
-    else if (currentStage === 'production' && node) status = 'complete';
+    else if (currentStage === 'production' || lifecycleStatus === 'Production') status = node ? 'complete' : 'pending';
     else if (i < idx) status = 'complete';
-    else if (i === idx) status = 'in_progress';
+    else if (i === idx) status = blocked ? 'blocked' : 'in_progress';
+    const approvalStatus: UnifiedLifecycleStatus | undefined =
+      stage === 'approval' ? (i < idx ? 'Approved' : lifecycleStatus)
+      : stage === currentStage ? lifecycleStatus
+      : i < idx ? 'Approved' : undefined;
     return {
       stage,
       nodeId: node?.nodeId ?? `${stage}-pending`,
       label: node?.label ?? `${stage} pending`,
       status,
+      approvalStatus,
     };
   });
+}
+
+function task(
+  workflowId: string,
+  stage: WorkflowLifecycleStage,
+  reviewer: string | null,
+  reviewerPersona: WorkflowInstance['reviewerPersona'],
+  priority: WorkflowInstance['approvalTask']['priority'] = 'high',
+): WorkflowInstance['approvalTask'] {
+  return {
+    approvalId: `APR-${workflowId}-${stage}`,
+    stageGate: stage,
+    assignedReviewer: reviewer,
+    reviewerPersona,
+    reviewNotes: [],
+    priority,
+    relatedArtifacts: [{ id: `${workflowId}-${stage}-pkg`, name: `${stage} package`, type: 'artifact' }],
+  };
 }
 
 export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
@@ -31,13 +55,14 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     domain: 'Payments',
     currentStage: 'release',
     previousStage: 'testing',
-    nextStage: 'approval',
-    approvalState: 'Pending Approval',
+    nextStage: 'production',
+    lifecycleStatus: 'Under Review',
+    approvalTask: task('WF-001', 'release', 'Sanjay Verma', 'cio', 'critical'),
     owner: 'Release Manager',
     ownerPersona: 'release-manager',
     reviewer: 'Sanjay Verma',
     reviewerPersona: 'cio',
-    completionPct: computeCompletionPct('release', 'Pending Approval'),
+    completionPct: computeCompletionPct('release', 'Under Review'),
     dueDate: 'Jun 10, 2026',
     submittedAt: 'May 28, 2026',
     stageEnteredAt: 'Jun 4, 2026 14:00',
@@ -45,7 +70,8 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     traceabilityStatus: 'linked',
     slaBreached: false,
     stageDurationHours: 36,
-    traceabilityChain: chainForStage('release', {
+    deliveryRisk: 'medium',
+    traceabilityChain: chainForStage('release', 'Under Review', {
       requirements: { nodeId: 'BR-001', label: 'Enhance UPI transaction limits' },
       architecture: { nodeId: 'ARC-001', label: 'UPI Limit Service (HLD/LLD)' },
       development: { nodeId: 'API-001', label: 'POST /v1/upi-limit-enhancement' },
@@ -62,12 +88,13 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     currentStage: 'testing',
     previousStage: 'development',
     nextStage: 'release',
-    approvalState: 'Pending Review',
+    lifecycleStatus: 'Under Review',
+    approvalTask: task('WF-002', 'testing', 'Vikram Joshi', 'release-manager'),
     owner: 'Test Lead',
     ownerPersona: 'tester',
     reviewer: 'Vikram Joshi',
     reviewerPersona: 'release-manager',
-    completionPct: computeCompletionPct('testing', 'Pending Review'),
+    completionPct: computeCompletionPct('testing', 'Under Review'),
     dueDate: 'Jun 12, 2026',
     submittedAt: 'Jun 1, 2026',
     stageEnteredAt: 'Jun 5, 2026 09:30',
@@ -75,7 +102,8 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     traceabilityStatus: 'partial',
     slaBreached: true,
     stageDurationHours: 52,
-    traceabilityChain: chainForStage('testing', {
+    deliveryRisk: 'high',
+    traceabilityChain: chainForStage('testing', 'Under Review', {
       requirements: { nodeId: 'BR-002', label: 'Biometric authentication for mobile login' },
       architecture: { nodeId: 'ARC-002', label: 'Mobile Auth Service' },
       development: { nodeId: 'API-002', label: 'POST /v2/mobile/biometric' },
@@ -89,12 +117,13 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     currentStage: 'architecture',
     previousStage: 'requirements',
     nextStage: 'development',
-    approvalState: 'Blocked',
+    lifecycleStatus: 'Escalated',
+    approvalTask: task('WF-003', 'architecture', 'Karthik Nair', 'cto'),
     owner: 'Enterprise Architect',
     ownerPersona: 'enterprise-architect',
     reviewer: 'Karthik Nair',
     reviewerPersona: 'cto',
-    completionPct: computeCompletionPct('architecture', 'Blocked'),
+    completionPct: computeCompletionPct('architecture', 'Escalated'),
     dueDate: 'Jun 15, 2026',
     submittedAt: 'May 20, 2026',
     stageEnteredAt: 'Jun 2, 2026 11:00',
@@ -102,7 +131,8 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     traceabilityStatus: 'gap',
     slaBreached: true,
     stageDurationHours: 72,
-    traceabilityChain: chainForStage('architecture', {
+    deliveryRisk: 'critical',
+    traceabilityChain: chainForStage('architecture', 'Escalated', {
       requirements: { nodeId: 'BR-004', label: 'Digital KYC onboarding' },
       architecture: { nodeId: 'ARC-004', label: 'KYC Orchestration Service' },
     }, true),
@@ -114,12 +144,13 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     currentStage: 'development',
     previousStage: 'architecture',
     nextStage: 'testing',
-    approvalState: 'In Progress',
+    lifecycleStatus: 'Draft',
+    approvalTask: task('WF-004', 'development', 'Deepak Rao', 'tester'),
     owner: 'Development Lead',
     ownerPersona: 'developer',
     reviewer: 'Deepak Rao',
     reviewerPersona: 'tester',
-    completionPct: computeCompletionPct('development', 'In Progress'),
+    completionPct: computeCompletionPct('development', 'Draft'),
     dueDate: 'Jun 18, 2026',
     submittedAt: 'Jun 3, 2026',
     stageEnteredAt: 'Jun 6, 2026 08:00',
@@ -127,7 +158,8 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     traceabilityStatus: 'linked',
     slaBreached: false,
     stageDurationHours: 18,
-    traceabilityChain: chainForStage('development', {
+    deliveryRisk: 'low',
+    traceabilityChain: chainForStage('development', 'Draft', {
       requirements: { nodeId: 'BR-003', label: 'Merchant auto settlement' },
       architecture: { nodeId: 'ARC-003', label: 'Settlement Orchestrator' },
       development: { nodeId: 'API-003', label: 'POST /v1/settlement/batch' },
@@ -140,12 +172,13 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     currentStage: 'requirements',
     previousStage: null,
     nextStage: 'architecture',
-    approvalState: 'In Progress',
+    lifecycleStatus: 'Draft',
+    approvalTask: task('WF-005', 'requirements', 'Priya Sharma', 'enterprise-architect'),
     owner: 'Application Owner',
     ownerPersona: 'application-owner',
     reviewer: 'Priya Sharma',
     reviewerPersona: 'enterprise-architect',
-    completionPct: computeCompletionPct('requirements', 'In Progress'),
+    completionPct: computeCompletionPct('requirements', 'Draft'),
     dueDate: 'Jun 22, 2026',
     submittedAt: 'Jun 6, 2026',
     stageEnteredAt: 'Jun 6, 2026 10:00',
@@ -153,7 +186,8 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     traceabilityStatus: 'partial',
     slaBreached: false,
     stageDurationHours: 8,
-    traceabilityChain: chainForStage('requirements', {
+    deliveryRisk: 'low',
+    traceabilityChain: chainForStage('requirements', 'Draft', {
       requirements: { nodeId: 'BR-005', label: 'Cards fraud model refresh' },
     }),
   },
@@ -162,9 +196,10 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     title: 'UPI Limit Enhancement — Production',
     domain: 'Payments',
     currentStage: 'production',
-    previousStage: 'approval',
+    previousStage: 'release',
     nextStage: null,
-    approvalState: 'Approved',
+    lifecycleStatus: 'Production',
+    approvalTask: task('WF-006', 'production', null, null, 'critical'),
     owner: 'Operations Manager',
     ownerPersona: 'operations-manager',
     reviewer: null,
@@ -177,7 +212,8 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     traceabilityStatus: 'linked',
     slaBreached: false,
     stageDurationHours: 12,
-    traceabilityChain: chainForStage('production', {
+    deliveryRisk: 'low',
+    traceabilityChain: chainForStage('production', 'Production', {
       requirements: { nodeId: 'BR-001', label: 'Enhance UPI transaction limits' },
       architecture: { nodeId: 'ARC-001', label: 'UPI Limit Service (HLD/LLD)' },
       development: { nodeId: 'API-001', label: 'POST /v1/upi-limit-enhancement' },
@@ -190,7 +226,7 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
 ];
 
 export const WORKFLOW_EXEC_SUMMARY =
-  'Cross-hub orchestration tracks 6 active lifecycles with UPI Limit Enhancement at release gate pending CIO approval. Two SLA breaches: Biometric Login testing (TC-002 failure) and KYC architecture blocked on NPCI integration. Average completion 68% with testing and architecture as primary bottlenecks. Recommended action: escalate WF-002 test remediation and unblock WF-003 architecture review.';
+  'Unified lifecycle orchestration tracks 6 workflows with embedded approval gates. UPI Release at Under Review pending CIO sign-off. Two SLA breaches on Biometric testing and KYC architecture (Escalated). Approval and workflow bottlenecks concentrated at release and architecture gates. Delivery risk: 2 high/critical items require executive escalation.';
 
 export const WORKFLOW_STAGE_DURATION_MOCK = [
   { name: 'Requirements', value: 48 },
@@ -201,3 +237,8 @@ export const WORKFLOW_STAGE_DURATION_MOCK = [
   { name: 'Approval', value: 24 },
   { name: 'Production', value: 12 },
 ];
+
+// Recompute delivery risk from status
+for (const w of WORKFLOW_ORCHESTRATION_MOCK) {
+  w.deliveryRisk = computeDeliveryRisk(w);
+}

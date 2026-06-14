@@ -90,7 +90,7 @@ export function WorkflowLifecyclePanel() {
                   <TableCell sx={{ fontSize: '0.72rem', fontWeight: 600 }}>{w.title}</TableCell>
                   <TableCell sx={{ fontSize: '0.72rem' }}>{WORKFLOW_STAGE_LABEL[w.currentStage]}</TableCell>
                   <TableCell>
-                    <Chip label={w.approvalState} size="small" sx={{ height: 20, fontSize: '0.58rem' }} />
+                    <Chip label={w.lifecycleStatus} size="small" sx={{ height: 20, fontSize: '0.58rem' }} />
                   </TableCell>
                   <TableCell sx={{ fontSize: '0.72rem' }}>{w.completionPct}%</TableCell>
                   <TableCell sx={{ fontSize: '0.72rem' }}>{w.traceabilityStatus}</TableCell>

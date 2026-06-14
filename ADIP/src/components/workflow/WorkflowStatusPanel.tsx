@@ -3,31 +3,52 @@ import {
   Button,
   Chip,
   LinearProgress,
+  Tooltip,
   Typography,
 } from '@mui/material';
-import RateReviewIcon from '@mui/icons-material/RateReview';
-import ApprovalIcon from '@mui/icons-material/Approval';
+import SendIcon from '@mui/icons-material/Send';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import { useWorkflow } from '../../context/WorkflowContext';
-import { allowedActions, WORKFLOW_STAGE_LABEL } from '../../data/workflowOrchestrationEngine';
+import { lifecycleActionsFor, WORKFLOW_STAGE_LABEL } from '../../data/unifiedLifecycleEngine';
 import { WorkflowLifecycleChain } from './WorkflowLifecycleChain';
 import { GlassCard } from '../common/GlassCard';
 import { colors } from '../../theme/colors';
+import type { UnifiedLifecycleAction } from '../../types/workflowOrchestration';
 
-const APPROVAL_COLOR: Record<string, string> = {
-  'Not Started': colors.text.muted,
-  'In Progress': colors.primary,
-  'Pending Review': colors.secondary,
-  'Pending Approval': colors.warning,
+const STATUS_COLOR: Record<string, string> = {
+  Draft: colors.text.muted,
+  Submitted: colors.info,
+  Assigned: colors.secondary,
+  'Under Review': colors.primary,
   Approved: colors.success,
   Rejected: colors.warning,
-  Blocked: colors.warning,
+  'Changes Requested': colors.warning,
+  Escalated: colors.critical,
+  Released: colors.success,
+  Production: colors.success,
 };
 
 const TRACE_COLOR: Record<string, string> = {
   linked: colors.success,
   partial: colors.warning,
   gap: colors.warning,
+};
+
+const ACTION_ICONS: Partial<Record<UnifiedLifecycleAction, typeof SendIcon>> = {
+  Submit: SendIcon,
+  'Assign Reviewer': PersonAddIcon,
+  Approve: CheckCircleIcon,
+  Reject: CancelIcon,
+  'Request Changes': EditNoteIcon,
+  Escalate: TrendingUpIcon,
+  'Advance Stage': ArrowForwardIcon,
+  Release: RocketLaunchIcon,
 };
 
 interface WorkflowStatusPanelProps {
@@ -39,27 +60,29 @@ export function WorkflowStatusPanel({ workflowId, showActions = true }: Workflow
   const {
     getWorkflow,
     selectedWorkflowId,
-    submitForReview,
-    submitForApproval,
-    moveToNextStage,
+    applyLifecycleAction,
+    canPerformLifecycleAction,
   } = useWorkflow();
 
   const id = workflowId ?? selectedWorkflowId;
   const workflow = id ? getWorkflow(id) : undefined;
   if (!workflow) return null;
 
-  const actions = allowedActions(workflow);
+  const actions = lifecycleActionsFor(workflow);
 
   return (
     <GlassCard sx={{ p: 2, mt: 1.5 }} glow="blue" hover={false}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1, mb: 1.5 }}>
         <Box>
           <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>{workflow.title}</Typography>
-          <Typography variant="caption" color="text.secondary">{workflow.id} · {workflow.domain}</Typography>
+          <Typography variant="caption" color="text.secondary">
+            {workflow.id} · {workflow.approvalTask.approvalId} · {workflow.domain}
+          </Typography>
         </Box>
         <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
           <Chip label={WORKFLOW_STAGE_LABEL[workflow.currentStage]} size="small" sx={{ height: 22, fontSize: '0.62rem', fontWeight: 700, bgcolor: `${colors.primary}22`, color: colors.primary }} />
-          <Chip label={workflow.approvalState} size="small" sx={{ height: 22, fontSize: '0.62rem', bgcolor: `${APPROVAL_COLOR[workflow.approvalState]}18`, color: APPROVAL_COLOR[workflow.approvalState] }} />
+          <Chip label={workflow.lifecycleStatus} size="small" sx={{ height: 22, fontSize: '0.62rem', bgcolor: `${STATUS_COLOR[workflow.lifecycleStatus]}18`, color: STATUS_COLOR[workflow.lifecycleStatus] }} />
+          <Chip label={`Risk: ${workflow.deliveryRisk}`} size="small" sx={{ height: 22, fontSize: '0.58rem' }} />
           {workflow.slaBreached && (
             <Chip label="SLA Breach" size="small" color="error" sx={{ height: 22, fontSize: '0.62rem' }} />
           )}
@@ -94,28 +117,33 @@ export function WorkflowStatusPanel({ workflowId, showActions = true }: Workflow
 
       <Box sx={{ mb: showActions ? 1.5 : 0 }}>
         <Typography variant="caption" sx={{ fontWeight: 700, color: colors.text.muted, letterSpacing: '0.05em', display: 'block', mb: 0.75 }}>
-          LIFECYCLE CHAIN
+          LIFECYCLE & APPROVAL LINEAGE
         </Typography>
-        <WorkflowLifecycleChain chain={workflow.traceabilityChain} compact />
+        <WorkflowLifecycleChain chain={workflow.traceabilityChain} compact showApproval />
       </Box>
 
       {showActions && (
         <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-          {actions.includes('submit_for_review') && (
-            <Button size="small" variant="outlined" startIcon={<RateReviewIcon />} onClick={() => submitForReview(workflow.id)} sx={{ textTransform: 'none', fontSize: '0.72rem' }}>
-              Submit For Review
-            </Button>
-          )}
-          {actions.includes('submit_for_approval') && (
-            <Button size="small" variant="outlined" startIcon={<ApprovalIcon />} onClick={() => submitForApproval(workflow.id)} sx={{ textTransform: 'none', fontSize: '0.72rem' }}>
-              Submit For Approval
-            </Button>
-          )}
-          {actions.includes('move_to_next_stage') && (
-            <Button size="small" variant="contained" startIcon={<ArrowForwardIcon />} onClick={() => moveToNextStage(workflow.id)} sx={{ textTransform: 'none', fontSize: '0.72rem' }}>
-              Move To Next Stage
-            </Button>
-          )}
+          {actions.map((action) => {
+            const Icon = ACTION_ICONS[action] ?? SendIcon;
+            const allowed = canPerformLifecycleAction(action);
+            return (
+              <Tooltip key={action} title={allowed ? action : `RBAC: ${action} not permitted for your role`}>
+                <span>
+                  <Button
+                    size="small"
+                    variant={action === 'Approve' || action === 'Release' ? 'contained' : 'outlined'}
+                    startIcon={<Icon sx={{ fontSize: 14 }} />}
+                    disabled={!allowed}
+                    onClick={() => applyLifecycleAction(workflow.id, action)}
+                    sx={{ textTransform: 'none', fontSize: '0.72rem' }}
+                  >
+                    {action === 'Submit' ? 'Submit For Review' : action === 'Advance Stage' ? 'Move To Next Stage' : action}
+                  </Button>
+                </span>
+              </Tooltip>
+            );
+          })}
         </Box>
       )}
     </GlassCard>

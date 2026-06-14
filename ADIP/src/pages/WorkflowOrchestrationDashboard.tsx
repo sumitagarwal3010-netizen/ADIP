@@ -31,7 +31,7 @@ export function WorkflowOrchestrationDashboard() {
   const { persona } = usePersona();
   const visible = useMemo(() => getVisibleWorkflows(), [getVisibleWorkflows]);
 
-  const bottleneckData = kpis.bottlenecks.map((b) => ({
+  const bottleneckData = kpis.workflowBottlenecks.map((b) => ({
     name: WORKFLOW_STAGE_LABEL[b.stage],
     value: b.avgHours,
   }));
@@ -60,7 +60,10 @@ export function WorkflowOrchestrationDashboard() {
           <KpiCard label="Approval Delays" value={kpis.approvalDelays} suffix="" trend={-12} compact />
         </Grid>
         <Grid size={{ xs: 6, md: 2.4 }}>
-          <KpiCard label="Completion Rate" value={kpis.completionRate} suffix="%" trend={8} compact />
+          <KpiCard label="Approval Bottlenecks" value={kpis.approvalBottlenecks} suffix="" compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}>
+          <KpiCard label="Delivery Risk" value={kpis.deliveryRiskCount} suffix="" trend={kpis.deliveryRiskCount > 0 ? -100 : 0} compact />
         </Grid>
         <Grid size={{ xs: 6, md: 2.4 }}>
           <KpiCard label="SLA Breaches" value={kpis.slaBreaches} suffix="" trend={kpis.slaBreaches > 0 ? -100 : 0} compact />

@@ -17,9 +17,10 @@ const STATUS_ICON = {
 interface WorkflowLifecycleChainProps {
   chain: WorkflowTraceabilityLink[];
   compact?: boolean;
+  showApproval?: boolean;
 }
 
-export function WorkflowLifecycleChain({ chain, compact }: WorkflowLifecycleChainProps) {
+export function WorkflowLifecycleChain({ chain, compact, showApproval }: WorkflowLifecycleChainProps) {
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: compact ? 0.5 : 1, alignItems: 'center' }}>
       {chain.map((link, i) => (
@@ -27,8 +28,9 @@ export function WorkflowLifecycleChain({ chain, compact }: WorkflowLifecycleChai
           <Box
             sx={{
               display: 'flex',
-              alignItems: 'center',
-              gap: 0.5,
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: 0.25,
               px: compact ? 0.75 : 1,
               py: 0.4,
               borderRadius: 1,
@@ -36,10 +38,17 @@ export function WorkflowLifecycleChain({ chain, compact }: WorkflowLifecycleChai
               border: `1px solid ${link.status === 'in_progress' ? colors.primary : colors.border.subtle}`,
             }}
           >
-            {STATUS_ICON[link.status]}
-            <Typography variant="caption" sx={{ fontSize: compact ? '0.58rem' : '0.65rem', fontWeight: link.status === 'in_progress' ? 700 : 500 }}>
-              {WORKFLOW_STAGE_LABEL[link.stage]}
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+              {STATUS_ICON[link.status]}
+              <Typography variant="caption" sx={{ fontSize: compact ? '0.58rem' : '0.65rem', fontWeight: link.status === 'in_progress' ? 700 : 500 }}>
+                {WORKFLOW_STAGE_LABEL[link.stage]}
+              </Typography>
+            </Box>
+            {showApproval && link.approvalStatus && (
+              <Typography variant="caption" sx={{ fontSize: '0.55rem', color: colors.text.muted, pl: 2.2 }}>
+                {link.approvalStatus}
+              </Typography>
+            )}
           </Box>
           {i < chain.length - 1 && (
             <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>→</Typography>
