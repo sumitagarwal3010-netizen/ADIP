@@ -14,6 +14,7 @@ import {
   buildDesignArtifacts,
   createRunId,
   formatTimestamp,
+  getDemoDesignArtifacts,
 } from '../../data/designArtifactFactory';
 import type { Artifact, GenerationRun } from '../../types/artifacts';
 import { colors } from '../../theme/colors';
@@ -32,7 +33,7 @@ const DESIGN_SIMULATION: SimulationConfig = {
 export function DesignIntakeWorkflow() {
   const [approvedBrd, setApprovedBrd] = useState('');
   const [approvedFrd, setApprovedFrd] = useState('');
-  const [artifacts, setArtifacts] = useState<Artifact[]>([]);
+  const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoDesignArtifacts());
   const [runs, setRuns] = useState<GenerationRun[]>([]);
   const [showSimulation, setShowSimulation] = useState(false);
 

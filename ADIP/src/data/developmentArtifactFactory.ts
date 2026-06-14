@@ -1,4 +1,5 @@
 import type { Artifact } from '../types/artifacts';
+import { enrichArtifacts } from './artifactBuilder';
 import { createRunId, formatTimestamp } from './requirementArtifactFactory';
 
 export { createRunId, formatTimestamp };
@@ -32,10 +33,10 @@ export function buildDevelopmentArtifacts(hldId: string, lldId: string, runId: s
   const serviceName = feature.replace(/\s+/g, '');
   const date = today();
 
-  return [
+  const artifacts: Artifact[] = [
     {
       id: `${runId}-api`,
-      name: 'API_Specification.yaml',
+      name: 'OpenAPI_Specification.yaml',
       generatedBy: 'Development AI',
       modelUsed: 'Gemini',
       version: '1.0',
@@ -119,7 +120,7 @@ CREATE INDEX idx_${serviceName.toLowerCase()}_customer
     },
     {
       id: `${runId}-code`,
-      name: 'Code_Package.zip',
+      name: 'Code_Package_Summary.docx',
       generatedBy: 'Development AI',
       modelUsed: 'Gemini',
       version: '1.0',
@@ -144,5 +145,35 @@ Build: Maven 3.9 · Java 17 · Spring Boot 3.2`,
         { version: '1.0', generatedDate: date, generatedBy: 'Development AI', modelUsed: 'Gemini', changeSummary: `Scaffolded from service design — ${feature}` },
       ],
     },
+    {
+      id: `${runId}-readiness`,
+      name: 'Development_Readiness_Report.docx',
+      generatedBy: 'Development AI',
+      modelUsed: 'Gemini',
+      version: '1.0',
+      generatedDate: date,
+      approvalStatus: 'Pending Review',
+      fileType: 'docx',
+      previewContent: `DEVELOPMENT READINESS REPORT
+${feature}
+
+Readiness Score: 88%
+  • API contracts: Ready
+  • DB migrations: Ready (peer reviewed)
+  • Unit test coverage: 82%
+  • Security scan: 1 medium finding (open)
+  • DevOps pipeline: Configured for SIT/UAT
+
+Recommendation: Proceed to SIT after resolving medium SAST finding.`,
+      generationHistory: [
+        { version: '1.0', generatedDate: date, generatedBy: 'Development AI', modelUsed: 'Gemini', changeSummary: `Readiness assessment for ${feature}` },
+      ],
+    },
   ];
+
+  return enrichArtifacts(artifacts, { feature });
+}
+
+export function getDemoDevelopmentArtifacts(): Artifact[] {
+  return buildDevelopmentArtifacts('hld-upi', 'lld-upi', 'DEMO-DEV');
 }

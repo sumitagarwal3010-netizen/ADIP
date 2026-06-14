@@ -1,4 +1,5 @@
 import type { Artifact } from '../types/artifacts';
+import { enrichArtifacts } from './artifactBuilder';
 import { createRunId, formatTimestamp } from './requirementArtifactFactory';
 
 export { createRunId, formatTimestamp };
@@ -31,7 +32,7 @@ export function buildDesignArtifacts(brdId: string, frdId: string, runId: string
   const feature = brd?.feature || frd?.feature || 'System Feature';
   const date = today();
 
-  return [
+  const artifacts: Artifact[] = [
     {
       id: `${runId}-hld`,
       name: 'HLD.docx',
@@ -106,8 +107,28 @@ paths:
       ],
     },
     {
+      id: `${runId}-integration`,
+      name: 'Integration_Design.docx',
+      generatedBy: 'Design AI',
+      modelUsed: 'Gemini',
+      version: '1.0',
+      generatedDate: date,
+      approvalStatus: 'Draft',
+      fileType: 'docx',
+      previewContent: `INTEGRATION DESIGN
+${feature}
+
+NPCI Switch: ISO 8583 over TLS · Timeout 5s · Circuit breaker enabled
+Core Ledger: Event-driven settlement posting via Kafka topic payments.settlement
+Mobile Banking: REST + push notification on limit change
+AML Engine: Real-time screening hook on limit upgrade >₹1L`,
+      generationHistory: [
+        { version: '1.0', generatedDate: date, generatedBy: 'Design AI', modelUsed: 'Gemini', changeSummary: 'Integration contracts from HLD' },
+      ],
+    },
+    {
       id: `${runId}-db`,
-      name: 'Database_Design.docx',
+      name: 'Data_Model_Document.docx',
       generatedBy: 'Design AI',
       modelUsed: 'Gemini',
       version: '1.0',
@@ -149,4 +170,10 @@ Indexes: customer_id, merchant_id, settled_at`,
       ],
     },
   ];
+
+  return enrichArtifacts(artifacts, { feature });
+}
+
+export function getDemoDesignArtifacts(): Artifact[] {
+  return buildDesignArtifacts('brd-upi', 'frd-upi', 'DEMO-ARCH');
 }

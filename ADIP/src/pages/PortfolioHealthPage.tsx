@@ -14,6 +14,7 @@ import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { MultiLineChart } from '../components/charts/MultiLineChart';
 import { colors } from '../theme/colors';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 
 const kpis = [
   { label: 'Portfolio Health Score', value: 88, trend: 2.3 },
@@ -119,6 +120,8 @@ export function PortfolioHealthPage() {
           </Table>
         </TableContainer>
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="capacity" />
     </Box>
   );
 }

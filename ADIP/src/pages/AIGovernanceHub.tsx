@@ -7,6 +7,7 @@ import { SeverityChip } from '../components/common/SeverityChip';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { computeAiGovernanceKpis } from '../data/aiUseCaseRegistryMock';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 
 function statusColor(status: string): string {
   if (status === 'Approved') return colors.success;
@@ -78,6 +79,8 @@ export function AIGovernanceHub() {
           </DrilldownTableRow>
         ))}
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="ai-use-case" />
     </Box>
   );
 }

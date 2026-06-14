@@ -2,6 +2,12 @@ export type ApprovalStatus = 'Approved' | 'Pending Review' | 'Draft' | 'Rejected
 
 export type ArtifactFileType = 'docx' | 'xlsx' | 'yaml' | 'png';
 
+export interface ArtifactSection {
+  title: string;
+  content: string;
+  riskRating?: string;
+}
+
 export interface GenerationHistoryEntry {
   version: string;
   generatedDate: string;
@@ -17,9 +23,13 @@ export interface Artifact {
   modelUsed: string;
   version: string;
   generatedDate: string;
+  timestamp?: string;
   approvalStatus: ApprovalStatus;
   fileType: ArtifactFileType;
   previewContent: string;
+  executiveSummary?: string;
+  riskRating?: string;
+  sections?: ArtifactSection[];
   generationHistory: GenerationHistoryEntry[];
 }
 

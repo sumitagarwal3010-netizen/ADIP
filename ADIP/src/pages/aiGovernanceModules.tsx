@@ -17,6 +17,7 @@ import {
   computeModelInventoryKpis,
   computePromptGovernanceKpis,
 } from '../data/aiGovernanceModulesMock';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 
 function modelStatusColor(status: string): string {
   if (status === 'Approved') return colors.success;
@@ -126,6 +127,8 @@ export function ModelInventoryModule() {
           </DrilldownTableRow>
         ))}
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="ai-model-inventory" />
     </Box>
   );
 }
@@ -174,6 +177,8 @@ export function AIRiskModule() {
           </DrilldownTableRow>
         ))}
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="ai-risk" />
     </Box>
   );
 }
@@ -220,6 +225,8 @@ export function PromptGovernanceModule() {
           </DrilldownTableRow>
         ))}
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="ai-prompt" />
     </Box>
   );
 }
@@ -269,6 +276,8 @@ export function AIControlsModule() {
           </DrilldownTableRow>
         ))}
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="ai-controls" />
     </Box>
   );
 }
@@ -318,6 +327,8 @@ export function AIIncidentsModule() {
           </DrilldownTableRow>
         ))}
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="ai-incidents" />
     </Box>
   );
 }

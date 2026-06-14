@@ -11,6 +11,7 @@ import { HorizontalBarChart } from '../components/charts/HorizontalBarChart';
 import { MultiLineChart } from '../components/charts/MultiLineChart';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 
 export function ExecutiveControlTower() {
   const { executive, release, governance, learning, dynamicInsights } = useFilteredSimulation();
@@ -199,6 +200,8 @@ export function ExecutiveControlTower() {
           </Grid>
         </Grid>
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="executive" />
     </Box>
   );
 }

@@ -3,17 +3,20 @@ import { BrowserRouter } from 'react-router-dom';
 import { theme } from './theme/theme';
 import { AppRoutes } from './routes';
 import { SimulationProvider } from './context/SimulationContext';
+import { RootErrorBoundary } from './components/common/RootErrorBoundary';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <SimulationProvider>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </SimulationProvider>
-    </ThemeProvider>
+    <RootErrorBoundary>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <SimulationProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </SimulationProvider>
+      </ThemeProvider>
+    </RootErrorBoundary>
   );
 }
 

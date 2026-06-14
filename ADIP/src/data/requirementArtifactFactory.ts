@@ -1,4 +1,7 @@
 import type { Artifact } from '../types/artifacts';
+import { createRunId, enrichArtifacts, formatTimestamp } from './artifactBuilder';
+
+export { createRunId, formatTimestamp };
 
 export interface RequirementIntake {
   domain: string;
@@ -17,7 +20,7 @@ export function buildRequirementArtifacts(intake: RequirementIntake, runId: stri
   const feature = intake.featureName || 'Untitled Feature';
   const domain = intake.domain || 'General';
 
-  return [
+  const artifacts: Artifact[] = [
     {
       id: `${runId}-brd`,
       name: 'BRD.docx',
@@ -113,21 +116,41 @@ AC-002: Compliance
         { version: '1.0', generatedDate: date, generatedBy: 'Requirement AI', modelUsed: 'Gemini', changeSummary: `Acceptance criteria from user stories — ${feature}` },
       ],
     },
+    {
+      id: `${runId}-rtm`,
+      name: 'Requirements_Traceability_Matrix.xlsx',
+      generatedBy: 'Requirement AI',
+      modelUsed: 'Gemini',
+      version: '1.0',
+      generatedDate: date,
+      approvalStatus: 'Draft',
+      fileType: 'xlsx',
+      previewContent: `Sheet: Requirements Traceability Matrix — ${feature}
+
+| Req ID | BRD Section | FRD Ref | User Story | Test Case | Status    |
+|--------|-------------|---------|------------|-----------|-----------|
+| REQ-01 | Exec Summary| FR-001  | US-001     | TC-001    | Mapped    |
+| REQ-02 | Compliance  | FR-003  | US-003     | TC-004    | Mapped    |
+| REQ-03 | ${domain}   | FR-002  | US-002     | TC-002    | In Review |
+
+Coverage: 94% requirements traced to test cases`,
+      generationHistory: [
+        { version: '1.0', generatedDate: date, generatedBy: 'Requirement AI', modelUsed: 'Gemini', changeSummary: `RTM linking BRD/FRD/stories for ${feature}` },
+      ],
+    },
   ];
+
+  return enrichArtifacts(artifacts, { feature, domain });
 }
 
-export function createRunId(prefix: string): string {
-  const ts = Date.now().toString(36).toUpperCase();
-  return `${prefix}-${ts}`;
-}
+export const DEMO_REQUIREMENT_INTAKE: RequirementIntake = {
+  domain: 'Payments',
+  featureName: 'UPI Limit Enhancement',
+  businessObjective: 'Increase verified customer daily UPI limits to ₹2L for KYC Level 2 accounts while reducing limit-related support tickets by 35%.',
+  requirementDescription: 'Tiered UPI limit model with self-service upgrade, NPCI compliance checks, and audit trail for limit changes across Mobile Banking and Net Banking.',
+  complianceNotes: 'RBI retail payment limits; AML monitoring for limit upgrades; PCI-DSS for card-linked UPI wallets.',
+};
 
-export function formatTimestamp(): string {
-  return new Date().toLocaleString('en-IN', {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  });
+export function getDemoRequirementArtifacts(): Artifact[] {
+  return buildRequirementArtifacts(DEMO_REQUIREMENT_INTAKE, 'DEMO-REQ');
 }

@@ -9,6 +9,7 @@ import { StatusDot } from '../components/common/StatusDot';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 
 export function ProductionCenter() {
   const { production } = useFilteredSimulation();
@@ -94,6 +95,8 @@ export function ProductionCenter() {
           </GlassCard>
         </Grid>
       </Grid>
+
+      <HubArtifactGenerator hubKey="production" />
     </Box>
   );
 }

@@ -14,6 +14,7 @@ import {
   buildTestingArtifacts,
   createRunId,
   formatTimestamp,
+  getDemoTestingArtifacts,
 } from '../../data/testingArtifactFactory';
 import type { Artifact, GenerationRun } from '../../types/artifacts';
 import { colors } from '../../theme/colors';
@@ -32,7 +33,7 @@ const TESTING_SIMULATION: SimulationConfig = {
 export function TestingIntakeWorkflow() {
   const [approvedApi, setApprovedApi] = useState('');
   const [approvedService, setApprovedService] = useState('');
-  const [artifacts, setArtifacts] = useState<Artifact[]>([]);
+  const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoTestingArtifacts());
   const [runs, setRuns] = useState<GenerationRun[]>([]);
   const [showSimulation, setShowSimulation] = useState(false);
 

@@ -1,4 +1,5 @@
 import type { Artifact } from '../types/artifacts';
+import { enrichArtifacts } from './artifactBuilder';
 import { createRunId, formatTimestamp } from './requirementArtifactFactory';
 
 export { createRunId, formatTimestamp };
@@ -31,7 +32,27 @@ export function buildTestingArtifacts(apiId: string, serviceId: string, runId: s
   const feature = api?.feature || service?.feature || 'System Feature';
   const date = today();
 
-  return [
+  const artifacts: Artifact[] = [
+    {
+      id: `${runId}-strategy`,
+      name: 'Test_Strategy.docx',
+      generatedBy: 'Testing AI',
+      modelUsed: 'Gemini',
+      version: '1.0',
+      generatedDate: date,
+      approvalStatus: 'Approved',
+      fileType: 'docx',
+      previewContent: `TEST STRATEGY
+${feature}
+
+Scope: Functional, regression, compliance, performance
+Environments: SIT → UAT → Pre-Prod
+Automation target: 85% regression coverage
+Entry criteria: Approved API spec + dev readiness sign-off`,
+      generationHistory: [
+        { version: '1.0', generatedDate: date, generatedBy: 'Testing AI', modelUsed: 'Gemini', changeSummary: `Test strategy for ${feature}` },
+      ],
+    },
     {
       id: `${runId}-scenarios`,
       name: 'Test_Scenarios.docx',
@@ -132,5 +153,31 @@ Recommendation: Add 6 cases to close P1 gaps before release.`,
         { version: '1.0', generatedDate: date, generatedBy: 'Testing AI', modelUsed: 'Gemini', changeSummary: `Coverage analysis for ${feature} test suite` },
       ],
     },
+    {
+      id: `${runId}-signoff`,
+      name: 'Test_Sign_Off_Report.docx',
+      generatedBy: 'Testing AI',
+      modelUsed: 'Gemini',
+      version: '1.0',
+      generatedDate: date,
+      approvalStatus: 'Pending Review',
+      fileType: 'docx',
+      previewContent: `TEST SIGN-OFF REPORT
+${feature}
+
+Regression: PASSED (98/98 critical cases)
+UAT sign-off: Pending business approval
+Defects open: 2 (P2) · Blockers: 0
+Recommendation: Conditional sign-off for UAT promotion`,
+      generationHistory: [
+        { version: '1.0', generatedDate: date, generatedBy: 'Testing AI', modelUsed: 'Gemini', changeSummary: `Sign-off report for ${feature}` },
+      ],
+    },
   ];
+
+  return enrichArtifacts(artifacts, { feature });
+}
+
+export function getDemoTestingArtifacts(): Artifact[] {
+  return buildTestingArtifacts('api-upi', 'svc-upi', 'DEMO-TST');
 }

@@ -1,4 +1,4 @@
-import { AI_USE_CASES } from '../data/aiUseCaseRegistryMock.ts';
+import { AI_USE_CASES } from '../data/aiUseCaseRegistryMock';
 
 /** @typedef {'netbanking' | 'mobile' | 'payments'} DomainId */
 

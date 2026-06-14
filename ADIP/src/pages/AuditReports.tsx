@@ -13,6 +13,7 @@ import { KpiCard } from '../components/common/KpiCard';
 import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { colors } from '../theme/colors';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 
 const auditKpis = [
   { label: 'Open Findings', value: 23, suffix: '', trend: -4.2 },
@@ -145,6 +146,8 @@ export function AuditReports() {
           </Table>
         </TableContainer>
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="audit" />
     </Box>
   );
 }

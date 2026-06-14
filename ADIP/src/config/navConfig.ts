@@ -29,6 +29,8 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import HubIcon from '@mui/icons-material/Hub';
+import InsightsIcon from '@mui/icons-material/Insights';
 
 export interface NavChild {
   path: string;
@@ -69,6 +71,19 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/development', label: 'Development', icon: CodeIcon },
       { path: '/testing', label: 'Testing', icon: ScienceIcon },
       { path: '/release', label: 'Release', icon: RocketLaunchIcon },
+    ],
+  },
+  {
+    id: 'traceability',
+    label: 'Traceability Center',
+    icon: HubIcon,
+    children: [
+      { path: '/traceability', label: 'Lineage Dashboard', icon: AccountTreeIcon },
+      { path: '/traceability/matrix', label: 'Requirement Matrix', icon: FactCheckIcon },
+      { path: '/traceability/ai', label: 'AI Traceability', icon: PsychologyIcon },
+      { path: '/traceability/impact', label: 'Impact Analysis', icon: InsightsIcon },
+      { path: '/traceability/executive', label: 'Executive View', icon: AssessmentIcon },
+      { path: '/traceability/reports', label: 'AI Reports', icon: SummarizeIcon },
     ],
   },
   {

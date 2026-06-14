@@ -13,6 +13,7 @@ import { KpiCard } from '../components/common/KpiCard';
 import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { colors } from '../theme/colors';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 
 const kpis = [
   { label: 'Evidence Artifacts', value: 246, suffix: '', trend: 8.1 },
@@ -77,6 +78,8 @@ export function GovernanceEvidencePage() {
           </Table>
         </TableContainer>
       </GlassCard>
+
+      <HubArtifactGenerator hubKey="evidence" />
     </Box>
   );
 }

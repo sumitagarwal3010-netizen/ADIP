@@ -1,4 +1,5 @@
 import type { Artifact } from '../types/artifacts';
+import { enrichArtifacts } from './artifactBuilder';
 import { createRunId, formatTimestamp } from './requirementArtifactFactory';
 
 export { createRunId, formatTimestamp };
@@ -41,32 +42,29 @@ export function buildReleaseArtifacts(intake: ReleaseIntake, runId: string): Art
     : 'Production';
   const date = today();
 
-  return [
+  const artifacts: Artifact[] = [
     {
-      id: `${runId}-notes`,
-      name: 'Release_Notes.docx',
+      id: `${runId}-readiness`,
+      name: 'Release_Readiness_Assessment.docx',
       generatedBy: 'Release AI',
       modelUsed: 'Gemini',
       version: '1.0',
       generatedDate: date,
       approvalStatus: 'Pending Review',
       fileType: 'docx',
-      previewContent: `RELEASE NOTES
-${version} — ${feature}
+      previewContent: `RELEASE READINESS ASSESSMENT
+${version} — ${feature} → ${env}
 
-What's New:
-  • ${feature} production rollout
-  • Enhanced compliance audit trail
-  • Performance improvements for peak-hour traffic
+Readiness Score: 91%
+  • Regression: Complete
+  • Security: 1 medium open
+  • Compliance: RBI notification filed
+  • Operations: Runbook updated
+  • Rollback: Drill completed
 
-Bug Fixes:
-  • Resolved timeout on settlement batch processing
-  • Fixed duplicate notification on retry
-
-Known Issues:
-  • Legacy merchant portal shows stale cache for 5 min post-deploy`,
+Recommendation: GO with monitoring watch for first 24h`,
       generationHistory: [
-        { version: '1.0', generatedDate: date, generatedBy: 'Release AI', modelUsed: 'Gemini', changeSummary: `Release notes for ${version}` },
+        { version: '1.0', generatedDate: date, generatedBy: 'Release AI', modelUsed: 'Gemini', changeSummary: `Readiness assessment for ${version}` },
       ],
     },
     {
@@ -130,7 +128,7 @@ RTO: 30 minutes · RPO: 0 (no data loss on rollback)`,
     },
     {
       id: `${runId}-checklist`,
-      name: 'Go_Live_Checklist.xlsx',
+      name: 'Go-Live_Checklist.xlsx',
       generatedBy: 'Release AI',
       modelUsed: 'Gemini',
       version: '1.0',
@@ -153,5 +151,56 @@ Target: ${env} · Feature: ${feature}`,
         { version: '1.0', generatedDate: date, generatedBy: 'Release AI', modelUsed: 'Gemini', changeSummary: `Go-live checklist for ${version} → ${env}` },
       ],
     },
+    {
+      id: `${runId}-gono`,
+      name: 'Go_No-Go_Recommendation.docx',
+      generatedBy: 'Release AI',
+      modelUsed: 'Gemini',
+      version: '1.0',
+      generatedDate: date,
+      approvalStatus: 'Pending Review',
+      fileType: 'docx',
+      previewContent: `GO / NO-GO RECOMMENDATION
+${version} — ${feature}
+
+Decision: GO (Conditional)
+Conditions:
+  • Resolve medium SAST finding before prod traffic ramp
+  • War room staffed for first 4 hours post-deploy
+  • Feature flag at 10% initial traffic
+
+Sign-off required: Release Manager, Head of Payments, CISO delegate`,
+      generationHistory: [
+        { version: '1.0', generatedDate: date, generatedBy: 'Release AI', modelUsed: 'Gemini', changeSummary: `Go/No-Go for ${version}` },
+      ],
+    },
+    {
+      id: `${runId}-exec`,
+      name: 'Executive_Release_Summary.docx',
+      generatedBy: 'Release AI',
+      modelUsed: 'Gemini',
+      version: '1.0',
+      generatedDate: date,
+      approvalStatus: 'Draft',
+      fileType: 'docx',
+      previewContent: `EXECUTIVE RELEASE SUMMARY
+${version} — ${feature}
+
+Business impact: Enables tiered UPI limits for 2.4M KYC L2 customers
+Risk: Medium · Rollback tested · Regulatory: RBI notified
+Timeline: Deploy ${env} Saturday 02:00 IST`,
+      generationHistory: [
+        { version: '1.0', generatedDate: date, generatedBy: 'Release AI', modelUsed: 'Gemini', changeSummary: `Executive summary for ${version}` },
+      ],
+    },
   ];
+
+  return enrichArtifacts(artifacts, { feature });
+}
+
+export function getDemoReleaseArtifacts(): Artifact[] {
+  return buildReleaseArtifacts(
+    { releaseVersion: '24.6', targetEnvironment: 'prod', regressionSuiteId: 'reg-upi' },
+    'DEMO-REL',
+  );
 }

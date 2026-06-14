@@ -26,6 +26,12 @@ import { AuditReports } from '../pages/AuditReports';
 import { TrendAnalytics } from '../pages/TrendAnalytics';
 import { Administration } from '../pages/Administration';
 import { ComingSoon } from '../pages/ComingSoon';
+import { OperationsIncidentsPage } from '../pages/OperationsIncidentsPage';
+import { OperationsAvailabilityPage } from '../pages/OperationsAvailabilityPage';
+import { KnowledgeBestPracticesPage } from '../pages/KnowledgeBestPracticesPage';
+import { KnowledgeReusableAssetsPage } from '../pages/KnowledgeReusableAssetsPage';
+import { KnowledgeLessonsLearnedPage } from '../pages/KnowledgeLessonsLearnedPage';
+import { TraceabilityCenter } from '../pages/TraceabilityCenter';
 
 export function AppRoutes() {
   return (
@@ -45,8 +51,8 @@ export function AppRoutes() {
         <Route path="release" element={<ReleaseCenter />} />
         <Route path="production" element={<ProductionCenter />} />
         <Route path="operations" element={<OperationsCenter />} />
-        <Route path="operations/incidents" element={<ComingSoon title="Incidents" hub="Operations Hub" />} />
-        <Route path="operations/availability" element={<ComingSoon title="Availability" hub="Operations Hub" />} />
+        <Route path="operations/incidents" element={<OperationsIncidentsPage />} />
+        <Route path="operations/availability" element={<OperationsAvailabilityPage />} />
         <Route path="operations/capacity" element={<PortfolioHealthPage />} />
         <Route path="governance" element={<GovernanceCenter />} />
         <Route path="governance/compliance" element={<GovernanceCompliancePage />} />
@@ -58,10 +64,16 @@ export function AppRoutes() {
         <Route path="ai-governance/ai-risk" element={<AIRiskDashboard />} />
         <Route path="ai-governance/ai-controls" element={<AIProgramStatusPage />} />
         <Route path="ai-governance/ai-incidents" element={<ComingSoon title="AI Incidents" hub="AI Governance Hub" />} />
+        <Route path="traceability" element={<TraceabilityCenter initialTab="dashboard" />} />
+        <Route path="traceability/matrix" element={<TraceabilityCenter initialTab="rtm" />} />
+        <Route path="traceability/ai" element={<TraceabilityCenter initialTab="ai" />} />
+        <Route path="traceability/impact" element={<TraceabilityCenter initialTab="impact" />} />
+        <Route path="traceability/executive" element={<TraceabilityCenter initialTab="executive" />} />
+        <Route path="traceability/reports" element={<TraceabilityCenter initialTab="reports" />} />
         <Route path="learning" element={<LearningHub />} />
-        <Route path="knowledge/best-practices" element={<ComingSoon title="Best Practices" hub="Knowledge Hub" />} />
-        <Route path="knowledge/reusable-assets" element={<ComingSoon title="Reusable Assets" hub="Knowledge Hub" />} />
-        <Route path="knowledge/lessons-learned" element={<ComingSoon title="Lessons Learned" hub="Knowledge Hub" />} />
+        <Route path="knowledge/best-practices" element={<KnowledgeBestPracticesPage />} />
+        <Route path="knowledge/reusable-assets" element={<KnowledgeReusableAssetsPage />} />
+        <Route path="knowledge/lessons-learned" element={<KnowledgeLessonsLearnedPage />} />
         <Route path="reports" element={<Reports />} />
         <Route path="reports/compliance" element={<ComplianceReports />} />
         <Route path="reports/audit" element={<AuditReports />} />

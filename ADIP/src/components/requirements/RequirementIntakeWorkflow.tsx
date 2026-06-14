@@ -13,6 +13,7 @@ import {
   buildRequirementArtifacts,
   createRunId,
   formatTimestamp,
+  getDemoRequirementArtifacts,
   type RequirementIntake,
 } from '../../data/requirementArtifactFactory';
 import type { Artifact, GenerationRun } from '../../types/artifacts';
@@ -45,7 +46,7 @@ const domainOptions = DOMAINS.filter((d) => d.id !== 'all').map((d) => ({
 
 export function RequirementIntakeWorkflow() {
   const [intake, setIntake] = useState<RequirementIntake>(EMPTY_INTAKE);
-  const [artifacts, setArtifacts] = useState<Artifact[]>([]);
+  const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoRequirementArtifacts());
   const [runs, setRuns] = useState<GenerationRun[]>([]);
   const [showSimulation, setShowSimulation] = useState(false);
 

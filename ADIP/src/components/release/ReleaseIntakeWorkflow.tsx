@@ -14,6 +14,7 @@ import {
   buildReleaseArtifacts,
   createRunId,
   formatTimestamp,
+  getDemoReleaseArtifacts,
   targetEnvironmentOptions,
   type ReleaseIntake,
 } from '../../data/releaseArtifactFactory';
@@ -30,16 +31,16 @@ const RELEASE_SIMULATION: SimulationConfig = {
   initialStatus: 'Release Agent reading approved test artifacts...',
   steps: [
     { progress: 25, activity: 'Reading Regression Suite', delayMs: 700 },
-    { progress: 50, activity: 'Release Notes Generation', delayMs: 700 },
-    { progress: 75, activity: 'Deployment Plan Generation', delayMs: 700 },
-    { progress: 75, activity: 'Rollback Plan Generation', delayMs: 500 },
-    { progress: 100, activity: 'Go-Live Checklist Generation', delayMs: 700 },
+    { progress: 50, activity: 'Release Readiness Assessment', delayMs: 700 },
+    { progress: 75, activity: 'Deployment & Rollback Plans', delayMs: 700 },
+    { progress: 75, activity: 'Go/No-Go Recommendation', delayMs: 500 },
+    { progress: 100, activity: 'Executive Release Summary', delayMs: 700 },
   ],
 };
 
 export function ReleaseIntakeWorkflow() {
   const [intake, setIntake] = useState<ReleaseIntake>(EMPTY_INTAKE);
-  const [artifacts, setArtifacts] = useState<Artifact[]>([]);
+  const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoReleaseArtifacts());
   const [runs, setRuns] = useState<GenerationRun[]>([]);
   const [showSimulation, setShowSimulation] = useState(false);
 
