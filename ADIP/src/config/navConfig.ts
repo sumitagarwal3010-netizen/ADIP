@@ -14,6 +14,7 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import SpeedIcon from '@mui/icons-material/Speed';
 import StorageIcon from '@mui/icons-material/Storage';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PolicyIcon from '@mui/icons-material/Policy';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
@@ -106,6 +107,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/governance/compliance', label: 'Compliance', icon: PolicyIcon },
       { path: '/governance/risk', label: 'Risk', icon: WarningAmberIcon },
       { path: '/governance/evidence', label: 'Evidence', icon: FolderSharedIcon },
+      { path: '/governance/approval-workflow', label: 'Approval Workflow', icon: AssignmentTurnedInIcon },
     ],
   },
   {

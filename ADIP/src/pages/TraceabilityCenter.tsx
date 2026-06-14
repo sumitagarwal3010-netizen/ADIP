@@ -13,11 +13,13 @@ import { RequirementTraceabilityMatrix } from '../components/traceability/Requir
 import { AiTraceability } from '../components/traceability/AiTraceability';
 import { ImpactAnalysis } from '../components/traceability/ImpactAnalysis';
 import { TraceabilityExecutiveView } from '../components/traceability/TraceabilityExecutiveView';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import { ApprovalTraceabilityPanel } from '../components/approval/ApprovalTraceabilityPanel';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { colors } from '../theme/colors';
 import type { TraceNode } from '../data/traceabilityModel';
 
-type TabKey = 'dashboard' | 'rtm' | 'ai' | 'impact' | 'executive' | 'reports';
+type TabKey = 'dashboard' | 'rtm' | 'ai' | 'impact' | 'executive' | 'approvals' | 'reports';
 
 const TABS: { key: TabKey; label: string; icon: typeof AccountTreeIcon }[] = [
   { key: 'dashboard', label: 'Lineage Dashboard', icon: AccountTreeIcon },
@@ -25,6 +27,7 @@ const TABS: { key: TabKey; label: string; icon: typeof AccountTreeIcon }[] = [
   { key: 'ai', label: 'AI Traceability', icon: PsychologyIcon },
   { key: 'impact', label: 'Impact Analysis', icon: HubIcon },
   { key: 'executive', label: 'Executive View', icon: InsightsIcon },
+  { key: 'approvals', label: 'Approval Lineage', icon: AssignmentTurnedInIcon },
   { key: 'reports', label: 'AI Reports', icon: DescriptionIcon },
 ];
 
@@ -92,6 +95,7 @@ export function TraceabilityCenter({ initialTab = 'dashboard' }: TraceabilityCen
       {tab === 'ai' && <AiTraceability onSelectNode={handleSelectNode} />}
       {tab === 'impact' && <ImpactAnalysis selectedId={selectedId} onSelectNode={(n) => setSelectedId(n.id)} />}
       {tab === 'executive' && <TraceabilityExecutiveView onSelectNode={handleSelectId} />}
+      {tab === 'approvals' && <ApprovalTraceabilityPanel />}
       {tab === 'reports' && <HubArtifactGenerator hubKey="traceability" />}
     </Box>
   );

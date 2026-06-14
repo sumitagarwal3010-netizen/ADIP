@@ -22,7 +22,8 @@ export type HubKey =
   | 'reusable-assets'
   | 'lessons-learned'
   | 'executive'
-  | 'traceability';
+  | 'traceability'
+  | 'approval-workflow';
 
 export interface HubArtifactConfig {
   title: string;
@@ -645,6 +646,46 @@ function executiveArtifacts(runId: string): Artifact[] {
   ];
 }
 
+function approvalWorkflowArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-decision`,
+      name: 'Approval_Decision_Report.docx',
+      generatedBy: 'Approval Workflow AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `APPROVAL DECISION REPORT\n\nDecisions this period: 32 approved · 6 rejected · 4 escalated\nCritical path: UPI Fraud Model release (APR-001) — Under Review\nModel risk: APR-004 escalated to enterprise committee`,
+      executiveSummary: 'Approval decisions are concentrated in Release and AI Governance with two overdue SLA breaches requiring executive attention.',
+      context: { subject: 'Approval Decision' },
+    }),
+    createArtifact({
+      id: `${runId}-history`,
+      name: 'Review_History_Report.docx',
+      generatedBy: 'Approval Workflow AI',
+      fileType: 'docx',
+      previewContent: `REVIEW HISTORY REPORT\n\nActions logged: 124 this month\nAssign: 28 · Approve: 32 · Reject: 6 · Changes: 14 · Escalate: 4\nFull actor audit trail with status transitions attached`,
+      context: { subject: 'Review History' },
+    }),
+    createArtifact({
+      id: `${runId}-escalation`,
+      name: 'Escalation_Summary.docx',
+      generatedBy: 'Approval Workflow AI',
+      fileType: 'docx',
+      riskRating: 'High',
+      previewContent: `ESCALATION SUMMARY\n\nOpen escalations: 2\nAPR-004: Credit scoring fairness evidence\nAPR-031: AML model retrain — regulatory hold\nTrend: ↓ 33% vs prior month`,
+      context: { subject: 'Escalation Summary' },
+    }),
+    createArtifact({
+      id: `${runId}-audit-pkg`,
+      name: 'Approval_Audit_Package.docx',
+      generatedBy: 'Approval Workflow AI',
+      fileType: 'docx',
+      previewContent: `APPROVAL AUDIT PACKAGE\n\nMaker-checker evidence: 52 records\nSLA adherence: 82%\nRegulatory mapping: RBI · PCI · ISO 27001\nReady for internal audit and board review`,
+      context: { subject: 'Approval Audit Package' },
+    }),
+  ];
+}
+
 function traceabilityArtifacts(runId: string): Artifact[] {
   return [
     createArtifact({
@@ -725,6 +766,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   'lessons-learned': lessonsLearnedArtifacts,
   executive: executiveArtifacts,
   traceability: traceabilityArtifacts,
+  'approval-workflow': approvalWorkflowArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -893,6 +935,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'purple',
     simulation: sim('Traceability AI walking the SDLC lineage graph...', ['Requirement Traceability', 'Impact Assessment', 'Audit Traceability', 'Compliance Traceability']),
     build: traceabilityArtifacts,
+  },
+  'approval-workflow': {
+    title: 'AI Approval Workflow Reports',
+    subtitle: 'Queue status, cycle metrics, and audit trail',
+    generateLabel: 'Generate Approval Reports',
+    generatedBy: 'Approval Workflow AI',
+    glow: 'blue',
+    simulation: sim('Approval Workflow AI analyzing review queue...', ['Decision Report', 'Review History', 'Escalation Summary', 'Audit Package']),
+    build: approvalWorkflowArtifacts,
   },
 };
 

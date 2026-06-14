@@ -14,6 +14,7 @@ import { GovernanceCenter } from '../pages/GovernanceCenter';
 import { GovernanceCompliancePage } from '../pages/GovernanceCompliancePage';
 import { GovernanceRiskPage } from '../pages/GovernanceRiskPage';
 import { GovernanceEvidencePage } from '../pages/GovernanceEvidencePage';
+import { ApprovalWorkflowDashboard } from '../pages/ApprovalWorkflowDashboard';
 import { AIGovernanceHub } from '../pages/AIGovernanceHub';
 import { ModelInventory } from '../pages/ModelInventory';
 import { PromptGovernance } from '../pages/PromptGovernance';
@@ -61,6 +62,7 @@ export function AppRoutes() {
         <Route path="governance/compliance" element={<GovernanceCompliancePage />} />
         <Route path="governance/risk" element={<GovernanceRiskPage />} />
         <Route path="governance/evidence" element={<GovernanceEvidencePage />} />
+        <Route path="governance/approval-workflow" element={<ApprovalWorkflowDashboard />} />
         <Route path="ai-governance" element={<AIGovernanceHub />} />
         <Route path="ai-governance/model-inventory" element={<ModelInventory />} />
         <Route path="ai-governance/prompt-governance" element={<PromptGovernance />} />

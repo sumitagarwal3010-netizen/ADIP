@@ -35,6 +35,7 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/governance/compliance': { title: 'Governance Intelligence Center', subtitle: 'Security, compliance & audit' },
   '/governance/risk': { title: 'Governance Intelligence Center', subtitle: 'Security, compliance & audit' },
   '/governance/evidence': { title: 'Governance Intelligence Center', subtitle: 'Security, compliance & audit' },
+  '/governance/approval-workflow': { title: 'Enterprise Approval Workflow', subtitle: 'Review queue, approvals & audit trail' },
   '/ai-governance': { title: 'AI Governance Hub', subtitle: 'AI use case registry & model oversight' },
   '/ai-governance/model-inventory': { title: 'AI Governance Hub', subtitle: 'AI use case registry & model oversight' },
   '/ai-governance/prompt-governance': { title: 'AI Governance Hub', subtitle: 'AI use case registry & model oversight' },

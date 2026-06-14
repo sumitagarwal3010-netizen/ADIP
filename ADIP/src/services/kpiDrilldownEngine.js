@@ -5,6 +5,18 @@ import {
   AI_CONTROLS_TREND,
   AI_INCIDENTS_TREND,
 } from '../data/aiGovernanceModulesMock.ts';
+import {
+  APPROVAL_REQUESTS,
+  APPROVAL_HISTORY,
+  APPROVAL_TREND,
+  APPROVALS_BY_STAGE,
+  approvalToDrilldownRecord,
+} from '../data/approvalWorkflowMock.ts';
+import {
+  PENDING_STATUSES,
+  IN_PROGRESS_STATUSES,
+  isOverdue,
+} from '../data/approvalWorkflowEngine.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -1366,6 +1378,95 @@ const resolvers = {
       historicalTrend: resolved.map((i) => ({ id: i.id, value: i.mttrHours })),
     });
   },
+
+  'Pending Approvals': (state, ctx) => {
+    const pending = APPROVAL_REQUESTS.filter((r) => PENDING_STATUSES.includes(r.status));
+    return buildPayload(ctx, {
+      sourceRecords: pending.map(approvalToDrilldownRecord),
+      supportingEvidence: pending.map((r) => `${r.id}: ${r.stage} · due ${r.dueDate}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.pending })),
+    });
+  },
+
+  'Overdue Reviews': (state, ctx) => {
+    const overdue = APPROVAL_REQUESTS.filter((r) => isOverdue(r));
+    return buildPayload(ctx, {
+      sourceRecords: overdue.map(approvalToDrilldownRecord),
+      supportingEvidence: overdue.map((r) => `SLA breach: ${r.title} — due ${r.dueDate}`),
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.status === 'critical'),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state).filter((r) => r.risk === 'high'),
+      historicalTrend: sparkline7d(overdue.length * 12),
+    });
+  },
+
+  'Reviews In Progress': (state, ctx) => {
+    const inProgress = APPROVAL_REQUESTS.filter((r) => IN_PROGRESS_STATUSES.includes(r.status));
+    return buildPayload(ctx, {
+      sourceRecords: inProgress.map(approvalToDrilldownRecord),
+      supportingEvidence: inProgress.map((r) => `Reviewer: ${r.assignedReviewer ?? 'Unassigned'}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(inProgress.length * 9),
+    });
+  },
+
+  'Approved Items': (state, ctx) => {
+    const approved = APPROVAL_REQUESTS.filter((r) => r.status === 'Approved' || r.status === 'Closed');
+    return buildPayload(ctx, {
+      sourceRecords: approved.map(approvalToDrilldownRecord),
+      supportingEvidence: approved.map((r) => `${r.id} approved at ${r.stage} stage`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.approved })),
+    });
+  },
+
+  'Rejected Items': (state, ctx) => {
+    const rejected = APPROVAL_REQUESTS.filter((r) => r.status === 'Rejected');
+    return buildPayload(ctx, {
+      sourceRecords: rejected.map(approvalToDrilldownRecord),
+      supportingEvidence: rejected.map((r) => `${r.title}: rejected at ${r.stage}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(rejected.length * 14),
+    });
+  },
+
+  'Escalated Reviews': (state, ctx) => {
+    const escalated = APPROVAL_REQUESTS.filter((r) => r.status === 'Escalated');
+    return buildPayload(ctx, {
+      sourceRecords: escalated.map(approvalToDrilldownRecord),
+      supportingEvidence: escalated.map((r) => `Escalated: ${r.title} · ${r.domain}`),
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.status !== 'healthy'),
+      relatedIncidents: incidentsFromState(state).filter((i) => i.severity === 'critical'),
+      relatedReleases: releasesFromState(state).filter((r) => r.risk === 'high'),
+      historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.escalated })),
+    });
+  },
+
+  'Average Approval Time': (state, ctx) => {
+    const closed = APPROVAL_REQUESTS.filter((r) => r.status === 'Approved' || r.status === 'Closed');
+    return buildPayload(ctx, {
+      sourceRecords: closed.map((r) => ({
+        id: r.id,
+        title: r.title,
+        detail: r.stage,
+        meta: `${r.submittedDate} → ${r.status}`,
+      })),
+      supportingEvidence: [`Average cycle: ${ctx.value} days`, ...closed.slice(0, 4).map((r) => r.title)],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.approved })),
+    });
+  },
 };
 
 /** @type {Record<string, (state: SimulationState, ctx: KpiDrilldownContext) => KpiDrilldownPayload>} */
@@ -1775,6 +1876,91 @@ const chartResolvers = {
         day: p.day,
         value: seriesKey === 'closed' ? p.closed : seriesKey === 'open' ? p.open : p.open + p.closed,
       })),
+    });
+  },
+
+  'approval-workflow.by-stage': (state, ctx) => {
+    const stageRow = APPROVALS_BY_STAGE.find((s) => s.stage === ctx.segment);
+    const stageFull = ctx.segment === 'AI Gov' ? 'AI Governance' : ctx.segment === 'Knowled' ? 'Knowledge Management' : ctx.segment;
+    const records = APPROVAL_REQUESTS.filter((r) =>
+      r.stage.startsWith(stageFull) || r.stage.startsWith(ctx.segment ?? ''),
+    );
+    return buildPayload(ctx, {
+      sourceRecords: records.map(approvalToDrilldownRecord),
+      supportingEvidence: [
+        stageRow ? `${stageRow.stage}: ${stageRow.count} pending` : `Stage: ${ctx.segment}`,
+        ...records.slice(0, 3).map((r) => r.title),
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: APPROVALS_BY_STAGE.map((s) => ({ stage: s.stage, value: s.count })),
+    });
+  },
+
+  'approval-workflow.trend': (state, ctx) => {
+    const segment = ctx.segment ?? '';
+    const [month, seriesKey] = segment.includes('|') ? segment.split('|') : [segment, null];
+    const trendPoint = APPROVAL_TREND.find((p) => p.month === month);
+    let records = APPROVAL_REQUESTS;
+    if (seriesKey === 'pending') records = APPROVAL_REQUESTS.filter((r) => PENDING_STATUSES.includes(r.status));
+    else if (seriesKey === 'approved') records = APPROVAL_REQUESTS.filter((r) => r.status === 'Approved' || r.status === 'Closed');
+    else if (seriesKey === 'escalated') records = APPROVAL_REQUESTS.filter((r) => r.status === 'Escalated');
+    return buildPayload(ctx, {
+      sourceRecords: records.slice(0, 12).map(approvalToDrilldownRecord),
+      supportingEvidence: [
+        trendPoint ? `${month}: ${trendPoint.pending} pending, ${trendPoint.approved} approved` : `Trend: ${segment}`,
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: APPROVAL_TREND.map((p) => ({
+        month: p.month,
+        value: seriesKey === 'approved' ? p.approved : seriesKey === 'escalated' ? p.escalated : p.pending,
+      })),
+    });
+  },
+
+  'approval-workflow.queue': (state, ctx) => {
+    const item = APPROVAL_REQUESTS.find((r) => r.id === ctx.segment);
+    if (!item) {
+      return buildPayload(ctx, {
+        sourceRecords: APPROVAL_REQUESTS.filter((r) => PENDING_STATUSES.includes(r.status)).map(approvalToDrilldownRecord),
+        supportingEvidence: APPROVAL_HISTORY.slice(0, 4).map((h) => `${h.action}: ${h.comment}`),
+        relatedApplications: appsFromArchitecture(state).slice(0, 4),
+        relatedIncidents: incidentsFromState(state).slice(0, 2),
+        relatedReleases: releasesFromState(state).slice(0, 3),
+        historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.pending })),
+      });
+    }
+    return buildPayload(ctx, {
+      sourceRecords: [approvalToDrilldownRecord(item)],
+      supportingEvidence: [
+        ...item.reviewNotes,
+        ...item.relatedArtifacts.map((a) => `${a.id}: ${a.name}`),
+        ...item.traceabilityChain.map((t) => `${t.stage} → ${t.nodeId}`),
+      ],
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.name.includes(item.domain.split(' ')[0])).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).filter((r) => r.domain === item.domain).slice(0, 3),
+      historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.pending })),
+    });
+  },
+
+  'approval-workflow.history': (state, ctx) => {
+    const entry = APPROVAL_HISTORY.find((h) => h.id === ctx.segment);
+    const item = entry ? APPROVAL_REQUESTS.find((r) => r.id === entry.approvalId) : null;
+    return buildPayload(ctx, {
+      sourceRecords: entry
+        ? [{ id: entry.id, title: entry.action, detail: entry.actor, meta: `${entry.previousStatus} → ${entry.newStatus}` }]
+        : APPROVAL_HISTORY.map((h) => ({ id: h.id, title: h.action, detail: h.actor, meta: h.approvalId })),
+      supportingEvidence: entry
+        ? [entry.comment, item?.title ?? '']
+        : APPROVAL_HISTORY.map((h) => h.comment),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: APPROVAL_HISTORY.map((h, i) => ({ step: i, value: h.approvalId })),
     });
   },
 };
