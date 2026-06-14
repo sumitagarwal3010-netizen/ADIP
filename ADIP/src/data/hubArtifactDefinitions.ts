@@ -24,7 +24,8 @@ export type HubKey =
   | 'executive'
   | 'traceability'
   | 'approval-workflow'
-  | 'rbac';
+  | 'rbac'
+  | 'authentication';
 
 export interface HubArtifactConfig {
   title: string;
@@ -687,6 +688,37 @@ function approvalWorkflowArtifacts(runId: string): Artifact[] {
   ];
 }
 
+function authenticationArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-identity`,
+      name: 'Identity_Report.docx',
+      generatedBy: 'Authentication AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `IDENTITY REPORT\n\nDirectory users: 13 · Active sessions: 8\nProviders: Mock Azure AD, Okta, Ping\nProduction path: Microsoft Entra ID OIDC\n\nAll identity attributes mapped: user_id, username, display_name, email, department, role, persona, groups`,
+      executiveSummary: 'Enterprise identity posture is stable with mock OIDC providers; Azure AD designated as production integration target.',
+      context: { subject: 'Identity Report' },
+    }),
+    createArtifact({
+      id: `${runId}-access-review`,
+      name: 'Access_Review_Report.docx',
+      generatedBy: 'Authentication AI',
+      fileType: 'docx',
+      previewContent: `ACCESS REVIEW REPORT\n\nUsers reviewed: 13 · Groups: 26\nPersona-to-RBAC mappings: 100% aligned\nExceptions: 0 orphaned accounts\nRecommendation: Complete Entra ID group sync before production`,
+      context: { subject: 'Access Review' },
+    }),
+    createArtifact({
+      id: `${runId}-activity`,
+      name: 'Authentication_Activity_Report.docx',
+      generatedBy: 'Authentication AI',
+      fileType: 'docx',
+      previewContent: `AUTHENTICATION ACTIVITY REPORT\n\nEvents (24h): Login 12 · Logout 9 · Session refresh 4 · Expiry 2 · Role change 1\nFailed logins: 2\nAvg session duration: 24 minutes`,
+      context: { subject: 'Authentication Activity' },
+    }),
+  ];
+}
+
 function rbacArtifacts(runId: string): Artifact[] {
   return [
     createArtifact({
@@ -809,6 +841,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   traceability: traceabilityArtifacts,
   'approval-workflow': approvalWorkflowArtifacts,
   rbac: rbacArtifacts,
+  authentication: authenticationArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -995,6 +1028,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'purple',
     simulation: sim('RBAC AI analyzing entitlement catalog...', ['Access Review', 'Role Assignment', 'SoD Analysis', 'Entitlement Matrix']),
     build: rbacArtifacts,
+  },
+  authentication: {
+    title: 'AI Authentication Reports',
+    subtitle: 'Identity posture, access review, and authentication activity',
+    generateLabel: 'Generate Authentication Reports',
+    generatedBy: 'Authentication AI',
+    glow: 'blue',
+    simulation: sim('Authentication AI analyzing identity events...', ['Identity Report', 'Access Review', 'Activity Report']),
+    build: authenticationArtifacts,
   },
 };
 

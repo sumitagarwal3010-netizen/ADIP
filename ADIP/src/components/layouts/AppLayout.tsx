@@ -20,6 +20,7 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/executive/strategic-risks': { title: 'Executive Control Tower', subtitle: 'Live banking operations intelligence' },
   '/executive/executive-summary': { title: 'Executive Control Tower', subtitle: 'Live banking operations intelligence' },
   '/executive/board-reporting': { title: 'Executive Control Tower', subtitle: 'Live banking operations intelligence' },
+  '/executive/authentication': { title: 'Authentication Health', subtitle: 'Sessions, identity events, and privilege distribution' },
   '/delivery': { title: 'Delivery Intelligence', subtitle: 'SDLC pipeline & change metrics' },
   '/requirements': { title: 'Requirements Intelligence Hub', subtitle: 'AI-powered requirement analysis' },
   '/architecture': { title: 'Architecture Intelligence Hub', subtitle: 'Dependency mapping & readiness' },

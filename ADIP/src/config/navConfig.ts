@@ -33,6 +33,7 @@ import SummarizeIcon from '@mui/icons-material/Summarize';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import HubIcon from '@mui/icons-material/Hub';
 import InsightsIcon from '@mui/icons-material/Insights';
+import VpnLockIcon from '@mui/icons-material/VpnLock';
 
 export interface NavChild {
   path: string;
@@ -60,6 +61,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/executive/strategic-risks', label: 'Strategic Risks', icon: WarningAmberIcon },
       { path: '/executive/executive-summary', label: 'Executive Summary', icon: SummarizeIcon },
       { path: '/executive/board-reporting', label: 'Board Reporting', icon: AssessmentIcon },
+      { path: '/executive/authentication', label: 'Authentication Health', icon: VpnLockIcon },
     ],
   },
   {

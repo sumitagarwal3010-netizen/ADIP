@@ -1,5 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { AppLayout } from '../components/layouts/AppLayout';
+import { AuthGuard } from '../components/auth/AuthGuard';
+import { LoginPage } from '../pages/LoginPage';
+import { AuthenticationHealthDashboard } from '../pages/AuthenticationHealthDashboard';
 import { ExecutiveControlTower } from '../pages/ExecutiveControlTower';
 import { DeliveryHub } from '../pages/DeliveryHub';
 import { RequirementsHub } from '../pages/RequirementsHub';
@@ -40,6 +43,8 @@ import { PersonaLanding } from '../pages/PersonaLanding';
 export function AppRoutes() {
   return (
     <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route element={<AuthGuard />}>
       <Route element={<AppLayout />}>
         <Route index element={<ExecutiveControlTower />} />
         <Route path="persona" element={<PersonaLanding />} />
@@ -48,6 +53,7 @@ export function AppRoutes() {
         <Route path="executive/strategic-risks" element={<GovernanceRiskPage />} />
         <Route path="executive/executive-summary" element={<ExecutiveControlTower />} />
         <Route path="executive/board-reporting" element={<Reports />} />
+        <Route path="executive/authentication" element={<AuthenticationHealthDashboard />} />
         <Route path="delivery" element={<DeliveryHub />} />
         <Route path="requirements" element={<RequirementsHub />} />
         <Route path="architecture" element={<ArchitectureHub />} />
@@ -86,6 +92,7 @@ export function AppRoutes() {
         <Route path="reports/trends" element={<TrendAnalytics />} />
         <Route path="administration" element={<Administration />} />
         <Route path="administration/rbac" element={<RBACAdminDashboard />} />
+      </Route>
       </Route>
     </Routes>
   );

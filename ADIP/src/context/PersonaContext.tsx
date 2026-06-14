@@ -3,7 +3,6 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
   type ReactNode,
 } from 'react';
 import {
@@ -12,21 +11,9 @@ import {
   type PersonaConfig,
   type PersonaId,
 } from '../config/personaConfig';
+import { useAuth } from './AuthContext';
 import { entitlementResolverForPersona } from '../data/rbacEngine';
 import type { Permission, ResourceType } from '../data/rbacCatalog';
-
-const STORAGE_KEY = 'adip.activePersona';
-
-function readInitialPersona(): PersonaId {
-  if (typeof window === 'undefined') return DEFAULT_PERSONA;
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY) as PersonaId | null;
-    if (stored && stored in PERSONA_MAP) return stored;
-  } catch {
-    /* ignore storage access errors */
-  }
-  return DEFAULT_PERSONA;
-}
 
 interface PersonaContextValue {
   personaId: PersonaId;
@@ -42,15 +29,13 @@ interface PersonaContextValue {
 const PersonaContext = createContext<PersonaContextValue | null>(null);
 
 export function PersonaProvider({ children }: { children: ReactNode }) {
-  const [personaId, setPersonaId] = useState<PersonaId>(readInitialPersona);
+  const { isAuthenticated, currentPersona } = useAuth();
+  const personaId: PersonaId =
+    isAuthenticated && currentPersona ? currentPersona : DEFAULT_PERSONA;
 
   const setPersona = useCallback((id: PersonaId) => {
-    setPersonaId(id);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, id);
-    } catch {
-      /* ignore storage access errors */
-    }
+    void id;
+    /* Persona is identity-driven from authenticated user — manual switching disabled */
   }, []);
 
   const value = useMemo<PersonaContextValue>(() => {
