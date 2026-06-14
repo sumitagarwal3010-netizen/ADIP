@@ -25,7 +25,8 @@ export type HubKey =
   | 'traceability'
   | 'approval-workflow'
   | 'rbac'
-  | 'authentication';
+  | 'authentication'
+  | 'workflow-orchestration';
 
 export interface HubArtifactConfig {
   title: string;
@@ -818,6 +819,47 @@ function traceabilityArtifacts(runId: string): Artifact[] {
   ];
 }
 
+function workflowOrchestrationArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-status`,
+      name: 'Workflow_Status_Report.docx',
+      generatedBy: 'Orchestration AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `WORKFLOW STATUS REPORT\n\nActive workflows: 5 · Completed: 1\nStages in progress: Requirements 1, Architecture 1, Development 1, Testing 1, Release 1\nBlocked: 1 (KYC Architecture)\nSLA breaches: 2`,
+      executiveSummary: 'Cross-hub orchestration shows UPI release at approval gate with two SLA breaches requiring executive attention.',
+      context: { subject: 'Workflow Status' },
+    }),
+    createArtifact({
+      id: `${runId}-lifecycle`,
+      name: 'Lifecycle_Completion_Report.docx',
+      generatedBy: 'Orchestration AI',
+      fileType: 'docx',
+      previewContent: `LIFECYCLE COMPLETION REPORT\n\nAverage completion: 68%\nFastest: UPI Limit Enhancement (85%)\nSlowest: KYC Onboarding (28%)\nBottleneck stages: Architecture (72h), Testing (52h)`,
+      context: { subject: 'Lifecycle Completion' },
+    }),
+    createArtifact({
+      id: `${runId}-approval-ready`,
+      name: 'Approval_Readiness_Report.docx',
+      generatedBy: 'Orchestration AI',
+      fileType: 'docx',
+      previewContent: `APPROVAL READINESS REPORT\n\nReady for approval: 1 (UPI Release 24.6)\nPending review: 1 (Biometric Login)\nBlocked: 1 (KYC Architecture)\nTraceability gaps: 2 workflows`,
+      context: { subject: 'Approval Readiness' },
+    }),
+    createArtifact({
+      id: `${runId}-delivery`,
+      name: 'Executive_Delivery_Report.docx',
+      generatedBy: 'Orchestration AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `EXECUTIVE DELIVERY REPORT\n\nPortfolio delivery health: 72%\nOn-time releases: 4 of 6\nApproval delays: 2\nRecommendation: Escalate WF-002 test remediation; unblock WF-003 NPCI integration`,
+      executiveSummary: 'Executive delivery posture is stable with targeted escalations needed on mobile biometric and KYC architecture threads.',
+      context: { subject: 'Executive Delivery' },
+    }),
+  ];
+}
+
 const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   production: productionArtifacts,
   incidents: incidentsArtifacts,
@@ -842,6 +884,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   'approval-workflow': approvalWorkflowArtifacts,
   rbac: rbacArtifacts,
   authentication: authenticationArtifacts,
+  'workflow-orchestration': workflowOrchestrationArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -1037,6 +1080,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'blue',
     simulation: sim('Authentication AI analyzing identity events...', ['Identity Report', 'Access Review', 'Activity Report']),
     build: authenticationArtifacts,
+  },
+  'workflow-orchestration': {
+    title: 'AI Workflow Orchestration Reports',
+    subtitle: 'Lifecycle status, completion, approval readiness, and executive delivery',
+    generateLabel: 'Generate Orchestration Reports',
+    generatedBy: 'Orchestration AI',
+    glow: 'purple',
+    simulation: sim('Orchestration AI analyzing cross-hub lifecycles...', ['Workflow Status', 'Lifecycle Completion', 'Approval Readiness', 'Executive Delivery']),
+    build: workflowOrchestrationArtifacts,
   },
 };
 

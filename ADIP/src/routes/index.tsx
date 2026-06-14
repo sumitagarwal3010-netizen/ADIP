@@ -39,6 +39,7 @@ import { KnowledgeReusableAssetsPage } from '../pages/KnowledgeReusableAssetsPag
 import { KnowledgeLessonsLearnedPage } from '../pages/KnowledgeLessonsLearnedPage';
 import { TraceabilityCenter } from '../pages/TraceabilityCenter';
 import { PersonaLanding } from '../pages/PersonaLanding';
+import { WorkflowOrchestrationDashboard } from '../pages/WorkflowOrchestrationDashboard';
 
 export function AppRoutes() {
   return (
@@ -54,6 +55,7 @@ export function AppRoutes() {
         <Route path="executive/executive-summary" element={<ExecutiveControlTower />} />
         <Route path="executive/board-reporting" element={<Reports />} />
         <Route path="executive/authentication" element={<AuthenticationHealthDashboard />} />
+        <Route path="executive/workflow-orchestration" element={<WorkflowOrchestrationDashboard />} />
         <Route path="delivery" element={<DeliveryHub />} />
         <Route path="requirements" element={<RequirementsHub />} />
         <Route path="architecture" element={<ArchitectureHub />} />
@@ -81,6 +83,7 @@ export function AppRoutes() {
         <Route path="traceability/ai" element={<TraceabilityCenter initialTab="ai" />} />
         <Route path="traceability/impact" element={<TraceabilityCenter initialTab="impact" />} />
         <Route path="traceability/executive" element={<TraceabilityCenter initialTab="executive" />} />
+        <Route path="traceability/lifecycle" element={<TraceabilityCenter initialTab="lifecycle" />} />
         <Route path="traceability/reports" element={<TraceabilityCenter initialTab="reports" />} />
         <Route path="learning" element={<LearningHub />} />
         <Route path="knowledge/best-practices" element={<KnowledgeBestPracticesPage />} />

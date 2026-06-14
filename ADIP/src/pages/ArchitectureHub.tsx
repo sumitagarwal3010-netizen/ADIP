@@ -10,6 +10,7 @@ import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { DesignIntakeWorkflow } from '../components/architecture/DesignIntakeWorkflow';
 import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
+import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
 export function ArchitectureHub() {
   const { architecture } = useFilteredSimulation();
@@ -83,6 +84,7 @@ export function ArchitectureHub() {
         </Grid>
       </Grid>
 
+      <HubWorkflowActions hubStage="architecture" />
       <DesignIntakeWorkflow />
     </Box>
   );

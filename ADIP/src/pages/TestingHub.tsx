@@ -9,6 +9,7 @@ import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
 import { TestingIntakeWorkflow } from '../components/testing/TestingIntakeWorkflow';
+import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
 export function TestingHub() {
   const { testing } = useFilteredSimulation();
@@ -76,6 +77,7 @@ export function TestingHub() {
         </Grid>
       </Grid>
 
+      <HubWorkflowActions hubStage="testing" />
       <TestingIntakeWorkflow />
     </Box>
   );

@@ -10,6 +10,7 @@ import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
 import { DevelopmentIntakeWorkflow } from '../components/development/DevelopmentIntakeWorkflow';
+import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
 export function DevelopmentHub() {
   const { development } = useFilteredSimulation();
@@ -97,6 +98,7 @@ export function DevelopmentHub() {
         </Grid>
       </Grid>
 
+      <HubWorkflowActions hubStage="development" />
       <DevelopmentIntakeWorkflow />
     </Box>
   );

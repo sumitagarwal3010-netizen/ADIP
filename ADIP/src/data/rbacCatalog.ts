@@ -325,6 +325,8 @@ export const ROUTE_RESOURCE_MAP: Record<string, { resource: ResourceType; permis
   '/executive/executive-summary': { resource: 'dashboards', permission: 'view' },
   '/executive/board-reporting': { resource: 'reports', permission: 'view' },
   '/executive/authentication': { resource: 'dashboards', permission: 'view' },
+  '/executive/workflow-orchestration': { resource: 'dashboards', permission: 'view' },
+  '/traceability/lifecycle': { resource: 'dashboards', permission: 'view' },
   '/requirements': { resource: 'requirements', permission: 'view' },
   '/architecture': { resource: 'architecture', permission: 'view' },
   '/development': { resource: 'code', permission: 'view' },

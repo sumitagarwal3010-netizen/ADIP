@@ -12,6 +12,7 @@ import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
 import { ReleaseIntakeWorkflow } from '../components/release/ReleaseIntakeWorkflow';
+import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
 export function ReleaseCenter() {
   const { release } = useFilteredSimulation();
@@ -103,6 +104,7 @@ export function ReleaseCenter() {
         ))}
       </GlassCard>
 
+      <HubWorkflowActions hubStage="release" />
       <ReleaseIntakeWorkflow />
     </Box>
   );

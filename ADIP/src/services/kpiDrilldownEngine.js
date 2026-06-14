@@ -26,6 +26,8 @@ import {
   RBAC_KPI_MOCK,
   PERSONA_RBAC_ROLE,
 } from '../data/rbacCatalog.ts';
+import { WORKFLOW_ORCHESTRATION_MOCK } from '../data/workflowOrchestrationMock.ts';
+import { WORKFLOW_STAGE_LABEL } from '../data/workflowOrchestrationEngine.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -2083,6 +2085,101 @@ const chartResolvers = {
       relatedIncidents: incidentsFromState(state).slice(0, 1),
       relatedReleases: releasesFromState(state).slice(0, 2),
       historicalTrend: sparkline7d((grant?.permissions.length ?? 3) * 12),
+    });
+  },
+
+  'workflow.bottlenecks': (state, ctx) => {
+    const stageWorkflows = WORKFLOW_ORCHESTRATION_MOCK.filter(
+      (w) => WORKFLOW_STAGE_LABEL[w.currentStage] === ctx.segment,
+    );
+    return buildPayload(ctx, {
+      sourceRecords: stageWorkflows.length > 0
+        ? stageWorkflows.map((w) => ({ id: w.id, title: w.title, detail: w.owner, meta: `${w.stageDurationHours}h` }))
+        : WORKFLOW_ORCHESTRATION_MOCK.map((w) => ({
+          id: w.id,
+          title: w.title,
+          detail: WORKFLOW_STAGE_LABEL[w.currentStage],
+          meta: `${w.stageDurationHours}h`,
+        })),
+      supportingEvidence: stageWorkflows.map((w) => w.pendingActions.join('; ')),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: sparkline7d(ctx.value ?? 48),
+    });
+  },
+
+  'workflow.completion': (state, ctx) => {
+    const wf = WORKFLOW_ORCHESTRATION_MOCK.find((w) => w.id === ctx.segment || w.title.includes(ctx.segment ?? ''));
+    return buildPayload(ctx, {
+      sourceRecords: wf
+        ? [{ id: wf.id, title: wf.title, detail: wf.owner, meta: `${wf.completionPct}%` }]
+        : WORKFLOW_ORCHESTRATION_MOCK.map((w) => ({
+          id: w.id,
+          title: w.title,
+          detail: WORKFLOW_STAGE_LABEL[w.currentStage],
+          meta: `${w.completionPct}%`,
+        })),
+      supportingEvidence: wf
+        ? wf.traceabilityChain.map((l) => `${WORKFLOW_STAGE_LABEL[l.stage]}: ${l.label}`)
+        : WORKFLOW_ORCHESTRATION_MOCK.map((w) => w.approvalState),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).filter((r) => r.domain === wf?.domain).slice(0, 3),
+      historicalTrend: sparkline7d(wf?.completionPct ?? ctx.value ?? 68),
+    });
+  },
+
+  'workflow.sla-breaches': (state, ctx) => {
+    const breached = WORKFLOW_ORCHESTRATION_MOCK.filter((w) => w.slaBreached);
+    return buildPayload(ctx, {
+      sourceRecords: breached.map((w) => ({
+        id: w.id,
+        title: w.title,
+        detail: w.owner,
+        meta: `Due ${w.dueDate}`,
+      })),
+      supportingEvidence: breached.flatMap((w) => w.pendingActions),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(breached.length * 15),
+    });
+  },
+
+  'workflow.approval-delays': (state, ctx) => {
+    const delayed = WORKFLOW_ORCHESTRATION_MOCK.filter(
+      (w) => w.approvalState === 'Pending Approval' || w.approvalState === 'Pending Review',
+    );
+    return buildPayload(ctx, {
+      sourceRecords: delayed.map((w) => ({
+        id: w.id,
+        title: w.title,
+        detail: w.reviewer ?? 'Unassigned',
+        meta: w.approvalState,
+      })),
+      supportingEvidence: delayed.map((w) => w.pendingActions.join('; ')),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.pending })),
+    });
+  },
+
+  'workflow.active': (state, ctx) => {
+    const active = WORKFLOW_ORCHESTRATION_MOCK.filter((w) => w.currentStage !== 'production');
+    return buildPayload(ctx, {
+      sourceRecords: active.map((w) => ({
+        id: w.id,
+        title: w.title,
+        detail: WORKFLOW_STAGE_LABEL[w.currentStage],
+        meta: w.domain,
+      })),
+      supportingEvidence: active.map((w) => `${w.owner} · ${w.approvalState}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: sparkline7d(active.length * 10),
     });
   },
 };

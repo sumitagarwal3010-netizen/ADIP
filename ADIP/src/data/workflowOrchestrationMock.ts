@@ -1,0 +1,203 @@
+import type { WorkflowInstance } from '../types/workflowOrchestration';
+import type { WorkflowLifecycleStage } from '../types/workflowOrchestration';
+import { computeCompletionPct, WORKFLOW_STAGE_ORDER } from './workflowOrchestrationEngine';
+
+function chainForStage(
+  currentStage: WorkflowLifecycleStage,
+  nodes: Partial<Record<WorkflowLifecycleStage, { nodeId: string; label: string }>>,
+  blocked?: boolean,
+): WorkflowInstance['traceabilityChain'] {
+  const idx = WORKFLOW_STAGE_ORDER.indexOf(currentStage);
+  return WORKFLOW_STAGE_ORDER.map((stage, i) => {
+    const node = nodes[stage];
+    let status: 'complete' | 'in_progress' | 'pending' | 'blocked' = 'pending';
+    if (blocked && i === idx) status = 'blocked';
+    else if (currentStage === 'production' && node) status = 'complete';
+    else if (i < idx) status = 'complete';
+    else if (i === idx) status = 'in_progress';
+    return {
+      stage,
+      nodeId: node?.nodeId ?? `${stage}-pending`,
+      label: node?.label ?? `${stage} pending`,
+      status,
+    };
+  });
+}
+
+export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
+  {
+    id: 'WF-001',
+    title: 'UPI Limit Enhancement',
+    domain: 'Payments',
+    currentStage: 'release',
+    previousStage: 'testing',
+    nextStage: 'approval',
+    approvalState: 'Pending Approval',
+    owner: 'Release Manager',
+    ownerPersona: 'release-manager',
+    reviewer: 'Sanjay Verma',
+    reviewerPersona: 'cio',
+    completionPct: computeCompletionPct('release', 'Pending Approval'),
+    dueDate: 'Jun 10, 2026',
+    submittedAt: 'May 28, 2026',
+    stageEnteredAt: 'Jun 4, 2026 14:00',
+    pendingActions: ['Go/No-Go decision', 'RBI notification evidence'],
+    traceabilityStatus: 'linked',
+    slaBreached: false,
+    stageDurationHours: 36,
+    traceabilityChain: chainForStage('release', {
+      requirements: { nodeId: 'BR-001', label: 'Enhance UPI transaction limits' },
+      architecture: { nodeId: 'ARC-001', label: 'UPI Limit Service (HLD/LLD)' },
+      development: { nodeId: 'API-001', label: 'POST /v1/upi-limit-enhancement' },
+      testing: { nodeId: 'TC-001', label: 'UPI limit upgrade end-to-end' },
+      release: { nodeId: 'REL-246', label: 'UPI Release 24.6' },
+      approval: { nodeId: 'APR-001', label: 'UPI Release Go/No-Go' },
+      production: { nodeId: 'PRD-001', label: 'UPI Switch Service' },
+    }),
+  },
+  {
+    id: 'WF-002',
+    title: 'Biometric Login — Mobile Banking',
+    domain: 'Mobile Banking',
+    currentStage: 'testing',
+    previousStage: 'development',
+    nextStage: 'release',
+    approvalState: 'Pending Review',
+    owner: 'Test Lead',
+    ownerPersona: 'tester',
+    reviewer: 'Vikram Joshi',
+    reviewerPersona: 'release-manager',
+    completionPct: computeCompletionPct('testing', 'Pending Review'),
+    dueDate: 'Jun 12, 2026',
+    submittedAt: 'Jun 1, 2026',
+    stageEnteredAt: 'Jun 5, 2026 09:30',
+    pendingActions: ['Remediate TC-002 failure', 'Regression sign-off'],
+    traceabilityStatus: 'partial',
+    slaBreached: true,
+    stageDurationHours: 52,
+    traceabilityChain: chainForStage('testing', {
+      requirements: { nodeId: 'BR-002', label: 'Biometric authentication for mobile login' },
+      architecture: { nodeId: 'ARC-002', label: 'Mobile Auth Service' },
+      development: { nodeId: 'API-002', label: 'POST /v2/mobile/biometric' },
+      testing: { nodeId: 'TC-002', label: 'Biometric login regression' },
+    }),
+  },
+  {
+    id: 'WF-003',
+    title: 'KYC Onboarding Digital Flow',
+    domain: 'Net Banking',
+    currentStage: 'architecture',
+    previousStage: 'requirements',
+    nextStage: 'development',
+    approvalState: 'Blocked',
+    owner: 'Enterprise Architect',
+    ownerPersona: 'enterprise-architect',
+    reviewer: 'Karthik Nair',
+    reviewerPersona: 'cto',
+    completionPct: computeCompletionPct('architecture', 'Blocked'),
+    dueDate: 'Jun 15, 2026',
+    submittedAt: 'May 20, 2026',
+    stageEnteredAt: 'Jun 2, 2026 11:00',
+    pendingActions: ['Resolve NPCI integration gap', 'Security architecture review'],
+    traceabilityStatus: 'gap',
+    slaBreached: true,
+    stageDurationHours: 72,
+    traceabilityChain: chainForStage('architecture', {
+      requirements: { nodeId: 'BR-004', label: 'Digital KYC onboarding' },
+      architecture: { nodeId: 'ARC-004', label: 'KYC Orchestration Service' },
+    }, true),
+  },
+  {
+    id: 'WF-004',
+    title: 'Merchant Auto Settlement',
+    domain: 'Payments',
+    currentStage: 'development',
+    previousStage: 'architecture',
+    nextStage: 'testing',
+    approvalState: 'In Progress',
+    owner: 'Development Lead',
+    ownerPersona: 'developer',
+    reviewer: 'Deepak Rao',
+    reviewerPersona: 'tester',
+    completionPct: computeCompletionPct('development', 'In Progress'),
+    dueDate: 'Jun 18, 2026',
+    submittedAt: 'Jun 3, 2026',
+    stageEnteredAt: 'Jun 6, 2026 08:00',
+    pendingActions: ['API implementation', 'Unit test coverage ≥ 85%'],
+    traceabilityStatus: 'linked',
+    slaBreached: false,
+    stageDurationHours: 18,
+    traceabilityChain: chainForStage('development', {
+      requirements: { nodeId: 'BR-003', label: 'Merchant auto settlement' },
+      architecture: { nodeId: 'ARC-003', label: 'Settlement Orchestrator' },
+      development: { nodeId: 'API-003', label: 'POST /v1/settlement/batch' },
+    }),
+  },
+  {
+    id: 'WF-005',
+    title: 'Cards Fraud Model Refresh',
+    domain: 'Cards',
+    currentStage: 'requirements',
+    previousStage: null,
+    nextStage: 'architecture',
+    approvalState: 'In Progress',
+    owner: 'Application Owner',
+    ownerPersona: 'application-owner',
+    reviewer: 'Priya Sharma',
+    reviewerPersona: 'enterprise-architect',
+    completionPct: computeCompletionPct('requirements', 'In Progress'),
+    dueDate: 'Jun 22, 2026',
+    submittedAt: 'Jun 6, 2026',
+    stageEnteredAt: 'Jun 6, 2026 10:00',
+    pendingActions: ['Complete BRD', 'Regulatory impact assessment'],
+    traceabilityStatus: 'partial',
+    slaBreached: false,
+    stageDurationHours: 8,
+    traceabilityChain: chainForStage('requirements', {
+      requirements: { nodeId: 'BR-005', label: 'Cards fraud model refresh' },
+    }),
+  },
+  {
+    id: 'WF-006',
+    title: 'UPI Limit Enhancement — Production',
+    domain: 'Payments',
+    currentStage: 'production',
+    previousStage: 'approval',
+    nextStage: null,
+    approvalState: 'Approved',
+    owner: 'Operations Manager',
+    ownerPersona: 'operations-manager',
+    reviewer: null,
+    reviewerPersona: null,
+    completionPct: 100,
+    dueDate: 'Jun 8, 2026',
+    submittedAt: 'May 28, 2026',
+    stageEnteredAt: 'Jun 5, 2026 18:00',
+    pendingActions: [],
+    traceabilityStatus: 'linked',
+    slaBreached: false,
+    stageDurationHours: 12,
+    traceabilityChain: chainForStage('production', {
+      requirements: { nodeId: 'BR-001', label: 'Enhance UPI transaction limits' },
+      architecture: { nodeId: 'ARC-001', label: 'UPI Limit Service (HLD/LLD)' },
+      development: { nodeId: 'API-001', label: 'POST /v1/upi-limit-enhancement' },
+      testing: { nodeId: 'TC-001', label: 'UPI limit upgrade end-to-end' },
+      release: { nodeId: 'REL-246', label: 'UPI Release 24.6' },
+      approval: { nodeId: 'APR-001', label: 'UPI Release Go/No-Go' },
+      production: { nodeId: 'PRD-001', label: 'UPI Switch Service' },
+    }),
+  },
+];
+
+export const WORKFLOW_EXEC_SUMMARY =
+  'Cross-hub orchestration tracks 6 active lifecycles with UPI Limit Enhancement at release gate pending CIO approval. Two SLA breaches: Biometric Login testing (TC-002 failure) and KYC architecture blocked on NPCI integration. Average completion 68% with testing and architecture as primary bottlenecks. Recommended action: escalate WF-002 test remediation and unblock WF-003 architecture review.';
+
+export const WORKFLOW_STAGE_DURATION_MOCK = [
+  { name: 'Requirements', value: 48 },
+  { name: 'Architecture', value: 72 },
+  { name: 'Development', value: 96 },
+  { name: 'Testing', value: 52 },
+  { name: 'Release', value: 36 },
+  { name: 'Approval', value: 24 },
+  { name: 'Production', value: 12 },
+];

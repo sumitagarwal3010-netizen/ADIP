@@ -10,6 +10,7 @@ import { HorizontalBarChart } from '../components/charts/HorizontalBarChart';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { RequirementIntakeWorkflow } from '../components/requirements/RequirementIntakeWorkflow';
 import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
+import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 import { colors } from '../theme/colors';
 
 export function RequirementsHub() {
@@ -82,6 +83,7 @@ export function RequirementsHub() {
         ))}
       </GlassCard>
 
+      <HubWorkflowActions hubStage="requirements" />
       <RequirementIntakeWorkflow />
     </Box>
   );

@@ -33,6 +33,7 @@ import SummarizeIcon from '@mui/icons-material/Summarize';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import HubIcon from '@mui/icons-material/Hub';
 import InsightsIcon from '@mui/icons-material/Insights';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import VpnLockIcon from '@mui/icons-material/VpnLock';
 
 export interface NavChild {
@@ -62,6 +63,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/executive/executive-summary', label: 'Executive Summary', icon: SummarizeIcon },
       { path: '/executive/board-reporting', label: 'Board Reporting', icon: AssessmentIcon },
       { path: '/executive/authentication', label: 'Authentication Health', icon: VpnLockIcon },
+      { path: '/executive/workflow-orchestration', label: 'Workflow Orchestration', icon: TimelineIcon },
     ],
   },
   {
@@ -87,6 +89,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/traceability/ai', label: 'AI Traceability', icon: PsychologyIcon },
       { path: '/traceability/impact', label: 'Impact Analysis', icon: InsightsIcon },
       { path: '/traceability/executive', label: 'Executive View', icon: AssessmentIcon },
+      { path: '/traceability/lifecycle', label: 'Workflow Lifecycle', icon: TimelineIcon },
       { path: '/traceability/reports', label: 'AI Reports', icon: SummarizeIcon },
     ],
   },
