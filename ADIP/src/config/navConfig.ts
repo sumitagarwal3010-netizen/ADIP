@@ -38,6 +38,7 @@ import VpnLockIcon from '@mui/icons-material/VpnLock';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import InboxIcon from '@mui/icons-material/Inbox';
 import StreamIcon from '@mui/icons-material/Stream';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 
 export interface NavChild {
   path: string;
@@ -67,6 +68,8 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/executive/board-reporting', label: 'Board Reporting', icon: AssessmentIcon },
       { path: '/executive/authentication', label: 'Authentication Health', icon: VpnLockIcon },
       { path: '/executive/workflow-orchestration', label: 'Workflow Orchestration', icon: TimelineIcon },
+      { path: '/executive/ai-copilot', label: 'AI Delivery Copilot', icon: SmartToyIcon },
+      { path: '/executive/value-realization', label: 'Value Realization', icon: TrendingUpIcon },
     ],
   },
   {
@@ -102,7 +105,14 @@ export const NAV_HUBS: NavHub[] = [
     label: 'Operations Hub',
     icon: SettingsIcon,
     children: [
-      { path: '/production', label: 'Production', icon: CloudIcon },
+      { path: '/production', label: 'Production Intelligence', icon: CloudIcon },
+      { path: '/production/incidents', label: 'Incident Analytics', icon: ReportProblemIcon },
+      { path: '/production/leakage', label: 'Defect Leakage', icon: BugReportIcon },
+      { path: '/production/customer', label: 'Customer Experience', icon: SpeedIcon },
+      { path: '/production/applications', label: 'Application Health', icon: CloudIcon },
+      { path: '/production/releases', label: 'Release Performance', icon: RocketLaunchIcon },
+      { path: '/production/rca', label: 'Root Cause Intelligence', icon: PsychologyIcon },
+      { path: '/production/feedback', label: 'Feedback Recommendations', icon: InsightsIcon },
       { path: '/operations/incidents', label: 'Incidents', icon: ReportProblemIcon },
       { path: '/operations/availability', label: 'Availability', icon: SpeedIcon },
       { path: '/operations/capacity', label: 'Capacity', icon: StorageIcon },
@@ -150,10 +160,14 @@ export const NAV_HUBS: NavHub[] = [
     label: 'Knowledge Hub',
     icon: MenuBookIcon,
     children: [
-      { path: '/learning', label: 'Learning', icon: SchoolIcon },
-      { path: '/knowledge/best-practices', label: 'Best Practices', icon: LightbulbIcon },
-      { path: '/knowledge/reusable-assets', label: 'Reusable Assets', icon: LibraryBooksIcon },
-      { path: '/knowledge/lessons-learned', label: 'Lessons Learned', icon: HistoryEduIcon },
+      { path: '/knowledge-center', label: 'Knowledge & Learning', icon: SchoolIcon },
+      { path: '/knowledge-center/lessons', label: 'Lessons Learned', icon: HistoryEduIcon },
+      { path: '/knowledge-center/best-practices', label: 'Best Practices', icon: LightbulbIcon },
+      { path: '/knowledge-center/patterns', label: 'Architecture Patterns', icon: AccountTreeIcon },
+      { path: '/knowledge-center/controls', label: 'Reusable Controls', icon: ShieldIcon },
+      { path: '/knowledge-center/playbooks', label: 'SDLC Playbooks', icon: LibraryBooksIcon },
+      { path: '/knowledge-center/search', label: 'Search & Discovery', icon: InsightsIcon },
+      { path: '/knowledge-center/recommendations', label: 'Learning Recommendations', icon: TrendingUpIcon },
     ],
   },
   {

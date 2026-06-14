@@ -10,6 +10,10 @@ import { WorkflowProvider } from './context/WorkflowContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { StorageProvider } from './context/PersistenceContext';
 import { EventProvider } from './context/EventContext';
+import { CopilotProvider } from './context/CopilotContext';
+import { ProductionIntelligenceProvider } from './context/ProductionIntelligenceContext';
+import { KnowledgeCenterProvider } from './context/KnowledgeCenterContext';
+import { ValueRealizationProvider } from './context/ValueRealizationContext';
 import { RootErrorBoundary } from './components/common/RootErrorBoundary';
 
 function App() {
@@ -21,6 +25,10 @@ function App() {
           <StorageProvider>
             <PersonaProvider>
               <AbacProvider>
+              <CopilotProvider>
+              <ProductionIntelligenceProvider>
+              <KnowledgeCenterProvider>
+              <ValueRealizationProvider>
               <EventProvider>
                 <WorkflowProvider>
                   <NotificationProvider>
@@ -32,6 +40,10 @@ function App() {
                   </NotificationProvider>
                 </WorkflowProvider>
               </EventProvider>
+              </ValueRealizationProvider>
+              </KnowledgeCenterProvider>
+              </ProductionIntelligenceProvider>
+              </CopilotProvider>
               </AbacProvider>
             </PersonaProvider>
           </StorageProvider>

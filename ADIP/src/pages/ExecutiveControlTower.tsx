@@ -26,6 +26,14 @@ import { useEventBus } from '../context/EventContext';
 import { ACTIVITY_EXEC_SUMMARY } from '../data/activityCenterMock';
 import { useAbac } from '../context/AbacContext';
 import { ABAC_EXEC_SUMMARY } from '../data/abacCatalog';
+import { useCopilot } from '../context/CopilotContext';
+import { COPILOT_EXEC_SUMMARY } from '../data/copilotMockData';
+import { useProductionIntelligence } from '../context/ProductionIntelligenceContext';
+import { PRODUCTION_INTEL_EXEC_SUMMARY } from '../data/productionIntelligenceMock';
+import { useKnowledgeCenter } from '../context/KnowledgeCenterContext';
+import { KNOWLEDGE_CENTER_EXEC_SUMMARY } from '../data/knowledgeCenterMock';
+import { useValueRealization } from '../context/ValueRealizationContext';
+import { VALUE_REALIZATION_EXEC_SUMMARY } from '../data/valueRealizationMock';
 
 export function ExecutiveControlTower() {
   const { executive, release, governance, learning, dynamicInsights } = useFilteredSimulation();
@@ -35,6 +43,10 @@ export function ExecutiveControlTower() {
   const { kpis: persistKpis } = usePersistence();
   const { kpis: eventKpis } = useEventBus();
   const { kpis: abacKpis } = useAbac();
+  const { kpis: copilotKpis } = useCopilot();
+  const { kpis: prodIntelKpis } = useProductionIntelligence();
+  const { kpis: knowledgeKpis } = useKnowledgeCenter();
+  const { kpis: valueKpis } = useValueRealization();
 
   const approvalBottleneckData = kpis.workflowBottlenecks.slice(0, 5).map((b) => ({
     name: WORKFLOW_STAGE_LABEL[b.stage],
@@ -142,6 +154,40 @@ export function ExecutiveControlTower() {
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="AI Recommendations" value={copilotKpis.aiRecommendations} chartId="copilot.recommendations" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Delivery Health" value={copilotKpis.deliveryHealth} suffix="%" chartId="copilot.delivery-health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Portfolio Risk" value={copilotKpis.portfolioRisk} suffix="%" chartId="copilot.portfolio-risk" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Quality Improvement" value={copilotKpis.predictedQualityImprovement} suffix="%" chartId="copilot.quality-improvement" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Projects at Risk" value={copilotKpis.projectsAtRisk} compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Production Risk" value={prodIntelKpis.productionRisk} suffix="%" chartId="prod-intel.production-risk" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Customer Impact" value={prodIntelKpis.customerImpact} suffix="%" chartId="prod-intel.customer-impact" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Defect Leakage" value={prodIntelKpis.defectLeakage} suffix="%" chartId="prod-intel.defect-leakage" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Incident Trends" value={prodIntelKpis.openIncidents} chartId="prod-intel.incident-trends" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Feedback Recs" value={prodIntelKpis.feedbackRecommendations} chartId="prod-intel.feedback-recommendations" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Knowledge Coverage" value={knowledgeKpis.knowledgeCoverage} suffix="%" chartId="knowledge-center.coverage" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Knowledge Reuse" value={knowledgeKpis.knowledgeReuse} chartId="knowledge-center.reuse" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Risk Themes" value={knowledgeKpis.topRiskThemes} chartId="knowledge-center.risk-themes" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Top Control Reuse" value={knowledgeKpis.mostReusedControls} chartId="knowledge-center.controls" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Top Playbook Reuse" value={knowledgeKpis.mostReusedPlaybooks} chartId="knowledge-center.playbooks" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Learning Adoption" value={knowledgeKpis.learningAdoption} suffix="%" chartId="knowledge-center.adoption" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Annual Value" value={`₹${(valueKpis.annualValueRealized / 1_000_000).toFixed(1)}M`} chartId="value-realization.annual-value" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="ROI" value={valueKpis.roi} suffix="%" chartId="value-realization.roi" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Transformation Score" value={valueKpis.transformationScore} suffix="%" chartId="value-realization.transformation-score" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Productivity Gain" value={valueKpis.productivityGain} suffix="%" chartId="value-realization.productivity" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Risk Reduction" value={valueKpis.riskReduction} suffix="%" chartId="value-realization.risk-reduction" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Audit Efficiency" value={valueKpis.auditEfficiency} suffix="%" chartId="value-realization.audit-efficiency" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 12, md: 8 }}>
           <GlassCard sx={{ p: 2 }}>
             <ModuleHeader title="Unified Lifecycle — Stage Bottlenecks" subtitle="Approval + workflow gates across SDLC hubs" />
@@ -189,6 +235,22 @@ export function ExecutiveControlTower() {
 
       <Box sx={{ mt: 1.5 }}>
         <AIInsightBox title="ABAC & Domain Security — Executive Summary" insight={ABAC_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="AI Delivery Copilot — Executive Summary" insight={COPILOT_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Production Intelligence — Executive Summary" insight={PRODUCTION_INTEL_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Knowledge & Learning — Executive Summary" insight={KNOWLEDGE_CENTER_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Value Realization — Executive Summary" insight={VALUE_REALIZATION_EXEC_SUMMARY} />
       </Box>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>

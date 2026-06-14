@@ -83,6 +83,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Traceability Executive View', to: '/traceability/executive' },
       { label: 'Enterprise Reports', to: '/reports' },
       { label: 'Strategic Risks', to: '/executive/strategic-risks' },
+      { label: 'AI Delivery Copilot', to: '/executive/ai-copilot' },
     ],
     navHubs: ['executive', 'traceability', 'reports', 'governance'],
     metrics: [
@@ -91,7 +92,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Open Incidents', value: (s) => s.executive.openIncidents, suffix: '', trend: -12 },
       { label: 'Business Impact', value: (s) => pct(s.executive.businessImpactScore), suffix: '%', trend: 1.2 },
     ],
-    reportHubs: ['executive', 'traceability', 'audit-center', 'notification-center'],
+    reportHubs: ['executive', 'traceability', 'audit-center', 'notification-center', 'ai-copilot', 'production-intelligence', 'knowledge-center', 'value-realization'],
     actionScope: { types: ['risk', 'incident', 'compliance', 'release'] },
   },
   {
@@ -105,6 +106,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Development Hub', to: '/development' },
       { label: 'Architecture Hub', to: '/architecture' },
       { label: 'Release Center', to: '/release' },
+      { label: 'AI Delivery Copilot', to: '/executive/ai-copilot' },
     ],
     navHubs: ['executive', 'sdlc', 'traceability', 'reports'],
     metrics: [
@@ -113,7 +115,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Tech Debt Items', value: (s) => s.delivery.technicalDebtItems, suffix: '', trend: -2 },
       { label: 'Release Confidence', value: (s) => pct(s.release.confidence), suffix: '%', trend: 1.8 },
     ],
-    reportHubs: ['production'],
+    reportHubs: ['production', 'ai-copilot', 'production-intelligence', 'knowledge-center', 'value-realization'],
     actionScope: { types: ['architecture', 'api', 'release', 'testCase'] },
   },
   {
@@ -138,7 +140,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Compliance', value: (s) => pct(s.governance.policyCompliance), suffix: '%', trend: 0.6 },
       { label: 'Open Incidents', value: (s) => s.production.activeIncidents, suffix: '', trend: -5 },
     ],
-    reportHubs: ['risk', 'ai-controls', 'approval-workflow', 'audit-center', 'notification-center'],
+    reportHubs: ['risk', 'ai-controls', 'approval-workflow', 'audit-center', 'notification-center', 'knowledge-center', 'value-realization'],
     actionScope: { types: ['control', 'risk', 'incident'] },
   },
   {
@@ -163,7 +165,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Violations', value: (s) => s.governance.policyViolations, suffix: '', trend: -1 },
       { label: 'Governance Score', value: (s) => pct(s.governance.governanceScore), suffix: '%', trend: 1.1 },
     ],
-    reportHubs: ['audit-center', 'notification-center', 'approval-workflow'],
+    reportHubs: ['audit-center', 'notification-center', 'approval-workflow', 'ai-copilot', 'production-intelligence', 'knowledge-center'],
     actionScope: { types: ['evidence', 'control', 'compliance'] },
   },
   {
@@ -188,7 +190,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Violations', value: (s) => s.governance.policyViolations, suffix: '', trend: -1 },
       { label: 'Audit Observations', value: (s) => s.governance.auditObservations, suffix: '', trend: -3 },
     ],
-    reportHubs: ['compliance', 'audit-center', 'notification-center', 'approval-workflow'],
+    reportHubs: ['compliance', 'audit-center', 'notification-center', 'approval-workflow', 'ai-copilot', 'production-intelligence', 'knowledge-center'],
     actionScope: { types: ['compliance', 'control', 'evidence'] },
   },
   {
@@ -235,7 +237,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Code Quality', value: (s) => pct(s.delivery.codeQualityAvg), suffix: '%', trend: 1 },
       { label: 'Test Coverage', value: (s) => pct(s.delivery.testCoverageAvg), suffix: '%', trend: 0.8 },
     ],
-    reportHubs: ['traceability', 'approval-workflow', 'notification-center'],
+    reportHubs: ['traceability', 'approval-workflow', 'notification-center', 'ai-copilot', 'knowledge-center'],
     actionScope: { types: ['architecture', 'api', 'risk', 'control'] },
   },
   {
@@ -257,7 +259,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Open Incidents', value: (s) => s.production.activeIncidents, suffix: '', trend: -5 },
       { label: 'MTTR (min)', value: (s) => s.production.mttrMinutes, suffix: '', trend: -4 },
     ],
-    reportHubs: ['production', 'incidents', 'notification-center'],
+    reportHubs: ['production', 'incidents', 'notification-center', 'ai-copilot', 'production-intelligence', 'knowledge-center'],
     actionScope: { types: ['incident', 'release', 'production'], domain: 'Payments' },
   },
   {
@@ -279,7 +281,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Security Findings', value: (s) => s.development.securityFindings, suffix: '', trend: -1 },
       { label: 'Engineering Health', value: (s) => pct(s.development.health), suffix: '%', trend: 1.2 },
     ],
-    reportHubs: ['best-practices'],
+    reportHubs: ['best-practices', 'ai-copilot', 'knowledge-center'],
     actionScope: { types: ['api', 'architecture', 'testCase'] },
   },
   {
@@ -301,7 +303,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Effectiveness', value: (s) => `${s.testing.effectiveness}`, suffix: '%', trend: 0.8 },
       { label: 'Optimization', value: (s) => pct(s.testing.optimizationProgress), suffix: '%', trend: 2 },
     ],
-    reportHubs: ['best-practices'],
+    reportHubs: ['best-practices', 'ai-copilot', 'knowledge-center'],
     actionScope: { types: ['testCase', 'release'] },
   },
   {
@@ -324,7 +326,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Rollback Readiness', value: (s) => pct(s.release.rollbackReadiness), suffix: '%', trend: 0.5 },
       { label: 'Go / No-Go', value: (s) => s.release.goNoGo, suffix: '' },
     ],
-    reportHubs: ['production', 'incidents', 'approval-workflow'],
+    reportHubs: ['production', 'incidents', 'approval-workflow', 'ai-copilot', 'production-intelligence', 'knowledge-center'],
     actionScope: { types: ['release', 'testCase', 'incident'] },
   },
   {
@@ -346,7 +348,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Batch Health', value: (s) => pct(s.operations.batchHealth), suffix: '%', trend: 0.5 },
       { label: 'Failed Jobs', value: (s) => s.operations.failedJobs, suffix: '', trend: -1 },
     ],
-    reportHubs: ['production', 'availability', 'capacity'],
+    reportHubs: ['production', 'availability', 'capacity', 'production-intelligence', 'knowledge-center'],
     actionScope: { types: ['incident', 'production'] },
   },
   {

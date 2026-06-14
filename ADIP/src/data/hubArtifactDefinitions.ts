@@ -31,7 +31,11 @@ export type HubKey =
   | 'notification-center'
   | 'persistence'
   | 'activity-center'
-  | 'abac';
+  | 'abac'
+  | 'ai-copilot'
+  | 'production-intelligence'
+  | 'knowledge-center'
+  | 'value-realization';
 
 export interface HubArtifactConfig {
   title: string;
@@ -1033,6 +1037,256 @@ function workflowOrchestrationArtifacts(runId: string): Artifact[] {
   ];
 }
 
+function aiCopilotArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-exec-advisory`,
+      name: 'Executive_Advisory_Report.docx',
+      generatedBy: 'Delivery Copilot AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `EXECUTIVE ADVISORY REPORT\n\nPortfolio health: 78%\nActive recommendations: 100\nCritical risks: 12\nGovernance hotspots: 3\nDelivery bottlenecks: Architecture (72h), Release approvals\nCIO summary: Focus on UPI release readiness and audit evidence gaps`,
+      executiveSummary: 'AI Delivery Copilot synthesizes portfolio health, risks, and governance hotspots into executive advisory actions.',
+      context: { subject: 'Executive Advisory' },
+    }),
+    createArtifact({
+      id: `${runId}-project-health`,
+      name: 'Project_Health_Report.docx',
+      generatedBy: 'Delivery Copilot AI',
+      fileType: 'docx',
+      previewContent: `PROJECT HEALTH REPORT\n\nProjects analyzed: 50\nAverage health score: 76%\nAt-risk projects: 14\nTop risk domains: Testing, Release\nRecommendation: Prioritize regression automation for Payments portfolio`,
+      context: { subject: 'Project Health' },
+    }),
+    createArtifact({
+      id: `${runId}-delivery-risk`,
+      name: 'Delivery_Risk_Assessment.docx',
+      generatedBy: 'Delivery Copilot AI',
+      fileType: 'docx',
+      previewContent: `DELIVERY RISK ASSESSMENT\n\nHigh delivery risk: 8 projects\nTesting risk elevated: 11\nAudit risk: 6\nRelease risk: 5\nMitigation: Escalate blocked workflows, close evidence gaps`,
+      context: { subject: 'Delivery Risk' },
+    }),
+    createArtifact({
+      id: `${runId}-release-ready`,
+      name: 'Release_Readiness_Report.docx',
+      generatedBy: 'Delivery Copilot AI',
+      fileType: 'docx',
+      previewContent: `RELEASE READINESS REPORT\n\nGo recommendations: 32\nConditional go: 12\nNo-go: 6\nAvg readiness score: 74%\nRollback readiness: 81%\nProduction risk score: 28% (lower is better)`,
+      context: { subject: 'Release Readiness' },
+    }),
+    createArtifact({
+      id: `${runId}-improvement`,
+      name: 'Continuous_Improvement_Plan.docx',
+      generatedBy: 'Delivery Copilot AI',
+      fileType: 'docx',
+      previewContent: `CONTINUOUS IMPROVEMENT PLAN\n\nImprovement actions: 75\nPredicted quality gain: +18%\nPredicted risk reduction: -22%\nTop themes: Test automation, NFR coverage, Architecture resiliency\nBacklog prioritized by impact × effort`,
+      executiveSummary: 'Continuous improvement plan derived from SDLC learning patterns and copilot rule analysis.',
+      context: { subject: 'Continuous Improvement' },
+    }),
+  ];
+}
+
+function productionIntelligenceArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-health`,
+      name: 'Production_Health_Report.docx',
+      generatedBy: 'Production Intelligence AI',
+      fileType: 'docx',
+      previewContent: `PRODUCTION HEALTH REPORT\n\nApplications monitored: 50\nAverage availability: 99.2%\nOpen incidents: 60\nCritical incidents: 150\nProduction risk score: 42%\nTop at-risk: UPI Gateway, Fraud Engine, Mobile SDK`,
+      context: { subject: 'Production Health' },
+    }),
+    createArtifact({
+      id: `${runId}-incidents`,
+      name: 'Incident_Analysis_Report.docx',
+      generatedBy: 'Production Intelligence AI',
+      fileType: 'docx',
+      previewContent: `INCIDENT ANALYSIS REPORT\n\nTotal incidents: 300\nOpen: 60 · Resolved: 180 · Mitigated: 60\nTop domains: Payments, Mobile Banking\nAvg financial impact: ₹62,500 per incident\nLinked requirements: BR-001 through BR-004`,
+      context: { subject: 'Incident Analysis' },
+    }),
+    createArtifact({
+      id: `${runId}-leakage`,
+      name: 'Defect_Leakage_Assessment.docx',
+      generatedBy: 'Production Intelligence AI',
+      fileType: 'docx',
+      previewContent: `DEFECT LEAKAGE ASSESSMENT\n\nTotal defects: 200\nEscaped to production: 133\nLeakage rate: 67%\nTop escape stage: Testing (42)\nTop applications: UPI Gateway, Payment Switch\nRecommendation: Expand regression automation`,
+      context: { subject: 'Defect Leakage' },
+    }),
+    createArtifact({
+      id: `${runId}-customer`,
+      name: 'Customer_Impact_Report.docx',
+      generatedBy: 'Production Intelligence AI',
+      fileType: 'docx',
+      previewContent: `CUSTOMER IMPACT REPORT\n\nCustomer signals: 150\nFormal complaints: 30\nTop pain points: Reliability, Performance\nMost impacted: UPI Gateway, Mobile SDK\nNPS trend: declining in Payments domain`,
+      context: { subject: 'Customer Impact' },
+    }),
+    createArtifact({
+      id: `${runId}-exec-review`,
+      name: 'Executive_Production_Review.docx',
+      generatedBy: 'Production Intelligence AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `EXECUTIVE PRODUCTION REVIEW\n\nProduction risk elevated in Payments portfolio\n42 open incidents require war-room coordination\n100 feedback recommendations generated for SDLC improvement\nCIO action: Prioritize UPI timeout remediation and release gate strengthening`,
+      executiveSummary: 'Executive production review connecting incidents, customer impact, and SDLC improvement recommendations.',
+      context: { subject: 'Executive Production Review' },
+    }),
+    createArtifact({
+      id: `${runId}-rca`,
+      name: 'RCA_Summary_Report.docx',
+      generatedBy: 'Production Intelligence AI',
+      fileType: 'docx',
+      previewContent: `RCA SUMMARY REPORT\n\nRCA records: 100\nTop patterns: Testing gap (28%), Requirement quality (22%), Release error (18%)\nRecurring causes: Missing timeout handling, Insufficient regression coverage\nPredicted risks: UPI peak-window recurrence (72%)`,
+      context: { subject: 'RCA Summary' },
+    }),
+    createArtifact({
+      id: `${runId}-improvement`,
+      name: 'Continuous_Improvement_Report.docx',
+      generatedBy: 'Production Intelligence AI',
+      fileType: 'docx',
+      previewContent: `CONTINUOUS IMPROVEMENT REPORT\n\nFeedback recommendations: 100\nDomains: Requirements, Architecture, Development, Testing, Release, Governance, Audit\nFed into AI Delivery Copilot for cross-hub action tracking\nTop action: Strengthen NFR acceptance criteria for payment flows`,
+      executiveSummary: 'Production feedback loop generates SDLC improvement recommendations integrated with AI Delivery Copilot.',
+      context: { subject: 'Continuous Improvement' },
+    }),
+  ];
+}
+
+function knowledgeCenterArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-coverage`,
+      name: 'Knowledge_Coverage_Report.docx',
+      generatedBy: 'Knowledge AI',
+      fileType: 'docx',
+      previewContent: `KNOWLEDGE COVERAGE REPORT\n\nTotal artifacts: 725\nLessons learned: 200\nBest practices: 150\nArchitecture patterns: 100\nRCA articles: 100\nPlaybooks: 75\nControls: 100\nCoverage: 97%`,
+      context: { subject: 'Knowledge Coverage' },
+    }),
+    createArtifact({
+      id: `${runId}-lessons`,
+      name: 'Lessons_Learned_Report.docx',
+      generatedBy: 'Knowledge AI',
+      fileType: 'docx',
+      previewContent: `LESSONS LEARNED REPORT\n\n200 institutional lessons cataloged\nTop categories: incident (42), audit (35), release (28)\nHighest reuse: UPI timeout lesson (34×)\nLinked to production incidents and audit findings`,
+      context: { subject: 'Lessons Learned' },
+    }),
+    createArtifact({
+      id: `${runId}-patterns`,
+      name: 'Architecture_Pattern_Catalog.docx',
+      generatedBy: 'Knowledge AI',
+      fileType: 'docx',
+      previewContent: `ARCHITECTURE PATTERN CATALOG\n\n100 patterns across microservices, event-driven, API security, resilience, payments, UPI, KYC, AML\nTop adoption: circuit breaker pattern (38×)\nAnti-patterns documented for each entry`,
+      context: { subject: 'Architecture Patterns' },
+    }),
+    createArtifact({
+      id: `${runId}-controls`,
+      name: 'Control_Library_Report.docx',
+      generatedBy: 'Knowledge AI',
+      fileType: 'docx',
+      previewContent: `CONTROL LIBRARY REPORT\n\n100 reusable controls\nFrameworks: RBI, PCI-DSS, ISO 27001, SOC 2, DPSC\nMost reused: Payment API timeout guard (52×)\nAvg effectiveness: 84%`,
+      context: { subject: 'Control Library' },
+    }),
+    createArtifact({
+      id: `${runId}-rca`,
+      name: 'RCA_Knowledge_Report.docx',
+      generatedBy: 'Knowledge AI',
+      fileType: 'docx',
+      previewContent: `RCA KNOWLEDGE REPORT\n\n100 RCA articles from production, audit, control failures, release failures, security incidents\nTop root cause: insufficient test coverage\nPreventive actions linked to playbooks`,
+      context: { subject: 'RCA Knowledge' },
+    }),
+    createArtifact({
+      id: `${runId}-adoption`,
+      name: 'Learning_Adoption_Report.docx',
+      generatedBy: 'Knowledge AI',
+      fileType: 'docx',
+      previewContent: `LEARNING ADOPTION REPORT\n\nAvg best practice adoption: 67%\nPlaybook reuse trend: +18% QoQ\n60 learning recommendations from integrated hubs\nTop playbook: release readiness (39×)`,
+      context: { subject: 'Learning Adoption' },
+    }),
+    createArtifact({
+      id: `${runId}-exec`,
+      name: 'Executive_Knowledge_Summary.docx',
+      generatedBy: 'Knowledge AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `EXECUTIVE KNOWLEDGE SUMMARY\n\nKnowledge coverage: 97%\nKnowledge reuse index: 12\nTop risk themes: testing gaps, requirement quality\nInstitutional mandate: never solve the same problem twice\n60 active learning recommendations`,
+      executiveSummary: 'Enterprise knowledge center transforms every SDLC signal into reusable organizational intelligence.',
+      context: { subject: 'Executive Knowledge Summary' },
+    }),
+  ];
+}
+
+function valueRealizationArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-roi`,
+      name: 'Executive_ROI_Report.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `EXECUTIVE ROI REPORT\n\nAnnual value: ₹12.4M\n3-year projected: ₹38.6M\nROI: 247%\nPayback: 8 months\nHours saved: 84,200\nFTE equivalent: 44.1`,
+      executiveSummary: 'ADIP delivers 247% ROI with measurable productivity, quality, and governance improvements.',
+      context: { subject: 'Executive ROI' },
+    }),
+    createArtifact({
+      id: `${runId}-scorecard`,
+      name: 'Transformation_Scorecard.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      previewContent: `TRANSFORMATION SCORECARD\n\nOverall enterprise score: 77/100\nSDLC: 78 · Governance: 82 · Audit: 75\nAI: 71 · Operational: 80 · Transformation: 76`,
+      context: { subject: 'Transformation Scorecard' },
+    }),
+    createArtifact({
+      id: `${runId}-value`,
+      name: 'Value_Realization_Report.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      previewContent: `VALUE REALIZATION REPORT\n\n100 programs · 500 projects · 10 portfolios · 5 business units\nAnnual value realized across all SDLC domains\nCost avoidance: ₹4.2M`,
+      context: { subject: 'Value Realization' },
+    }),
+    createArtifact({
+      id: `${runId}-business-case`,
+      name: 'AI_SDLC_Business_Case.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `AI SDLC BUSINESS CASE\n\nExecutive narrative: ADIP transforms banking software delivery\nBenefits: 38% productivity · 62% risk reduction · 61% faster approvals\nFinancial: ₹12.4M annual · ₹38.6M 3-year`,
+      executiveSummary: 'Complete business case for AI-powered SDLC transformation.',
+      context: { subject: 'AI SDLC Business Case' },
+    }),
+    createArtifact({
+      id: `${runId}-productivity`,
+      name: 'Productivity_Improvement_Report.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      previewContent: `PRODUCTIVITY IMPROVEMENT REPORT\n\nTesting: 38% gain · Development: 35% · Knowledge: 45%\n84,200 hours saved across 9 SDLC domains`,
+      context: { subject: 'Productivity Improvement' },
+    }),
+    createArtifact({
+      id: `${runId}-governance`,
+      name: 'Governance_Efficiency_Report.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      previewContent: `GOVERNANCE EFFICIENCY REPORT\n\nApproval cycle: -61% · Control coverage: 82%\nEvidence readiness: 74% · Compliance: 78%`,
+      context: { subject: 'Governance Efficiency' },
+    }),
+    createArtifact({
+      id: `${runId}-audit`,
+      name: 'Audit_Efficiency_Report.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      previewContent: `AUDIT EFFICIENCY REPORT\n\nAudit prep: -58% · Evidence collection: -60%\nObservations: -42% · Finding closure: +55% faster`,
+      context: { subject: 'Audit Efficiency' },
+    }),
+    createArtifact({
+      id: `${runId}-board`,
+      name: 'Board_Presentation_Summary.docx',
+      generatedBy: 'Value Realization AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `BOARD PRESENTATION SUMMARY\n\nADIP: Executive business case engine for AI SDLC\nProven ROI · Transformation maturity 77/100\nRecommendation: Expand AI SDLC coverage to 85%`,
+      executiveSummary: 'Board-ready summary of ADIP value realization and transformation progress.',
+      context: { subject: 'Board Presentation' },
+    }),
+  ];
+}
+
 const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   production: productionArtifacts,
   incidents: incidentsArtifacts,
@@ -1063,6 +1317,10 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   persistence: persistenceArtifacts,
   'activity-center': activityCenterArtifacts,
   abac: abacArtifacts,
+  'ai-copilot': aiCopilotArtifacts,
+  'production-intelligence': productionIntelligenceArtifacts,
+  'knowledge-center': knowledgeCenterArtifacts,
+  'value-realization': valueRealizationArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -1312,6 +1570,42 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'purple',
     simulation: sim('Security AI evaluating attribute policies...', ['ABAC Assessment', 'Access Scope', 'Domain Ownership', 'Security Governance']),
     build: abacArtifacts,
+  },
+  'ai-copilot': {
+    title: 'AI Delivery Copilot Reports',
+    subtitle: 'Executive advisory, project health, delivery risk, release readiness, and continuous improvement',
+    generateLabel: 'Generate Copilot Reports',
+    generatedBy: 'Delivery Copilot AI',
+    glow: 'purple',
+    simulation: sim('Delivery Copilot AI synthesizing SDLC insights...', ['Executive Advisory', 'Project Health', 'Delivery Risk', 'Release Readiness', 'Improvement Plan']),
+    build: aiCopilotArtifacts,
+  },
+  'production-intelligence': {
+    title: 'AI Production Intelligence Reports',
+    subtitle: 'Production health, incidents, defect leakage, customer impact, RCA, and improvement',
+    generateLabel: 'Generate Production Intelligence Reports',
+    generatedBy: 'Production Intelligence AI',
+    glow: 'blue',
+    simulation: sim('Production Intelligence AI analyzing production signals...', ['Production Health', 'Incident Analysis', 'Defect Leakage', 'Customer Impact', 'Executive Review', 'RCA Summary', 'Continuous Improvement']),
+    build: productionIntelligenceArtifacts,
+  },
+  'knowledge-center': {
+    title: 'AI Knowledge Center Reports',
+    subtitle: 'Coverage, lessons learned, patterns, controls, RCA knowledge, adoption, and executive summary',
+    generateLabel: 'Generate Knowledge Reports',
+    generatedBy: 'Knowledge AI',
+    glow: 'blue',
+    simulation: sim('Knowledge AI synthesizing organizational learning...', ['Knowledge Coverage', 'Lessons Learned', 'Pattern Catalog', 'Control Library', 'RCA Knowledge', 'Learning Adoption', 'Executive Summary']),
+    build: knowledgeCenterArtifacts,
+  },
+  'value-realization': {
+    title: 'AI Value Realization Reports',
+    subtitle: 'ROI, transformation scorecard, business case, productivity, governance, audit, and board summary',
+    generateLabel: 'Generate Value Reports',
+    generatedBy: 'Value Realization AI',
+    glow: 'blue',
+    simulation: sim('Value Realization AI computing business case...', ['Executive ROI', 'Transformation Scorecard', 'Value Realization', 'Business Case', 'Productivity', 'Governance', 'Audit', 'Board Summary']),
+    build: valueRealizationArtifacts,
   },
 };
 

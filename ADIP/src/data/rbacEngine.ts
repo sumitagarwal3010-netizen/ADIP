@@ -11,8 +11,16 @@ import {
   type RoleDefinition,
 } from './rbacCatalog';
 import { canAccessActivityCenter } from './activityStreamEngine';
+import { canAccessCopilot } from './copilotEngine';
+import { canAccessProductionIntelligence } from './productionIntelligenceEngine';
+import { canAccessKnowledgeCenter } from './knowledgeCenterEngine';
+import { canAccessValueRealization } from './valueRealizationEngine';
 
 const ACTIVITY_CENTER_PREFIX = '/governance/activity-center';
+const AI_COPILOT_PREFIX = '/executive/ai-copilot';
+const PRODUCTION_INTEL_PREFIX = '/production';
+const KNOWLEDGE_CENTER_PREFIX = '/knowledge-center';
+const VALUE_REALIZATION_PREFIX = '/executive/value-realization';
 
 export interface AccessDecision {
   allowed: boolean;
@@ -86,6 +94,18 @@ export function createEntitlementResolver(roleId: RbacRoleId, personaId?: Person
     canAccessRoute(path: string): boolean {
       if (path === ACTIVITY_CENTER_PREFIX || path.startsWith(`${ACTIVITY_CENTER_PREFIX}/`)) {
         return personaId ? canAccessActivityCenter(personaId) : false;
+      }
+      if (path === AI_COPILOT_PREFIX || path.startsWith(`${AI_COPILOT_PREFIX}/`)) {
+        return personaId ? canAccessCopilot(personaId) : false;
+      }
+      if (path === PRODUCTION_INTEL_PREFIX || path.startsWith(`${PRODUCTION_INTEL_PREFIX}/`)) {
+        return personaId ? canAccessProductionIntelligence(personaId) : false;
+      }
+      if (path === KNOWLEDGE_CENTER_PREFIX || path.startsWith(`${KNOWLEDGE_CENTER_PREFIX}/`) || path === '/learning') {
+        return personaId ? canAccessKnowledgeCenter(personaId) : false;
+      }
+      if (path === VALUE_REALIZATION_PREFIX || path.startsWith(`${VALUE_REALIZATION_PREFIX}/`)) {
+        return personaId ? canAccessValueRealization(personaId) : false;
       }
       const entry = ROUTE_RESOURCE_MAP[path];
       if (!entry) return true;
