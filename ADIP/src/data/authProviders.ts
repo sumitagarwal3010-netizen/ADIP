@@ -1,5 +1,6 @@
 import type { PersonaId } from '../config/personaConfig';
 import { PERSONA_RBAC_ROLE } from './rbacCatalog';
+import { getPersistenceLayer } from '../context/PersistenceContext';
 import type {
   AuthAuditEvent,
   AuthLoginResult,
@@ -168,50 +169,23 @@ export function createExpiryAudit(user: UserIdentity, providerId: AuthProviderId
 }
 
 export function persistSession(user: UserIdentity, session: AuthSession): void {
-  try {
-    localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(user));
-    localStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(session));
-  } catch { /* ignore */ }
+  getPersistenceLayer().auth.saveSession(user, session);
 }
 
 export function clearPersistedSession(): void {
-  try {
-    localStorage.removeItem(STORAGE_USER_KEY);
-    localStorage.removeItem(STORAGE_SESSION_KEY);
-  } catch { /* ignore */ }
+  getPersistenceLayer().auth.clearSession();
 }
 
 export function readPersistedAuth(): { user: UserIdentity; session: AuthSession } | null {
-  try {
-    const userRaw = localStorage.getItem(STORAGE_USER_KEY);
-    const sessionRaw = localStorage.getItem(STORAGE_SESSION_KEY);
-    if (!userRaw || !sessionRaw) return null;
-    const user = JSON.parse(userRaw) as UserIdentity;
-    const session = JSON.parse(sessionRaw) as AuthSession;
-    if (session.expiresAt < Date.now()) return null;
-    return { user, session };
-  } catch {
-    return null;
-  }
+  return getPersistenceLayer().auth.readSession();
 }
 
 export function appendAuditEvent(event: AuthAuditEvent): AuthAuditEvent[] {
-  try {
-    const existing = JSON.parse(localStorage.getItem(STORAGE_AUDIT_KEY) ?? '[]') as AuthAuditEvent[];
-    const next = [event, ...existing].slice(0, 100);
-    localStorage.setItem(STORAGE_AUDIT_KEY, JSON.stringify(next));
-    return next;
-  } catch {
-    return [event];
-  }
+  return getPersistenceLayer().auth.appendAuditEvent(event);
 }
 
 export function readAuditEvents(): AuthAuditEvent[] {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_AUDIT_KEY) ?? '[]') as AuthAuditEvent[];
-  } catch {
-    return [];
-  }
+  return getPersistenceLayer().auth.readAuditEvents();
 }
 
 export const AUTH_HEALTH_MOCK = {

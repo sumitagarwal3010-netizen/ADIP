@@ -126,6 +126,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/governance/evidence', label: 'Evidence', icon: FolderSharedIcon },
       { path: '/governance/approval-workflow', label: 'Approval Workflow', icon: AssignmentTurnedInIcon },
       { path: '/administration/rbac', label: 'RBAC Administration', icon: AdminPanelSettingsIcon },
+      { path: '/administration/persistence', label: 'Persistence Admin', icon: StorageIcon },
     ],
   },
   {

@@ -42,6 +42,7 @@ import { PersonaLanding } from '../pages/PersonaLanding';
 import { WorkflowOrchestrationDashboard } from '../pages/WorkflowOrchestrationDashboard';
 import { AuditCenter } from '../pages/AuditCenter';
 import { NotificationCenter } from '../pages/NotificationCenter';
+import { PersistenceAdminDashboard } from '../pages/PersistenceAdminDashboard';
 
 export function AppRoutes() {
   return (
@@ -113,6 +114,7 @@ export function AppRoutes() {
         <Route path="reports/trends" element={<TrendAnalytics />} />
         <Route path="administration" element={<Administration />} />
         <Route path="administration/rbac" element={<RBACAdminDashboard />} />
+        <Route path="administration/persistence" element={<PersistenceAdminDashboard />} />
       </Route>
       </Route>
     </Routes>

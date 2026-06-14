@@ -24,29 +24,7 @@ import {
   suppressNotification,
 } from '../data/notificationCenterEngine';
 import { ALERT_HISTORY, PLATFORM_NOTIFICATIONS } from '../data/notificationCenterMock';
-
-const STORAGE_KEY = 'adip.notifications';
-
-interface PersistedState {
-  notifications: PlatformNotification[];
-  history: AlertHistoryEntry[];
-}
-
-function readPersisted(): PersistedState | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw) as PersistedState;
-  } catch {
-    return null;
-  }
-}
-
-function persist(state: PersistedState): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch { /* ignore */ }
-}
+import { getPersistenceLayer } from './PersistenceContext';
 
 interface NotificationContextValue {
   notifications: PlatformNotification[];
@@ -70,7 +48,7 @@ const NotificationContext = createContext<NotificationContextValue | null>(null)
 
 export function NotificationProvider({ children }: { children: ReactNode }) {
   const { persona } = usePersona();
-  const persisted = readPersisted();
+  const persisted = getPersistenceLayer().notification.load();
   const [notifications, setNotifications] = useState<PlatformNotification[]>(
     persisted?.notifications ?? PLATFORM_NOTIFICATIONS,
   );
@@ -83,7 +61,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   const save = useCallback((next: PlatformNotification[], hist: AlertHistoryEntry[]) => {
     setNotifications(next);
     setHistory(hist);
-    persist({ notifications: next, history: hist });
+    getPersistenceLayer().notification.save({ notifications: next, history: hist });
   }, []);
 
   const updateOne = useCallback((

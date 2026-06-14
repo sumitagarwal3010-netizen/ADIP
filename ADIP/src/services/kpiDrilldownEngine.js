@@ -40,6 +40,8 @@ import {
   ESCALATION_NOTIFICATIONS,
 } from '../data/notificationCenterMock.ts';
 import { computeNotificationKpis } from '../data/notificationCenterEngine.ts';
+import { computePersistenceKpis } from '../persistence/PersistenceEngine.ts';
+import { getPersistenceLayer } from '../context/PersistenceContext.tsx';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -2410,6 +2412,87 @@ const chartResolvers = {
       relatedIncidents: incidentsFromState(state).slice(0, 1),
       relatedReleases: releasesFromState(state),
       historicalTrend: sparkline7d(resolved.length * 4),
+    });
+  },
+
+  'persistence.health': (state, ctx) => {
+    const kpis = computePersistenceKpis(getPersistenceLayer());
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'HEALTH', title: `Persistence Health: ${kpis.persistenceHealth}%`, meta: 'Overall' },
+        { id: 'ADAPTER', title: `Active Adapter: ${kpis.activeAdapter}`, meta: kpis.adapterStatus },
+        { id: 'REPOS', title: 'Repositories: 8', meta: 'healthy' },
+      ],
+      supportingEvidence: ['AuthRepository', 'WorkflowRepository', 'NotificationRepository', 'AuditRepository', 'EvidenceRepository'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.persistenceHealth),
+    });
+  },
+
+  'persistence.storage-utilization': (state, ctx) => {
+    const kpis = computePersistenceKpis(getPersistenceLayer());
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'workflows', title: 'Workflows Entity', meta: 'adip.unified.lifecycle' },
+        { id: 'notifications', title: 'Notifications Entity', meta: 'adip.notifications' },
+        { id: 'auth', title: 'Authentication Entity', meta: 'adip.auth.*' },
+        { id: 'audit', title: 'Audit Entities', meta: 'mock + cache' },
+      ],
+      supportingEvidence: [`Total bytes: ${kpis.totalStorageBytes}`, `Utilization: ${kpis.storageUtilization}%`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.storageUtilization),
+    });
+  },
+
+  'persistence.repository-activity': (state, ctx) => {
+    const kpis = computePersistenceKpis(getPersistenceLayer());
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'AuthRepository', title: 'AuthRepository', meta: 'read/write' },
+        { id: 'WorkflowRepository', title: 'WorkflowRepository', meta: 'read/write' },
+        { id: 'NotificationRepository', title: 'NotificationRepository', meta: 'read/write' },
+        { id: 'AuditRepository', title: 'AuditRepository', meta: 'read' },
+      ],
+      supportingEvidence: [`Total operations: ${kpis.repositoryActivity}`, `Total records: ${kpis.totalRecords}`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.repositoryActivity * 2),
+    });
+  },
+
+  'persistence.data-quality': (state, ctx) => {
+    const kpis = computePersistenceKpis(getPersistenceLayer());
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'DQ', title: `Data Quality Score: ${kpis.dataQualityScore}%`, meta: 'Overall' },
+        { id: 'ENTITIES', title: 'Entity Types: 10', meta: 'catalogued' },
+      ],
+      supportingEvidence: ['Workflow lifecycle data validated', 'Notification state schema consistent', 'Auth session TTL enforced'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.dataQualityScore),
+    });
+  },
+
+  'persistence.adapter-status': (state, ctx) => {
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'localStorage', title: 'LocalStorageAdapter', meta: 'active' },
+        { id: 'memory', title: 'MemoryAdapter', meta: 'standby' },
+        { id: 'future-api', title: 'FutureApiAdapter', meta: 'stub' },
+        { id: 'future-database', title: 'FutureDatabaseAdapter', meta: 'stub' },
+      ],
+      supportingEvidence: ['No direct localStorage access in application modules', 'All persistence routed through repositories'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(96),
     });
   },
 };

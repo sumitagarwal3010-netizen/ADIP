@@ -7,6 +7,7 @@ import { PersonaProvider } from './context/PersonaContext';
 import { AuthenticationProvider } from './context/AuthContext';
 import { WorkflowProvider } from './context/WorkflowContext';
 import { NotificationProvider } from './context/NotificationContext';
+import { StorageProvider } from './context/PersistenceContext';
 import { RootErrorBoundary } from './components/common/RootErrorBoundary';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AuthenticationProvider>
+          <StorageProvider>
           <PersonaProvider>
             <WorkflowProvider>
             <NotificationProvider>
@@ -26,6 +28,7 @@ function App() {
             </NotificationProvider>
             </WorkflowProvider>
           </PersonaProvider>
+          </StorageProvider>
         </AuthenticationProvider>
       </ThemeProvider>
     </RootErrorBoundary>

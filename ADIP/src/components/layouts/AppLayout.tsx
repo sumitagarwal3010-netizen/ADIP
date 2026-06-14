@@ -75,6 +75,7 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/reports/trends': { title: 'Enterprise Reports', subtitle: 'Executive scorecards & analytics' },
   '/administration': { title: 'Platform Administration', subtitle: 'Configuration & access management' },
   '/administration/rbac': { title: 'RBAC Administration', subtitle: 'Roles, permissions, and entitlement governance' },
+  '/administration/persistence': { title: 'Persistence Administration', subtitle: 'Entity stores, repositories & adapter health' },
 };
 
 export function AppLayout() {

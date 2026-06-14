@@ -19,36 +19,14 @@ import {
   workflowHistoryToApprovalHistory,
 } from '../data/unifiedLifecycleEngine';
 import { WORKFLOW_ORCHESTRATION_MOCK } from '../data/workflowOrchestrationMock';
+import { getPersistenceLayer } from './PersistenceContext';
 import type {
   UnifiedLifecycleAction,
   UnifiedLifecycleKpis,
-  UnifiedLifecycleStatus,
   WorkflowHistoryEntry,
   WorkflowInstance,
   WorkflowLifecycleStage,
 } from '../types/workflowOrchestration';
-
-const STORAGE_KEY = 'adip.unified.lifecycle';
-
-function readPersisted(): WorkflowInstance[] | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as WorkflowInstance[];
-    return parsed.map((w) => ({
-      ...w,
-      lifecycleStatus: (w.lifecycleStatus ?? (w as { approvalState?: UnifiedLifecycleStatus }).approvalState ?? 'Draft') as UnifiedLifecycleStatus,
-    }));
-  } catch {
-    return null;
-  }
-}
-
-function persist(workflows: WorkflowInstance[]): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(workflows));
-  } catch { /* ignore */ }
-}
 
 interface WorkflowContextValue {
   workflows: WorkflowInstance[];
@@ -73,8 +51,12 @@ const WorkflowContext = createContext<WorkflowContextValue | null>(null);
 export function WorkflowProvider({ children }: { children: ReactNode }) {
   const { persona } = usePersona();
   const entitlement = useEntitlement();
-  const [workflows, setWorkflows] = useState<WorkflowInstance[]>(() => readPersisted() ?? WORKFLOW_ORCHESTRATION_MOCK);
-  const [history, setHistory] = useState<WorkflowHistoryEntry[]>([]);
+  const [workflows, setWorkflows] = useState<WorkflowInstance[]>(
+    () => getPersistenceLayer().workflow.loadWorkflows() ?? WORKFLOW_ORCHESTRATION_MOCK,
+  );
+  const [history, setHistory] = useState<WorkflowHistoryEntry[]>(
+    () => getPersistenceLayer().workflow.loadHistory(),
+  );
   const [selectedWorkflowId, setSelectedWorkflowId] = useState<string | null>(WORKFLOW_ORCHESTRATION_MOCK[0]?.id ?? null);
 
   const actor = persona.label;
@@ -82,10 +64,14 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
   const updateWorkflow = useCallback((updated: WorkflowInstance, entry: WorkflowHistoryEntry) => {
     setWorkflows((prev) => {
       const next = prev.map((w) => (w.id === updated.id ? updated : w));
-      persist(next);
+      getPersistenceLayer().workflow.saveWorkflows(next);
       return next;
     });
-    setHistory((prev) => [entry, ...prev]);
+    setHistory((prev) => {
+      const next = [entry, ...prev];
+      getPersistenceLayer().workflow.saveHistory(next);
+      return next;
+    });
   }, []);
 
   const getWorkflow = useCallback((id: string) => workflows.find((w) => w.id === id), [workflows]);

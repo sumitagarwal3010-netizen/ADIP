@@ -28,7 +28,8 @@ export type HubKey =
   | 'authentication'
   | 'workflow-orchestration'
   | 'audit-center'
-  | 'notification-center';
+  | 'notification-center'
+  | 'persistence';
 
 export interface HubArtifactConfig {
   title: string;
@@ -195,6 +196,45 @@ function capacityArtifacts(runId: string): Artifact[] {
       fileType: 'docx',
       previewContent: `INFRASTRUCTURE PLANNING REPORT\n\nRecommended actions:\n  • Add 4 mobile API nodes before festival season\n  • Expand UPI shard capacity by 20%\n  • Tier storage for 7-year AML audit retention`,
       context: { subject: 'Infrastructure Planning' },
+    }),
+  ];
+}
+
+function persistenceArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-health`,
+      name: 'Persistence_Health_Report.docx',
+      generatedBy: 'Persistence AI',
+      fileType: 'docx',
+      previewContent: `PERSISTENCE HEALTH REPORT\n\nHealth Score: 96%\nActive Adapter: LocalStorage\nRepositories: 8 healthy\nTotal Records: 250+\nErrors: 0`,
+      context: { subject: 'Persistence Health' },
+    }),
+    createArtifact({
+      id: `${runId}-activity`,
+      name: 'Repository_Activity_Report.docx',
+      generatedBy: 'Persistence AI',
+      fileType: 'docx',
+      previewContent: `REPOSITORY ACTIVITY REPORT\n\nAuthRepository: 24 ops\nWorkflowRepository: 18 ops\nNotificationRepository: 12 ops\nAuditRepository: read-only mock\nTotal operations: 86`,
+      context: { subject: 'Repository Activity' },
+    }),
+    createArtifact({
+      id: `${runId}-storage`,
+      name: 'Storage_Utilization_Report.docx',
+      generatedBy: 'Persistence AI',
+      fileType: 'docx',
+      previewContent: `STORAGE UTILIZATION REPORT\n\nTotal storage: ~48 KB\nWorkflows: 18 KB\nNotifications: 22 KB\nAuthentication: 4 KB\nUtilization: 12% of demo quota`,
+      context: { subject: 'Storage Utilization' },
+    }),
+    createArtifact({
+      id: `${runId}-readiness`,
+      name: 'Platform_Readiness_Report.docx',
+      generatedBy: 'Persistence AI',
+      fileType: 'docx',
+      approvalStatus: 'Pending Review',
+      previewContent: `PLATFORM READINESS REPORT\n\nPersistence abstraction: Complete\nAdapter pattern: Implemented\nFuture API/DB stubs: Ready\nMigration from direct localStorage: Complete\nProduction cutover readiness: 78%`,
+      executiveSummary: 'Enterprise persistence layer is production-ready architecturally with LocalStorage demo adapter and future API/DB stubs for cutover.',
+      context: { subject: 'Platform Readiness' },
     }),
   ];
 }
@@ -942,6 +982,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   'workflow-orchestration': workflowOrchestrationArtifacts,
   'audit-center': auditCenterArtifacts,
   'notification-center': notificationCenterArtifacts,
+  persistence: persistenceArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -1164,6 +1205,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'purple',
     simulation: sim('Notification AI analyzing alert patterns...', ['Summary Report', 'Escalation Analysis', 'Alert Trends', 'Executive Risk']),
     build: notificationCenterArtifacts,
+  },
+  persistence: {
+    title: 'AI Persistence Reports',
+    subtitle: 'Health, repository activity, storage utilization, and platform readiness',
+    generateLabel: 'Generate Persistence Reports',
+    generatedBy: 'Persistence AI',
+    glow: 'blue',
+    simulation: sim('Persistence AI analyzing repository layer...', ['Health Report', 'Activity Report', 'Storage Utilization', 'Platform Readiness']),
+    build: persistenceArtifacts,
   },
 };
 

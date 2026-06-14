@@ -20,12 +20,15 @@ import { computeAuditKpis } from '../data/auditCenterEngine';
 import { AUDIT_EXEC_SUMMARY } from '../data/auditCenterMock';
 import { NOTIFICATION_EXEC_SUMMARY } from '../data/notificationCenterMock';
 import { useNotifications } from '../context/NotificationContext';
+import { usePersistence } from '../context/PersistenceContext';
+import { PERSISTENCE_EXEC_SUMMARY } from '../persistence/PersistenceEngine';
 
 export function ExecutiveControlTower() {
   const { executive, release, governance, learning, dynamicInsights } = useFilteredSimulation();
   const { kpis, workflows } = useWorkflow();
   const auditKpis = computeAuditKpis();
   const { kpis: notifKpis } = useNotifications();
+  const { kpis: persistKpis } = usePersistence();
 
   const approvalBottleneckData = kpis.workflowBottlenecks.slice(0, 5).map((b) => ({
     name: WORKFLOW_STAGE_LABEL[b.stage],
@@ -101,6 +104,14 @@ export function ExecutiveControlTower() {
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Persistence Health" value={persistKpis.persistenceHealth} suffix="%" chartId="persistence.health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Storage Utilization" value={persistKpis.storageUtilization} suffix="%" chartId="persistence.storage-utilization" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Repository Activity" value={persistKpis.repositoryActivity} chartId="persistence.repository-activity" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Data Quality" value={persistKpis.dataQualityScore} suffix="%" chartId="persistence.data-quality" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Total Records" value={persistKpis.totalRecords} compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 12, md: 8 }}>
           <GlassCard sx={{ p: 2 }}>
             <ModuleHeader title="Unified Lifecycle — Stage Bottlenecks" subtitle="Approval + workflow gates across SDLC hubs" />
@@ -136,6 +147,10 @@ export function ExecutiveControlTower() {
 
       <Box sx={{ mt: 1.5 }}>
         <AIInsightBox title="Notification & Escalation — Executive Summary" insight={NOTIFICATION_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Persistence Layer — Executive Summary" insight={PERSISTENCE_EXEC_SUMMARY} />
       </Box>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
