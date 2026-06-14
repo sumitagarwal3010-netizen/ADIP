@@ -78,6 +78,7 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'Portfolio health, delivery confidence, and enterprise risk at a glance.',
     quickLinks: [
       { label: 'Executive Control Tower', to: '/' },
+      { label: 'Audit Center', to: '/governance/audit-center' },
       { label: 'Traceability Executive View', to: '/traceability/executive' },
       { label: 'Enterprise Reports', to: '/reports' },
       { label: 'Strategic Risks', to: '/executive/strategic-risks' },
@@ -89,7 +90,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Open Incidents', value: (s) => s.executive.openIncidents, suffix: '', trend: -12 },
       { label: 'Business Impact', value: (s) => pct(s.executive.businessImpactScore), suffix: '%', trend: 1.2 },
     ],
-    reportHubs: ['executive', 'traceability'],
+    reportHubs: ['executive', 'traceability', 'audit-center'],
     actionScope: { types: ['risk', 'incident', 'compliance', 'release'] },
   },
   {
@@ -122,10 +123,11 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'Security posture, control effectiveness, and AI/security risk exposure.',
     quickLinks: [
       { label: 'Governance Risk', to: '/governance/risk' },
+      { label: 'Audit Center', to: '/governance/audit-center/findings' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'AI Risk', to: '/ai-governance/ai-risk' },
       { label: 'AI Controls', to: '/ai-governance/ai-controls' },
-      { label: 'Evidence', to: '/governance/evidence' },
+      { label: 'Evidence', to: '/governance/audit-center/evidence' },
     ],
     navHubs: ['governance', 'ai-governance', 'operations', 'traceability'],
     metrics: [
@@ -134,7 +136,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Compliance', value: (s) => pct(s.governance.policyCompliance), suffix: '%', trend: 0.6 },
       { label: 'Open Incidents', value: (s) => s.production.activeIncidents, suffix: '', trend: -5 },
     ],
-    reportHubs: ['risk', 'ai-controls', 'approval-workflow'],
+    reportHubs: ['risk', 'ai-controls', 'approval-workflow', 'audit-center'],
     actionScope: { types: ['control', 'risk', 'incident'] },
   },
   {
@@ -144,11 +146,12 @@ export const PERSONAS: PersonaConfig[] = [
     title: 'Head of Internal Audit',
     mission: 'Audit readiness, control evidence, and observation closure.',
     quickLinks: [
-      { label: 'Governance Audit', to: '/governance' },
+      { label: 'Audit Center', to: '/governance/audit-center' },
+      { label: 'Audit Findings', to: '/governance/audit-center/findings' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
-      { label: 'Audit Reports', to: '/reports/audit' },
-      { label: 'Evidence', to: '/governance/evidence' },
-      { label: 'Audit Traceability', to: '/traceability/executive' },
+      { label: 'Audit Reports', to: '/governance/audit-center/reports' },
+      { label: 'Evidence Repository', to: '/governance/audit-center/evidence' },
+      { label: 'Audit Traceability', to: '/traceability/evidence' },
     ],
     navHubs: ['governance', 'traceability', 'reports'],
     metrics: [
@@ -157,7 +160,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Violations', value: (s) => s.governance.policyViolations, suffix: '', trend: -1 },
       { label: 'Governance Score', value: (s) => pct(s.governance.governanceScore), suffix: '%', trend: 1.1 },
     ],
-    reportHubs: ['audit', 'evidence', 'approval-workflow'],
+    reportHubs: ['audit-center', 'evidence', 'approval-workflow'],
     actionScope: { types: ['evidence', 'control', 'compliance'] },
   },
   {
@@ -167,11 +170,12 @@ export const PERSONAS: PersonaConfig[] = [
     title: 'Regulatory Compliance Officer',
     mission: 'Regulatory posture across RBI, PCI-DSS, ISO 27001, and DPSC.',
     quickLinks: [
+      { label: 'Audit Center — Compliance', to: '/governance/audit-center/compliance' },
+      { label: 'Audit Readiness', to: '/governance/audit-center/readiness' },
       { label: 'Governance Compliance', to: '/governance/compliance' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'Compliance Reports', to: '/reports/compliance' },
-      { label: 'Compliance Traceability', to: '/traceability/executive' },
-      { label: 'Evidence', to: '/governance/evidence' },
+      { label: 'Evidence Repository', to: '/governance/audit-center/evidence' },
     ],
     navHubs: ['governance', 'traceability', 'reports'],
     metrics: [
@@ -180,7 +184,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Violations', value: (s) => s.governance.policyViolations, suffix: '', trend: -1 },
       { label: 'Audit Observations', value: (s) => s.governance.auditObservations, suffix: '', trend: -3 },
     ],
-    reportHubs: ['compliance', 'evidence', 'approval-workflow'],
+    reportHubs: ['compliance', 'audit-center', 'approval-workflow'],
     actionScope: { types: ['compliance', 'control', 'evidence'] },
   },
   {
@@ -238,7 +242,8 @@ export const PERSONAS: PersonaConfig[] = [
     quickLinks: [
       { label: 'Production', to: '/production' },
       { label: 'Operations', to: '/operations' },
-      { label: 'Incidents', to: '/operations/incidents' },
+      { label: 'Evidence Repository', to: '/governance/audit-center/evidence' },
+      { label: 'Audit Observations', to: '/governance/audit-center/observations' },
       { label: 'Release Center', to: '/release' },
     ],
     navHubs: ['operations', 'sdlc', 'traceability'],

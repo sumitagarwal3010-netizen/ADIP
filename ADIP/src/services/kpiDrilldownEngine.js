@@ -28,6 +28,13 @@ import {
 } from '../data/rbacCatalog.ts';
 import { WORKFLOW_ORCHESTRATION_MOCK } from '../data/workflowOrchestrationMock.ts';
 import { WORKFLOW_STAGE_LABEL } from '../data/workflowOrchestrationEngine.ts';
+import {
+  AUDIT_EVIDENCE,
+  AUDIT_FINDINGS,
+  AUDIT_OBSERVATIONS,
+  AUDIT_TIMELINE,
+} from '../data/auditCenterMock.ts';
+import { computeAuditKpis } from '../data/auditCenterEngine.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -2180,6 +2187,136 @@ const chartResolvers = {
       relatedIncidents: incidentsFromState(state).slice(0, 2),
       relatedReleases: releasesFromState(state).slice(0, 3),
       historicalTrend: sparkline7d(active.length * 10),
+    });
+  },
+
+  'audit-center.open-findings': (state, ctx) => {
+    const open = AUDIT_FINDINGS.filter((f) => f.status === 'Open' || f.status === 'In Progress');
+    return buildPayload(ctx, {
+      sourceRecords: open.map((f) => ({ id: f.id, title: f.description.slice(0, 80), detail: f.domain, meta: f.severity })),
+      supportingEvidence: open.flatMap((f) => f.linkedEvidence).slice(0, 8),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: sparkline7d(open.length * 5),
+    });
+  },
+
+  'audit-center.findings-by-severity': (state, ctx) => {
+    const severity = ctx.segment ?? '';
+    const findings = AUDIT_FINDINGS.filter((f) => !severity || f.severity === severity);
+    return buildPayload(ctx, {
+      sourceRecords: findings.map((f) => ({ id: f.id, title: f.description.slice(0, 80), detail: f.controlArea, meta: `${f.severity} · ${f.status}` })),
+      supportingEvidence: findings.flatMap((f) => f.linkedEvidence).slice(0, 10),
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.status !== 'low').slice(0, 3),
+      relatedIncidents: incidentsFromState(state).filter((i) => !severity || i.severity === severity.toLowerCase()),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(findings.length * 8),
+    });
+  },
+
+  'audit-center.findings-by-domain': (state, ctx) => {
+    const domain = ctx.segment ?? '';
+    const findings = AUDIT_FINDINGS.filter((f) => !domain || f.domain === domain);
+    return buildPayload(ctx, {
+      sourceRecords: findings.map((f) => ({ id: f.id, title: f.description.slice(0, 80), meta: f.severity })),
+      supportingEvidence: AUDIT_EVIDENCE.filter((e) => !domain || e.domain === domain).slice(0, 6).map((e) => `${e.id}: ${e.title}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(findings.length * 6),
+    });
+  },
+
+  'audit-center.findings-aging': (state, ctx) => {
+    const bucket = ctx.segment ?? '';
+    const now = new Date('2026-06-06');
+    const open = AUDIT_FINDINGS.filter((f) => f.status === 'Open' || f.status === 'In Progress');
+    const aged = open.filter((f) => {
+      const age = Math.floor((now.getTime() - new Date(f.createdAt).getTime()) / 86400000);
+      if (bucket === '0-30d') return age <= 30;
+      if (bucket === '31-60d') return age > 30 && age <= 60;
+      if (bucket === '61-90d') return age > 60 && age <= 90;
+      if (bucket === '90d+') return age > 90;
+      return true;
+    });
+    return buildPayload(ctx, {
+      sourceRecords: aged.map((f) => ({ id: f.id, title: f.description.slice(0, 80), detail: `Due ${f.dueDate}`, meta: f.severity })),
+      supportingEvidence: [`Aging bucket: ${bucket || 'all'}`, ...aged.map((f) => `${f.id} created ${f.createdAt}`)],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(aged.length * 10),
+    });
+  },
+
+  'audit-center.evidence-coverage': (state, ctx) => {
+    const kpis = computeAuditKpis();
+    const segment = ctx.segment ?? '';
+    const evidence = segment
+      ? AUDIT_EVIDENCE.filter((e) => e.evidenceType.includes(segment) || e.lifecycleStage === segment)
+      : AUDIT_EVIDENCE;
+    return buildPayload(ctx, {
+      sourceRecords: evidence.slice(0, 12).map((e) => ({ id: e.id, title: e.title, detail: e.domain, meta: e.status })),
+      supportingEvidence: [`Coverage: ${kpis.evidenceCoverage}%`, `Approved: ${evidence.filter((e) => e.status === 'Approved').length}/${evidence.length}`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(kpis.evidenceCoverage),
+    });
+  },
+
+  'audit-center.compliance-coverage': (state, ctx) => {
+    const kpis = computeAuditKpis();
+    return buildPayload(ctx, {
+      sourceRecords: AUDIT_OBSERVATIONS.slice(0, 8).map((o) => ({ id: o.id, title: o.observation.slice(0, 80), meta: o.closureStatus })),
+      supportingEvidence: state.governance.complianceStandards.map((s) => `${s.name}: ${s.score}%`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: kpis.complianceTrend.map((t) => ({ day: t.month, value: t.score })),
+    });
+  },
+
+  'audit-center.overdue-findings': (state, ctx) => {
+    const now = new Date('2026-06-06');
+    const overdue = AUDIT_FINDINGS.filter((f) => (f.status === 'Open' || f.status === 'In Progress') && new Date(f.dueDate) < now);
+    return buildPayload(ctx, {
+      sourceRecords: overdue.map((f) => ({ id: f.id, title: f.description.slice(0, 80), detail: f.owner, meta: `Due ${f.dueDate}` })),
+      supportingEvidence: overdue.map((f) => `${f.id}: ${f.severity} — ${f.controlArea}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).filter((i) => i.severity === 'high' || i.severity === 'critical'),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(overdue.length * 12),
+    });
+  },
+
+  'audit-center.audit-readiness': (state, ctx) => {
+    const kpis = computeAuditKpis();
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'READINESS', title: `Audit Readiness Score: ${kpis.auditReadinessScore}%`, meta: 'Overall' },
+        { id: 'EVIDENCE', title: `Evidence Coverage: ${kpis.evidenceCoverage}%`, meta: 'Evidence' },
+        { id: 'CONTROLS', title: `Control Coverage: ${kpis.controlCoverage}%`, meta: 'Controls' },
+        { id: 'FINDINGS', title: `Open Findings: ${kpis.openFindings}`, meta: 'Findings' },
+      ],
+      supportingEvidence: AUDIT_TIMELINE.slice(0, 5).map((e) => `${e.timestamp.slice(0, 10)} — ${e.action}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: kpis.complianceTrend.map((t) => ({ day: t.month, value: t.score })),
+    });
+  },
+
+  'audit-center.control-coverage': (state, ctx) => {
+    const kpis = computeAuditKpis();
+    return buildPayload(ctx, {
+      sourceRecords: state.governance.complianceStandards.map((s) => ({ id: s.name, title: s.name, meta: `${s.score}%` })),
+      supportingEvidence: AUDIT_FINDINGS.filter((f) => f.status !== 'Closed').slice(0, 6).map((f) => `${f.id}: ${f.controlArea}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.controlCoverage),
     });
   },
 };

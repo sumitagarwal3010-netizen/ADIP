@@ -40,6 +40,19 @@ const TRACE_COLOR: Record<string, string> = {
   gap: colors.warning,
 };
 
+const AUDIT_COLOR: Record<string, string> = {
+  Compliant: colors.success,
+  Partial: colors.warning,
+  'Non-Compliant': colors.critical,
+  'Under Review': colors.info,
+};
+
+const COMPLIANCE_COLOR: Record<string, string> = {
+  Compliant: colors.success,
+  Partial: colors.warning,
+  'Non-Compliant': colors.critical,
+};
+
 const ACTION_ICONS: Partial<Record<UnifiedLifecycleAction, typeof SendIcon>> = {
   Submit: SendIcon,
   'Assign Reviewer': PersonAddIcon,
@@ -102,6 +115,11 @@ export function WorkflowStatusPanel({ workflowId, showActions = true }: Workflow
         <Field label="Reviewer" value={workflow.reviewer ?? '—'} />
         <Field label="Due Date" value={workflow.dueDate} />
         <Field label="Traceability" value={workflow.traceabilityStatus} chipColor={TRACE_COLOR[workflow.traceabilityStatus]} />
+        <Field label="Evidence" value={String(workflow.evidenceCount)} />
+        <Field label="Open Findings" value={String(workflow.openFindings)} />
+        <Field label="Open Observations" value={String(workflow.openObservations)} />
+        <Field label="Audit Status" value={workflow.auditStatus} chipColor={AUDIT_COLOR[workflow.auditStatus]} />
+        <Field label="Compliance" value={workflow.complianceStatus} chipColor={COMPLIANCE_COLOR[workflow.complianceStatus]} />
       </Box>
 
       {workflow.pendingActions.length > 0 && (

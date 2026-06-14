@@ -1,6 +1,7 @@
 import type { WorkflowInstance } from '../types/workflowOrchestration';
 import type { WorkflowLifecycleStage, UnifiedLifecycleStatus } from '../types/workflowOrchestration';
 import { computeCompletionPct, computeDeliveryRisk, WORKFLOW_STAGE_ORDER } from './unifiedLifecycleEngine';
+import { getWorkflowAuditMetrics } from './auditCenterEngine';
 
 function chainForStage(
   currentStage: WorkflowLifecycleStage,
@@ -48,7 +49,12 @@ function task(
   };
 }
 
-export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
+type BaseWorkflow = Omit<
+  WorkflowInstance,
+  'evidenceCount' | 'openFindings' | 'openObservations' | 'auditStatus' | 'complianceStatus'
+>;
+
+const BASE_WORKFLOWS: BaseWorkflow[] = [
   {
     id: 'WF-001',
     title: 'UPI Limit Enhancement',
@@ -224,6 +230,11 @@ export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = [
     }),
   },
 ];
+
+export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = BASE_WORKFLOWS.map((w) => ({
+  ...w,
+  ...getWorkflowAuditMetrics(w.id),
+}));
 
 export const WORKFLOW_EXEC_SUMMARY =
   'Unified lifecycle orchestration tracks 6 workflows with embedded approval gates. UPI Release at Under Review pending CIO sign-off. Two SLA breaches on Biometric testing and KYC architecture (Escalated). Approval and workflow bottlenecks concentrated at release and architecture gates. Delivery risk: 2 high/critical items require executive escalation.';

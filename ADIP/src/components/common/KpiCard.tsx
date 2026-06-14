@@ -14,14 +14,15 @@ interface KpiCardProps {
   data?: { day: string; value: number }[];
   delay?: number;
   compact?: boolean;
+  chartId?: string;
 }
 
-export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, compact }: KpiCardProps) {
+export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, compact, chartId }: KpiCardProps) {
   const { openKpiDrilldown } = useSimulation();
   const isPositive = trend !== undefined && trend >= 0;
 
   const handleClick = () => {
-    openKpiDrilldown({ label, value, suffix, trend, data });
+    openKpiDrilldown({ label, value, suffix, trend, data, chartId });
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {

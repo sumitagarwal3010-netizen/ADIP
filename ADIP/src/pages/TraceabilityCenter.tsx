@@ -17,11 +17,13 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import { ApprovalTraceabilityPanel } from '../components/approval/ApprovalTraceabilityPanel';
 import { WorkflowLifecyclePanel } from '../components/traceability/WorkflowLifecyclePanel';
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import { AuditEvidenceLineagePanel } from '../components/audit/AuditEvidenceLineagePanel';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { colors } from '../theme/colors';
 import type { TraceNode } from '../data/traceabilityModel';
 
-type TabKey = 'dashboard' | 'rtm' | 'ai' | 'impact' | 'executive' | 'lifecycle' | 'approvals' | 'reports';
+type TabKey = 'dashboard' | 'rtm' | 'ai' | 'impact' | 'executive' | 'lifecycle' | 'approvals' | 'evidence' | 'reports';
 
 const TABS: { key: TabKey; label: string; icon: typeof AccountTreeIcon }[] = [
   { key: 'dashboard', label: 'Lineage Dashboard', icon: AccountTreeIcon },
@@ -31,6 +33,7 @@ const TABS: { key: TabKey; label: string; icon: typeof AccountTreeIcon }[] = [
   { key: 'executive', label: 'Executive View', icon: InsightsIcon },
   { key: 'lifecycle', label: 'Workflow Lifecycle', icon: TimelineIcon },
   { key: 'approvals', label: 'Approval Lineage', icon: AssignmentTurnedInIcon },
+  { key: 'evidence', label: 'Evidence Lineage', icon: FolderSharedIcon },
   { key: 'reports', label: 'AI Reports', icon: DescriptionIcon },
 ];
 
@@ -100,6 +103,7 @@ export function TraceabilityCenter({ initialTab = 'dashboard' }: TraceabilityCen
       {tab === 'executive' && <TraceabilityExecutiveView onSelectNode={handleSelectId} />}
       {tab === 'lifecycle' && <WorkflowLifecyclePanel />}
       {tab === 'approvals' && <ApprovalTraceabilityPanel />}
+      {tab === 'evidence' && <AuditEvidenceLineagePanel />}
       {tab === 'reports' && <HubArtifactGenerator hubKey="traceability" />}
     </Box>
   );

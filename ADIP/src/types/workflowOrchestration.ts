@@ -87,6 +87,11 @@ export interface WorkflowInstance {
   slaBreached: boolean;
   stageDurationHours: number;
   deliveryRisk: 'low' | 'medium' | 'high' | 'critical';
+  evidenceCount: number;
+  openFindings: number;
+  openObservations: number;
+  auditStatus: 'Compliant' | 'Partial' | 'Non-Compliant' | 'Under Review';
+  complianceStatus: 'Compliant' | 'Partial' | 'Non-Compliant';
 }
 
 export interface UnifiedLifecycleKpis {

@@ -26,7 +26,8 @@ export type HubKey =
   | 'approval-workflow'
   | 'rbac'
   | 'authentication'
-  | 'workflow-orchestration';
+  | 'workflow-orchestration'
+  | 'audit-center';
 
 export interface HubArtifactConfig {
   title: string;
@@ -193,6 +194,55 @@ function capacityArtifacts(runId: string): Artifact[] {
       fileType: 'docx',
       previewContent: `INFRASTRUCTURE PLANNING REPORT\n\nRecommended actions:\n  • Add 4 mobile API nodes before festival season\n  • Expand UPI shard capacity by 20%\n  • Tier storage for 7-year AML audit retention`,
       context: { subject: 'Infrastructure Planning' },
+    }),
+  ];
+}
+
+function auditCenterArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-findings`,
+      name: 'Audit_Findings_Report.docx',
+      generatedBy: 'Audit Center AI',
+      fileType: 'docx',
+      previewContent: `AUDIT FINDINGS REPORT\n\nTotal findings: 40\nOpen: 18 · Critical: 3 · High: 6 · Overdue: 4\n\nTop domains: Payments, Mobile Banking, KYC/AML\nRemediation ETA: 45 days`,
+      riskRating: 'High',
+      context: { subject: 'Audit Findings' },
+    }),
+    createArtifact({
+      id: `${runId}-coverage`,
+      name: 'Evidence_Coverage_Report.docx',
+      generatedBy: 'Audit Center AI',
+      fileType: 'docx',
+      previewContent: `EVIDENCE COVERAGE REPORT\n\nTotal evidence: 75\nApproved: 65% · Pending Review: 22%\nLifecycle stages with gaps: Architecture, Production\nCoverage score: 87%`,
+      context: { subject: 'Evidence Coverage' },
+    }),
+    createArtifact({
+      id: `${runId}-compliance`,
+      name: 'Compliance_Assessment_Report.docx',
+      generatedBy: 'Audit Center AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `COMPLIANCE ASSESSMENT REPORT\n\nCompliance coverage: 78%\nControl coverage: 91%\nRegulatory domains: RBI, PCI-DSS, ISO 27001, DPSC\nOpen observations: 12`,
+      context: { subject: 'Compliance Assessment' },
+    }),
+    createArtifact({
+      id: `${runId}-readiness`,
+      name: 'Audit_Readiness_Package.zip',
+      generatedBy: 'Audit Center AI',
+      fileType: 'xlsx',
+      previewContent: `AUDIT READINESS PACKAGE\n\nReadiness score: 82%\nEvidence packs: 75\nFindings register: 40\nObservations: 25\nTimeline events: 64`,
+      context: { subject: 'Audit Readiness' },
+    }),
+    createArtifact({
+      id: `${runId}-exec`,
+      name: 'Executive_Audit_Summary.docx',
+      generatedBy: 'Audit Center AI',
+      fileType: 'docx',
+      approvalStatus: 'Pending Review',
+      previewContent: `EXECUTIVE AUDIT SUMMARY\n\nAudit health: 82% · Compliance risk: Elevated (Payments)\nEvidence gaps: PCI key rotation, KYC retention\nControl gaps: Segregation of duties, AI bias testing\nRecommended: Close 4 overdue findings, complete WF-001 evidence`,
+      executiveSummary: 'Enterprise audit posture supports regulatory exams with focused remediation on payment card and data privacy controls.',
+      context: { subject: 'Executive Audit' },
     }),
   ];
 }
@@ -849,6 +899,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   rbac: rbacArtifacts,
   authentication: authenticationArtifacts,
   'workflow-orchestration': workflowOrchestrationArtifacts,
+  'audit-center': auditCenterArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -1053,6 +1104,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'purple',
     simulation: sim('Unified Lifecycle AI analyzing embedded approval gates...', ['Lifecycle Approval', 'Delivery Readiness', 'Release Readiness', 'Executive Governance']),
     build: workflowOrchestrationArtifacts,
+  },
+  'audit-center': {
+    title: 'AI Audit Center Reports',
+    subtitle: 'Findings, evidence coverage, compliance assessment, and executive audit summary',
+    generateLabel: 'Generate Audit Center Reports',
+    generatedBy: 'Audit Center AI',
+    glow: 'purple',
+    simulation: sim('Audit Center AI assembling enterprise evidence packages...', ['Findings Report', 'Evidence Coverage', 'Compliance Assessment', 'Readiness Package', 'Executive Summary']),
+    build: auditCenterArtifacts,
   },
 };
 

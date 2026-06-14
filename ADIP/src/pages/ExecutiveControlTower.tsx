@@ -16,10 +16,13 @@ import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerato
 import { useWorkflow } from '../context/WorkflowContext';
 import { WORKFLOW_EXEC_SUMMARY } from '../data/workflowOrchestrationMock';
 import { WORKFLOW_STAGE_LABEL } from '../data/unifiedLifecycleEngine';
+import { computeAuditKpis } from '../data/auditCenterEngine';
+import { AUDIT_EXEC_SUMMARY } from '../data/auditCenterMock';
 
 export function ExecutiveControlTower() {
   const { executive, release, governance, learning, dynamicInsights } = useFilteredSimulation();
   const { kpis, workflows } = useWorkflow();
+  const auditKpis = computeAuditKpis();
 
   const approvalBottleneckData = kpis.workflowBottlenecks.slice(0, 5).map((b) => ({
     name: WORKFLOW_STAGE_LABEL[b.stage],
@@ -69,6 +72,24 @@ export function ExecutiveControlTower() {
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2.4 }}>
+          <KpiCard label="Open Audit Findings" value={auditKpis.openFindings} chartId="audit-center.open-findings" compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}>
+          <KpiCard label="Evidence Coverage" value={auditKpis.evidenceCoverage} suffix="%" chartId="audit-center.evidence-coverage" compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}>
+          <KpiCard label="Audit Readiness" value={auditKpis.auditReadinessScore} suffix="%" chartId="audit-center.audit-readiness" compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}>
+          <KpiCard label="Overdue Findings" value={auditKpis.overdueFindings} chartId="audit-center.overdue-findings" compact />
+        </Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}>
+          <KpiCard label="Compliance Coverage" value={auditKpis.complianceCoverage} suffix="%" chartId="audit-center.compliance-coverage" compact />
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 12, md: 8 }}>
           <GlassCard sx={{ p: 2 }}>
             <ModuleHeader title="Unified Lifecycle — Stage Bottlenecks" subtitle="Approval + workflow gates across SDLC hubs" />
@@ -85,7 +106,7 @@ export function ExecutiveControlTower() {
                 <Box key={w.id} sx={{ mb: 1, py: 0.5, borderBottom: `1px solid ${colors.border.subtle}` }}>
                   <Typography variant="caption" sx={{ fontWeight: 700, display: 'block' }}>{w.title}</Typography>
                   <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.65rem' }}>
-                    {w.lifecycleStatus} · {w.deliveryRisk} risk
+                    {w.lifecycleStatus} · {w.deliveryRisk} risk · Audit: {w.auditStatus} · {w.evidenceCount} evidence · {w.openFindings} findings
                   </Typography>
                 </Box>
               ))
@@ -96,6 +117,10 @@ export function ExecutiveControlTower() {
 
       <Box sx={{ mt: 1.5 }}>
         <AIInsightBox title="Unified Lifecycle — Executive Summary" insight={WORKFLOW_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Enterprise Audit — Executive Summary" insight={AUDIT_EXEC_SUMMARY} />
       </Box>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>

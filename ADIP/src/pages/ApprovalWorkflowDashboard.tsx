@@ -57,6 +57,7 @@ import {
 } from '../data/approvalWorkflowMock';
 import type { ApprovalRequest } from '../data/approvalWorkflowEngine';
 import type { UnifiedLifecycleAction } from '../types/workflowOrchestration';
+import { computeAuditKpis } from '../data/auditCenterEngine';
 
 const ACTION_ICONS: Record<ApprovalWorkflowAction, typeof CheckCircleIcon> = {
   Submit: SendIcon,
@@ -111,6 +112,7 @@ export function ApprovalWorkflowDashboard() {
   const [sortDir, setSortDir] = useState<ApprovalSortDir>('asc');
 
   const kpis = useMemo(() => computeApprovalKpis(requests), [requests]);
+  const auditKpis = useMemo(() => computeAuditKpis(), []);
   const selectedRequest = useMemo(
     () => requests.find((r) => r.id === selectedId) ?? null,
     [requests, selectedId],
@@ -201,6 +203,28 @@ export function ApprovalWorkflowDashboard() {
           </Grid>
         ))}
       </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Open Findings" value={auditKpis.openFindings} chartId="audit-center.open-findings" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Evidence Coverage" value={auditKpis.evidenceCoverage} suffix="%" chartId="audit-center.evidence-coverage" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Audit Readiness" value={auditKpis.auditReadinessScore} suffix="%" chartId="audit-center.audit-readiness" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Overdue Findings" value={auditKpis.overdueFindings} chartId="audit-center.overdue-findings" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Compliance" value={auditKpis.complianceCoverage} suffix="%" chartId="audit-center.compliance-coverage" compact /></Grid>
+      </Grid>
+
+      <GlassCard sx={{ p: 2, mt: 1.5 }}>
+        <ModuleHeader title="Workflow Audit Status" subtitle="Evidence, findings, and compliance per unified lifecycle instance" />
+        {workflows.map((w) => (
+          <Box key={w.id} sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center', py: 0.75, borderBottom: `1px solid ${colors.border.subtle}` }}>
+            <Typography variant="caption" sx={{ fontWeight: 700, minWidth: 200 }}>{w.id} — {w.title}</Typography>
+            <Chip label={`${w.evidenceCount} evidence`} size="small" sx={{ height: 20, fontSize: '0.6rem' }} />
+            <Chip label={`${w.openFindings} findings`} size="small" sx={{ height: 20, fontSize: '0.6rem' }} />
+            <Chip label={`${w.openObservations} obs`} size="small" sx={{ height: 20, fontSize: '0.6rem' }} />
+            <Chip label={w.auditStatus} size="small" sx={{ height: 20, fontSize: '0.6rem' }} />
+            <Chip label={w.complianceStatus} size="small" sx={{ height: 20, fontSize: '0.6rem' }} />
+          </Box>
+        ))}
+      </GlassCard>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 12, md: 5 }}>
