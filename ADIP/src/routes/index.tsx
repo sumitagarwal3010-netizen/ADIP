@@ -10,7 +10,7 @@ import { ArchitectureHub } from '../pages/ArchitectureHub';
 import { DevelopmentHub } from '../pages/DevelopmentHub';
 import { TestingHub } from '../pages/TestingHub';
 import { ReleaseCenter } from '../pages/ReleaseCenter';
-import { ProductionCenter } from '../pages/ProductionCenter';
+import { ProductionIntelligenceCenter } from '../pages/ProductionIntelligenceCenter';
 import { OperationsCenter } from '../pages/OperationsCenter';
 import { PortfolioHealthPage } from '../pages/PortfolioHealthPage';
 import { GovernanceCenter } from '../pages/GovernanceCenter';
@@ -25,7 +25,8 @@ import { AIRiskDashboard } from '../pages/AIRiskDashboard';
 import { AIProgramStatusPage } from '../pages/AIProgramStatusPage';
 import { AIControlsDashboard } from '../pages/AIControlsDashboard';
 import { AIIncidentsDashboard } from '../pages/AIIncidentsDashboard';
-import { LearningHub } from '../pages/LearningHub';
+import { KnowledgeLearningCenter } from '../pages/KnowledgeLearningCenter';
+import { ValueRealizationCenter } from '../pages/ValueRealizationCenter';
 import { Reports } from '../pages/Reports';
 import { ComplianceReports } from '../pages/ComplianceReports';
 import { AuditReports } from '../pages/AuditReports';
@@ -45,6 +46,7 @@ import { NotificationCenter } from '../pages/NotificationCenter';
 import { AbacAdminDashboard } from '../pages/AbacAdminDashboard';
 import { PersistenceAdminDashboard } from '../pages/PersistenceAdminDashboard';
 import { ActivityCenter } from '../pages/ActivityCenter';
+import { AiDeliveryCopilotCenter } from '../pages/AiDeliveryCopilotCenter';
 
 export function AppRoutes() {
   return (
@@ -61,13 +63,45 @@ export function AppRoutes() {
         <Route path="executive/board-reporting" element={<Reports />} />
         <Route path="executive/authentication" element={<AuthenticationHealthDashboard />} />
         <Route path="executive/workflow-orchestration" element={<WorkflowOrchestrationDashboard />} />
+        <Route path="executive/ai-copilot" element={<AiDeliveryCopilotCenter initialTab="dashboard" />} />
+        <Route path="executive/ai-copilot/workspace" element={<AiDeliveryCopilotCenter initialTab="workspace" />} />
+        <Route path="executive/ai-copilot/health" element={<AiDeliveryCopilotCenter initialTab="health" />} />
+        <Route path="executive/ai-copilot/requirements" element={<AiDeliveryCopilotCenter initialTab="requirements" />} />
+        <Route path="executive/ai-copilot/architecture" element={<AiDeliveryCopilotCenter initialTab="architecture" />} />
+        <Route path="executive/ai-copilot/development" element={<AiDeliveryCopilotCenter initialTab="development" />} />
+        <Route path="executive/ai-copilot/testing" element={<AiDeliveryCopilotCenter initialTab="testing" />} />
+        <Route path="executive/ai-copilot/release" element={<AiDeliveryCopilotCenter initialTab="release" />} />
+        <Route path="executive/ai-copilot/audit" element={<AiDeliveryCopilotCenter initialTab="audit" />} />
+        <Route path="executive/ai-copilot/executive" element={<AiDeliveryCopilotCenter initialTab="executive" />} />
+        <Route path="executive/ai-copilot/improvement" element={<AiDeliveryCopilotCenter initialTab="improvement" />} />
+        <Route path="executive/ai-copilot/reports" element={<AiDeliveryCopilotCenter initialTab="reports" />} />
+        <Route path="executive/value-realization" element={<ValueRealizationCenter initialTab="dashboard" />} />
+        <Route path="executive/value-realization/productivity" element={<ValueRealizationCenter initialTab="productivity" />} />
+        <Route path="executive/value-realization/delivery" element={<ValueRealizationCenter initialTab="delivery" />} />
+        <Route path="executive/value-realization/quality" element={<ValueRealizationCenter initialTab="quality" />} />
+        <Route path="executive/value-realization/governance" element={<ValueRealizationCenter initialTab="governance" />} />
+        <Route path="executive/value-realization/audit" element={<ValueRealizationCenter initialTab="audit" />} />
+        <Route path="executive/value-realization/ai-adoption" element={<ValueRealizationCenter initialTab="ai-adoption" />} />
+        <Route path="executive/value-realization/scorecard" element={<ValueRealizationCenter initialTab="scorecard" />} />
+        <Route path="executive/value-realization/roi" element={<ValueRealizationCenter initialTab="roi" />} />
+        <Route path="executive/value-realization/business-case" element={<ValueRealizationCenter initialTab="business-case" />} />
+        <Route path="executive/value-realization/benchmarking" element={<ValueRealizationCenter initialTab="benchmarking" />} />
+        <Route path="executive/value-realization/reports" element={<ValueRealizationCenter initialTab="reports" />} />
         <Route path="delivery" element={<DeliveryHub />} />
         <Route path="requirements" element={<RequirementsHub />} />
         <Route path="architecture" element={<ArchitectureHub />} />
         <Route path="development" element={<DevelopmentHub />} />
         <Route path="testing" element={<TestingHub />} />
         <Route path="release" element={<ReleaseCenter />} />
-        <Route path="production" element={<ProductionCenter />} />
+        <Route path="production" element={<ProductionIntelligenceCenter initialTab="dashboard" />} />
+        <Route path="production/incidents" element={<ProductionIntelligenceCenter initialTab="incidents" />} />
+        <Route path="production/leakage" element={<ProductionIntelligenceCenter initialTab="leakage" />} />
+        <Route path="production/customer" element={<ProductionIntelligenceCenter initialTab="customer" />} />
+        <Route path="production/applications" element={<ProductionIntelligenceCenter initialTab="applications" />} />
+        <Route path="production/releases" element={<ProductionIntelligenceCenter initialTab="releases" />} />
+        <Route path="production/rca" element={<ProductionIntelligenceCenter initialTab="rca" />} />
+        <Route path="production/feedback" element={<ProductionIntelligenceCenter initialTab="feedback" />} />
+        <Route path="production/reports" element={<ProductionIntelligenceCenter initialTab="reports" />} />
         <Route path="operations" element={<OperationsCenter />} />
         <Route path="operations/incidents" element={<OperationsIncidentsPage />} />
         <Route path="operations/availability" element={<OperationsAvailabilityPage />} />
@@ -114,7 +148,17 @@ export function AppRoutes() {
         <Route path="traceability/evidence" element={<TraceabilityCenter initialTab="evidence" />} />
         <Route path="traceability/events" element={<TraceabilityCenter initialTab="events" />} />
         <Route path="traceability/reports" element={<TraceabilityCenter initialTab="reports" />} />
-        <Route path="learning" element={<LearningHub />} />
+        <Route path="knowledge-center" element={<KnowledgeLearningCenter initialTab="dashboard" />} />
+        <Route path="knowledge-center/lessons" element={<KnowledgeLearningCenter initialTab="lessons" />} />
+        <Route path="knowledge-center/best-practices" element={<KnowledgeLearningCenter initialTab="best-practices" />} />
+        <Route path="knowledge-center/patterns" element={<KnowledgeLearningCenter initialTab="patterns" />} />
+        <Route path="knowledge-center/controls" element={<KnowledgeLearningCenter initialTab="controls" />} />
+        <Route path="knowledge-center/rca" element={<KnowledgeLearningCenter initialTab="rca" />} />
+        <Route path="knowledge-center/playbooks" element={<KnowledgeLearningCenter initialTab="playbooks" />} />
+        <Route path="knowledge-center/search" element={<KnowledgeLearningCenter initialTab="search" />} />
+        <Route path="knowledge-center/recommendations" element={<KnowledgeLearningCenter initialTab="recommendations" />} />
+        <Route path="knowledge-center/reports" element={<KnowledgeLearningCenter initialTab="reports" />} />
+        <Route path="learning" element={<KnowledgeLearningCenter initialTab="dashboard" />} />
         <Route path="knowledge/best-practices" element={<KnowledgeBestPracticesPage />} />
         <Route path="knowledge/reusable-assets" element={<KnowledgeReusableAssetsPage />} />
         <Route path="knowledge/lessons-learned" element={<KnowledgeLessonsLearnedPage />} />

@@ -46,6 +46,60 @@ import { computeActivityKpis } from '../data/activityStreamEngine.ts';
 import { getEventBus } from '../context/EventContext.tsx';
 import { computeAbacKpis } from '../data/abacEngine.ts';
 import { buildVisibilityScope } from '../data/abacCatalog.ts';
+import {
+  computeCopilotKpis,
+  topRecurringIssues,
+  domainRiskChart,
+  recommendationTrend,
+} from '../data/copilotEngine.ts';
+import {
+  COPILOT_PROJECTS,
+  COPILOT_RECOMMENDATIONS,
+  COPILOT_RISK_OBSERVATIONS,
+  COPILOT_IMPROVEMENT_ACTIONS,
+} from '../data/copilotMockData.ts';
+import {
+  computeProductionIntelligenceKpis,
+  leakageByStage,
+  rcaPatternChart,
+  topLeakageApplications,
+  feedbackByDomain,
+} from '../data/productionIntelligenceEngine.ts';
+import {
+  PRODUCTION_APPLICATIONS,
+  PRODUCTION_INCIDENTS,
+  PRODUCTION_DEFECTS,
+  CUSTOMER_SIGNALS,
+  FEEDBACK_RECOMMENDATIONS,
+} from '../data/productionIntelligenceMock.ts';
+import {
+  computeKnowledgeCenterKpis,
+  topRiskThemes,
+  mostReusedControls,
+  mostReusedPlaybooks,
+  knowledgeByCategory,
+  bestPracticeByDomain,
+  recommendationsBySource,
+} from '../data/knowledgeCenterEngine.ts';
+import {
+  LESSONS_LEARNED,
+  BEST_PRACTICES,
+  REUSABLE_CONTROLS,
+  SDLC_PLAYBOOKS,
+  LEARNING_RECOMMENDATIONS,
+} from '../data/knowledgeCenterMock.ts';
+import {
+  computeValueRealizationKpis,
+  PRODUCTIVITY_GAINS,
+  MATURITY_SCORES,
+  BENCHMARK_METRICS,
+  VALUE_TRACEABILITY_CHAINS,
+} from '../data/valueRealizationEngine.ts';
+import {
+  PROGRAMS,
+  PORTFOLIOS,
+  VALUE_TREND_HISTORY,
+} from '../data/valueRealizationMock.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -2664,6 +2718,663 @@ const chartResolvers = {
       relatedIncidents: [],
       relatedReleases: releasesFromState(state),
       historicalTrend: sparkline7d(kpis.scopedResources),
+    });
+  },
+
+  'copilot.recommendations': (state, ctx) => {
+    const kpis = computeCopilotKpis();
+    return buildPayload(ctx, {
+      sourceRecords: COPILOT_RECOMMENDATIONS.slice(0, 12).map((r) => ({
+        id: r.id,
+        title: r.title,
+        meta: `${r.domain} · ${r.priority}`,
+      })),
+      supportingEvidence: [
+        `${kpis.aiRecommendations} total AI recommendations across ${COPILOT_PROJECTS.length} projects`,
+        `${kpis.openRecommendations} open recommendations requiring action`,
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.openRecommendations),
+    });
+  },
+
+  'copilot.delivery-health': (state, ctx) => {
+    const kpis = computeCopilotKpis();
+    const atRisk = COPILOT_PROJECTS.filter((p) => p.healthScore < 70).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: atRisk.map((p) => ({
+        id: p.id,
+        title: p.name,
+        meta: `Health ${p.healthScore}% · Delivery risk ${p.deliveryRisk}%`,
+      })),
+      supportingEvidence: [
+        `Portfolio average health: ${kpis.deliveryHealth}%`,
+        `${kpis.projectsAtRisk} projects below health threshold`,
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.deliveryHealth),
+    });
+  },
+
+  'copilot.portfolio-risk': (state, ctx) => {
+    const kpis = computeCopilotKpis();
+    const risky = [...COPILOT_PROJECTS].sort((a, b) => b.deliveryRisk - a.deliveryRisk).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: risky.map((p) => ({
+        id: p.id,
+        title: p.name,
+        meta: `Delivery ${p.deliveryRisk}% · Testing ${p.testingRisk}%`,
+      })),
+      supportingEvidence: [
+        `Portfolio average delivery risk: ${kpis.portfolioRisk}%`,
+        `${kpis.criticalRisks} critical/high risk observations`,
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.portfolioRisk),
+    });
+  },
+
+  'copilot.quality-improvement': (state, ctx) => {
+    const kpis = computeCopilotKpis();
+    const actions = COPILOT_IMPROVEMENT_ACTIONS.filter((a) => a.status === 'open').slice(0, 10);
+    return buildPayload(ctx, {
+      sourceRecords: actions.map((a) => ({
+        id: a.id,
+        title: a.title,
+        meta: `+${a.predictedQualityGain}% quality · -${a.predictedRiskReduction}% risk`,
+      })),
+      supportingEvidence: [
+        `${kpis.improvementActions} open improvement actions in backlog`,
+        `Predicted portfolio quality gain: +${kpis.predictedQualityImprovement}%`,
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.predictedQualityImprovement),
+    });
+  },
+
+  'copilot.recurring-issues': (state, ctx) => {
+    const issues = topRecurringIssues(8);
+    return buildPayload(ctx, {
+      sourceRecords: issues.map((i, idx) => ({
+        id: `issue-${idx}`,
+        title: i.issue,
+        meta: `${i.count} occurrences`,
+      })),
+      supportingEvidence: COPILOT_RISK_OBSERVATIONS.slice(0, 3).map((r) => r.observation),
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(issues.length * 5),
+    });
+  },
+
+  'copilot.recommendations-by-domain': (state, ctx) => {
+    const trend = recommendationTrend();
+    return buildPayload(ctx, {
+      sourceRecords: trend.map((t) => ({ id: t.name, title: t.name, meta: `${t.value} recommendations` })),
+      supportingEvidence: ['Recommendations distributed across SDLC domains', 'Rule-based analysis from mock artifacts'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(trend.reduce((s, t) => s + t.value, 0)),
+    });
+  },
+
+  'copilot.domain-risk': (state, ctx) => {
+    const chart = domainRiskChart();
+    return buildPayload(ctx, {
+      sourceRecords: chart.map((d) => ({ id: d.name, title: d.name, meta: `Risk index ${d.value}` })),
+      supportingEvidence: COPILOT_PROJECTS.slice(0, 3).map((p) => `${p.name}: ${p.deliveryRisk}% delivery risk`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(chart.reduce((s, d) => s + d.value, 0)),
+    });
+  },
+
+  'prod-intel.production-risk': (state, ctx) => {
+    const kpis = computeProductionIntelligenceKpis();
+    const risky = [...PRODUCTION_APPLICATIONS].sort((a, b) => b.riskScore - a.riskScore).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: risky.map((a) => ({ id: a.id, title: a.name, meta: `Risk ${a.riskScore}% · ${a.domain}` })),
+      supportingEvidence: [`${kpis.totalApplications} applications monitored`, `${kpis.openIncidents} open production incidents`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.productionRisk),
+    });
+  },
+
+  'prod-intel.customer-impact': (state, ctx) => {
+    const kpis = computeProductionIntelligenceKpis();
+    const negative = CUSTOMER_SIGNALS.filter((s) => s.sentiment === 'negative').slice(0, 10);
+    return buildPayload(ctx, {
+      sourceRecords: negative.map((s) => ({ id: s.id, title: s.application, meta: `${s.painPoint} · ${s.channel}` })),
+      supportingEvidence: [`${kpis.customerComplaints} formal complaints`, `${CUSTOMER_SIGNALS.length} total customer signals`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.customerImpact),
+    });
+  },
+
+  'prod-intel.defect-leakage': (state, ctx) => {
+    const kpis = computeProductionIntelligenceKpis();
+    const stages = leakageByStage();
+    return buildPayload(ctx, {
+      sourceRecords: stages.map((s) => ({ id: s.name, title: s.name, meta: `${s.value} defects` })),
+      supportingEvidence: [`${kpis.escapedDefects} escaped defects`, `${kpis.defectLeakage}% leakage rate`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.defectLeakage),
+    });
+  },
+
+  'prod-intel.incident-trends': (state, ctx) => {
+    const kpis = computeProductionIntelligenceKpis();
+    const open = PRODUCTION_INCIDENTS.filter((i) => i.status === 'open').slice(0, 10);
+    return buildPayload(ctx, {
+      sourceRecords: open.map((i) => ({ id: i.id, title: i.title, meta: `${i.severity} · ${i.application}` })),
+      supportingEvidence: [`${PRODUCTION_INCIDENTS.length} incidents in catalog`, `${kpis.criticalIncidents} critical/high severity`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 4),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.openIncidents),
+    });
+  },
+
+  'prod-intel.feedback-recommendations': (state, ctx) => {
+    const kpis = computeProductionIntelligenceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: FEEDBACK_RECOMMENDATIONS.slice(0, 12).map((r) => ({
+        id: r.id, title: r.title, meta: `${r.domain} · ${r.priority}`,
+      })),
+      supportingEvidence: [
+        `${kpis.feedbackRecommendations} recommendations fed to AI Delivery Copilot`,
+        'Production feedback loop: Requirement → Release → Incident → RCA → Improvement',
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.feedbackRecommendations),
+    });
+  },
+
+  'prod-intel.rca-patterns': (state, ctx) => {
+    const patterns = rcaPatternChart();
+    return buildPayload(ctx, {
+      sourceRecords: patterns.map((p) => ({ id: p.name, title: p.name, meta: `${p.value} records` })),
+      supportingEvidence: ['RCA patterns: requirement, architecture, coding, testing, release, ops, third party'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(patterns.reduce((s, p) => s + p.value, 0)),
+    });
+  },
+
+  'prod-intel.leakage-by-stage': (state, ctx) => {
+    const stages = leakageByStage();
+    return buildPayload(ctx, {
+      sourceRecords: stages.map((s) => ({ id: s.name, title: s.name, meta: String(s.value) })),
+      supportingEvidence: PRODUCTION_DEFECTS.filter((d) => d.escapedToProduction).slice(0, 3).map((d) => `${d.application}: ${d.leakageStage}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(stages.reduce((s, x) => s + x.value, 0)),
+    });
+  },
+
+  'prod-intel.top-leakage-apps': (state, ctx) => {
+    const apps = topLeakageApplications(8);
+    return buildPayload(ctx, {
+      sourceRecords: apps.map((a) => ({ id: a.name, title: a.name, meta: `${a.value} escapes` })),
+      supportingEvidence: ['Top applications by production defect escape count'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(apps.reduce((s, a) => s + a.value, 0)),
+    });
+  },
+
+  'prod-intel.feedback-by-domain': (state, ctx) => {
+    const domains = feedbackByDomain();
+    return buildPayload(ctx, {
+      sourceRecords: domains.map((d) => ({ id: d.name, title: d.name, meta: `${d.value} recommendations` })),
+      supportingEvidence: ['Recommendations span requirements through audit domains'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(domains.reduce((s, d) => s + d.value, 0)),
+    });
+  },
+
+  'prod-intel.customer-channels': (state, ctx) => {
+    const channels = ['call-center', 'branch', 'complaint', 'app-store', 'nps'];
+    return buildPayload(ctx, {
+      sourceRecords: channels.map((ch) => ({
+        id: ch,
+        title: ch,
+        meta: String(CUSTOMER_SIGNALS.filter((s) => s.channel === ch).length),
+      })),
+      supportingEvidence: CUSTOMER_SIGNALS.slice(0, 3).map((s) => s.summary),
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(CUSTOMER_SIGNALS.length),
+    });
+  },
+
+  'prod-intel.pain-points': (state, ctx) => {
+    const pains = new Map();
+    for (const s of CUSTOMER_SIGNALS) pains.set(s.painPoint, (pains.get(s.painPoint) ?? 0) + 1);
+    const records = [...pains.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6);
+    return buildPayload(ctx, {
+      sourceRecords: records.map(([title, count]) => ({ id: title, title, meta: String(count) })),
+      supportingEvidence: ['Customer pain points from call center, branch, complaints, app store, NPS'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(records.length * 8),
+    });
+  },
+
+  'prod-intel.impacted-apps': (state, ctx) => {
+    const counts = new Map();
+    for (const s of CUSTOMER_SIGNALS.filter((x) => x.sentiment === 'negative')) {
+      counts.set(s.application, (counts.get(s.application) ?? 0) + 1);
+    }
+    const records = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: records.map(([title, count]) => ({ id: title, title, meta: String(count) })),
+      supportingEvidence: ['Applications with highest negative customer signal volume'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(records.reduce((s, r) => s + r[1], 0)),
+    });
+  },
+
+  'prod-intel.app-risk': (state, ctx) => {
+    const apps = [...PRODUCTION_APPLICATIONS].sort((a, b) => b.riskScore - a.riskScore).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: apps.map((a) => ({ id: a.id, title: a.name, meta: `Risk ${a.riskScore}%` })),
+      supportingEvidence: ['Risk score derived from incidents, defects, and audit findings'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(apps[0]?.riskScore ?? 50),
+    });
+  },
+
+  'knowledge-center.coverage': (state, ctx) => {
+    const kpis = computeKnowledgeCenterKpis();
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'lessons', title: 'Lessons Learned', meta: String(kpis.totalLessons) },
+        { id: 'bp', title: 'Best Practices', meta: String(kpis.totalBestPractices) },
+        { id: 'patterns', title: 'Patterns', meta: String(kpis.totalPatterns) },
+        { id: 'playbooks', title: 'Playbooks', meta: String(kpis.totalPlaybooks) },
+      ],
+      supportingEvidence: [`Knowledge coverage: ${kpis.knowledgeCoverage}% across SDLC domains`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.knowledgeCoverage),
+    });
+  },
+
+  'knowledge-center.reuse': (state, ctx) => {
+    const kpis = computeKnowledgeCenterKpis();
+    const top = [...LESSONS_LEARNED].sort((a, b) => b.reuseCount - a.reuseCount).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: top.map((l) => ({ id: l.id, title: l.title, meta: `${l.reuseCount}× reused` })),
+      supportingEvidence: [`Knowledge reuse index: ${kpis.knowledgeReuse}`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.knowledgeReuse),
+    });
+  },
+
+  'knowledge-center.risk-themes': (state, ctx) => {
+    const themes = topRiskThemes(8);
+    return buildPayload(ctx, {
+      sourceRecords: themes.map((t) => ({ id: t.name, title: t.name, meta: String(t.value) })),
+      supportingEvidence: LEARNING_RECOMMENDATIONS.slice(0, 3).map((r) => r.relatedTheme),
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(themes.length * 10),
+    });
+  },
+
+  'knowledge-center.controls': (state, ctx) => {
+    const controls = mostReusedControls(8);
+    return buildPayload(ctx, {
+      sourceRecords: controls.map((c) => ({ id: c.name, title: c.name, meta: `${c.value}×` })),
+      supportingEvidence: REUSABLE_CONTROLS.slice(0, 2).map((c) => `${c.name} — ${c.framework}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(controls[0]?.value ?? 20),
+    });
+  },
+
+  'knowledge-center.playbooks': (state, ctx) => {
+    const playbooks = mostReusedPlaybooks(8);
+    return buildPayload(ctx, {
+      sourceRecords: playbooks.map((p) => ({ id: p.name, title: p.name, meta: `${p.value}×` })),
+      supportingEvidence: SDLC_PLAYBOOKS.slice(0, 2).map((p) => p.type),
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(playbooks[0]?.value ?? 15),
+    });
+  },
+
+  'knowledge-center.adoption': (state, ctx) => {
+    const kpis = computeKnowledgeCenterKpis();
+    const top = [...BEST_PRACTICES].sort((a, b) => b.adoptionRate - a.adoptionRate).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: top.map((b) => ({ id: b.id, title: b.title, meta: `${b.adoptionRate}%` })),
+      supportingEvidence: [`Learning adoption average: ${kpis.learningAdoption}%`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.learningAdoption),
+    });
+  },
+
+  'knowledge-center.lessons-category': (state, ctx) => {
+    const cats = knowledgeByCategory();
+    return buildPayload(ctx, {
+      sourceRecords: cats.map((c) => ({ id: c.name, title: c.name, meta: String(c.value) })),
+      supportingEvidence: LESSONS_LEARNED.slice(0, 3).map((l) => l.title),
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(LESSONS_LEARNED.length),
+    });
+  },
+
+  'knowledge-center.best-practices': (state, ctx) => {
+    const domains = bestPracticeByDomain();
+    return buildPayload(ctx, {
+      sourceRecords: domains.map((d) => ({ id: d.name, title: d.name, meta: String(d.value) })),
+      supportingEvidence: BEST_PRACTICES.slice(0, 3).map((b) => b.title),
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(BEST_PRACTICES.length),
+    });
+  },
+
+  'knowledge-center.patterns': (state, ctx) => {
+    const kpis = computeKnowledgeCenterKpis();
+    return buildPayload(ctx, {
+      sourceRecords: [{ id: 'total', title: 'Architecture Patterns', meta: String(kpis.totalPatterns) }],
+      supportingEvidence: ['Microservices, event-driven, API security, resilience, payments, UPI, KYC, AML'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.totalPatterns),
+    });
+  },
+
+  'knowledge-center.rca-source': (state, ctx) => {
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'prod', title: 'Production RCA', meta: '20' },
+        { id: 'audit', title: 'Audit Findings', meta: '20' },
+        { id: 'control', title: 'Control Failures', meta: '20' },
+      ],
+      supportingEvidence: ['100 RCA knowledge articles from integrated sources'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(100),
+    });
+  },
+
+  'knowledge-center.rec-by-type': (state, ctx) => {
+    return buildPayload(ctx, {
+      sourceRecords: LEARNING_RECOMMENDATIONS.slice(0, 10).map((r) => ({
+        id: r.id, title: r.title, meta: `${r.type} · ${r.priority}`,
+      })),
+      supportingEvidence: ['Articles, controls, playbooks, patterns recommended from integrated hubs'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(LEARNING_RECOMMENDATIONS.length),
+    });
+  },
+
+  'knowledge-center.rec-by-source': (state, ctx) => {
+    const sources = recommendationsBySource();
+    return buildPayload(ctx, {
+      sourceRecords: sources.map((s) => ({ id: s.name, title: s.name, meta: String(s.value) })),
+      supportingEvidence: ['Sources: Audit, Production, Copilot, Notifications, Workflow, Event Bus'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(sources.reduce((s, x) => s + x.value, 0)),
+    });
+  },
+
+  'value-realization.hours-saved': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PRODUCTIVITY_GAINS.map((p) => ({ id: p.domain, title: p.domain, meta: `${p.hoursSaved.toLocaleString()} hrs` })),
+      supportingEvidence: [`Total hours saved: ${kpis.hoursSaved.toLocaleString()}`, `${kpis.fteSavings} FTE equivalent`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.hoursSaved / 1000),
+    });
+  },
+
+  'value-realization.fte-savings': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PRODUCTIVITY_GAINS.map((p) => ({ id: p.domain, title: p.domain, meta: `${p.fteEquivalent} FTE` })),
+      supportingEvidence: [`${kpis.fteSavings} total FTE savings across SDLC`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.fteSavings * 10),
+    });
+  },
+
+  'value-realization.productivity': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PRODUCTIVITY_GAINS.map((p) => ({ id: p.domain, title: p.domain, meta: `${p.productivityPercent}%` })),
+      supportingEvidence: [`Overall productivity gain: ${kpis.productivityGain}%`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.productivityGain),
+    });
+  },
+
+  'value-realization.defects-prevented': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: [{ id: 'total', title: 'Defects Prevented', meta: String(kpis.defectsPrevented) }],
+      supportingEvidence: ['Quality improvement from AI copilot and production intelligence'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.defectsPrevented),
+    });
+  },
+
+  'value-realization.risk-reduction': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: VALUE_TRACEABILITY_CHAINS.map((c) => ({ id: c.capability, title: c.capability, meta: c.kpi })),
+      supportingEvidence: [`${kpis.riskReduction}% portfolio risk reduction`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.riskReduction),
+    });
+  },
+
+  'value-realization.annual-value': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PORTFOLIOS.slice(0, 8).map((p) => ({ id: p.id, title: p.name, meta: `₹${(p.valueRealized / 1000).toFixed(0)}K` })),
+      supportingEvidence: [`Annual value: ₹${(kpis.annualValueRealized / 1_000_000).toFixed(1)}M`, `100 programs · 500 projects`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.annualValueRealized / 100000),
+    });
+  },
+
+  'value-realization.projected-value': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: VALUE_TREND_HISTORY.map((t) => ({ id: t.year, title: t.year, meta: `₹${(t.valueRealized / 1_000_000).toFixed(1)}M` })),
+      supportingEvidence: [`3-year projected: ₹${(kpis.threeYearProjectedValue / 1_000_000).toFixed(1)}M`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.threeYearProjectedValue / 1000000),
+    });
+  },
+
+  'value-realization.roi': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: VALUE_TREND_HISTORY.map((t) => ({ id: t.year, title: t.year, meta: `${t.roi}% ROI` })),
+      supportingEvidence: [`Current ROI: ${kpis.roi}%`, 'Payback period: 8 months'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.roi),
+    });
+  },
+
+  'value-realization.roi-annual': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PROGRAMS.slice(0, 10).map((p) => ({ id: p.id, title: p.name, meta: `₹${(p.valueRealized / 1000).toFixed(0)}K` })),
+      supportingEvidence: [`Annual savings modeled from ${PROGRAMS.length} programs`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.annualValueRealized / 100000),
+    });
+  },
+
+  'value-realization.roi-3year': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: VALUE_TREND_HISTORY.map((t) => ({ id: t.year, title: t.year, meta: `₹${(t.valueRealized / 1_000_000).toFixed(1)}M` })),
+      supportingEvidence: ['5-year trend history informs 3-year projection'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.threeYearProjectedValue / 1000000),
+    });
+  },
+
+  'value-realization.transformation-score': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: MATURITY_SCORES.map((m) => ({ id: m.dimension, title: m.label, meta: `${m.score}%` })),
+      supportingEvidence: [`Overall enterprise score: ${kpis.transformationScore}%`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.transformationScore),
+    });
+  },
+
+  'value-realization.delivery-acceleration': (state, ctx) => {
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'req', title: 'Requirement Cycle', meta: '-32%' },
+        { id: 'arch', title: 'Architecture Review', meta: '-28%' },
+        { id: 'e2e', title: 'End-to-End', meta: '-35%' },
+      ],
+      supportingEvidence: ['Delivery acceleration from unified lifecycle and copilot'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(35),
+    });
+  },
+
+  'value-realization.quality': (state, ctx) => {
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'defect', title: 'Defect Reduction', meta: '42%' },
+        { id: 'leakage', title: 'Leakage Reduction', meta: '57%' },
+        { id: 'incident', title: 'Prod Incidents', meta: '45%' },
+      ],
+      supportingEvidence: ['Quality gains from production intelligence and testing copilot'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(42),
+    });
+  },
+
+  'value-realization.governance': (state, ctx) => {
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'approval', title: 'Approval Cycle', meta: '-61%' },
+        { id: 'control', title: 'Control Coverage', meta: '82%' },
+        { id: 'compliance', title: 'Compliance Readiness', meta: '78%' },
+      ],
+      supportingEvidence: ['Governance efficiency from ABAC, RBAC, and audit center'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(61),
+    });
+  },
+
+  'value-realization.audit-efficiency': (state, ctx) => {
+    const kpis = computeValueRealizationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'prep', title: 'Audit Prep', meta: '-58%' },
+        { id: 'evidence', title: 'Evidence Collection', meta: '-60%' },
+        { id: 'readiness', title: 'Audit Readiness', meta: '68%' },
+      ],
+      supportingEvidence: [`${kpis.auditEfficiency}% overall audit efficiency`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.auditEfficiency),
+    });
+  },
+
+  'value-realization.ai-adoption': (state, ctx) => {
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'copilot', title: 'Copilot Usage', meta: '94%' },
+        { id: 'ai-sdlc', title: 'AI SDLC Coverage', meta: '71%' },
+        { id: 'ai-gov', title: 'AI Gov Coverage', meta: '68%' },
+      ],
+      supportingEvidence: ['200 recommendations generated · 142 adopted'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(71),
     });
   },
 };
