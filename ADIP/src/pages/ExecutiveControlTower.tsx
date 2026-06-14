@@ -22,6 +22,8 @@ import { NOTIFICATION_EXEC_SUMMARY } from '../data/notificationCenterMock';
 import { useNotifications } from '../context/NotificationContext';
 import { usePersistence } from '../context/PersistenceContext';
 import { PERSISTENCE_EXEC_SUMMARY } from '../persistence/PersistenceEngine';
+import { useEventBus } from '../context/EventContext';
+import { ACTIVITY_EXEC_SUMMARY } from '../data/activityCenterMock';
 
 export function ExecutiveControlTower() {
   const { executive, release, governance, learning, dynamicInsights } = useFilteredSimulation();
@@ -29,6 +31,7 @@ export function ExecutiveControlTower() {
   const auditKpis = computeAuditKpis();
   const { kpis: notifKpis } = useNotifications();
   const { kpis: persistKpis } = usePersistence();
+  const { kpis: eventKpis } = useEventBus();
 
   const approvalBottleneckData = kpis.workflowBottlenecks.slice(0, 5).map((b) => ({
     name: WORKFLOW_STAGE_LABEL[b.stage],
@@ -112,6 +115,22 @@ export function ExecutiveControlTower() {
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Event Volume" value={eventKpis.eventVolume} chartId="activity.volume" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Event Sources" value={eventKpis.uniqueSources} chartId="activity.events-by-source" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Critical Events" value={eventKpis.criticalEvents} chartId="activity.critical-events" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Workflow Activity" value={eventKpis.workflowActivity} chartId="activity.workflow-events" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Approval Activity" value={eventKpis.approvalActivity} compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Audit Activity" value={eventKpis.auditActivity} chartId="activity.audit-events" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="High Risk Events" value={eventKpis.highRiskEvents} compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Notification Events" value={eventKpis.notificationEvents} chartId="activity.notification-events" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="24h Volume" value={eventKpis.eventVolume24h} compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Event Health" value={eventKpis.platformEventHealth} suffix="%" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 12, md: 8 }}>
           <GlassCard sx={{ p: 2 }}>
             <ModuleHeader title="Unified Lifecycle — Stage Bottlenecks" subtitle="Approval + workflow gates across SDLC hubs" />
@@ -151,6 +170,10 @@ export function ExecutiveControlTower() {
 
       <Box sx={{ mt: 1.5 }}>
         <AIInsightBox title="Persistence Layer — Executive Summary" insight={PERSISTENCE_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Event Bus & Activity Stream — Executive Summary" insight={ACTIVITY_EXEC_SUMMARY} />
       </Box>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>

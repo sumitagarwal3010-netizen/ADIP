@@ -37,6 +37,7 @@ import TimelineIcon from '@mui/icons-material/Timeline';
 import VpnLockIcon from '@mui/icons-material/VpnLock';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import InboxIcon from '@mui/icons-material/Inbox';
+import StreamIcon from '@mui/icons-material/Stream';
 
 export interface NavChild {
   path: string;
@@ -125,6 +126,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/governance/risk', label: 'Risk', icon: WarningAmberIcon },
       { path: '/governance/evidence', label: 'Evidence', icon: FolderSharedIcon },
       { path: '/governance/approval-workflow', label: 'Approval Workflow', icon: AssignmentTurnedInIcon },
+      { path: '/governance/activity-center', label: 'Activity Center', icon: StreamIcon },
       { path: '/administration/rbac', label: 'RBAC Administration', icon: AdminPanelSettingsIcon },
       { path: '/administration/persistence', label: 'Persistence Admin', icon: StorageIcon },
     ],

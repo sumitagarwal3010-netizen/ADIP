@@ -2,6 +2,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -25,6 +26,11 @@ import {
 } from '../data/notificationCenterEngine';
 import { ALERT_HISTORY, PLATFORM_NOTIFICATIONS } from '../data/notificationCenterMock';
 import { getPersistenceLayer } from './PersistenceContext';
+import { getEventBus } from './EventContext';
+import {
+  registerEventNotificationHandler,
+  unregisterEventNotificationHandler,
+} from '../data/eventNotificationBridge';
 
 interface NotificationContextValue {
   notifications: PlatformNotification[];
@@ -58,6 +64,35 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
 
   const actor = persona.label;
 
+  useEffect(() => {
+    registerEventNotificationHandler((notification) => {
+      setNotifications((prev) => {
+        if (prev.some((n) => n.id === notification.id)) return prev;
+        const next = [notification, ...prev];
+        setHistory((hist) => {
+          const updated = appendHistoryEntry(hist, notification.id, 'Created', 'Event Bus', 'Event-driven notification created', null, notification.escalationLevel);
+          getPersistenceLayer().notification.save({ notifications: next, history: updated });
+          return updated;
+        });
+        return next;
+      });
+    });
+    return () => unregisterEventNotificationHandler();
+  }, []);
+
+  const publishNotificationEvent = useCallback((id: string, action: string, detail: string) => {
+    getEventBus().emit({
+      type: `notification.${action.toLowerCase()}`,
+      source: 'NotificationCenter',
+      entityType: 'notification',
+      entityId: id,
+      actor,
+      message: detail,
+      category: 'notification',
+      severity: action === 'Escalated' ? 'high' : 'info',
+    });
+  }, [actor]);
+
   const save = useCallback((next: PlatformNotification[], hist: AlertHistoryEntry[]) => {
     setNotifications(next);
     setHistory(hist);
@@ -76,7 +111,8 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     const next = notifications.map((x) => (x.id === id ? updated : x));
     const hist = appendHistoryEntry(history, id, historyAction, actor, detail, n.escalationLevel, updated.escalationLevel);
     save(next, hist);
-  }, [notifications, history, actor, save]);
+    publishNotificationEvent(id, historyAction, detail);
+  }, [notifications, history, actor, save, publishNotificationEvent]);
 
   const acknowledge = useCallback((id: string) => {
     updateOne(id, acknowledgeNotification, 'Acknowledged', 'Notification acknowledged');

@@ -43,6 +43,7 @@ import { WorkflowOrchestrationDashboard } from '../pages/WorkflowOrchestrationDa
 import { AuditCenter } from '../pages/AuditCenter';
 import { NotificationCenter } from '../pages/NotificationCenter';
 import { PersistenceAdminDashboard } from '../pages/PersistenceAdminDashboard';
+import { ActivityCenter } from '../pages/ActivityCenter';
 
 export function AppRoutes() {
   return (
@@ -81,6 +82,13 @@ export function AppRoutes() {
         <Route path="governance/risk" element={<GovernanceRiskPage />} />
         <Route path="governance/evidence" element={<GovernanceEvidencePage />} />
         <Route path="governance/approval-workflow" element={<ApprovalWorkflowDashboard />} />
+        <Route path="governance/activity-center" element={<ActivityCenter initialTab="dashboard" />} />
+        <Route path="governance/activity-center/stream" element={<ActivityCenter initialTab="stream" />} />
+        <Route path="governance/activity-center/analytics" element={<ActivityCenter initialTab="analytics" />} />
+        <Route path="governance/activity-center/sources" element={<ActivityCenter initialTab="sources" />} />
+        <Route path="governance/activity-center/history" element={<ActivityCenter initialTab="history" />} />
+        <Route path="governance/activity-center/lineage" element={<ActivityCenter initialTab="lineage" />} />
+        <Route path="governance/activity-center/reports" element={<ActivityCenter initialTab="reports" />} />
         <Route path="governance/audit-center" element={<AuditCenter initialTab="dashboard" />} />
         <Route path="governance/audit-center/findings" element={<AuditCenter initialTab="findings" />} />
         <Route path="governance/audit-center/observations" element={<AuditCenter initialTab="observations" />} />
@@ -103,6 +111,7 @@ export function AppRoutes() {
         <Route path="traceability/executive" element={<TraceabilityCenter initialTab="executive" />} />
         <Route path="traceability/lifecycle" element={<TraceabilityCenter initialTab="lifecycle" />} />
         <Route path="traceability/evidence" element={<TraceabilityCenter initialTab="evidence" />} />
+        <Route path="traceability/events" element={<TraceabilityCenter initialTab="events" />} />
         <Route path="traceability/reports" element={<TraceabilityCenter initialTab="reports" />} />
         <Route path="learning" element={<LearningHub />} />
         <Route path="knowledge/best-practices" element={<KnowledgeBestPracticesPage />} />

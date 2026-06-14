@@ -42,6 +42,8 @@ import {
 import { computeNotificationKpis } from '../data/notificationCenterEngine.ts';
 import { computePersistenceKpis } from '../persistence/PersistenceEngine.ts';
 import { getPersistenceLayer } from '../context/PersistenceContext.tsx';
+import { computeActivityKpis } from '../data/activityStreamEngine.ts';
+import { getEventBus } from '../context/EventContext.tsx';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -2493,6 +2495,118 @@ const chartResolvers = {
       relatedIncidents: incidentsFromState(state).slice(0, 1),
       relatedReleases: releasesFromState(state),
       historicalTrend: sparkline7d(96),
+    });
+  },
+
+  'activity.volume': (state, ctx) => {
+    const kpis = computeActivityKpis(getEventBus().history.allEvents());
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'total', title: 'Total Events', meta: String(kpis.eventVolume) },
+        { id: '24h', title: '24h Volume', meta: String(kpis.eventVolume24h) },
+        { id: 'health', title: 'Platform Health', meta: `${kpis.platformEventHealth}%` },
+      ],
+      supportingEvidence: ['In-memory enterprise event bus', '250 seeded events with cross-linked lineage'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.eventVolume24h),
+    });
+  },
+
+  'activity.events-by-type': (state, ctx) => {
+    const events = getEventBus().history.allEvents();
+    const counts = {};
+    events.forEach((e) => { counts[e.type] = (counts[e.type] ?? 0) + 1; });
+    const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 8);
+    return buildPayload(ctx, {
+      sourceRecords: top.map(([type, count]) => ({ id: type, title: type, meta: String(count) })),
+      supportingEvidence: ['EventRegistry catalogs 33 canonical event types', 'Categories span authentication through artifacts'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(events.length),
+    });
+  },
+
+  'activity.events-by-source': (state, ctx) => {
+    const kpis = computeActivityKpis(getEventBus().history.allEvents());
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'workflow', title: 'WorkflowOrchestration', meta: String(kpis.workflowActivity) },
+        { id: 'approval', title: 'ApprovalWorkflow', meta: String(kpis.approvalActivity) },
+        { id: 'audit', title: 'AuditCenter', meta: String(kpis.auditActivity) },
+        { id: 'notification', title: 'NotificationCenter', meta: String(kpis.notificationEvents) },
+      ],
+      supportingEvidence: [`${kpis.uniqueSources} unique event sources registered`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.uniqueSources * 10),
+    });
+  },
+
+  'activity.critical-events': (state, ctx) => {
+    const events = getEventBus().history.allEvents().filter((e) => e.severity === 'critical' || e.severity === 'high');
+    return buildPayload(ctx, {
+      sourceRecords: events.slice(0, 12).map((e) => ({
+        id: e.id,
+        title: e.message,
+        meta: `${e.severity} · ${e.source}`,
+      })),
+      supportingEvidence: ['Critical and high-severity events trigger event-driven notifications'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(events.length),
+    });
+  },
+
+  'activity.workflow-events': (state, ctx) => {
+    const events = getEventBus().history.allEvents().filter((e) => e.category === 'workflow' || e.category === 'approval');
+    return buildPayload(ctx, {
+      sourceRecords: events.slice(0, 10).map((e) => ({
+        id: e.id,
+        title: e.message,
+        meta: `${e.entityId} · ${e.actor}`,
+      })),
+      supportingEvidence: ['Unified lifecycle publishes stage, approval, release, and production events'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(events.length),
+    });
+  },
+
+  'activity.audit-events': (state, ctx) => {
+    const events = getEventBus().history.allEvents().filter((e) => e.category === 'audit' || e.category === 'evidence');
+    return buildPayload(ctx, {
+      sourceRecords: events.slice(0, 10).map((e) => ({
+        id: e.id,
+        title: e.message,
+        meta: `${e.entityType}:${e.entityId}`,
+      })),
+      supportingEvidence: ['Audit findings, observations, evidence, and compliance changes published to bus'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(events.length),
+    });
+  },
+
+  'activity.notification-events': (state, ctx) => {
+    const events = getEventBus().history.allEvents().filter((e) => e.category === 'notification');
+    return buildPayload(ctx, {
+      sourceRecords: events.slice(0, 10).map((e) => ({
+        id: e.id,
+        title: e.message,
+        meta: e.actor,
+      })),
+      supportingEvidence: ['Event-driven notification bridge creates alerts from critical platform events'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(events.length),
     });
   },
 };

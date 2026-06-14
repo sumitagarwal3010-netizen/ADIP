@@ -18,12 +18,14 @@ import TimelineIcon from '@mui/icons-material/Timeline';
 import { ApprovalTraceabilityPanel } from '../components/approval/ApprovalTraceabilityPanel';
 import { WorkflowLifecyclePanel } from '../components/traceability/WorkflowLifecyclePanel';
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import StreamIcon from '@mui/icons-material/Stream';
 import { AuditEvidenceLineagePanel } from '../components/audit/AuditEvidenceLineagePanel';
+import { EventLineagePanel } from '../components/activity/EventLineagePanel';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { colors } from '../theme/colors';
 import type { TraceNode } from '../data/traceabilityModel';
 
-type TabKey = 'dashboard' | 'rtm' | 'ai' | 'impact' | 'executive' | 'lifecycle' | 'approvals' | 'evidence' | 'reports';
+type TabKey = 'dashboard' | 'rtm' | 'ai' | 'impact' | 'executive' | 'lifecycle' | 'approvals' | 'evidence' | 'events' | 'reports';
 
 const TABS: { key: TabKey; label: string; icon: typeof AccountTreeIcon }[] = [
   { key: 'dashboard', label: 'Lineage Dashboard', icon: AccountTreeIcon },
@@ -34,6 +36,7 @@ const TABS: { key: TabKey; label: string; icon: typeof AccountTreeIcon }[] = [
   { key: 'lifecycle', label: 'Workflow Lifecycle', icon: TimelineIcon },
   { key: 'approvals', label: 'Approval Lineage', icon: AssignmentTurnedInIcon },
   { key: 'evidence', label: 'Evidence Lineage', icon: FolderSharedIcon },
+  { key: 'events', label: 'Event Lineage', icon: StreamIcon },
   { key: 'reports', label: 'AI Reports', icon: DescriptionIcon },
 ];
 
@@ -104,6 +107,7 @@ export function TraceabilityCenter({ initialTab = 'dashboard' }: TraceabilityCen
       {tab === 'lifecycle' && <WorkflowLifecyclePanel />}
       {tab === 'approvals' && <ApprovalTraceabilityPanel />}
       {tab === 'evidence' && <AuditEvidenceLineagePanel />}
+      {tab === 'events' && <EventLineagePanel />}
       {tab === 'reports' && <HubArtifactGenerator hubKey="traceability" />}
     </Box>
   );

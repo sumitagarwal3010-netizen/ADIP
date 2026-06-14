@@ -8,6 +8,7 @@ import { AuthenticationProvider } from './context/AuthContext';
 import { WorkflowProvider } from './context/WorkflowContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { StorageProvider } from './context/PersistenceContext';
+import { EventProvider } from './context/EventContext';
 import { RootErrorBoundary } from './components/common/RootErrorBoundary';
 
 function App() {
@@ -17,17 +18,19 @@ function App() {
         <CssBaseline />
         <AuthenticationProvider>
           <StorageProvider>
-          <PersonaProvider>
-            <WorkflowProvider>
-            <NotificationProvider>
-            <SimulationProvider>
-              <BrowserRouter>
-                <AppRoutes />
-              </BrowserRouter>
-            </SimulationProvider>
-            </NotificationProvider>
-            </WorkflowProvider>
-          </PersonaProvider>
+            <PersonaProvider>
+              <EventProvider>
+                <WorkflowProvider>
+                  <NotificationProvider>
+                    <SimulationProvider>
+                      <BrowserRouter>
+                        <AppRoutes />
+                      </BrowserRouter>
+                    </SimulationProvider>
+                  </NotificationProvider>
+                </WorkflowProvider>
+              </EventProvider>
+            </PersonaProvider>
           </StorageProvider>
         </AuthenticationProvider>
       </ThemeProvider>

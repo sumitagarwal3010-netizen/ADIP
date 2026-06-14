@@ -23,6 +23,7 @@ import {
   readPersistedAuth,
   refreshSession,
 } from '../data/authProviders';
+import { getEventBus } from './EventContext';
 import type {
   AuthAuditEvent,
   AuthSession,
@@ -84,6 +85,15 @@ export function AuthenticationProvider({ children }: { children: ReactNode }) {
     const events = appendAuditEvent(result.auditEvent);
     setAuditEvents(events);
     scheduleExpiry(result.session, result.user);
+    getEventBus().emit({
+      type: 'auth.login.success',
+      source: 'Authentication',
+      entityType: 'user',
+      entityId: result.user.user_id,
+      actor: result.user.display_name,
+      message: `${result.user.display_name} authenticated via ${providerId}`,
+      category: 'authentication',
+    });
   }, [scheduleExpiry]);
 
   const logout = useCallback(() => {
@@ -91,6 +101,15 @@ export function AuthenticationProvider({ children }: { children: ReactNode }) {
       const audit = createLogoutAudit(currentUser, session.providerId);
       const events = appendAuditEvent(audit);
       setAuditEvents(events);
+      getEventBus().emit({
+        type: 'auth.logout',
+        source: 'Authentication',
+        entityType: 'user',
+        entityId: currentUser.user_id,
+        actor: currentUser.display_name,
+        message: `${currentUser.display_name} logged out`,
+        category: 'authentication',
+      });
     }
     clearExpiryTimer();
     clearPersistedSession();

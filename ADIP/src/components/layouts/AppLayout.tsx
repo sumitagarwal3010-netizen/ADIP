@@ -44,6 +44,7 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/governance/risk': { title: 'Governance Intelligence Center', subtitle: 'Security, compliance & audit' },
   '/governance/evidence': { title: 'Governance Intelligence Center', subtitle: 'Security, compliance & audit' },
   '/governance/approval-workflow': { title: 'Enterprise Approval Workflow', subtitle: 'Review queue, approvals & audit trail' },
+  '/governance/activity-center': { title: 'Activity Center', subtitle: 'Enterprise event bus & activity stream' },
   '/governance/audit-center': { title: 'Evidence & Audit Center', subtitle: 'Enterprise evidence, findings, compliance & audit readiness' },
   '/governance/audit-center/findings': { title: 'Evidence & Audit Center', subtitle: 'Audit findings register & severity analysis' },
   '/governance/audit-center/observations': { title: 'Evidence & Audit Center', subtitle: 'Audit observations & management responses' },

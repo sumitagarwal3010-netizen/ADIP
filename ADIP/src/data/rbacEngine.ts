@@ -10,6 +10,9 @@ import {
   type ResourceType,
   type RoleDefinition,
 } from './rbacCatalog';
+import { canAccessActivityCenter } from './activityStreamEngine';
+
+const ACTIVITY_CENTER_PREFIX = '/governance/activity-center';
 
 export interface AccessDecision {
   allowed: boolean;
@@ -67,7 +70,7 @@ export function resolveAccess(
   };
 }
 
-export function createEntitlementResolver(roleId: RbacRoleId) {
+export function createEntitlementResolver(roleId: RbacRoleId, personaId?: PersonaId) {
   const role = ROLE_MAP[roleId];
   const grants = grantSet(role);
 
@@ -81,6 +84,9 @@ export function createEntitlementResolver(roleId: RbacRoleId) {
       return resolveAccess(roleId, permission, resource);
     },
     canAccessRoute(path: string): boolean {
+      if (path === ACTIVITY_CENTER_PREFIX || path.startsWith(`${ACTIVITY_CENTER_PREFIX}/`)) {
+        return personaId ? canAccessActivityCenter(personaId) : false;
+      }
       const entry = ROUTE_RESOURCE_MAP[path];
       if (!entry) return true;
       return resolveAccess(roleId, entry.permission, entry.resource).allowed;
@@ -112,7 +118,7 @@ export type EntitlementResolver = ReturnType<typeof createEntitlementResolver>;
 
 export function entitlementResolverForPersona(personaId: PersonaId): EntitlementResolver {
   const roleId = PERSONA_RBAC_ROLE[personaId] ?? 'auditor';
-  return createEntitlementResolver(roleId);
+  return createEntitlementResolver(roleId, personaId);
 }
 
 export { ROLE_CATALOG, ROLE_MAP, PERSONA_RBAC_ROLE };

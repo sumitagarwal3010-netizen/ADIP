@@ -29,7 +29,8 @@ export type HubKey =
   | 'workflow-orchestration'
   | 'audit-center'
   | 'notification-center'
-  | 'persistence';
+  | 'persistence'
+  | 'activity-center';
 
 export interface HubArtifactConfig {
   title: string;
@@ -196,6 +197,44 @@ function capacityArtifacts(runId: string): Artifact[] {
       fileType: 'docx',
       previewContent: `INFRASTRUCTURE PLANNING REPORT\n\nRecommended actions:\n  • Add 4 mobile API nodes before festival season\n  • Expand UPI shard capacity by 20%\n  • Tier storage for 7-year AML audit retention`,
       context: { subject: 'Infrastructure Planning' },
+    }),
+  ];
+}
+
+function activityCenterArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-activity`,
+      name: 'Activity_Report.docx',
+      generatedBy: 'Activity AI',
+      fileType: 'docx',
+      previewContent: `ACTIVITY REPORT\n\nTotal events: 250\nActivity records: 100\nCritical events: 18\nWorkflow events: 42\nAudit events: 38`,
+      context: { subject: 'Platform Activity' },
+    }),
+    createArtifact({
+      id: `${runId}-volume`,
+      name: 'Event_Volume_Report.docx',
+      generatedBy: 'Activity AI',
+      fileType: 'docx',
+      previewContent: `EVENT VOLUME REPORT\n\n7-day trend: stable\nPeak source: WorkflowOrchestration\n24h volume: 34 events\nUnique sources: 10`,
+      context: { subject: 'Event Volume' },
+    }),
+    createArtifact({
+      id: `${runId}-exec`,
+      name: 'Executive_Activity_Summary.docx',
+      generatedBy: 'Activity AI',
+      fileType: 'docx',
+      previewContent: `EXECUTIVE ACTIVITY SUMMARY\n\nPlatform event health: 94%\nCritical governance events: 6 open\nApproval activity: 28 events\nAudit lineage coverage: 87%`,
+      executiveSummary: 'Enterprise event bus is operational with cross-linked workflow, notification, and audit lineage.',
+      context: { subject: 'Executive Activity' },
+    }),
+    createArtifact({
+      id: `${runId}-health`,
+      name: 'Platform_Event_Health_Report.docx',
+      generatedBy: 'Activity AI',
+      fileType: 'docx',
+      previewContent: `PLATFORM EVENT HEALTH REPORT\n\nEvent bus: In-memory (production-ready architecture)\nPublishers: 10 sources\nSubscribers: Notification bridge active\nFuture broker stubs: Ready`,
+      context: { subject: 'Event Health' },
     }),
   ];
 }
@@ -983,6 +1022,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   'audit-center': auditCenterArtifacts,
   'notification-center': notificationCenterArtifacts,
   persistence: persistenceArtifacts,
+  'activity-center': activityCenterArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -1214,6 +1254,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'blue',
     simulation: sim('Persistence AI analyzing repository layer...', ['Health Report', 'Activity Report', 'Storage Utilization', 'Platform Readiness']),
     build: persistenceArtifacts,
+  },
+  'activity-center': {
+    title: 'AI Activity Center Reports',
+    subtitle: 'Activity, event volume, executive summary, and platform event health',
+    generateLabel: 'Generate Activity Reports',
+    generatedBy: 'Activity AI',
+    glow: 'purple',
+    simulation: sim('Activity AI correlating platform events...', ['Activity Report', 'Event Volume', 'Executive Summary', 'Event Health']),
+    build: activityCenterArtifacts,
   },
 };
 

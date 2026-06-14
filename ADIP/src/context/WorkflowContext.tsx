@@ -20,6 +20,8 @@ import {
 } from '../data/unifiedLifecycleEngine';
 import { WORKFLOW_ORCHESTRATION_MOCK } from '../data/workflowOrchestrationMock';
 import { getPersistenceLayer } from './PersistenceContext';
+import { getEventBus } from './EventContext';
+import { lifecycleActionToEventType } from '../data/activityStreamEngine';
 import type {
   UnifiedLifecycleAction,
   UnifiedLifecycleKpis,
@@ -94,6 +96,17 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
     if (!wf || !canPerformLifecycleAction(action)) return;
     const result = applyUnifiedLifecycleAction(wf, action, actor, comment, reviewer);
     updateWorkflow(result.workflow, result.history);
+    getEventBus().emit({
+      type: lifecycleActionToEventType(action),
+      source: 'WorkflowOrchestration',
+      entityType: 'workflow',
+      entityId: workflowId,
+      actor,
+      message: `${action} on ${wf.title}`,
+      payload: { workflowId, action, comment, stage: result.workflow.currentStage },
+      correlationId: workflowId,
+      severity: action === 'Reject' || action === 'Escalate' ? 'high' : action === 'Release' ? 'medium' : 'info',
+    });
   }, [workflows, actor, updateWorkflow, canPerformLifecycleAction]);
 
   const handleSubmitForReview = useCallback((workflowId: string) => {
