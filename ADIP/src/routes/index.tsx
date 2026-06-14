@@ -28,6 +28,7 @@ import { ComplianceReports } from '../pages/ComplianceReports';
 import { AuditReports } from '../pages/AuditReports';
 import { TrendAnalytics } from '../pages/TrendAnalytics';
 import { Administration } from '../pages/Administration';
+import { RBACAdminDashboard } from '../pages/RBACAdminDashboard';
 import { OperationsIncidentsPage } from '../pages/OperationsIncidentsPage';
 import { OperationsAvailabilityPage } from '../pages/OperationsAvailabilityPage';
 import { KnowledgeBestPracticesPage } from '../pages/KnowledgeBestPracticesPage';
@@ -84,6 +85,7 @@ export function AppRoutes() {
         <Route path="reports/audit" element={<AuditReports />} />
         <Route path="reports/trends" element={<TrendAnalytics />} />
         <Route path="administration" element={<Administration />} />
+        <Route path="administration/rbac" element={<RBACAdminDashboard />} />
       </Route>
     </Routes>
   );

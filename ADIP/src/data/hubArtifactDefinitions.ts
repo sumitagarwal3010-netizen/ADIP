@@ -23,7 +23,8 @@ export type HubKey =
   | 'lessons-learned'
   | 'executive'
   | 'traceability'
-  | 'approval-workflow';
+  | 'approval-workflow'
+  | 'rbac';
 
 export interface HubArtifactConfig {
   title: string;
@@ -686,6 +687,46 @@ function approvalWorkflowArtifacts(runId: string): Artifact[] {
   ];
 }
 
+function rbacArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-access-review`,
+      name: 'Access_Review_Report.docx',
+      generatedBy: 'RBAC AI',
+      fileType: 'docx',
+      approvalStatus: 'Approved',
+      previewContent: `ACCESS REVIEW REPORT\n\nRoles reviewed: 12 · Personas mapped: 13\nGrants in scope: 142 · Exceptions: 2\nRecommendation: Revoke approve on approvals for platform-administrator`,
+      executiveSummary: 'Quarterly access review confirms 98% alignment with least-privilege policy with two SoD exceptions flagged for remediation.',
+      context: { subject: 'Access Review' },
+    }),
+    createArtifact({
+      id: `${runId}-role-assignment`,
+      name: 'Role_Assignment_Report.docx',
+      generatedBy: 'RBAC AI',
+      fileType: 'docx',
+      previewContent: `ROLE ASSIGNMENT REPORT\n\nCIO → Executive dashboards\nAuditor → Read-only traceability + evidence\nSecurity Officer → AI controls + incidents\nPlatform Administrator → Full administer`,
+      context: { subject: 'Role Assignment' },
+    }),
+    createArtifact({
+      id: `${runId}-sod`,
+      name: 'Segregation_Of_Duties_Report.docx',
+      generatedBy: 'RBAC AI',
+      fileType: 'docx',
+      riskRating: 'Medium',
+      previewContent: `SEGREGATION OF DUTIES REPORT\n\nViolations: 2\n1. Platform Admin: administer + approve on approvals\n2. Development Lead: create + approve on same artifact type\nMitigation: enforce maker-checker workflow`,
+      context: { subject: 'Segregation of Duties' },
+    }),
+    createArtifact({
+      id: `${runId}-matrix`,
+      name: 'Entitlement_Matrix.docx',
+      generatedBy: 'RBAC AI',
+      fileType: 'docx',
+      previewContent: `ENTITLEMENT MATRIX\n\n14 resource types × 9 permissions × 12 roles\nHighest privilege: Platform Administrator (126 grants)\nLowest privilege: Auditor (read-only, 42 grants)`,
+      context: { subject: 'Entitlement Matrix' },
+    }),
+  ];
+}
+
 function traceabilityArtifacts(runId: string): Artifact[] {
   return [
     createArtifact({
@@ -767,6 +808,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   executive: executiveArtifacts,
   traceability: traceabilityArtifacts,
   'approval-workflow': approvalWorkflowArtifacts,
+  rbac: rbacArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -944,6 +986,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'blue',
     simulation: sim('Approval Workflow AI analyzing review queue...', ['Decision Report', 'Review History', 'Escalation Summary', 'Audit Package']),
     build: approvalWorkflowArtifacts,
+  },
+  rbac: {
+    title: 'AI RBAC Reports',
+    subtitle: 'Access review, role assignments, and entitlement matrix',
+    generateLabel: 'Generate RBAC Reports',
+    generatedBy: 'RBAC AI',
+    glow: 'purple',
+    simulation: sim('RBAC AI analyzing entitlement catalog...', ['Access Review', 'Role Assignment', 'SoD Analysis', 'Entitlement Matrix']),
+    build: rbacArtifacts,
   },
 };
 

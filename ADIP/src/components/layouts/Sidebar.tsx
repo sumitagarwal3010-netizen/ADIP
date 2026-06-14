@@ -34,7 +34,7 @@ function buildInitialExpanded(): Record<string, boolean> {
 export function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { persona } = usePersona();
+  const { persona, canAccessRoute } = usePersona();
   const [expanded, setExpanded] = useState<Record<string, boolean>>(buildInitialExpanded);
   const [showAll, setShowAll] = useState(false);
 
@@ -48,10 +48,10 @@ export function Sidebar() {
   // Role-based navigation: show only hubs relevant to the active persona.
   // A "show all" toggle keeps every hub reachable (no orphaned modules).
   const relevant = useMemo(() => new Set(persona.navHubs), [persona.navHubs]);
-  const visibleHubs = useMemo(
-    () => (showAll ? NAV_HUBS : NAV_HUBS.filter((h) => relevant.has(h.id))),
-    [relevant, showAll],
-  );
+  const visibleHubs = useMemo(() => {
+    const hubs = showAll ? NAV_HUBS : NAV_HUBS.filter((h) => relevant.has(h.id));
+    return hubs.filter((h) => h.children.some((child) => canAccessRoute(child.path)));
+  }, [relevant, showAll, canAccessRoute]);
 
   const personaLandingActive = location.pathname === '/persona';
 
@@ -60,9 +60,12 @@ export function Sidebar() {
   };
 
   const renderHub = (hub: NavHub) => {
+    const authorizedChildren = hub.children.filter((child) => canAccessRoute(child.path));
+    if (authorizedChildren.length === 0) return null;
+
     const isOpen = expanded[hub.id] ?? false;
     const HubIcon = hub.icon;
-    const hubActive = hub.children.some((child) => isChildActive(location.pathname, child.path));
+    const hubActive = authorizedChildren.some((child) => isChildActive(location.pathname, child.path));
 
     return (
       <Box key={hub.id}>
@@ -98,7 +101,7 @@ export function Sidebar() {
         </ListItemButton>
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <List disablePadding sx={{ pl: 1 }}>
-            {hub.children.map((child) => {
+            {authorizedChildren.map((child) => {
               const active = isChildActive(location.pathname, child.path);
               const ChildIcon = child.icon;
               return (

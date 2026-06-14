@@ -17,6 +17,15 @@ import {
   IN_PROGRESS_STATUSES,
   isOverdue,
 } from '../data/approvalWorkflowEngine.ts';
+import {
+  ROLE_CATALOG,
+  ROLE_MAP,
+  PERMISSION_CATALOG,
+  RESOURCE_CATALOG,
+  PERSONA_ENTITLEMENT_MATRIX,
+  RBAC_KPI_MOCK,
+  PERSONA_RBAC_ROLE,
+} from '../data/rbacCatalog.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -1467,6 +1476,79 @@ const resolvers = {
       historicalTrend: APPROVAL_TREND.map((p) => ({ month: p.month, value: p.approved })),
     });
   },
+
+  Roles: (state, ctx) =>
+    buildPayload(ctx, {
+      sourceRecords: ROLE_CATALOG.map((r) => ({
+        id: r.id,
+        title: r.label,
+        detail: r.description.slice(0, 80),
+        meta: `${r.grants.length} resource grants`,
+      })),
+      supportingEvidence: ROLE_CATALOG.map((r) => `${r.label}: ${r.actions.join(', ')}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(RBAC_KPI_MOCK.totalRoles * 8),
+    }),
+
+  Permissions: (state, ctx) =>
+    buildPayload(ctx, {
+      sourceRecords: PERMISSION_CATALOG.map((p) => ({
+        id: p.id,
+        title: p.label,
+        detail: p.description,
+        meta: 'Permission verb',
+      })),
+      supportingEvidence: PERMISSION_CATALOG.map((p) => p.description),
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 1),
+      historicalTrend: sparkline7d(RBAC_KPI_MOCK.totalPermissions * 10),
+    }),
+
+  'Resource Types': (state, ctx) =>
+    buildPayload(ctx, {
+      sourceRecords: RESOURCE_CATALOG.map((r) => ({
+        id: r.id,
+        title: r.label,
+        detail: r.domain,
+        meta: r.description.slice(0, 60),
+      })),
+      supportingEvidence: RESOURCE_CATALOG.map((r) => `${r.label} (${r.domain})`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(RBAC_KPI_MOCK.totalResources * 9),
+    }),
+
+  'Persona Mappings': (state, ctx) =>
+    buildPayload(ctx, {
+      sourceRecords: PERSONA_ENTITLEMENT_MATRIX.map((m) => ({
+        id: m.personaId,
+        title: m.roleLabel,
+        detail: m.dashboards.join(', '),
+        meta: m.reports.join(', '),
+      })),
+      supportingEvidence: Object.entries(PERSONA_RBAC_ROLE).map(([p, r]) => `${p} → ${ROLE_MAP[r].label}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 1),
+      historicalTrend: sparkline7d(RBAC_KPI_MOCK.personaMappings * 7),
+    }),
+
+  'SoD Violations': (state, ctx) =>
+    buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'SOD-001', title: 'Platform Admin: administer + approve', detail: 'approvals', meta: 'High' },
+        { id: 'SOD-002', title: 'Development Lead: create + approve', detail: 'code', meta: 'Medium' },
+      ],
+      supportingEvidence: ['Maker-checker policy requires separation of create and approve on same resource'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 1),
+      historicalTrend: sparkline7d(RBAC_KPI_MOCK.sodViolations * 15),
+    }),
 };
 
 /** @type {Record<string, (state: SimulationState, ctx: KpiDrilldownContext) => KpiDrilldownPayload>} */
@@ -1961,6 +2043,46 @@ const chartResolvers = {
       relatedIncidents: incidentsFromState(state).slice(0, 2),
       relatedReleases: releasesFromState(state).slice(0, 2),
       historicalTrend: APPROVAL_HISTORY.map((h, i) => ({ step: i, value: h.approvalId })),
+    });
+  },
+
+  'rbac.persona-mapping': (state, ctx) => {
+    const mapping = PERSONA_ENTITLEMENT_MATRIX.find((m) => m.personaId === ctx.segment);
+    const role = mapping ? ROLE_MAP[mapping.roleId] : null;
+    return buildPayload(ctx, {
+      sourceRecords: mapping
+        ? [{ id: mapping.personaId, title: mapping.roleLabel, detail: mapping.dashboards.join(', '), meta: mapping.actions.join(', ') }]
+        : PERSONA_ENTITLEMENT_MATRIX.map((m) => ({ id: m.personaId, title: m.roleLabel, meta: m.roleId })),
+      supportingEvidence: role
+        ? role.grants.map((g) => `${g.resource}: ${g.permissions.join(', ')}`)
+        : PERSONA_ENTITLEMENT_MATRIX.map((m) => m.reports.join(', ')),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(RBAC_KPI_MOCK.effectiveGrants),
+    });
+  },
+
+  'rbac.resource-access': (state, ctx) => {
+    const [roleId, resourceId] = (ctx.segment ?? '').split('|');
+    const role = ROLE_MAP[roleId];
+    const resource = RESOURCE_CATALOG.find((r) => r.id === resourceId);
+    const grant = role?.grants.find((g) => g.resource === resourceId);
+    return buildPayload(ctx, {
+      sourceRecords: grant
+        ? [{ id: `${roleId}-${resourceId}`, title: `${role?.label} → ${resource?.label}`, meta: grant.permissions.join(', ') }]
+        : ROLE_CATALOG.flatMap((r) => r.grants.map((g) => ({
+          id: `${r.id}-${g.resource}`,
+          title: `${r.label} → ${g.resource}`,
+          meta: g.permissions.join(', '),
+        }))).slice(0, 12),
+      supportingEvidence: grant
+        ? grant.permissions.map((p) => `${resource?.label}: ${p}`)
+        : PERMISSION_CATALOG.map((p) => p.label),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d((grant?.permissions.length ?? 3) * 12),
     });
   },
 };

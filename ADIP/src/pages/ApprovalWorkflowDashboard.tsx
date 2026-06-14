@@ -34,6 +34,7 @@ import { ApprovalActionDialog } from '../components/approval/ApprovalActionDialo
 import { ApprovalDetailsPanel } from '../components/approval/ApprovalDetailsPanel';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { usePersona } from '../context/PersonaContext';
+import { useEntitlement } from '../hooks/useEntitlement';
 import { useSimulation } from '../context/SimulationContext';
 import { colors } from '../theme/colors';
 import type { TraceNode } from '../data/traceabilityModel';
@@ -90,6 +91,7 @@ function priorityColor(priority: string): string {
 export function ApprovalWorkflowDashboard() {
   const { persona } = usePersona();
   const { openKpiDrilldown } = useSimulation();
+  const entitlement = useEntitlement();
   const navigate = useNavigate();
   const [requests, setRequests] = useState<ApprovalRequest[]>(() => [...APPROVAL_REQUESTS]);
   const [history, setHistory] = useState<ApprovalHistoryEntry[]>(() => [...APPROVAL_HISTORY]);
@@ -150,7 +152,7 @@ export function ApprovalWorkflowDashboard() {
   };
 
   const renderActions = (request: ApprovalRequest, compact = false) => {
-    const actions = actionsForStatus(request.status);
+    const actions = actionsForStatus(request.status).filter((a) => entitlement.canPerformApprovalAction(a));
     if (actions.length === 0) return null;
     return (
       <Stack direction="row" spacing={0.5} onClick={(e) => e.stopPropagation()}>

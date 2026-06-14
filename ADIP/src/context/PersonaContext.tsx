@@ -12,6 +12,8 @@ import {
   type PersonaConfig,
   type PersonaId,
 } from '../config/personaConfig';
+import { entitlementResolverForPersona } from '../data/rbacEngine';
+import type { Permission, ResourceType } from '../data/rbacCatalog';
 
 const STORAGE_KEY = 'adip.activePersona';
 
@@ -30,6 +32,11 @@ interface PersonaContextValue {
   personaId: PersonaId;
   persona: PersonaConfig;
   setPersona: (id: PersonaId) => void;
+  accessibleHubs: string[];
+  accessibleReports: string[];
+  accessibleActions: string[];
+  canAccessRoute: (path: string) => boolean;
+  can: (permission: Permission, resource: ResourceType) => boolean;
 }
 
 const PersonaContext = createContext<PersonaContextValue | null>(null);
@@ -46,10 +53,20 @@ export function PersonaProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const value = useMemo<PersonaContextValue>(
-    () => ({ personaId, persona: PERSONA_MAP[personaId], setPersona }),
-    [personaId, setPersona],
-  );
+  const value = useMemo<PersonaContextValue>(() => {
+    const resolver = entitlementResolverForPersona(personaId);
+    const effective = resolver.getEffectiveAccess();
+    return {
+      personaId,
+      persona: PERSONA_MAP[personaId],
+      setPersona,
+      accessibleHubs: effective.accessibleHubs,
+      accessibleReports: effective.accessibleReports,
+      accessibleActions: effective.accessibleActions,
+      canAccessRoute: resolver.canAccessRoute,
+      can: resolver.can,
+    };
+  }, [personaId, setPersona]);
 
   return <PersonaContext.Provider value={value}>{children}</PersonaContext.Provider>;
 }

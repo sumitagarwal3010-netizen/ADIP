@@ -14,6 +14,7 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import SpeedIcon from '@mui/icons-material/Speed';
 import StorageIcon from '@mui/icons-material/Storage';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PolicyIcon from '@mui/icons-material/Policy';
@@ -108,6 +109,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/governance/risk', label: 'Risk', icon: WarningAmberIcon },
       { path: '/governance/evidence', label: 'Evidence', icon: FolderSharedIcon },
       { path: '/governance/approval-workflow', label: 'Approval Workflow', icon: AssignmentTurnedInIcon },
+      { path: '/administration/rbac', label: 'RBAC Administration', icon: AdminPanelSettingsIcon },
     ],
   },
   {
