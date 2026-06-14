@@ -19,13 +19,14 @@ import { ModelInventory } from '../pages/ModelInventory';
 import { PromptGovernance } from '../pages/PromptGovernance';
 import { AIRiskDashboard } from '../pages/AIRiskDashboard';
 import { AIProgramStatusPage } from '../pages/AIProgramStatusPage';
+import { AIControlsDashboard } from '../pages/AIControlsDashboard';
+import { AIIncidentsDashboard } from '../pages/AIIncidentsDashboard';
 import { LearningHub } from '../pages/LearningHub';
 import { Reports } from '../pages/Reports';
 import { ComplianceReports } from '../pages/ComplianceReports';
 import { AuditReports } from '../pages/AuditReports';
 import { TrendAnalytics } from '../pages/TrendAnalytics';
 import { Administration } from '../pages/Administration';
-import { ComingSoon } from '../pages/ComingSoon';
 import { OperationsIncidentsPage } from '../pages/OperationsIncidentsPage';
 import { OperationsAvailabilityPage } from '../pages/OperationsAvailabilityPage';
 import { KnowledgeBestPracticesPage } from '../pages/KnowledgeBestPracticesPage';
@@ -64,8 +65,8 @@ export function AppRoutes() {
         <Route path="ai-governance/model-inventory" element={<ModelInventory />} />
         <Route path="ai-governance/prompt-governance" element={<PromptGovernance />} />
         <Route path="ai-governance/ai-risk" element={<AIRiskDashboard />} />
-        <Route path="ai-governance/ai-controls" element={<AIProgramStatusPage />} />
-        <Route path="ai-governance/ai-incidents" element={<ComingSoon title="AI Incidents" hub="AI Governance Hub" />} />
+        <Route path="ai-governance/ai-controls" element={<AIControlsDashboard />} />
+        <Route path="ai-governance/ai-incidents" element={<AIIncidentsDashboard />} />
         <Route path="traceability" element={<TraceabilityCenter initialTab="dashboard" />} />
         <Route path="traceability/matrix" element={<TraceabilityCenter initialTab="rtm" />} />
         <Route path="traceability/ai" element={<TraceabilityCenter initialTab="ai" />} />

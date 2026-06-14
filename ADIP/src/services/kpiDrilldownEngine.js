@@ -1,4 +1,10 @@
 import { sparkline7d } from './mockDataEngine.js';
+import {
+  AI_CONTROLS,
+  AI_INCIDENTS,
+  AI_CONTROLS_TREND,
+  AI_INCIDENTS_TREND,
+} from '../data/aiGovernanceModulesMock.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -101,6 +107,81 @@ function buildPayload(ctx, overrides = {}) {
     historicalTrend: ctx.data?.length ? ctx.data : sparkline7d(90),
     ...overrides,
   };
+}
+
+/**
+ * @param {import('../data/aiGovernanceModulesMock').AIControlEntry} control
+ */
+function controlToRecord(control) {
+  return {
+    id: control.id,
+    title: control.name,
+    detail: control.controlDomain,
+    meta: `${control.controlType} · ${control.coverage}% · ${control.testResult}`,
+  };
+}
+
+/**
+ * @param {import('../data/aiGovernanceModulesMock').AIIncidentEntry} incident
+ */
+function incidentToRecord(incident) {
+  return {
+    id: incident.id,
+    title: incident.incidentType,
+    detail: incident.application,
+    meta: `${incident.severity} · ${incident.status} · ${incident.category}`,
+  };
+}
+
+/**
+ * @param {import('../data/aiGovernanceModulesMock').AIControlEntry} control
+ * @param {SimulationState} state
+ */
+function buildControlDrilldown(state, control, ctx) {
+  return buildPayload(ctx, {
+    sourceRecords: [controlToRecord(control)],
+    supportingEvidence: [
+      `Owner: ${control.owner}`,
+      `Linked use case: ${control.linkedUseCase}`,
+      `Last tested: ${control.lastTested}`,
+      `Status: ${control.status}`,
+      control.requiresHumanReview ? 'Requires human review' : 'Automated control',
+    ],
+    relatedApplications: appsFromArchitecture(state).slice(0, 4),
+    relatedIncidents: AI_INCIDENTS.filter((i) => i.application.includes(control.linkedUseCase.split(' ')[0])).map((i) => ({
+      id: i.id,
+      title: i.incidentType,
+      severity: i.severity,
+      domain: i.application,
+    })).slice(0, 3),
+    relatedReleases: releasesFromState(state).slice(0, 2),
+    historicalTrend: AI_CONTROLS_TREND.map((p) => ({ month: p.month, value: p.coverage })),
+  });
+}
+
+/**
+ * @param {import('../data/aiGovernanceModulesMock').AIIncidentEntry} incident
+ * @param {SimulationState} state
+ */
+function buildIncidentDrilldown(state, incident, ctx) {
+  return buildPayload(ctx, {
+    sourceRecords: [incidentToRecord(incident)],
+    supportingEvidence: [
+      `Root cause: ${incident.rootCause}`,
+      `Impact: ${incident.impact}`,
+      `Corrective: ${incident.correctiveAction}`,
+      `Preventive: ${incident.preventiveAction}`,
+    ],
+    relatedApplications: appsFromArchitecture(state).slice(0, 3),
+    relatedIncidents: AI_INCIDENTS.filter((i) => i.category === incident.category).map((i) => ({
+      id: i.id,
+      title: i.incidentType,
+      severity: i.severity,
+      domain: i.application,
+    })).slice(0, 4),
+    relatedReleases: releasesFromState(state).slice(0, 2),
+    historicalTrend: AI_INCIDENTS_TREND.map((p) => ({ day: p.day, value: p.open + p.closed })),
+  });
 }
 
 /** @type {Record<string, (state: SimulationState, ctx: KpiDrilldownContext) => KpiDrilldownPayload>} */
@@ -1047,6 +1128,244 @@ const resolvers = {
       historicalTrend: sparkline7d(pending.length * 12),
     });
   },
+
+  'Control Coverage': (state, ctx) =>
+    buildPayload(ctx, {
+      sourceRecords: AI_CONTROLS.map(controlToRecord),
+      supportingEvidence: AI_CONTROLS.map((c) => `${c.name}: ${c.coverage}% coverage · ${c.testResult}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: AI_INCIDENTS.slice(0, 3).map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_CONTROLS_TREND.map((p) => ({ month: p.month, value: p.coverage })),
+    }),
+
+  'Effective Controls': (state, ctx) => {
+    const effective = AI_CONTROLS.filter((c) => c.testResult === 'Effective');
+    return buildPayload(ctx, {
+      sourceRecords: effective.map(controlToRecord),
+      supportingEvidence: effective.map((c) => `${c.id} · ${c.controlDomain} · last tested ${c.lastTested}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_CONTROLS_TREND.map((p) => ({ month: p.month, value: p.effective })),
+    });
+  },
+
+  'Failed Controls': (state, ctx) => {
+    const failed = AI_CONTROLS.filter((c) => c.testResult === 'Failed');
+    return buildPayload(ctx, {
+      sourceRecords: failed.map(controlToRecord),
+      supportingEvidence: failed.map((c) => `${c.name}: gap in ${c.linkedUseCase}`),
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.status === 'critical'),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.category === 'model').map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).filter((r) => r.risk === 'high'),
+      historicalTrend: sparkline7d(failed.length * 15),
+    });
+  },
+
+  'Control Exceptions': (state, ctx) => {
+    const exceptions = AI_CONTROLS.filter((c) => c.testResult === 'Exception');
+    return buildPayload(ctx, {
+      sourceRecords: exceptions.map(controlToRecord),
+      supportingEvidence: exceptions.map((c) => `${c.name}: ${c.status} · ${c.coverage}% coverage`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.severity === 'high' || i.severity === 'critical').map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_CONTROLS_TREND.map((p) => ({ month: p.month, value: p.exceptions })),
+    });
+  },
+
+  'Human Review Controls': (state, ctx) => {
+    const humanReview = AI_CONTROLS.filter((c) => c.controlDomain === 'Human Review');
+    return buildPayload(ctx, {
+      sourceRecords: humanReview.map(controlToRecord),
+      supportingEvidence: humanReview.map((c) => `${c.name} · ${c.linkedUseCase}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.category === 'prompt').map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(humanReview.length * 11),
+    });
+  },
+
+  'Model Monitoring Controls': (state, ctx) => {
+    const monitoring = AI_CONTROLS.filter((c) => c.controlDomain === 'Model Monitoring');
+    return buildPayload(ctx, {
+      sourceRecords: monitoring.map(controlToRecord),
+      supportingEvidence: monitoring.map((c) => `${c.name}: ${c.testResult} · ${c.lastTested}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.category === 'model').map(incidentToRecord).slice(0, 4),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(monitoring.length * 13),
+    });
+  },
+
+  'Prompt Safety Controls': (state, ctx) => {
+    const promptSafety = AI_CONTROLS.filter((c) => c.controlDomain === 'Prompt Safety');
+    return buildPayload(ctx, {
+      sourceRecords: promptSafety.map(controlToRecord),
+      supportingEvidence: promptSafety.map((c) => `${c.name}: ${c.testResult} · ${c.status}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.category === 'prompt').map(incidentToRecord),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(promptSafety.length * 9),
+    });
+  },
+
+  'Regulatory Controls': (state, ctx) => {
+    const regulatory = AI_CONTROLS.filter((c) => c.controlDomain === 'Regulatory');
+    return buildPayload(ctx, {
+      sourceRecords: regulatory.map(controlToRecord),
+      supportingEvidence: regulatory.map((c) => `${c.name}: ${c.coverage}% · ${c.status}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.regulatory).map(incidentToRecord),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(regulatory.length * 12),
+    });
+  },
+
+  'Open Incidents': (state, ctx) => {
+    const open = AI_INCIDENTS.filter((i) => i.status === 'Open');
+    return buildPayload(ctx, {
+      sourceRecords: open.map(incidentToRecord),
+      supportingEvidence: open.map((i) => `Root cause: ${i.rootCause}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: open.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_INCIDENTS_TREND.map((p) => ({ day: p.day, value: p.open })),
+    });
+  },
+
+  'Closed Incidents': (state, ctx) => {
+    const closed = AI_INCIDENTS.filter((i) => i.status === 'Resolved');
+    return buildPayload(ctx, {
+      sourceRecords: closed.map(incidentToRecord),
+      supportingEvidence: closed.map((i) => `Resolved in ${i.mttrHours}h · ${i.correctiveAction}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: closed.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_INCIDENTS_TREND.map((p) => ({ day: p.day, value: p.closed })),
+    });
+  },
+
+  'Critical Incidents': (state, ctx) => {
+    const critical = AI_INCIDENTS.filter((i) => i.severity === 'critical');
+    return buildPayload(ctx, {
+      sourceRecords: critical.map(incidentToRecord),
+      supportingEvidence: critical.map((i) => `${i.incidentType}: ${i.impact}`),
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.status === 'critical'),
+      relatedIncidents: critical.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).filter((r) => r.risk === 'high'),
+      historicalTrend: sparkline7d(critical.length * 14),
+    });
+  },
+
+  'Regulatory Incidents': (state, ctx) => {
+    const regulatory = AI_INCIDENTS.filter((i) => i.regulatory);
+    return buildPayload(ctx, {
+      sourceRecords: regulatory.map(incidentToRecord),
+      supportingEvidence: regulatory.map((i) => `${i.incidentType}: ${i.preventiveAction}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: regulatory.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(regulatory.length * 16),
+    });
+  },
+
+  'Model Failures': (state, ctx) => {
+    const modelFailures = AI_INCIDENTS.filter((i) => i.category === 'model');
+    return buildPayload(ctx, {
+      sourceRecords: modelFailures.map(incidentToRecord),
+      supportingEvidence: modelFailures.map((i) => `Root cause: ${i.rootCause}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: modelFailures.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(modelFailures.length * 10),
+    });
+  },
+
+  'Prompt Failures': (state, ctx) => {
+    const promptFailures = AI_INCIDENTS.filter((i) => i.category === 'prompt');
+    return buildPayload(ctx, {
+      sourceRecords: promptFailures.map(incidentToRecord),
+      supportingEvidence: promptFailures.map((i) => `Corrective: ${i.correctiveAction}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: promptFailures.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(promptFailures.length * 11),
+    });
+  },
+
+  'Mean Resolution Time': (state, ctx) => {
+    const resolved = AI_INCIDENTS.filter((i) => i.status === 'Resolved');
+    return buildPayload(ctx, {
+      sourceRecords: resolved.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        detail: i.application,
+        meta: `${i.mttrHours}h MTTR · ${i.severity}`,
+      })),
+      supportingEvidence: resolved.map((i) => `${i.incidentType}: resolved in ${i.mttrHours}h`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: resolved.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: resolved.map((i) => ({ id: i.id, value: i.mttrHours })),
+    });
+  },
 };
 
 /** @type {Record<string, (state: SimulationState, ctx: KpiDrilldownContext) => KpiDrilldownPayload>} */
@@ -1393,6 +1712,70 @@ const chartResolvers = {
       });
     }
     return buildUseCaseDrilldown(state, uc, ctx);
+  },
+
+  'ai-governance.ai-controls': (state, ctx) => {
+    const control = AI_CONTROLS.find((c) => c.id === ctx.segment);
+    if (control) return buildControlDrilldown(state, control, ctx);
+    return buildPayload(ctx, {
+      sourceRecords: AI_CONTROLS.map(controlToRecord),
+      supportingEvidence: AI_CONTROLS.map((c) => `${c.controlDomain}: ${c.testResult}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: AI_INCIDENTS.slice(0, 3).map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_CONTROLS_TREND.map((p) => ({ month: p.month, value: p.coverage })),
+    });
+  },
+
+  'ai-governance.ai-incidents': (state, ctx) => {
+    const incident = AI_INCIDENTS.find((i) => i.id === ctx.segment);
+    if (incident) return buildIncidentDrilldown(state, incident, ctx);
+    return buildPayload(ctx, {
+      sourceRecords: AI_INCIDENTS.map(incidentToRecord),
+      supportingEvidence: AI_INCIDENTS.map((i) => i.rootCause),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: AI_INCIDENTS.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_INCIDENTS_TREND.map((p) => ({ day: p.day, value: p.open + p.closed })),
+    });
+  },
+
+  'ai-governance.incidents-trend': (state, ctx) => {
+    const segment = ctx.segment ?? '';
+    const [day, seriesKey] = segment.includes('|') ? segment.split('|') : [segment, null];
+    let incidents = AI_INCIDENTS;
+    if (seriesKey === 'open') incidents = AI_INCIDENTS.filter((i) => i.status === 'Open');
+    else if (seriesKey === 'closed') incidents = AI_INCIDENTS.filter((i) => i.status === 'Resolved');
+    const trendPoint = AI_INCIDENTS_TREND.find((p) => p.day === day);
+    return buildPayload(ctx, {
+      sourceRecords: incidents.map(incidentToRecord),
+      supportingEvidence: [
+        trendPoint ? `${day}: ${trendPoint.open} open, ${trendPoint.closed} closed` : `Trend segment: ${segment}`,
+        ...incidents.slice(0, 3).map((i) => i.rootCause),
+      ],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidents.map((i) => ({
+        id: i.id,
+        title: i.incidentType,
+        severity: i.severity,
+        domain: i.application,
+      })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_INCIDENTS_TREND.map((p) => ({
+        day: p.day,
+        value: seriesKey === 'closed' ? p.closed : seriesKey === 'open' ? p.open : p.open + p.closed,
+      })),
+    });
   },
 };
 
