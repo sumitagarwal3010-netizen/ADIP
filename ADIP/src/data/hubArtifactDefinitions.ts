@@ -30,7 +30,8 @@ export type HubKey =
   | 'audit-center'
   | 'notification-center'
   | 'persistence'
-  | 'activity-center';
+  | 'activity-center'
+  | 'abac';
 
 export interface HubArtifactConfig {
   title: string;
@@ -197,6 +198,44 @@ function capacityArtifacts(runId: string): Artifact[] {
       fileType: 'docx',
       previewContent: `INFRASTRUCTURE PLANNING REPORT\n\nRecommended actions:\n  • Add 4 mobile API nodes before festival season\n  • Expand UPI shard capacity by 20%\n  • Tier storage for 7-year AML audit retention`,
       context: { subject: 'Infrastructure Planning' },
+    }),
+  ];
+}
+
+function abacArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-assessment`,
+      name: 'ABAC_Assessment_Report.docx',
+      generatedBy: 'Security AI',
+      fileType: 'docx',
+      previewContent: `ABAC ASSESSMENT REPORT\n\nPolicies: 8 enabled\nCoverage: 100%\nRow filters: Active on 6 resource types\nViolations: 2 mock denials`,
+      context: { subject: 'ABAC Assessment' },
+    }),
+    createArtifact({
+      id: `${runId}-scope`,
+      name: 'Access_Scope_Report.docx',
+      generatedBy: 'Security AI',
+      fileType: 'docx',
+      previewContent: `ACCESS SCOPE REPORT\n\nGlobal: CIO, Auditor\nApplication: Application Owner\nPortfolio: Vertical Head\nDomain: Compliance Officer\nSecurity: CISO`,
+      context: { subject: 'Access Scope' },
+    }),
+    createArtifact({
+      id: `${runId}-ownership`,
+      name: 'Domain_Ownership_Report.docx',
+      generatedBy: 'Security AI',
+      fileType: 'docx',
+      previewContent: `DOMAIN OWNERSHIP REPORT\n\nPayments: Application Owner\nMobile/Net Banking: Vertical Head\nEnterprise: Compliance\nAll security domains: CISO`,
+      context: { subject: 'Domain Ownership' },
+    }),
+    createArtifact({
+      id: `${runId}-governance`,
+      name: 'Security_Governance_Report.docx',
+      generatedBy: 'Security AI',
+      fileType: 'docx',
+      previewContent: `SECURITY GOVERNANCE REPORT\n\nRBAC + ABAC hybrid model\nAttribute resolver: Active\nPolicy engine: 8 policies\nProduction readiness: 82%`,
+      executiveSummary: 'Enterprise ABAC extends RBAC with domain-scoped row filters and attribute-based policy evaluation.',
+      context: { subject: 'Security Governance' },
     }),
   ];
 }
@@ -1023,6 +1062,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   'notification-center': notificationCenterArtifacts,
   persistence: persistenceArtifacts,
   'activity-center': activityCenterArtifacts,
+  abac: abacArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -1263,6 +1303,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'purple',
     simulation: sim('Activity AI correlating platform events...', ['Activity Report', 'Event Volume', 'Executive Summary', 'Event Health']),
     build: activityCenterArtifacts,
+  },
+  abac: {
+    title: 'AI ABAC Reports',
+    subtitle: 'Assessment, access scope, domain ownership, and security governance',
+    generateLabel: 'Generate ABAC Reports',
+    generatedBy: 'Security AI',
+    glow: 'purple',
+    simulation: sim('Security AI evaluating attribute policies...', ['ABAC Assessment', 'Access Scope', 'Domain Ownership', 'Security Governance']),
+    build: abacArtifacts,
   },
 };
 

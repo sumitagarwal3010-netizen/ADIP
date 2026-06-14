@@ -42,6 +42,7 @@ import { PersonaLanding } from '../pages/PersonaLanding';
 import { WorkflowOrchestrationDashboard } from '../pages/WorkflowOrchestrationDashboard';
 import { AuditCenter } from '../pages/AuditCenter';
 import { NotificationCenter } from '../pages/NotificationCenter';
+import { AbacAdminDashboard } from '../pages/AbacAdminDashboard';
 import { PersistenceAdminDashboard } from '../pages/PersistenceAdminDashboard';
 import { ActivityCenter } from '../pages/ActivityCenter';
 
@@ -124,6 +125,7 @@ export function AppRoutes() {
         <Route path="administration" element={<Administration />} />
         <Route path="administration/rbac" element={<RBACAdminDashboard />} />
         <Route path="administration/persistence" element={<PersistenceAdminDashboard />} />
+        <Route path="administration/abac" element={<AbacAdminDashboard />} />
       </Route>
       </Route>
     </Routes>

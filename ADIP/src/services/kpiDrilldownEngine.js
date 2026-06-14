@@ -44,6 +44,8 @@ import { computePersistenceKpis } from '../persistence/PersistenceEngine.ts';
 import { getPersistenceLayer } from '../context/PersistenceContext.tsx';
 import { computeActivityKpis } from '../data/activityStreamEngine.ts';
 import { getEventBus } from '../context/EventContext.tsx';
+import { computeAbacKpis } from '../data/abacEngine.ts';
+import { buildVisibilityScope } from '../data/abacCatalog.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -2607,6 +2609,61 @@ const chartResolvers = {
       relatedIncidents: incidentsFromState(state).slice(0, 2),
       relatedReleases: releasesFromState(state),
       historicalTrend: sparkline7d(events.length),
+    });
+  },
+
+  'abac.policy-coverage': (state, ctx) => {
+    const kpis = computeAbacKpis('cio', 500, 500);
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'enabled', title: 'Enabled Policies', meta: String(kpis.enabledPolicies) },
+        { id: 'total', title: 'Total Policies', meta: String(kpis.totalPolicies) },
+        { id: 'coverage', title: 'Coverage', meta: `${kpis.policyCoverage}%` },
+      ],
+      supportingEvidence: ['RBAC extended with 8 ABAC attribute policies', 'Row-level security on workflows, audit, notifications, traceability'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.policyCoverage),
+    });
+  },
+
+  'abac.domain-ownership': (state, ctx) => {
+    const scope = buildVisibilityScope('application-owner');
+    return buildPayload(ctx, {
+      sourceRecords: scope.domains.map((d) => ({ id: d, title: d, meta: 'domain' })),
+      supportingEvidence: ['Domain assignments mapped to personas', 'Application ownership drives row filters'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(scope.domains.length * 10),
+    });
+  },
+
+  'abac.access-violations': (state, ctx) => {
+    const kpis = computeAbacKpis('compliance-officer', 500, 120);
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'v1', title: 'Restricted evidence outside domain', meta: 'denied' },
+        { id: 'v2', title: 'Production workflow scope mismatch', meta: 'denied' },
+      ],
+      supportingEvidence: [`${kpis.accessViolations} mock violations in policy evaluation`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.accessViolations),
+    });
+  },
+
+  'abac.scope-distribution': (state, ctx) => {
+    const kpis = computeAbacKpis('cio', 500, 500);
+    return buildPayload(ctx, {
+      sourceRecords: kpis.scopeDistribution.map((s) => ({ id: s.scope, title: s.scope, meta: String(s.count) })),
+      supportingEvidence: ['Scoped visibility: application, portfolio, domain, security, global'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.scopedResources),
     });
   },
 };

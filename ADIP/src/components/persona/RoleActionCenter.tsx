@@ -10,6 +10,7 @@ import { ModuleHeader } from '../common/ModuleHeader';
 import { TraceNodeChip } from '../traceability/TraceNodeChip';
 import { colors } from '../../theme/colors';
 import { nodesForAction } from '../../data/traceabilityEngine';
+import { useAbac } from '../../context/AbacContext';
 import { TRACE_TYPE_LABEL, type TraceNode, type TraceNodeType } from '../../data/traceabilityModel';
 import type { PersonaConfig } from '../../config/personaConfig';
 
@@ -84,13 +85,14 @@ function buildBuckets(types: Set<TraceNodeType>): ActionBucket[] {
 }
 
 export function RoleActionCenter({ persona, onSelectNode }: RoleActionCenterProps) {
+  const { filterTraceNodes } = useAbac();
   const { items, buckets } = useMemo(() => {
     const typeSet = new Set(persona.actionScope.types);
-    const open = nodesForAction({
+    const open = filterTraceNodes(nodesForAction({
       types: persona.actionScope.types,
       domain: persona.actionScope.domain,
       openOnly: true,
-    });
+    }));
     const defs = buildBuckets(typeSet);
     const grouped = defs
       .map((b) => {
@@ -102,7 +104,7 @@ export function RoleActionCenter({ persona, onSelectNode }: RoleActionCenterProp
       if (target) target.nodes.push(node);
     }
     return { items: open, buckets: grouped.filter((g) => g.nodes.length > 0) };
-  }, [persona]);
+  }, [persona, filterTraceNodes]);
 
   const totalActions = items.length;
 

@@ -128,9 +128,9 @@ export function filterEvidence(query: {
   domain?: string;
   status?: string;
   workflow?: string;
-}): AuditEvidence[] {
+}, source: AuditEvidence[] = AUDIT_EVIDENCE): AuditEvidence[] {
   const q = (query.search ?? '').toLowerCase();
-  return AUDIT_EVIDENCE.filter((e) => {
+  return source.filter((e) => {
     if (query.type && e.evidenceType !== query.type) return false;
     if (query.domain && e.domain !== query.domain) return false;
     if (query.status && e.status !== query.status) return false;
@@ -150,9 +150,9 @@ export function filterFindings(query: {
   severity?: string;
   domain?: string;
   status?: string;
-}): AuditFinding[] {
+}, source: AuditFinding[] = AUDIT_FINDINGS): AuditFinding[] {
   const q = (query.search ?? '').toLowerCase();
-  return AUDIT_FINDINGS.filter((f) => {
+  return source.filter((f) => {
     if (query.severity && f.severity !== query.severity) return false;
     if (query.domain && f.domain !== query.domain) return false;
     if (query.status && f.status !== query.status) return false;
@@ -161,9 +161,9 @@ export function filterFindings(query: {
   });
 }
 
-export function filterObservations(query: { search?: string; status?: string; domain?: string }): AuditObservation[] {
+export function filterObservations(query: { search?: string; status?: string; domain?: string }, source: AuditObservation[] = AUDIT_OBSERVATIONS): AuditObservation[] {
   const q = (query.search ?? '').toLowerCase();
-  return AUDIT_OBSERVATIONS.filter((o) => {
+  return source.filter((o) => {
     if (query.status && o.closureStatus !== query.status) return false;
     if (query.domain && o.domain !== query.domain) return false;
     if (!q) return true;

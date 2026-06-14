@@ -10,12 +10,14 @@ import { MultiLineChart } from '../charts/MultiLineChart';
 import { DrilldownTableRow } from '../common/DrilldownTableRow';
 import { SeverityChip } from '../common/SeverityChip';
 import { colors } from '../../theme/colors';
-import { computeAuditKpis, findingsSeverityChartData } from '../../data/auditCenterEngine';
-import { AUDIT_EXEC_SUMMARY, AUDIT_FINDINGS } from '../../data/auditCenterMock';
+import { findingsSeverityChartData } from '../../data/auditCenterEngine';
+import { useAbac } from '../../context/AbacContext';
+import { AUDIT_EXEC_SUMMARY } from '../../data/auditCenterMock';
 
 export function AuditDashboardPanel() {
-  const kpis = computeAuditKpis();
-  const topFindings = AUDIT_FINDINGS.filter((f) => f.status === 'Open' || f.status === 'In Progress').slice(0, 6);
+  const { scopedAuditKpis, scopedFindings } = useAbac();
+  const kpis = scopedAuditKpis;
+  const topFindings = scopedFindings.filter((f) => f.status === 'Open' || f.status === 'In Progress').slice(0, 6);
 
   return (
     <Box>

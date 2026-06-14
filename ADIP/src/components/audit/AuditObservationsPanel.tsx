@@ -7,19 +7,21 @@ import { KpiCard } from '../common/KpiCard';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { colors } from '../../theme/colors';
-import { computeAuditKpis, filterObservations } from '../../data/auditCenterEngine';
+import { filterObservations } from '../../data/auditCenterEngine';
 import { AUDIT_DOMAINS } from '../../data/auditCenterEngine';
+import { useAbac } from '../../context/AbacContext';
 
 const STATUSES = ['Open', 'In Progress', 'Management Response', 'Closed'];
 
 export function AuditObservationsPanel() {
+  const { scopedAuditKpis, scopedObservations } = useAbac();
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('');
   const [domain, setDomain] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const kpis = computeAuditKpis();
-  const rows = useMemo(() => filterObservations({ search, status, domain }), [search, status, domain]);
+  const kpis = scopedAuditKpis;
+  const rows = useMemo(() => filterObservations({ search, status, domain }, scopedObservations), [search, status, domain, scopedObservations]);
   const selected = rows.find((r) => r.id === selectedId) ?? rows[0];
 
   return (

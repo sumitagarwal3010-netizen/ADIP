@@ -8,6 +8,7 @@ import {
 } from 'react';
 import { usePersona } from './PersonaContext';
 import { useEntitlement } from '../hooks/useEntitlement';
+import { useAbac } from './AbacContext';
 import type { ApprovalHistoryEntry, ApprovalRequest, ApprovalWorkflowAction } from '../data/approvalWorkflowEngine';
 import {
   applyUnifiedLifecycleAction,
@@ -53,6 +54,7 @@ const WorkflowContext = createContext<WorkflowContextValue | null>(null);
 export function WorkflowProvider({ children }: { children: ReactNode }) {
   const { persona } = usePersona();
   const entitlement = useEntitlement();
+  const { filterWorkflows } = useAbac();
   const [workflows, setWorkflows] = useState<WorkflowInstance[]>(
     () => getPersistenceLayer().workflow.loadWorkflows() ?? WORKFLOW_ORCHESTRATION_MOCK,
   );
@@ -121,8 +123,8 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
     applyLifecycleAction(workflowId, 'Advance Stage');
   }, [applyLifecycleAction]);
 
-  const kpis = useMemo(() => computeUnifiedKpis(workflows), [workflows]);
-  const approvalRequests = useMemo(() => deriveApprovalRequests(workflows), [workflows]);
+  const kpis = useMemo(() => computeUnifiedKpis(filterWorkflows(workflows)), [workflows, filterWorkflows]);
+  const approvalRequests = useMemo(() => deriveApprovalRequests(filterWorkflows(workflows)), [workflows, filterWorkflows]);
   const approvalHistory = useMemo(() => workflowHistoryToApprovalHistory(history), [history]);
 
   const value = useMemo<WorkflowContextValue>(() => ({
@@ -133,7 +135,7 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
     setSelectedWorkflowId,
     getWorkflow,
     getWorkflowsForHub: (stage) => filterWorkflowsByStage(workflows, stage),
-    getVisibleWorkflows: () => filterWorkflowsForPersona(workflows, persona.id),
+    getVisibleWorkflows: () => filterWorkflows(filterWorkflowsForPersona(workflows, persona.id)),
     getApprovalRequests: () => approvalRequests,
     getApprovalHistory: () => approvalHistory,
     canPerformLifecycleAction,
@@ -142,7 +144,7 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
     submitForApproval: handleSubmitForApproval,
     moveToNextStage: handleMoveToNextStage,
   }), [
-    workflows, history, kpis, selectedWorkflowId, getWorkflow, persona.id,
+    workflows, history, kpis, selectedWorkflowId, getWorkflow, persona.id, filterWorkflows,
     approvalRequests, approvalHistory, canPerformLifecycleAction, applyLifecycleAction,
     handleSubmitForReview, handleSubmitForApproval, handleMoveToNextStage,
   ]);

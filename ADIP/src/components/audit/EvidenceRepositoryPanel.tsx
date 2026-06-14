@@ -7,21 +7,23 @@ import { KpiCard } from '../common/KpiCard';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { colors } from '../../theme/colors';
-import { computeAuditKpis, filterEvidence, getEvidenceById } from '../../data/auditCenterEngine';
+import { filterEvidence } from '../../data/auditCenterEngine';
 import { AUDIT_DOMAINS, AUDIT_EVIDENCE_TYPES } from '../../data/auditCenterEngine';
+import { useAbac } from '../../context/AbacContext';
 
 const STATUSES = ['Draft', 'Pending Review', 'Approved', 'Rejected', 'Expired'];
 
 export function EvidenceRepositoryPanel() {
+  const { scopedAuditKpis, scopedEvidence } = useAbac();
   const [search, setSearch] = useState('');
   const [type, setType] = useState('');
   const [domain, setDomain] = useState('');
   const [status, setStatus] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const kpis = computeAuditKpis();
-  const rows = useMemo(() => filterEvidence({ search, type, domain, status }), [search, type, domain, status]);
-  const selected = getEvidenceById(selectedId ?? '') ?? rows[0];
+  const kpis = scopedAuditKpis;
+  const rows = useMemo(() => filterEvidence({ search, type, domain, status }, scopedEvidence), [search, type, domain, status, scopedEvidence]);
+  const selected = rows.find((r) => r.id === selectedId) ?? rows.find((r) => r.id === (selectedId ?? '')) ?? rows[0];
 
   return (
     <Box>

@@ -17,7 +17,7 @@ import {
   escalateNotification,
   filterAlertHistory,
   filterEscalationQueue,
-  filterNotifications,
+  filterNotifications as filterNotificationInbox,
   getNotificationById,
   getNotificationsForWorkflow,
   getWorkflowNotificationMetrics,
@@ -26,6 +26,7 @@ import {
 } from '../data/notificationCenterEngine';
 import { ALERT_HISTORY, PLATFORM_NOTIFICATIONS } from '../data/notificationCenterMock';
 import { getPersistenceLayer } from './PersistenceContext';
+import { useAbac } from './AbacContext';
 import { getEventBus } from './EventContext';
 import {
   registerEventNotificationHandler,
@@ -40,7 +41,7 @@ interface NotificationContextValue {
   getNotification: (id: string) => PlatformNotification | undefined;
   getForWorkflow: (workflowId: string) => PlatformNotification[];
   getWorkflowMetrics: (workflowId: string) => ReturnType<typeof getWorkflowNotificationMetrics>;
-  filterInbox: (query: Parameters<typeof filterNotifications>[0]) => PlatformNotification[];
+  filterInbox: (query: Parameters<typeof filterNotificationInbox>[0]) => PlatformNotification[];
   getHistory: (notificationId?: string) => AlertHistoryEntry[];
   acknowledge: (id: string) => void;
   resolve: (id: string) => void;
@@ -54,6 +55,7 @@ const NotificationContext = createContext<NotificationContextValue | null>(null)
 
 export function NotificationProvider({ children }: { children: ReactNode }) {
   const { persona } = usePersona();
+  const { filterNotifications } = useAbac();
   const persisted = getPersistenceLayer().notification.load();
   const [notifications, setNotifications] = useState<PlatformNotification[]>(
     persisted?.notifications ?? PLATFORM_NOTIFICATIONS,
@@ -141,15 +143,20 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     save(next, history);
   }, [notifications, history, save]);
 
+  const scopedNotifications = useMemo(
+    () => filterNotifications(notifications),
+    [notifications, filterNotifications],
+  );
+
   const value = useMemo<NotificationContextValue>(() => ({
-    notifications,
+    notifications: scopedNotifications,
     history,
-    kpis: computeNotificationKpis(notifications),
-    escalationQueue: filterEscalationQueue(notifications),
-    getNotification: (id) => getNotificationById(id, notifications),
-    getForWorkflow: (wf) => getNotificationsForWorkflow(wf, notifications),
-    getWorkflowMetrics: (wf) => getWorkflowNotificationMetrics(wf, notifications),
-    filterInbox: (q) => filterNotifications(q, notifications),
+    kpis: computeNotificationKpis(scopedNotifications),
+    escalationQueue: filterEscalationQueue(scopedNotifications),
+    getNotification: (id) => getNotificationById(id, scopedNotifications),
+    getForWorkflow: (wf) => getNotificationsForWorkflow(wf, scopedNotifications),
+    getWorkflowMetrics: (wf) => getWorkflowNotificationMetrics(wf, scopedNotifications),
+    filterInbox: (q) => filterNotificationInbox(q, scopedNotifications),
     getHistory: (nid) => filterAlertHistory({ notificationId: nid }),
     acknowledge,
     resolve,
@@ -157,7 +164,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     suppress,
     escalate,
     markRead,
-  }), [notifications, history, acknowledge, resolve, dismiss, suppress, escalate, markRead]);
+  }), [scopedNotifications, history, acknowledge, resolve, dismiss, suppress, escalate, markRead]);
 
   return (
     <NotificationContext.Provider value={value}>

@@ -129,6 +129,7 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/governance/activity-center', label: 'Activity Center', icon: StreamIcon },
       { path: '/administration/rbac', label: 'RBAC Administration', icon: AdminPanelSettingsIcon },
       { path: '/administration/persistence', label: 'Persistence Admin', icon: StorageIcon },
+      { path: '/administration/abac', label: 'ABAC Administration', icon: SecurityIcon },
     ],
   },
   {

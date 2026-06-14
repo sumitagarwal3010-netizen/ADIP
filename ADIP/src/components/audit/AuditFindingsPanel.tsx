@@ -10,21 +10,23 @@ import { SeverityChip } from '../common/SeverityChip';
 import { HorizontalBarChart } from '../charts/HorizontalBarChart';
 import { DonutChart } from '../charts/DonutChart';
 import { colors } from '../../theme/colors';
-import { computeAuditKpis, filterFindings, findingsSeverityChartData } from '../../data/auditCenterEngine';
+import { filterFindings, findingsSeverityChartData } from '../../data/auditCenterEngine';
 import { AUDIT_DOMAINS } from '../../data/auditCenterEngine';
+import { useAbac } from '../../context/AbacContext';
 
 const STATUSES = ['Open', 'In Progress', 'Mitigated', 'Risk Accepted', 'Closed'];
 const SEVERITIES = ['Critical', 'High', 'Medium', 'Low'];
 
 export function AuditFindingsPanel() {
+  const { scopedAuditKpis, scopedFindings } = useAbac();
   const [search, setSearch] = useState('');
   const [severity, setSeverity] = useState('');
   const [domain, setDomain] = useState('');
   const [status, setStatus] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const kpis = computeAuditKpis();
-  const rows = useMemo(() => filterFindings({ search, severity, domain, status }), [search, severity, domain, status]);
+  const kpis = scopedAuditKpis;
+  const rows = useMemo(() => filterFindings({ search, severity, domain, status }, scopedFindings), [search, severity, domain, status, scopedFindings]);
   const selected = rows.find((r) => r.id === selectedId) ?? rows[0];
 
   return (

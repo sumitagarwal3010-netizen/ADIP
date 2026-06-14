@@ -388,6 +388,7 @@ export const ROUTE_RESOURCE_MAP: Record<string, { resource: ResourceType; permis
   '/administration': { resource: 'dashboards', permission: 'administer' },
   '/administration/rbac': { resource: 'dashboards', permission: 'administer' },
   '/administration/persistence': { resource: 'dashboards', permission: 'administer' },
+  '/administration/abac': { resource: 'dashboards', permission: 'administer' },
 };
 
 export const APPROVAL_ACTION_PERMISSIONS: Record<string, Permission> = {

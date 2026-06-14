@@ -4,6 +4,7 @@ import { theme } from './theme/theme';
 import { AppRoutes } from './routes';
 import { SimulationProvider } from './context/SimulationContext';
 import { PersonaProvider } from './context/PersonaContext';
+import { AbacProvider } from './context/AbacContext';
 import { AuthenticationProvider } from './context/AuthContext';
 import { WorkflowProvider } from './context/WorkflowContext';
 import { NotificationProvider } from './context/NotificationContext';
@@ -19,6 +20,7 @@ function App() {
         <AuthenticationProvider>
           <StorageProvider>
             <PersonaProvider>
+              <AbacProvider>
               <EventProvider>
                 <WorkflowProvider>
                   <NotificationProvider>
@@ -30,6 +32,7 @@ function App() {
                   </NotificationProvider>
                 </WorkflowProvider>
               </EventProvider>
+              </AbacProvider>
             </PersonaProvider>
           </StorageProvider>
         </AuthenticationProvider>

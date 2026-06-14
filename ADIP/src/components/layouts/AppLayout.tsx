@@ -77,6 +77,7 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/administration': { title: 'Platform Administration', subtitle: 'Configuration & access management' },
   '/administration/rbac': { title: 'RBAC Administration', subtitle: 'Roles, permissions, and entitlement governance' },
   '/administration/persistence': { title: 'Persistence Administration', subtitle: 'Entity stores, repositories & adapter health' },
+  '/administration/abac': { title: 'ABAC Administration', subtitle: 'Attribute policies, domain scope & row-level security' },
 };
 
 export function AppLayout() {
