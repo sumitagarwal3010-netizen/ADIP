@@ -332,3 +332,33 @@ export function searchNodes(query: string): TraceNode[] {
     (n) => n.id.toLowerCase().includes(q) || n.name.toLowerCase().includes(q) || TRACE_TYPE_LABEL[n.type].toLowerCase().includes(q),
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* Action-queue selectors (used by the Role-Based Action Center)      */
+/* ------------------------------------------------------------------ */
+
+/** Statuses that represent open work requiring attention/action. */
+const OPEN_STATUSES = new Set(['In Progress', 'Pending Review', 'Open', 'At Risk', 'Failed', 'Gap']);
+
+export function isActionable(node: TraceNode): boolean {
+  return OPEN_STATUSES.has(node.status);
+}
+
+export interface ActionQuery {
+  types: TraceNodeType[];
+  /** Optional domain filter (matches TraceNode.domain). */
+  domain?: string;
+  /** When true, only return nodes whose status represents open work. */
+  openOnly?: boolean;
+}
+
+/** Returns trace nodes matching a persona action scope, for the work queue. */
+export function nodesForAction({ types, domain, openOnly }: ActionQuery): TraceNode[] {
+  const typeSet = new Set(types);
+  return TRACE_NODES.filter((n) => {
+    if (!typeSet.has(n.type)) return false;
+    if (domain && n.domain !== domain) return false;
+    if (openOnly && !isActionable(n)) return false;
+    return true;
+  });
+}

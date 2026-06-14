@@ -1,16 +1,20 @@
 import {
-  Box, Typography, InputBase, Select, MenuItem, IconButton, Badge, Avatar, Chip, Tooltip, Button,
+  Box, Typography, InputBase, Select, MenuItem, IconButton, Badge, Avatar, Chip, Tooltip, Button, ListSubheader,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import SummarizeIcon from '@mui/icons-material/Summarize';
+import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { colors } from '../../theme/colors';
 import { layout } from '../../theme/theme';
 import { DOMAINS } from '../../services/mockDataEngine.js';
 import { useSimulation } from '../../context/SimulationContext';
+import { usePersona } from '../../context/PersonaContext';
+import { PERSONAS, type PersonaId } from '../../config/personaConfig';
 
 interface TopBarProps {
   title: string;
@@ -26,6 +30,13 @@ export function TopBar({ title, subtitle }: TopBarProps) {
     state,
     generateExecutiveSummary,
   } = useSimulation();
+  const { personaId, persona, setPersona } = usePersona();
+  const navigate = useNavigate();
+
+  const handlePersonaChange = (id: PersonaId) => {
+    setPersona(id);
+    navigate('/persona');
+  };
 
   return (
     <Box
@@ -149,15 +160,52 @@ export function TopBar({ title, subtitle }: TopBarProps) {
       </IconButton>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pl: 1, borderLeft: `1px solid ${colors.border.subtle}` }}>
-        <Avatar sx={{ width: 28, height: 28, bgcolor: colors.warning, fontSize: '0.7rem', fontWeight: 700 }}>OM</Avatar>
-        <Box>
-          <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', lineHeight: 1.2 }}>
-            Operations Manager
-          </Typography>
-          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>
-            Banking Operations Control
-          </Typography>
-        </Box>
+        <Avatar sx={{ width: 28, height: 28, bgcolor: colors.secondary, fontSize: '0.62rem', fontWeight: 700 }}>
+          {persona.initials}
+        </Avatar>
+        <Tooltip title="Switch persona — Executive Demo Mode">
+          <Select
+            value={personaId}
+            onChange={(e) => handlePersonaChange(e.target.value as PersonaId)}
+            size="small"
+            IconComponent={SwitchAccountIcon}
+            renderValue={() => (
+              <Box>
+                <Typography variant="caption" sx={{ fontWeight: 700, display: 'block', lineHeight: 1.15 }}>
+                  {persona.label}
+                </Typography>
+                <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.58rem' }}>
+                  {persona.title}
+                </Typography>
+              </Box>
+            )}
+            sx={{
+              minWidth: 170,
+              '& .MuiSelect-select': { py: 0.25, pr: '28px !important' },
+              '& .MuiOutlinedInput-notchedOutline': { borderColor: colors.border.subtle },
+              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: colors.secondary },
+              '& .MuiSelect-icon': { color: colors.text.muted, fontSize: 18 },
+            }}
+            MenuProps={{ slotProps: { paper: { sx: { maxHeight: 460, bgcolor: colors.bg.tertiary, border: `1px solid ${colors.border.subtle}` } } } }}
+          >
+            <ListSubheader sx={{ bgcolor: 'transparent', color: colors.text.muted, fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.06em', lineHeight: 2.2 }}>
+              ENTERPRISE PERSONA
+            </ListSubheader>
+            {PERSONAS.map((p) => (
+              <MenuItem key={p.id} value={p.id} sx={{ fontSize: '0.78rem', py: 0.6 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Avatar sx={{ width: 22, height: 22, bgcolor: p.id === personaId ? colors.secondary : colors.bg.glass, color: p.id === personaId ? '#fff' : colors.text.secondary, fontSize: '0.52rem', fontWeight: 700, border: `1px solid ${colors.border.subtle}` }}>
+                    {p.initials}
+                  </Avatar>
+                  <Box>
+                    <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', lineHeight: 1.2 }}>{p.label}</Typography>
+                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.58rem' }}>{p.title}</Typography>
+                  </Box>
+                </Box>
+              </MenuItem>
+            ))}
+          </Select>
+        </Tooltip>
       </Box>
     </Box>
   );

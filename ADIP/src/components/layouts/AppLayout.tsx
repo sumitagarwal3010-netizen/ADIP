@@ -10,9 +10,11 @@ import { PageTransition } from './PageTransition';
 import { layout } from '../../theme/theme';
 import { colors } from '../../theme/colors';
 import { useSimulation } from '../../context/SimulationContext';
+import { usePersona } from '../../context/PersonaContext';
 
 const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/': { title: 'Executive Control Tower', subtitle: 'Live banking operations intelligence' },
+  '/persona': { title: 'My Workspace', subtitle: 'Role-based enterprise experience' },
   '/executive/portfolio-health': { title: 'Executive Control Tower', subtitle: 'Live banking operations intelligence' },
   '/executive/program-status': { title: 'Executive Control Tower', subtitle: 'Live banking operations intelligence' },
   '/executive/strategic-risks': { title: 'Executive Control Tower', subtitle: 'Live banking operations intelligence' },
@@ -59,7 +61,11 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
 export function AppLayout() {
   const location = useLocation();
   const { state } = useSimulation();
-  const meta = pageMeta[location.pathname] || { title: 'ADIP', subtitle: '' };
+  const { persona } = usePersona();
+  const meta =
+    location.pathname === '/persona'
+      ? { title: `${persona.label} Workspace`, subtitle: persona.title }
+      : pageMeta[location.pathname] || { title: 'ADIP', subtitle: '' };
   const opsStatus = state.operations.operationalHealth >= 85 ? 'Healthy' : 'Attention';
   const statusColor = opsStatus === 'Healthy' ? colors.success : colors.warning;
 

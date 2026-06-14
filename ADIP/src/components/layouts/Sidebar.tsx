@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import { motion } from 'framer-motion';
 import {
   NAV_HUBS,
@@ -19,6 +20,7 @@ import {
   isChildActive,
   type NavHub,
 } from '../../config/navConfig';
+import { usePersona } from '../../context/PersonaContext';
 import { colors } from '../../theme/colors';
 import { layout } from '../../theme/theme';
 
@@ -32,7 +34,9 @@ function buildInitialExpanded(): Record<string, boolean> {
 export function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { persona } = usePersona();
   const [expanded, setExpanded] = useState<Record<string, boolean>>(buildInitialExpanded);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const activeHub = findHubForPath(location.pathname);
@@ -40,6 +44,16 @@ export function Sidebar() {
       setExpanded((prev) => ({ ...prev, [activeHub.id]: true }));
     }
   }, [location.pathname]);
+
+  // Role-based navigation: show only hubs relevant to the active persona.
+  // A "show all" toggle keeps every hub reachable (no orphaned modules).
+  const relevant = useMemo(() => new Set(persona.navHubs), [persona.navHubs]);
+  const visibleHubs = useMemo(
+    () => (showAll ? NAV_HUBS : NAV_HUBS.filter((h) => relevant.has(h.id))),
+    [relevant, showAll],
+  );
+
+  const personaLandingActive = location.pathname === '/persona';
 
   const toggleHub = (hubId: string) => {
     setExpanded((prev) => ({ ...prev, [hubId]: !prev[hubId] }));
@@ -173,11 +187,53 @@ export function Sidebar() {
       </Box>
       <Divider sx={{ borderColor: colors.border.subtle }} />
       <List sx={{ flex: 1, py: 1, px: 1, overflow: 'auto' }}>
-        {NAV_HUBS.map(renderHub)}
+        <ListItemButton
+          onClick={() => navigate('/persona')}
+          sx={{
+            borderRadius: 1.5,
+            mb: 0.5,
+            py: 0.75,
+            px: 1.5,
+            bgcolor: personaLandingActive ? `${colors.secondary}22` : `${colors.secondary}10`,
+            border: `1px solid ${personaLandingActive ? colors.secondary : `${colors.secondary}33`}`,
+            '&:hover': { bgcolor: `${colors.secondary}1f` },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: 32, color: colors.secondary }}>
+            <SpaceDashboardIcon sx={{ fontSize: 18 }} />
+          </ListItemIcon>
+          <ListItemText
+            primary="My Workspace"
+            secondary={persona.label}
+            sx={{
+              '& .MuiListItemText-primary': { fontSize: '0.8125rem', fontWeight: 700, color: colors.text.primary },
+              '& .MuiListItemText-secondary': { fontSize: '0.62rem', color: colors.text.muted },
+            }}
+          />
+        </ListItemButton>
+
+        <Typography
+          variant="caption"
+          sx={{ display: 'block', px: 1.5, py: 0.5, fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.06em', color: colors.text.muted, textTransform: 'uppercase' }}
+        >
+          {showAll ? 'All Modules' : `${persona.label} Modules`}
+        </Typography>
+
+        {visibleHubs.map(renderHub)}
+
+        <ListItemButton
+          onClick={() => setShowAll((v) => !v)}
+          sx={{ borderRadius: 1.5, mt: 0.5, py: 0.5, px: 1.5, '&:hover': { bgcolor: `${colors.primary}10` } }}
+        >
+          <ListItemText
+            primary={showAll ? `Show ${persona.label} modules only` : 'Show all modules'}
+            sx={{ '& .MuiListItemText-primary': { fontSize: '0.7rem', fontWeight: 600, color: colors.primary } }}
+          />
+        </ListItemButton>
       </List>
       <Box sx={{ p: 1.5, borderTop: `1px solid ${colors.border.subtle}` }}>
         <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.65rem' }}>
-          v2.4.1 · Production
+          v2.4.1 · Persona Mode
         </Typography>
       </Box>
     </Box>

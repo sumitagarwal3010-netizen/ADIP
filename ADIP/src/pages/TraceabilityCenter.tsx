@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Box } from '@mui/material';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import TableChartIcon from '@mui/icons-material/TableChart';
@@ -32,8 +33,10 @@ interface TraceabilityCenterProps {
 }
 
 export function TraceabilityCenter({ initialTab = 'dashboard' }: TraceabilityCenterProps) {
-  const [tab, setTab] = useState<TabKey>(initialTab);
-  const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
+  const [searchParams] = useSearchParams();
+  const nodeParam = searchParams.get('node') ?? undefined;
+  const [tab, setTab] = useState<TabKey>(nodeParam ? 'impact' : initialTab);
+  const [selectedId, setSelectedId] = useState<string | undefined>(nodeParam);
 
   // Clicking any artifact anywhere jumps to Impact Analysis with it selected.
   const handleSelectNode = (node: TraceNode) => {

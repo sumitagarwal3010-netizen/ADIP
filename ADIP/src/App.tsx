@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { theme } from './theme/theme';
 import { AppRoutes } from './routes';
 import { SimulationProvider } from './context/SimulationContext';
+import { PersonaProvider } from './context/PersonaContext';
 import { RootErrorBoundary } from './components/common/RootErrorBoundary';
 
 function App() {
@@ -10,11 +11,13 @@ function App() {
     <RootErrorBoundary>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <SimulationProvider>
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-        </SimulationProvider>
+        <PersonaProvider>
+          <SimulationProvider>
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
+          </SimulationProvider>
+        </PersonaProvider>
       </ThemeProvider>
     </RootErrorBoundary>
   );

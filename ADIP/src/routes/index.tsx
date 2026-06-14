@@ -32,12 +32,14 @@ import { KnowledgeBestPracticesPage } from '../pages/KnowledgeBestPracticesPage'
 import { KnowledgeReusableAssetsPage } from '../pages/KnowledgeReusableAssetsPage';
 import { KnowledgeLessonsLearnedPage } from '../pages/KnowledgeLessonsLearnedPage';
 import { TraceabilityCenter } from '../pages/TraceabilityCenter';
+import { PersonaLanding } from '../pages/PersonaLanding';
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<ExecutiveControlTower />} />
+        <Route path="persona" element={<PersonaLanding />} />
         <Route path="executive/portfolio-health" element={<PortfolioHealthPage />} />
         <Route path="executive/program-status" element={<AIProgramStatusPage />} />
         <Route path="executive/strategic-risks" element={<GovernanceRiskPage />} />
