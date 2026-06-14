@@ -13,6 +13,8 @@ import { layout } from '../../theme/theme';
 import { DOMAINS } from '../../services/mockDataEngine.js';
 import { useSimulation } from '../../context/SimulationContext';
 import { usePersona } from '../../context/PersonaContext';
+import { useNavigate } from 'react-router-dom';
+import { useNotifications } from '../../context/NotificationContext';
 import { useAuth } from '../../context/AuthContext';
 import { UserProfilePanel } from '../auth/UserProfilePanel';
 
@@ -27,10 +29,11 @@ export function TopBar({ title, subtitle }: TopBarProps) {
     setSelectedDomain,
     refreshNow,
     refreshIntervalMs,
-    state,
     generateExecutiveSummary,
   } = useSimulation();
   const { persona } = usePersona();
+  const { kpis } = useNotifications();
+  const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [profileOpen, setProfileOpen] = useState(false);
 
@@ -146,9 +149,9 @@ export function TopBar({ title, subtitle }: TopBarProps) {
           </IconButton>
         </Tooltip>
 
-        <IconButton size="small" sx={{ color: colors.text.secondary }}>
+        <IconButton size="small" sx={{ color: colors.text.secondary }} onClick={() => navigate('/operations/notifications/inbox')}>
           <Badge
-            badgeContent={state.executive.openIncidents}
+            badgeContent={kpis.unreadCount}
             color="error"
             sx={{ '& .MuiBadge-badge': { fontSize: '0.6rem', height: 16, minWidth: 16 } }}
           >

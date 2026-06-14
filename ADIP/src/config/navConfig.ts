@@ -35,6 +35,8 @@ import HubIcon from '@mui/icons-material/Hub';
 import InsightsIcon from '@mui/icons-material/Insights';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import VpnLockIcon from '@mui/icons-material/VpnLock';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import InboxIcon from '@mui/icons-material/Inbox';
 
 export interface NavChild {
   path: string;
@@ -103,6 +105,9 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/operations/incidents', label: 'Incidents', icon: ReportProblemIcon },
       { path: '/operations/availability', label: 'Availability', icon: SpeedIcon },
       { path: '/operations/capacity', label: 'Capacity', icon: StorageIcon },
+      { path: '/operations/notifications', label: 'Notification Center', icon: NotificationsActiveIcon },
+      { path: '/operations/notifications/inbox', label: 'Notification Inbox', icon: InboxIcon },
+      { path: '/operations/notifications/escalations', label: 'Escalation Queue', icon: TrendingUpIcon },
     ],
   },
   {

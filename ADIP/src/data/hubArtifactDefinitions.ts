@@ -27,7 +27,8 @@ export type HubKey =
   | 'rbac'
   | 'authentication'
   | 'workflow-orchestration'
-  | 'audit-center';
+  | 'audit-center'
+  | 'notification-center';
 
 export interface HubArtifactConfig {
   title: string;
@@ -194,6 +195,46 @@ function capacityArtifacts(runId: string): Artifact[] {
       fileType: 'docx',
       previewContent: `INFRASTRUCTURE PLANNING REPORT\n\nRecommended actions:\n  • Add 4 mobile API nodes before festival season\n  • Expand UPI shard capacity by 20%\n  • Tier storage for 7-year AML audit retention`,
       context: { subject: 'Infrastructure Planning' },
+    }),
+  ];
+}
+
+function notificationCenterArtifacts(runId: string): Artifact[] {
+  return [
+    createArtifact({
+      id: `${runId}-summary`,
+      name: 'Notification_Summary_Report.docx',
+      generatedBy: 'Notification AI',
+      fileType: 'docx',
+      previewContent: `NOTIFICATION SUMMARY REPORT\n\nTotal notifications: 100\nOpen: 42 · Critical: 18 · Escalated: 12\nUnread: 28 · Resolved: 35\nDelivery rate (mock): 94%`,
+      context: { subject: 'Notification Summary' },
+    }),
+    createArtifact({
+      id: `${runId}-escalation`,
+      name: 'Escalation_Report.docx',
+      generatedBy: 'Notification AI',
+      fileType: 'docx',
+      riskRating: 'High',
+      previewContent: `ESCALATION REPORT\n\nActive escalations: 30\nExecutive level: 4\nTriggers: SLA Breach (8), Critical Finding (6), Workflow Blocker (5)\nAvg time to escalate: 18h`,
+      context: { subject: 'Escalation' },
+    }),
+    createArtifact({
+      id: `${runId}-trend`,
+      name: 'Alert_Trend_Report.docx',
+      generatedBy: 'Notification AI',
+      fileType: 'docx',
+      previewContent: `ALERT TREND REPORT\n\n6-month escalation trend: +100%\nTop sources: Approval Workflow, Audit Findings, AI Governance\nSeverity mix: 18 critical, 24 high, 35 medium`,
+      context: { subject: 'Alert Trend' },
+    }),
+    createArtifact({
+      id: `${runId}-exec-risk`,
+      name: 'Executive_Risk_Report.docx',
+      generatedBy: 'Notification AI',
+      fileType: 'docx',
+      approvalStatus: 'Pending Review',
+      previewContent: `EXECUTIVE RISK REPORT\n\nRisk hotspots: Payments, Mobile Banking, AI/ML\nPending executive actions: 6\nSLA breaches requiring CIO attention: 3`,
+      executiveSummary: 'Enterprise notification posture reflects elevated risk in approval bottlenecks and AI governance incidents with targeted executive escalations.',
+      context: { subject: 'Executive Risk' },
     }),
   ];
 }
@@ -900,6 +941,7 @@ const BUILDERS: Record<HubKey, (runId: string) => Artifact[]> = {
   authentication: authenticationArtifacts,
   'workflow-orchestration': workflowOrchestrationArtifacts,
   'audit-center': auditCenterArtifacts,
+  'notification-center': notificationCenterArtifacts,
 };
 
 export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
@@ -1113,6 +1155,15 @@ export const HUB_ARTIFACT_CONFIGS: Record<HubKey, HubArtifactConfig> = {
     glow: 'purple',
     simulation: sim('Audit Center AI assembling enterprise evidence packages...', ['Findings Report', 'Evidence Coverage', 'Compliance Assessment', 'Readiness Package', 'Executive Summary']),
     build: auditCenterArtifacts,
+  },
+  'notification-center': {
+    title: 'AI Notification Reports',
+    subtitle: 'Alert summary, escalation analysis, trends, and executive risk',
+    generateLabel: 'Generate Notification Reports',
+    generatedBy: 'Notification AI',
+    glow: 'purple',
+    simulation: sim('Notification AI analyzing alert patterns...', ['Summary Report', 'Escalation Analysis', 'Alert Trends', 'Executive Risk']),
+    build: notificationCenterArtifacts,
   },
 };
 

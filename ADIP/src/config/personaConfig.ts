@@ -78,6 +78,7 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'Portfolio health, delivery confidence, and enterprise risk at a glance.',
     quickLinks: [
       { label: 'Executive Control Tower', to: '/' },
+      { label: 'Notification Center', to: '/operations/notifications' },
       { label: 'Audit Center', to: '/governance/audit-center' },
       { label: 'Traceability Executive View', to: '/traceability/executive' },
       { label: 'Enterprise Reports', to: '/reports' },
@@ -90,7 +91,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Open Incidents', value: (s) => s.executive.openIncidents, suffix: '', trend: -12 },
       { label: 'Business Impact', value: (s) => pct(s.executive.businessImpactScore), suffix: '%', trend: 1.2 },
     ],
-    reportHubs: ['executive', 'traceability', 'audit-center'],
+    reportHubs: ['executive', 'traceability', 'audit-center', 'notification-center'],
     actionScope: { types: ['risk', 'incident', 'compliance', 'release'] },
   },
   {
@@ -123,6 +124,7 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'Security posture, control effectiveness, and AI/security risk exposure.',
     quickLinks: [
       { label: 'Governance Risk', to: '/governance/risk' },
+      { label: 'Notification Center', to: '/operations/notifications/inbox' },
       { label: 'Audit Center', to: '/governance/audit-center/findings' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'AI Risk', to: '/ai-governance/ai-risk' },
@@ -136,7 +138,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Compliance', value: (s) => pct(s.governance.policyCompliance), suffix: '%', trend: 0.6 },
       { label: 'Open Incidents', value: (s) => s.production.activeIncidents, suffix: '', trend: -5 },
     ],
-    reportHubs: ['risk', 'ai-controls', 'approval-workflow', 'audit-center'],
+    reportHubs: ['risk', 'ai-controls', 'approval-workflow', 'audit-center', 'notification-center'],
     actionScope: { types: ['control', 'risk', 'incident'] },
   },
   {
@@ -147,6 +149,7 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'Audit readiness, control evidence, and observation closure.',
     quickLinks: [
       { label: 'Audit Center', to: '/governance/audit-center' },
+      { label: 'Notification Inbox', to: '/operations/notifications/inbox' },
       { label: 'Audit Findings', to: '/governance/audit-center/findings' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'Audit Reports', to: '/governance/audit-center/reports' },
@@ -160,7 +163,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Violations', value: (s) => s.governance.policyViolations, suffix: '', trend: -1 },
       { label: 'Governance Score', value: (s) => pct(s.governance.governanceScore), suffix: '%', trend: 1.1 },
     ],
-    reportHubs: ['audit-center', 'evidence', 'approval-workflow'],
+    reportHubs: ['audit-center', 'notification-center', 'approval-workflow'],
     actionScope: { types: ['evidence', 'control', 'compliance'] },
   },
   {
@@ -171,6 +174,7 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'Regulatory posture across RBI, PCI-DSS, ISO 27001, and DPSC.',
     quickLinks: [
       { label: 'Audit Center — Compliance', to: '/governance/audit-center/compliance' },
+      { label: 'Notification Center', to: '/operations/notifications' },
       { label: 'Audit Readiness', to: '/governance/audit-center/readiness' },
       { label: 'Governance Compliance', to: '/governance/compliance' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
@@ -184,7 +188,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Violations', value: (s) => s.governance.policyViolations, suffix: '', trend: -1 },
       { label: 'Audit Observations', value: (s) => s.governance.auditObservations, suffix: '', trend: -3 },
     ],
-    reportHubs: ['compliance', 'audit-center', 'approval-workflow'],
+    reportHubs: ['compliance', 'audit-center', 'notification-center', 'approval-workflow'],
     actionScope: { types: ['compliance', 'control', 'evidence'] },
   },
   {
@@ -218,6 +222,7 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'End-to-end SDLC lineage, impact analysis, and architecture coverage.',
     quickLinks: [
       { label: 'Lineage Dashboard', to: '/traceability' },
+      { label: 'Notification Center', to: '/operations/notifications' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'Requirement Matrix', to: '/traceability/matrix' },
       { label: 'Impact Analysis', to: '/traceability/impact' },
@@ -230,7 +235,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Code Quality', value: (s) => pct(s.delivery.codeQualityAvg), suffix: '%', trend: 1 },
       { label: 'Test Coverage', value: (s) => pct(s.delivery.testCoverageAvg), suffix: '%', trend: 0.8 },
     ],
-    reportHubs: ['traceability', 'approval-workflow'],
+    reportHubs: ['traceability', 'approval-workflow', 'notification-center'],
     actionScope: { types: ['architecture', 'api', 'risk', 'control'] },
   },
   {
@@ -241,9 +246,8 @@ export const PERSONAS: PersonaConfig[] = [
     mission: 'Health, incidents, and delivery for the Payments application portfolio.',
     quickLinks: [
       { label: 'Production', to: '/production' },
-      { label: 'Operations', to: '/operations' },
-      { label: 'Evidence Repository', to: '/governance/audit-center/evidence' },
-      { label: 'Audit Observations', to: '/governance/audit-center/observations' },
+      { label: 'Notification Inbox', to: '/operations/notifications/inbox' },
+      { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'Release Center', to: '/release' },
     ],
     navHubs: ['operations', 'sdlc', 'traceability'],
@@ -253,7 +257,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Open Incidents', value: (s) => s.production.activeIncidents, suffix: '', trend: -5 },
       { label: 'MTTR (min)', value: (s) => s.production.mttrMinutes, suffix: '', trend: -4 },
     ],
-    reportHubs: ['production', 'incidents'],
+    reportHubs: ['production', 'incidents', 'notification-center'],
     actionScope: { types: ['incident', 'release', 'production'], domain: 'Payments' },
   },
   {

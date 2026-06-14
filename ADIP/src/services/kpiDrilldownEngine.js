@@ -35,6 +35,11 @@ import {
   AUDIT_TIMELINE,
 } from '../data/auditCenterMock.ts';
 import { computeAuditKpis } from '../data/auditCenterEngine.ts';
+import {
+  PLATFORM_NOTIFICATIONS,
+  ESCALATION_NOTIFICATIONS,
+} from '../data/notificationCenterMock.ts';
+import { computeNotificationKpis } from '../data/notificationCenterEngine.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -2317,6 +2322,94 @@ const chartResolvers = {
       relatedIncidents: incidentsFromState(state).slice(0, 2),
       relatedReleases: releasesFromState(state),
       historicalTrend: sparkline7d(kpis.controlCoverage),
+    });
+  },
+
+  'notification-center.open-alerts': (state, ctx) => {
+    const kpis = computeNotificationKpis();
+    const open = PLATFORM_NOTIFICATIONS.filter((n) => ['Open', 'Escalated', 'Acknowledged'].includes(n.status));
+    return buildPayload(ctx, {
+      sourceRecords: open.slice(0, 12).map((n) => ({ id: n.id, title: n.title.slice(0, 80), detail: n.source, meta: n.severity })),
+      supportingEvidence: open.slice(0, 6).map((n) => `${n.id}: ${n.type} — ${n.escalationLevel}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: sparkline7d(kpis.openAlerts * 3),
+    });
+  },
+
+  'notification-center.critical-alerts': (state, ctx) => {
+    const severity = ctx.segment ?? 'critical';
+    const critical = PLATFORM_NOTIFICATIONS.filter((n) => n.severity === severity && n.status !== 'Resolved' && n.status !== 'Dismissed');
+    return buildPayload(ctx, {
+      sourceRecords: critical.map((n) => ({ id: n.id, title: n.title.slice(0, 80), meta: `${n.type} · ${n.source}` })),
+      supportingEvidence: critical.map((n) => n.escalationTrigger ?? n.message.slice(0, 60)).slice(0, 8),
+      relatedApplications: appsFromArchitecture(state).filter((a) => a.status !== 'low').slice(0, 3),
+      relatedIncidents: incidentsFromState(state).filter((i) => i.severity === 'critical' || i.severity === 'high'),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(critical.length * 10),
+    });
+  },
+
+  'notification-center.alerts-by-severity': (state, ctx) => {
+    const sev = ctx.segment ?? '';
+    const alerts = PLATFORM_NOTIFICATIONS.filter((n) => !sev || n.severity === sev.toLowerCase());
+    return buildPayload(ctx, {
+      sourceRecords: alerts.slice(0, 10).map((n) => ({ id: n.id, title: n.title.slice(0, 80), meta: n.status })),
+      supportingEvidence: alerts.slice(0, 5).map((n) => `${n.source}: ${n.type}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(alerts.length * 5),
+    });
+  },
+
+  'notification-center.alerts-by-source': (state, ctx) => {
+    const source = ctx.segment ?? '';
+    const alerts = PLATFORM_NOTIFICATIONS.filter((n) => !source || n.source === source);
+    return buildPayload(ctx, {
+      sourceRecords: alerts.slice(0, 10).map((n) => ({ id: n.id, title: n.title.slice(0, 80), meta: n.severity })),
+      supportingEvidence: alerts.filter((n) => n.linkedWorkflow).slice(0, 6).map((n) => `${n.linkedWorkflow}: ${n.title.slice(0, 40)}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(alerts.length * 6),
+    });
+  },
+
+  'notification-center.escalation-trend': (state, ctx) => {
+    const kpis = computeNotificationKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ESCALATION_NOTIFICATIONS.map((n) => ({ id: n.id, title: n.title.slice(0, 80), detail: n.escalationTrigger ?? '', meta: n.escalationLevel })),
+      supportingEvidence: ESCALATION_NOTIFICATIONS.map((n) => `${n.escalationLevel}: ${n.owner}`).slice(0, 8),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: kpis.escalationTrend.map((t) => ({ day: t.month, value: t.count * 5 })),
+    });
+  },
+
+  'notification-center.sla-breaches': (state, ctx) => {
+    const breaches = PLATFORM_NOTIFICATIONS.filter((n) => n.escalationTrigger === 'SLA Breach' && n.status !== 'Resolved');
+    return buildPayload(ctx, {
+      sourceRecords: breaches.map((n) => ({ id: n.id, title: n.title.slice(0, 80), detail: n.linkedWorkflow ?? '', meta: n.escalationLevel })),
+      supportingEvidence: breaches.map((n) => `${n.id}: ${n.source}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state).slice(0, 3),
+      historicalTrend: sparkline7d(breaches.length * 12),
+    });
+  },
+
+  'notification-center.resolved-alerts': (state, ctx) => {
+    const resolved = PLATFORM_NOTIFICATIONS.filter((n) => n.status === 'Resolved');
+    return buildPayload(ctx, {
+      sourceRecords: resolved.map((n) => ({ id: n.id, title: n.title.slice(0, 80), meta: n.resolvedAt?.slice(0, 10) ?? '' })),
+      supportingEvidence: resolved.slice(0, 6).map((n) => `Resolved by ${n.owner}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(resolved.length * 4),
     });
   },
 };

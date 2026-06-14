@@ -120,6 +120,9 @@ export function WorkflowStatusPanel({ workflowId, showActions = true }: Workflow
         <Field label="Open Observations" value={String(workflow.openObservations)} />
         <Field label="Audit Status" value={workflow.auditStatus} chipColor={AUDIT_COLOR[workflow.auditStatus]} />
         <Field label="Compliance" value={workflow.complianceStatus} chipColor={COMPLIANCE_COLOR[workflow.complianceStatus]} />
+        <Field label="Notifications" value={String(workflow.openNotifications)} />
+        <Field label="Critical Alerts" value={String(workflow.criticalNotifications)} />
+        <Field label="Escalated" value={String(workflow.escalatedNotifications)} />
       </Box>
 
       {workflow.pendingActions.length > 0 && (

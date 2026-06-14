@@ -41,6 +41,7 @@ import { TraceabilityCenter } from '../pages/TraceabilityCenter';
 import { PersonaLanding } from '../pages/PersonaLanding';
 import { WorkflowOrchestrationDashboard } from '../pages/WorkflowOrchestrationDashboard';
 import { AuditCenter } from '../pages/AuditCenter';
+import { NotificationCenter } from '../pages/NotificationCenter';
 
 export function AppRoutes() {
   return (
@@ -68,6 +69,12 @@ export function AppRoutes() {
         <Route path="operations/incidents" element={<OperationsIncidentsPage />} />
         <Route path="operations/availability" element={<OperationsAvailabilityPage />} />
         <Route path="operations/capacity" element={<PortfolioHealthPage />} />
+        <Route path="operations/notifications" element={<NotificationCenter initialTab="dashboard" />} />
+        <Route path="operations/notifications/inbox" element={<NotificationCenter initialTab="inbox" />} />
+        <Route path="operations/notifications/escalations" element={<NotificationCenter initialTab="escalations" />} />
+        <Route path="operations/notifications/delivery" element={<NotificationCenter initialTab="delivery" />} />
+        <Route path="operations/notifications/history" element={<NotificationCenter initialTab="history" />} />
+        <Route path="operations/notifications/reports" element={<NotificationCenter initialTab="reports" />} />
         <Route path="governance" element={<GovernanceCenter />} />
         <Route path="governance/compliance" element={<GovernanceCompliancePage />} />
         <Route path="governance/risk" element={<GovernanceRiskPage />} />

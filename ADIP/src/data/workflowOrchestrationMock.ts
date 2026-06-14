@@ -2,6 +2,7 @@ import type { WorkflowInstance } from '../types/workflowOrchestration';
 import type { WorkflowLifecycleStage, UnifiedLifecycleStatus } from '../types/workflowOrchestration';
 import { computeCompletionPct, computeDeliveryRisk, WORKFLOW_STAGE_ORDER } from './unifiedLifecycleEngine';
 import { getWorkflowAuditMetrics } from './auditCenterEngine';
+import { getWorkflowNotificationMetrics } from './notificationCenterEngine';
 
 function chainForStage(
   currentStage: WorkflowLifecycleStage,
@@ -52,6 +53,7 @@ function task(
 type BaseWorkflow = Omit<
   WorkflowInstance,
   'evidenceCount' | 'openFindings' | 'openObservations' | 'auditStatus' | 'complianceStatus'
+  | 'notificationCount' | 'openNotifications' | 'criticalNotifications' | 'escalatedNotifications'
 >;
 
 const BASE_WORKFLOWS: BaseWorkflow[] = [
@@ -234,6 +236,7 @@ const BASE_WORKFLOWS: BaseWorkflow[] = [
 export const WORKFLOW_ORCHESTRATION_MOCK: WorkflowInstance[] = BASE_WORKFLOWS.map((w) => ({
   ...w,
   ...getWorkflowAuditMetrics(w.id),
+  ...getWorkflowNotificationMetrics(w.id),
 }));
 
 export const WORKFLOW_EXEC_SUMMARY =

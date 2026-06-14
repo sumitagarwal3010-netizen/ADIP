@@ -92,6 +92,10 @@ export interface WorkflowInstance {
   openObservations: number;
   auditStatus: 'Compliant' | 'Partial' | 'Non-Compliant' | 'Under Review';
   complianceStatus: 'Compliant' | 'Partial' | 'Non-Compliant';
+  notificationCount: number;
+  openNotifications: number;
+  criticalNotifications: number;
+  escalatedNotifications: number;
 }
 
 export interface UnifiedLifecycleKpis {
