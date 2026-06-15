@@ -39,6 +39,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import InboxIcon from '@mui/icons-material/Inbox';
 import StreamIcon from '@mui/icons-material/Stream';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
+import AppsIcon from '@mui/icons-material/Apps';
 
 export interface NavChild {
   path: string;
@@ -70,6 +71,12 @@ export const NAV_HUBS: NavHub[] = [
       { path: '/executive/workflow-orchestration', label: 'Workflow Orchestration', icon: TimelineIcon },
       { path: '/executive/ai-copilot', label: 'AI Delivery Copilot', icon: SmartToyIcon },
       { path: '/executive/value-realization', label: 'Value Realization', icon: TrendingUpIcon },
+      { path: '/executive/portfolio-governance', label: 'Portfolio Governance', icon: GavelIcon },
+      { path: '/executive/application-portfolio', label: 'Application Portfolio', icon: AppsIcon },
+      { path: '/executive/architecture-repository', label: 'Architecture Repository', icon: AccountTreeIcon },
+      { path: '/executive/technology-strategy', label: 'Technology Strategy', icon: RocketLaunchIcon },
+      { path: '/executive/transformation-pmo', label: 'Transformation PMO', icon: HubIcon },
+      { path: '/executive/enterprise-risk', label: 'Enterprise Risk', icon: ShieldIcon },
     ],
   },
   {

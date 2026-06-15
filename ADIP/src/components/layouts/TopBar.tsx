@@ -17,6 +17,8 @@ import { useNavigate } from 'react-router-dom';
 import { useNotifications } from '../../context/NotificationContext';
 import { useAuth } from '../../context/AuthContext';
 import { UserProfilePanel } from '../auth/UserProfilePanel';
+import { DEMO_SWITCHABLE_PERSONAS } from '../../config/demoMode';
+import { PERSONA_MAP } from '../../config/personaConfig';
 
 interface TopBarProps {
   title: string;
@@ -31,7 +33,7 @@ export function TopBar({ title, subtitle }: TopBarProps) {
     refreshIntervalMs,
     generateExecutiveSummary,
   } = useSimulation();
-  const { persona } = usePersona();
+  const { persona, personaId, setPersona } = usePersona();
   const { kpis } = useNotifications();
   const navigate = useNavigate();
   const { currentUser } = useAuth();
@@ -46,7 +48,7 @@ export function TopBar({ title, subtitle }: TopBarProps) {
         sx={{
           height: layout.topBarHeight,
           position: 'fixed',
-          top: 0,
+          top: layout.demoBannerHeight,
           left: layout.sidebarWidth,
           right: layout.aiAdvisorWidth,
           zIndex: 1100,
@@ -158,6 +160,25 @@ export function TopBar({ title, subtitle }: TopBarProps) {
             <NotificationsIcon sx={{ fontSize: 18 }} />
           </Badge>
         </IconButton>
+
+        <Tooltip title="Demo persona switch — RBAC visibility only (not security enforcement)">
+          <Select
+            value={personaId}
+            onChange={(e) => setPersona(e.target.value as typeof personaId)}
+            size="small"
+            sx={{
+              minWidth: 150,
+              fontSize: '0.72rem',
+              '& .MuiOutlinedInput-notchedOutline': { borderColor: colors.border.subtle },
+            }}
+          >
+            {DEMO_SWITCHABLE_PERSONAS.map((id) => (
+              <MenuItem key={id} value={id} sx={{ fontSize: '0.72rem' }}>
+                {PERSONA_MAP[id].label} — {PERSONA_MAP[id].title}
+              </MenuItem>
+            ))}
+          </Select>
+        </Tooltip>
 
         <Tooltip title="View profile, permissions, and sign out">
           <Box

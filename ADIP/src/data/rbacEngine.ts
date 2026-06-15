@@ -15,12 +15,24 @@ import { canAccessCopilot } from './copilotEngine';
 import { canAccessProductionIntelligence } from './productionIntelligenceEngine';
 import { canAccessKnowledgeCenter } from './knowledgeCenterEngine';
 import { canAccessValueRealization } from './valueRealizationEngine';
+import { canAccessPortfolioGovernance } from './portfolioGovernanceEngine';
+import { canAccessApplicationPortfolio } from './applicationPortfolioEngine';
+import { canAccessArchitectureRepository } from './architectureRepositoryEngine';
+import { canAccessTechnologyStrategy } from './technologyStrategyEngine';
+import { canAccessTransformationPmo } from './transformationPmoEngine';
+import { canAccessEnterpriseRisk } from './enterpriseRiskEngine';
 
 const ACTIVITY_CENTER_PREFIX = '/governance/activity-center';
 const AI_COPILOT_PREFIX = '/executive/ai-copilot';
 const PRODUCTION_INTEL_PREFIX = '/production';
 const KNOWLEDGE_CENTER_PREFIX = '/knowledge-center';
 const VALUE_REALIZATION_PREFIX = '/executive/value-realization';
+const PORTFOLIO_GOVERNANCE_PREFIX = '/executive/portfolio-governance';
+const APPLICATION_PORTFOLIO_PREFIX = '/executive/application-portfolio';
+const ARCHITECTURE_REPOSITORY_PREFIX = '/executive/architecture-repository';
+const TECHNOLOGY_STRATEGY_PREFIX = '/executive/technology-strategy';
+const TRANSFORMATION_PMO_PREFIX = '/executive/transformation-pmo';
+const ENTERPRISE_RISK_PREFIX = '/executive/enterprise-risk';
 
 export interface AccessDecision {
   allowed: boolean;
@@ -106,6 +118,24 @@ export function createEntitlementResolver(roleId: RbacRoleId, personaId?: Person
       }
       if (path === VALUE_REALIZATION_PREFIX || path.startsWith(`${VALUE_REALIZATION_PREFIX}/`)) {
         return personaId ? canAccessValueRealization(personaId) : false;
+      }
+      if (path === PORTFOLIO_GOVERNANCE_PREFIX || path.startsWith(`${PORTFOLIO_GOVERNANCE_PREFIX}/`)) {
+        return personaId ? canAccessPortfolioGovernance(personaId) : false;
+      }
+      if (path === APPLICATION_PORTFOLIO_PREFIX || path.startsWith(`${APPLICATION_PORTFOLIO_PREFIX}/`)) {
+        return personaId ? canAccessApplicationPortfolio(personaId) : false;
+      }
+      if (path === ARCHITECTURE_REPOSITORY_PREFIX || path.startsWith(`${ARCHITECTURE_REPOSITORY_PREFIX}/`)) {
+        return personaId ? canAccessArchitectureRepository(personaId) : false;
+      }
+      if (path === TECHNOLOGY_STRATEGY_PREFIX || path.startsWith(`${TECHNOLOGY_STRATEGY_PREFIX}/`)) {
+        return personaId ? canAccessTechnologyStrategy(personaId) : false;
+      }
+      if (path === TRANSFORMATION_PMO_PREFIX || path.startsWith(`${TRANSFORMATION_PMO_PREFIX}/`)) {
+        return personaId ? canAccessTransformationPmo(personaId) : false;
+      }
+      if (path === ENTERPRISE_RISK_PREFIX || path.startsWith(`${ENTERPRISE_RISK_PREFIX}/`)) {
+        return personaId ? canAccessEnterpriseRisk(personaId) : false;
       }
       const entry = ROUTE_RESOURCE_MAP[path];
       if (!entry) return true;

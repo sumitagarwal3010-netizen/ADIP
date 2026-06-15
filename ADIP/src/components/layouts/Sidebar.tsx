@@ -150,10 +150,10 @@ export function Sidebar() {
       sx={{
         width: layout.sidebarWidth,
         minWidth: layout.sidebarWidth,
-        height: '100vh',
+        height: `calc(100vh - ${layout.demoBannerHeight}px)`,
         position: 'fixed',
         left: 0,
-        top: 0,
+        top: layout.demoBannerHeight,
         zIndex: 1200,
         background: `linear-gradient(180deg, ${colors.bg.secondary} 0%, ${colors.bg.primary} 100%)`,
         borderRight: `1px solid ${colors.border.subtle}`,

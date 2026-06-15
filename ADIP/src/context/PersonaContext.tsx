@@ -29,14 +29,14 @@ interface PersonaContextValue {
 const PersonaContext = createContext<PersonaContextValue | null>(null);
 
 export function PersonaProvider({ children }: { children: ReactNode }) {
-  const { isAuthenticated, currentPersona } = useAuth();
-  const personaId: PersonaId =
-    isAuthenticated && currentPersona ? currentPersona : DEFAULT_PERSONA;
+  const { currentPersona, switchPersona } = useAuth();
+  const personaId: PersonaId = currentPersona ?? DEFAULT_PERSONA;
 
+  // Demo mode: persona switching is enabled for RBAC visibility (not security
+  // enforcement). It updates the injected demo identity via AuthContext.
   const setPersona = useCallback((id: PersonaId) => {
-    void id;
-    /* Persona is identity-driven from authenticated user — manual switching disabled */
-  }, []);
+    switchPersona(id);
+  }, [switchPersona]);
 
   const value = useMemo<PersonaContextValue>(() => {
     const resolver = entitlementResolverForPersona(personaId);

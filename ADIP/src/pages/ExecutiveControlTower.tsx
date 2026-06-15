@@ -34,6 +34,18 @@ import { useKnowledgeCenter } from '../context/KnowledgeCenterContext';
 import { KNOWLEDGE_CENTER_EXEC_SUMMARY } from '../data/knowledgeCenterMock';
 import { useValueRealization } from '../context/ValueRealizationContext';
 import { VALUE_REALIZATION_EXEC_SUMMARY } from '../data/valueRealizationMock';
+import { usePortfolioGovernance } from '../context/PortfolioGovernanceContext';
+import { PORTFOLIO_GOVERNANCE_EXEC_SUMMARY } from '../data/portfolioGovernanceMock';
+import { useApplicationPortfolio } from '../context/ApplicationPortfolioContext';
+import { APPLICATION_PORTFOLIO_EXEC_SUMMARY } from '../data/applicationPortfolioMock';
+import { useArchitectureRepository } from '../context/ArchitectureRepositoryContext';
+import { ARCHITECTURE_REPOSITORY_EXEC_SUMMARY } from '../data/architectureRepositoryMock';
+import { useTechnologyStrategy } from '../context/TechnologyStrategyContext';
+import { TECHNOLOGY_STRATEGY_EXEC_SUMMARY } from '../data/technologyStrategyMock';
+import { useTransformationPmo } from '../context/TransformationPmoContext';
+import { TRANSFORMATION_PMO_EXEC_SUMMARY } from '../data/transformationPmoMock';
+import { useEnterpriseRisk } from '../context/EnterpriseRiskContext';
+import { ENTERPRISE_RISK_EXEC_SUMMARY } from '../data/enterpriseRiskMock';
 
 export function ExecutiveControlTower() {
   const { executive, release, governance, learning, dynamicInsights } = useFilteredSimulation();
@@ -47,6 +59,12 @@ export function ExecutiveControlTower() {
   const { kpis: prodIntelKpis } = useProductionIntelligence();
   const { kpis: knowledgeKpis } = useKnowledgeCenter();
   const { kpis: valueKpis } = useValueRealization();
+  const { kpis: portfolioGovKpis } = usePortfolioGovernance();
+  const { kpis: apmKpis } = useApplicationPortfolio();
+  const { kpis: archKpis } = useArchitectureRepository();
+  const { kpis: techKpis } = useTechnologyStrategy();
+  const { kpis: tpmoKpis } = useTransformationPmo();
+  const { kpis: ermKpis } = useEnterpriseRisk();
 
   const approvalBottleneckData = kpis.workflowBottlenecks.slice(0, 5).map((b) => ({
     name: WORKFLOW_STAGE_LABEL[b.stage],
@@ -179,6 +197,60 @@ export function ExecutiveControlTower() {
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="App Health" value={apmKpis.applicationHealth} suffix="%" chartId="application-portfolio.application-health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Critical Apps" value={apmKpis.criticalApplications} chartId="application-portfolio.critical-applications" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Technical Debt" value={apmKpis.technicalDebt} chartId="application-portfolio.technical-debt" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Cloud Readiness" value={apmKpis.cloudReadiness} suffix="%" chartId="application-portfolio.cloud-readiness" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="AI Readiness" value={apmKpis.aiReadiness} suffix="%" chartId="application-portfolio.ai-readiness" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Annual Cost" value={`₹${(apmKpis.annualCost / 1_000_000).toFixed(0)}M`} chartId="application-portfolio.annual-cost" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Arch Health" value={archKpis.architectureHealth} suffix="%" chartId="architecture-repository.architecture-health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Std Compliance" value={archKpis.standardsCompliance} suffix="%" chartId="architecture-repository.standards-compliance" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Arch Debt" value={archKpis.architectureDebt} suffix="d" chartId="architecture-repository.architecture-debt" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Tech Obsolescence" value={archKpis.technologyObsolescence} suffix="%" chartId="architecture-repository.technology-obsolescence" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Ref Adoption" value={archKpis.referenceAdoption} suffix="%" chartId="architecture-repository.reference-adoption" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Arch Risk" value={archKpis.architectureRisk} suffix="/100" chartId="architecture-repository.architecture-risk" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Tech Health" value={techKpis.technologyHealth} suffix="%" chartId="technology-strategy.technology-health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Strategic Platform" value={techKpis.strategicPlatformAdoption} suffix="%" chartId="technology-strategy.strategic-platform-adoption" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Cloud Adoption" value={techKpis.cloudAdoption} suffix="%" chartId="technology-strategy.cloud-adoption" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="AI Platform" value={techKpis.aiPlatformAdoption} suffix="%" chartId="technology-strategy.ai-platform-adoption" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Tech Debt" value={techKpis.technologyDebt} suffix="%" chartId="technology-strategy.technology-debt" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Vendor Concentration" value={techKpis.vendorConcentration} suffix="%" chartId="technology-strategy.vendor-concentration" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Transformation Health" value={tpmoKpis.transformationHealth} suffix="%" chartId="transformation-pmo.transformation-health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Program Delivery" value={tpmoKpis.programDelivery} suffix="%" chartId="transformation-pmo.program-delivery" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Benefits Realization" value={tpmoKpis.benefitsRealization} suffix="%" chartId="transformation-pmo.benefits-realization" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Exec Commitments" value={tpmoKpis.executiveCommitments} suffix="%" chartId="transformation-pmo.executive-commitments" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Transformation ROI" value={tpmoKpis.transformationRoi} suffix="%" chartId="transformation-pmo.transformation-roi" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Board Readiness" value={tpmoKpis.boardReadiness} suffix="%" chartId="transformation-pmo.board-readiness" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Risk Exposure" value={ermKpis.enterpriseRiskExposure} suffix="/100" chartId="enterprise-risk.enterprise-risk-exposure" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Residual Risk" value={ermKpis.residualRisk} suffix="/100" chartId="enterprise-risk.residual-risk" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Control Effectiveness" value={ermKpis.controlEffectiveness} suffix="%" chartId="enterprise-risk.control-effectiveness" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Open Critical Risks" value={ermKpis.openCriticalRisks} chartId="enterprise-risk.open-critical-risks" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Cyber Risk" value={ermKpis.cyberRiskScore} suffix="/100" chartId="enterprise-risk.cyber-risk-score" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Assurance Coverage" value={ermKpis.assuranceCoverage} suffix="%" chartId="enterprise-risk.assurance-coverage" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Portfolio Health" value={portfolioGovKpis.portfolioHealth} suffix="%" chartId="portfolio-governance.portfolio-health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Strategic Alignment" value={portfolioGovKpis.strategicAlignment} suffix="%" chartId="portfolio-governance.strategic-alignment" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Funding Utilization" value={portfolioGovKpis.fundingUtilization} suffix="%" chartId="portfolio-governance.funding-utilization" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Capacity Utilization" value={portfolioGovKpis.capacityUtilization} suffix="%" chartId="portfolio-governance.capacity-utilization" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Delivery Confidence" value={portfolioGovKpis.deliveryConfidence} suffix="%" chartId="portfolio-governance.delivery-confidence" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Demand Backlog" value={portfolioGovKpis.demandBacklog} chartId="portfolio-governance.demand-backlog" compact /></Grid>
+      </Grid>
+
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Annual Value" value={`₹${(valueKpis.annualValueRealized / 1_000_000).toFixed(1)}M`} chartId="value-realization.annual-value" compact /></Grid>
         <Grid size={{ xs: 6, md: 2 }}><KpiCard label="ROI" value={valueKpis.roi} suffix="%" chartId="value-realization.roi" compact /></Grid>
         <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Transformation Score" value={valueKpis.transformationScore} suffix="%" chartId="value-realization.transformation-score" compact /></Grid>
@@ -251,6 +323,29 @@ export function ExecutiveControlTower() {
 
       <Box sx={{ mt: 1.5 }}>
         <AIInsightBox title="Value Realization — Executive Summary" insight={VALUE_REALIZATION_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Portfolio Governance — Executive Summary" insight={PORTFOLIO_GOVERNANCE_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Application Portfolio — Executive Summary" insight={APPLICATION_PORTFOLIO_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Enterprise Architecture — Executive Summary" insight={ARCHITECTURE_REPOSITORY_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Technology Strategy — Executive Summary" insight={TECHNOLOGY_STRATEGY_EXEC_SUMMARY} />
+      </Box>
+
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Transformation PMO — Executive Summary" insight={TRANSFORMATION_PMO_EXEC_SUMMARY} />
+        <Box sx={{ mt: 1.5 }}>
+          <AIInsightBox title="Enterprise Risk — Executive Summary" insight={ENTERPRISE_RISK_EXEC_SUMMARY} />
+        </Box>
       </Box>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>

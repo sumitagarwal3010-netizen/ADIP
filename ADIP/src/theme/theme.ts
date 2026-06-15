@@ -72,4 +72,5 @@ export const layout = {
   sidebarWidth: 240,
   topBarHeight: 56,
   aiAdvisorWidth: 300,
+  demoBannerHeight: 28,
 } as const;

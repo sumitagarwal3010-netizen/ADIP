@@ -14,6 +14,12 @@ import { CopilotProvider } from './context/CopilotContext';
 import { ProductionIntelligenceProvider } from './context/ProductionIntelligenceContext';
 import { KnowledgeCenterProvider } from './context/KnowledgeCenterContext';
 import { ValueRealizationProvider } from './context/ValueRealizationContext';
+import { PortfolioGovernanceProvider } from './context/PortfolioGovernanceContext';
+import { ApplicationPortfolioProvider } from './context/ApplicationPortfolioContext';
+import { ArchitectureRepositoryProvider } from './context/ArchitectureRepositoryContext';
+import { TechnologyStrategyProvider } from './context/TechnologyStrategyContext';
+import { TransformationPmoProvider } from './context/TransformationPmoContext';
+import { EnterpriseRiskProvider } from './context/EnterpriseRiskContext';
 import { RootErrorBoundary } from './components/common/RootErrorBoundary';
 
 function App() {
@@ -29,6 +35,12 @@ function App() {
               <ProductionIntelligenceProvider>
               <KnowledgeCenterProvider>
               <ValueRealizationProvider>
+              <PortfolioGovernanceProvider>
+              <ApplicationPortfolioProvider>
+              <ArchitectureRepositoryProvider>
+              <TechnologyStrategyProvider>
+              <TransformationPmoProvider>
+              <EnterpriseRiskProvider>
               <EventProvider>
                 <WorkflowProvider>
                   <NotificationProvider>
@@ -40,6 +52,12 @@ function App() {
                   </NotificationProvider>
                 </WorkflowProvider>
               </EventProvider>
+              </EnterpriseRiskProvider>
+              </TransformationPmoProvider>
+              </TechnologyStrategyProvider>
+              </ArchitectureRepositoryProvider>
+              </ApplicationPortfolioProvider>
+              </PortfolioGovernanceProvider>
               </ValueRealizationProvider>
               </KnowledgeCenterProvider>
               </ProductionIntelligenceProvider>

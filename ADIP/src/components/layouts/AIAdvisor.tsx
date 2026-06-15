@@ -38,10 +38,10 @@ export function AIAdvisor() {
       sx={{
         width: layout.aiAdvisorWidth,
         minWidth: layout.aiAdvisorWidth,
-        height: '100vh',
+        height: `calc(100vh - ${layout.demoBannerHeight}px)`,
         position: 'fixed',
         right: 0,
-        top: 0,
+        top: layout.demoBannerHeight,
         zIndex: 1200,
         background: `linear-gradient(180deg, ${colors.bg.tertiary} 0%, ${colors.bg.primary} 100%)`,
         borderLeft: `1px solid ${colors.border.subtle}`,

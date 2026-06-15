@@ -92,7 +92,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Open Incidents', value: (s) => s.executive.openIncidents, suffix: '', trend: -12 },
       { label: 'Business Impact', value: (s) => pct(s.executive.businessImpactScore), suffix: '%', trend: 1.2 },
     ],
-    reportHubs: ['executive', 'traceability', 'audit-center', 'notification-center', 'ai-copilot', 'production-intelligence', 'knowledge-center', 'value-realization'],
+    reportHubs: ['executive', 'traceability', 'audit-center', 'notification-center', 'ai-copilot', 'production-intelligence', 'knowledge-center', 'value-realization', 'portfolio-governance', 'application-portfolio', 'architecture-repository', 'technology-strategy', 'transformation-pmo', 'enterprise-risk'],
     actionScope: { types: ['risk', 'incident', 'compliance', 'release'] },
   },
   {
@@ -115,7 +115,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Tech Debt Items', value: (s) => s.delivery.technicalDebtItems, suffix: '', trend: -2 },
       { label: 'Release Confidence', value: (s) => pct(s.release.confidence), suffix: '%', trend: 1.8 },
     ],
-    reportHubs: ['production', 'ai-copilot', 'production-intelligence', 'knowledge-center', 'value-realization'],
+    reportHubs: ['production', 'ai-copilot', 'production-intelligence', 'knowledge-center', 'value-realization', 'portfolio-governance', 'application-portfolio', 'architecture-repository', 'technology-strategy', 'transformation-pmo', 'enterprise-risk'],
     actionScope: { types: ['architecture', 'api', 'release', 'testCase'] },
   },
   {
@@ -140,7 +140,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Compliance', value: (s) => pct(s.governance.policyCompliance), suffix: '%', trend: 0.6 },
       { label: 'Open Incidents', value: (s) => s.production.activeIncidents, suffix: '', trend: -5 },
     ],
-    reportHubs: ['risk', 'ai-controls', 'approval-workflow', 'audit-center', 'notification-center', 'knowledge-center', 'value-realization'],
+    reportHubs: ['risk', 'ai-controls', 'approval-workflow', 'audit-center', 'notification-center', 'knowledge-center', 'value-realization', 'enterprise-risk'],
     actionScope: { types: ['control', 'risk', 'incident'] },
   },
   {
@@ -190,7 +190,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Policy Violations', value: (s) => s.governance.policyViolations, suffix: '', trend: -1 },
       { label: 'Audit Observations', value: (s) => s.governance.auditObservations, suffix: '', trend: -3 },
     ],
-    reportHubs: ['compliance', 'audit-center', 'notification-center', 'approval-workflow', 'ai-copilot', 'production-intelligence', 'knowledge-center'],
+    reportHubs: ['compliance', 'audit-center', 'notification-center', 'approval-workflow', 'ai-copilot', 'production-intelligence', 'knowledge-center', 'enterprise-risk'],
     actionScope: { types: ['compliance', 'control', 'evidence'] },
   },
   {
@@ -213,7 +213,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Governance Score', value: (s) => pct(s.governance.governanceScore), suffix: '%', trend: 1.1 },
       { label: 'Business Impact', value: (s) => pct(s.executive.businessImpactScore), suffix: '%', trend: 1.2 },
     ],
-    reportHubs: ['risk', 'ai-risk', 'approval-workflow'],
+    reportHubs: ['risk', 'ai-risk', 'approval-workflow', 'enterprise-risk'],
     actionScope: { types: ['risk', 'control', 'incident'] },
   },
   {
@@ -237,7 +237,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Code Quality', value: (s) => pct(s.delivery.codeQualityAvg), suffix: '%', trend: 1 },
       { label: 'Test Coverage', value: (s) => pct(s.delivery.testCoverageAvg), suffix: '%', trend: 0.8 },
     ],
-    reportHubs: ['traceability', 'approval-workflow', 'notification-center', 'ai-copilot', 'knowledge-center'],
+    reportHubs: ['traceability', 'approval-workflow', 'notification-center', 'ai-copilot', 'knowledge-center', 'portfolio-governance', 'application-portfolio', 'architecture-repository', 'technology-strategy', 'transformation-pmo', 'enterprise-risk'],
     actionScope: { types: ['architecture', 'api', 'risk', 'control'] },
   },
   {

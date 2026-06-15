@@ -100,6 +100,81 @@ import {
   PORTFOLIOS,
   VALUE_TREND_HISTORY,
 } from '../data/valueRealizationMock.ts';
+import {
+  computePortfolioGovernanceKpis,
+  demandTopPrioritized,
+  portfolioHealthByPortfolio,
+} from '../data/portfolioGovernanceEngine.ts';
+import {
+  PG_DEMAND_REQUESTS,
+  PG_PORTFOLIOS,
+  PG_PORTFOLIO_HISTORY,
+  PG_TRACEABILITY_CHAINS,
+} from '../data/portfolioGovernanceMock.ts';
+import {
+  computeApplicationPortfolioKpis,
+  applicationsByDomain,
+  rationalizationCandidates,
+  topTechnicalDebt,
+} from '../data/applicationPortfolioEngine.ts';
+import {
+  APM_APPLICATIONS,
+  APM_LIFECYCLE_HISTORY,
+  APM_TECH_STACKS,
+  APM_TRACEABILITY_CHAINS,
+} from '../data/applicationPortfolioMock.ts';
+import {
+  computeArchitectureRepositoryKpis,
+  obsoletePlatforms as archObsoletePlatforms,
+  topArchitectureDebt as archTopDebt,
+  openFindings as archOpenFindings,
+  activeExceptions as archActiveExceptions,
+  integrationRisks as archIntegrationRisks,
+  referenceAdoptionSummary as archReferenceAdoption,
+  modernizationCandidates as archModernization,
+} from '../data/architectureRepositoryEngine.ts';
+import {
+  ARCH_APPLICATIONS,
+} from '../data/architectureRepositoryMock.ts';
+import {
+  computeTechnologyStrategyKpis,
+  retirementCandidates as techRetirementCandidates,
+  topVendorRisks as techTopVendorRisks,
+  topTechnologyRisks as techTopRisks,
+  modernizationInitiatives as techModernization,
+  strategicPlatformAdoptionChart as techPlatformAdoption,
+  topCloudPlatforms as techTopClouds,
+  topAiPlatforms as techTopAis,
+  topInvestments as techTopInvestments,
+} from '../data/technologyStrategyEngine.ts';
+import {
+  TECHNOLOGIES,
+  TECH_STANDARDS,
+} from '../data/technologyStrategyMock.ts';
+import {
+  computeTransformationPmoKpis,
+  atRiskPrograms as tpmoAtRiskPrograms,
+  topPrograms as tpmoTopPrograms,
+  objectivesSummary as tpmoObjectives,
+  upcomingCriticalMilestones as tpmoCriticalMilestones,
+  topBenefits as tpmoTopBenefits,
+  commitmentsAtRisk as tpmoCommitmentsAtRisk,
+  riskyDependencies as tpmoRiskyDeps,
+  businessUnitPerformanceChart as tpmoBuChart,
+  topInitiatives as tpmoTopInitiatives,
+} from '../data/transformationPmoEngine.ts';
+import {
+  computeEnterpriseRiskKpis,
+  topEnterpriseRisks as ermTopRisks,
+  criticalOpenRisks as ermCriticalRisks,
+  ineffectiveControls as ermWeakControls,
+  topCyberRisks as ermTopCyber,
+  topAiRisks as ermTopAi,
+  topRegulatoryRisks as ermTopRegulatory,
+  openAuditFindings as ermOpenFindings,
+  assuranceReviews as ermAssuranceReviews,
+} from '../data/enterpriseRiskEngine.ts';
+import { ERM_RISK_APPETITE } from '../data/enterpriseRiskMock.ts';
 
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownPayload} KpiDrilldownPayload */
 /** @typedef {import('../types/kpiDrilldown').KpiDrilldownContext} KpiDrilldownContext */
@@ -3375,6 +3450,749 @@ const chartResolvers = {
       relatedIncidents: [],
       relatedReleases: releasesFromState(state),
       historicalTrend: sparkline7d(71),
+    });
+  },
+
+  'portfolio-governance.portfolio-health': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: portfolioHealthByPortfolio().slice(0, 8).map((p) => ({ id: p.name, title: p.name, meta: `${p.value}%` })),
+      supportingEvidence: [`Enterprise portfolio health: ${kpis.portfolioHealth}%`, '10 portfolios · 25 programs · 100 projects'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 1),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.portfolioHealth),
+    });
+  },
+
+  'portfolio-governance.strategic-alignment': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PG_PORTFOLIOS.slice(0, 8).map((p) => ({ id: p.id, title: p.name, meta: `${p.strategicAlignment}%` })),
+      supportingEvidence: [`Enterprise strategic alignment: ${kpis.strategicAlignment}%`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.strategicAlignment),
+    });
+  },
+
+  'portfolio-governance.funding-utilization': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PG_PORTFOLIOS.map((p) => ({ id: p.id, title: p.name, meta: `${p.fundingUtilization}%` })),
+      supportingEvidence: [`Funding utilization: ${kpis.fundingUtilization}%`, '120 funding requests across portfolios'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.fundingUtilization),
+    });
+  },
+
+  'portfolio-governance.capacity-utilization': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: [
+        { id: 'architect', title: 'Architects', meta: '88%' },
+        { id: 'dev', title: 'Developers', meta: '79%' },
+        { id: 'data', title: 'Data Engineers', meta: '91%' },
+      ],
+      supportingEvidence: [`Capacity utilization: ${kpis.capacityUtilization}%`, '500 resources · 3 critical bottlenecks'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.capacityUtilization),
+    });
+  },
+
+  'portfolio-governance.delivery-confidence': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: demandTopPrioritized(8).map((d) => ({ id: d.id, title: d.title, meta: `Score ${d.score}` })),
+      supportingEvidence: [`Delivery confidence: ${kpis.deliveryConfidence}%`, '12 kill candidates flagged'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.deliveryConfidence),
+    });
+  },
+
+  'portfolio-governance.benefits-realization': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PG_TRACEABILITY_CHAINS.filter((c) => c.stage === 'Value' || c.stage === 'Production').map((c) => ({
+        id: c.stage, title: c.entity, meta: c.outcome,
+      })),
+      supportingEvidence: [`Benefits realization: ${kpis.benefitsRealization}% of forecast`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.benefitsRealization),
+    });
+  },
+
+  'portfolio-governance.risk-exposure': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PG_DEMAND_REQUESTS.filter((d) => d.riskLevel === 'high' || d.riskLevel === 'critical').slice(0, 8).map((d) => ({
+        id: d.id, title: d.title, meta: d.riskLevel,
+      })),
+      supportingEvidence: [`Portfolio risk exposure: ${kpis.riskExposure}%`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.riskExposure),
+    });
+  },
+
+  'portfolio-governance.demand-backlog': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: demandTopPrioritized(10).map((d) => ({ id: d.id, title: d.title, meta: d.status })),
+      supportingEvidence: [`Demand backlog: ${kpis.demandBacklog} requests`, '11 duplicate initiatives detected'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.demandBacklog),
+    });
+  },
+
+  'portfolio-governance.investment-efficiency': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PG_PORTFOLIO_HISTORY.slice(-4).map((h) => ({ id: h.quarter, title: h.quarter, meta: `${Math.round(h.fundingUtilization)}%` })),
+      supportingEvidence: [`Investment efficiency: ${kpis.investmentEfficiency}%`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.investmentEfficiency),
+    });
+  },
+
+  'portfolio-governance.transformation-progress': (state, ctx) => {
+    const kpis = computePortfolioGovernanceKpis();
+    return buildPayload(ctx, {
+      sourceRecords: PG_PORTFOLIO_HISTORY.map((h) => ({ id: h.quarter, title: h.quarter, meta: `${Math.round(h.portfolioHealth)}%` })),
+      supportingEvidence: [`Transformation progress: ${kpis.transformationProgress}%`, 'Idea → Demand → Funding → Portfolio → SDLC → Production → Value'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.transformationProgress),
+    });
+  },
+
+  'application-portfolio.application-health': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: APM_APPLICATIONS.slice(0, 10).map((a) => ({ id: a.id, title: a.name, meta: `${a.productionHealth}%` })),
+      supportingEvidence: [`Application health: ${kpis.applicationHealth}%`, '300 applications across 20 domains'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.applicationHealth),
+    });
+  },
+
+  'application-portfolio.critical-applications': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: APM_APPLICATIONS.filter((a) => a.criticality === 'tier-1').slice(0, 8).map((a) => ({
+        id: a.id, title: a.name, meta: a.criticality,
+      })),
+      supportingEvidence: [`${kpis.criticalApplications} tier-1/tier-2 critical applications`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.criticalApplications),
+    });
+  },
+
+  'application-portfolio.technical-debt': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    const debt = topTechnicalDebt(8);
+    return buildPayload(ctx, {
+      sourceRecords: debt.map((d) => ({ id: d.id, title: d.appName, meta: `Score ${d.score}` })),
+      supportingEvidence: [`Portfolio debt index: ${kpis.technicalDebt}/100`, '150 debt items tracked'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.technicalDebt),
+    });
+  },
+
+  'application-portfolio.modernization-readiness': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: rationalizationCandidates().slice(0, 8).map((a) => ({
+        id: a.id, title: a.name, meta: `${a.cloudReadinessScore}% cloud`,
+      })),
+      supportingEvidence: [`Modernization readiness: ${kpis.modernizationReadiness}%`, '100 opportunities identified'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.modernizationReadiness),
+    });
+  },
+
+  'application-portfolio.cloud-readiness': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: APM_APPLICATIONS.filter((a) => a.cloudReadinessScore > 75).slice(0, 8).map((a) => ({
+        id: a.id, title: a.name, meta: `${a.cloudReadinessScore}%`,
+      })),
+      supportingEvidence: [`Cloud readiness: ${kpis.cloudReadiness}%`, '100 cloud assessments'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.cloudReadiness),
+    });
+  },
+
+  'application-portfolio.ai-readiness': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: APM_APPLICATIONS.filter((a) => a.aiReadinessScore > 70).slice(0, 8).map((a) => ({
+        id: a.id, title: a.name, meta: `${a.aiReadinessScore}%`,
+      })),
+      supportingEvidence: [`AI readiness: ${kpis.aiReadiness}%`, '100 AI assessments'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.aiReadiness),
+    });
+  },
+
+  'application-portfolio.risk-exposure': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: APM_APPLICATIONS.filter((a) => a.riskScore > 70).slice(0, 8).map((a) => ({
+        id: a.id, title: a.name, meta: `Risk ${a.riskScore}`,
+      })),
+      supportingEvidence: [`Risk exposure: ${kpis.riskExposure}/100`, '200 technology risks'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 3),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.riskExposure),
+    });
+  },
+
+  'application-portfolio.annual-cost': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: applicationsByDomain().slice(0, 8).map((d) => ({ id: d.name, title: d.name, meta: `${d.value} apps` })),
+      supportingEvidence: [`Annual portfolio cost: ₹${(kpis.annualCost / 1_000_000).toFixed(0)}M`],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.annualCost / 1_000_000),
+    });
+  },
+
+  'application-portfolio.rationalization-savings': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: rationalizationCandidates().slice(0, 8).map((a) => ({
+        id: a.id, title: a.name, meta: `₹${(a.annualCost / 1_000_000).toFixed(1)}M`,
+      })),
+      supportingEvidence: [`Rationalization savings: ₹${(kpis.rationalizationSavings / 1_000_000).toFixed(1)}M`, '12 retirement candidates'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.rationalizationSavings / 1_000_000),
+    });
+  },
+
+  'application-portfolio.technology-obsolescence': (state, ctx) => {
+    const kpis = computeApplicationPortfolioKpis();
+    return buildPayload(ctx, {
+      sourceRecords: APM_TECH_STACKS.filter((s) => s.obsolescenceRisk === 'high' || s.obsolescenceRisk === 'critical').slice(0, 8).map((s) => ({
+        id: s.id, title: s.name, meta: s.obsolescenceRisk,
+      })),
+      supportingEvidence: [`Technology obsolescence: ${kpis.technologyObsolescence}%`, '50 technology stacks'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.technologyObsolescence),
+    });
+  },
+
+  'architecture-repository.architecture-health': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ARCH_APPLICATIONS.slice(0, 10).map((a) => ({ id: a.id, title: a.name, meta: `${a.standardsAdherence}%` })),
+      supportingEvidence: [`Architecture health: ${kpis.architectureHealth}%`, '300 applications across 10 domains'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.architectureHealth),
+    });
+  },
+
+  'architecture-repository.standards-compliance': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: archOpenFindings(8).map((f) => ({ id: f.id, title: f.appName, meta: f.severity })),
+      supportingEvidence: [`Standards compliance: ${kpis.standardsCompliance}%`, '100 standards · 8 principles'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.standardsCompliance),
+    });
+  },
+
+  'architecture-repository.architecture-debt': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: archTopDebt(8).map((d) => ({ id: d.id, title: d.appName, meta: `${d.effortDays}d` })),
+      supportingEvidence: [`Architecture debt: ${kpis.architectureDebt} days avg`, '150 debt items tracked'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.architectureDebt),
+    });
+  },
+
+  'architecture-repository.technology-obsolescence': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: archObsoletePlatforms(8).map((p) => ({ id: p.id, title: p.name, meta: p.lifecycle })),
+      supportingEvidence: [`Technology obsolescence: ${kpis.technologyObsolescence}%`, '50 technology platforms'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.technologyObsolescence),
+    });
+  },
+
+  'architecture-repository.cloud-readiness': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ARCH_APPLICATIONS.filter((a) => a.cloudReadiness > 75).slice(0, 8).map((a) => ({ id: a.id, title: a.name, meta: `${a.cloudReadiness}%` })),
+      supportingEvidence: [`Cloud readiness: ${kpis.cloudReadiness}%`, '50 cloud services catalogued'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.cloudReadiness),
+    });
+  },
+
+  'architecture-repository.ai-readiness': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ARCH_APPLICATIONS.filter((a) => a.aiReadiness > 70).slice(0, 8).map((a) => ({ id: a.id, title: a.name, meta: `${a.aiReadiness}%` })),
+      supportingEvidence: [`AI readiness: ${kpis.aiReadiness}%`, 'Aligned to REF-05 / REF-08 AI references'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.aiReadiness),
+    });
+  },
+
+  'architecture-repository.architecture-risk': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: archIntegrationRisks(8).map((i) => ({ id: i.id, title: i.name, meta: i.riskLevel })),
+      supportingEvidence: [`Architecture risk: ${kpis.architectureRisk}/100`, '200 integrations assessed'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.architectureRisk),
+    });
+  },
+
+  'architecture-repository.architecture-exceptions': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: archActiveExceptions(8).map((e) => ({ id: e.id, title: e.appName, meta: e.status })),
+      supportingEvidence: [`Active exceptions: ${kpis.architectureExceptions}`, 'Waivers and risk acceptances tracked'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.architectureExceptions),
+    });
+  },
+
+  'architecture-repository.reference-adoption': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: archReferenceAdoption().map((r, i) => ({ id: `REF-${i + 1}`, title: r.name, meta: `${r.value}%` })),
+      supportingEvidence: [`Reference architecture adoption: ${kpis.referenceAdoption}%`, '8 reference architectures'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.referenceAdoption),
+    });
+  },
+
+  'architecture-repository.modernization-progress': (state, ctx) => {
+    const kpis = computeArchitectureRepositoryKpis();
+    return buildPayload(ctx, {
+      sourceRecords: archModernization(8).map((d) => ({ id: d.id, title: d.appName, meta: d.remediationStatus })),
+      supportingEvidence: [`Modernization progress: ${kpis.modernizationProgress}%`, '22 platforms in modernization wave'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.modernizationProgress),
+    });
+  },
+
+  'technology-strategy.technology-health': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: TECHNOLOGIES.filter((t) => t.lifecycle === 'strategic' || t.lifecycle === 'preferred').slice(0, 10).map((t) => ({ id: t.id, title: t.name, meta: t.lifecycle })),
+      supportingEvidence: [`Technology health: ${kpis.technologyHealth}%`, '200 technologies across 10 categories'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.technologyHealth),
+    });
+  },
+
+  'technology-strategy.standards-adoption': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: TECH_STANDARDS.filter((s) => s.mandatory).slice(0, 8).map((s) => ({ id: s.id, title: s.name, meta: `${s.adoptionRate}%` })),
+      supportingEvidence: [`Standards adoption: ${kpis.standardsAdoption}%`, '100 technology standards'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.standardsAdoption),
+    });
+  },
+
+  'technology-strategy.strategic-platform-adoption': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techPlatformAdoption().map((p, i) => ({ id: `SPLT-${i + 1}`, title: p.name, meta: `${p.value}%` })),
+      supportingEvidence: [`Strategic platform adoption: ${kpis.strategicPlatformAdoption}%`, '50 strategic platforms'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.strategicPlatformAdoption),
+    });
+  },
+
+  'technology-strategy.cloud-adoption': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techTopClouds(8).map((c) => ({ id: c.id, title: c.name, meta: `${c.adoptionRate}%` })),
+      supportingEvidence: [`Cloud adoption: ${kpis.cloudAdoption}%`, '50 cloud platforms'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.cloudAdoption),
+    });
+  },
+
+  'technology-strategy.ai-platform-adoption': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techTopAis(8).map((a) => ({ id: a.id, title: a.name, meta: a.category })),
+      supportingEvidence: [`AI platform adoption: ${kpis.aiPlatformAdoption}%`, '50 AI platforms'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.aiPlatformAdoption),
+    });
+  },
+
+  'technology-strategy.technology-risk': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techTopRisks(8).map((r) => ({ id: r.id, title: r.techName, meta: r.severity })),
+      supportingEvidence: [`Technology risk: ${kpis.technologyRisk}%`, '150 technology risks'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.technologyRisk),
+    });
+  },
+
+  'technology-strategy.modernization-progress': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techModernization(8).map((m) => ({ id: m.id, title: m.name, meta: `Wave ${m.wave} · ${m.status}` })),
+      supportingEvidence: [`Modernization progress: ${kpis.modernizationProgress}%`, '100 initiatives across 3 waves'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.modernizationProgress),
+    });
+  },
+
+  'technology-strategy.technology-debt': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techRetirementCandidates(8).map((t) => ({ id: t.id, title: t.name, meta: t.lifecycle })),
+      supportingEvidence: [`Technology debt: ${kpis.technologyDebt}%`, 'Legacy/deprecated/EOS technologies'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.technologyDebt),
+    });
+  },
+
+  'technology-strategy.vendor-concentration': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techTopVendorRisks(8).map((v) => ({ id: v.id, title: `${v.vendor} — ${v.product}`, meta: `Lock-in ${v.lockInRisk}%` })),
+      supportingEvidence: [`Vendor concentration: ${kpis.vendorConcentration}%`, '100 vendor products'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.vendorConcentration),
+    });
+  },
+
+  'technology-strategy.investment-efficiency': (state, ctx) => {
+    const kpis = computeTechnologyStrategyKpis();
+    return buildPayload(ctx, {
+      sourceRecords: techTopInvestments(8).map((i) => ({ id: i.id, title: i.name, meta: `₹${Math.round(i.annualSpend / 1_000_000)}M · ${i.stance}` })),
+      supportingEvidence: [`Investment efficiency: ${kpis.investmentEfficiency}%`, 'Technology investment portfolio'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.investmentEfficiency),
+    });
+  },
+
+  'transformation-pmo.transformation-health': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoTopPrograms(10).map((p) => ({ id: p.id, title: p.name, meta: `${p.health}%` })),
+      supportingEvidence: [`Transformation health: ${kpis.transformationHealth}%`, '50 programs across 5 business units'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.transformationHealth),
+    });
+  },
+
+  'transformation-pmo.program-delivery': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoAtRiskPrograms(8).map((p) => ({ id: p.id, title: p.name, meta: p.status })),
+      supportingEvidence: [`Program delivery: ${kpis.programDelivery}%`, '50 transformation programs'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.programDelivery),
+    });
+  },
+
+  'transformation-pmo.objective-achievement': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoObjectives().slice(0, 8).map((o, i) => ({ id: `OBJ-${i + 1}`, title: o.name, meta: `${o.value}%` })),
+      supportingEvidence: [`Objective achievement: ${kpis.objectiveAchievement}%`, '20 strategic objectives'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.objectiveAchievement),
+    });
+  },
+
+  'transformation-pmo.benefits-realization': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoTopBenefits(8).map((b) => ({ id: b.id, title: b.name, meta: `₹${Math.round(b.realizedValue / 1_000_000)}M` })),
+      supportingEvidence: [`Benefits realization: ${kpis.benefitsRealization}%`, '100 benefits tracked'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.benefitsRealization),
+    });
+  },
+
+  'transformation-pmo.milestone-completion': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoCriticalMilestones(8).map((m) => ({ id: m.id, title: m.name, meta: m.status })),
+      supportingEvidence: [`Milestone completion: ${kpis.milestoneCompletion}%`, '500 milestones tracked'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.milestoneCompletion),
+    });
+  },
+
+  'transformation-pmo.executive-commitments': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoCommitmentsAtRisk(8).map((c) => ({ id: c.id, title: c.title, meta: c.status })),
+      supportingEvidence: [`Executive commitments met: ${kpis.executiveCommitments}%`, '100 board/exec commitments'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.executiveCommitments),
+    });
+  },
+
+  'transformation-pmo.dependency-risk': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoRiskyDeps(8).map((d) => ({ id: d.id, title: d.name, meta: `${d.type} · ${d.status}` })),
+      supportingEvidence: [`Dependency risk: ${kpis.dependencyRisk}%`, '100 cross-program dependencies'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.dependencyRisk),
+    });
+  },
+
+  'transformation-pmo.business-unit-performance': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoBuChart().map((b, i) => ({ id: `TBU-${i + 1}`, title: b.name, meta: `${b.value}%` })),
+      supportingEvidence: [`Business unit performance: ${kpis.businessUnitPerformance}%`, '5 business units'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.businessUnitPerformance),
+    });
+  },
+
+  'transformation-pmo.transformation-roi': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoTopInitiatives(8).map((i) => ({ id: i.id, title: i.name, meta: `₹${Math.round(i.expectedBenefit / 1_000_000)}M` })),
+      supportingEvidence: [`Transformation ROI: ${kpis.transformationRoi}%`, 'Benefit vs spend across programs'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.transformationRoi),
+    });
+  },
+
+  'transformation-pmo.board-readiness': (state, ctx) => {
+    const kpis = computeTransformationPmoKpis();
+    return buildPayload(ctx, {
+      sourceRecords: tpmoCommitmentsAtRisk(8).map((c) => ({ id: c.id, title: c.title, meta: `Confidence ${c.confidence}%` })),
+      supportingEvidence: [`Board readiness: ${kpis.boardReadiness}%`, 'Health, delivery, milestones, commitments composite'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.boardReadiness),
+    });
+  },
+
+  'enterprise-risk.enterprise-risk-exposure': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermTopRisks(10).map((r) => ({ id: r.id, title: r.title, meta: `${r.category} · ${r.residualScore}` })),
+      supportingEvidence: [`Enterprise risk exposure: ${kpis.enterpriseRiskExposure}/100`, '500 enterprise risks across 8 categories'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 3),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.enterpriseRiskExposure),
+    });
+  },
+
+  'enterprise-risk.residual-risk': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermTopRisks(10).map((r) => ({ id: r.id, title: r.title, meta: `Inherent ${r.inherentScore} → Residual ${r.residualScore}` })),
+      supportingEvidence: [`Residual risk: ${kpis.residualRisk}/100`, 'Post-control residual exposure'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.residualRisk),
+    });
+  },
+
+  'enterprise-risk.control-effectiveness': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermWeakControls(10).map((c) => ({ id: c.id, title: c.name, meta: c.effectiveness })),
+      supportingEvidence: [`Control effectiveness: ${kpis.controlEffectiveness}%`, '300 controls assessed'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.controlEffectiveness),
+    });
+  },
+
+  'enterprise-risk.open-critical-risks': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermCriticalRisks(10).map((r) => ({ id: r.id, title: r.title, meta: `${r.status} · ${r.owner}` })),
+      supportingEvidence: [`Open critical risks: ${kpis.openCriticalRisks}`, 'Critical-severity unresolved risks'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.openCriticalRisks),
+    });
+  },
+
+  'enterprise-risk.risk-appetite-breaches': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ERM_RISK_APPETITE.map((a) => ({ id: a.id, title: a.category, meta: `${a.currentExposure}/${a.appetiteThreshold} · ${a.status}` })),
+      supportingEvidence: [`Risk appetite breaches: ${kpis.riskAppetiteBreaches} categories`, 'Exposure vs appetite vs tolerance'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.riskAppetiteBreaches),
+    });
+  },
+
+  'enterprise-risk.regulatory-exposure': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermTopRegulatory(10).map((r) => ({ id: r.id, title: r.title, meta: `${r.regulator} · ₹${Math.round(r.exposureValue / 1_000_000)}M` })),
+      supportingEvidence: [`Regulatory exposure: ₹${kpis.regulatoryExposure}M`, '150 regulatory risks'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.regulatoryExposure),
+    });
+  },
+
+  'enterprise-risk.cyber-risk-score': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermTopCyber(10).map((r) => ({ id: r.id, title: r.title, meta: `${r.threatType} · ${r.exposureScore}` })),
+      supportingEvidence: [`Cyber risk score: ${kpis.cyberRiskScore}/100`, '150 cyber risks'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 2),
+      relatedIncidents: incidentsFromState(state).slice(0, 2),
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.cyberRiskScore),
+    });
+  },
+
+  'enterprise-risk.ai-risk-score': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermTopAi(10).map((r) => ({ id: r.id, title: r.title, meta: `${r.category} · ${r.residualScore}` })),
+      supportingEvidence: [`AI risk score: ${kpis.aiRiskScore}/100`, '100 AI risks across models'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.aiRiskScore),
+    });
+  },
+
+  'enterprise-risk.audit-risk-score': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermOpenFindings(10).map((f) => ({ id: f.id, title: f.title, meta: `${f.source} · ${f.status}` })),
+      supportingEvidence: [`Audit risk score: ${kpis.auditRiskScore}%`, '200 audit findings'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.auditRiskScore),
+    });
+  },
+
+  'enterprise-risk.assurance-coverage': (state, ctx) => {
+    const kpis = computeEnterpriseRiskKpis();
+    return buildPayload(ctx, {
+      sourceRecords: ermAssuranceReviews(10).map((a) => ({ id: a.id, title: a.name, meta: `${a.type} · ${a.coverage}%` })),
+      supportingEvidence: [`Assurance coverage: ${kpis.assuranceCoverage}%`, 'Three lines of defense · 100 reviews'],
+      relatedApplications: appsFromArchitecture(state).slice(0, 1),
+      relatedIncidents: [],
+      relatedReleases: releasesFromState(state),
+      historicalTrend: sparkline7d(kpis.assuranceCoverage),
     });
   },
 };
