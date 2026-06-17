@@ -5,6 +5,8 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import ShieldIcon from '@mui/icons-material/Shield';
+import InsightsIcon from '@mui/icons-material/Insights';
+import { AIEvaluationCenter } from './AIEvaluationCenter';
 import { KpiCard } from '../components/common/KpiCard';
 import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
@@ -24,7 +26,7 @@ import {
   computeAIControlsKpis,
 } from '../data/aiGovernanceModulesMock';
 
-type SectionKey = 'use-cases' | 'models' | 'prompts' | 'risks' | 'controls';
+type SectionKey = 'use-cases' | 'models' | 'prompts' | 'risks' | 'controls' | 'evaluation';
 
 const SECTIONS: { key: SectionKey; label: string; icon: typeof PsychologyIcon }[] = [
   { key: 'use-cases', label: 'Use Case Registry', icon: PsychologyIcon },
@@ -32,6 +34,7 @@ const SECTIONS: { key: SectionKey; label: string; icon: typeof PsychologyIcon }[
   { key: 'prompts', label: 'Prompt Registry', icon: EditNoteIcon },
   { key: 'risks', label: 'Risk Registry', icon: WarningAmberIcon },
   { key: 'controls', label: 'Control Library', icon: ShieldIcon },
+  { key: 'evaluation', label: 'AI Evaluation', icon: InsightsIcon },
 ];
 
 interface AIGovernanceCenterProps {
@@ -296,6 +299,9 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
           </GlassCard>
         </Box>
       )}
+
+      {/* AI Evaluation */}
+      {section === 'evaluation' && <AIEvaluationCenter />}
     </Box>
   );
 }

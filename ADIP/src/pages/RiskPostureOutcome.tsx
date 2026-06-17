@@ -1,7 +1,15 @@
 import { Navigate } from 'react-router-dom';
 import ShieldIcon from '@mui/icons-material/Shield';
-import { ExecutiveOutcomePage, type OutcomeKpi } from '../components/executive/ExecutiveOutcomePage';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import GavelIcon from '@mui/icons-material/Gavel';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
+import LayersIcon from '@mui/icons-material/Layers';
+import { ExecutiveOutcomePage, OutcomeKpiGrid, type OutcomeKpi, type OutcomeTab } from '../components/executive/ExecutiveOutcomePage';
 import { EnterpriseRiskCenter } from './EnterpriseRiskCenter';
+import { EnterpriseRiskRegisterPanel } from '../components/enterpriseRisk/RiskRegisterPanels';
+import { RegulatoryRiskPanel } from '../components/enterpriseRisk/DomainRiskPanels';
+import { AuditFindingsRiskPanel } from '../components/enterpriseRisk/ControlAssurancePanels';
 import { useEnterpriseRisk } from '../context/EnterpriseRiskContext';
 import { usePersona } from '../context/PersonaContext';
 import { canAccessEnterpriseRisk } from '../data/enterpriseRiskEngine';
@@ -25,13 +33,20 @@ export function RiskPostureOutcome() {
     { label: 'Compliance Risk', value: complianceRisk, suffix: '/100', chartId: 'enterprise-risk.compliance-risk' },
   ];
 
+  const tabs: OutcomeTab[] = [
+    { key: 'overview', label: 'Overview', icon: DashboardIcon, content: <OutcomeKpiGrid kpis={kpis} /> },
+    { key: 'critical-risks', label: 'Critical Risks', icon: ListAltIcon, content: <EnterpriseRiskRegisterPanel /> },
+    { key: 'compliance', label: 'Compliance', icon: GavelIcon, content: <RegulatoryRiskPanel /> },
+    { key: 'audit', label: 'Audit', icon: FactCheckIcon, content: <AuditFindingsRiskPanel /> },
+    { key: 'more', label: 'More', icon: LayersIcon, content: <EnterpriseRiskCenter initialTab="dashboard" /> },
+  ];
+
   return (
     <ExecutiveOutcomePage
       icon={ShieldIcon}
       title="Risk Posture"
-      subtitle="Critical risks, appetite breaches, cyber and compliance risk — full enterprise risk register under Details"
-      kpis={kpis}
-      details={<EnterpriseRiskCenter initialTab="dashboard" />}
+      subtitle="Critical risks, compliance, and audit posture — full enterprise risk register under More"
+      tabs={tabs}
     />
   );
 }

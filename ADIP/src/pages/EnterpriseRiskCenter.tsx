@@ -7,11 +7,7 @@ import EngineeringIcon from '@mui/icons-material/Engineering';
 import MemoryIcon from '@mui/icons-material/Memory';
 import SecurityIcon from '@mui/icons-material/Security';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import GavelIcon from '@mui/icons-material/Gavel';
-import FactCheckIcon from '@mui/icons-material/FactCheck';
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import SpeedIcon from '@mui/icons-material/Speed';
-import PolicyIcon from '@mui/icons-material/Policy';
 import InsightsIcon from '@mui/icons-material/Insights';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import { Navigate } from 'react-router-dom';
@@ -43,18 +39,28 @@ type TabKey =
   | 'insights'
   | 'reports';
 
+/**
+ * Executive-Semantic Rationalization (June 2026)
+ *
+ * Risk & Compliance owns risk ownership and exposure: enterprise register,
+ * operational/technology/cyber/AI risk, and risk appetite & tolerance.
+ *
+ * Removed from the strip (panels and deep links remain intact):
+ *   - regulatory     → Compliance / Audit Center owns regulatory & compliance
+ *   - audit-findings → Audit Center owns audit findings
+ *   - controls       → Compliance / Audit Center owns control testing
+ *   - assurance      → Audit Center owns integrated assurance
+ *   - dashboard      → Executive Dashboard merged into Executive Insights
+ *
+ * Final tab count: 8.
+ */
 const TABS: { key: TabKey; label: string; icon: typeof DashboardIcon }[] = [
-  { key: 'dashboard', label: 'Executive Dashboard', icon: DashboardIcon },
   { key: 'register', label: 'Enterprise Risk Register', icon: ListAltIcon },
   { key: 'operational', label: 'Operational Risk', icon: EngineeringIcon },
   { key: 'technology', label: 'Technology Risk', icon: MemoryIcon },
   { key: 'cyber', label: 'Cyber & Security Risk', icon: SecurityIcon },
   { key: 'ai', label: 'AI Risk', icon: SmartToyIcon },
-  { key: 'regulatory', label: 'Regulatory & Compliance', icon: GavelIcon },
-  { key: 'audit-findings', label: 'Audit Findings Risk', icon: FactCheckIcon },
-  { key: 'controls', label: 'Control Effectiveness', icon: VerifiedUserIcon },
   { key: 'appetite', label: 'Risk Appetite & Tolerance', icon: SpeedIcon },
-  { key: 'assurance', label: 'Integrated Assurance', icon: PolicyIcon },
   { key: 'insights', label: 'Executive Insights', icon: InsightsIcon },
   { key: 'reports', label: 'AI Reports', icon: AssessmentIcon },
 ];
@@ -63,10 +69,12 @@ interface EnterpriseRiskCenterProps {
   initialTab?: TabKey;
 }
 
-export function EnterpriseRiskCenter({ initialTab = 'dashboard' }: EnterpriseRiskCenterProps) {
+const TAB_STRIP_KEYS: ReadonlySet<TabKey> = new Set(TABS.map((t) => t.key));
+
+export function EnterpriseRiskCenter({ initialTab = 'register' }: EnterpriseRiskCenterProps) {
   const { personaId } = usePersona();
   const { execSummary } = useEnterpriseRisk();
-  const [tab, setTab] = useState<TabKey>(initialTab);
+  const [tab, setTab] = useState<TabKey>(TAB_STRIP_KEYS.has(initialTab) ? initialTab : 'register');
 
   if (!canAccessEnterpriseRisk(personaId)) {
     return <Navigate to="/" replace />;

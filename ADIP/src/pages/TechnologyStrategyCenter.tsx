@@ -3,15 +3,9 @@ import { Box } from '@mui/material';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import TimelineIcon from '@mui/icons-material/Timeline';
 import MapIcon from '@mui/icons-material/AltRoute';
-import HubIcon from '@mui/icons-material/Hub';
 import CloudIcon from '@mui/icons-material/Cloud';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
-import StorefrontIcon from '@mui/icons-material/Storefront';
 import PaymentsIcon from '@mui/icons-material/Payments';
-import WarningAmberIcon from '@mui/icons-material/WarningAmber';
-import UpgradeIcon from '@mui/icons-material/Upgrade';
 import InsightsIcon from '@mui/icons-material/Insights';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import { Navigate } from 'react-router-dom';
@@ -43,18 +37,28 @@ type TabKey =
   | 'insights'
   | 'reports';
 
+/**
+ * Executive-Semantic Rationalization (June 2026)
+ *
+ * Technology Strategy owns the planning layer: standards, roadmaps, cloud
+ * strategy and technology investments. Operational and architectural concerns
+ * have been removed from the strip (panels and deep links remain intact):
+ *
+ *   - lifecycle           → operational; lifecycle is part of Application Portfolio
+ *   - strategic-platforms → architecture concern (Reference Architectures)
+ *   - ai-platform         → AI Governance concern (benchmark)
+ *   - vendors             → operational vendor management, not strategy
+ *   - risks               → Risk & Compliance owns risk
+ *   - modernization       → Transformation PMO owns delivery waves
+ *   - dashboard           → Executive Dashboard merged into Executive Insights
+ *
+ * Final tab count: 6.
+ */
 const TABS: { key: TabKey; label: string; icon: typeof DashboardIcon }[] = [
-  { key: 'dashboard', label: 'Executive Dashboard', icon: DashboardIcon },
   { key: 'standards', label: 'Technology Standards', icon: MenuBookIcon },
-  { key: 'lifecycle', label: 'Technology Lifecycle', icon: TimelineIcon },
   { key: 'roadmaps', label: 'Technology Roadmaps', icon: MapIcon },
-  { key: 'strategic-platforms', label: 'Strategic Platforms', icon: HubIcon },
   { key: 'cloud', label: 'Cloud Strategy', icon: CloudIcon },
-  { key: 'ai-platform', label: 'AI Platform Strategy', icon: SmartToyIcon },
-  { key: 'vendors', label: 'Vendor Landscape', icon: StorefrontIcon },
   { key: 'investments', label: 'Technology Investments', icon: PaymentsIcon },
-  { key: 'risks', label: 'Technology Risks', icon: WarningAmberIcon },
-  { key: 'modernization', label: 'Modernization Waves', icon: UpgradeIcon },
   { key: 'insights', label: 'Executive Insights', icon: InsightsIcon },
   { key: 'reports', label: 'AI Reports', icon: AssessmentIcon },
 ];
@@ -63,10 +67,12 @@ interface TechnologyStrategyCenterProps {
   initialTab?: TabKey;
 }
 
-export function TechnologyStrategyCenter({ initialTab = 'dashboard' }: TechnologyStrategyCenterProps) {
+const TAB_STRIP_KEYS: ReadonlySet<TabKey> = new Set(TABS.map((t) => t.key));
+
+export function TechnologyStrategyCenter({ initialTab = 'standards' }: TechnologyStrategyCenterProps) {
   const { personaId } = usePersona();
   const { execSummary } = useTechnologyStrategy();
-  const [tab, setTab] = useState<TabKey>(initialTab);
+  const [tab, setTab] = useState<TabKey>(TAB_STRIP_KEYS.has(initialTab) ? initialTab : 'standards');
 
   if (!canAccessTechnologyStrategy(personaId)) {
     return <Navigate to="/" replace />;

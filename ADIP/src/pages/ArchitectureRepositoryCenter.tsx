@@ -3,15 +3,9 @@ import { Box } from '@mui/material';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import HubIcon from '@mui/icons-material/Hub';
-import CategoryIcon from '@mui/icons-material/Category';
 import AppsIcon from '@mui/icons-material/Apps';
-import GavelIcon from '@mui/icons-material/Gavel';
-import RuleIcon from '@mui/icons-material/Rule';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import BuildIcon from '@mui/icons-material/Build';
-import TimelineIcon from '@mui/icons-material/Timeline';
-import CloudIcon from '@mui/icons-material/Cloud';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import InsightsIcon from '@mui/icons-material/Insights';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -48,20 +42,30 @@ type TabKey =
   | 'insights'
   | 'reports';
 
+/**
+ * Executive-Semantic Rationalization (June 2026)
+ *
+ * Enterprise Architecture is the authoritative repository — domains,
+ * applications, standards, reference architectures, debt and architecture-level
+ * risks. Governance workflows and cross-domain capabilities have been removed
+ * from the strip (their panels and deep-link routes are intact):
+ *
+ *   - capabilities → Business Architecture / Strategy concern, not repository
+ *   - review-board / findings / exceptions → Architecture Governance workflow,
+ *                                            owned in Activity / Audit centers
+ *   - lifecycle    → Technology Strategy concern
+ *   - cloud        → Technology Strategy concern
+ *   - ai           → AI Governance concern (benchmark — not duplicated here)
+ *   - dashboard    → Executive Dashboard merged into Executive Insights
+ *
+ * Final tab count: 8.
+ */
 const TABS: { key: TabKey; label: string; icon: typeof DashboardIcon }[] = [
-  { key: 'dashboard', label: 'Executive Dashboard', icon: DashboardIcon },
   { key: 'domains', label: 'Architecture Domains', icon: HubIcon },
-  { key: 'capabilities', label: 'Business Capabilities', icon: CategoryIcon },
   { key: 'applications', label: 'Application Architecture', icon: AppsIcon },
-  { key: 'review-board', label: 'Review Board', icon: GavelIcon },
-  { key: 'findings', label: 'Findings', icon: RuleIcon },
-  { key: 'exceptions', label: 'Exceptions & Decisions', icon: RuleIcon },
   { key: 'standards', label: 'Standards Repository', icon: MenuBookIcon },
   { key: 'reference', label: 'Reference Architectures', icon: MenuBookIcon },
   { key: 'debt', label: 'Architecture Debt', icon: BuildIcon },
-  { key: 'lifecycle', label: 'Technology Lifecycle', icon: TimelineIcon },
-  { key: 'cloud', label: 'Cloud Architecture', icon: CloudIcon },
-  { key: 'ai', label: 'AI Architecture', icon: SmartToyIcon },
   { key: 'risks', label: 'Architecture Risks', icon: WarningAmberIcon },
   { key: 'insights', label: 'Executive Insights', icon: InsightsIcon },
   { key: 'reports', label: 'AI Reports', icon: AssessmentIcon },
@@ -71,10 +75,14 @@ interface ArchitectureRepositoryCenterProps {
   initialTab?: TabKey;
 }
 
-export function ArchitectureRepositoryCenter({ initialTab = 'dashboard' }: ArchitectureRepositoryCenterProps) {
+const TAB_STRIP_KEYS: ReadonlySet<TabKey> = new Set(TABS.map((t) => t.key));
+
+export function ArchitectureRepositoryCenter({ initialTab = 'domains' }: ArchitectureRepositoryCenterProps) {
   const { personaId } = usePersona();
   const { execSummary } = useArchitectureRepository();
-  const [tab, setTab] = useState<TabKey>(initialTab);
+  // If a deep link points at a tab that has been removed from the strip, land
+  // on the canonical first tab so the strip and the body stay in sync.
+  const [tab, setTab] = useState<TabKey>(TAB_STRIP_KEYS.has(initialTab) ? initialTab : 'domains');
 
   if (!canAccessArchitectureRepository(personaId)) {
     return <Navigate to="/" replace />;

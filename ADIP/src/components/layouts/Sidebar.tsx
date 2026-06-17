@@ -18,6 +18,7 @@ import {
   NAV_GROUPS,
   findActiveTrail,
   isLeafActive,
+  isDirectCenterGroup,
   type NavGroup,
   type NavSection,
 } from '../../config/navConfig';
@@ -65,8 +66,11 @@ export function Sidebar() {
 
   const visibleGroups = useMemo(() => {
     const base = showAll ? NAV_GROUPS : NAV_GROUPS.filter((g) => relevant.has(g.id));
-    return base.filter((g) => g.children.some((s) => sectionVisibility.has(sectionKey(g.id, s.id))));
-  }, [relevant, showAll, sectionVisibility]);
+    return base.filter((g) =>
+      (isDirectCenterGroup(g) && !!g.path && canAccessRoute(g.path)) ||
+      g.children.some((s) => sectionVisibility.has(sectionKey(g.id, s.id))),
+    );
+  }, [relevant, showAll, sectionVisibility, canAccessRoute]);
 
   const personaLandingActive = location.pathname === '/persona';
 
@@ -174,12 +178,48 @@ export function Sidebar() {
   };
 
   const renderGroup = (group: NavGroup) => {
+    const GroupIcon = group.icon;
+    const groupActive = findActiveTrail(location.pathname)?.groupId === group.id;
+
+    // Direct-center group: a single navigable center with no child sections.
+    // Renders as one top-level entry that navigates straight to its page.
+    if (isDirectCenterGroup(group) && group.path) {
+      return (
+        <Box key={group.id}>
+          <ListItemButton
+            onClick={() => navigate(group.path!)}
+            sx={{
+              borderRadius: 1.5,
+              mb: 0.25,
+              py: 0.75,
+              px: 1.5,
+              bgcolor: groupActive ? `${colors.primary}10` : 'transparent',
+              '&:hover': { bgcolor: `${colors.primary}12` },
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 32, color: groupActive ? colors.primary : colors.text.muted }}>
+              <GroupIcon sx={{ fontSize: 18 }} />
+            </ListItemIcon>
+            <ListItemText
+              primary={group.label}
+              sx={{
+                '& .MuiListItemText-primary': {
+                  fontSize: '0.8125rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.02em',
+                  color: groupActive ? colors.text.primary : colors.text.secondary,
+                },
+              }}
+            />
+          </ListItemButton>
+        </Box>
+      );
+    }
+
     const visibleSections = group.children.filter((s) => sectionVisibility.has(sectionKey(group.id, s.id)));
     if (visibleSections.length === 0) return null;
 
     const isOpen = expandedGroups[group.id] ?? false;
-    const GroupIcon = group.icon;
-    const groupActive = !!findActiveTrail(location.pathname) && findActiveTrail(location.pathname)?.groupId === group.id;
 
     return (
       <Box key={group.id}>

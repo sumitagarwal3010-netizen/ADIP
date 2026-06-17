@@ -12,19 +12,21 @@ export function ExecutiveTechnologyDashboardPanel() {
 
   return (
     <Box>
+      {/*
+       * KPI cleanup (June 2026 Executive-Semantic Rationalization):
+       * 10 KPIs → 6 hero KPIs. Removed as cross-domain or noise:
+       *   - Strategic Platform (architecture concern)
+       *   - AI Platform Adoption (AI Governance owns this)
+       *   - Technology Debt (overlaps with Modernization)
+       *   - Vendor Concentration (Vendor Landscape tab removed)
+       */}
       <Grid container spacing={1.5}>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Technology Health" value={kpis.technologyHealth} suffix="%" chartId="technology-strategy.technology-health" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Standards Adoption" value={kpis.standardsAdoption} suffix="%" chartId="technology-strategy.standards-adoption" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Strategic Platform" value={kpis.strategicPlatformAdoption} suffix="%" chartId="technology-strategy.strategic-platform-adoption" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Cloud Adoption" value={kpis.cloudAdoption} suffix="%" chartId="technology-strategy.cloud-adoption" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="AI Platform Adoption" value={kpis.aiPlatformAdoption} suffix="%" chartId="technology-strategy.ai-platform-adoption" compact /></Grid>
-      </Grid>
-      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Technology Risk" value={kpis.technologyRisk} suffix="%" chartId="technology-strategy.technology-risk" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Modernization" value={kpis.modernizationProgress} suffix="%" chartId="technology-strategy.modernization-progress" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Technology Debt" value={kpis.technologyDebt} suffix="%" chartId="technology-strategy.technology-debt" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Vendor Concentration" value={kpis.vendorConcentration} suffix="%" chartId="technology-strategy.vendor-concentration" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Investment Efficiency" value={kpis.investmentEfficiency} suffix="%" chartId="technology-strategy.investment-efficiency" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Technology Health" value={kpis.technologyHealth} suffix="%" chartId="technology-strategy.technology-health" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Standards Adoption" value={kpis.standardsAdoption} suffix="%" chartId="technology-strategy.standards-adoption" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Cloud Adoption" value={kpis.cloudAdoption} suffix="%" chartId="technology-strategy.cloud-adoption" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Modernization" value={kpis.modernizationProgress} suffix="%" chartId="technology-strategy.modernization-progress" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Technology Risk" value={kpis.technologyRisk} suffix="%" chartId="technology-strategy.technology-risk" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Investment Efficiency" value={kpis.investmentEfficiency} suffix="%" chartId="technology-strategy.investment-efficiency" compact /></Grid>
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>

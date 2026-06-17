@@ -12,19 +12,21 @@ export function ExecutiveRiskDashboardPanel() {
 
   return (
     <Box>
+      {/*
+       * KPI cleanup (June 2026 Executive-Semantic Rationalization):
+       * 10 KPIs → 6 hero KPIs. Removed because they belong to Compliance / Audit:
+       *   - Control Effectiveness (Compliance / Audit Center)
+       *   - Regulatory Exposure (Compliance domain)
+       *   - Audit Risk Score (Audit Center)
+       *   - Assurance Coverage (Audit Center)
+       */}
       <Grid container spacing={1.5}>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Risk Exposure" value={kpis.enterpriseRiskExposure} suffix="/100" chartId="enterprise-risk.enterprise-risk-exposure" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Residual Risk" value={kpis.residualRisk} suffix="/100" chartId="enterprise-risk.residual-risk" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Control Effectiveness" value={kpis.controlEffectiveness} suffix="%" chartId="enterprise-risk.control-effectiveness" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Open Critical Risks" value={kpis.openCriticalRisks} chartId="enterprise-risk.open-critical-risks" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Appetite Breaches" value={kpis.riskAppetiteBreaches} chartId="enterprise-risk.risk-appetite-breaches" compact /></Grid>
-      </Grid>
-      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Regulatory Exposure" value={`₹${kpis.regulatoryExposure}M`} chartId="enterprise-risk.regulatory-exposure" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Cyber Risk Score" value={kpis.cyberRiskScore} suffix="/100" chartId="enterprise-risk.cyber-risk-score" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="AI Risk Score" value={kpis.aiRiskScore} suffix="/100" chartId="enterprise-risk.ai-risk-score" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Audit Risk Score" value={kpis.auditRiskScore} suffix="%" chartId="enterprise-risk.audit-risk-score" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Assurance Coverage" value={kpis.assuranceCoverage} suffix="%" chartId="enterprise-risk.assurance-coverage" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Risk Exposure" value={kpis.enterpriseRiskExposure} suffix="/100" chartId="enterprise-risk.enterprise-risk-exposure" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Residual Risk" value={kpis.residualRisk} suffix="/100" chartId="enterprise-risk.residual-risk" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Open Critical Risks" value={kpis.openCriticalRisks} chartId="enterprise-risk.open-critical-risks" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Appetite Breaches" value={kpis.riskAppetiteBreaches} chartId="enterprise-risk.risk-appetite-breaches" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Cyber Risk Score" value={kpis.cyberRiskScore} suffix="/100" chartId="enterprise-risk.cyber-risk-score" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2 }}><KpiCard label="AI Risk Score" value={kpis.aiRiskScore} suffix="/100" chartId="enterprise-risk.ai-risk-score" compact /></Grid>
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>

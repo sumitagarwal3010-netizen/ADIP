@@ -1,21 +1,18 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import DescriptionIcon from '@mui/icons-material/Description';
 import GavelIcon from '@mui/icons-material/Gavel';
-import StorageIcon from '@mui/icons-material/Storage';
-import GroupsIcon from '@mui/icons-material/Groups';
 import HubIcon from '@mui/icons-material/Hub';
-import TimelineIcon from '@mui/icons-material/Timeline';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import InsightsIcon from '@mui/icons-material/Insights';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import { Navigate } from 'react-router-dom';
 import { GlassCard } from '../components/common/GlassCard';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { AiPortfolioAdvisorPanel } from '../components/portfolioGovernance/AiPortfolioAdvisorPanel';
 import { ExecutivePortfolioDashboardPanel } from '../components/portfolioGovernance/ExecutivePortfolioDashboardPanel';
 import { DemandPipelinePanel, BusinessCaseReviewPanel, InvestmentGovernancePanel } from '../components/portfolioGovernance/DemandInvestmentPanels';
 import { CapacityPlanningPanel, ResourceAllocationPanel } from '../components/portfolioGovernance/CapacityResourcePanels';
@@ -28,6 +25,7 @@ import { canAccessPortfolioGovernance } from '../data/portfolioGovernanceEngine'
 import { colors } from '../theme/colors';
 
 type TabKey =
+  | 'ai-advisor'
   | 'dashboard'
   | 'demand'
   | 'business-case'
@@ -41,17 +39,28 @@ type TabKey =
   | 'insights'
   | 'reports';
 
+/**
+ * Executive-Semantic Rationalization (June 2026)
+ *
+ * Portfolio Governance owns: portfolio health, demand intake, investment
+ * governance, strategic alignment, portfolio-level risks and AI advice.
+ *
+ * Removed from this strip (still routable via deep links, panels intact):
+ *   - business-case  → owned by Investment Governance / Demand intake
+ *   - capacity       → PMO / Transformation discipline
+ *   - resources      → PMO / Transformation discipline
+ *   - roadmap        → Transformation PMO discipline
+ *   - benefits       → Value Realization Center
+ *
+ * Final tab count: 8 (≤ executive-usability cap).
+ */
 const TABS: { key: TabKey; label: string; icon: typeof DashboardIcon }[] = [
+  { key: 'ai-advisor', label: 'AI Portfolio Advisor', icon: SmartToyIcon },
   { key: 'dashboard', label: 'Portfolio Dashboard', icon: DashboardIcon },
   { key: 'demand', label: 'Demand Pipeline', icon: PlaylistAddIcon },
-  { key: 'business-case', label: 'Business Case Review', icon: DescriptionIcon },
   { key: 'investment', label: 'Investment Governance', icon: GavelIcon },
-  { key: 'capacity', label: 'Capacity Planning', icon: StorageIcon },
-  { key: 'resources', label: 'Resource Allocation', icon: GroupsIcon },
   { key: 'alignment', label: 'Strategic Alignment', icon: HubIcon },
-  { key: 'roadmap', label: 'Roadmap Planning', icon: TimelineIcon },
   { key: 'risks', label: 'Portfolio Risks', icon: WarningAmberIcon },
-  { key: 'benefits', label: 'Benefits Tracking', icon: TrendingUpIcon },
   { key: 'insights', label: 'Executive Insights', icon: InsightsIcon },
   { key: 'reports', label: 'AI Reports', icon: AssessmentIcon },
 ];
@@ -60,7 +69,7 @@ interface PortfolioGovernanceCenterProps {
   initialTab?: TabKey;
 }
 
-export function PortfolioGovernanceCenter({ initialTab = 'dashboard' }: PortfolioGovernanceCenterProps) {
+export function PortfolioGovernanceCenter({ initialTab = 'ai-advisor' }: PortfolioGovernanceCenterProps) {
   const { personaId } = usePersona();
   const { execSummary } = usePortfolioGovernance();
   const [tab, setTab] = useState<TabKey>(initialTab);
@@ -110,6 +119,7 @@ export function PortfolioGovernanceCenter({ initialTab = 'dashboard' }: Portfoli
         </Box>
       </GlassCard>
 
+      {tab === 'ai-advisor' && <AiPortfolioAdvisorPanel />}
       {tab === 'dashboard' && <ExecutivePortfolioDashboardPanel />}
       {tab === 'demand' && <DemandPipelinePanel />}
       {tab === 'business-case' && <BusinessCaseReviewPanel />}

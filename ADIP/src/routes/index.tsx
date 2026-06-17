@@ -4,6 +4,7 @@ import { AuthGuard } from '../components/auth/AuthGuard';
 import { LoginPage } from '../pages/LoginPage';
 import { AuthenticationHealthDashboard } from '../pages/AuthenticationHealthDashboard';
 import { ExecutiveControlTower } from '../pages/ExecutiveControlTower';
+import { DeliveryHealthOutcome } from '../pages/DeliveryHealthOutcome';
 import { TechnologyHealthOutcome } from '../pages/TechnologyHealthOutcome';
 import { RiskPostureOutcome } from '../pages/RiskPostureOutcome';
 import { ValueRealizedOutcome } from '../pages/ValueRealizedOutcome';
@@ -67,6 +68,7 @@ export function AppRoutes() {
       <Route element={<AuthGuard />}>
       <Route element={<AppLayout />}>
         <Route index element={<ExecutiveControlTower />} />
+        <Route path="executive/delivery-health" element={<DeliveryHealthOutcome />} />
         <Route path="executive/technology-health" element={<TechnologyHealthOutcome />} />
         <Route path="executive/risk-posture" element={<RiskPostureOutcome />} />
         <Route path="executive/value-realized" element={<ValueRealizedOutcome />} />
@@ -102,7 +104,9 @@ export function AppRoutes() {
         <Route path="executive/value-realization/business-case" element={<ValueRealizationCenter initialTab="business-case" />} />
         <Route path="executive/value-realization/benchmarking" element={<ValueRealizationCenter initialTab="benchmarking" />} />
         <Route path="executive/value-realization/reports" element={<ValueRealizationCenter initialTab="reports" />} />
-        <Route path="executive/portfolio-governance" element={<PortfolioGovernanceCenter initialTab="dashboard" />} />
+        <Route path="executive/portfolio-governance" element={<PortfolioGovernanceCenter initialTab="ai-advisor" />} />
+        <Route path="executive/portfolio-governance/ai-advisor" element={<PortfolioGovernanceCenter initialTab="ai-advisor" />} />
+        <Route path="executive/portfolio-governance/dashboard" element={<PortfolioGovernanceCenter initialTab="dashboard" />} />
         <Route path="executive/portfolio-governance/demand" element={<PortfolioGovernanceCenter initialTab="demand" />} />
         <Route path="executive/portfolio-governance/business-case" element={<PortfolioGovernanceCenter initialTab="business-case" />} />
         <Route path="executive/portfolio-governance/investment" element={<PortfolioGovernanceCenter initialTab="investment" />} />
@@ -128,7 +132,7 @@ export function AppRoutes() {
         <Route path="executive/application-portfolio/rationalization" element={<ApplicationPortfolioCenter initialTab="rationalization" />} />
         <Route path="executive/application-portfolio/insights" element={<ApplicationPortfolioCenter initialTab="insights" />} />
         <Route path="executive/application-portfolio/reports" element={<ApplicationPortfolioCenter initialTab="reports" />} />
-        <Route path="executive/architecture-repository" element={<ArchitectureRepositoryCenter initialTab="dashboard" />} />
+        <Route path="executive/architecture-repository" element={<ArchitectureRepositoryCenter initialTab="domains" />} />
         <Route path="executive/architecture-repository/domains" element={<ArchitectureRepositoryCenter initialTab="domains" />} />
         <Route path="executive/architecture-repository/capabilities" element={<ArchitectureRepositoryCenter initialTab="capabilities" />} />
         <Route path="executive/architecture-repository/applications" element={<ArchitectureRepositoryCenter initialTab="applications" />} />
@@ -144,7 +148,7 @@ export function AppRoutes() {
         <Route path="executive/architecture-repository/risks" element={<ArchitectureRepositoryCenter initialTab="risks" />} />
         <Route path="executive/architecture-repository/insights" element={<ArchitectureRepositoryCenter initialTab="insights" />} />
         <Route path="executive/architecture-repository/reports" element={<ArchitectureRepositoryCenter initialTab="reports" />} />
-        <Route path="executive/technology-strategy" element={<TechnologyStrategyCenter initialTab="dashboard" />} />
+        <Route path="executive/technology-strategy" element={<TechnologyStrategyCenter initialTab="standards" />} />
         <Route path="executive/technology-strategy/standards" element={<TechnologyStrategyCenter initialTab="standards" />} />
         <Route path="executive/technology-strategy/lifecycle" element={<TechnologyStrategyCenter initialTab="lifecycle" />} />
         <Route path="executive/technology-strategy/roadmaps" element={<TechnologyStrategyCenter initialTab="roadmaps" />} />
@@ -169,7 +173,7 @@ export function AppRoutes() {
         <Route path="executive/transformation-pmo/business-units" element={<TransformationPmoCenter initialTab="business-units" />} />
         <Route path="executive/transformation-pmo/insights" element={<TransformationPmoCenter initialTab="insights" />} />
         <Route path="executive/transformation-pmo/reports" element={<TransformationPmoCenter initialTab="reports" />} />
-        <Route path="executive/enterprise-risk" element={<EnterpriseRiskCenter initialTab="dashboard" />} />
+        <Route path="executive/enterprise-risk" element={<EnterpriseRiskCenter initialTab="register" />} />
         <Route path="executive/enterprise-risk/register" element={<EnterpriseRiskCenter initialTab="register" />} />
         <Route path="executive/enterprise-risk/operational" element={<EnterpriseRiskCenter initialTab="operational" />} />
         <Route path="executive/enterprise-risk/technology" element={<EnterpriseRiskCenter initialTab="technology" />} />
