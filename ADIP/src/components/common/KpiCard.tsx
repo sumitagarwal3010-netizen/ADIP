@@ -39,6 +39,8 @@ export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, co
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      title={`Click for details: ${label}`}
+      aria-label={`${label}: ${value}${suffix ?? ''}. Click to open detailed drilldown.`}
       sx={{
         p: compact ? 1.5 : 2,
         minHeight: compact ? 90 : 110,
@@ -88,6 +90,22 @@ export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, co
             </AreaChart>
           </ResponsiveContainer>
         </Box>
+      )}
+      {!compact && (
+        <Typography
+          variant="caption"
+          sx={{
+            display: 'block',
+            mt: 0.5,
+            color: colors.text.muted,
+            fontSize: '0.65rem',
+            opacity: 0.6,
+            transition: 'opacity 200ms',
+            '.MuiPaper-root:hover &': { opacity: 1, color: colors.primary },
+          }}
+        >
+          View details →
+        </Typography>
       )}
     </GlassCard>
   );
