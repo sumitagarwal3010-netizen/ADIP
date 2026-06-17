@@ -19,6 +19,8 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import TuneIcon from '@mui/icons-material/Tune';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 /** A leaf navigation entry. `path` is an existing application route (routing is untouched). */
 export interface NavLeaf {
@@ -129,6 +131,8 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'Platform',
     icon: SettingsIcon,
     children: [
+      { id: 'artifacts', label: 'Artifacts Repository', icon: InventoryIcon, path: '/artifacts', children: [] },
+      { id: 'kpi-catalog', label: 'KPI Catalog', icon: LibraryBooksIcon, path: '/kpi-catalog', children: [] },
       { id: 'workflow', label: 'Workflow', icon: TimelineIcon, path: '/executive/workflow-orchestration', children: [] },
       { id: 'reporting', label: 'Reporting', icon: AssessmentIcon, path: '/reports', children: [] },
       { id: 'administration', label: 'Administration', icon: TuneIcon, path: '/administration', children: [] },

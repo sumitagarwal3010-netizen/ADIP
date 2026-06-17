@@ -53,6 +53,8 @@ import { AiDeliveryCopilotCenter } from '../pages/AiDeliveryCopilotCenter';
 import { AIGovernanceCenter } from '../pages/AIGovernanceCenter';
 import { AIEvaluationCenter } from '../pages/AIEvaluationCenter';
 import { AIObservabilityCenter } from '../pages/AIObservabilityCenter';
+import { UniversalArtifactsRepository } from '../pages/UniversalArtifactsRepository';
+import { KpiCatalogCenter } from '../pages/KpiCatalogCenter';
 
 export function AppRoutes() {
   return (
@@ -246,6 +248,8 @@ export function AppRoutes() {
         <Route path="ai-governance-center/evaluation" element={<AIGovernanceCenter initialSection="evaluation" />} />
         <Route path="ai-evaluation" element={<AIEvaluationCenter />} />
         <Route path="ai-observability" element={<AIObservabilityCenter />} />
+        <Route path="artifacts" element={<UniversalArtifactsRepository />} />
+        <Route path="kpi-catalog" element={<KpiCatalogCenter />} />
         <Route path="traceability" element={<TraceabilityCenter initialTab="dashboard" />} />
         <Route path="traceability/matrix" element={<TraceabilityCenter initialTab="rtm" />} />
         <Route path="traceability/ai" element={<TraceabilityCenter initialTab="ai" />} />

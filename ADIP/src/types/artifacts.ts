@@ -31,6 +31,10 @@ export interface Artifact {
   riskRating?: string;
   sections?: ArtifactSection[];
   generationHistory: GenerationHistoryEntry[];
+  /** Source hub/center that generated the artifact (e.g. "ai-copilot", "portfolio-governance"). */
+  sourceHub?: string;
+  /** Human-readable label for the source (e.g. "Requirements Copilot", "Portfolio Governance"). */
+  sourceLabel?: string;
 }
 
 export type GenerationRunStatus = 'Completed' | 'In Progress' | 'Failed';

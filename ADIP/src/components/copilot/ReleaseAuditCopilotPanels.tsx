@@ -216,9 +216,77 @@ Rollback      : ${r.rollbackReadinessScore}% — Net Banking rehearsal pending
 
 Recommendation: ship UPI/Mobile in this train; split Cards out; gate Payments RTGS peak on the soak test.`;
 
+  const rolloutChecklist = `# Rollout Checklist — ${r.projectName}
+
+Pre-rollout
+  □ Build promoted to staging-pre-prod
+  □ Database migrations rehearsed (forward + rollback)
+  □ Feature flags configured per cohort
+  □ DR site warmed
+  □ Customer comms scheduled
+
+Rollout
+  □ Canary 5% — health gate green
+  □ Canary 25% — error budget intact
+  □ Full rollout — watch for 60 minutes
+  □ Synthetic monitoring assertions green
+  □ NPCI / network partner notifications sent
+
+Post-rollout
+  □ Defect intelligence pass at T+1h, T+24h, T+7d
+  □ Knowledge base updated
+  □ Runbook updated for Operations
+
+Owner: Release Manager · Approver: Head of Operations`;
+
+  const releaseGovernancePack = `# Release Governance Pack — ${r.projectName}
+
+Section 1 — CAB approval record
+  Verdict: ${recommendation.toUpperCase()}
+  Approvers: CAB Chair · Head of Engineering · Head of Operations
+  Conditions: Cards split-out · RTGS peak re-run · NB rollback rehearsal
+
+Section 2 — Quality gates
+  Coverage 78% · DAST clean · SAST clean · License scan clean
+
+Section 3 — Audit evidence trail
+  Build SBOM, signed artefacts, scan reports, change ticket numbers.
+
+Section 4 — Rollback rehearsal
+  RTO target 30 min · RPO 0 · Last rehearsal: 24h ago
+
+Section 5 — Risk Acceptances
+  Cards Sev2 3DS issue accepted as known-issue post split-out.
+
+Section 6 — Distribution list
+  CIO Office · Risk · Compliance · Internal Audit · Operations`;
+
+  const executiveReleaseSummary = `# Executive Release Summary — ${r.projectName}
+
+Verdict: ${recommendation.toUpperCase()}
+Readiness Score: ${r.releaseReadinessScore}%
+Production Risk: ${r.productionRiskScore}%
+
+Customer-impact summary:
+  · UPI auto-refund flow goes live → improved customer recovery time
+  · Mobile biometric fallback hardened → lower auth failure for elderly cohort
+  · Cards held this train → tokenization fix re-runs next CAB
+
+Operational impact:
+  · Operations on-call augmented for 48h post-rollout
+  · Synthetic monitoring expanded for UPI auto-refund
+
+Risks & mitigations:
+  · Cards 3DS Sev2 — split out, no customer impact
+  · RTGS peak — re-run 5k TPS soak before promotion
+
+Owner: Release Manager · Sponsor: CIO`;
+
   return (
     <CopilotSection
       title="Release Copilot"
+      sourceHub="ai-copilot"
+      sourceLabel="Release Copilot"
       analyzedSubtitle={`AI evaluated quality gates, defects, performance and rollback readiness across UPI, Cards, Payments, Net Banking and Loans for ${r.projectName} and produced a GO / CONDITIONAL GO / NO GO recommendation with reasons and risk factors.`}
       analyzedScope={[r.projectName, `Readiness ${r.releaseReadinessScore}%`, `AI Verdict: ${recommendation.toUpperCase()}`]}
       primarySlot={
@@ -242,10 +310,13 @@ Recommendation: ship UPI/Mobile in this train; split Cards out; gate Payments RT
       findings={findings}
       recommendations={recommendations}
       generationActions={[
-        { id: 'cab-pack', label: 'Generate CAB Pack', artifactName: 'CAB_Pack.md', icon: GavelIcon, generatedBy: 'Release AI', preview: cabPack },
-        { id: 'go-live', label: 'Generate Go-Live Checklist', artifactName: 'Go_Live_Checklist.md', icon: ChecklistRtlIcon, generatedBy: 'Release AI', preview: goLiveChecklist },
-        { id: 'rollback', label: 'Generate Rollback Plan', artifactName: 'Rollback_Plan.md', icon: RestartAltIcon, generatedBy: 'Release AI', preview: rollbackPlan },
-        { id: 'readiness', label: 'Generate Release Readiness Report', artifactName: 'Release_Readiness_Report.md', icon: AssessmentIcon, generatedBy: 'Release AI', preview: readinessReport },
+        { id: 'rollout-checklist', label: 'Generate Rollout Checklist', artifactName: 'Rollout_Checklist.docx', icon: ChecklistRtlIcon, generatedBy: 'Release AI', preview: rolloutChecklist },
+        { id: 'rollback', label: 'Generate Rollback Plan', artifactName: 'Rollback_Plan.docx', icon: RestartAltIcon, generatedBy: 'Release AI', preview: rollbackPlan },
+        { id: 'readiness', label: 'Generate Release Readiness Report', artifactName: 'Release_Readiness_Report.docx', icon: AssessmentIcon, generatedBy: 'Release AI', preview: readinessReport },
+        { id: 'release-governance', label: 'Generate Release Governance Pack', artifactName: 'Release_Governance_Pack.docx', icon: GavelIcon, generatedBy: 'Release AI', preview: releaseGovernancePack },
+        { id: 'exec-release-summary', label: 'Generate Executive Release Summary', artifactName: 'Executive_Release_Summary.docx', icon: AssessmentIcon, generatedBy: 'Release AI', preview: executiveReleaseSummary },
+        { id: 'cab-pack', label: 'Generate CAB Pack', artifactName: 'CAB_Pack.docx', icon: GavelIcon, generatedBy: 'Release AI', preview: cabPack },
+        { id: 'go-live', label: 'Generate Go-Live Checklist', artifactName: 'Go_Live_Checklist.docx', icon: ChecklistRtlIcon, generatedBy: 'Release AI', preview: goLiveChecklist },
       ]}
       suggestedActions={suggestedActions}
       initialArtifacts={[
@@ -375,6 +446,8 @@ Predicted impact: Audit readiness ${Math.max(0, 100 - findings.length * 6)}% →
   return (
     <CopilotSection
       title="Audit Copilot"
+      sourceHub="ai-copilot"
+      sourceLabel="Audit Copilot"
       analyzedSubtitle={`AI tested controls and sampled evidence across UPI, Cards, Loans, Net Banking, Payments and Mobile Banking against RBI, PCI-DSS, SOX and AML, surfacing control findings, evidence gaps and compliance observations on ${selectedProject.name}.`}
       analyzedScope={[
         '4 frameworks',

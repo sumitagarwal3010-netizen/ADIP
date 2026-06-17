@@ -11,6 +11,9 @@ import ChecklistIcon from '@mui/icons-material/Checklist';
 import BlockIcon from '@mui/icons-material/Block';
 import GroupIcon from '@mui/icons-material/Group';
 import SpeedIcon from '@mui/icons-material/Speed';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import BugReportIcon from '@mui/icons-material/BugReport';
 import { GlassCard } from '../common/GlassCard';
 import { colors } from '../../theme/colors';
 import {
@@ -115,9 +118,44 @@ Modernization Velocity           54      ↑
 Composite Architecture Health: 65/100 (AMBER)
 Top 3 levers: Resiliency, Modularity, Modernization Velocity.`;
 
+  const targetState = `# Target State Architecture — ${selectedProject.name}
+
+Target topology (FY+18 months):
+  · UPI            : event-driven, multi-AZ, dual NPCI gateway, 14k TPS
+  · Cards          : tokenized vault, active-active, sub-200ms auth p95
+  · Loans          : CDC-streamed disbursement, same-day capability
+  · Net Banking    : strangler-fig microfrontend on the channels platform
+  · Payments       : NEFT/RTGS on the orchestration bus, idempotent retries
+  · Mobile         : single-trip BFF, hardened token validation
+
+Architecture principles enforced:
+  · Every channel idempotent at the gateway
+  · One JWT validation library, audience-aware
+  · Vault-only PAN, masked logging
+  · Event-first integration with replay-safe consumers
+
+This target inherits the modernization-plan waves and resolves R-01..R-05.`;
+
+  const gapAnalysis = `# Architecture Gap Analysis — ${selectedProject.name}
+
+Gap                                                Wave    Effort   Closes
+-----------------------------------------------    ----    ------   ------------------
+Multi-AZ UPI failover                              1       4w       R-01 + R-04
+Tokenized PAN vault                                1       3w       PCI-DSS · R-02
+Cards active-active failover                       1       6w       R-02
+Net Banking strangler microfrontend baseline       1       8w       R-03
+NEFT/RTGS idempotency keys                         1       2w       Settlement risk
+Mobile BFF single-trip aggregation                 2       3w       R-05
+CDC-streamed Loans disbursement                    2       6w       Same-day SLA
+
+Closing all Wave-1 gaps moves residual risk LOW and unlocks the Wave-2
+modernization plan.`;
+
   return (
     <CopilotSection
       title="Architecture Copilot"
+      sourceHub="ai-copilot"
+      sourceLabel="Architecture Copilot"
       analyzedSubtitle={`AI reviewed solution and platform architecture across UPI, Mobile Banking, Net Banking, Cards, Loans and Payments for architecture findings, risk observations, resiliency analysis and modernization opportunities on ${selectedProject.name}.`}
       analyzedScope={[
         '6 banking platforms',
@@ -128,10 +166,12 @@ Top 3 levers: Resiliency, Modularity, Modernization Velocity.`;
       findings={findings}
       recommendations={recommendations}
       generationActions={[
-        { id: 'arch-review', label: 'Generate Architecture Review', artifactName: 'Architecture_Review.md', icon: RateReviewIcon, generatedBy: 'Architecture AI', preview: archReview },
-        { id: 'risk-assessment', label: 'Generate Risk Assessment', artifactName: 'Architecture_Risk_Assessment.md', icon: ShieldIcon, generatedBy: 'Architecture AI', preview: riskAssessment },
-        { id: 'scorecard', label: 'Generate Architecture Scorecard', artifactName: 'Architecture_Scorecard.md', icon: AssessmentIcon, generatedBy: 'Architecture AI', preview: archScorecard },
-        { id: 'modernization-plan', label: 'Generate Modernization Plan', artifactName: 'Modernization_Plan.md', icon: MapIcon, generatedBy: 'Architecture AI', preview: modernizationPlan },
+        { id: 'arch-review', label: 'Generate Architecture Review', artifactName: 'Architecture_Review_Report.docx', icon: RateReviewIcon, generatedBy: 'Architecture AI', preview: archReview },
+        { id: 'scorecard', label: 'Generate Architecture Scorecard', artifactName: 'Architecture_Scorecard.docx', icon: AssessmentIcon, generatedBy: 'Architecture AI', preview: archScorecard },
+        { id: 'risk-assessment', label: 'Generate Risk Assessment', artifactName: 'Architecture_Risk_Assessment.docx', icon: ShieldIcon, generatedBy: 'Architecture AI', preview: riskAssessment },
+        { id: 'modernization-plan', label: 'Generate Modernization Plan', artifactName: 'Modernization_Plan.docx', icon: MapIcon, generatedBy: 'Architecture AI', preview: modernizationPlan },
+        { id: 'target-state', label: 'Generate Target State Architecture', artifactName: 'Target_State_Architecture.docx', icon: AccountTreeIcon, generatedBy: 'Architecture AI', preview: targetState },
+        { id: 'gap-analysis', label: 'Generate Gap Analysis', artifactName: 'Architecture_Gap_Analysis.xlsx', icon: CompareArrowsIcon, generatedBy: 'Architecture AI', preview: gapAnalysis },
       ]}
       suggestedActions={suggestedActions}
       initialArtifacts={[
@@ -247,9 +287,30 @@ Top 3 paydown candidates by ROI:
   2. Cards PAN masking (1 day, removes PCI block)
   3. Loans interest-engine tests (4 days, coverage 38% → 82%)`;
 
+  const defectImpact = `# Defect Impact Assessment — ${selectedProject.name}
+
+Defect tracking window: last 30 days
+Total open defects: 184 · S1: 4 · S2: 21 · S3: 78 · S4: 81
+
+Top 5 defects by customer-impact score:
+  1. UPI auto-refund 60s window misses by ~9% (customer-visible)
+  2. NEFT retry double-debit (rare, but high-severity if it happens)
+  3. Cards token expiry not propagated → declined-at-merchant
+  4. Mobile balance refresh slow path (battery + churn)
+  5. Net Banking funds-transfer 2.4s p95 (perceived sluggishness)
+
+Estimated $-impact if shipped:
+  · Refund delays   ≈ ₹2.1Cr/yr in dispute handling cost
+  · Double-debits   ≈ ₹0.8Cr exposure (rare but compliance-sensitive)
+  · Token expiry    ≈ 0.3% auth-decline rate ≈ ₹3.4Cr top-line risk
+
+Recommended hold list before next release: defects #1, #2, #3.`;
+
   return (
     <CopilotSection
       title="Development Copilot"
+      sourceHub="ai-copilot"
+      sourceLabel="Development Copilot"
       analyzedSubtitle={`AI scanned source, tests, dependencies and runtime telemetry across UPI, Cards, Payments, Loans, Mobile and Net Banking for code quality, security and performance findings on ${selectedProject.name}.`}
       analyzedScope={[
         '6 codebases',
@@ -260,10 +321,11 @@ Top 3 paydown candidates by ROI:
       findings={findings}
       recommendations={recommendations}
       generationActions={[
-        { id: 'code-review-summary', label: 'Generate Code Review Summary', artifactName: 'Code_Review_Summary.md', icon: ChecklistIcon, generatedBy: 'Development AI', preview: codeReviewSummary },
-        { id: 'refactor', label: 'Generate Refactoring Plan', artifactName: 'Refactoring_Plan.md', icon: CodeIcon, generatedBy: 'Development AI', preview: refactorPlan },
-        { id: 'secure-coding', label: 'Generate Secure Coding Recommendations', artifactName: 'Secure_Coding_Recommendations.md', icon: LockIcon, generatedBy: 'Development AI', preview: secureCoding },
-        { id: 'tech-debt-report', label: 'Generate Technical Debt Report', artifactName: 'Technical_Debt_Report.md', icon: StackedBarChartIcon, generatedBy: 'Development AI', preview: techDebtReport },
+        { id: 'code-review-summary', label: 'Generate Code Review Report', artifactName: 'Code_Review_Report.docx', icon: ChecklistIcon, generatedBy: 'Development AI', preview: codeReviewSummary },
+        { id: 'secure-coding', label: 'Generate Secure Coding Assessment', artifactName: 'Secure_Coding_Assessment.docx', icon: LockIcon, generatedBy: 'Development AI', preview: secureCoding },
+        { id: 'tech-debt-report', label: 'Generate Technical Debt Report', artifactName: 'Technical_Debt_Report.docx', icon: StackedBarChartIcon, generatedBy: 'Development AI', preview: techDebtReport },
+        { id: 'defect-impact', label: 'Generate Defect Impact Assessment', artifactName: 'Defect_Impact_Assessment.docx', icon: BugReportIcon, generatedBy: 'Development AI', preview: defectImpact },
+        { id: 'refactor', label: 'Generate Refactoring Recommendation', artifactName: 'Refactoring_Recommendation_Report.docx', icon: CodeIcon, generatedBy: 'Development AI', preview: refactorPlan },
       ]}
       suggestedActions={suggestedActions}
       initialArtifacts={[
@@ -490,9 +552,51 @@ Mobile
   NTC-MB-050   Biometric fail → MPIN fallback succeeds
   NTC-MB-051   Token spoofed audience → rejected at gateway`;
 
+  const sanitySuite = `# Sanity Test Suite — ${selectedProject.name}
+
+Pre-deploy smoke pack (executes in < 6 minutes):
+  S-1   UPI: send ₹10 → success in <2s
+  S-2   Cards: ₹100 auth via test card → approved
+  S-3   NEFT: small batch (10 txns) → settled within window
+  S-4   RTGS: single transaction settles in active window
+  S-5   Mobile: login → balance refresh → logout
+  S-6   Net Banking: funds transfer ₹50 own-account → success
+  S-7   Loans: EMI calculator returns expected amount
+  S-8   Audit: control evidence pull returns rows for last 24h
+
+If any step fails, the rollout is paused automatically.`;
+
+  const e2ePack = `# End-to-End Test Pack — ${selectedProject.name}
+
+Customer journeys validated end-to-end:
+
+E-1  UPI customer journey
+     Login → choose payee → confirm → debit → credit → notification
+     (covers gateway, NPCI hop, ledger, notifications)
+
+E-2  Cards journey
+     Card-on-file tokenization → 3DS → auth → settlement → reconciliation
+
+E-3  NEFT/RTGS journey
+     Beneficiary management → submit → screen → batch → settle → notify
+
+E-4  Loans journey
+     Eligibility → offer → accept → disburse → first EMI
+
+E-5  Mobile journey
+     Onboarding → KYC → first txn → biometric login → push notification
+
+E-6  Net Banking journey
+     Login → funds transfer → bill payment → statement download
+
+Each journey emits trace IDs that are picked up by the Audit Copilot
+evidence pull.`;
+
   return (
     <CopilotSection
       title="Testing Copilot"
+      sourceHub="ai-copilot"
+      sourceLabel="Testing Copilot"
       analyzedSubtitle={`AI analyzed test coverage and failure history across UPI, Cards, Payments, Loans, Mobile and Net Banking, then generated executable test cases, surfaced regression coverage and listed missing scenarios on ${selectedProject.name}.`}
       analyzedScope={[
         '6 test suites',
@@ -504,11 +608,13 @@ Mobile
       findings={findings}
       recommendations={recommendations}
       generationActions={[
-        { id: 'test-cases', label: 'Generate Test Cases', artifactName: 'Test_Cases.md', icon: ScienceIcon, generatedBy: 'Testing AI', preview: testCasesArtifact },
-        { id: 'regression-pack', label: 'Generate Regression Pack', artifactName: 'Regression_Pack.md', icon: ChecklistIcon, generatedBy: 'Testing AI', preview: regressionPack },
-        { id: 'uat-scenarios', label: 'Generate UAT Scenarios', artifactName: 'UAT_Scenarios.md', icon: GroupIcon, generatedBy: 'Testing AI', preview: uatScenarios },
-        { id: 'performance-tests', label: 'Generate Performance Tests', artifactName: 'Performance_Tests.md', icon: SpeedIcon, generatedBy: 'Testing AI', preview: performanceTests },
-        { id: 'negative-tests', label: 'Generate Negative Test Cases', artifactName: 'Negative_Test_Cases.md', icon: BlockIcon, generatedBy: 'Testing AI', preview: negativeTests },
+        { id: 'test-cases', label: 'Generate Test Cases', artifactName: 'Test_Cases.xlsx', icon: ScienceIcon, generatedBy: 'Testing AI', preview: testCasesArtifact },
+        { id: 'regression-pack', label: 'Generate Regression Plan', artifactName: 'Regression_Plan.docx', icon: ChecklistIcon, generatedBy: 'Testing AI', preview: regressionPack },
+        { id: 'sanity-suite', label: 'Generate Sanity Suite', artifactName: 'Sanity_Test_Suite.docx', icon: BlockIcon, generatedBy: 'Testing AI', preview: sanitySuite },
+        { id: 'performance-tests', label: 'Generate Performance Test Plan', artifactName: 'Performance_Test_Plan.docx', icon: SpeedIcon, generatedBy: 'Testing AI', preview: performanceTests },
+        { id: 'e2e-pack', label: 'Generate End-to-End Test Pack', artifactName: 'E2E_Test_Pack.docx', icon: AccountTreeIcon, generatedBy: 'Testing AI', preview: e2ePack },
+        { id: 'uat-scenarios', label: 'Generate UAT Scenarios', artifactName: 'UAT_Scenarios.docx', icon: GroupIcon, generatedBy: 'Testing AI', preview: uatScenarios },
+        { id: 'negative-tests', label: 'Generate Negative Test Cases', artifactName: 'Negative_Test_Cases.docx', icon: BlockIcon, generatedBy: 'Testing AI', preview: negativeTests },
       ]}
       suggestedActions={suggestedActions}
       initialArtifacts={[

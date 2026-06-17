@@ -180,6 +180,8 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/ai-governance-center/controls': { title: 'AI Governance Center', subtitle: 'Use cases · models · prompts · risks · controls' },
   '/ai-evaluation': { title: 'AI Evaluation Center', subtitle: 'Quality, safety, grounding & regression scores' },
   '/ai-observability': { title: 'AI Observability Center', subtitle: 'Usage, tokens, cost, latency & error rates' },
+  '/artifacts': { title: 'Universal Artifacts Repository', subtitle: 'Single source of truth for every AI-generated executive deliverable' },
+  '/kpi-catalog': { title: 'KPI Catalog', subtitle: 'KPI definitions, formulas, sources, owners & executive consumers' },
   '/traceability': { title: 'AI SDLC Traceability Center', subtitle: 'End-to-end lineage from requirement to compliance' },
   '/traceability/matrix': { title: 'AI SDLC Traceability Center', subtitle: 'Requirement traceability matrix' },
   '/traceability/ai': { title: 'AI SDLC Traceability Center', subtitle: 'AI lifecycle traceability' },

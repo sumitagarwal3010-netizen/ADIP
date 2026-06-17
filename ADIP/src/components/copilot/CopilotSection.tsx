@@ -1,4 +1,4 @@
-import { useCallback, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { Box, Button, Chip, LinearProgress, Typography } from '@mui/material';
 import type { SvgIconComponent } from '@mui/icons-material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
@@ -6,9 +6,13 @@ import InsightsIcon from '@mui/icons-material/Insights';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import DownloadIcon from '@mui/icons-material/Download';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { colors } from '../../theme/colors';
+import { useArtifactsRegistry } from '../../context/ArtifactsContext';
+import { createArtifact } from '../../data/artifactBuilder';
+import type { Artifact } from '../../types/artifacts';
 
 /**
  * Reusable AI-First Copilot section.
@@ -125,6 +129,37 @@ interface CopilotSectionProps {
   secondaryKpis?: CopilotKpi[];
   /** Initial seeded artifacts (so the page does not look empty before any click). */
   initialArtifacts?: Array<Omit<GeneratedArtifactEntry, 'runId'>>;
+  /** Source-hub key used when registering generated artifacts in the global Artifacts repository. */
+  sourceHub?: string;
+  /** Human-readable label for the source-hub. */
+  sourceLabel?: string;
+}
+
+function downloadArtifactBlob(name: string, content: string): void {
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name.replace(/\s+/g, '_');
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function toRegistryArtifact(
+  entry: GeneratedArtifactEntry,
+  source: { hub?: string; label?: string },
+): Artifact {
+  return createArtifact({
+    id: `copilot-${entry.runId}`,
+    name: entry.artifactName,
+    generatedBy: entry.generatedBy,
+    fileType: entry.artifactName.toLowerCase().endsWith('.xlsx') ? 'xlsx' : 'docx',
+    approvalStatus: 'Pending Review',
+    riskRating: 'Medium',
+    previewContent: entry.preview,
+    executiveSummary: `AI-generated ${entry.artifactName} produced by ${entry.generatedBy} at ${entry.generatedAt}.`,
+    context: { subject: source.label ?? 'AI SDLC Copilot' },
+  });
 }
 
 export function CopilotSection({
@@ -140,6 +175,8 @@ export function CopilotSection({
   suggestedActions,
   secondaryKpis,
   initialArtifacts,
+  sourceHub,
+  sourceLabel,
 }: CopilotSectionProps) {
   const [artifacts, setArtifacts] = useState<GeneratedArtifactEntry[]>(() =>
     (initialArtifacts ?? []).map((a, i) => ({ ...a, runId: `seed-${i}` })),
@@ -147,6 +184,20 @@ export function CopilotSection({
   const [runningActionId, setRunningActionId] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
   const [activity, setActivity] = useState<string>('');
+  const { recordArtifacts } = useArtifactsRegistry();
+
+  // Seed the global registry with any initial artifacts so the Universal
+  // Artifacts Repository never appears empty for an executive demo.
+  useEffect(() => {
+    if (!artifacts.length) return;
+    recordArtifacts(
+      artifacts.map((a) => {
+        const reg = toRegistryArtifact(a, { hub: sourceHub, label: sourceLabel });
+        return { ...reg, sourceHub, sourceLabel };
+      }),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const runGenerate = useCallback(
     (action: CopilotGenerationAction) => {
@@ -166,17 +217,18 @@ export function CopilotSection({
           setActivity(s.msg);
           if (i === STEPS.length - 1) {
             const runId = `R-${Date.now().toString(36).slice(-6).toUpperCase()}`;
-            setArtifacts((prev) => [
-              {
-                runId,
-                actionId: action.id,
-                artifactName: action.artifactName,
-                generatedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                generatedBy: action.generatedBy ?? 'SDLC Copilot',
-                preview: action.preview,
-              },
-              ...prev,
-            ]);
+            const newEntry: GeneratedArtifactEntry = {
+              runId,
+              actionId: action.id,
+              artifactName: action.artifactName,
+              generatedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+              generatedBy: action.generatedBy ?? 'SDLC Copilot',
+              preview: action.preview,
+            };
+            setArtifacts((prev) => [newEntry, ...prev]);
+            // Push into the global Universal Artifacts Repository.
+            const reg = toRegistryArtifact(newEntry, { hub: sourceHub, label: sourceLabel });
+            recordArtifacts([{ ...reg, sourceHub, sourceLabel }]);
             setTimeout(() => {
               setRunningActionId(null);
               setProgress(0);
@@ -186,7 +238,7 @@ export function CopilotSection({
         }, 450 * (i + 1));
       });
     },
-    [runningActionId],
+    [runningActionId, recordArtifacts, sourceHub, sourceLabel],
   );
 
   const runningAction = generationActions.find((a) => a.id === runningActionId);
@@ -422,6 +474,14 @@ export function CopilotSection({
                 <Typography sx={{ fontSize: '0.6rem', color: colors.text.muted, ml: 'auto' }}>
                   {a.generatedAt}
                 </Typography>
+                <Button
+                  size="small"
+                  startIcon={<DownloadIcon sx={{ fontSize: 14 }} />}
+                  onClick={() => downloadArtifactBlob(a.artifactName, `${a.artifactName}\n\nGenerated by: ${a.generatedBy}\nRun: ${a.runId}\nTime: ${a.generatedAt}\n\n${a.preview}`)}
+                  sx={{ ml: 0.5, fontSize: '0.6rem', py: 0, minWidth: 0, textTransform: 'none' }}
+                >
+                  Download
+                </Button>
               </Box>
               <Typography sx={{ fontSize: '0.72rem', fontWeight: 700 }}>{a.artifactName}</Typography>
               <Typography

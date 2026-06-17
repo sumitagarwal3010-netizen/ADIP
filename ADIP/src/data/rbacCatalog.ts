@@ -507,6 +507,8 @@ export const ROUTE_RESOURCE_MAP: Record<string, { resource: ResourceType; permis
   '/reports/compliance': { resource: 'reports', permission: 'view' },
   '/reports/audit': { resource: 'reports', permission: 'view' },
   '/reports/trends': { resource: 'reports', permission: 'view' },
+  '/artifacts': { resource: 'artifacts', permission: 'view' },
+  '/kpi-catalog': { resource: 'dashboards', permission: 'view' },
   '/administration': { resource: 'dashboards', permission: 'administer' },
   '/administration/rbac': { resource: 'dashboards', permission: 'administer' },
   '/administration/persistence': { resource: 'dashboards', permission: 'administer' },

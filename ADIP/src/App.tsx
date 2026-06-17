@@ -20,6 +20,7 @@ import { ArchitectureRepositoryProvider } from './context/ArchitectureRepository
 import { TechnologyStrategyProvider } from './context/TechnologyStrategyContext';
 import { TransformationPmoProvider } from './context/TransformationPmoContext';
 import { EnterpriseRiskProvider } from './context/EnterpriseRiskContext';
+import { ArtifactsProvider } from './context/ArtifactsContext';
 import { RootErrorBoundary } from './components/common/RootErrorBoundary';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
               <TechnologyStrategyProvider>
               <TransformationPmoProvider>
               <EnterpriseRiskProvider>
+              <ArtifactsProvider>
               <EventProvider>
                 <WorkflowProvider>
                   <NotificationProvider>
@@ -52,6 +54,7 @@ function App() {
                   </NotificationProvider>
                 </WorkflowProvider>
               </EventProvider>
+              </ArtifactsProvider>
               </EnterpriseRiskProvider>
               </TransformationPmoProvider>
               </TechnologyStrategyProvider>

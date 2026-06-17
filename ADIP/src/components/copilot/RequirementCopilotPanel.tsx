@@ -4,6 +4,8 @@ import ChecklistIcon from '@mui/icons-material/Checklist';
 import ScienceIcon from '@mui/icons-material/Science';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import DescriptionIcon from '@mui/icons-material/Description';
+import ArticleIcon from '@mui/icons-material/Article';
 import { CopilotSection, type CopilotFinding, type CopilotRecommendation, type CopilotSuggestedAction } from './CopilotSection';
 import { useCopilot } from '../../context/CopilotContext';
 
@@ -105,6 +107,56 @@ REQ-2055        ↔ DSN-422    ↔ TC-AUD-2055-*   ↔ SOX-CCM-3
 Coverage: ${100 - Math.min(20, requirementInsights.length * 2)}% — gaps highlighted in red downstream.
 `;
 
+  const brdPreview = `# Business Requirements Document (BRD)
+
+Project: ${selectedProject.name}
+Sponsor: Head of Digital Banking
+Business owner: Payments & Channels
+
+1. Background
+   The bank is consolidating real-time refund and fraud-trace flows across
+   UPI, IMPS, NEFT and RTGS to reduce dispute hand-time and improve
+   regulator-grade auditability.
+
+2. Business objectives
+   · Auto-refund debit-success / credit-fail UPI within 5 minutes
+   · Persist fraud rule lineage for every score ≥80 transaction
+   · Record regulator-mandated evidence for every NEFT/RTGS batch
+
+3. Scope
+   IN  : UPI refund engine · Fraud rule trace · NEFT/RTGS evidence store
+   OUT : Cards reconciliation rebuild (tracked separately)
+
+4. Stakeholders
+   Product Owner (UPI/Cards/Loans) · BA team · Compliance · Risk
+   · Operations · Internal Audit
+
+(Generated from ${requirementInsights.length + 18} requirements analyzed by AI.)`;
+
+  const frdPreview = `# Functional Requirements Document (FRD)
+
+Module: Auto-Refund + Fraud Trace + Evidence Store
+Project: ${selectedProject.name}
+
+FR-1  Auto-Refund Engine
+      The system shall initiate a refund automatically when a UPI debit
+      succeeded but the credit leg failed, within 60s of the failed leg.
+
+FR-2  Reversal Window Configuration
+      The reversal window shall be configurable per product (default 60s,
+      max 300s) by Treasury Operations.
+
+FR-3  Fraud Rule Trace
+      The system shall persist a complete trace (rule id, version,
+      inputs, score, decision) for every fraud-engine evaluation with a
+      score ≥ 80.
+
+FR-4  Evidence Persistence
+      The NEFT/RTGS batch run shall persist regulator-mandated evidence
+      fields atomically with the settlement record.
+
+(Coverage: ${100 - Math.min(20, requirementInsights.length * 2)}% of in-scope BRD items have a corresponding FR.)`;
+
   const reviewPreview = `# Requirement Review — ${selectedProject.name}
 
 Total requirements analyzed: ${requirementInsights.length + 18}
@@ -143,6 +195,8 @@ EDGE
   return (
     <CopilotSection
       title="Requirements Copilot"
+      sourceHub="ai-copilot"
+      sourceLabel="Requirements Copilot"
       analyzedSubtitle={`AI scanned ${requirementInsights.length + 18} requirements across ${selectedProject.name} for ambiguity, missing acceptance criteria, missing non-functional requirements and weak controls.`}
       analyzedScope={[
         `${selectedProject.name}`,
@@ -153,9 +207,25 @@ EDGE
       recommendations={recommendations}
       generationActions={[
         {
+          id: 'brd',
+          label: 'Generate BRD',
+          artifactName: 'BRD.docx',
+          icon: ArticleIcon,
+          generatedBy: 'Requirements AI',
+          preview: brdPreview,
+        },
+        {
+          id: 'frd',
+          label: 'Generate FRD',
+          artifactName: 'FRD.docx',
+          icon: DescriptionIcon,
+          generatedBy: 'Requirements AI',
+          preview: frdPreview,
+        },
+        {
           id: 'user-stories',
           label: 'Generate User Stories',
-          artifactName: 'User_Stories.md',
+          artifactName: 'User_Stories.docx',
           icon: AssignmentTurnedInIcon,
           generatedBy: 'Requirements AI',
           preview: userStoriesPreview,
@@ -163,7 +233,7 @@ EDGE
         {
           id: 'acceptance-criteria',
           label: 'Generate Acceptance Criteria',
-          artifactName: 'Acceptance_Criteria.md',
+          artifactName: 'Acceptance_Criteria.docx',
           icon: ChecklistIcon,
           generatedBy: 'Requirements AI',
           preview: acceptanceCriteriaPreview,
@@ -171,7 +241,7 @@ EDGE
         {
           id: 'test-scenarios',
           label: 'Generate Test Scenarios',
-          artifactName: 'Test_Scenarios.md',
+          artifactName: 'Test_Scenarios.docx',
           icon: ScienceIcon,
           generatedBy: 'Requirements AI',
           preview: testScenariosPreview,
@@ -179,7 +249,7 @@ EDGE
         {
           id: 'traceability',
           label: 'Generate Traceability Matrix',
-          artifactName: 'Traceability_Matrix.md',
+          artifactName: 'Requirement_Traceability_Matrix.xlsx',
           icon: AccountTreeIcon,
           generatedBy: 'Requirements AI',
           preview: traceabilityPreview,
@@ -187,7 +257,7 @@ EDGE
         {
           id: 'requirement-review',
           label: 'Generate Requirement Review',
-          artifactName: 'Requirement_Review.docx',
+          artifactName: 'Requirement_Review_Report.docx',
           icon: RateReviewIcon,
           generatedBy: 'Requirements AI',
           preview: reviewPreview,

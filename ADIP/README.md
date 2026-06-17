@@ -1,150 +1,215 @@
-# ADIP — AI Driven Delivery Intelligence Platform
+# ADIP — AI Delivery Intelligence Platform
 
-ADIP is an **Enterprise AI SDLC Transformation Platform** that provides end-to-end
-visibility, governance, automation, traceability, intelligence, and value realization
-across the entire software delivery lifecycle.
+> **AI Executive Delivery Intelligence Platform** for the CIO, CTO, CRO and
+> CISO. ADIP transforms a multi-portfolio, multi-domain technology estate
+> into a single AI-orchestrated control surface where AI **analyzes**,
+> **finds**, **recommends** and **generates** at every step of the SDLC.
 
-It gives executives and delivery teams a single control surface that follows work from
-the moment demand is raised through to the business value it ultimately delivers in
-production.
-
----
-
-## Business Flow
-
-ADIP models the full enterprise delivery value chain as one connected flow:
-
-```
-Demand
-  → Portfolio Governance
-  → Application Portfolio
-  → Enterprise Architecture
-  → Technology Strategy
-  → SDLC Delivery
-  → Testing & Release
-  → Production Intelligence
-  → Knowledge Management
-  → Value Realization
-  → Executive Control Tower
-```
-
-### End-to-End Traceability
-
-Every artifact is linked along a single lineage so any item can be traced forward to the
-value it produced, or backward to the demand that justified it:
-
-```
-Demand → Program → Project → Architecture → Development → Release
-       → Production → Incident → RCA → Knowledge → Value
-```
-
-This lineage is surfaced in the **Traceability Center** (`/traceability`).
+[![Build](https://img.shields.io/badge/build-passing-brightgreen)](.)
+[![License](https://img.shields.io/badge/license-internal-blue)](.)
+[![React](https://img.shields.io/badge/react-19-blue)](.)
+[![TypeScript](https://img.shields.io/badge/typescript-5-blue)](.)
+[![MUI](https://img.shields.io/badge/MUI-7-purple)](.)
 
 ---
 
-## Key Executive Modules
+## What ADIP is
 
-| # | Module | Route | Highlights |
-|---|--------|-------|-----------|
-| 1 | **Executive Control Tower** | `/` | Enterprise KPIs, delivery health, risk indicators, transformation & value metrics |
-| 2 | **Portfolio Governance Center** | `/executive/portfolio-governance` | Demand intake, business case review, investment governance, capacity planning, benefits tracking |
-| 3 | **Application Portfolio Management** | `/executive/application-portfolio` | Application inventory, technical debt, modernization, cloud & AI readiness, rationalization |
-| 4 | **Enterprise Architecture Repository** | `/executive/architecture-repository` | Business capabilities, application architecture, standards compliance, review board, architecture debt |
-| 5 | **Technology Strategy Center** | `/executive/technology-strategy` | Technology lifecycle, standards governance, cloud strategy, AI platform strategy, roadmap |
-| 6 | **AI Delivery Copilot** | `/executive/ai-copilot` | Requirement quality, architecture/development/testing recommendations, release & audit readiness |
-| 7 | **Production Intelligence** | `/production` | Incident analytics, defect leakage, customer experience, root-cause intelligence, feedback |
-| 8 | **Knowledge & Learning Center** | `/knowledge-center` | Lessons learned, best practices, architecture patterns, reusable controls, RCA knowledge |
-| 9 | **Value Realization Center** | `/executive/value-realization` | ROI, productivity gains, cost avoidance, audit efficiency, transformation scorecard |
-| 10 | **Transformation PMO** | `/executive/transformation-pmo` | Programs, initiatives, objectives, benefits, executive commitments |
+ADIP is **not a KPI dashboard**. It is the executive operating cockpit
+for an AI-driven SDLC. Every center surfaces four things:
 
-> Supporting hubs round out the platform: **SDLC Lifecycle** (Requirements → Architecture →
-> Development → Testing → Release), **Governance** (Audit Center, Compliance, Risk, Evidence,
-> Approval Workflow, RBAC/ABAC admin), **AI Governance** (use-case registry, model inventory,
-> prompt governance, AI risk/controls/incidents), and **Reports & Analytics**.
+1. **What did AI analyze?**
+2. **What did AI find?**
+3. **What does AI recommend?**
+4. **What can AI generate?**
 
-See [`docs/MODULES.md`](docs/MODULES.md) for the full per-module functional reference and
-every sub-route.
+KPIs are *secondary outcome indicators*; they exist to confirm that the AI
+recommendations are landing.
 
 ---
 
-## Tech Stack
+## Features
 
-- **React 19** + **TypeScript** (strict) via **Vite 8**
-- **MUI 9** (`@mui/material`, `@mui/icons-material`) with **Emotion** styling
-- **React Router 7** for routing
-- **Recharts** for data visualization
-- **Framer Motion** for animation
-- React Context for per-module state, backed by a custom **event bus** and a pluggable
-  **persistence abstraction layer** (memory / localStorage / future API / future DB adapters)
+### AI SDLC Copilot
+Six AI Copilots — Requirements, Architecture, Development, Testing,
+Release, Audit — each with **AI Findings**, **AI Recommendations**,
+**Generated Artifacts** and **Suggested Actions**. Click Generate; the AI
+authors a downloadable executive deliverable.
 
-See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the layered architecture.
+### Universal Artifact Generation Framework
+Every center has a Generate flow with multi-stage progress modal,
+governed run history and a downloadable artifact. Every generated
+artifact lands in the **Universal Artifacts Repository** at `/artifacts`
+where it is searchable, filterable, viewable and downloadable.
+
+### KPI Governance Framework
+The **KPI Catalog** at `/kpi-catalog` is the authoritative dictionary —
+every KPI documented with definition, formula, source, frequency, owner
+and executive consumer. One click downloads a Markdown + CSV catalog and
+registers them in the Universal Artifact Repository.
+
+### Single Source of Truth
+- **AI Risks** → AI Governance only (rollup-only elsewhere)
+- **AI Evaluation** → AI Evaluation Center only
+- **AI Runtime** → AI Observability only
+- **Artifacts** → Universal Artifact Repository
+
+### Executive Cockpit
+- **Executive Control Tower** — four executive KPIs answering four
+  CIO-level questions.
+- **Executive Summary Drawer** (TopBar) — narrative summary generated
+  live from the simulation state, with Copy and Export-to-Text actions.
+
+### Driver-Based Correlated Simulation
+A driver-based simulation engine ticks every 30 seconds with latent
+variables and KPI cascades — incidents lower operational health, lower
+release readiness, lower delivery score; governance findings raise risk;
+realistic interdependencies, deterministic seeded RNG.
 
 ---
 
-## Getting Started
+## Architecture
+
+```
+                         ┌────────────────────────────────────┐
+                         │        AI Executive Surface        │
+                         │  (Tower · Summary · Outcomes)      │
+                         └──────────────┬─────────────────────┘
+                                        ▼
+   ┌──────────────────┬─────────────────────────────┬────────────────────┐
+   │   AI SDLC        │   Governance & Risk         │    Operations      │
+   │   Copilot        │   (Portfolio · EA · Tech ·  │  (Production · Ops │
+   │   (6 tabs)       │   Risk · AI Governance)     │   · Observability) │
+   └────────┬─────────┴───────────────┬─────────────┴───────────┬────────┘
+            ▼                         ▼                         ▼
+   ┌──────────────────────────────────────────────────────────────────┐
+   │            CopilotSection · HubArtifactGenerator                 │
+   └────────┬─────────────────────────────────────────────────────────┘
+            ▼
+   ┌──────────────────┐    push    ┌──────────────────────────────────┐
+   │ ArtifactsContext │◀───────────│  every Generate action everywhere │
+   └────────┬─────────┘            └──────────────────────────────────┘
+            ▼
+       /artifacts (Universal Artifacts Repository)
+```
+
+Detailed architecture: [`docs/02-ADIP-Architecture.md`](./docs/02-ADIP-Architecture.md).
+
+---
+
+## Setup
 
 ### Prerequisites
 
-- Node.js 18+ (Node 20+ recommended)
+- Node.js 18+
+- npm 9+
 
 ### Install & Run
 
 ```bash
+git clone <repo>
+cd adip
 npm install
-npm run dev        # start the Vite dev server
+npm run dev
 ```
 
-Then open the URL printed in the terminal (default `http://localhost:5173`).
+Open [http://localhost:5173](http://localhost:5173).
 
-### Scripts
+### Build
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start the local dev server with HMR |
-| `npm run build` | Type-check (`tsc -b`) and produce a production build |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run ESLint across the project |
+```bash
+npm run build       # tsc -b && vite build
+npm run preview     # preview the production build
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+Detailed install guide: [`docs/11-ADIP-Installation-Guide.md`](./docs/11-ADIP-Installation-Guide.md).
 
 ---
 
-## Demo Mode
+## Demo Credentials
 
-ADIP currently ships as an **executive demonstration environment**. Authentication
-(Azure AD / MSAL, OAuth/OIDC, JWT validation, token refresh, session checks) is disabled
-and a demo user is injected so every hub loads without a login.
+ADIP runs locally with no backend. There are no real auth credentials —
+use the **Persona Switcher** in the TopBar to assume any persona.
 
-- The master switch lives in `src/config/demoMode.ts` (`DEMO_MODE = true`).
-- RBAC/ABAC remain active for **demo visibility only** — they shape what each persona sees
-  and are **not** security enforcement.
-- A persona switcher lets you view the platform as CIO, CTO, Audit Head, Compliance Officer,
-  Application Owner, Enterprise Architect, Operations Manager, or CISO.
+Available personas: CIO · CTO · CISO · CRO · CFO · EA · PM · Architect ·
+Developer · Tester · Auditor · Compliance Officer · Model Owner · AI
+Governance Lead.
 
-> Do not reintroduce real tokens or authentication in demo mode. See `src/config/demoMode.ts`
-> for details.
+Each persona has a curated default landing experience, quick links and
+an RBAC scope — see [`docs/07-ADIP-Personas.md`](./docs/07-ADIP-Personas.md).
 
 ---
 
-## Project Structure
+## Demo Flow
 
-```
-src/
-  components/      Reusable UI + per-module component groups
-  config/          navConfig, personaConfig, demoMode
-  context/         React context providers (one per module + cross-cutting)
-  data/            Mock data, domain engines, RBAC/ABAC catalogs
-  events/          Event bus, envelope, registry, history, publisher/subscriber
-  hooks/           Shared hooks (entitlement, auto-refresh, simulation)
-  pages/           Route-level page components (the executive centers/hubs)
-  persistence/     Persistence engine, entity store, swappable adapters
-  routes/          Route table (AppRoutes)
-  services/        AI response / executive summary / KPI drilldown / simulation engines
-  theme/           MUI theme
-  types/           Shared TypeScript domain types
-```
+A scripted 20-minute boardroom demo is provided:
+[`docs/08-ADIP-Demo-Guide.md`](./docs/08-ADIP-Demo-Guide.md).
+
+A condensed CIO talking-points version:
+[`docs/09-ADIP-Executive-Demo-Talking-Points.md`](./docs/09-ADIP-Executive-Demo-Talking-Points.md).
+
+Acts:
+1. Executive Cockpit — KPIs + Executive Summary
+2. AI SDLC Copilot — generate artifacts in 6 phases
+3. AI Governance — single source of truth tour
+4. Portfolio AI Advisor — accelerate / stop / fund / at-risk
+5. Risk, Architecture & Technology centers
+6. Universal Artifact Repository (closing reveal)
+7. KPI Governance
 
 ---
 
-## Documentation
+## Screenshots
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — technical architecture, layers, providers, data flow
-- [`docs/MODULES.md`](docs/MODULES.md) — functional reference for every module and sub-route
+> Run `npm run dev` to capture live screenshots. The platform is
+> intentionally tick-driven so static screenshots will rapidly look
+> stale; we capture them per-release.
+
+Suggested capture path:
+
+1. Executive Control Tower
+2. Executive Summary Drawer (open)
+3. Requirements Copilot — generated artifact card
+4. AI Governance Center — Risks
+5. Risk & Compliance — AI Risk rollup with deep link
+6. Universal Artifact Repository — populated with generated artifacts
+7. KPI Catalog — full dictionary
+
+---
+
+## Documentation Links
+
+| # | Document | Purpose |
+| --- | --- | --- |
+| 01 | [Executive Overview](./docs/01-ADIP-Executive-Overview.md) | Vision · Objectives · Value |
+| 02 | [Architecture](./docs/02-ADIP-Architecture.md) | Components · Flows |
+| 03 | [Modules](./docs/03-ADIP-Modules.md) | Center inventory |
+| 04 | [KPI Catalog](./docs/04-ADIP-KPI-Catalog.md) | KPI dictionary reference |
+| 05 | [Artifact Catalog](./docs/05-ADIP-Artifact-Catalog.md) | Generated artifacts |
+| 06 | [Governance Model](./docs/06-ADIP-Governance-Model.md) | AI governance |
+| 07 | [Personas](./docs/07-ADIP-Personas.md) | Personas & RBAC |
+| 08 | [Demo Guide](./docs/08-ADIP-Demo-Guide.md) | 20-min demo script |
+| 09 | [Executive Talking Points](./docs/09-ADIP-Executive-Demo-Talking-Points.md) | CIO script |
+| 10 | [ROI Methodology](./docs/10-ADIP-ROI-Methodology.md) | ROI formulas |
+| 11 | [Installation Guide](./docs/11-ADIP-Installation-Guide.md) | Setup |
+| 12 | [Developer Guide](./docs/12-ADIP-Developer-Guide.md) | Developer reference |
+| 13 | [Operations Guide](./docs/13-ADIP-Operations-Guide.md) | Operations |
+| 14 | [Release Guide](./docs/14-ADIP-Release-Guide.md) | Release process |
+| 15 | [FAQ](./docs/15-ADIP-FAQ.md) | FAQ |
+
+Plus:
+
+- [Demo Readiness Checklist](./DEMO_READINESS_CHECKLIST.md)
+- Legacy reference: [Architecture](./docs/ARCHITECTURE.md), [Modules](./docs/MODULES.md), [Diagrams](./docs/DIAGRAMS.md), [Functional walkthrough](./docs/FUNCTIONAL_WALKTHROUGH.md)
+
+---
+
+## License
+
+Internal — All rights reserved.
