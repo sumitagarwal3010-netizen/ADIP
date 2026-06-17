@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -5,6 +6,8 @@ import {
   Dialog,
   DialogContent,
   IconButton,
+  Menu,
+  MenuItem,
   Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -15,6 +18,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import ImageIcon from '@mui/icons-material/Image';
 import { colors } from '../../theme/colors';
 import type { ApprovalStatus, Artifact, ArtifactFileType } from '../../types/artifacts';
+import { downloadArtifactAs, FORMAT_LABEL, type ExportFormat } from '../../services/artifactExportService';
 
 const fileIcons: Record<ArtifactFileType, typeof DescriptionIcon> = {
   docx: DescriptionIcon,
@@ -55,7 +59,11 @@ interface ArtifactViewerPanelProps {
   onClose: () => void;
 }
 
+const FORMATS: ExportFormat[] = ['docx', 'pdf', 'xlsx', 'pptx', 'txt'];
+
 export function ArtifactViewerPanel({ artifact, open, onClose }: ArtifactViewerPanelProps) {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
   if (!artifact) return null;
 
   const statusColor = statusColors[artifact.approvalStatus];
@@ -67,14 +75,16 @@ export function ArtifactViewerPanel({ artifact, open, onClose }: ArtifactViewerP
         ? colors.success
         : colors.warning;
 
-  const handleDownload = () => {
-    const blob = new Blob([artifact.previewContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = artifact.name.replace(/\s+/g, '_');
-    a.click();
-    URL.revokeObjectURL(url);
+  const handleSelectFormat = async (format: ExportFormat) => {
+    setAnchorEl(null);
+    try {
+      await downloadArtifactAs(artifact, format);
+    } catch (e) {
+      // The export service is fully synchronous client-side; failures here
+      // are environmental (e.g. browser blocked the download). Logging is
+      // sufficient for the demo build.
+      console.error('Artifact download failed', e);
+    }
   };
 
   return (
@@ -120,11 +130,18 @@ export function ArtifactViewerPanel({ artifact, open, onClose }: ArtifactViewerP
           <Button
             size="small"
             startIcon={<DownloadIcon sx={{ fontSize: 16 }} />}
-            onClick={handleDownload}
+            onClick={(e) => setAnchorEl(e.currentTarget)}
             sx={{ fontSize: '0.72rem', mr: 0.5 }}
           >
             Download
           </Button>
+          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
+            {FORMATS.map((f) => (
+              <MenuItem key={f} onClick={() => handleSelectFormat(f)} sx={{ fontSize: '0.78rem' }}>
+                {FORMAT_LABEL[f]}
+              </MenuItem>
+            ))}
+          </Menu>
           <IconButton size="small" onClick={onClose} sx={{ color: colors.text.secondary }}>
             <CloseIcon fontSize="small" />
           </IconButton>
