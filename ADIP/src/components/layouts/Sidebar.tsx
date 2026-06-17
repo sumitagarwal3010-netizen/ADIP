@@ -15,81 +15,196 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import { motion } from 'framer-motion';
 import {
-  NAV_HUBS,
-  findHubForPath,
-  isChildActive,
-  type NavHub,
+  NAV_GROUPS,
+  findActiveTrail,
+  isLeafActive,
+  type NavGroup,
+  type NavSection,
 } from '../../config/navConfig';
 import { usePersona } from '../../context/PersonaContext';
 import { colors } from '../../theme/colors';
 import { layout } from '../../theme/theme';
 
-function buildInitialExpanded(): Record<string, boolean> {
-  return NAV_HUBS.reduce<Record<string, boolean>>((acc, hub) => {
-    acc[hub.id] = hub.defaultExpanded ?? false;
-    return acc;
-  }, {});
-}
+const sectionKey = (groupId: string, sectionId: string) => `${groupId}:${sectionId}`;
 
 export function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
   const { persona, canAccessRoute } = usePersona();
-  const [expanded, setExpanded] = useState<Record<string, boolean>>(buildInitialExpanded);
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
   const [showAll, setShowAll] = useState(false);
 
+  // Auto-expand the group + section that own the active route, keeping the rest collapsed.
   useEffect(() => {
-    const activeHub = findHubForPath(location.pathname);
-    if (activeHub) {
-      setExpanded((prev) => ({ ...prev, [activeHub.id]: true }));
+    const trail = findActiveTrail(location.pathname);
+    if (trail) {
+      setExpandedGroups((prev) => ({ ...prev, [trail.groupId]: true }));
+      setExpandedSections((prev) => ({ ...prev, [sectionKey(trail.groupId, trail.sectionId)]: true }));
     }
   }, [location.pathname]);
 
-  // Role-based navigation: show only hubs relevant to the active persona.
-  // A "show all" toggle keeps every hub reachable (no orphaned modules).
+  // Persona visibility: show only groups relevant to the active persona by default.
+  // A "show all" toggle keeps every group reachable (no orphaned modules).
   const relevant = useMemo(() => new Set(persona.navHubs), [persona.navHubs]);
-  const visibleHubs = useMemo(() => {
-    const hubs = showAll ? NAV_HUBS : NAV_HUBS.filter((h) => relevant.has(h.id));
-    return hubs.filter((h) => h.children.some((child) => canAccessRoute(child.path)));
-  }, [relevant, showAll, canAccessRoute]);
+
+  // A section is shown if it has accessible leaves, or it has an accessible header route.
+  const sectionVisibility = useMemo(() => {
+    const map = new Map<string, { section: NavSection; leaves: NavSection['children'] }>();
+    for (const group of NAV_GROUPS) {
+      for (const section of group.children) {
+        const leaves = section.children.filter((leaf) => canAccessRoute(leaf.path));
+        const headerAccessible = section.path ? canAccessRoute(section.path) : false;
+        if (leaves.length > 0 || headerAccessible) {
+          map.set(sectionKey(group.id, section.id), { section, leaves });
+        }
+      }
+    }
+    return map;
+  }, [canAccessRoute]);
+
+  const visibleGroups = useMemo(() => {
+    const base = showAll ? NAV_GROUPS : NAV_GROUPS.filter((g) => relevant.has(g.id));
+    return base.filter((g) => g.children.some((s) => sectionVisibility.has(sectionKey(g.id, s.id))));
+  }, [relevant, showAll, sectionVisibility]);
 
   const personaLandingActive = location.pathname === '/persona';
 
-  const toggleHub = (hubId: string) => {
-    setExpanded((prev) => ({ ...prev, [hubId]: !prev[hubId] }));
+  const toggleGroup = (groupId: string) => {
+    setExpandedGroups((prev) => ({ ...prev, [groupId]: !prev[groupId] }));
   };
 
-  const renderHub = (hub: NavHub) => {
-    const authorizedChildren = hub.children.filter((child) => canAccessRoute(child.path));
-    if (authorizedChildren.length === 0) return null;
+  const toggleSection = (key: string) => {
+    setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
-    const isOpen = expanded[hub.id] ?? false;
-    const HubIcon = hub.icon;
-    const hubActive = authorizedChildren.some((child) => isChildActive(location.pathname, child.path));
+  const renderSection = (group: NavGroup, section: NavSection) => {
+    const entry = sectionVisibility.get(sectionKey(group.id, section.id));
+    if (!entry) return null;
+    const { leaves } = entry;
+    const key = sectionKey(group.id, section.id);
+    const isOpen = expandedSections[key] ?? false;
+    const hasLeaves = leaves.length > 0;
+    const SectionIcon = section.icon;
+    const headerActive = section.path ? location.pathname === section.path : false;
+    const childActive = leaves.some((leaf) => isLeafActive(location.pathname, leaf.path));
+    const sectionActive = headerActive || childActive;
+
+    const handleClick = () => {
+      if (section.path) navigate(section.path);
+      if (hasLeaves) toggleSection(key);
+    };
 
     return (
-      <Box key={hub.id}>
+      <Box key={key}>
         <ListItemButton
-          onClick={() => toggleHub(hub.id)}
+          onClick={handleClick}
+          sx={{
+            borderRadius: 1.5,
+            mb: 0.25,
+            py: 0.55,
+            pl: 2,
+            pr: 1.5,
+            bgcolor: sectionActive && !isOpen ? `${colors.primary}10` : 'transparent',
+            '&:hover': { bgcolor: `${colors.primary}12` },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: 28, color: sectionActive ? colors.primary : colors.text.muted }}>
+            <SectionIcon sx={{ fontSize: 16 }} />
+          </ListItemIcon>
+          <ListItemText
+            primary={section.label}
+            sx={{
+              '& .MuiListItemText-primary': {
+                fontSize: '0.78rem',
+                fontWeight: sectionActive ? 600 : 500,
+                color: sectionActive ? colors.text.primary : colors.text.secondary,
+              },
+            }}
+          />
+          {hasLeaves &&
+            (isOpen ? (
+              <ExpandLessIcon sx={{ fontSize: 16, color: colors.text.muted }} />
+            ) : (
+              <ExpandMoreIcon sx={{ fontSize: 16, color: colors.text.muted }} />
+            ))}
+        </ListItemButton>
+        {hasLeaves && (
+          <Collapse in={isOpen} timeout="auto" unmountOnExit>
+            <List disablePadding sx={{ pl: 1.5 }}>
+              {leaves.map((leaf) => {
+                const active = isLeafActive(location.pathname, leaf.path);
+                const LeafIcon = leaf.icon;
+                return (
+                  <ListItemButton
+                    key={leaf.path}
+                    onClick={() => navigate(leaf.path)}
+                    sx={{
+                      borderRadius: 1.5,
+                      mb: 0.2,
+                      py: 0.5,
+                      pl: 2.5,
+                      pr: 1.5,
+                      bgcolor: active ? `${colors.primary}18` : 'transparent',
+                      borderLeft: active ? `3px solid ${colors.primary}` : '3px solid transparent',
+                      '&:hover': { bgcolor: `${colors.primary}12` },
+                    }}
+                  >
+                    <ListItemIcon sx={{ minWidth: 26, color: active ? colors.primary : colors.text.muted }}>
+                      <LeafIcon sx={{ fontSize: 15 }} />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={leaf.label}
+                      sx={{
+                        '& .MuiListItemText-primary': {
+                          fontSize: '0.75rem',
+                          fontWeight: active ? 600 : 400,
+                          color: active ? colors.text.primary : colors.text.secondary,
+                        },
+                      }}
+                    />
+                  </ListItemButton>
+                );
+              })}
+            </List>
+          </Collapse>
+        )}
+      </Box>
+    );
+  };
+
+  const renderGroup = (group: NavGroup) => {
+    const visibleSections = group.children.filter((s) => sectionVisibility.has(sectionKey(group.id, s.id)));
+    if (visibleSections.length === 0) return null;
+
+    const isOpen = expandedGroups[group.id] ?? false;
+    const GroupIcon = group.icon;
+    const groupActive = !!findActiveTrail(location.pathname) && findActiveTrail(location.pathname)?.groupId === group.id;
+
+    return (
+      <Box key={group.id}>
+        <ListItemButton
+          onClick={() => toggleGroup(group.id)}
           sx={{
             borderRadius: 1.5,
             mb: 0.25,
             py: 0.75,
             px: 1.5,
-            bgcolor: hubActive && !isOpen ? `${colors.primary}10` : 'transparent',
+            bgcolor: groupActive && !isOpen ? `${colors.primary}10` : 'transparent',
             '&:hover': { bgcolor: `${colors.primary}12` },
           }}
         >
-          <ListItemIcon sx={{ minWidth: 32, color: hubActive ? colors.primary : colors.text.muted }}>
-            <HubIcon sx={{ fontSize: 18 }} />
+          <ListItemIcon sx={{ minWidth: 32, color: groupActive ? colors.primary : colors.text.muted }}>
+            <GroupIcon sx={{ fontSize: 18 }} />
           </ListItemIcon>
           <ListItemText
-            primary={hub.label}
+            primary={group.label}
             sx={{
               '& .MuiListItemText-primary': {
                 fontSize: '0.8125rem',
-                fontWeight: hubActive ? 600 : 500,
-                color: hubActive ? colors.text.primary : colors.text.secondary,
+                fontWeight: 700,
+                letterSpacing: '0.02em',
+                color: groupActive ? colors.text.primary : colors.text.secondary,
               },
             }}
           />
@@ -101,40 +216,7 @@ export function Sidebar() {
         </ListItemButton>
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <List disablePadding sx={{ pl: 1 }}>
-            {authorizedChildren.map((child) => {
-              const active = isChildActive(location.pathname, child.path);
-              const ChildIcon = child.icon;
-              return (
-                <ListItemButton
-                  key={child.path}
-                  onClick={() => navigate(child.path)}
-                  sx={{
-                    borderRadius: 1.5,
-                    mb: 0.25,
-                    py: 0.6,
-                    pl: 2,
-                    pr: 1.5,
-                    bgcolor: active ? `${colors.primary}18` : 'transparent',
-                    borderLeft: active ? `3px solid ${colors.primary}` : '3px solid transparent',
-                    '&:hover': { bgcolor: `${colors.primary}12` },
-                  }}
-                >
-                  <ListItemIcon sx={{ minWidth: 28, color: active ? colors.primary : colors.text.muted }}>
-                    <ChildIcon sx={{ fontSize: 16 }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={child.label}
-                    sx={{
-                      '& .MuiListItemText-primary': {
-                        fontSize: '0.78rem',
-                        fontWeight: active ? 600 : 400,
-                        color: active ? colors.text.primary : colors.text.secondary,
-                      },
-                    }}
-                  />
-                </ListItemButton>
-              );
-            })}
+            {visibleSections.map((section) => renderSection(group, section))}
           </List>
         </Collapse>
       </Box>
@@ -163,7 +245,13 @@ export function Sidebar() {
       }}
     >
       <Box sx={{ p: 2, pb: 1.5 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/')}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate('/'); } }}
+          sx={{ display: 'flex', alignItems: 'center', gap: 1, cursor: 'pointer' }}
+        >
           <Box
             sx={{
               width: 32,
@@ -219,10 +307,10 @@ export function Sidebar() {
           variant="caption"
           sx={{ display: 'block', px: 1.5, py: 0.5, fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.06em', color: colors.text.muted, textTransform: 'uppercase' }}
         >
-          {showAll ? 'All Modules' : `${persona.label} Modules`}
+          {showAll ? 'All Modules' : `${persona.label} Workspace`}
         </Typography>
 
-        {visibleHubs.map(renderHub)}
+        {visibleGroups.map(renderGroup)}
 
         <ListItemButton
           onClick={() => setShowAll((v) => !v)}

@@ -19,8 +19,6 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PolicyIcon from '@mui/icons-material/Policy';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
-import FolderSharedIcon from '@mui/icons-material/FolderShared';
-import InventoryIcon from '@mui/icons-material/Inventory';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import ShieldIcon from '@mui/icons-material/Shield';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -34,170 +32,375 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import HubIcon from '@mui/icons-material/Hub';
 import InsightsIcon from '@mui/icons-material/Insights';
 import TimelineIcon from '@mui/icons-material/Timeline';
-import VpnLockIcon from '@mui/icons-material/VpnLock';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import InboxIcon from '@mui/icons-material/Inbox';
-import StreamIcon from '@mui/icons-material/Stream';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import AppsIcon from '@mui/icons-material/Apps';
+import FlagIcon from '@mui/icons-material/Flag';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import MapIcon from '@mui/icons-material/Map';
+import LayersIcon from '@mui/icons-material/Layers';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import RuleIcon from '@mui/icons-material/Rule';
+import SavingsIcon from '@mui/icons-material/Savings';
+import GroupsIcon from '@mui/icons-material/Groups';
+import TuneIcon from '@mui/icons-material/Tune';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import FactoryIcon from '@mui/icons-material/Factory';
 
-export interface NavChild {
+/** A leaf navigation entry. `path` is an existing application route (routing is untouched). */
+export interface NavLeaf {
   path: string;
   label: string;
   icon: SvgIconComponent;
 }
 
-export interface NavHub {
+/** A mid-level category that groups related leaves. May itself be navigable via `path`. */
+export interface NavSection {
   id: string;
   label: string;
   icon: SvgIconComponent;
-  defaultExpanded?: boolean;
-  children: NavChild[];
+  /** Optional route for the section header itself (e.g. the center landing page). */
+  path?: string;
+  children: NavLeaf[];
 }
 
-export const NAV_HUBS: NavHub[] = [
+/** A top-level navigation group (the only items visible when everything is collapsed). */
+export interface NavGroup {
+  id: string;
+  label: string;
+  icon: SvgIconComponent;
+  children: NavSection[];
+}
+
+/**
+ * Hierarchical, executive-grade navigation tree.
+ *
+ * Seven top-level groups, each containing categories, each containing leaves.
+ * Every leaf `path` resolves to an existing route — this file only reorganizes
+ * how routes are surfaced in the left navigation; it does not add or change any
+ * routing target, engine, or mock data.
+ */
+export const NAV_GROUPS: NavGroup[] = [
   {
     id: 'executive',
-    label: 'Executive Control Tower',
+    label: 'Executive',
     icon: DashboardIcon,
-    defaultExpanded: true,
     children: [
-      { path: '/executive/portfolio-health', label: 'Portfolio Health', icon: StorageIcon },
-      { path: '/executive/program-status', label: 'AI Program Status', icon: PsychologyIcon },
-      { path: '/executive/strategic-risks', label: 'Strategic Risks', icon: WarningAmberIcon },
-      { path: '/executive/executive-summary', label: 'Executive Summary', icon: SummarizeIcon },
-      { path: '/executive/board-reporting', label: 'Board Reporting', icon: AssessmentIcon },
-      { path: '/executive/authentication', label: 'Authentication Health', icon: VpnLockIcon },
-      { path: '/executive/workflow-orchestration', label: 'Workflow Orchestration', icon: TimelineIcon },
-      { path: '/executive/ai-copilot', label: 'AI Delivery Copilot', icon: SmartToyIcon },
-      { path: '/executive/value-realization', label: 'Value Realization', icon: TrendingUpIcon },
-      { path: '/executive/portfolio-governance', label: 'Portfolio Governance', icon: GavelIcon },
-      { path: '/executive/application-portfolio', label: 'Application Portfolio', icon: AppsIcon },
-      { path: '/executive/architecture-repository', label: 'Architecture Repository', icon: AccountTreeIcon },
-      { path: '/executive/technology-strategy', label: 'Technology Strategy', icon: RocketLaunchIcon },
-      { path: '/executive/transformation-pmo', label: 'Transformation PMO', icon: HubIcon },
-      { path: '/executive/enterprise-risk', label: 'Enterprise Risk', icon: ShieldIcon },
-    ],
-  },
-  {
-    id: 'sdlc',
-    label: 'SDLC Lifecycle Hub',
-    icon: AccountTreeIcon,
-    defaultExpanded: true,
-    children: [
-      { path: '/requirements', label: 'Requirements', icon: AssignmentIcon },
-      { path: '/architecture', label: 'Architecture', icon: AccountTreeIcon },
-      { path: '/development', label: 'Development', icon: CodeIcon },
-      { path: '/testing', label: 'Testing', icon: ScienceIcon },
-      { path: '/release', label: 'Release', icon: RocketLaunchIcon },
-    ],
-  },
-  {
-    id: 'traceability',
-    label: 'Traceability Center',
-    icon: HubIcon,
-    children: [
-      { path: '/traceability', label: 'Lineage Dashboard', icon: AccountTreeIcon },
-      { path: '/traceability/matrix', label: 'Requirement Matrix', icon: FactCheckIcon },
-      { path: '/traceability/ai', label: 'AI Traceability', icon: PsychologyIcon },
-      { path: '/traceability/impact', label: 'Impact Analysis', icon: InsightsIcon },
-      { path: '/traceability/executive', label: 'Executive View', icon: AssessmentIcon },
-      { path: '/traceability/lifecycle', label: 'Workflow Lifecycle', icon: TimelineIcon },
-      { path: '/traceability/evidence', label: 'Evidence Lineage', icon: FolderSharedIcon },
-      { path: '/traceability/reports', label: 'AI Reports', icon: SummarizeIcon },
-    ],
-  },
-  {
-    id: 'operations',
-    label: 'Operations Hub',
-    icon: SettingsIcon,
-    children: [
-      { path: '/production', label: 'Production Intelligence', icon: CloudIcon },
-      { path: '/production/incidents', label: 'Incident Analytics', icon: ReportProblemIcon },
-      { path: '/production/leakage', label: 'Defect Leakage', icon: BugReportIcon },
-      { path: '/production/customer', label: 'Customer Experience', icon: SpeedIcon },
-      { path: '/production/applications', label: 'Application Health', icon: CloudIcon },
-      { path: '/production/releases', label: 'Release Performance', icon: RocketLaunchIcon },
-      { path: '/production/rca', label: 'Root Cause Intelligence', icon: PsychologyIcon },
-      { path: '/production/feedback', label: 'Feedback Recommendations', icon: InsightsIcon },
-      { path: '/operations/incidents', label: 'Incidents', icon: ReportProblemIcon },
-      { path: '/operations/availability', label: 'Availability', icon: SpeedIcon },
-      { path: '/operations/capacity', label: 'Capacity', icon: StorageIcon },
-      { path: '/operations/notifications', label: 'Notification Center', icon: NotificationsActiveIcon },
-      { path: '/operations/notifications/inbox', label: 'Notification Inbox', icon: InboxIcon },
-      { path: '/operations/notifications/escalations', label: 'Escalation Queue', icon: TrendingUpIcon },
+      { id: 'delivery-health', label: 'Delivery Health', icon: SmartToyIcon, path: '/executive/ai-copilot/health', children: [] },
+      { id: 'technology-health', label: 'Technology Health', icon: RocketLaunchIcon, path: '/executive/technology-health', children: [] },
+      { id: 'risk-posture', label: 'Risk Posture', icon: ShieldIcon, path: '/executive/risk-posture', children: [] },
+      { id: 'value-realized', label: 'Value Realized', icon: TrendingUpIcon, path: '/executive/value-realized', children: [] },
     ],
   },
   {
     id: 'governance',
-    label: 'Governance Hub',
+    label: 'Governance',
     icon: GavelIcon,
     children: [
-      { path: '/governance', label: 'Audit', icon: FactCheckIcon },
-      { path: '/governance/audit-center', label: 'Audit Center', icon: FactCheckIcon },
-      { path: '/governance/audit-center/findings', label: 'Audit Findings', icon: BugReportIcon },
-      { path: '/governance/audit-center/evidence', label: 'Evidence Repository', icon: FolderSharedIcon },
-      { path: '/governance/audit-center/timeline', label: 'Audit Timeline', icon: TimelineIcon },
-      { path: '/governance/audit-center/readiness', label: 'Audit Readiness', icon: FactCheckIcon },
-      { path: '/governance/compliance', label: 'Compliance', icon: PolicyIcon },
-      { path: '/governance/risk', label: 'Risk', icon: WarningAmberIcon },
-      { path: '/governance/evidence', label: 'Evidence', icon: FolderSharedIcon },
-      { path: '/governance/approval-workflow', label: 'Approval Workflow', icon: AssignmentTurnedInIcon },
-      { path: '/governance/activity-center', label: 'Activity Center', icon: StreamIcon },
-      { path: '/administration/rbac', label: 'RBAC Administration', icon: AdminPanelSettingsIcon },
-      { path: '/administration/persistence', label: 'Persistence Admin', icon: StorageIcon },
-      { path: '/administration/abac', label: 'ABAC Administration', icon: SecurityIcon },
+      {
+        id: 'portfolio-governance',
+        label: 'Portfolio Governance',
+        icon: GavelIcon,
+        path: '/executive/portfolio-governance',
+        children: [
+          { path: '/executive/portfolio-governance/demand', label: 'Demand Intake', icon: AssignmentIcon },
+          { path: '/executive/portfolio-governance/business-case', label: 'Business Case Review', icon: FactCheckIcon },
+          { path: '/executive/portfolio-governance/investment', label: 'Investment Governance', icon: SavingsIcon },
+          { path: '/executive/portfolio-governance/capacity', label: 'Capacity Planning', icon: StorageIcon },
+        ],
+      },
+      {
+        id: 'enterprise-architecture',
+        label: 'Enterprise Architecture',
+        icon: AccountTreeIcon,
+        path: '/executive/architecture-repository',
+        children: [
+          { path: '/executive/architecture-repository', label: 'Architecture Repository', icon: AccountTreeIcon },
+          { path: '/executive/architecture-repository/standards', label: 'Standards', icon: PolicyIcon },
+          { path: '/executive/architecture-repository/reference', label: 'Reference Architectures', icon: LayersIcon },
+          { path: '/executive/architecture-repository/review-board', label: 'Architecture Reviews', icon: RuleIcon },
+        ],
+      },
+      {
+        id: 'technology-strategy',
+        label: 'Technology Strategy',
+        icon: RocketLaunchIcon,
+        path: '/executive/technology-strategy',
+        children: [
+          { path: '/executive/technology-strategy/lifecycle', label: 'Technology Lifecycle', icon: TimelineIcon },
+          { path: '/executive/technology-strategy/strategic-platforms', label: 'Strategic Platforms', icon: LayersIcon },
+          { path: '/executive/technology-strategy/vendors', label: 'Vendor Management', icon: HandshakeIcon },
+          { path: '/executive/technology-strategy/roadmaps', label: 'Roadmaps', icon: MapIcon },
+        ],
+      },
+      {
+        id: 'risk-compliance',
+        label: 'Risk & Compliance',
+        icon: ShieldIcon,
+        path: '/executive/enterprise-risk',
+        children: [
+          { path: '/executive/enterprise-risk', label: 'Enterprise Risk', icon: WarningAmberIcon },
+          { path: '/governance/audit-center', label: 'Audit Center', icon: FactCheckIcon },
+          { path: '/governance/audit-center/compliance', label: 'Compliance Controls', icon: ShieldIcon },
+          { path: '/governance/compliance', label: 'Policy Management', icon: PolicyIcon },
+        ],
+      },
+      {
+        id: 'ai-governance',
+        label: 'AI Governance',
+        icon: SmartToyIcon,
+        path: '/ai-governance-center',
+        children: [
+          { path: '/ai-governance-center', label: 'AI Use Cases', icon: PsychologyIcon },
+          { path: '/ai-governance-center/models', label: 'AI Models', icon: HubIcon },
+          { path: '/ai-governance-center/risks', label: 'AI Risks', icon: WarningAmberIcon },
+          { path: '/ai-governance-center/controls', label: 'AI Controls', icon: ShieldIcon },
+          { path: '/ai-evaluation', label: 'AI Evaluation Score', icon: InsightsIcon },
+        ],
+      },
     ],
   },
   {
-    id: 'ai-governance',
-    label: 'AI Governance Hub',
-    icon: PsychologyIcon,
+    id: 'ai-sdlc',
+    label: 'AI SDLC',
+    icon: AccountTreeIcon,
     children: [
-      { path: '/ai-governance', label: 'Use Case Registry', icon: PsychologyIcon },
-      { path: '/ai-governance/model-inventory', label: 'Model Inventory', icon: InventoryIcon },
-      { path: '/ai-governance/prompt-governance', label: 'Prompt Governance', icon: EditNoteIcon },
-      { path: '/ai-governance/ai-risk', label: 'AI Risk', icon: WarningAmberIcon },
-      { path: '/ai-governance/ai-controls', label: 'AI Controls', icon: ShieldIcon },
-      { path: '/ai-governance/ai-incidents', label: 'AI Incidents', icon: BugReportIcon },
+      {
+        id: 'requirements',
+        label: 'Requirements',
+        icon: AssignmentIcon,
+        path: '/requirements',
+        children: [
+          { path: '/requirements', label: 'Requirements Hub', icon: AssignmentIcon },
+          { path: '/traceability/matrix', label: 'Traceability Matrix', icon: FactCheckIcon },
+        ],
+      },
+      {
+        id: 'design-architecture',
+        label: 'Design & Architecture',
+        icon: DesignServicesIcon,
+        path: '/architecture',
+        children: [
+          { path: '/architecture', label: 'Solution Design', icon: DesignServicesIcon },
+          { path: '/executive/architecture-repository/review-board', label: 'Architecture Reviews', icon: RuleIcon },
+          { path: '/executive/architecture-repository/exceptions', label: 'Architecture Decisions', icon: EditNoteIcon },
+        ],
+      },
+      {
+        id: 'development',
+        label: 'Development',
+        icon: CodeIcon,
+        path: '/development',
+        children: [
+          { path: '/executive/ai-copilot', label: 'AI Delivery Copilot', icon: SmartToyIcon },
+          { path: '/development', label: 'Development Intelligence', icon: CodeIcon },
+          { path: '/ai-evaluation', label: 'AI Evaluation Center', icon: RuleIcon },
+        ],
+      },
+      {
+        id: 'testing',
+        label: 'Testing',
+        icon: ScienceIcon,
+        path: '/testing',
+        children: [
+          { path: '/testing', label: 'Test Intelligence', icon: ScienceIcon },
+          { path: '/executive/ai-copilot/testing', label: 'Quality Analytics', icon: InsightsIcon },
+        ],
+      },
+      {
+        id: 'release',
+        label: 'Release',
+        icon: RocketLaunchIcon,
+        path: '/release',
+        children: [
+          { path: '/release', label: 'Release Readiness', icon: RocketLaunchIcon },
+          { path: '/production/releases', label: 'Deployment Intelligence', icon: CloudIcon },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'operations',
+    label: 'Operations',
+    icon: SpeedIcon,
+    children: [
+      {
+        id: 'production-intelligence',
+        label: 'Production Intelligence',
+        icon: CloudIcon,
+        path: '/production',
+        children: [
+          { path: '/production/incidents', label: 'Incident Analytics', icon: ReportProblemIcon },
+          { path: '/production/leakage', label: 'Defect Leakage', icon: BugReportIcon },
+          { path: '/production/rca', label: 'Root Cause Analysis', icon: PsychologyIcon },
+        ],
+      },
+      {
+        id: 'service-operations',
+        label: 'Service Operations',
+        icon: SupportAgentIcon,
+        path: '/operations',
+        children: [
+          { path: '/operations/availability', label: 'Availability', icon: SpeedIcon },
+          { path: '/production/applications', label: 'Performance', icon: FactoryIcon },
+          { path: '/production/feedback', label: 'Reliability', icon: InsightsIcon },
+          { path: '/ai-observability', label: 'AI Observability Center', icon: VisibilityIcon },
+        ],
+      },
+      {
+        id: 'operational-risk',
+        label: 'Operational Risk',
+        icon: WarningAmberIcon,
+        path: '/operations/incidents',
+        children: [
+          { path: '/operations/incidents', label: 'Major Incidents', icon: ReportProblemIcon },
+          { path: '/production/customer', label: 'Customer Impact', icon: VisibilityIcon },
+          { path: '/executive/enterprise-risk/operational', label: 'MTTR', icon: TimelineIcon },
+        ],
+      },
     ],
   },
   {
     id: 'knowledge',
-    label: 'Knowledge Hub',
+    label: 'Knowledge',
     icon: MenuBookIcon,
     children: [
-      { path: '/knowledge-center', label: 'Knowledge & Learning', icon: SchoolIcon },
-      { path: '/knowledge-center/lessons', label: 'Lessons Learned', icon: HistoryEduIcon },
-      { path: '/knowledge-center/best-practices', label: 'Best Practices', icon: LightbulbIcon },
-      { path: '/knowledge-center/patterns', label: 'Architecture Patterns', icon: AccountTreeIcon },
-      { path: '/knowledge-center/controls', label: 'Reusable Controls', icon: ShieldIcon },
-      { path: '/knowledge-center/playbooks', label: 'SDLC Playbooks', icon: LibraryBooksIcon },
-      { path: '/knowledge-center/search', label: 'Search & Discovery', icon: InsightsIcon },
-      { path: '/knowledge-center/recommendations', label: 'Learning Recommendations', icon: TrendingUpIcon },
+      {
+        id: 'knowledge-repository',
+        label: 'Knowledge Repository',
+        icon: MenuBookIcon,
+        path: '/knowledge-center',
+        children: [
+          { path: '/knowledge-center/lessons', label: 'Lessons Learned', icon: HistoryEduIcon },
+          { path: '/knowledge-center/best-practices', label: 'Best Practices', icon: LightbulbIcon },
+          { path: '/knowledge/reusable-assets', label: 'Reusable Assets', icon: LibraryBooksIcon },
+        ],
+      },
+      {
+        id: 'learning-center',
+        label: 'Learning Center',
+        icon: SchoolIcon,
+        path: '/knowledge-center/recommendations',
+        children: [
+          { path: '/knowledge-center/patterns', label: 'Patterns', icon: AccountTreeIcon },
+          { path: '/knowledge-center/playbooks', label: 'Playbooks', icon: LibraryBooksIcon },
+          { path: '/knowledge-center/recommendations', label: 'Training', icon: SchoolIcon },
+        ],
+      },
     ],
   },
   {
-    id: 'reports',
-    label: 'Reports & Analytics',
-    icon: AssessmentIcon,
+    id: 'transformation',
+    label: 'Transformation',
+    icon: RocketLaunchIcon,
     children: [
-      { path: '/reports', label: 'Executive Reports', icon: SummarizeIcon },
-      { path: '/reports/compliance', label: 'Compliance Reports', icon: PolicyIcon },
-      { path: '/reports/audit', label: 'Audit Reports', icon: SecurityIcon },
-      { path: '/reports/trends', label: 'Trend Analytics', icon: TrendingUpIcon },
+      {
+        id: 'transformation-pmo',
+        label: 'Transformation PMO',
+        icon: HubIcon,
+        path: '/executive/transformation-pmo',
+        children: [
+          { path: '/executive/transformation-pmo/objectives', label: 'Objectives', icon: FlagIcon },
+          { path: '/executive/transformation-pmo/programs', label: 'Programs', icon: HubIcon },
+          { path: '/executive/transformation-pmo/initiatives', label: 'Initiatives', icon: RocketLaunchIcon },
+        ],
+      },
+      {
+        id: 'benefits-realization',
+        label: 'Benefits Realization',
+        icon: TrendingUpIcon,
+        path: '/executive/value-realization',
+        children: [
+          { path: '/executive/value-realization/roi', label: 'ROI', icon: PaymentsIcon },
+          { path: '/executive/value-realization/productivity', label: 'Productivity', icon: TrendingUpIcon },
+          { path: '/executive/transformation-pmo/benefits', label: 'Cost Avoidance', icon: SavingsIcon },
+        ],
+      },
+      {
+        id: 'strategic-execution',
+        label: 'Strategic Execution',
+        icon: FlagIcon,
+        path: '/executive/transformation-pmo/commitments',
+        children: [
+          { path: '/executive/transformation-pmo/commitments', label: 'Commitments', icon: AssignmentTurnedInIcon },
+          { path: '/executive/transformation-pmo/milestones', label: 'Progress Tracking', icon: TimelineIcon },
+          { path: '/executive/transformation-pmo/insights', label: 'Executive Reviews', icon: SummarizeIcon },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'platform',
+    label: 'Platform',
+    icon: SettingsIcon,
+    children: [
+      {
+        id: 'workflow',
+        label: 'Workflow',
+        icon: TimelineIcon,
+        path: '/governance/approval-workflow',
+        children: [
+          { path: '/executive/workflow-orchestration', label: 'Workflow Center', icon: TimelineIcon },
+          { path: '/governance/approval-workflow', label: 'Approvals', icon: AssignmentTurnedInIcon },
+          { path: '/operations/notifications', label: 'Notifications', icon: NotificationsActiveIcon },
+        ],
+      },
+      {
+        id: 'security',
+        label: 'Security',
+        icon: SecurityIcon,
+        path: '/administration/rbac',
+        children: [
+          { path: '/administration/rbac', label: 'RBAC', icon: AdminPanelSettingsIcon },
+          { path: '/administration/abac', label: 'ABAC', icon: SecurityIcon },
+        ],
+      },
+      {
+        id: 'reporting',
+        label: 'Reporting',
+        icon: AssessmentIcon,
+        path: '/reports',
+        children: [
+          { path: '/reports', label: 'Reports', icon: SummarizeIcon },
+          { path: '/reports/compliance', label: 'Dashboards', icon: AssessmentIcon },
+          { path: '/reports/trends', label: 'Analytics', icon: TrendingUpIcon },
+        ],
+      },
+      {
+        id: 'administration',
+        label: 'Administration',
+        icon: TuneIcon,
+        path: '/administration',
+        children: [
+          { path: '/administration', label: 'Settings', icon: SettingsIcon },
+          { path: '/administration/persistence', label: 'Configuration', icon: StorageIcon },
+          { path: '/persona', label: 'Personas', icon: GroupsIcon },
+        ],
+      },
     ],
   },
 ];
 
-export function findHubForPath(pathname: string): NavHub | undefined {
-  return NAV_HUBS.find((hub) =>
-    hub.children.some((child) =>
-      child.path === pathname || (child.path !== '/' && pathname.startsWith(`${child.path}/`)),
-    ),
-  );
+function leafMatches(pathname: string, leafPath: string): boolean {
+  if (leafPath === '/') return pathname === '/';
+  return pathname === leafPath || pathname.startsWith(`${leafPath}/`);
 }
 
-export function isChildActive(pathname: string, childPath: string): boolean {
-  return pathname === childPath;
+/** Finds the group + section that own the given pathname (leaf or section header). */
+export function findActiveTrail(pathname: string): { groupId: string; sectionId: string } | undefined {
+  for (const group of NAV_GROUPS) {
+    for (const section of group.children) {
+      const ownsLeaf = section.children.some((leaf) => leafMatches(pathname, leaf.path));
+      const ownsSection = section.path ? pathname === section.path : false;
+      if (ownsLeaf || ownsSection) {
+        return { groupId: group.id, sectionId: section.id };
+      }
+    }
+  }
+  return undefined;
+}
+
+export function isLeafActive(pathname: string, leafPath: string): boolean {
+  return pathname === leafPath;
 }

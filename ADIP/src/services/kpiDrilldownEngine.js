@@ -4,7 +4,12 @@ import {
   AI_INCIDENTS,
   AI_CONTROLS_TREND,
   AI_INCIDENTS_TREND,
+  MODEL_INVENTORY,
+  PROMPT_REGISTRY,
+  AI_RISKS,
 } from '../data/aiGovernanceModulesMock.ts';
+import { AI_EVALUATIONS } from '../data/aiEvaluationMock.ts';
+import { AI_OBSERVABILITY } from '../data/aiObservabilityMock.ts';
 import {
   APPROVAL_REQUESTS,
   APPROVAL_HISTORY,
@@ -2044,6 +2049,76 @@ const chartResolvers = {
       });
     }
     return buildUseCaseDrilldown(state, uc, ctx);
+  },
+
+  'ai-governance.model-registry': (state, ctx) => {
+    const model = MODEL_INVENTORY.find((m) => m.id === ctx.segment);
+    const rows = model ? [model] : MODEL_INVENTORY;
+    return buildPayload(ctx, {
+      sourceRecords: rows.map((m) => ({ id: m.id, title: m.name, detail: m.vendor, meta: `${m.version} · ${m.riskRating} · ${m.status}` })),
+      supportingEvidence: rows.map((m) => `${m.name}: owned by ${m.owner} (${m.status})`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.category === 'model').slice(0, 4).map((i) => ({ id: i.id, title: i.incidentType, severity: i.severity, domain: i.application })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+    });
+  },
+
+  'ai-governance.prompt-registry': (state, ctx) => {
+    const prompt = PROMPT_REGISTRY.find((p) => p.id === ctx.segment);
+    const rows = prompt ? [prompt] : PROMPT_REGISTRY;
+    return buildPayload(ctx, {
+      sourceRecords: rows.map((p) => ({ id: p.id, title: p.name, detail: p.application, meta: `${p.status} · reviewed ${p.lastReviewed}` })),
+      supportingEvidence: rows.map((p) => `${p.name}: ${p.status} (owner ${p.owner})`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: AI_INCIDENTS.filter((i) => i.category === 'prompt').slice(0, 4).map((i) => ({ id: i.id, title: i.incidentType, severity: i.severity, domain: i.application })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+    });
+  },
+
+  'ai-governance.risk-registry': (state, ctx) => {
+    const risk = AI_RISKS.find((r) => r.id === ctx.segment);
+    const rows = risk ? [risk] : AI_RISKS;
+    return buildPayload(ctx, {
+      sourceRecords: rows.map((r) => ({ id: r.id, title: r.useCase, detail: r.riskType, meta: `${r.severity} · ${r.status} · score ${r.riskScore}` })),
+      supportingEvidence: rows.map((r) => `${r.riskType} on ${r.useCase}: ${r.status} (owner ${r.owner})`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedIncidents: AI_INCIDENTS.slice(0, 3).map((i) => ({ id: i.id, title: i.incidentType, severity: i.severity, domain: i.application })),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+    });
+  },
+
+  'ai-governance.control-library': (state, ctx) => {
+    const control = AI_CONTROLS.find((c) => c.id === ctx.segment);
+    if (control) return buildControlDrilldown(state, control, ctx);
+    return buildPayload(ctx, {
+      sourceRecords: AI_CONTROLS.map(controlToRecord),
+      supportingEvidence: AI_CONTROLS.map((c) => `${c.controlDomain}: ${c.testResult}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+      historicalTrend: AI_CONTROLS_TREND.map((p) => ({ month: p.month, value: p.coverage })),
+    });
+  },
+
+  'ai-evaluation.use-case': (state, ctx) => {
+    const ev = AI_EVALUATIONS.find((e) => e.id === ctx.segment);
+    const rows = ev ? [ev] : AI_EVALUATIONS;
+    return buildPayload(ctx, {
+      sourceRecords: rows.map((e) => ({ id: e.id, title: e.useCase, detail: e.model, meta: `Q ${e.qualityScore} · Halluc ${e.hallucinationScore} · Safety ${e.safetyScore} · Ground ${e.groundingScore} · ${e.regressionStatus}` })),
+      supportingEvidence: rows.map((e) => `${e.useCase}: regression ${e.regressionStatus}, last evaluated ${e.lastEvaluated} (owner ${e.owner})`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+    });
+  },
+
+  'ai-observability.model': (state, ctx) => {
+    const obs = AI_OBSERVABILITY.find((o) => o.id === ctx.segment);
+    const rows = obs ? [obs] : AI_OBSERVABILITY;
+    return buildPayload(ctx, {
+      sourceRecords: rows.map((o) => ({ id: o.id, title: o.model, detail: o.application, meta: `${(o.callsPerDay / 1000).toFixed(0)}K calls/day · $${(o.monthlyCostUsd / 1000).toFixed(1)}K/mo · p95 ${o.p95LatencyMs}ms · ${o.errorRatePct}% err` })),
+      supportingEvidence: rows.map((o) => `${o.model}: ${o.tokensPerDayM}M tokens/day, owned by ${o.owner}`),
+      relatedApplications: appsFromArchitecture(state).slice(0, 4),
+      relatedReleases: releasesFromState(state).slice(0, 2),
+    });
   },
 
   'ai-governance.ai-controls': (state, ctx) => {

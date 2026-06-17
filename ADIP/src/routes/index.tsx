@@ -4,6 +4,9 @@ import { AuthGuard } from '../components/auth/AuthGuard';
 import { LoginPage } from '../pages/LoginPage';
 import { AuthenticationHealthDashboard } from '../pages/AuthenticationHealthDashboard';
 import { ExecutiveControlTower } from '../pages/ExecutiveControlTower';
+import { TechnologyHealthOutcome } from '../pages/TechnologyHealthOutcome';
+import { RiskPostureOutcome } from '../pages/RiskPostureOutcome';
+import { ValueRealizedOutcome } from '../pages/ValueRealizedOutcome';
 import { DeliveryHub } from '../pages/DeliveryHub';
 import { RequirementsHub } from '../pages/RequirementsHub';
 import { ArchitectureHub } from '../pages/ArchitectureHub';
@@ -53,6 +56,9 @@ import { AbacAdminDashboard } from '../pages/AbacAdminDashboard';
 import { PersistenceAdminDashboard } from '../pages/PersistenceAdminDashboard';
 import { ActivityCenter } from '../pages/ActivityCenter';
 import { AiDeliveryCopilotCenter } from '../pages/AiDeliveryCopilotCenter';
+import { AIGovernanceCenter } from '../pages/AIGovernanceCenter';
+import { AIEvaluationCenter } from '../pages/AIEvaluationCenter';
+import { AIObservabilityCenter } from '../pages/AIObservabilityCenter';
 
 export function AppRoutes() {
   return (
@@ -61,6 +67,9 @@ export function AppRoutes() {
       <Route element={<AuthGuard />}>
       <Route element={<AppLayout />}>
         <Route index element={<ExecutiveControlTower />} />
+        <Route path="executive/technology-health" element={<TechnologyHealthOutcome />} />
+        <Route path="executive/risk-posture" element={<RiskPostureOutcome />} />
+        <Route path="executive/value-realized" element={<ValueRealizedOutcome />} />
         <Route path="persona" element={<PersonaLanding />} />
         <Route path="executive/portfolio-health" element={<PortfolioHealthPage />} />
         <Route path="executive/program-status" element={<AIProgramStatusPage />} />
@@ -225,6 +234,13 @@ export function AppRoutes() {
         <Route path="ai-governance/ai-risk" element={<AIRiskDashboard />} />
         <Route path="ai-governance/ai-controls" element={<AIControlsDashboard />} />
         <Route path="ai-governance/ai-incidents" element={<AIIncidentsDashboard />} />
+        <Route path="ai-governance-center" element={<AIGovernanceCenter initialSection="use-cases" />} />
+        <Route path="ai-governance-center/models" element={<AIGovernanceCenter initialSection="models" />} />
+        <Route path="ai-governance-center/prompts" element={<AIGovernanceCenter initialSection="prompts" />} />
+        <Route path="ai-governance-center/risks" element={<AIGovernanceCenter initialSection="risks" />} />
+        <Route path="ai-governance-center/controls" element={<AIGovernanceCenter initialSection="controls" />} />
+        <Route path="ai-evaluation" element={<AIEvaluationCenter />} />
+        <Route path="ai-observability" element={<AIObservabilityCenter />} />
         <Route path="traceability" element={<TraceabilityCenter initialTab="dashboard" />} />
         <Route path="traceability/matrix" element={<TraceabilityCenter initialTab="rtm" />} />
         <Route path="traceability/ai" element={<TraceabilityCenter initialTab="ai" />} />
