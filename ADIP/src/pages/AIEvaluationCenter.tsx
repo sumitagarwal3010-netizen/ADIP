@@ -4,6 +4,7 @@ import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { DrilldownTableRow } from '../components/common/DrilldownTableRow';
 import { AIInsightBox } from '../components/common/AIInsightBox';
+import { CopilotSection } from '../components/copilot/CopilotSection';
 import { colors } from '../theme/colors';
 import {
   AI_EVALUATIONS,
@@ -113,6 +114,36 @@ export function AIEvaluationCenter() {
       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1.5, fontSize: '0.72rem', lineHeight: 1.6 }}>
         {AI_EVALUATION_EXEC_SUMMARY}
       </Typography>
+
+      <Box sx={{ mt: 1.5 }}>
+        <CopilotSection
+          title="AI Evaluation Reports"
+          analyzedSubtitle={`Last evaluation cycle reviewed ${AI_EVALUATIONS.length} use cases across ${new Set(AI_EVALUATIONS.map((e) => e.model)).size} models.`}
+          analyzedScope={[
+            `${AI_EVALUATIONS.length} use cases`,
+            `${new Set(AI_EVALUATIONS.map((e) => e.model)).size} models`,
+            `${AI_EVALUATIONS.filter((e) => e.regressionStatus === 'Watch').length} on watch`,
+          ]}
+          findings={[
+            { id: 'AE-F-01', severity: 'high', title: 'Hallucination scores below 90%', detail: `${AI_EVALUATIONS.filter((e) => e.hallucinationScore < 90).length} use cases require grounding remediation before next deployment.` },
+            { id: 'AE-F-02', severity: 'medium', title: 'Regression watchlist', detail: `${AI_EVALUATIONS.filter((e) => e.regressionStatus === 'Watch').length} use cases regressed against last evaluation baseline.` },
+            { id: 'AE-F-03', severity: 'low', title: 'Average grounding score', detail: `Portfolio mean grounding score is ${Math.round(AI_EVALUATIONS.reduce((s, e) => s + e.groundingScore, 0) / Math.max(1, AI_EVALUATIONS.length))}% — within tolerance.` },
+          ]}
+          recommendations={[
+            { id: 'AE-R-01', title: 'Re-evaluate "Watch" models before next release', impact: 'Reduces regression risk · protects production rollout' },
+            { id: 'AE-R-02', title: 'Generate explainability reports for decisioning use cases', impact: 'Required for loan and fraud regulator pack' },
+            { id: 'AE-R-03', title: 'Run bias assessment on customer-facing models', impact: 'Closes RBI fair-treatment audit gap' },
+          ]}
+          generationActions={[
+            { id: 'eval-report', label: 'Generate Model Evaluation Report', artifactName: 'Model_Evaluation_Report.docx', preview: 'Aggregated quality, hallucination, safety, grounding scores by use case with executive summary.' },
+            { id: 'bias', label: 'Generate Bias Assessment', artifactName: 'AI_Bias_Assessment.docx', preview: 'Demographic-slice parity tests with mitigation recommendations.' },
+            { id: 'hallucination', label: 'Generate Hallucination Assessment', artifactName: 'Hallucination_Assessment.docx', preview: 'Grounding test results, drift analysis and per-use-case risk scoring.' },
+            { id: 'explain', label: 'Generate Explainability Report', artifactName: 'AI_Explainability_Report.docx', preview: 'SHAP/LIME profiles and decision tracing for high-risk decisioning use cases.' },
+          ]}
+          sourceHub="ai-evaluation"
+          sourceLabel="AI Evaluation Center"
+        />
+      </Box>
     </Box>
   );
 }

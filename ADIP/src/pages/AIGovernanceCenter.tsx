@@ -12,6 +12,7 @@ import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { SeverityChip } from '../components/common/SeverityChip';
 import { DrilldownTableRow } from '../components/common/DrilldownTableRow';
+import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { computeAiGovernanceKpis } from '../data/aiUseCaseRegistryMock';
@@ -169,6 +170,7 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
               </DrilldownTableRow>
             ))}
           </GlassCard>
+          <HubArtifactGenerator hubKey="ai-use-case" />
         </Box>
       )}
 
@@ -201,6 +203,7 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
               </DrilldownTableRow>
             ))}
           </GlassCard>
+          <HubArtifactGenerator hubKey="ai-model-inventory" />
         </Box>
       )}
 
@@ -233,6 +236,7 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
               </DrilldownTableRow>
             ))}
           </GlassCard>
+          <HubArtifactGenerator hubKey="ai-prompt" />
         </Box>
       )}
 
@@ -265,6 +269,7 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
               </DrilldownTableRow>
             ))}
           </GlassCard>
+          <HubArtifactGenerator hubKey="ai-risk" />
         </Box>
       )}
 
@@ -297,6 +302,7 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
               </DrilldownTableRow>
             ))}
           </GlassCard>
+          <HubArtifactGenerator hubKey="ai-controls" />
         </Box>
       )}
 
