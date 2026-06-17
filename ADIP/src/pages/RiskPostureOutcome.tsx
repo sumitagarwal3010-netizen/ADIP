@@ -38,7 +38,7 @@ export function RiskPostureOutcome() {
     { key: 'critical-risks', label: 'Critical Risks', icon: ListAltIcon, content: <EnterpriseRiskRegisterPanel /> },
     { key: 'compliance', label: 'Compliance', icon: GavelIcon, content: <RegulatoryRiskPanel /> },
     { key: 'audit', label: 'Audit', icon: FactCheckIcon, content: <AuditFindingsRiskPanel /> },
-    { key: 'more', label: 'More', icon: LayersIcon, content: <EnterpriseRiskCenter initialTab="dashboard" /> },
+    { key: 'more', label: 'More', icon: LayersIcon, content: <EnterpriseRiskCenter initialTab="register" /> },
   ];
 
   return (

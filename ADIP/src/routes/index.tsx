@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from '../components/layouts/AppLayout';
 import { AuthGuard } from '../components/auth/AuthGuard';
 import { LoginPage } from '../pages/LoginPage';
@@ -22,13 +22,6 @@ import { GovernanceCompliancePage } from '../pages/GovernanceCompliancePage';
 import { GovernanceRiskPage } from '../pages/GovernanceRiskPage';
 import { GovernanceEvidencePage } from '../pages/GovernanceEvidencePage';
 import { ApprovalWorkflowDashboard } from '../pages/ApprovalWorkflowDashboard';
-import { AIGovernanceHub } from '../pages/AIGovernanceHub';
-import { ModelInventory } from '../pages/ModelInventory';
-import { PromptGovernance } from '../pages/PromptGovernance';
-import { AIRiskDashboard } from '../pages/AIRiskDashboard';
-import { AIProgramStatusPage } from '../pages/AIProgramStatusPage';
-import { AIControlsDashboard } from '../pages/AIControlsDashboard';
-import { AIIncidentsDashboard } from '../pages/AIIncidentsDashboard';
 import { KnowledgeLearningCenter } from '../pages/KnowledgeLearningCenter';
 import { ValueRealizationCenter } from '../pages/ValueRealizationCenter';
 import { PortfolioGovernanceCenter } from '../pages/PortfolioGovernanceCenter';
@@ -74,7 +67,8 @@ export function AppRoutes() {
         <Route path="executive/value-realized" element={<ValueRealizedOutcome />} />
         <Route path="persona" element={<PersonaLanding />} />
         <Route path="executive/portfolio-health" element={<PortfolioHealthPage />} />
-        <Route path="executive/program-status" element={<AIProgramStatusPage />} />
+        {/* Legacy redirect: program-status is now Transformation PMO · Program Health */}
+        <Route path="executive/program-status" element={<Navigate to="/executive/transformation-pmo/programs" replace />} />
         <Route path="executive/strategic-risks" element={<GovernanceRiskPage />} />
         <Route path="executive/executive-summary" element={<ExecutiveControlTower />} />
         <Route path="executive/board-reporting" element={<Reports />} />
@@ -232,17 +226,24 @@ export function AppRoutes() {
         <Route path="governance/audit-center/readiness" element={<AuditCenter initialTab="readiness" />} />
         <Route path="governance/audit-center/lineage" element={<AuditCenter initialTab="lineage" />} />
         <Route path="governance/audit-center/reports" element={<AuditCenter initialTab="reports" />} />
-        <Route path="ai-governance" element={<AIGovernanceHub />} />
-        <Route path="ai-governance/model-inventory" element={<ModelInventory />} />
-        <Route path="ai-governance/prompt-governance" element={<PromptGovernance />} />
-        <Route path="ai-governance/ai-risk" element={<AIRiskDashboard />} />
-        <Route path="ai-governance/ai-controls" element={<AIControlsDashboard />} />
-        <Route path="ai-governance/ai-incidents" element={<AIIncidentsDashboard />} />
+        {/*
+          AI Single Source of Truth (June 2026):
+          Legacy /ai-governance/* paths now redirect into the canonical
+          AI Governance Center. This eliminates duplicate AI reporting,
+          duplicate KPIs, and conflicting hardcoded vs. mock data.
+        */}
+        <Route path="ai-governance" element={<Navigate to="/ai-governance-center" replace />} />
+        <Route path="ai-governance/model-inventory" element={<Navigate to="/ai-governance-center/models" replace />} />
+        <Route path="ai-governance/prompt-governance" element={<Navigate to="/ai-governance-center/prompts" replace />} />
+        <Route path="ai-governance/ai-risk" element={<Navigate to="/ai-governance-center/risks" replace />} />
+        <Route path="ai-governance/ai-controls" element={<Navigate to="/ai-governance-center/controls" replace />} />
+        <Route path="ai-governance/ai-incidents" element={<Navigate to="/ai-governance-center/risks" replace />} />
         <Route path="ai-governance-center" element={<AIGovernanceCenter initialSection="use-cases" />} />
         <Route path="ai-governance-center/models" element={<AIGovernanceCenter initialSection="models" />} />
         <Route path="ai-governance-center/prompts" element={<AIGovernanceCenter initialSection="prompts" />} />
         <Route path="ai-governance-center/risks" element={<AIGovernanceCenter initialSection="risks" />} />
         <Route path="ai-governance-center/controls" element={<AIGovernanceCenter initialSection="controls" />} />
+        <Route path="ai-governance-center/evaluation" element={<AIGovernanceCenter initialSection="evaluation" />} />
         <Route path="ai-evaluation" element={<AIEvaluationCenter />} />
         <Route path="ai-observability" element={<AIObservabilityCenter />} />
         <Route path="traceability" element={<TraceabilityCenter initialTab="dashboard" />} />

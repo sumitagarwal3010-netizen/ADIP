@@ -36,7 +36,7 @@ export function TechnologyHealthOutcome() {
     { key: 'modernization', label: 'Modernization', icon: UpgradeIcon, content: <ModernizationWavesPanel /> },
     { key: 'cloud', label: 'Cloud', icon: CloudIcon, content: <CloudStrategyPanel /> },
     { key: 'architecture', label: 'Architecture', icon: AccountTreeIcon, content: <TechnologyStandardsPanel /> },
-    { key: 'more', label: 'More', icon: LayersIcon, content: <TechnologyStrategyCenter initialTab="dashboard" /> },
+    { key: 'more', label: 'More', icon: LayersIcon, content: <TechnologyStrategyCenter initialTab="standards" /> },
   ];
 
   return (

@@ -5,8 +5,6 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
-import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -38,17 +36,28 @@ type TabKey =
   | 'feedback'
   | 'reports';
 
+/**
+ * Operations cleanup (Phase 1 — June 2026)
+ *
+ * Production Intelligence owns operational visibility, runtime intelligence,
+ * and post-production defect/RCA flow. Removed from the strip:
+ *   - applications → Operations Center owns application/runtime health
+ *   - releases     → AI SDLC Copilot · Release owns release recommendation
+ *
+ * Panels and deep links remain available for legacy bookmarks; the strip
+ * shows only operationally-distinct capabilities.
+ */
 const TABS: { key: TabKey; label: string; icon: typeof DashboardIcon }[] = [
   { key: 'dashboard', label: 'Production Dashboard', icon: DashboardIcon },
   { key: 'incidents', label: 'Incident Analytics', icon: ReportProblemIcon },
   { key: 'leakage', label: 'Defect Leakage', icon: BugReportIcon },
   { key: 'customer', label: 'Customer Experience', icon: SentimentDissatisfiedIcon },
-  { key: 'applications', label: 'Application Health', icon: MonitorHeartIcon },
-  { key: 'releases', label: 'Release Performance', icon: RocketLaunchIcon },
   { key: 'rca', label: 'Root Cause Intelligence', icon: PsychologyIcon },
   { key: 'feedback', label: 'Feedback Recommendations', icon: FeedbackIcon },
   { key: 'reports', label: 'AI Reports', icon: DescriptionIcon },
 ];
+
+const TAB_STRIP_KEYS: ReadonlySet<TabKey> = new Set(TABS.map((t) => t.key));
 
 interface ProductionIntelligenceCenterProps {
   initialTab?: TabKey;
@@ -57,7 +66,7 @@ interface ProductionIntelligenceCenterProps {
 export function ProductionIntelligenceCenter({ initialTab = 'dashboard' }: ProductionIntelligenceCenterProps) {
   const { personaId } = usePersona();
   const { execSummary } = useProductionIntelligence();
-  const [tab, setTab] = useState<TabKey>(initialTab);
+  const [tab, setTab] = useState<TabKey>(TAB_STRIP_KEYS.has(initialTab) ? initialTab : 'dashboard');
 
   if (!canAccessProductionIntelligence(personaId)) {
     return <Navigate to="/" replace />;
