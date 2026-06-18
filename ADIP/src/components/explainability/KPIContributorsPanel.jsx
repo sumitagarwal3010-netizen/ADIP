@@ -55,6 +55,23 @@ export function KPIContributorsPanel({ model }) {
               <Box sx={{ width: `${Math.min(100, Math.max(0, e.score))}%`, height: '100%', bgcolor: barColor(e.score), borderRadius: 3 }} />
             </Box>
           )}
+          {(typeof e.weight === 'number' || typeof e.contribution === 'number') && (
+            <Box sx={{ display: 'flex', gap: 1.5, mt: 0.5 }}>
+              {typeof e.weight === 'number' && (
+                <Typography variant="caption" sx={{ fontSize: '0.62rem', color: colors.text.muted }}>
+                  Weight <strong style={{ color: colors.text.secondary }}>{e.weight}%</strong>
+                </Typography>
+              )}
+              {typeof e.contribution === 'number' && (
+                <Typography variant="caption" sx={{ fontSize: '0.62rem', color: colors.text.muted }}>
+                  Contribution{' '}
+                  <strong style={{ color: e.direction === 'negative' ? colors.critical : colors.success }}>
+                    {e.contribution}%
+                  </strong>
+                </Typography>
+              )}
+            </Box>
+          )}
           {e.note && (
             <Typography variant="caption" sx={{ display: 'block', mt: 0.4, fontSize: '0.65rem', color: colors.text.muted }}>
               {e.note}

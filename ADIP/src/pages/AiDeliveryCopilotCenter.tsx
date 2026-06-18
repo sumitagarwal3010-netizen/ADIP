@@ -15,6 +15,7 @@ import { ReleaseCopilotPanel, AuditCopilotPanel } from '../components/copilot/Re
 import { useCopilot } from '../context/CopilotContext';
 import { usePersona } from '../context/PersonaContext';
 import { canAccessCopilot } from '../data/copilotEngine';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { colors } from '../theme/colors';
 
 /**
@@ -91,6 +92,8 @@ export function AiDeliveryCopilotCenter({ initialTab = 'requirements' }: AiDeliv
 
   return (
     <Box>
+      <AIWorkspacePanel module="ai-copilot" number={1} />
+
       <GlassCard
         sx={{ p: 1.5, mb: 1.5, display: 'flex', alignItems: 'center', gap: 1.25 }}
         hover={false}
@@ -98,9 +101,9 @@ export function AiDeliveryCopilotCenter({ initialTab = 'requirements' }: AiDeliv
       >
         <SmartToyIcon sx={{ color: colors.secondary, fontSize: 24 }} />
         <Box sx={{ flex: 1 }}>
-          <Box sx={{ fontSize: '0.9rem', fontWeight: 700 }}>AI SDLC Copilot</Box>
+          <Box sx={{ fontSize: '0.9rem', fontWeight: 700 }}>Enterprise AI Authoring Studio</Box>
           <Box sx={{ fontSize: '0.66rem', color: colors.text.secondary }}>
-            AI agents analyze, recommend and generate across the SDLC — Requirements → Architecture → Development → Testing → Release → Audit.
+            Cross-SDLC artifact generation and orchestration — AI agents author and drive deliverables across Requirements → Architecture → Development → Testing → Release → Audit.
           </Box>
         </Box>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, justifyContent: 'flex-end' }}>

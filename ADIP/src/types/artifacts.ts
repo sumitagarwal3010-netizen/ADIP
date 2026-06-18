@@ -35,6 +35,10 @@ export interface Artifact {
   sourceHub?: string;
   /** Human-readable label for the source (e.g. "Requirements Copilot", "Portfolio Governance"). */
   sourceLabel?: string;
+  /** Universal AI Explainability / Traceability lineage. Rendered by the
+   * "How Generated" modal in {@link ArtifactViewerPanel} and embedded in
+   * every export (DOCX/PDF/XLSX/PPTX). */
+  lineage?: import('./aiExplainability').ArtifactLineage;
 }
 
 export type GenerationRunStatus = 'Completed' | 'In Progress' | 'Failed';

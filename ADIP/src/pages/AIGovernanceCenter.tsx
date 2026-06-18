@@ -13,6 +13,7 @@ import { ModuleHeader } from '../components/common/ModuleHeader';
 import { SeverityChip } from '../components/common/SeverityChip';
 import { DrilldownTableRow } from '../components/common/DrilldownTableRow';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { computeAiGovernanceKpis } from '../data/aiUseCaseRegistryMock';
@@ -103,6 +104,8 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
 
   return (
     <Box>
+      <AIWorkspacePanel module="ai-governance" number={1} />
+
       {/* Tab bar */}
       <GlassCard sx={{ p: 1, mb: 1.5 }} hover={false}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>

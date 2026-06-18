@@ -14,6 +14,7 @@ import { useEnterpriseRisk } from '../context/EnterpriseRiskContext';
 import { computeAiGovernanceKpis } from '../data/aiUseCaseRegistryMock';
 import { MODEL_INVENTORY, AI_RISKS, AI_CONTROLS, computeAIControlsKpis } from '../data/aiGovernanceModulesMock';
 import { computeEvaluationScores } from '../data/aiEvaluationMock';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 
 export function ExecutiveControlTower() {
   const { executive, dynamicInsights, aiGovernance } = useFilteredSimulation();
@@ -42,6 +43,7 @@ export function ExecutiveControlTower() {
 
   return (
     <Box>
+      <AIWorkspacePanel module="executive" number={1} />
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 3 }}>
           <KpiCard label="Delivery Health" value={copilotKpis.deliveryHealth} suffix="%" trend={2.4} chartId="copilot.delivery-health" delay={0} />
@@ -53,7 +55,7 @@ export function ExecutiveControlTower() {
           <KpiCard label="Risk Posture" value={ermKpis.enterpriseRiskExposure} suffix="/100" trend={-3.1} chartId="enterprise-risk.enterprise-risk-exposure" delay={0.1} />
         </Grid>
         <Grid size={{ xs: 6, md: 3 }}>
-          <KpiCard label="Value Realized" value={`₹${(valueKpis.annualValueRealized / 1_000_000).toFixed(1)}M`} trend={valueKpis.roi} chartId="value-realization.annual-value" delay={0.15} />
+          <KpiCard label="Value Realized" value={`₹${(valueKpis.annualValueRealized / 1_000_000).toFixed(1)}M`} suffix="" trend={valueKpis.roi} chartId="value-realization.annual-value" delay={0.15} />
         </Grid>
       </Grid>
 

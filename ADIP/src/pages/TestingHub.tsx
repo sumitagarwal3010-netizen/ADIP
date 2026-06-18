@@ -7,7 +7,7 @@ import { HeatmapGrid } from '../components/charts/HeatmapGrid';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
-import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { TestingIntakeWorkflow } from '../components/testing/TestingIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
@@ -16,13 +16,7 @@ export function TestingHub() {
 
   return (
     <Box>
-      <AnalyzeWithAIPanel
-        phase="testing"
-        title="Testing Analysis"
-        subtitle="Test planning, regression packs, and coverage"
-        placeholder="e.g. UPI settlement regression, payment flow test strategy..."
-        glow="green"
-      />
+      <AIWorkspacePanel module="testing" number={1} />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Total Tests" value={testing.totalTests.toLocaleString()} suffix="" compact /></Grid>

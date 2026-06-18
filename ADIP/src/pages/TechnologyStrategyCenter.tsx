@@ -12,6 +12,7 @@ import { Navigate } from 'react-router-dom';
 import { GlassCard } from '../components/common/GlassCard';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { ExecutiveTechnologyDashboardPanel } from '../components/technologyStrategy/ExecutiveTechnologyDashboardPanel';
 import { TechnologyStandardsPanel, TechnologyLifecyclePanel, TechnologyRoadmapsPanel } from '../components/technologyStrategy/StandardsLifecyclePanels';
 import { StrategicPlatformsPanel, CloudStrategyPanel, AiPlatformStrategyPanel, VendorLandscapePanel } from '../components/technologyStrategy/PlatformStrategyPanels';
@@ -80,6 +81,8 @@ export function TechnologyStrategyCenter({ initialTab = 'standards' }: Technolog
 
   return (
     <Box>
+      <AIWorkspacePanel module="technology-strategy" number={1} />
+
       <GlassCard sx={{ p: 1.5, mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }} hover={false}>
         <RocketLaunchIcon sx={{ color: colors.primary, fontSize: 22 }} />
         <Box sx={{ flex: 1 }}>
@@ -119,7 +122,11 @@ export function TechnologyStrategyCenter({ initialTab = 'standards' }: Technolog
         </Box>
       </GlassCard>
 
-      {tab === 'dashboard' && <ExecutiveTechnologyDashboardPanel />}
+      {tab === 'dashboard' && (
+        <>
+          <ExecutiveTechnologyDashboardPanel />
+        </>
+      )}
       {tab === 'standards' && <TechnologyStandardsPanel />}
       {tab === 'lifecycle' && <TechnologyLifecyclePanel />}
       {tab === 'roadmaps' && <TechnologyRoadmapsPanel />}

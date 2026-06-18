@@ -22,8 +22,8 @@ export function ExecutiveApmDashboardPanel() {
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="AI Readiness" value={kpis.aiReadiness} suffix="%" chartId="application-portfolio.ai-readiness" compact /></Grid>
         <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Risk Exposure" value={kpis.riskExposure} suffix="/100" chartId="application-portfolio.risk-exposure" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Annual Cost" value={`₹${(kpis.annualCost / 1_000_000).toFixed(0)}M`} chartId="application-portfolio.annual-cost" compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Rationalization Savings" value={`₹${(kpis.rationalizationSavings / 1_000_000).toFixed(1)}M`} chartId="application-portfolio.rationalization-savings" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Annual Cost" value={`₹${(kpis.annualCost / 1_000_000).toFixed(0)}M`} suffix="" chartId="application-portfolio.annual-cost" compact /></Grid>
+        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Rationalization Savings" value={`₹${(kpis.rationalizationSavings / 1_000_000).toFixed(1)}M`} suffix="" chartId="application-portfolio.rationalization-savings" compact /></Grid>
         <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Tech Obsolescence" value={kpis.technologyObsolescence} suffix="%" chartId="application-portfolio.technology-obsolescence" compact /></Grid>
       </Grid>
 

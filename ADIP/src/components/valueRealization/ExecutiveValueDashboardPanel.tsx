@@ -27,9 +27,9 @@ export function ExecutiveValueDashboardPanel() {
         <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Audit Findings Prevented" value={kpis.auditFindingsPrevented} compact /></Grid>
       </Grid>
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
-        <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Annual Value" value={`₹${(kpis.annualValueRealized / 1_000_000).toFixed(1)}M`} chartId="value-realization.annual-value" compact /></Grid>
-        <Grid size={{ xs: 6, md: 4 }}><KpiCard label="3-Year Projected" value={`₹${(kpis.threeYearProjectedValue / 1_000_000).toFixed(1)}M`} chartId="value-realization.projected-value" compact /></Grid>
-        <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Cost Avoidance" value={`₹${(kpis.costAvoidance / 1_000_000).toFixed(1)}M`} compact /></Grid>
+        <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Annual Value" value={`₹${(kpis.annualValueRealized / 1_000_000).toFixed(1)}M`} suffix="" chartId="value-realization.annual-value" compact /></Grid>
+        <Grid size={{ xs: 6, md: 4 }}><KpiCard label="3-Year Projected" value={`₹${(kpis.threeYearProjectedValue / 1_000_000).toFixed(1)}M`} suffix="" chartId="value-realization.projected-value" compact /></Grid>
+        <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Cost Avoidance" value={`₹${(kpis.costAvoidance / 1_000_000).toFixed(1)}M`} suffix="" compact /></Grid>
       </Grid>
 
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>

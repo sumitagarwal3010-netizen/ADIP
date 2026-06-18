@@ -10,6 +10,7 @@ import { colors } from '../../theme/colors';
 import { layout } from '../../theme/theme';
 import { SeverityChip } from './SeverityChip';
 import { useSimulation } from '../../context/SimulationContext';
+import { wouldDuplicateUnit } from '../../utils/formatMetric';
 
 const DRAWER_WIDTH = 380;
 
@@ -137,7 +138,7 @@ export function KpiDrilldownDrawer() {
                 <Typography variant="h5" sx={{ fontWeight: 700, color: colors.primary }}>
                   {payload.value}
                 </Typography>
-                {payload.suffix && (
+                {payload.suffix && !wouldDuplicateUnit(payload.value, payload.suffix) && (
                   <Typography variant="body2" color="text.secondary">
                     {payload.suffix}
                   </Typography>

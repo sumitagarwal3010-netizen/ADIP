@@ -70,7 +70,7 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'Executive',
     icon: DashboardIcon,
     children: [
-      { id: 'delivery-health', label: 'AI SDLC Copilot', icon: SmartToyIcon, path: '/executive/delivery-health', children: [] },
+      { id: 'delivery-health', label: 'Enterprise AI Authoring Studio', icon: SmartToyIcon, path: '/executive/delivery-health', children: [] },
       { id: 'technology-health', label: 'Technology Health', icon: RocketLaunchIcon, path: '/executive/technology-health', children: [] },
       { id: 'risk-posture', label: 'Risk Posture', icon: ShieldIcon, path: '/executive/risk-posture', children: [] },
       { id: 'value-realized', label: 'Value Realized', icon: TrendingUpIcon, path: '/executive/value-realized', children: [] },
@@ -93,7 +93,7 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'AI SDLC',
     icon: AccountTreeIcon,
     children: [
-      { id: 'requirements', label: 'Requirements', icon: AssignmentIcon, path: '/requirements', children: [] },
+      { id: 'requirements', label: 'Requirements Engineering', icon: AssignmentIcon, path: '/requirements', children: [] },
       { id: 'design-architecture', label: 'Design & Architecture', icon: DesignServicesIcon, path: '/architecture', children: [] },
       { id: 'development', label: 'Development', icon: CodeIcon, path: '/development', children: [] },
       { id: 'testing', label: 'Testing', icon: ScienceIcon, path: '/testing', children: [] },

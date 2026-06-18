@@ -1,6 +1,7 @@
-import type { KeyboardEvent } from 'react';
-import { Box, Typography } from '@mui/material';
+import type { KeyboardEvent, MouseEvent } from 'react';
+import { Box, Tooltip, Typography } from '@mui/material';
 import { TrendingUp, TrendingDown } from '@mui/icons-material';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Area, AreaChart, ResponsiveContainer } from 'recharts';
 import { GlassCard } from './GlassCard';
 import { colors } from '../../theme/colors';
@@ -38,6 +39,11 @@ export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, co
     }
   };
 
+  const handleInfoClick = (e: MouseEvent) => {
+    e.stopPropagation();
+    handleClick();
+  };
+
   return (
     <GlassCard
       delay={delay}
@@ -45,18 +51,49 @@ export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, co
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      title={`Click for details: ${label}`}
-      aria-label={`${label}: ${value}${safeSuffix}. Click to open detailed drilldown.`}
+      title={`Click for explainability: ${label}`}
+      aria-label={`${label}: ${value}${safeSuffix}. Click to open the KPI explainability drawer.`}
       sx={{
         p: compact ? 1.5 : 2,
         minHeight: compact ? 90 : 110,
         cursor: 'pointer',
+        position: 'relative',
         '&:focus-visible': {
           outline: `2px solid ${colors.primary}`,
           outlineOffset: 2,
         },
       }}
     >
+      <Tooltip title="Explain this KPI — formula, contributors, evidence, confidence & audit trail">
+        <Box
+          component="span"
+          role="button"
+          tabIndex={0}
+          aria-label={`Explain ${label}`}
+          onClick={handleInfoClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              e.stopPropagation();
+              handleClick();
+            }
+          }}
+          sx={{
+            position: 'absolute',
+            top: 6,
+            right: 6,
+            display: 'flex',
+            color: colors.text.muted,
+            opacity: 0.55,
+            transition: 'opacity 150ms, color 150ms',
+            cursor: 'pointer',
+            '&:hover': { opacity: 1, color: colors.primary },
+            '&:focus-visible': { opacity: 1, color: colors.primary, outline: 'none' },
+          }}
+        >
+          <InfoOutlinedIcon sx={{ fontSize: 15 }} />
+        </Box>
+      </Tooltip>
       <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         {label}
       </Typography>

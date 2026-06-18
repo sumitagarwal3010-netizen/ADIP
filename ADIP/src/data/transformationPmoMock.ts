@@ -1,9 +1,11 @@
 import type {
+  AppHealthClass,
   BusinessUnitPerformance,
   CrossProgramDependency,
   ExecutiveCommitment,
   StrategicInitiative,
   StrategicObjective,
+  TransformationAppAssessment,
   TransformationBenefit,
   TransformationHistoryPoint,
   TransformationMilestone,
@@ -167,6 +169,54 @@ export const TPMO_HISTORY: TransformationHistoryPoint[] = ['2021', '2022', '2023
   milestoneCompletion: 60 + i * 6,
   transformationRoi: 110 + i * 18,
 }));
+
+/**
+ * Application-level transformation assessments — 147 applications classified into
+ * healthy / at-risk / critical bands. These are the contributing records behind
+ * the Transformation Health KPI:
+ *   89 healthy + 28 at-risk + 30 critical = 147 applications
+ *   Health = (89 × 1.0 + 28 × 0.5 + 30 × 0.0) ÷ 147 × 100 = 70%
+ */
+const APP_HEALTH_BANDS: { cls: AppHealthClass; count: number }[] = [
+  { cls: 'healthy', count: 89 },
+  { cls: 'at-risk', count: 28 },
+  { cls: 'critical', count: 30 },
+];
+
+function appHealthClassFor(index: number): AppHealthClass {
+  let cursor = 0;
+  for (const band of APP_HEALTH_BANDS) {
+    cursor += band.count;
+    if (index < cursor) return band.cls;
+  }
+  return 'healthy';
+}
+
+export const TPMO_APP_ASSESSMENTS: TransformationAppAssessment[] = Array.from({ length: 147 }, (_, i) => {
+  const prog = TPMO_PROGRAMS[i % TPMO_PROGRAMS.length];
+  const healthClass = appHealthClassFor(i);
+  const health =
+    healthClass === 'healthy' ? 72 + (i % 24) : healthClass === 'at-risk' ? 50 + (i % 18) : 18 + (i % 30);
+  const riskRating: TransformationAppAssessment['riskRating'] =
+    healthClass === 'critical' ? (i % 2 === 0 ? 'critical' : 'high') : healthClass === 'at-risk' ? (i % 2 === 0 ? 'high' : 'medium') : (i % 3 === 0 ? 'medium' : 'low');
+  const status: TransformationAppAssessment['status'] =
+    healthClass === 'critical' ? 'remediation' : healthClass === 'at-risk' ? 'in-migration' : i % 7 === 0 ? 'planned' : 'live';
+  return {
+    id: `TAPP-${String(i + 1).padStart(4, '0')}`,
+    name: `${pick(DOMAINS, i)} ${pick(['Platform', 'Service', 'Gateway', 'Hub', 'Engine', 'Portal'], i)} ${(i % 24) + 1}`,
+    programId: prog.id,
+    domain: pick(DOMAINS, i),
+    owner: pick(SPONSORS, i),
+    health,
+    healthClass,
+    riskRating,
+    status,
+    lastAssessment: `2026-0${(i % 6) + 1}-${String((i % 27) + 1).padStart(2, '0')}`,
+  };
+});
+
+/** When the Transformation KPI snapshot was last recalculated (deterministic mock). */
+export const TPMO_LAST_CALCULATED = '18 Jun 2026 · 06:00 IST';
 
 export const TPMO_TRACEABILITY_CHAINS: TransformationTraceabilityChain[] = [
   { stage: 'Strategy', entity: 'Digital First pillar', link: 'Objective', outcome: 'OBJ-001 Grow digital adoption' },

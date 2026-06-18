@@ -10,6 +10,7 @@ import { Navigate } from 'react-router-dom';
 import { GlassCard } from '../components/common/GlassCard';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { TransformationAiWorkspace } from '../components/transformationPmo/TransformationAiWorkspace';
 import { ExecutiveTransformationDashboardPanel } from '../components/transformationPmo/ExecutiveTransformationDashboardPanel';
 import { TransformationProgramsPanel, StrategicInitiativesPanel, ObjectivesOkrsPanel } from '../components/transformationPmo/ProgramInitiativePanels';
 import { MilestonesPanel, BenefitsTrackingPanel, ExecutiveCommitmentsPanel } from '../components/transformationPmo/MilestonesBenefitsPanels';
@@ -107,6 +108,8 @@ export function TransformationPmoCenter({ initialTab = 'overview' }: Transformat
 
   return (
     <Box>
+      <TransformationAiWorkspace number={1} />
+
       <GlassCard sx={{ p: 1.5, mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }} hover={false}>
         <HubIcon sx={{ color: colors.primary, fontSize: 22 }} />
         <Box sx={{ flex: 1 }}>

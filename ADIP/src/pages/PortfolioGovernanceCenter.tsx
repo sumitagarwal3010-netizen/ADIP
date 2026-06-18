@@ -12,6 +12,7 @@ import { Navigate } from 'react-router-dom';
 import { GlassCard } from '../components/common/GlassCard';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { AiPortfolioAdvisorPanel } from '../components/portfolioGovernance/AiPortfolioAdvisorPanel';
 import { ExecutivePortfolioDashboardPanel } from '../components/portfolioGovernance/ExecutivePortfolioDashboardPanel';
 import { DemandPipelinePanel, BusinessCaseReviewPanel, InvestmentGovernancePanel } from '../components/portfolioGovernance/DemandInvestmentPanels';
@@ -80,6 +81,8 @@ export function PortfolioGovernanceCenter({ initialTab = 'ai-advisor' }: Portfol
 
   return (
     <Box>
+      <AIWorkspacePanel module="portfolio-governance" number={1} />
+
       <GlassCard sx={{ p: 1.5, mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }} hover={false}>
         <GavelIcon sx={{ color: colors.warning, fontSize: 22 }} />
         <Box sx={{ flex: 1 }}>
@@ -120,7 +123,11 @@ export function PortfolioGovernanceCenter({ initialTab = 'ai-advisor' }: Portfol
       </GlassCard>
 
       {tab === 'ai-advisor' && <AiPortfolioAdvisorPanel />}
-      {tab === 'dashboard' && <ExecutivePortfolioDashboardPanel />}
+      {tab === 'dashboard' && (
+        <>
+          <ExecutivePortfolioDashboardPanel />
+        </>
+      )}
       {tab === 'demand' && <DemandPipelinePanel />}
       {tab === 'business-case' && <BusinessCaseReviewPanel />}
       {tab === 'investment' && <InvestmentGovernancePanel />}

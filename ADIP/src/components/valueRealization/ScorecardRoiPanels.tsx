@@ -152,11 +152,11 @@ export function RoiCalculatorPanel() {
               </Button>
             </Box>
             <Grid container spacing={1.5}>
-              <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Annual Savings" value={`₹${(roiOutputs.annualSavings / 1_000_000).toFixed(1)}M`} chartId="value-realization.roi-annual" compact /></Grid>
-              <Grid size={{ xs: 6, md: 4 }}><KpiCard label="3-Year Savings" value={`₹${(roiOutputs.threeYearSavings / 1_000_000).toFixed(1)}M`} chartId="value-realization.roi-3year" compact /></Grid>
+              <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Annual Savings" value={`₹${(roiOutputs.annualSavings / 1_000_000).toFixed(1)}M`} suffix="" chartId="value-realization.roi-annual" compact /></Grid>
+              <Grid size={{ xs: 6, md: 4 }}><KpiCard label="3-Year Savings" value={`₹${(roiOutputs.threeYearSavings / 1_000_000).toFixed(1)}M`} suffix="" chartId="value-realization.roi-3year" compact /></Grid>
               <Grid size={{ xs: 6, md: 4 }}><KpiCard label="ROI" value={roiOutputs.roi} suffix="%" chartId="value-realization.roi" compact /></Grid>
               <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Payback" value={roiOutputs.paybackMonths} suffix=" mo" compact /></Grid>
-              <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Transformation Value" value={`₹${(roiOutputs.transformationValue / 1_000_000).toFixed(1)}M`} compact /></Grid>
+              <Grid size={{ xs: 6, md: 4 }}><KpiCard label="Transformation Value" value={`₹${(roiOutputs.transformationValue / 1_000_000).toFixed(1)}M`} suffix="" compact /></Grid>
             </Grid>
             <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1, fontSize: '0.65rem' }}>
               Derivation context: {(roiInputs.applications ?? 0)} applications · {(roiInputs.projectsPerYear ?? 0)} projects/year ·{' '}

@@ -9,7 +9,7 @@ import { AIInsightBox } from '../components/common/AIInsightBox';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { DesignIntakeWorkflow } from '../components/architecture/DesignIntakeWorkflow';
-import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
 export function ArchitectureHub() {
@@ -17,21 +17,7 @@ export function ArchitectureHub() {
 
   return (
     <Box>
-      <AnalyzeWithAIPanel
-        phase="architecture"
-        title="Architecture Analysis"
-        subtitle="Evaluate design patterns and integration risks"
-        placeholder="e.g. UPI settlement service redesign, payment gateway migration..."
-        glow="blue"
-      />
-
-      <AnalyzeWithAIPanel
-        phase="design"
-        title="Design Analysis"
-        subtitle="Solution design, integration points, and security review"
-        placeholder="e.g. Merchant settlement HLD, NPCI integration blueprint..."
-        glow="blue"
-      />
+      <AIWorkspacePanel module="architecture" number={1} />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Architecture Readiness" value={architecture.readiness} trend={1.5} /></Grid>

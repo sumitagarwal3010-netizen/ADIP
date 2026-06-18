@@ -19,6 +19,7 @@ import { KPITraceabilityPanel } from './KPITraceabilityPanel.jsx';
 import { KPIAiAnalysisPanel } from './KPIAiAnalysisPanel.jsx';
 import { KPIRecommendationPanel } from './KPIRecommendationPanel.jsx';
 import { KPITrendAnalysisPanel } from './KPITrendAnalysisPanel.jsx';
+import { KPIChallengePanel } from './KPIChallengePanel.jsx';
 
 const DRAWER_WIDTH = 420;
 
@@ -29,6 +30,7 @@ const TABS = [
   { label: 'AI Analysis', render: (model) => <KPIAiAnalysisPanel model={model} /> },
   { label: 'Recommendations', render: (model) => <KPIRecommendationPanel model={model} /> },
   { label: 'Trend', render: (model) => <KPITrendAnalysisPanel model={model} /> },
+  { label: 'Challenge', render: (model) => <KPIChallengePanel model={model} /> },
 ];
 
 export function KPIExplainabilityDrawer({ ctx, onClose }) {
@@ -97,6 +99,23 @@ export function KPIExplainabilityDrawer({ ctx, onClose }) {
                 >
                   {model.authored ? 'Defensible' : 'Live-derived'}
                 </Box>
+                {model.confidence && (
+                  <Box
+                    sx={{
+                      px: 0.6,
+                      py: 0.05,
+                      borderRadius: 0.75,
+                      fontSize: '0.55rem',
+                      fontWeight: 800,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      bgcolor: `${colors.success}22`,
+                      color: colors.success,
+                    }}
+                  >
+                    Confidence {model.confidence.score}%
+                  </Box>
+                )}
               </Box>
               <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.3, mt: 0.25 }}>
                 {model.name}

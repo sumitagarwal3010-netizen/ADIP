@@ -13,6 +13,7 @@ import { Navigate } from 'react-router-dom';
 import { GlassCard } from '../components/common/GlassCard';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { ExecutiveArchitectureDashboardPanel } from '../components/architectureRepository/ExecutiveArchitectureDashboardPanel';
 import { ArchitectureDomainsPanel, BusinessCapabilitiesPanel, ApplicationArchitecturePanel } from '../components/architectureRepository/DomainInventoryPanels';
 import { ReviewBoardPanel, ArchitectureFindingsPanel, ArchitectureExceptionsPanel } from '../components/architectureRepository/ReviewBoardPanels';
@@ -90,6 +91,8 @@ export function ArchitectureRepositoryCenter({ initialTab = 'domains' }: Archite
 
   return (
     <Box>
+      <AIWorkspacePanel module="enterprise-architecture" number={1} />
+
       <GlassCard sx={{ p: 1.5, mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }} hover={false}>
         <AccountTreeIcon sx={{ color: colors.primary, fontSize: 22 }} />
         <Box sx={{ flex: 1 }}>
@@ -129,7 +132,11 @@ export function ArchitectureRepositoryCenter({ initialTab = 'domains' }: Archite
         </Box>
       </GlassCard>
 
-      {tab === 'dashboard' && <ExecutiveArchitectureDashboardPanel />}
+      {tab === 'dashboard' && (
+        <>
+          <ExecutiveArchitectureDashboardPanel />
+        </>
+      )}
       {tab === 'domains' && <ArchitectureDomainsPanel />}
       {tab === 'capabilities' && <BusinessCapabilitiesPanel />}
       {tab === 'applications' && <ApplicationArchitecturePanel />}

@@ -117,6 +117,51 @@ export interface TransformationHistoryPoint {
   transformationRoi: number;
 }
 
+export type AppHealthClass = 'healthy' | 'at-risk' | 'critical';
+
+/**
+ * Application-level transformation assessment — the contributing record behind
+ * the Transformation Health KPI. Every application that participates in a
+ * transformation program is assessed and classified.
+ */
+export interface TransformationAppAssessment {
+  id: string;
+  name: string;
+  programId: string;
+  domain: string;
+  owner: string;
+  health: number;
+  healthClass: AppHealthClass;
+  riskRating: RiskLevel;
+  status: 'live' | 'in-migration' | 'remediation' | 'planned';
+  lastAssessment: string;
+}
+
+/** A single input row shown in the explainable KPI breakdown ("Based on…"). */
+export interface TransformationKpiInput {
+  label: string;
+  value: string;
+}
+
+/** Explainability summary surfaced inline next to each Transformation KPI. */
+export interface TransformationKpiBreakdown {
+  id: string;
+  chartId: string;
+  label: string;
+  value: number;
+  suffix: string;
+  /** Which drill-down register backs this KPI. */
+  register: 'applications' | 'benefits' | 'milestones' | 'dependencies' | 'roi';
+  /** One-line "Based on …" justification. */
+  basedOn: string;
+  /** Human-readable formula expression. */
+  formula: string;
+  /** The numeric inputs that reconcile to the headline value. */
+  inputs: TransformationKpiInput[];
+  lastCalculated: string;
+  changeSinceLast: string;
+}
+
 export interface TransformationTraceabilityChain {
   stage: string;
   entity: string;

@@ -8,7 +8,7 @@ import { SeverityChip } from '../components/common/SeverityChip';
 import { MultiLineChart } from '../components/charts/MultiLineChart';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
-import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { DevelopmentIntakeWorkflow } from '../components/development/DevelopmentIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
@@ -17,13 +17,7 @@ export function DevelopmentHub() {
 
   return (
     <Box>
-      <AnalyzeWithAIPanel
-        phase="development"
-        title="Development Analysis"
-        subtitle="API, service, and database design readiness"
-        placeholder="e.g. Settlement API implementation, merchant limit service..."
-        glow="purple"
-      />
+      <AIWorkspacePanel module="development" number={1} />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Pull Requests" value={development.pullRequests} suffix="" trend={8} compact /></Grid>

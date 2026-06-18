@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
-import type { TransformationAiInsight, TransformationPmoKpis } from '../types/transformationPmo';
+import type { TransformationAiInsight, TransformationKpiBreakdown, TransformationPmoKpis } from '../types/transformationPmo';
 import {
   atRiskPrograms,
   benefitsByCategory,
@@ -18,15 +18,18 @@ import {
   topPrograms,
   topTransformationRisks,
   transformationIntegrationLinks,
+  transformationKpiBreakdowns,
   upcomingCriticalMilestones,
 } from '../data/transformationPmoEngine';
 import {
+  TPMO_APP_ASSESSMENTS,
   TPMO_BENEFITS,
   TPMO_BUSINESS_UNITS,
   TPMO_COMMITMENTS,
   TPMO_DEPENDENCIES,
   TPMO_HISTORY,
   TPMO_INITIATIVES,
+  TPMO_LAST_CALCULATED,
   TPMO_MILESTONES,
   TPMO_OBJECTIVES,
   TPMO_PROGRAMS,
@@ -37,6 +40,9 @@ import {
 
 interface TransformationPmoContextValue {
   kpis: TransformationPmoKpis;
+  kpiBreakdowns: TransformationKpiBreakdown[];
+  appAssessments: typeof TPMO_APP_ASSESSMENTS;
+  lastCalculated: string;
   execSummary: string;
   programs: typeof TPMO_PROGRAMS;
   initiatives: typeof TPMO_INITIATIVES;
@@ -73,6 +79,9 @@ const TransformationPmoContext = createContext<TransformationPmoContextValue | n
 export function TransformationPmoProvider({ children }: { children: ReactNode }) {
   const value = useMemo<TransformationPmoContextValue>(() => ({
     kpis: computeTransformationPmoKpis(),
+    kpiBreakdowns: transformationKpiBreakdowns(),
+    appAssessments: TPMO_APP_ASSESSMENTS,
+    lastCalculated: TPMO_LAST_CALCULATED,
     execSummary: TRANSFORMATION_PMO_EXEC_SUMMARY,
     programs: TPMO_PROGRAMS,
     initiatives: TPMO_INITIATIVES,

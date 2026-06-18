@@ -10,7 +10,7 @@ import { CircularGauge } from '../components/charts/CircularGauge';
 import { StatusDot } from '../components/common/StatusDot';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
-import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { ReleaseIntakeWorkflow } from '../components/release/ReleaseIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 
@@ -19,13 +19,7 @@ export function ReleaseCenter() {
 
   return (
     <Box>
-      <AnalyzeWithAIPanel
-        phase="deployment"
-        title="Deployment Analysis"
-        subtitle="Release planning, rollback, and go-live validation"
-        placeholder="e.g. UPI v2.4 production rollout, settlement service deployment..."
-        glow="green"
-      />
+      <AIWorkspacePanel module="release" number={1} />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Release Confidence" value={release.confidence} trend={2} /></Grid>

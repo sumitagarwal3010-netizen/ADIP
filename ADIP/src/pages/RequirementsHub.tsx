@@ -9,7 +9,7 @@ import { DonutChart } from '../components/charts/DonutChart';
 import { HorizontalBarChart } from '../components/charts/HorizontalBarChart';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { RequirementIntakeWorkflow } from '../components/requirements/RequirementIntakeWorkflow';
-import { AnalyzeWithAIPanel } from '../components/workflow/AnalyzeWithAIPanel';
+import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 import { colors } from '../theme/colors';
 
@@ -18,14 +18,7 @@ export function RequirementsHub() {
 
   return (
     <Box>
-      <AnalyzeWithAIPanel
-        phase="requirements"
-        number={2}
-        title="Requirement Analysis"
-        subtitle="Banking requirements queue"
-        placeholder="e.g. UPI Limit Enhancement, Merchant Auto Settlement..."
-        glow="purple"
-      />
+      <AIWorkspacePanel module="requirements" number={1} />
       <Typography variant="caption" color="text.secondary" sx={{ mb: 1.5, display: 'block' }}>
         {requirements.analysisQueue} items in analysis queue
       </Typography>
