@@ -4,7 +4,8 @@ import { TrendingUp, TrendingDown } from '@mui/icons-material';
 import { Area, AreaChart, ResponsiveContainer } from 'recharts';
 import { GlassCard } from './GlassCard';
 import { colors } from '../../theme/colors';
-import { useSimulation } from '../../context/SimulationContext';
+import { useExplainability } from '../explainability/ExplainabilityProvider';
+import { wouldDuplicateUnit } from '../../utils/formatMetric';
 
 interface KpiCardProps {
   label: string;
@@ -18,11 +19,16 @@ interface KpiCardProps {
 }
 
 export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, compact, chartId }: KpiCardProps) {
-  const { openKpiDrilldown } = useSimulation();
+  const { openExplainability } = useExplainability();
   const isPositive = trend !== undefined && trend >= 0;
 
+  // Unit-safe: never render a duplicate/invalid unit (e.g. "90% %", "₹15.9M %",
+  // "61/100 %", "75 risks %"). If the value already carries its unit, suppress
+  // the appended suffix. This fixes malformed KPIs regardless of call site.
+  const safeSuffix = suffix && !wouldDuplicateUnit(value, suffix) ? suffix : '';
+
   const handleClick = () => {
-    openKpiDrilldown({ label, value, suffix, trend, data, chartId });
+    openExplainability({ label, value, suffix, trend, data, chartId });
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -40,7 +46,7 @@ export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, co
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       title={`Click for details: ${label}`}
-      aria-label={`${label}: ${value}${suffix ?? ''}. Click to open detailed drilldown.`}
+      aria-label={`${label}: ${value}${safeSuffix}. Click to open detailed drilldown.`}
       sx={{
         p: compact ? 1.5 : 2,
         minHeight: compact ? 90 : 110,
@@ -58,9 +64,9 @@ export function KpiCard({ label, value, suffix = '%', trend, data, delay = 0, co
         <Typography variant={compact ? 'h5' : 'h4'} sx={{ fontWeight: 700, color: colors.text.primary }}>
           {value}
         </Typography>
-        {suffix && (
+        {safeSuffix && (
           <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.875rem' }}>
-            {suffix}
+            {safeSuffix}
           </Typography>
         )}
       </Box>

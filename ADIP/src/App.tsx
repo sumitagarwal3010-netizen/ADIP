@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { theme } from './theme/theme';
 import { AppRoutes } from './routes';
 import { SimulationProvider } from './context/SimulationContext';
+import { ExplainabilityProvider } from './components/explainability/ExplainabilityProvider';
 import { PersonaProvider } from './context/PersonaContext';
 import { AbacProvider } from './context/AbacContext';
 import { AuthenticationProvider } from './context/AuthContext';
@@ -47,9 +48,11 @@ function App() {
                 <WorkflowProvider>
                   <NotificationProvider>
                     <SimulationProvider>
-                      <BrowserRouter>
-                        <AppRoutes />
-                      </BrowserRouter>
+                      <ExplainabilityProvider>
+                        <BrowserRouter>
+                          <AppRoutes />
+                        </BrowserRouter>
+                      </ExplainabilityProvider>
                     </SimulationProvider>
                   </NotificationProvider>
                 </WorkflowProvider>
