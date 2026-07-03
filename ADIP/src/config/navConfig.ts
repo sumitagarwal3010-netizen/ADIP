@@ -111,27 +111,14 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    id: 'knowledge',
-    label: 'Knowledge',
-    icon: MenuBookIcon,
-    // Direct center: clicking "Knowledge" opens the Knowledge & Learning Center page.
-    path: '/knowledge-center',
-    children: [],
-  },
-  {
-    id: 'transformation',
-    label: 'Transformation',
-    icon: RocketLaunchIcon,
-    // Direct center: clicking "Transformation" opens the Transformation Center page.
-    path: '/executive/transformation-pmo',
-    children: [],
-  },
-  {
     id: 'platform',
     label: 'Platform',
     icon: SettingsIcon,
     children: [
       { id: 'artifacts', label: 'Artifacts Repository', icon: InventoryIcon, path: '/artifacts', children: [] },
+      // Knowledge & Transformation centers relocated from top level; same routes and icons.
+      { id: 'knowledge', label: 'Knowledge Center', icon: MenuBookIcon, path: '/knowledge-center', children: [] },
+      { id: 'transformation', label: 'Transformation Center', icon: RocketLaunchIcon, path: '/executive/transformation-pmo', children: [] },
       { id: 'kpi-catalog', label: 'KPI Catalog', icon: LibraryBooksIcon, path: '/kpi-catalog', children: [] },
       { id: 'workflow', label: 'Workflow', icon: TimelineIcon, path: '/executive/workflow-orchestration', children: [] },
       { id: 'reporting', label: 'Reporting', icon: AssessmentIcon, path: '/reports', children: [] },

@@ -85,7 +85,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Strategic Risks', to: '/executive/strategic-risks' },
       { label: 'AI Delivery Copilot', to: '/executive/ai-copilot' },
     ],
-    navHubs: ['executive', 'governance', 'transformation', 'ai-sdlc', 'platform'],
+    navHubs: ['executive', 'governance', 'ai-sdlc', 'platform'],
     metrics: [
       { label: 'Portfolio Health', value: (s) => pct(s.executive.portfolioHealth), suffix: '%', trend: 2.4 },
       { label: 'Open Risks', value: (s) => s.executive.openRisks, suffix: '', trend: -3 },
@@ -230,7 +230,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Impact Analysis', to: '/traceability/impact' },
       { label: 'Architecture Hub', to: '/architecture' },
     ],
-    navHubs: ['executive', 'governance', 'ai-sdlc', 'knowledge'],
+    navHubs: ['executive', 'governance', 'ai-sdlc', 'platform'],
     metrics: [
       { label: 'Architecture Risks', value: (s) => s.delivery.architectureRisks, suffix: '', trend: -1 },
       { label: 'Requirements Analysed', value: (s) => s.delivery.requirementsAnalysed, suffix: '', trend: 4 },
@@ -274,7 +274,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Requirements', to: '/requirements' },
       { label: 'Testing Hub', to: '/testing' },
     ],
-    navHubs: ['ai-sdlc', 'knowledge'],
+    navHubs: ['ai-sdlc', 'platform'],
     metrics: [
       { label: 'Code Quality', value: (s) => pct(s.development.codeQuality), suffix: '%', trend: 1 },
       { label: 'Tech Debt', value: (s) => s.development.techDebt, suffix: '', trend: -2 },
@@ -296,7 +296,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Release Center', to: '/release' },
       { label: 'Development Hub', to: '/development' },
     ],
-    navHubs: ['ai-sdlc', 'knowledge'],
+    navHubs: ['ai-sdlc', 'platform'],
     metrics: [
       { label: 'Coverage', value: (s) => `${s.testing.coverage}`, suffix: '%', trend: 0.6 },
       { label: 'Automation', value: (s) => `${s.testing.automation}`, suffix: '%', trend: 1 },
