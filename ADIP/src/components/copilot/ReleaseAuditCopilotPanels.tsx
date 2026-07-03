@@ -17,6 +17,27 @@ import {
   type CopilotSuggestedAction,
 } from './CopilotSection';
 import { useCopilot } from '../../context/CopilotContext';
+import type { SdlcPhase } from '../../data/copilotOrchestrationEngine';
+
+/** Prompt-relevant override for a copilot phase; falls back to static content. */
+function usePhaseOverride(
+  phase: SdlcPhase,
+  fallback: { findings: CopilotFinding[]; recommendations: CopilotRecommendation[]; analyzedSubtitle: string; analyzedScope: string[] },
+) {
+  const { orchestrationActive, orchestration } = useCopilot();
+  if (!orchestrationActive) {
+    return { ...fallback, scoreChip: null as string | null, reasoning: undefined as { steps: string[]; confidence: number } | undefined };
+  }
+  const p = orchestration.phases[phase];
+  return {
+    findings: p.findings,
+    recommendations: p.recommendations,
+    analyzedSubtitle: p.analyzedSubtitle,
+    analyzedScope: [`Prompt: ${orchestration.scenario.label}`, ...p.analyzedScope],
+    scoreChip: `${p.scoreLabel}: ${p.score}/100`,
+    reasoning: { steps: p.reasoning.steps.map((s) => s.text), confidence: p.reasoning.confidence },
+  };
+}
 
 type GoVerdict = 'Go' | 'Conditional Go' | 'No-Go';
 const GO_COLOR: Record<GoVerdict, string> = {
@@ -282,13 +303,21 @@ Risks & mitigations:
 
 Owner: Release Manager · Sponsor: CIO`;
 
+  const ov = usePhaseOverride('release', {
+    findings,
+    recommendations,
+    analyzedSubtitle: `AI evaluated quality gates, defects, performance and rollback readiness across UPI, Cards, Payments, Net Banking and Loans for ${r.projectName} and produced a GO / CONDITIONAL GO / NO GO recommendation with reasons and risk factors.`,
+    analyzedScope: [r.projectName, `Readiness ${r.releaseReadinessScore}%`, `AI Verdict: ${recommendation.toUpperCase()}`],
+  });
+
   return (
     <CopilotSection
       title="Release Copilot"
       sourceHub="ai-copilot"
       sourceLabel="Release Copilot"
-      analyzedSubtitle={`AI evaluated quality gates, defects, performance and rollback readiness across UPI, Cards, Payments, Net Banking and Loans for ${r.projectName} and produced a GO / CONDITIONAL GO / NO GO recommendation with reasons and risk factors.`}
-      analyzedScope={[r.projectName, `Readiness ${r.releaseReadinessScore}%`, `AI Verdict: ${recommendation.toUpperCase()}`]}
+      analyzedSubtitle={ov.analyzedSubtitle}
+      analyzedScope={[...ov.analyzedScope, ...(ov.scoreChip ? [ov.scoreChip] : [])]}
+      reasoning={ov.reasoning}
       primarySlot={
         <ReleaseDecisionCard
           score={r.releaseReadinessScore}
@@ -307,8 +336,8 @@ Owner: Release Manager · Sponsor: CIO`;
         />
       }
       findingsTitle="Release Findings · Risk Factors"
-      findings={findings}
-      recommendations={recommendations}
+      findings={ov.findings}
+      recommendations={ov.recommendations}
       generationActions={[
         { id: 'rollout-checklist', label: 'Generate Rollout Checklist', artifactName: 'Rollout_Checklist.docx', icon: ChecklistRtlIcon, generatedBy: 'Release AI', preview: rolloutChecklist },
         { id: 'rollback', label: 'Generate Rollback Plan', artifactName: 'Rollback_Plan.docx', icon: RestartAltIcon, generatedBy: 'Release AI', preview: rollbackPlan },
@@ -443,20 +472,28 @@ P3 (next sprint)
 
 Predicted impact: Audit readiness ${Math.max(0, 100 - findings.length * 6)}% → 96% after P1+P2 close-out.`;
 
+  const ov = usePhaseOverride('audit', {
+    findings,
+    recommendations,
+    analyzedSubtitle: `AI tested controls and sampled evidence across UPI, Cards, Loans, Net Banking, Payments and Mobile Banking against RBI, PCI-DSS, SOX and AML, surfacing control findings, evidence gaps and compliance observations on ${selectedProject.name}.`,
+    analyzedScope: [
+      '4 frameworks',
+      `${controlFindingsCount} control findings`,
+      `${evidenceGapCount} evidence gaps · ${complianceObsCount} compliance observations`,
+    ],
+  });
+
   return (
     <CopilotSection
       title="Audit Copilot"
       sourceHub="ai-copilot"
       sourceLabel="Audit Copilot"
-      analyzedSubtitle={`AI tested controls and sampled evidence across UPI, Cards, Loans, Net Banking, Payments and Mobile Banking against RBI, PCI-DSS, SOX and AML, surfacing control findings, evidence gaps and compliance observations on ${selectedProject.name}.`}
-      analyzedScope={[
-        '4 frameworks',
-        `${controlFindingsCount} control findings`,
-        `${evidenceGapCount} evidence gaps · ${complianceObsCount} compliance observations`,
-      ]}
+      analyzedSubtitle={ov.analyzedSubtitle}
+      analyzedScope={[...ov.analyzedScope, ...(ov.scoreChip ? [ov.scoreChip] : [])]}
+      reasoning={ov.reasoning}
       findingsTitle="Control Findings · Evidence Gaps · Compliance Observations"
-      findings={findings}
-      recommendations={recommendations}
+      findings={ov.findings}
+      recommendations={ov.recommendations}
       generationActions={[
         { id: 'audit-report', label: 'Generate Audit Report', artifactName: 'Audit_Report.md', icon: FactCheckIcon, generatedBy: 'Audit AI', preview: auditReport },
         { id: 'evidence-checklist', label: 'Generate Evidence Checklist', artifactName: 'Evidence_Checklist.md', icon: RuleIcon, generatedBy: 'Audit AI', preview: evidenceChecklist },

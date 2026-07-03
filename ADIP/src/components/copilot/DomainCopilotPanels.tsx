@@ -23,6 +23,31 @@ import {
   type CopilotSuggestedAction,
 } from './CopilotSection';
 import { useCopilot } from '../../context/CopilotContext';
+import type { SdlcPhase } from '../../data/copilotOrchestrationEngine';
+
+/**
+ * When the user has run a prompt in the Authoring Studio, every copilot panel
+ * shows prompt-relevant findings/recommendations from the shared orchestration.
+ * Otherwise it falls back to the panel's built-in static content.
+ */
+function useCopilotPhaseOverride(
+  phase: SdlcPhase,
+  fallback: { findings: CopilotFinding[]; recommendations: CopilotRecommendation[]; analyzedSubtitle: string; analyzedScope: string[] },
+) {
+  const { orchestrationActive, orchestration } = useCopilot();
+  if (!orchestrationActive) {
+    return { ...fallback, scoreChip: null as string | null, reasoning: undefined as { steps: string[]; confidence: number } | undefined };
+  }
+  const p = orchestration.phases[phase];
+  return {
+    findings: p.findings,
+    recommendations: p.recommendations,
+    analyzedSubtitle: p.analyzedSubtitle,
+    analyzedScope: [`Prompt: ${orchestration.scenario.label}`, ...p.analyzedScope],
+    scoreChip: `${p.scoreLabel}: ${p.score}/100`,
+    reasoning: { steps: p.reasoning.steps.map((s) => s.text), confidence: p.reasoning.confidence },
+  };
+}
 
 // ---------------------------------------------------------------------------
 // Architecture Copilot — architecture risks + modernization recommendations
@@ -151,20 +176,28 @@ CDC-streamed Loans disbursement                    2       6w       Same-day SLA
 Closing all Wave-1 gaps moves residual risk LOW and unlocks the Wave-2
 modernization plan.`;
 
+  const ov = useCopilotPhaseOverride('architecture', {
+    findings,
+    recommendations,
+    analyzedSubtitle: `AI reviewed solution and platform architecture across UPI, Mobile Banking, Net Banking, Cards, Loans and Payments for architecture findings, risk observations, resiliency analysis and modernization opportunities on ${selectedProject.name}.`,
+    analyzedScope: [
+      '6 banking platforms',
+      `${findings.length} findings`,
+      `${findings.filter((f) => (f.badge ?? '').includes('Resiliency')).length} resiliency · ${findings.filter((f) => (f.badge ?? '').includes('Modernization')).length} modernization`,
+    ],
+  });
+
   return (
     <CopilotSection
       title="Architecture Copilot"
       sourceHub="ai-copilot"
       sourceLabel="Architecture Copilot"
-      analyzedSubtitle={`AI reviewed solution and platform architecture across UPI, Mobile Banking, Net Banking, Cards, Loans and Payments for architecture findings, risk observations, resiliency analysis and modernization opportunities on ${selectedProject.name}.`}
-      analyzedScope={[
-        '6 banking platforms',
-        `${findings.length} findings`,
-        `${findings.filter((f) => (f.badge ?? '').includes('Resiliency')).length} resiliency · ${findings.filter((f) => (f.badge ?? '').includes('Modernization')).length} modernization`,
-      ]}
+      analyzedSubtitle={ov.analyzedSubtitle}
+      analyzedScope={[...ov.analyzedScope, ...(ov.scoreChip ? [ov.scoreChip] : [])]}
+      reasoning={ov.reasoning}
       findingsTitle="Architecture Findings · Risk Observations · Resiliency · Modernization"
-      findings={findings}
-      recommendations={recommendations}
+      findings={ov.findings}
+      recommendations={ov.recommendations}
       generationActions={[
         { id: 'arch-review', label: 'Generate Architecture Review', artifactName: 'Architecture_Review_Report.docx', icon: RateReviewIcon, generatedBy: 'Architecture AI', preview: archReview },
         { id: 'scorecard', label: 'Generate Architecture Scorecard', artifactName: 'Architecture_Scorecard.docx', icon: AssessmentIcon, generatedBy: 'Architecture AI', preview: archScorecard },
@@ -306,20 +339,28 @@ Estimated $-impact if shipped:
 
 Recommended hold list before next release: defects #1, #2, #3.`;
 
+  const ov = useCopilotPhaseOverride('development', {
+    findings,
+    recommendations,
+    analyzedSubtitle: `AI scanned source, tests, dependencies and runtime telemetry across UPI, Cards, Payments, Loans, Mobile and Net Banking for code quality, security and performance findings on ${selectedProject.name}.`,
+    analyzedScope: [
+      '6 codebases',
+      `${findings.filter((f) => (f.badge ?? '').includes('Code Quality')).length} code quality · ${findings.filter((f) => (f.badge ?? '').includes('Security')).length} security · ${findings.filter((f) => (f.badge ?? '').includes('Performance')).length} performance`,
+      '1 PCI-blocking issue',
+    ],
+  });
+
   return (
     <CopilotSection
       title="Development Copilot"
       sourceHub="ai-copilot"
       sourceLabel="Development Copilot"
-      analyzedSubtitle={`AI scanned source, tests, dependencies and runtime telemetry across UPI, Cards, Payments, Loans, Mobile and Net Banking for code quality, security and performance findings on ${selectedProject.name}.`}
-      analyzedScope={[
-        '6 codebases',
-        `${findings.filter((f) => (f.badge ?? '').includes('Code Quality')).length} code quality · ${findings.filter((f) => (f.badge ?? '').includes('Security')).length} security · ${findings.filter((f) => (f.badge ?? '').includes('Performance')).length} performance`,
-        '1 PCI-blocking issue',
-      ]}
+      analyzedSubtitle={ov.analyzedSubtitle}
+      analyzedScope={[...ov.analyzedScope, ...(ov.scoreChip ? [ov.scoreChip] : [])]}
+      reasoning={ov.reasoning}
       findingsTitle="Code Quality · Security · Performance Findings"
-      findings={findings}
-      recommendations={recommendations}
+      findings={ov.findings}
+      recommendations={ov.recommendations}
       generationActions={[
         { id: 'code-review-summary', label: 'Generate Code Review Report', artifactName: 'Code_Review_Report.docx', icon: ChecklistIcon, generatedBy: 'Development AI', preview: codeReviewSummary },
         { id: 'secure-coding', label: 'Generate Secure Coding Assessment', artifactName: 'Secure_Coding_Assessment.docx', icon: LockIcon, generatedBy: 'Development AI', preview: secureCoding },
@@ -592,21 +633,29 @@ E-6  Net Banking journey
 Each journey emits trace IDs that are picked up by the Audit Copilot
 evidence pull.`;
 
+  const ov = useCopilotPhaseOverride('testing', {
+    findings,
+    recommendations,
+    analyzedSubtitle: `AI analyzed test coverage and failure history across UPI, Cards, Payments, Loans, Mobile and Net Banking, then generated executable test cases, surfaced regression coverage and listed missing scenarios on ${selectedProject.name}.`,
+    analyzedScope: [
+      '6 test suites',
+      `${TEST_CASES.length} test cases generated`,
+      `${MISSING_SCENARIOS.length} missing scenarios`,
+    ],
+  });
+
   return (
     <CopilotSection
       title="Testing Copilot"
       sourceHub="ai-copilot"
       sourceLabel="Testing Copilot"
-      analyzedSubtitle={`AI analyzed test coverage and failure history across UPI, Cards, Payments, Loans, Mobile and Net Banking, then generated executable test cases, surfaced regression coverage and listed missing scenarios on ${selectedProject.name}.`}
-      analyzedScope={[
-        '6 test suites',
-        `${TEST_CASES.length} test cases generated`,
-        `${MISSING_SCENARIOS.length} missing scenarios`,
-      ]}
+      analyzedSubtitle={ov.analyzedSubtitle}
+      analyzedScope={[...ov.analyzedScope, ...(ov.scoreChip ? [ov.scoreChip] : [])]}
+      reasoning={ov.reasoning}
       findingsTitle="Testing Findings · Coverage Gaps"
       primarySlot={<GeneratedTestCasesCard />}
-      findings={findings}
-      recommendations={recommendations}
+      findings={ov.findings}
+      recommendations={ov.recommendations}
       generationActions={[
         { id: 'test-cases', label: 'Generate Test Cases', artifactName: 'Test_Cases.xlsx', icon: ScienceIcon, generatedBy: 'Testing AI', preview: testCasesArtifact },
         { id: 'regression-pack', label: 'Generate Regression Plan', artifactName: 'Regression_Plan.docx', icon: ChecklistIcon, generatedBy: 'Testing AI', preview: regressionPack },

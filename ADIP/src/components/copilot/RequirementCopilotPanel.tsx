@@ -26,7 +26,7 @@ const ISSUE_SEVERITY: Record<string, CopilotFinding['severity']> = {
 };
 
 export function RequirementCopilotPanel() {
-  const { requirementInsights, selectedProject } = useCopilot();
+  const { requirementInsights, selectedProject, orchestrationActive, orchestration } = useCopilot();
 
   const findings: CopilotFinding[] = useMemo(
     () =>
@@ -192,19 +192,31 @@ EDGE
   TS-5  Refund triggered concurrently with manual reversal (idempotent)
 `;
 
+  // When a prompt is active, show prompt-relevant requirements from the shared
+  // orchestration; otherwise fall back to the project's requirement insights.
+  const reqPhase = orchestration.phases.requirements;
+  const shownFindings = orchestrationActive ? reqPhase.findings : findings;
+  const shownRecommendations = orchestrationActive ? reqPhase.recommendations : recommendations;
+  const shownSubtitle = orchestrationActive
+    ? reqPhase.analyzedSubtitle
+    : `AI scanned ${requirementInsights.length + 18} requirements across ${selectedProject.name} for ambiguity, missing acceptance criteria, missing non-functional requirements and weak controls.`;
+  const shownScope = orchestrationActive
+    ? [`Prompt: ${orchestration.scenario.label}`, ...reqPhase.analyzedScope, `${reqPhase.scoreLabel}: ${reqPhase.score}/100`]
+    : [`${selectedProject.name}`, `${requirementInsights.length + 18} requirements`, `${requirementInsights.length} issues found`];
+  const shownReasoning = orchestrationActive
+    ? { steps: reqPhase.reasoning.steps.map((s) => s.text), confidence: reqPhase.reasoning.confidence }
+    : undefined;
+
   return (
     <CopilotSection
       title="Requirements Copilot"
       sourceHub="ai-copilot"
       sourceLabel="Requirements Copilot"
-      analyzedSubtitle={`AI scanned ${requirementInsights.length + 18} requirements across ${selectedProject.name} for ambiguity, missing acceptance criteria, missing non-functional requirements and weak controls.`}
-      analyzedScope={[
-        `${selectedProject.name}`,
-        `${requirementInsights.length + 18} requirements`,
-        `${requirementInsights.length} issues found`,
-      ]}
-      findings={findings}
-      recommendations={recommendations}
+      analyzedSubtitle={shownSubtitle}
+      analyzedScope={shownScope}
+      reasoning={shownReasoning}
+      findings={shownFindings}
+      recommendations={shownRecommendations}
       generationActions={[
         {
           id: 'brd',

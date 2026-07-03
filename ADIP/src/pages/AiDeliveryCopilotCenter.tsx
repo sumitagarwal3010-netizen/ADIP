@@ -3,12 +3,14 @@ import { Box, Chip, Typography } from '@mui/material';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import HubIcon from '@mui/icons-material/Hub';
 import CodeIcon from '@mui/icons-material/Code';
 import ScienceIcon from '@mui/icons-material/Science';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import { Navigate } from 'react-router-dom';
 import { GlassCard } from '../components/common/GlassCard';
+import { SdlcOrchestratorPanel } from '../components/copilot/SdlcOrchestratorPanel';
 import { RequirementCopilotPanel } from '../components/copilot/RequirementCopilotPanel';
 import { ArchitectureCopilotPanel, DevelopmentCopilotPanel, TestingCopilotPanel } from '../components/copilot/DomainCopilotPanels';
 import { ReleaseCopilotPanel, AuditCopilotPanel } from '../components/copilot/ReleaseAuditCopilotPanels';
@@ -32,6 +34,7 @@ import { colors } from '../theme/colors';
  */
 
 type TabKey =
+  | 'orchestrator'
   | 'requirements'
   | 'architecture'
   | 'development'
@@ -40,6 +43,7 @@ type TabKey =
   | 'audit';
 
 const TABS: { key: TabKey; label: string; icon: typeof AssignmentIcon }[] = [
+  { key: 'orchestrator', label: 'AI SDLC Orchestrator', icon: HubIcon },
   { key: 'requirements', label: 'Requirements Copilot', icon: AssignmentIcon },
   { key: 'architecture', label: 'Architecture Copilot', icon: AccountTreeIcon },
   { key: 'development', label: 'Development Copilot', icon: CodeIcon },
@@ -63,9 +67,10 @@ type LegacyTabKey =
   | TabKey;
 
 const LEGACY_TAB_MAP: Record<LegacyTabKey, TabKey> = {
-  dashboard: 'requirements',
-  workspace: 'requirements',
-  health: 'requirements',
+  orchestrator: 'orchestrator',
+  dashboard: 'orchestrator',
+  workspace: 'orchestrator',
+  health: 'orchestrator',
   executive: 'audit',
   improvement: 'audit',
   reports: 'audit',
@@ -84,7 +89,7 @@ interface AiDeliveryCopilotCenterProps {
 export function AiDeliveryCopilotCenter({ initialTab = 'requirements' }: AiDeliveryCopilotCenterProps) {
   const { personaId } = usePersona();
   const { kpis, selectedProject } = useCopilot();
-  const [tab, setTab] = useState<TabKey>(LEGACY_TAB_MAP[initialTab] ?? 'requirements');
+  const [tab, setTab] = useState<TabKey>(LEGACY_TAB_MAP[initialTab] ?? 'orchestrator');
 
   if (!canAccessCopilot(personaId)) {
     return <Navigate to="/" replace />;
@@ -169,6 +174,7 @@ export function AiDeliveryCopilotCenter({ initialTab = 'requirements' }: AiDeliv
         </Typography>
       </GlassCard>
 
+      {tab === 'orchestrator' && <SdlcOrchestratorPanel />}
       {tab === 'requirements' && <RequirementCopilotPanel />}
       {tab === 'architecture' && <ArchitectureCopilotPanel />}
       {tab === 'development' && <DevelopmentCopilotPanel />}

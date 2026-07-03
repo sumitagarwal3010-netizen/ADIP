@@ -7,6 +7,8 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import DownloadIcon from '@mui/icons-material/Download';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import PsychologyIcon from '@mui/icons-material/Psychology';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { colors } from '../../theme/colors';
@@ -51,6 +53,12 @@ export interface CopilotKpi {
   label: string;
   value: string | number;
   suffix?: string;
+}
+
+/** AI reasoning shown at the top of a copilot (checklist + confidence). */
+export interface CopilotReasoningBlock {
+  steps: string[];
+  confidence: number;
 }
 
 export interface CopilotSuggestedAction {
@@ -114,6 +122,8 @@ interface CopilotSectionProps {
   analyzedSubtitle: string;
   /** Optional badge chips that summarize scope of analysis (counts, projects, etc). */
   analyzedScope?: string[];
+  /** Optional AI reasoning block (checklist + confidence) shown after the banner. */
+  reasoning?: CopilotReasoningBlock;
   /** Section heading for findings list (defaults to "AI Findings"). */
   findingsTitle?: string;
   findings: CopilotFinding[];
@@ -157,6 +167,7 @@ export function CopilotSection({
   title,
   analyzedSubtitle,
   analyzedScope,
+  reasoning,
   findingsTitle = 'AI Findings',
   findings,
   recommendationsTitle = 'AI Recommendations',
@@ -278,6 +289,41 @@ export function CopilotSection({
           </Box>
         </Box>
       </GlassCard>
+
+      {/* AI REASONING — why the AI reached its conclusions for this prompt */}
+      {reasoning && reasoning.steps.length > 0 && (
+        <GlassCard sx={{ p: 2, mt: 1.5 }} hover={false}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 1 }}>
+            <PsychologyIcon sx={{ fontSize: 18, color: colors.secondary }} />
+            <Typography sx={{ fontSize: '0.78rem', fontWeight: 700 }}>AI Reasoning</Typography>
+            <Chip
+              label={`Confidence ${reasoning.confidence}%`}
+              size="small"
+              sx={{ height: 18, fontSize: '0.6rem', ml: 'auto', bgcolor: `${colors.success}1f`, color: colors.success, fontWeight: 700 }}
+            />
+          </Box>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
+            {reasoning.steps.map((s) => (
+              <Box
+                key={s}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0.5,
+                  px: 1,
+                  py: 0.5,
+                  borderRadius: 1,
+                  bgcolor: colors.bg.glass,
+                  border: `1px solid ${colors.border.subtle}`,
+                }}
+              >
+                <CheckCircleIcon sx={{ fontSize: 14, color: colors.success }} />
+                <Typography sx={{ fontSize: '0.68rem', color: colors.text.secondary }}>{s}</Typography>
+              </Box>
+            ))}
+          </Box>
+        </GlassCard>
+      )}
 
       {/* 4. WHAT CAN AI GENERATE? — Action strip is given top placement so AI authoring is unmistakable */}
       <GlassCard sx={{ p: 2, mt: 1.5 }} glow="blue">

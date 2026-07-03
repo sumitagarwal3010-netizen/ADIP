@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Box, Button, Chip, TextField, Typography } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import HistoryIcon from '@mui/icons-material/History';
@@ -19,6 +19,8 @@ import { buildHubArtifacts } from '../../data/hubArtifactDefinitions';
 import { createRunId } from '../../data/requirementArtifactFactory';
 import type { Artifact } from '../../types/artifacts';
 import { useArtifactsRegistry } from '../../context/ArtifactsContext';
+import { createArtifact } from '../../data/artifactBuilder';
+import { orchestrateFromPrompt } from '../../data/copilotOrchestrationEngine';
 import {
   AI_WORKSPACE_CONFIGS,
   type AIWorkspaceModule,
@@ -31,6 +33,7 @@ import {
   saveSession,
 } from '../../data/aiSessionStore';
 import { WorkspaceGovernancePanel } from './WorkspaceGovernancePanel';
+import { useCopilot } from '../../context/CopilotContext';
 
 interface AIWorkspacePanelProps {
   module: AIWorkspaceModule;
@@ -81,8 +84,19 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
   const config = AI_WORKSPACE_CONFIGS[module];
   const phaseConfig = PHASE_CONFIG[config.analysisPhase];
   const { recordArtifacts } = useArtifactsRegistry();
+  const { activePrompt, runOrchestration } = useCopilot();
 
-  const [prompt, setPrompt] = useState('');
+  // The AI SDLC Copilot studio is the single prompt that drives every copilot.
+  const isOrchestrator = module === 'ai-copilot';
+
+  const [prompt, setPrompt] = useState(isOrchestrator ? activePrompt : '');
+
+  // Seed the orchestrator prompt from context once so the studio opens populated
+  // with the default UPI Auto-Reversal demo scenario (editable by the user).
+  useEffect(() => {
+    if (isOrchestrator && !prompt.trim()) setPrompt(activePrompt);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [intake, setIntake] = useState<Record<string, string>>({});
   const [history, setHistory] = useState<string[]>([]);
   const [sessions, setSessions] = useState<AISession[]>(() => loadSessions(module));
@@ -128,6 +142,36 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
     setHistory((prev) => [effectivePrompt, ...prev.filter((p) => p !== effectivePrompt)].slice(0, 8));
   };
 
+  /**
+   * Build the generated artifacts for a run. For the AI SDLC Copilot studio we
+   * reuse the shared orchestration engine so artifact names/descriptions stay
+   * prompt-specific (e.g. "UPI Auto-Reversal BRD"); every other hub keeps its
+   * existing `buildHubArtifacts` pipeline. No artifact logic is duplicated.
+   */
+  const buildGeneratedArtifacts = (captured: string, runId: string): Artifact[] => {
+    if (isOrchestrator) {
+      const orch = orchestrateFromPrompt(captured);
+      return orch.artifacts.map((a, i) =>
+        createArtifact({
+          id: `sdlc-${runId}-${i}`,
+          name: a.name,
+          generatedBy: a.generatedBy,
+          fileType: a.name.toLowerCase().includes('matrix') || a.name.toLowerCase().includes('data model') ? 'xlsx' : 'docx',
+          approvalStatus: 'Pending Review',
+          riskRating: 'Medium',
+          previewContent: `${a.name}\n\n${a.description}\n\nScenario: ${orch.scenario.label}\nPrompt-driven AI SDLC run ${runId}.`,
+          executiveSummary: a.description,
+          context: { subject: 'AI SDLC Copilot · ' + orch.scenario.label },
+        }),
+      ).map((a) => ({ ...a, sourceHub: config.artifactHub, sourceLabel: config.title }));
+    }
+    return buildHubArtifacts(config.artifactHub, runId).map((a) => ({
+      ...a,
+      sourceHub: config.artifactHub,
+      sourceLabel: config.title,
+    }));
+  };
+
   const runAnalysis = (thenGenerate: boolean) => {
     if (!hasInput) return;
     pendingArtifactRef.current = thenGenerate;
@@ -136,6 +180,9 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
     setAnalysis(null);
     if (!thenGenerate) setArtifacts([]);
     const captured = effectivePrompt;
+    // One prompt drives the whole AI SDLC: fan the prompt out to every copilot,
+    // the orchestrator summary, advisor insights and traceability via context.
+    if (isOrchestrator) runOrchestration(captured);
     sim.run(() => {
       const result = generateAnalysisResult(config.analysisPhase, captured);
       setAnalysis(result);
@@ -143,11 +190,7 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
       setStage(2);
       if (pendingArtifactRef.current) {
         const runId = createRunId(module.toUpperCase().slice(0, 4));
-        const generated = buildHubArtifacts(config.artifactHub, runId).map((a) => ({
-          ...a,
-          sourceHub: config.artifactHub,
-          sourceLabel: config.title,
-        }));
+        const generated = buildGeneratedArtifacts(captured, runId);
         setArtifacts(generated);
         recordArtifacts(generated);
         setStage(4);
@@ -353,11 +396,7 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
               onClick={() => {
                 pendingArtifactRef.current = true;
                 const runId = createRunId(module.toUpperCase().slice(0, 4));
-                const generated = buildHubArtifacts(config.artifactHub, runId).map((a) => ({
-                  ...a,
-                  sourceHub: config.artifactHub,
-                  sourceLabel: config.title,
-                }));
+                const generated = buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
                 setArtifacts(generated);
                 recordArtifacts(generated);
                 setStage(4);
@@ -375,11 +414,7 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
               startIcon={<DescriptionIcon sx={{ fontSize: 16 }} />}
               onClick={() => {
                 const runId = createRunId(module.toUpperCase().slice(0, 4));
-                const generated = buildHubArtifacts(config.artifactHub, runId).map((a) => ({
-                  ...a,
-                  sourceHub: config.artifactHub,
-                  sourceLabel: config.title,
-                }));
+                const generated = buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
                 setArtifacts(generated);
                 recordArtifacts(generated);
                 setStage(4);

@@ -1,5 +1,6 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useMemo,
   useState,
@@ -38,6 +39,11 @@ import {
   COPILOT_RECOMMENDATIONS,
   COPILOT_RISK_OBSERVATIONS,
 } from '../data/copilotMockData';
+import {
+  DEFAULT_SDLC_PROMPT,
+  orchestrateFromPrompt,
+  type SdlcOrchestration,
+} from '../data/copilotOrchestrationEngine';
 
 interface CopilotContextValue {
   projects: CopilotProject[];
@@ -63,12 +69,39 @@ interface CopilotContextValue {
   improvementActions: typeof COPILOT_IMPROVEMENT_ACTIONS;
   riskObservations: typeof COPILOT_RISK_OBSERVATIONS;
   filterRecommendations: typeof filterRecommendations;
+  /**
+   * Prompt-driven AI SDLC orchestration. One business prompt drives all
+   * copilots, the orchestrator summary, advisor insights, traceability and
+   * artifacts. Defaults to the UPI Auto-Reversal demo scenario so the studio
+   * is populated on first load; `runOrchestration(prompt)` re-runs it.
+   */
+  activePrompt: string;
+  orchestration: SdlcOrchestration;
+  /** True once the user has explicitly run Analyze (vs. the seeded default). */
+  orchestrationActive: boolean;
+  runOrchestration: (prompt: string) => SdlcOrchestration;
 }
 
 const CopilotContext = createContext<CopilotContextValue | null>(null);
 
 export function CopilotProvider({ children }: { children: ReactNode }) {
   const [selectedProjectId, setSelectedProjectId] = useState(COPILOT_PROJECTS[0].id);
+
+  // Prompt-driven orchestration state. Seed with the default UPI scenario so the
+  // Authoring Studio is never empty; flip `orchestrationActive` when the user runs Analyze.
+  const [activePrompt, setActivePrompt] = useState(DEFAULT_SDLC_PROMPT);
+  const [orchestration, setOrchestration] = useState<SdlcOrchestration>(() =>
+    orchestrateFromPrompt(DEFAULT_SDLC_PROMPT),
+  );
+  const [orchestrationActive, setOrchestrationActive] = useState(false);
+
+  const runOrchestration = useCallback((prompt: string): SdlcOrchestration => {
+    const result = orchestrateFromPrompt(prompt);
+    setActivePrompt(result.prompt);
+    setOrchestration(result);
+    setOrchestrationActive(true);
+    return result;
+  }, []);
 
   const selectedProject = useMemo(
     () => getProjectById(selectedProjectId) ?? COPILOT_PROJECTS[0],
@@ -121,11 +154,16 @@ export function CopilotProvider({ children }: { children: ReactNode }) {
     filterRecommendations,
     improvementActions: COPILOT_IMPROVEMENT_ACTIONS,
     riskObservations: COPILOT_RISK_OBSERVATIONS,
+    activePrompt,
+    orchestration,
+    orchestrationActive,
+    runOrchestration,
   }), [
     kpis, executive, selectedProjectId, selectedProject, projectRecommendations,
     projectRisks, projectImprovements, releaseReadiness, requirementInsights,
     architectureInsights, developmentInsights, testingInsights, auditInsights,
     topIssues, domainChart, recTrend, allRecommendations,
+    activePrompt, orchestration, orchestrationActive, runOrchestration,
   ]);
 
   return <CopilotContext.Provider value={value}>{children}</CopilotContext.Provider>;
