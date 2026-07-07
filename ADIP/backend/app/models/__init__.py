@@ -34,6 +34,11 @@ from app.models.platform import (
     Notification,
     TransformationProgram,
 )
+from app.models.prompt_workbench import (
+    WorkbenchPrompt,
+    WorkbenchPromptVersion,
+    WorkbenchRun,
+)
 from app.models.release import Deployment, GoLive, Release
 from app.models.requirements import Requirement, RequirementAnalysis
 from app.models.testing import Defect, TestCase, TestExecution
@@ -84,4 +89,8 @@ __all__ = [
     "TransformationProgram",
     "ActivityLog",
     "Notification",
+    # prompt workbench
+    "WorkbenchPrompt",
+    "WorkbenchPromptVersion",
+    "WorkbenchRun",
 ]

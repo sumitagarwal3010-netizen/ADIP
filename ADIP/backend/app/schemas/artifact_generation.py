@@ -30,9 +30,12 @@ class GeneratedArtifact(BaseModel):
     project_name: str
     reference: str
     generated_by: str = "AI SDLC Copilot"
+    author: str = "AI SDLC Copilot"
     model_used: str = "Gemini"
     version: str = "1.0"
     generated_at: datetime
+    prompt_reference: Optional[str] = None
+    project_reference: Optional[str] = None
     executive_summary: str
     sections: list[ArtifactSection]
 

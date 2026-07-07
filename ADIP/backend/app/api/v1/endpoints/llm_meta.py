@@ -32,8 +32,14 @@ def list_models() -> dict:
 
 @router.get("/providers")
 def list_providers() -> dict:
-    """Report configured providers and availability (scaffolds report False)."""
+    """Report configured providers and availability (health-checked)."""
     return {"providers": llm_service.available_providers()}
+
+
+@router.get("/health")
+def llm_health() -> dict:
+    """Active LLM provider health + configuration snapshot."""
+    return llm_service.health()
 
 
 @router.get("/templates")

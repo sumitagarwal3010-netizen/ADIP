@@ -86,10 +86,12 @@ pytest -q
 10. **Phase 10 (done):** frontend integration feature flag (`src/services/backend`).
 11. **Phase 11 (done):** LLM abstraction layer (scaffold — no runtime dependency).
 12. **Phase 12 (done):** Docker/compose/nginx/health (dev does NOT need Docker).
-13-15. **(done):** developer, solution-architecture and testing docs in `docs/`.
+13-15. **(done):** developer, solution-architecture and testing docs.
 16. **(done):** production readiness — request logging, `/metrics`, audit trail.
 
-See `docs/` for the full guide set.
+See the repository-wide documentation set under [`../docs/`](../docs/README.md)
+(backend guides live under `docs/03_Developer_Manual`, `docs/04_Architecture`,
+`docs/06_Test_Workbench`, `docs/09_Operations`, `docs/10_API`, `docs/11_Database`).
 
 Out of scope until after the CIO demo: LLM, LangChain/LangGraph, PGVector,
 Docker, authentication, RBAC.

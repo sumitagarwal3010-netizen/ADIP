@@ -182,6 +182,79 @@ export const apiClient = {
     return request<T>('/orchestrator/capabilities');
   },
 
+  // --- Prompt templates (artifact-authoring) ---
+  artifactPromptTemplates<T = unknown>(): Promise<T> {
+    return request<T>('/prompt-templates/artifacts');
+  },
+  artifactPromptTemplate<T = unknown>(artifactType: string): Promise<T> {
+    return request<T>(`/prompt-templates/artifacts/${encodeURIComponent(artifactType)}`);
+  },
+
+  // --- Prompt Workbench (versioning + runs) ---
+  createWorkbenchPrompt<T = unknown>(payload: unknown): Promise<T> {
+    return request<T>('/prompt-workbench/prompts', { method: 'POST', body: JSON.stringify(payload) });
+  },
+  listWorkbenchPrompts<T = unknown>(): Promise<T> {
+    return request<T>('/prompt-workbench/prompts');
+  },
+  getWorkbenchPrompt<T = unknown>(id: number): Promise<T> {
+    return request<T>(`/prompt-workbench/prompts/${id}`);
+  },
+  addWorkbenchVersion<T = unknown>(id: number, payload: unknown): Promise<T> {
+    return request<T>(`/prompt-workbench/prompts/${id}/versions`, {
+      method: 'POST', body: JSON.stringify(payload),
+    });
+  },
+  listWorkbenchVersions<T = unknown>(id: number): Promise<T> {
+    return request<T>(`/prompt-workbench/prompts/${id}/versions`);
+  },
+  createWorkbenchRun<T = unknown>(payload: unknown): Promise<T> {
+    return request<T>('/prompt-workbench/runs', { method: 'POST', body: JSON.stringify(payload) });
+  },
+  listWorkbenchRuns<T = unknown>(): Promise<T> {
+    return request<T>('/prompt-workbench/runs');
+  },
+  getWorkbenchRun<T = unknown>(id: number): Promise<T> {
+    return request<T>(`/prompt-workbench/runs/${id}`);
+  },
+  compareWorkbenchRuns<T = unknown>(runIdA: number, runIdB: number): Promise<T> {
+    return request<T>('/prompt-workbench/compare', {
+      method: 'POST', body: JSON.stringify({ run_id_a: runIdA, run_id_b: runIdB }),
+    });
+  },
+
+  // --- Artifact quality scoring ---
+  artifactQualityRules<T = unknown>(): Promise<T> {
+    return request<T>('/artifact-quality/rules');
+  },
+  scoreArtifact<T = unknown>(projectId: number, artifactType: string): Promise<T> {
+    return request<T>('/artifact-quality/score', {
+      method: 'POST', body: JSON.stringify({ project_id: projectId, artifact_type: artifactType }),
+    });
+  },
+  batchScoreArtifacts<T = unknown>(projectId: number, artifactTypes: string[]): Promise<T> {
+    return request<T>('/artifact-quality/batch-score', {
+      method: 'POST', body: JSON.stringify({ project_id: projectId, artifact_types: artifactTypes }),
+    });
+  },
+
+  // --- AI reviewer ---
+  reviewArtifact<T = unknown>(projectId: number, artifactType: string): Promise<T> {
+    return request<T>('/ai-review/review-artifact', {
+      method: 'POST', body: JSON.stringify({ project_id: projectId, artifact_type: artifactType }),
+    });
+  },
+  improveArtifact<T = unknown>(projectId: number, artifactType: string): Promise<T> {
+    return request<T>('/ai-review/improve-artifact', {
+      method: 'POST', body: JSON.stringify({ project_id: projectId, artifact_type: artifactType }),
+    });
+  },
+  reviewRun<T = unknown>(prompt: string, project?: string): Promise<T> {
+    return request<T>('/ai-review/review-run', {
+      method: 'POST', body: JSON.stringify({ prompt, project }),
+    });
+  },
+
   // --- Knowledge + transformation ---
   knowledgeOverview<T = unknown>(): Promise<T> {
     return request<T>('/knowledge/overview');

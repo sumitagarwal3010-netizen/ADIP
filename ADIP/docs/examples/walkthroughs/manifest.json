@@ -1,0 +1,164 @@
+{
+  "examples": [
+    {
+      "domain": "UPI",
+      "file": "upi-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "IMPS",
+      "file": "imps-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "NEFT",
+      "file": "neft-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "RTGS",
+      "file": "rtgs-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "Cards",
+      "file": "cards-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "Loans",
+      "file": "loans-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "KYC",
+      "file": "kyc-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "AML",
+      "file": "aml-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "NPCI",
+      "file": "npci-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "RBI Compliance",
+      "file": "rbi-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "Corporate Banking",
+      "file": "corporate-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "Treasury",
+      "file": "treasury-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "Trade Finance",
+      "file": "trade-finance-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "Merchant Payments",
+      "file": "merchant-payments-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "QR Payments",
+      "file": "qr-payments-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "ATM",
+      "file": "atm-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "Internet Banking",
+      "file": "internet-banking-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "Mobile Banking",
+      "file": "mobile-banking-walkthrough.md",
+      "overall_score": 80,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    },
+    {
+      "domain": "Fraud",
+      "file": "fraud-walkthrough.md",
+      "overall_score": 81,
+      "avg_quality": 87,
+      "avg_review": 87,
+      "artifacts": 13
+    },
+    {
+      "domain": "Digital Payments",
+      "file": "digital-payments-walkthrough.md",
+      "overall_score": 84,
+      "avg_quality": 87,
+      "avg_review": 88,
+      "artifacts": 13
+    }
+  ]
+}

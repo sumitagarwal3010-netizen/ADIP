@@ -1,0 +1,5653 @@
+{
+  "types": {
+    "BRD": {
+      "count": 100,
+      "dir": "brd",
+      "items": [
+        {
+          "file": "brd/001-upi-brd.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/002-upi-brd.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/003-upi-brd.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/004-upi-brd.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/005-upi-brd.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/006-upi-brd.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/007-upi-brd.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/008-imps-brd.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/009-imps-brd.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/010-imps-brd.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/011-imps-brd.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/012-imps-brd.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/013-imps-brd.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/014-imps-brd.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/015-neft-brd.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/016-neft-brd.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/017-neft-brd.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/018-neft-brd.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/019-neft-brd.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/020-neft-brd.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/021-neft-brd.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/022-rtgs-brd.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/023-rtgs-brd.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/024-rtgs-brd.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/025-rtgs-brd.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/026-rtgs-brd.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/027-rtgs-brd.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/028-rtgs-brd.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/029-cards-brd.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/030-cards-brd.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/031-cards-brd.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/032-cards-brd.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/033-cards-brd.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/034-cards-brd.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/035-cards-brd.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/036-loans-brd.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/037-loans-brd.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/038-loans-brd.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/039-loans-brd.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/040-loans-brd.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/041-loans-brd.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/042-loans-brd.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/043-kyc-brd.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/044-kyc-brd.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/045-kyc-brd.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/046-kyc-brd.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/047-kyc-brd.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/048-kyc-brd.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/049-kyc-brd.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/050-aml-brd.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/051-aml-brd.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/052-aml-brd.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/053-aml-brd.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/054-aml-brd.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/055-aml-brd.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/056-aml-brd.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/057-npci-brd.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/058-npci-brd.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/059-npci-brd.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/060-npci-brd.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/061-npci-brd.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/062-npci-brd.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/063-npci-brd.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/064-rbi-brd.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/065-rbi-brd.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/066-rbi-brd.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/067-rbi-brd.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/068-rbi-brd.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/069-rbi-brd.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/070-rbi-brd.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/071-corporate-brd.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/072-corporate-brd.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/073-corporate-brd.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/074-corporate-brd.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/075-corporate-brd.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/076-corporate-brd.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/077-corporate-brd.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/078-treasury-brd.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/079-treasury-brd.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/080-treasury-brd.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/081-treasury-brd.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/082-treasury-brd.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/083-treasury-brd.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/084-treasury-brd.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/085-trade-finance-brd.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/086-trade-finance-brd.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/087-trade-finance-brd.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/088-trade-finance-brd.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/089-trade-finance-brd.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/090-trade-finance-brd.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/091-trade-finance-brd.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/092-merchant-payments-brd.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/093-merchant-payments-brd.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/094-merchant-payments-brd.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/095-merchant-payments-brd.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/096-merchant-payments-brd.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "brd/097-merchant-payments-brd.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/098-merchant-payments-brd.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/099-qr-payments-brd.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "brd/100-qr-payments-brd.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        }
+      ]
+    },
+    "FRD": {
+      "count": 100,
+      "dir": "frd",
+      "items": [
+        {
+          "file": "frd/001-upi-frd.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/002-upi-frd.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/003-upi-frd.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/004-upi-frd.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/005-upi-frd.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/006-upi-frd.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/007-upi-frd.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/008-imps-frd.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/009-imps-frd.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/010-imps-frd.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/011-imps-frd.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/012-imps-frd.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/013-imps-frd.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/014-imps-frd.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/015-neft-frd.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/016-neft-frd.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/017-neft-frd.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/018-neft-frd.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/019-neft-frd.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/020-neft-frd.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/021-neft-frd.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/022-rtgs-frd.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/023-rtgs-frd.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/024-rtgs-frd.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/025-rtgs-frd.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/026-rtgs-frd.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/027-rtgs-frd.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/028-rtgs-frd.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/029-cards-frd.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/030-cards-frd.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/031-cards-frd.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/032-cards-frd.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/033-cards-frd.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/034-cards-frd.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/035-cards-frd.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/036-loans-frd.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/037-loans-frd.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/038-loans-frd.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/039-loans-frd.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/040-loans-frd.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/041-loans-frd.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/042-loans-frd.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/043-kyc-frd.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/044-kyc-frd.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/045-kyc-frd.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/046-kyc-frd.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/047-kyc-frd.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/048-kyc-frd.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/049-kyc-frd.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/050-aml-frd.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/051-aml-frd.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/052-aml-frd.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/053-aml-frd.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/054-aml-frd.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/055-aml-frd.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/056-aml-frd.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/057-npci-frd.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/058-npci-frd.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/059-npci-frd.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/060-npci-frd.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/061-npci-frd.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/062-npci-frd.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/063-npci-frd.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/064-rbi-frd.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/065-rbi-frd.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/066-rbi-frd.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/067-rbi-frd.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/068-rbi-frd.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/069-rbi-frd.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/070-rbi-frd.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/071-corporate-frd.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/072-corporate-frd.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/073-corporate-frd.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/074-corporate-frd.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/075-corporate-frd.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/076-corporate-frd.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/077-corporate-frd.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/078-treasury-frd.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/079-treasury-frd.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/080-treasury-frd.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/081-treasury-frd.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/082-treasury-frd.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/083-treasury-frd.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/084-treasury-frd.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/085-trade-finance-frd.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/086-trade-finance-frd.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/087-trade-finance-frd.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/088-trade-finance-frd.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/089-trade-finance-frd.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/090-trade-finance-frd.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/091-trade-finance-frd.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/092-merchant-payments-frd.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/093-merchant-payments-frd.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/094-merchant-payments-frd.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/095-merchant-payments-frd.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/096-merchant-payments-frd.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/097-merchant-payments-frd.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/098-merchant-payments-frd.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 94,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/099-qr-payments-frd.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "frd/100-qr-payments-frd.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 93,
+          "quality_band": "Excellent"
+        }
+      ]
+    },
+    "HLD": {
+      "count": 100,
+      "dir": "hld",
+      "items": [
+        {
+          "file": "hld/001-upi-hld.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/002-upi-hld.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/003-upi-hld.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/004-upi-hld.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/005-upi-hld.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/006-upi-hld.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/007-upi-hld.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/008-imps-hld.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/009-imps-hld.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/010-imps-hld.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/011-imps-hld.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/012-imps-hld.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/013-imps-hld.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/014-imps-hld.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/015-neft-hld.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/016-neft-hld.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/017-neft-hld.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/018-neft-hld.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/019-neft-hld.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/020-neft-hld.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/021-neft-hld.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/022-rtgs-hld.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/023-rtgs-hld.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/024-rtgs-hld.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/025-rtgs-hld.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/026-rtgs-hld.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/027-rtgs-hld.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/028-rtgs-hld.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/029-cards-hld.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/030-cards-hld.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/031-cards-hld.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/032-cards-hld.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/033-cards-hld.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/034-cards-hld.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/035-cards-hld.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/036-loans-hld.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/037-loans-hld.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/038-loans-hld.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/039-loans-hld.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/040-loans-hld.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/041-loans-hld.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/042-loans-hld.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/043-kyc-hld.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/044-kyc-hld.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/045-kyc-hld.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/046-kyc-hld.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/047-kyc-hld.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/048-kyc-hld.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/049-kyc-hld.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/050-aml-hld.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/051-aml-hld.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/052-aml-hld.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/053-aml-hld.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/054-aml-hld.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/055-aml-hld.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/056-aml-hld.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/057-npci-hld.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/058-npci-hld.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/059-npci-hld.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/060-npci-hld.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/061-npci-hld.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/062-npci-hld.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/063-npci-hld.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/064-rbi-hld.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/065-rbi-hld.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/066-rbi-hld.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/067-rbi-hld.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/068-rbi-hld.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/069-rbi-hld.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/070-rbi-hld.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/071-corporate-hld.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/072-corporate-hld.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/073-corporate-hld.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/074-corporate-hld.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/075-corporate-hld.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/076-corporate-hld.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/077-corporate-hld.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/078-treasury-hld.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/079-treasury-hld.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/080-treasury-hld.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/081-treasury-hld.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/082-treasury-hld.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/083-treasury-hld.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/084-treasury-hld.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/085-trade-finance-hld.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/086-trade-finance-hld.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/087-trade-finance-hld.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/088-trade-finance-hld.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/089-trade-finance-hld.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/090-trade-finance-hld.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/091-trade-finance-hld.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/092-merchant-payments-hld.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/093-merchant-payments-hld.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/094-merchant-payments-hld.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/095-merchant-payments-hld.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/096-merchant-payments-hld.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/097-merchant-payments-hld.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/098-merchant-payments-hld.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/099-qr-payments-hld.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "hld/100-qr-payments-hld.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        }
+      ]
+    },
+    "LLD": {
+      "count": 100,
+      "dir": "lld",
+      "items": [
+        {
+          "file": "lld/001-upi-lld.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/002-upi-lld.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/003-upi-lld.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/004-upi-lld.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/005-upi-lld.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/006-upi-lld.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/007-upi-lld.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/008-imps-lld.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/009-imps-lld.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/010-imps-lld.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/011-imps-lld.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/012-imps-lld.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/013-imps-lld.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/014-imps-lld.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/015-neft-lld.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/016-neft-lld.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/017-neft-lld.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/018-neft-lld.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/019-neft-lld.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/020-neft-lld.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/021-neft-lld.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/022-rtgs-lld.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/023-rtgs-lld.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/024-rtgs-lld.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/025-rtgs-lld.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/026-rtgs-lld.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/027-rtgs-lld.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/028-rtgs-lld.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/029-cards-lld.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/030-cards-lld.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/031-cards-lld.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/032-cards-lld.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/033-cards-lld.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/034-cards-lld.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/035-cards-lld.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/036-loans-lld.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/037-loans-lld.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/038-loans-lld.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/039-loans-lld.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/040-loans-lld.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/041-loans-lld.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/042-loans-lld.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/043-kyc-lld.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/044-kyc-lld.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/045-kyc-lld.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/046-kyc-lld.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/047-kyc-lld.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/048-kyc-lld.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/049-kyc-lld.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/050-aml-lld.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/051-aml-lld.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/052-aml-lld.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/053-aml-lld.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/054-aml-lld.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/055-aml-lld.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/056-aml-lld.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/057-npci-lld.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/058-npci-lld.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/059-npci-lld.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/060-npci-lld.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/061-npci-lld.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/062-npci-lld.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/063-npci-lld.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/064-rbi-lld.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/065-rbi-lld.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/066-rbi-lld.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/067-rbi-lld.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/068-rbi-lld.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/069-rbi-lld.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/070-rbi-lld.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/071-corporate-lld.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/072-corporate-lld.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/073-corporate-lld.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/074-corporate-lld.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/075-corporate-lld.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/076-corporate-lld.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/077-corporate-lld.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/078-treasury-lld.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/079-treasury-lld.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/080-treasury-lld.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/081-treasury-lld.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/082-treasury-lld.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/083-treasury-lld.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/084-treasury-lld.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/085-trade-finance-lld.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/086-trade-finance-lld.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/087-trade-finance-lld.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/088-trade-finance-lld.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/089-trade-finance-lld.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/090-trade-finance-lld.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/091-trade-finance-lld.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/092-merchant-payments-lld.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/093-merchant-payments-lld.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/094-merchant-payments-lld.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/095-merchant-payments-lld.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/096-merchant-payments-lld.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/097-merchant-payments-lld.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/098-merchant-payments-lld.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 87,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/099-qr-payments-lld.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        },
+        {
+          "file": "lld/100-qr-payments-lld.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 86,
+          "quality_band": "Good"
+        }
+      ]
+    },
+    "Test Plan": {
+      "count": 100,
+      "dir": "test-plan",
+      "items": [
+        {
+          "file": "test-plan/001-upi-test-plan.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/002-upi-test-plan.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/003-upi-test-plan.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/004-upi-test-plan.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/005-upi-test-plan.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/006-upi-test-plan.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/007-upi-test-plan.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/008-imps-test-plan.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/009-imps-test-plan.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/010-imps-test-plan.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/011-imps-test-plan.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/012-imps-test-plan.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/013-imps-test-plan.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/014-imps-test-plan.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/015-neft-test-plan.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/016-neft-test-plan.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/017-neft-test-plan.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/018-neft-test-plan.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/019-neft-test-plan.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/020-neft-test-plan.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/021-neft-test-plan.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/022-rtgs-test-plan.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/023-rtgs-test-plan.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/024-rtgs-test-plan.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/025-rtgs-test-plan.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/026-rtgs-test-plan.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/027-rtgs-test-plan.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/028-rtgs-test-plan.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/029-cards-test-plan.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/030-cards-test-plan.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/031-cards-test-plan.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/032-cards-test-plan.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/033-cards-test-plan.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/034-cards-test-plan.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/035-cards-test-plan.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/036-loans-test-plan.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/037-loans-test-plan.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/038-loans-test-plan.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/039-loans-test-plan.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/040-loans-test-plan.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/041-loans-test-plan.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/042-loans-test-plan.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/043-kyc-test-plan.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/044-kyc-test-plan.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/045-kyc-test-plan.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/046-kyc-test-plan.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/047-kyc-test-plan.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/048-kyc-test-plan.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/049-kyc-test-plan.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/050-aml-test-plan.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/051-aml-test-plan.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/052-aml-test-plan.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/053-aml-test-plan.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/054-aml-test-plan.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/055-aml-test-plan.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/056-aml-test-plan.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/057-npci-test-plan.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/058-npci-test-plan.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/059-npci-test-plan.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/060-npci-test-plan.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/061-npci-test-plan.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/062-npci-test-plan.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/063-npci-test-plan.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/064-rbi-test-plan.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/065-rbi-test-plan.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/066-rbi-test-plan.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/067-rbi-test-plan.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/068-rbi-test-plan.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/069-rbi-test-plan.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/070-rbi-test-plan.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/071-corporate-test-plan.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/072-corporate-test-plan.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/073-corporate-test-plan.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/074-corporate-test-plan.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/075-corporate-test-plan.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/076-corporate-test-plan.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/077-corporate-test-plan.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/078-treasury-test-plan.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/079-treasury-test-plan.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/080-treasury-test-plan.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/081-treasury-test-plan.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/082-treasury-test-plan.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/083-treasury-test-plan.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/084-treasury-test-plan.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/085-trade-finance-test-plan.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/086-trade-finance-test-plan.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/087-trade-finance-test-plan.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/088-trade-finance-test-plan.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/089-trade-finance-test-plan.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/090-trade-finance-test-plan.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/091-trade-finance-test-plan.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/092-merchant-payments-test-plan.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/093-merchant-payments-test-plan.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/094-merchant-payments-test-plan.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/095-merchant-payments-test-plan.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/096-merchant-payments-test-plan.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/097-merchant-payments-test-plan.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/098-merchant-payments-test-plan.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 90,
+          "quality_band": "Excellent"
+        },
+        {
+          "file": "test-plan/099-qr-payments-test-plan.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-plan/100-qr-payments-test-plan.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        }
+      ]
+    },
+    "Test Cases": {
+      "count": 100,
+      "dir": "test-cases",
+      "items": [
+        {
+          "file": "test-cases/001-upi-test-cases.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/002-upi-test-cases.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/003-upi-test-cases.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/004-upi-test-cases.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/005-upi-test-cases.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/006-upi-test-cases.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/007-upi-test-cases.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/008-imps-test-cases.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/009-imps-test-cases.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/010-imps-test-cases.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/011-imps-test-cases.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/012-imps-test-cases.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/013-imps-test-cases.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/014-imps-test-cases.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/015-neft-test-cases.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/016-neft-test-cases.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/017-neft-test-cases.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/018-neft-test-cases.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/019-neft-test-cases.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/020-neft-test-cases.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/021-neft-test-cases.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/022-rtgs-test-cases.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/023-rtgs-test-cases.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/024-rtgs-test-cases.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/025-rtgs-test-cases.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/026-rtgs-test-cases.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/027-rtgs-test-cases.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/028-rtgs-test-cases.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/029-cards-test-cases.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/030-cards-test-cases.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/031-cards-test-cases.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/032-cards-test-cases.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/033-cards-test-cases.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/034-cards-test-cases.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/035-cards-test-cases.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/036-loans-test-cases.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/037-loans-test-cases.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/038-loans-test-cases.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/039-loans-test-cases.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/040-loans-test-cases.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/041-loans-test-cases.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/042-loans-test-cases.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/043-kyc-test-cases.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/044-kyc-test-cases.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/045-kyc-test-cases.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/046-kyc-test-cases.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/047-kyc-test-cases.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/048-kyc-test-cases.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/049-kyc-test-cases.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/050-aml-test-cases.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/051-aml-test-cases.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/052-aml-test-cases.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/053-aml-test-cases.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/054-aml-test-cases.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/055-aml-test-cases.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/056-aml-test-cases.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/057-npci-test-cases.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/058-npci-test-cases.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/059-npci-test-cases.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/060-npci-test-cases.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/061-npci-test-cases.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/062-npci-test-cases.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/063-npci-test-cases.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/064-rbi-test-cases.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/065-rbi-test-cases.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/066-rbi-test-cases.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/067-rbi-test-cases.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/068-rbi-test-cases.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/069-rbi-test-cases.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/070-rbi-test-cases.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/071-corporate-test-cases.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/072-corporate-test-cases.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/073-corporate-test-cases.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/074-corporate-test-cases.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/075-corporate-test-cases.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/076-corporate-test-cases.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/077-corporate-test-cases.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/078-treasury-test-cases.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/079-treasury-test-cases.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/080-treasury-test-cases.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/081-treasury-test-cases.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/082-treasury-test-cases.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/083-treasury-test-cases.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/084-treasury-test-cases.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/085-trade-finance-test-cases.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/086-trade-finance-test-cases.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/087-trade-finance-test-cases.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/088-trade-finance-test-cases.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/089-trade-finance-test-cases.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/090-trade-finance-test-cases.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/091-trade-finance-test-cases.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/092-merchant-payments-test-cases.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/093-merchant-payments-test-cases.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/094-merchant-payments-test-cases.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/095-merchant-payments-test-cases.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/096-merchant-payments-test-cases.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/097-merchant-payments-test-cases.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/098-merchant-payments-test-cases.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/099-qr-payments-test-cases.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        },
+        {
+          "file": "test-cases/100-qr-payments-test-cases.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 89,
+          "quality_band": "Good"
+        }
+      ]
+    },
+    "Executive Summary": {
+      "count": 100,
+      "dir": "executive-summary",
+      "items": [
+        {
+          "file": "executive-summary/001-upi-executive-summary.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/002-upi-executive-summary.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/003-upi-executive-summary.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/004-upi-executive-summary.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/005-upi-executive-summary.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/006-upi-executive-summary.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/007-upi-executive-summary.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/008-imps-executive-summary.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/009-imps-executive-summary.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/010-imps-executive-summary.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/011-imps-executive-summary.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/012-imps-executive-summary.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/013-imps-executive-summary.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/014-imps-executive-summary.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/015-neft-executive-summary.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/016-neft-executive-summary.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/017-neft-executive-summary.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/018-neft-executive-summary.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/019-neft-executive-summary.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/020-neft-executive-summary.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/021-neft-executive-summary.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/022-rtgs-executive-summary.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/023-rtgs-executive-summary.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/024-rtgs-executive-summary.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/025-rtgs-executive-summary.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/026-rtgs-executive-summary.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/027-rtgs-executive-summary.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/028-rtgs-executive-summary.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/029-cards-executive-summary.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/030-cards-executive-summary.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/031-cards-executive-summary.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/032-cards-executive-summary.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/033-cards-executive-summary.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/034-cards-executive-summary.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/035-cards-executive-summary.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/036-loans-executive-summary.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/037-loans-executive-summary.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/038-loans-executive-summary.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/039-loans-executive-summary.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/040-loans-executive-summary.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/041-loans-executive-summary.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/042-loans-executive-summary.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/043-kyc-executive-summary.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/044-kyc-executive-summary.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/045-kyc-executive-summary.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/046-kyc-executive-summary.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/047-kyc-executive-summary.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/048-kyc-executive-summary.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/049-kyc-executive-summary.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/050-aml-executive-summary.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/051-aml-executive-summary.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/052-aml-executive-summary.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/053-aml-executive-summary.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/054-aml-executive-summary.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/055-aml-executive-summary.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/056-aml-executive-summary.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/057-npci-executive-summary.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/058-npci-executive-summary.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/059-npci-executive-summary.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/060-npci-executive-summary.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/061-npci-executive-summary.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/062-npci-executive-summary.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/063-npci-executive-summary.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/064-rbi-executive-summary.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/065-rbi-executive-summary.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/066-rbi-executive-summary.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/067-rbi-executive-summary.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/068-rbi-executive-summary.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/069-rbi-executive-summary.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/070-rbi-executive-summary.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/071-corporate-executive-summary.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/072-corporate-executive-summary.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/073-corporate-executive-summary.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/074-corporate-executive-summary.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/075-corporate-executive-summary.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/076-corporate-executive-summary.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/077-corporate-executive-summary.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/078-treasury-executive-summary.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/079-treasury-executive-summary.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/080-treasury-executive-summary.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/081-treasury-executive-summary.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/082-treasury-executive-summary.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/083-treasury-executive-summary.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/084-treasury-executive-summary.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/085-trade-finance-executive-summary.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/086-trade-finance-executive-summary.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/087-trade-finance-executive-summary.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/088-trade-finance-executive-summary.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/089-trade-finance-executive-summary.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/090-trade-finance-executive-summary.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/091-trade-finance-executive-summary.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/092-merchant-payments-executive-summary.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/093-merchant-payments-executive-summary.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/094-merchant-payments-executive-summary.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/095-merchant-payments-executive-summary.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/096-merchant-payments-executive-summary.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/097-merchant-payments-executive-summary.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/098-merchant-payments-executive-summary.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/099-qr-payments-executive-summary.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "executive-summary/100-qr-payments-executive-summary.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        }
+      ]
+    },
+    "Audit Checklist": {
+      "count": 100,
+      "dir": "audit-checklist",
+      "items": [
+        {
+          "file": "audit-checklist/001-upi-audit-checklist.md",
+          "domain": "UPI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/002-upi-audit-checklist.md",
+          "domain": "UPI",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/003-upi-audit-checklist.md",
+          "domain": "UPI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/004-upi-audit-checklist.md",
+          "domain": "UPI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/005-upi-audit-checklist.md",
+          "domain": "UPI",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/006-upi-audit-checklist.md",
+          "domain": "UPI",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/007-upi-audit-checklist.md",
+          "domain": "UPI",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/008-imps-audit-checklist.md",
+          "domain": "IMPS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/009-imps-audit-checklist.md",
+          "domain": "IMPS",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/010-imps-audit-checklist.md",
+          "domain": "IMPS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/011-imps-audit-checklist.md",
+          "domain": "IMPS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/012-imps-audit-checklist.md",
+          "domain": "IMPS",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/013-imps-audit-checklist.md",
+          "domain": "IMPS",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/014-imps-audit-checklist.md",
+          "domain": "IMPS",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/015-neft-audit-checklist.md",
+          "domain": "NEFT",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/016-neft-audit-checklist.md",
+          "domain": "NEFT",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/017-neft-audit-checklist.md",
+          "domain": "NEFT",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/018-neft-audit-checklist.md",
+          "domain": "NEFT",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/019-neft-audit-checklist.md",
+          "domain": "NEFT",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/020-neft-audit-checklist.md",
+          "domain": "NEFT",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/021-neft-audit-checklist.md",
+          "domain": "NEFT",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/022-rtgs-audit-checklist.md",
+          "domain": "RTGS",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/023-rtgs-audit-checklist.md",
+          "domain": "RTGS",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/024-rtgs-audit-checklist.md",
+          "domain": "RTGS",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/025-rtgs-audit-checklist.md",
+          "domain": "RTGS",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/026-rtgs-audit-checklist.md",
+          "domain": "RTGS",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/027-rtgs-audit-checklist.md",
+          "domain": "RTGS",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/028-rtgs-audit-checklist.md",
+          "domain": "RTGS",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/029-cards-audit-checklist.md",
+          "domain": "Cards",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/030-cards-audit-checklist.md",
+          "domain": "Cards",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/031-cards-audit-checklist.md",
+          "domain": "Cards",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/032-cards-audit-checklist.md",
+          "domain": "Cards",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/033-cards-audit-checklist.md",
+          "domain": "Cards",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/034-cards-audit-checklist.md",
+          "domain": "Cards",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/035-cards-audit-checklist.md",
+          "domain": "Cards",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/036-loans-audit-checklist.md",
+          "domain": "Loans",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/037-loans-audit-checklist.md",
+          "domain": "Loans",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/038-loans-audit-checklist.md",
+          "domain": "Loans",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/039-loans-audit-checklist.md",
+          "domain": "Loans",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/040-loans-audit-checklist.md",
+          "domain": "Loans",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/041-loans-audit-checklist.md",
+          "domain": "Loans",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/042-loans-audit-checklist.md",
+          "domain": "Loans",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/043-kyc-audit-checklist.md",
+          "domain": "KYC",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/044-kyc-audit-checklist.md",
+          "domain": "KYC",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/045-kyc-audit-checklist.md",
+          "domain": "KYC",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/046-kyc-audit-checklist.md",
+          "domain": "KYC",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/047-kyc-audit-checklist.md",
+          "domain": "KYC",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/048-kyc-audit-checklist.md",
+          "domain": "KYC",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/049-kyc-audit-checklist.md",
+          "domain": "KYC",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/050-aml-audit-checklist.md",
+          "domain": "AML",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/051-aml-audit-checklist.md",
+          "domain": "AML",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/052-aml-audit-checklist.md",
+          "domain": "AML",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/053-aml-audit-checklist.md",
+          "domain": "AML",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/054-aml-audit-checklist.md",
+          "domain": "AML",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/055-aml-audit-checklist.md",
+          "domain": "AML",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/056-aml-audit-checklist.md",
+          "domain": "AML",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/057-npci-audit-checklist.md",
+          "domain": "NPCI",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/058-npci-audit-checklist.md",
+          "domain": "NPCI",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/059-npci-audit-checklist.md",
+          "domain": "NPCI",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/060-npci-audit-checklist.md",
+          "domain": "NPCI",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/061-npci-audit-checklist.md",
+          "domain": "NPCI",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/062-npci-audit-checklist.md",
+          "domain": "NPCI",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/063-npci-audit-checklist.md",
+          "domain": "NPCI",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/064-rbi-audit-checklist.md",
+          "domain": "RBI Compliance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/065-rbi-audit-checklist.md",
+          "domain": "RBI Compliance",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/066-rbi-audit-checklist.md",
+          "domain": "RBI Compliance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/067-rbi-audit-checklist.md",
+          "domain": "RBI Compliance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/068-rbi-audit-checklist.md",
+          "domain": "RBI Compliance",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/069-rbi-audit-checklist.md",
+          "domain": "RBI Compliance",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/070-rbi-audit-checklist.md",
+          "domain": "RBI Compliance",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/071-corporate-audit-checklist.md",
+          "domain": "Corporate Banking",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/072-corporate-audit-checklist.md",
+          "domain": "Corporate Banking",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/073-corporate-audit-checklist.md",
+          "domain": "Corporate Banking",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/074-corporate-audit-checklist.md",
+          "domain": "Corporate Banking",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/075-corporate-audit-checklist.md",
+          "domain": "Corporate Banking",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/076-corporate-audit-checklist.md",
+          "domain": "Corporate Banking",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/077-corporate-audit-checklist.md",
+          "domain": "Corporate Banking",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/078-treasury-audit-checklist.md",
+          "domain": "Treasury",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/079-treasury-audit-checklist.md",
+          "domain": "Treasury",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/080-treasury-audit-checklist.md",
+          "domain": "Treasury",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/081-treasury-audit-checklist.md",
+          "domain": "Treasury",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/082-treasury-audit-checklist.md",
+          "domain": "Treasury",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/083-treasury-audit-checklist.md",
+          "domain": "Treasury",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/084-treasury-audit-checklist.md",
+          "domain": "Treasury",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/085-trade-finance-audit-checklist.md",
+          "domain": "Trade Finance",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/086-trade-finance-audit-checklist.md",
+          "domain": "Trade Finance",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/087-trade-finance-audit-checklist.md",
+          "domain": "Trade Finance",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/088-trade-finance-audit-checklist.md",
+          "domain": "Trade Finance",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/089-trade-finance-audit-checklist.md",
+          "domain": "Trade Finance",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/090-trade-finance-audit-checklist.md",
+          "domain": "Trade Finance",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/091-trade-finance-audit-checklist.md",
+          "domain": "Trade Finance",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/092-merchant-payments-audit-checklist.md",
+          "domain": "Merchant Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/093-merchant-payments-audit-checklist.md",
+          "domain": "Merchant Payments",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/094-merchant-payments-audit-checklist.md",
+          "domain": "Merchant Payments",
+          "project": "Payments",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/095-merchant-payments-audit-checklist.md",
+          "domain": "Merchant Payments",
+          "project": "Cards",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/096-merchant-payments-audit-checklist.md",
+          "domain": "Merchant Payments",
+          "project": "ATM Channel",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/097-merchant-payments-audit-checklist.md",
+          "domain": "Merchant Payments",
+          "project": "Corporate Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/098-merchant-payments-audit-checklist.md",
+          "domain": "Merchant Payments",
+          "project": "Treasury",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/099-qr-payments-audit-checklist.md",
+          "domain": "QR Payments",
+          "project": "Net Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        },
+        {
+          "file": "audit-checklist/100-qr-payments-audit-checklist.md",
+          "domain": "QR Payments",
+          "project": "Mobile Banking",
+          "quality_score": 88,
+          "quality_band": "Good"
+        }
+      ]
+    }
+  },
+  "total": 800
+}

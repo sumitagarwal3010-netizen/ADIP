@@ -1,0 +1,261 @@
+{
+  "artifact_types": {
+    "BRD": [
+      {
+        "tier": "excellent",
+        "file": "brd/excellent.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "good",
+        "file": "brd/good.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "average",
+        "file": "brd/average.md",
+        "quality_score": 84,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "brd/poor.md",
+        "quality_score": 63,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "brd/broken.md",
+        "quality_score": 40,
+        "band": "Poor"
+      }
+    ],
+    "FRD": [
+      {
+        "tier": "excellent",
+        "file": "frd/excellent.md",
+        "quality_score": 93,
+        "band": "Excellent"
+      },
+      {
+        "tier": "good",
+        "file": "frd/good.md",
+        "quality_score": 92,
+        "band": "Excellent"
+      },
+      {
+        "tier": "average",
+        "file": "frd/average.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "frd/poor.md",
+        "quality_score": 61,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "frd/broken.md",
+        "quality_score": 40,
+        "band": "Poor"
+      }
+    ],
+    "HLD": [
+      {
+        "tier": "excellent",
+        "file": "hld/excellent.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "good",
+        "file": "hld/good.md",
+        "quality_score": 87,
+        "band": "Good"
+      },
+      {
+        "tier": "average",
+        "file": "hld/average.md",
+        "quality_score": 83,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "hld/poor.md",
+        "quality_score": 60,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "hld/broken.md",
+        "quality_score": 41,
+        "band": "Poor"
+      }
+    ],
+    "LLD": [
+      {
+        "tier": "excellent",
+        "file": "lld/excellent.md",
+        "quality_score": 86,
+        "band": "Good"
+      },
+      {
+        "tier": "good",
+        "file": "lld/good.md",
+        "quality_score": 85,
+        "band": "Good"
+      },
+      {
+        "tier": "average",
+        "file": "lld/average.md",
+        "quality_score": 81,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "lld/poor.md",
+        "quality_score": 60,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "lld/broken.md",
+        "quality_score": 40,
+        "band": "Poor"
+      }
+    ],
+    "Test Plan": [
+      {
+        "tier": "excellent",
+        "file": "test-plan/excellent.md",
+        "quality_score": 89,
+        "band": "Good"
+      },
+      {
+        "tier": "good",
+        "file": "test-plan/good.md",
+        "quality_score": 89,
+        "band": "Good"
+      },
+      {
+        "tier": "average",
+        "file": "test-plan/average.md",
+        "quality_score": 86,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "test-plan/poor.md",
+        "quality_score": 62,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "test-plan/broken.md",
+        "quality_score": 40,
+        "band": "Poor"
+      }
+    ],
+    "Test Cases": [
+      {
+        "tier": "excellent",
+        "file": "test-cases/excellent.md",
+        "quality_score": 89,
+        "band": "Good"
+      },
+      {
+        "tier": "good",
+        "file": "test-cases/good.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "average",
+        "file": "test-cases/average.md",
+        "quality_score": 86,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "test-cases/poor.md",
+        "quality_score": 62,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "test-cases/broken.md",
+        "quality_score": 40,
+        "band": "Poor"
+      }
+    ],
+    "Executive Summary": [
+      {
+        "tier": "excellent",
+        "file": "executive-summary/excellent.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "good",
+        "file": "executive-summary/good.md",
+        "quality_score": 87,
+        "band": "Good"
+      },
+      {
+        "tier": "average",
+        "file": "executive-summary/average.md",
+        "quality_score": 84,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "executive-summary/poor.md",
+        "quality_score": 60,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "executive-summary/broken.md",
+        "quality_score": 40,
+        "band": "Poor"
+      }
+    ],
+    "Audit Checklist": [
+      {
+        "tier": "excellent",
+        "file": "audit-checklist/excellent.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "good",
+        "file": "audit-checklist/good.md",
+        "quality_score": 88,
+        "band": "Good"
+      },
+      {
+        "tier": "average",
+        "file": "audit-checklist/average.md",
+        "quality_score": 82,
+        "band": "Good"
+      },
+      {
+        "tier": "poor",
+        "file": "audit-checklist/poor.md",
+        "quality_score": 62,
+        "band": "Fair"
+      },
+      {
+        "tier": "broken",
+        "file": "audit-checklist/broken.md",
+        "quality_score": 40,
+        "band": "Poor"
+      }
+    ]
+  },
+  "total": 40
+}

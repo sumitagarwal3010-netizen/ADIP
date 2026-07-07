@@ -1,4 +1,4 @@
-"""Phase 11 tests: LLM infrastructure layer (scaffold — no runtime LLM calls)."""
+"""LLM layer tests: abstraction, registry, real Ollama adapter + scaffolds."""
 from __future__ import annotations
 
 import pytest
@@ -51,10 +51,26 @@ def test_service_selects_adapter():
     assert all(available is False for available in providers.values())
 
 
-def test_adapter_is_scaffold_only():
-    adapter = OllamaAdapter()
+def test_future_adapters_are_scaffolds():
+    """OpenAI / Gemini / LM Studio remain scaffolds (raise NotImplementedError)."""
+    from app.llm.adapters.gemini_adapter import GeminiAdapter
+    from app.llm.adapters.lmstudio_adapter import LMStudioAdapter
+    from app.llm.adapters.openai_adapter import OpenAIAdapter
+    req = CompletionRequest(model="x", messages=[Message(Role.USER, "hi")])
+    for adapter in (OpenAIAdapter(), GeminiAdapter(), LMStudioAdapter()):
+        with pytest.raises(NotImplementedError):
+            adapter.complete(req)
+
+
+def test_ollama_adapter_is_real_but_needs_server():
+    """Ollama is a real adapter now: raises LLMProviderError when unreachable
+    (rather than being a NotImplementedError scaffold)."""
+    from app.llm.adapters.base import LLMProviderError
+    adapter = OllamaAdapter(timeout_seconds=1, max_retries=0)
     req = CompletionRequest(model="llama3.1:8b", messages=[Message(Role.USER, "hi")])
-    with pytest.raises(NotImplementedError):
+    if adapter.is_available():
+        pytest.skip("Ollama is running locally; skipping the unreachable-path test.")
+    with pytest.raises(LLMProviderError):
         adapter.complete(req)
 
 
