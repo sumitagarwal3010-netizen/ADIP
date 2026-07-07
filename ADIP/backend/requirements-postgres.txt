@@ -1,0 +1,7 @@
+# PostgreSQL driver for production deployments.
+# Install alongside requirements.txt when DATABASE_URL targets PostgreSQL:
+#   pip install -r requirements.txt -r requirements-postgres.txt
+#
+# psycopg[binary] ships prebuilt wheels; use a version with wheels for your
+# Python. (Not required for the SQLite dev/test default.)
+psycopg[binary]>=3.2.10

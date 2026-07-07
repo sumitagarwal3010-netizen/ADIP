@@ -1,0 +1,9 @@
+node_modules/
+dist/
+backend/.venv/
+backend/*.db
+.git/
+*.log
+vite-debug.log
+.env
+.env.local

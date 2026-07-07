@@ -1,0 +1,18 @@
+# ADIP Backend — core Python dependencies (SQLite dev/test default).
+# Production target: PostgreSQL — install the driver separately via
+# `pip install -r requirements-postgres.txt` (kept out of the default set so the
+# SQLite dev environment installs cleanly on all Python versions).
+
+# Versions chosen to provide prebuilt wheels on current CPython (incl. 3.14),
+# avoiding source builds (pydantic-core/Rust). Lower bounds keep APIs stable.
+fastapi>=0.118,<0.121
+uvicorn[standard]>=0.34,<0.38
+SQLAlchemy>=2.0.36,<2.1
+alembic>=1.14,<1.17
+pydantic>=2.11,<2.14
+pydantic-settings>=2.7,<2.12
+python-dotenv>=1.0.1,<2.0
+
+# Testing
+pytest>=8.3.4,<9.0
+httpx>=0.28.1,<0.29

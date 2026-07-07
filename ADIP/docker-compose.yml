@@ -1,0 +1,59 @@
+# ADIP full-stack deployment (PostgreSQL + FastAPI backend + Nginx frontend).
+#
+# Docker is NOT required for development:
+#   - Backend runs locally on SQLite via `uvicorn app.main:app`.
+#   - Frontend runs locally via `npm run dev`.
+# This compose file is for a production-like containerized run.
+#
+#   docker compose up --build
+#   Frontend: http://localhost:8080   Backend/API: http://localhost:8000
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-adip}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-adip}
+      POSTGRES_DB: ${POSTGRES_DB:-adip}
+    volumes:
+      - adip_pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-adip}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-adip}:${POSTGRES_PASSWORD:-adip}@db:5432/${POSTGRES_DB:-adip}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      DEBUG: ${DEBUG:-false}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  frontend:
+    build:
+      context: .
+      args:
+        VITE_API_BASE_URL: /api/v1
+        VITE_DATA_SOURCE: backend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  adip_pgdata:
