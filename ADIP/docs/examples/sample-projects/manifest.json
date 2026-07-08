@@ -1,0 +1,74 @@
+{
+  "projects": [
+    {
+      "key": "upi",
+      "name": "UPI Real-Time Payments",
+      "prompt": "Implement UPI Auto-Reversal with NPCI reconciliation, TAT SLAs, and audit trail.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "cards",
+      "name": "Cards Issuance & Authorization",
+      "prompt": "Build a card authorization engine with fraud checks, EMI conversion, and PCI-DSS controls.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "loans",
+      "name": "Retail Loans Origination",
+      "prompt": "Design a digital loan origination flow with credit scoring, KYC, and disbursement.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "corporate-banking",
+      "name": "Corporate Banking Onboarding",
+      "prompt": "Implement corporate customer onboarding with entity KYC, mandates, and bulk payments.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "trade-finance",
+      "name": "Trade Finance Letters of Credit",
+      "prompt": "Build a Letter of Credit issuance workflow with SWIFT messaging and compliance screening.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "merchant-payments",
+      "name": "Merchant Payments Settlement",
+      "prompt": "Design merchant settlement with T+1 reconciliation, MDR computation, and dispute handling.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "qr-payments",
+      "name": "QR Payments Acceptance",
+      "prompt": "Implement dynamic and static QR acceptance with UPI interoperability and refunds.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "treasury",
+      "name": "Treasury Liquidity Management",
+      "prompt": "Build a treasury liquidity dashboard with position keeping, limits, and regulatory reporting.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "kyc",
+      "name": "KYC / CDD Platform",
+      "prompt": "Design a KYC platform with e-KYC, periodic re-KYC, risk categorization, and audit.",
+      "phases": 7,
+      "artifacts": 6
+    },
+    {
+      "key": "aml",
+      "name": "AML Transaction Monitoring",
+      "prompt": "Implement AML transaction monitoring with scenario rules, alerts, and STR filing.",
+      "phases": 7,
+      "artifacts": 6
+    }
+  ]
+}

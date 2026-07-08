@@ -42,6 +42,20 @@ def llm_health() -> dict:
     return llm_service.health()
 
 
+@router.get("/runtime")
+def llm_runtime_status() -> dict:
+    """Production runtime snapshot: concurrency, circuit breaker, caches, token/cost accounting."""
+    from app.llm.runtime import llm_runtime
+    return llm_runtime.snapshot()
+
+
+@router.get("/routing")
+def llm_routing(model: str | None = None) -> dict:
+    """Model routing plan (preferred model + automatic fallbacks)."""
+    from app.llm.runtime import llm_runtime
+    return {"plan": llm_runtime.routing_plan(model)}
+
+
 @router.get("/templates")
 def list_templates() -> dict:
     """List available prompt templates."""

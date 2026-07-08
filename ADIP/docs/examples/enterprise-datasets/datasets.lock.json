@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-07-08T00:46:22.098768+00:00",
+  "datasets": {
+    "artifact_examples.jsonl": {
+      "version_id": "158e6af51dfe",
+      "records": 1000,
+      "content_hash": "158e6af51dfe31e60c4287b45cd14c067c1b3c08610f873206734556bbcd8bf0"
+    },
+    "benchmark_cases.jsonl": {
+      "version_id": "28c2988be49d",
+      "records": 1000,
+      "content_hash": "28c2988be49d07f55b588075aad9b04e34529d22aea8ed509d146db0876d09a6"
+    },
+    "eval_cases.jsonl": {
+      "version_id": "2857bcbaa964",
+      "records": 1000,
+      "content_hash": "2857bcbaa964df960a48db15bb113b6832f293f643da47e47bd42defd9659562"
+    },
+    "prompts.jsonl": {
+      "version_id": "a6041d17328c",
+      "records": 1000,
+      "content_hash": "a6041d17328c8804f26055979ce0376035e2764b9035e5db379abcafb2689786"
+    },
+    "review_examples.jsonl": {
+      "version_id": "10dd74b4678f",
+      "records": 1000,
+      "content_hash": "10dd74b4678fe20793075cb0dceb8a0f0a47e2b51935f35272edf04ca799e7f9"
+    }
+  }
+}

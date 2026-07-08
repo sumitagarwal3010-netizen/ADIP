@@ -74,6 +74,12 @@ class Settings(BaseSettings):
     llm_temperature: float = Field(default=0.2)
     llm_max_retries: int = Field(default=2)
 
+    # --- Rate limiting (Role 7 / Security). Disabled by default so dev + tests
+    # are unaffected; enable in production. ---
+    rate_limit_enabled: bool = Field(default=False)
+    rate_limit_rps: float = Field(default=10.0)
+    rate_limit_burst: int = Field(default=20)
+
     @property
     def is_sqlite(self) -> bool:
         return self.database_url.startswith("sqlite")

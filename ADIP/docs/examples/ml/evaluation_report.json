@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-07-08T00:46:22.641197+00:00",
+  "dataset": "eval_cases.jsonl",
+  "result": {
+    "cases": 40,
+    "quality_mean": 88.78,
+    "quality_p50": 88,
+    "quality_p90": 93,
+    "quality_min": 86,
+    "reviewer_mean": 88.78,
+    "latency_ms_mean": 2.42,
+    "band_distribution": {
+      "Good": 28,
+      "Excellent": 12
+    }
+  }
+}

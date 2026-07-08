@@ -36,5 +36,31 @@ class Metrics:
                 "top_paths": [{"path": p, "count": c} for p, c in top],
             }
 
+    def prometheus_format(self) -> str:
+        """Render metrics in Prometheus text exposition format (v0.0.4).
+
+        Dependency-free; a seam to later swap in prometheus_client without
+        changing the /metrics/prometheus route.
+        """
+        with self._lock:
+            avg = (self.total_latency_ms / self.total_requests) if self.total_requests else 0.0
+            lines = [
+                "# HELP adip_requests_total Total HTTP requests.",
+                "# TYPE adip_requests_total counter",
+                f"adip_requests_total {self.total_requests}",
+                "# HELP adip_request_errors_total Total HTTP 5xx responses.",
+                "# TYPE adip_request_errors_total counter",
+                f"adip_request_errors_total {self.total_errors}",
+                "# HELP adip_request_latency_ms_avg Average request latency (ms).",
+                "# TYPE adip_request_latency_ms_avg gauge",
+                f"adip_request_latency_ms_avg {round(avg, 2)}",
+                "# HELP adip_requests_by_path_total Requests per path.",
+                "# TYPE adip_requests_by_path_total counter",
+            ]
+            for path, count in sorted(self.by_path.items()):
+                safe = path.replace('"', '\\"')
+                lines.append(f'adip_requests_by_path_total{{path="{safe}"}} {count}')
+        return "\n".join(lines) + "\n"
+
 
 metrics = Metrics()

@@ -1,0 +1,33 @@
+{
+  "count_per_dataset": 1000,
+  "datasets": {
+    "prompts.jsonl": 1000,
+    "benchmark_cases.jsonl": 1000,
+    "eval_cases.jsonl": 1000,
+    "artifact_examples.jsonl": 1000,
+    "review_examples.jsonl": 1000
+  },
+  "domains": [
+    "UPI",
+    "IMPS",
+    "NEFT",
+    "RTGS",
+    "Cards",
+    "Loans",
+    "KYC",
+    "AML",
+    "NPCI",
+    "RBI Compliance",
+    "Corporate Banking",
+    "Treasury",
+    "Trade Finance",
+    "Merchant Payments",
+    "QR Payments",
+    "ATM",
+    "Internet Banking",
+    "Mobile Banking",
+    "Fraud",
+    "Digital Payments"
+  ],
+  "total_records": 5000
+}

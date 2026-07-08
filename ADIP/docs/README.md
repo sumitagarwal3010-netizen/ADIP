@@ -39,6 +39,9 @@ docs/
   11_Database/         Database schema & migrations
   12_UI_UX/            UI/UX design system & patterns
   13_Deployment/       Installation, Docker, deployment & environment
+  14_Extensibility/    Plugin/extension points (MCP, agents, cloud LLM, RAG, vector DB)
+  15_Security/         Security policy, OWASP checklist, threat model, API hardening
+  examples/            Generated datasets, performance/ML reports, sample projects
   99_Archive/          Superseded / historical docs
 ```
 
@@ -75,12 +78,16 @@ docs/
 - [Developer Setup Guide](03_Developer_Manual/DEVELOPER_SETUP_GUIDE.md)
 - [Coding Standards](03_Developer_Manual/05_CODING_STANDARDS.md)
 - [Troubleshooting](03_Developer_Manual/06_TROUBLESHOOTING.md)
+- [Developer Experience Index](03_Developer_Manual/Developer%20Experience%20Index.md) · [FAQ](03_Developer_Manual/FAQ.md) · [Folder Structure Guide](03_Developer_Manual/Folder%20Structure%20Guide.md)
+- [Administrator Guide](03_Developer_Manual/Administrator%20Guide.md)
 
 ### [04 · Architecture](04_Architecture/)
 - [Architecture Guide](04_Architecture/01_ARCHITECTURE_GUIDE.md)
 - [Solution Architecture (diagrams)](04_Architecture/07_SOLUTION_ARCHITECTURE.md)
 - [Architecture (product)](04_Architecture/02-ADIP-Architecture.md) · [Architecture (reference)](04_Architecture/ARCHITECTURE.md)
-- [Diagrams](04_Architecture/DIAGRAMS.md)
+- [Diagrams](04_Architecture/DIAGRAMS.md) · [C4 & Flow Diagrams](04_Architecture/Architecture%20Diagrams%20(C4%20and%20Flows).md)
+- [Architecture Review & Quality Score](04_Architecture/Architecture%20Review%20and%20Quality%20Score.md) · [Plugin Architecture](04_Architecture/Plugin%20Architecture.md)
+- [Architecture Decision Records (ADR)](04_Architecture/ADR/)
 
 ### [05 · Workbench](05_Workbench/)
 - [Overview](05_Workbench/README.md)
@@ -98,18 +105,30 @@ docs/
 - [Operations Guide](09_Operations/13-ADIP-Operations-Guide.md)
 - [Release Guide](09_Operations/14-ADIP-Release-Guide.md)
 - [Production Readiness](09_Operations/09_PRODUCTION_READINESS.md)
+- [Runbooks](09_Operations/Runbooks.md) · [Observability Guide](09_Operations/Observability%20Guide.md) · [SLIs/SLOs](09_Operations/SLI_SLO.md)
 
 ### [10 · API](10_API/)
 - [API Guide](10_API/03_API_GUIDE.md)
+- [API Examples & Contracts](10_API/API%20Examples%20and%20Contracts.md) · [OpenAPI spec](10_API/openapi.json) · [Postman collection](10_API/ADIP.postman_collection.json)
 
 ### [11 · Database](11_Database/)
 - [Database Guide](11_Database/04_DATABASE_GUIDE.md)
+- [Production Database Guide (DBA)](11_Database/Production%20Database%20Guide.md)
 
 ### [12 · UI / UX](12_UI_UX/)
 - [Overview](12_UI_UX/README.md)
 
 ### [13 · Deployment](13_Deployment/)
 - [Installation Guide](13_Deployment/11-ADIP-Installation-Guide.md)
+- Kubernetes: [`deploy/k8s/`](../deploy/k8s/) · Helm: [`deploy/helm/adip/`](../deploy/helm/adip/) · Terraform: [`deploy/terraform/`](../deploy/terraform/)
+- Observability stack: [`deploy/observability/`](../deploy/observability/)
+
+### [14 · Extensibility](14_Extensibility/)
+- [Extensibility Guide](14_Extensibility/Extensibility%20Guide.md)
+
+### [15 · Security](15_Security/)
+- [OWASP Checklist](15_Security/OWASP%20Checklist.md) · [Threat Model](15_Security/Threat%20Model.md) · [API Hardening](15_Security/API%20Hardening.md)
+- [Security Policy](../SECURITY.md)
 
 ### [99 · Archive](99_Archive/)
 - [About the archive](99_Archive/README.md)

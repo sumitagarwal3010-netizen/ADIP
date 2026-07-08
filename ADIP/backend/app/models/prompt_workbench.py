@@ -24,6 +24,11 @@ class WorkbenchPrompt(Base, TimestampMixin):
     description: Mapped[Optional[str]] = mapped_column(Text)
     category: Mapped[str] = mapped_column(String(80), default="General")
     owner: Mapped[Optional[str]] = mapped_column(String(160))
+    # Prompt Studio (Phase B) fields — additive.
+    tags: Mapped[Optional[str]] = mapped_column(String(400))  # comma-separated
+    is_favorite: Mapped[bool] = mapped_column(default=False)
+    approval_status: Mapped[str] = mapped_column(String(30), default="Draft")
+    is_published: Mapped[bool] = mapped_column(default=False)
 
     versions: Mapped[list["WorkbenchPromptVersion"]] = relationship(
         back_populates="prompt", cascade="all, delete-orphan"

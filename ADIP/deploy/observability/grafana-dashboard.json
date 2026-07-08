@@ -1,0 +1,64 @@
+{
+  "title": "ADIP Platform Health",
+  "uid": "adip-platform-health",
+  "schemaVersion": 39,
+  "editable": true,
+  "tags": ["adip", "sre"],
+  "time": { "from": "now-6h", "to": "now" },
+  "templating": { "list": [] },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Total Requests",
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+      "targets": [{ "expr": "adip_requests_total", "refId": "A" }]
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Total 5xx Errors",
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+      "fieldConfig": { "defaults": { "thresholds": { "steps": [
+        { "color": "green", "value": null }, { "color": "red", "value": 1 } ] } } },
+      "targets": [{ "expr": "adip_request_errors_total", "refId": "A" }]
+    },
+    {
+      "id": 3,
+      "type": "gauge",
+      "title": "Avg Latency (ms)",
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+      "fieldConfig": { "defaults": { "max": 2000, "thresholds": { "steps": [
+        { "color": "green", "value": null }, { "color": "yellow", "value": 500 },
+        { "color": "red", "value": 800 } ] } } },
+      "targets": [{ "expr": "adip_request_latency_ms_avg", "refId": "A" }]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Request Rate (rps)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+      "targets": [{ "expr": "rate(adip_requests_total[1m])", "refId": "A", "legendFormat": "rps" }]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Error Ratio",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+      "targets": [{
+        "expr": "rate(adip_request_errors_total[5m]) / clamp_min(rate(adip_requests_total[5m]), 1)",
+        "refId": "A", "legendFormat": "5xx ratio"
+      }]
+    },
+    {
+      "id": 6,
+      "type": "bargauge",
+      "title": "Top Endpoints by Volume",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 12 },
+      "targets": [{
+        "expr": "topk(10, adip_requests_by_path_total)",
+        "refId": "A", "legendFormat": "{{path}}"
+      }]
+    }
+  ]
+}

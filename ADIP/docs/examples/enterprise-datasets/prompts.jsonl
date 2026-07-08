@@ -1,0 +1,1000 @@
+{"id": "P-0001", "domain": "UPI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0002", "domain": "UPI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0003", "domain": "UPI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0004", "domain": "UPI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0005", "domain": "UPI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0006", "domain": "UPI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0007", "domain": "UPI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0008", "domain": "UPI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0009", "domain": "UPI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0010", "domain": "UPI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0011", "domain": "UPI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0012", "domain": "UPI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0013", "domain": "UPI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0014", "domain": "UPI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0015", "domain": "UPI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0016", "domain": "UPI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0017", "domain": "UPI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0018", "domain": "UPI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0019", "domain": "IMPS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0020", "domain": "IMPS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0021", "domain": "IMPS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0022", "domain": "IMPS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0023", "domain": "IMPS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0024", "domain": "IMPS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0025", "domain": "IMPS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0026", "domain": "IMPS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0027", "domain": "IMPS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0028", "domain": "IMPS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0029", "domain": "IMPS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0030", "domain": "IMPS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0031", "domain": "IMPS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0032", "domain": "IMPS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0033", "domain": "IMPS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0034", "domain": "IMPS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0035", "domain": "IMPS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0036", "domain": "IMPS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0037", "domain": "NEFT", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0038", "domain": "NEFT", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0039", "domain": "NEFT", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0040", "domain": "NEFT", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0041", "domain": "NEFT", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0042", "domain": "NEFT", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0043", "domain": "NEFT", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0044", "domain": "NEFT", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0045", "domain": "NEFT", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0046", "domain": "NEFT", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0047", "domain": "NEFT", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0048", "domain": "NEFT", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0049", "domain": "NEFT", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0050", "domain": "NEFT", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0051", "domain": "NEFT", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0052", "domain": "NEFT", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0053", "domain": "NEFT", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0054", "domain": "NEFT", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0055", "domain": "RTGS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0056", "domain": "RTGS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0057", "domain": "RTGS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0058", "domain": "RTGS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0059", "domain": "RTGS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0060", "domain": "RTGS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0061", "domain": "RTGS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0062", "domain": "RTGS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0063", "domain": "RTGS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0064", "domain": "RTGS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0065", "domain": "RTGS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0066", "domain": "RTGS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0067", "domain": "RTGS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0068", "domain": "RTGS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0069", "domain": "RTGS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0070", "domain": "RTGS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0071", "domain": "RTGS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0072", "domain": "RTGS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0073", "domain": "Cards", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0074", "domain": "Cards", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0075", "domain": "Cards", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0076", "domain": "Cards", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0077", "domain": "Cards", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0078", "domain": "Cards", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0079", "domain": "Cards", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0080", "domain": "Cards", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0081", "domain": "Cards", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0082", "domain": "Cards", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0083", "domain": "Cards", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0084", "domain": "Cards", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0085", "domain": "Cards", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0086", "domain": "Cards", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0087", "domain": "Cards", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0088", "domain": "Cards", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0089", "domain": "Cards", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0090", "domain": "Cards", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0091", "domain": "Loans", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0092", "domain": "Loans", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0093", "domain": "Loans", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0094", "domain": "Loans", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0095", "domain": "Loans", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0096", "domain": "Loans", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0097", "domain": "Loans", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0098", "domain": "Loans", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0099", "domain": "Loans", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0100", "domain": "Loans", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0101", "domain": "Loans", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0102", "domain": "Loans", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0103", "domain": "Loans", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0104", "domain": "Loans", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0105", "domain": "Loans", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0106", "domain": "Loans", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0107", "domain": "Loans", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0108", "domain": "Loans", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0109", "domain": "KYC", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0110", "domain": "KYC", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0111", "domain": "KYC", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0112", "domain": "KYC", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0113", "domain": "KYC", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0114", "domain": "KYC", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0115", "domain": "KYC", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0116", "domain": "KYC", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0117", "domain": "KYC", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0118", "domain": "KYC", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0119", "domain": "KYC", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0120", "domain": "KYC", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0121", "domain": "KYC", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0122", "domain": "KYC", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0123", "domain": "KYC", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0124", "domain": "KYC", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0125", "domain": "KYC", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0126", "domain": "KYC", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0127", "domain": "AML", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0128", "domain": "AML", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0129", "domain": "AML", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0130", "domain": "AML", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0131", "domain": "AML", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0132", "domain": "AML", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0133", "domain": "AML", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0134", "domain": "AML", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0135", "domain": "AML", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0136", "domain": "AML", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0137", "domain": "AML", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0138", "domain": "AML", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0139", "domain": "AML", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0140", "domain": "AML", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0141", "domain": "AML", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0142", "domain": "AML", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0143", "domain": "AML", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0144", "domain": "AML", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0145", "domain": "NPCI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0146", "domain": "NPCI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0147", "domain": "NPCI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0148", "domain": "NPCI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0149", "domain": "NPCI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0150", "domain": "NPCI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0151", "domain": "NPCI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0152", "domain": "NPCI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0153", "domain": "NPCI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0154", "domain": "NPCI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0155", "domain": "NPCI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0156", "domain": "NPCI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0157", "domain": "NPCI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0158", "domain": "NPCI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0159", "domain": "NPCI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0160", "domain": "NPCI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0161", "domain": "NPCI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0162", "domain": "NPCI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0163", "domain": "RBI Compliance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0164", "domain": "RBI Compliance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0165", "domain": "RBI Compliance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0166", "domain": "RBI Compliance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0167", "domain": "RBI Compliance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0168", "domain": "RBI Compliance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0169", "domain": "RBI Compliance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0170", "domain": "RBI Compliance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0171", "domain": "RBI Compliance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0172", "domain": "RBI Compliance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0173", "domain": "RBI Compliance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0174", "domain": "RBI Compliance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0175", "domain": "RBI Compliance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0176", "domain": "RBI Compliance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0177", "domain": "RBI Compliance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0178", "domain": "RBI Compliance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0179", "domain": "RBI Compliance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0180", "domain": "RBI Compliance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0181", "domain": "Corporate Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0182", "domain": "Corporate Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0183", "domain": "Corporate Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0184", "domain": "Corporate Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0185", "domain": "Corporate Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0186", "domain": "Corporate Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0187", "domain": "Corporate Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0188", "domain": "Corporate Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0189", "domain": "Corporate Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0190", "domain": "Corporate Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0191", "domain": "Corporate Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0192", "domain": "Corporate Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0193", "domain": "Corporate Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0194", "domain": "Corporate Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0195", "domain": "Corporate Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0196", "domain": "Corporate Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0197", "domain": "Corporate Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0198", "domain": "Corporate Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0199", "domain": "Treasury", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0200", "domain": "Treasury", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0201", "domain": "Treasury", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0202", "domain": "Treasury", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0203", "domain": "Treasury", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0204", "domain": "Treasury", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0205", "domain": "Treasury", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0206", "domain": "Treasury", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0207", "domain": "Treasury", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0208", "domain": "Treasury", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0209", "domain": "Treasury", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0210", "domain": "Treasury", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0211", "domain": "Treasury", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0212", "domain": "Treasury", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0213", "domain": "Treasury", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0214", "domain": "Treasury", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0215", "domain": "Treasury", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0216", "domain": "Treasury", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0217", "domain": "Trade Finance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0218", "domain": "Trade Finance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0219", "domain": "Trade Finance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0220", "domain": "Trade Finance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0221", "domain": "Trade Finance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0222", "domain": "Trade Finance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0223", "domain": "Trade Finance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0224", "domain": "Trade Finance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0225", "domain": "Trade Finance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0226", "domain": "Trade Finance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0227", "domain": "Trade Finance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0228", "domain": "Trade Finance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0229", "domain": "Trade Finance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0230", "domain": "Trade Finance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0231", "domain": "Trade Finance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0232", "domain": "Trade Finance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0233", "domain": "Trade Finance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0234", "domain": "Trade Finance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0235", "domain": "Merchant Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0236", "domain": "Merchant Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0237", "domain": "Merchant Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0238", "domain": "Merchant Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0239", "domain": "Merchant Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0240", "domain": "Merchant Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0241", "domain": "Merchant Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0242", "domain": "Merchant Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0243", "domain": "Merchant Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0244", "domain": "Merchant Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0245", "domain": "Merchant Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0246", "domain": "Merchant Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0247", "domain": "Merchant Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0248", "domain": "Merchant Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0249", "domain": "Merchant Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0250", "domain": "Merchant Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0251", "domain": "Merchant Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0252", "domain": "Merchant Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0253", "domain": "QR Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0254", "domain": "QR Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0255", "domain": "QR Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0256", "domain": "QR Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0257", "domain": "QR Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0258", "domain": "QR Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0259", "domain": "QR Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0260", "domain": "QR Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0261", "domain": "QR Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0262", "domain": "QR Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0263", "domain": "QR Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0264", "domain": "QR Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0265", "domain": "QR Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0266", "domain": "QR Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0267", "domain": "QR Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0268", "domain": "QR Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0269", "domain": "QR Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0270", "domain": "QR Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0271", "domain": "ATM", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0272", "domain": "ATM", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0273", "domain": "ATM", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0274", "domain": "ATM", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0275", "domain": "ATM", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0276", "domain": "ATM", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0277", "domain": "ATM", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0278", "domain": "ATM", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0279", "domain": "ATM", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0280", "domain": "ATM", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0281", "domain": "ATM", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0282", "domain": "ATM", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0283", "domain": "ATM", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0284", "domain": "ATM", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0285", "domain": "ATM", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0286", "domain": "ATM", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0287", "domain": "ATM", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0288", "domain": "ATM", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0289", "domain": "Internet Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0290", "domain": "Internet Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0291", "domain": "Internet Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0292", "domain": "Internet Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0293", "domain": "Internet Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0294", "domain": "Internet Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0295", "domain": "Internet Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0296", "domain": "Internet Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0297", "domain": "Internet Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0298", "domain": "Internet Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0299", "domain": "Internet Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0300", "domain": "Internet Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0301", "domain": "Internet Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0302", "domain": "Internet Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0303", "domain": "Internet Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0304", "domain": "Internet Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0305", "domain": "Internet Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0306", "domain": "Internet Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0307", "domain": "Mobile Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0308", "domain": "Mobile Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0309", "domain": "Mobile Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0310", "domain": "Mobile Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0311", "domain": "Mobile Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0312", "domain": "Mobile Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0313", "domain": "Mobile Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0314", "domain": "Mobile Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0315", "domain": "Mobile Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0316", "domain": "Mobile Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0317", "domain": "Mobile Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0318", "domain": "Mobile Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0319", "domain": "Mobile Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0320", "domain": "Mobile Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0321", "domain": "Mobile Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0322", "domain": "Mobile Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0323", "domain": "Mobile Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0324", "domain": "Mobile Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0325", "domain": "Fraud", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0326", "domain": "Fraud", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0327", "domain": "Fraud", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0328", "domain": "Fraud", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0329", "domain": "Fraud", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0330", "domain": "Fraud", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0331", "domain": "Fraud", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0332", "domain": "Fraud", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0333", "domain": "Fraud", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0334", "domain": "Fraud", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0335", "domain": "Fraud", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0336", "domain": "Fraud", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0337", "domain": "Fraud", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0338", "domain": "Fraud", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0339", "domain": "Fraud", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0340", "domain": "Fraud", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0341", "domain": "Fraud", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0342", "domain": "Fraud", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0343", "domain": "Digital Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0344", "domain": "Digital Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0345", "domain": "Digital Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0346", "domain": "Digital Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0347", "domain": "Digital Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0348", "domain": "Digital Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0349", "domain": "Digital Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0350", "domain": "Digital Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0351", "domain": "Digital Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0352", "domain": "Digital Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0353", "domain": "Digital Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0354", "domain": "Digital Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0355", "domain": "Digital Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0356", "domain": "Digital Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0357", "domain": "Digital Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0358", "domain": "Digital Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0359", "domain": "Digital Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0360", "domain": "Digital Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0361", "domain": "UPI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0362", "domain": "UPI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0363", "domain": "UPI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0364", "domain": "UPI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0365", "domain": "UPI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0366", "domain": "UPI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0367", "domain": "UPI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0368", "domain": "UPI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0369", "domain": "UPI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0370", "domain": "UPI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0371", "domain": "UPI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0372", "domain": "UPI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0373", "domain": "UPI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0374", "domain": "UPI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0375", "domain": "UPI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0376", "domain": "UPI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0377", "domain": "UPI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0378", "domain": "UPI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0379", "domain": "IMPS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0380", "domain": "IMPS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0381", "domain": "IMPS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0382", "domain": "IMPS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0383", "domain": "IMPS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0384", "domain": "IMPS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0385", "domain": "IMPS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0386", "domain": "IMPS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0387", "domain": "IMPS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0388", "domain": "IMPS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0389", "domain": "IMPS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0390", "domain": "IMPS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0391", "domain": "IMPS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0392", "domain": "IMPS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0393", "domain": "IMPS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0394", "domain": "IMPS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0395", "domain": "IMPS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0396", "domain": "IMPS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0397", "domain": "NEFT", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0398", "domain": "NEFT", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0399", "domain": "NEFT", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0400", "domain": "NEFT", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0401", "domain": "NEFT", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0402", "domain": "NEFT", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0403", "domain": "NEFT", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0404", "domain": "NEFT", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0405", "domain": "NEFT", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0406", "domain": "NEFT", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0407", "domain": "NEFT", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0408", "domain": "NEFT", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0409", "domain": "NEFT", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0410", "domain": "NEFT", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0411", "domain": "NEFT", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0412", "domain": "NEFT", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0413", "domain": "NEFT", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0414", "domain": "NEFT", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0415", "domain": "RTGS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0416", "domain": "RTGS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0417", "domain": "RTGS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0418", "domain": "RTGS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0419", "domain": "RTGS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0420", "domain": "RTGS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0421", "domain": "RTGS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0422", "domain": "RTGS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0423", "domain": "RTGS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0424", "domain": "RTGS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0425", "domain": "RTGS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0426", "domain": "RTGS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0427", "domain": "RTGS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0428", "domain": "RTGS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0429", "domain": "RTGS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0430", "domain": "RTGS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0431", "domain": "RTGS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0432", "domain": "RTGS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0433", "domain": "Cards", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0434", "domain": "Cards", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0435", "domain": "Cards", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0436", "domain": "Cards", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0437", "domain": "Cards", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0438", "domain": "Cards", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0439", "domain": "Cards", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0440", "domain": "Cards", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0441", "domain": "Cards", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0442", "domain": "Cards", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0443", "domain": "Cards", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0444", "domain": "Cards", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0445", "domain": "Cards", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0446", "domain": "Cards", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0447", "domain": "Cards", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0448", "domain": "Cards", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0449", "domain": "Cards", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0450", "domain": "Cards", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0451", "domain": "Loans", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0452", "domain": "Loans", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0453", "domain": "Loans", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0454", "domain": "Loans", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0455", "domain": "Loans", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0456", "domain": "Loans", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0457", "domain": "Loans", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0458", "domain": "Loans", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0459", "domain": "Loans", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0460", "domain": "Loans", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0461", "domain": "Loans", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0462", "domain": "Loans", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0463", "domain": "Loans", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0464", "domain": "Loans", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0465", "domain": "Loans", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0466", "domain": "Loans", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0467", "domain": "Loans", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0468", "domain": "Loans", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0469", "domain": "KYC", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0470", "domain": "KYC", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0471", "domain": "KYC", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0472", "domain": "KYC", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0473", "domain": "KYC", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0474", "domain": "KYC", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0475", "domain": "KYC", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0476", "domain": "KYC", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0477", "domain": "KYC", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0478", "domain": "KYC", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0479", "domain": "KYC", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0480", "domain": "KYC", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0481", "domain": "KYC", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0482", "domain": "KYC", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0483", "domain": "KYC", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0484", "domain": "KYC", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0485", "domain": "KYC", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0486", "domain": "KYC", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0487", "domain": "AML", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0488", "domain": "AML", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0489", "domain": "AML", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0490", "domain": "AML", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0491", "domain": "AML", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0492", "domain": "AML", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0493", "domain": "AML", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0494", "domain": "AML", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0495", "domain": "AML", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0496", "domain": "AML", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0497", "domain": "AML", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0498", "domain": "AML", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0499", "domain": "AML", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0500", "domain": "AML", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0501", "domain": "AML", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0502", "domain": "AML", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0503", "domain": "AML", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0504", "domain": "AML", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0505", "domain": "NPCI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0506", "domain": "NPCI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0507", "domain": "NPCI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0508", "domain": "NPCI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0509", "domain": "NPCI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0510", "domain": "NPCI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0511", "domain": "NPCI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0512", "domain": "NPCI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0513", "domain": "NPCI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0514", "domain": "NPCI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0515", "domain": "NPCI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0516", "domain": "NPCI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0517", "domain": "NPCI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0518", "domain": "NPCI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0519", "domain": "NPCI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0520", "domain": "NPCI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0521", "domain": "NPCI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0522", "domain": "NPCI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0523", "domain": "RBI Compliance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0524", "domain": "RBI Compliance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0525", "domain": "RBI Compliance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0526", "domain": "RBI Compliance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0527", "domain": "RBI Compliance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0528", "domain": "RBI Compliance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0529", "domain": "RBI Compliance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0530", "domain": "RBI Compliance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0531", "domain": "RBI Compliance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0532", "domain": "RBI Compliance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0533", "domain": "RBI Compliance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0534", "domain": "RBI Compliance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0535", "domain": "RBI Compliance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0536", "domain": "RBI Compliance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0537", "domain": "RBI Compliance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0538", "domain": "RBI Compliance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0539", "domain": "RBI Compliance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0540", "domain": "RBI Compliance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0541", "domain": "Corporate Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0542", "domain": "Corporate Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0543", "domain": "Corporate Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0544", "domain": "Corporate Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0545", "domain": "Corporate Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0546", "domain": "Corporate Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0547", "domain": "Corporate Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0548", "domain": "Corporate Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0549", "domain": "Corporate Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0550", "domain": "Corporate Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0551", "domain": "Corporate Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0552", "domain": "Corporate Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0553", "domain": "Corporate Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0554", "domain": "Corporate Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0555", "domain": "Corporate Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0556", "domain": "Corporate Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0557", "domain": "Corporate Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0558", "domain": "Corporate Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0559", "domain": "Treasury", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0560", "domain": "Treasury", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0561", "domain": "Treasury", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0562", "domain": "Treasury", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0563", "domain": "Treasury", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0564", "domain": "Treasury", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0565", "domain": "Treasury", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0566", "domain": "Treasury", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0567", "domain": "Treasury", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0568", "domain": "Treasury", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0569", "domain": "Treasury", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0570", "domain": "Treasury", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0571", "domain": "Treasury", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0572", "domain": "Treasury", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0573", "domain": "Treasury", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0574", "domain": "Treasury", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0575", "domain": "Treasury", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0576", "domain": "Treasury", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0577", "domain": "Trade Finance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0578", "domain": "Trade Finance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0579", "domain": "Trade Finance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0580", "domain": "Trade Finance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0581", "domain": "Trade Finance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0582", "domain": "Trade Finance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0583", "domain": "Trade Finance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0584", "domain": "Trade Finance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0585", "domain": "Trade Finance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0586", "domain": "Trade Finance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0587", "domain": "Trade Finance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0588", "domain": "Trade Finance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0589", "domain": "Trade Finance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0590", "domain": "Trade Finance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0591", "domain": "Trade Finance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0592", "domain": "Trade Finance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0593", "domain": "Trade Finance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0594", "domain": "Trade Finance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0595", "domain": "Merchant Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0596", "domain": "Merchant Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0597", "domain": "Merchant Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0598", "domain": "Merchant Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0599", "domain": "Merchant Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0600", "domain": "Merchant Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0601", "domain": "Merchant Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0602", "domain": "Merchant Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0603", "domain": "Merchant Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0604", "domain": "Merchant Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0605", "domain": "Merchant Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0606", "domain": "Merchant Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0607", "domain": "Merchant Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0608", "domain": "Merchant Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0609", "domain": "Merchant Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0610", "domain": "Merchant Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0611", "domain": "Merchant Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0612", "domain": "Merchant Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0613", "domain": "QR Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0614", "domain": "QR Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0615", "domain": "QR Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0616", "domain": "QR Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0617", "domain": "QR Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0618", "domain": "QR Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0619", "domain": "QR Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0620", "domain": "QR Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0621", "domain": "QR Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0622", "domain": "QR Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0623", "domain": "QR Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0624", "domain": "QR Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0625", "domain": "QR Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0626", "domain": "QR Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0627", "domain": "QR Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0628", "domain": "QR Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0629", "domain": "QR Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0630", "domain": "QR Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0631", "domain": "ATM", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0632", "domain": "ATM", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0633", "domain": "ATM", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0634", "domain": "ATM", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0635", "domain": "ATM", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0636", "domain": "ATM", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0637", "domain": "ATM", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0638", "domain": "ATM", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0639", "domain": "ATM", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0640", "domain": "ATM", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0641", "domain": "ATM", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0642", "domain": "ATM", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0643", "domain": "ATM", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0644", "domain": "ATM", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0645", "domain": "ATM", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0646", "domain": "ATM", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0647", "domain": "ATM", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0648", "domain": "ATM", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0649", "domain": "Internet Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0650", "domain": "Internet Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0651", "domain": "Internet Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0652", "domain": "Internet Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0653", "domain": "Internet Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0654", "domain": "Internet Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0655", "domain": "Internet Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0656", "domain": "Internet Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0657", "domain": "Internet Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0658", "domain": "Internet Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0659", "domain": "Internet Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0660", "domain": "Internet Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0661", "domain": "Internet Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0662", "domain": "Internet Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0663", "domain": "Internet Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0664", "domain": "Internet Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0665", "domain": "Internet Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0666", "domain": "Internet Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Internet Banking.", "compliance": ["RBI"]}
+{"id": "P-0667", "domain": "Mobile Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0668", "domain": "Mobile Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0669", "domain": "Mobile Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0670", "domain": "Mobile Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0671", "domain": "Mobile Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0672", "domain": "Mobile Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0673", "domain": "Mobile Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0674", "domain": "Mobile Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0675", "domain": "Mobile Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0676", "domain": "Mobile Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0677", "domain": "Mobile Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0678", "domain": "Mobile Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0679", "domain": "Mobile Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0680", "domain": "Mobile Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0681", "domain": "Mobile Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0682", "domain": "Mobile Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0683", "domain": "Mobile Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0684", "domain": "Mobile Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Mobile Banking.", "compliance": ["RBI"]}
+{"id": "P-0685", "domain": "Fraud", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0686", "domain": "Fraud", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0687", "domain": "Fraud", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0688", "domain": "Fraud", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0689", "domain": "Fraud", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0690", "domain": "Fraud", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0691", "domain": "Fraud", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0692", "domain": "Fraud", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0693", "domain": "Fraud", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0694", "domain": "Fraud", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0695", "domain": "Fraud", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0696", "domain": "Fraud", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0697", "domain": "Fraud", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0698", "domain": "Fraud", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0699", "domain": "Fraud", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0700", "domain": "Fraud", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0701", "domain": "Fraud", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0702", "domain": "Fraud", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Fraud.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0703", "domain": "Digital Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0704", "domain": "Digital Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0705", "domain": "Digital Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0706", "domain": "Digital Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0707", "domain": "Digital Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0708", "domain": "Digital Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0709", "domain": "Digital Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0710", "domain": "Digital Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0711", "domain": "Digital Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0712", "domain": "Digital Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0713", "domain": "Digital Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0714", "domain": "Digital Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0715", "domain": "Digital Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0716", "domain": "Digital Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0717", "domain": "Digital Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0718", "domain": "Digital Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0719", "domain": "Digital Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0720", "domain": "Digital Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Digital Payments.", "compliance": ["RBI", "NPCI", "PCI-DSS"]}
+{"id": "P-0721", "domain": "UPI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0722", "domain": "UPI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0723", "domain": "UPI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0724", "domain": "UPI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0725", "domain": "UPI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0726", "domain": "UPI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0727", "domain": "UPI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0728", "domain": "UPI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0729", "domain": "UPI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0730", "domain": "UPI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0731", "domain": "UPI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0732", "domain": "UPI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0733", "domain": "UPI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0734", "domain": "UPI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0735", "domain": "UPI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0736", "domain": "UPI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0737", "domain": "UPI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0738", "domain": "UPI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for UPI.", "compliance": ["RBI TAT", "NPCI", "PCI-DSS"]}
+{"id": "P-0739", "domain": "IMPS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0740", "domain": "IMPS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0741", "domain": "IMPS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0742", "domain": "IMPS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0743", "domain": "IMPS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0744", "domain": "IMPS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0745", "domain": "IMPS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0746", "domain": "IMPS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0747", "domain": "IMPS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0748", "domain": "IMPS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0749", "domain": "IMPS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0750", "domain": "IMPS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0751", "domain": "IMPS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0752", "domain": "IMPS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0753", "domain": "IMPS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0754", "domain": "IMPS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0755", "domain": "IMPS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0756", "domain": "IMPS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for IMPS.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0757", "domain": "NEFT", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0758", "domain": "NEFT", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0759", "domain": "NEFT", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0760", "domain": "NEFT", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0761", "domain": "NEFT", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0762", "domain": "NEFT", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0763", "domain": "NEFT", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0764", "domain": "NEFT", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0765", "domain": "NEFT", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0766", "domain": "NEFT", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0767", "domain": "NEFT", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0768", "domain": "NEFT", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0769", "domain": "NEFT", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0770", "domain": "NEFT", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0771", "domain": "NEFT", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0772", "domain": "NEFT", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0773", "domain": "NEFT", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0774", "domain": "NEFT", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NEFT.", "compliance": ["RBI"]}
+{"id": "P-0775", "domain": "RTGS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0776", "domain": "RTGS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0777", "domain": "RTGS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0778", "domain": "RTGS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0779", "domain": "RTGS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0780", "domain": "RTGS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0781", "domain": "RTGS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0782", "domain": "RTGS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0783", "domain": "RTGS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0784", "domain": "RTGS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0785", "domain": "RTGS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0786", "domain": "RTGS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0787", "domain": "RTGS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0788", "domain": "RTGS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0789", "domain": "RTGS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0790", "domain": "RTGS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0791", "domain": "RTGS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0792", "domain": "RTGS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RTGS.", "compliance": ["RBI", "AML"]}
+{"id": "P-0793", "domain": "Cards", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0794", "domain": "Cards", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0795", "domain": "Cards", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0796", "domain": "Cards", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0797", "domain": "Cards", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0798", "domain": "Cards", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0799", "domain": "Cards", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0800", "domain": "Cards", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0801", "domain": "Cards", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0802", "domain": "Cards", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0803", "domain": "Cards", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0804", "domain": "Cards", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0805", "domain": "Cards", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0806", "domain": "Cards", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0807", "domain": "Cards", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0808", "domain": "Cards", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0809", "domain": "Cards", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0810", "domain": "Cards", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Cards.", "compliance": ["PCI-DSS", "RBI"]}
+{"id": "P-0811", "domain": "Loans", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0812", "domain": "Loans", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0813", "domain": "Loans", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0814", "domain": "Loans", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0815", "domain": "Loans", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0816", "domain": "Loans", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0817", "domain": "Loans", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0818", "domain": "Loans", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0819", "domain": "Loans", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0820", "domain": "Loans", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0821", "domain": "Loans", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0822", "domain": "Loans", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0823", "domain": "Loans", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0824", "domain": "Loans", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0825", "domain": "Loans", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0826", "domain": "Loans", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0827", "domain": "Loans", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0828", "domain": "Loans", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Loans.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0829", "domain": "KYC", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0830", "domain": "KYC", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0831", "domain": "KYC", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0832", "domain": "KYC", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0833", "domain": "KYC", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0834", "domain": "KYC", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0835", "domain": "KYC", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0836", "domain": "KYC", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0837", "domain": "KYC", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0838", "domain": "KYC", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0839", "domain": "KYC", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0840", "domain": "KYC", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0841", "domain": "KYC", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0842", "domain": "KYC", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0843", "domain": "KYC", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0844", "domain": "KYC", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0845", "domain": "KYC", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0846", "domain": "KYC", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for KYC.", "compliance": ["RBI", "KYC"]}
+{"id": "P-0847", "domain": "AML", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0848", "domain": "AML", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0849", "domain": "AML", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0850", "domain": "AML", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0851", "domain": "AML", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0852", "domain": "AML", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0853", "domain": "AML", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0854", "domain": "AML", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0855", "domain": "AML", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0856", "domain": "AML", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0857", "domain": "AML", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0858", "domain": "AML", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0859", "domain": "AML", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0860", "domain": "AML", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0861", "domain": "AML", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0862", "domain": "AML", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0863", "domain": "AML", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0864", "domain": "AML", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for AML.", "compliance": ["AML", "FIU-IND", "RBI"]}
+{"id": "P-0865", "domain": "NPCI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0866", "domain": "NPCI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0867", "domain": "NPCI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0868", "domain": "NPCI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0869", "domain": "NPCI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0870", "domain": "NPCI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0871", "domain": "NPCI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0872", "domain": "NPCI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0873", "domain": "NPCI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0874", "domain": "NPCI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0875", "domain": "NPCI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0876", "domain": "NPCI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0877", "domain": "NPCI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0878", "domain": "NPCI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0879", "domain": "NPCI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0880", "domain": "NPCI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0881", "domain": "NPCI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0882", "domain": "NPCI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NPCI.", "compliance": ["NPCI", "RBI TAT"]}
+{"id": "P-0883", "domain": "RBI Compliance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0884", "domain": "RBI Compliance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0885", "domain": "RBI Compliance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0886", "domain": "RBI Compliance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0887", "domain": "RBI Compliance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0888", "domain": "RBI Compliance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0889", "domain": "RBI Compliance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0890", "domain": "RBI Compliance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0891", "domain": "RBI Compliance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0892", "domain": "RBI Compliance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0893", "domain": "RBI Compliance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0894", "domain": "RBI Compliance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0895", "domain": "RBI Compliance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0896", "domain": "RBI Compliance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0897", "domain": "RBI Compliance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0898", "domain": "RBI Compliance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0899", "domain": "RBI Compliance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0900", "domain": "RBI Compliance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RBI Compliance.", "compliance": ["RBI"]}
+{"id": "P-0901", "domain": "Corporate Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0902", "domain": "Corporate Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0903", "domain": "Corporate Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0904", "domain": "Corporate Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0905", "domain": "Corporate Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0906", "domain": "Corporate Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0907", "domain": "Corporate Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0908", "domain": "Corporate Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0909", "domain": "Corporate Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0910", "domain": "Corporate Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0911", "domain": "Corporate Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0912", "domain": "Corporate Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0913", "domain": "Corporate Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0914", "domain": "Corporate Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0915", "domain": "Corporate Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0916", "domain": "Corporate Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0917", "domain": "Corporate Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0918", "domain": "Corporate Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Corporate Banking.", "compliance": ["RBI", "SOX"]}
+{"id": "P-0919", "domain": "Treasury", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0920", "domain": "Treasury", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0921", "domain": "Treasury", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0922", "domain": "Treasury", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0923", "domain": "Treasury", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0924", "domain": "Treasury", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0925", "domain": "Treasury", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0926", "domain": "Treasury", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0927", "domain": "Treasury", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0928", "domain": "Treasury", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0929", "domain": "Treasury", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0930", "domain": "Treasury", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0931", "domain": "Treasury", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0932", "domain": "Treasury", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0933", "domain": "Treasury", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0934", "domain": "Treasury", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0935", "domain": "Treasury", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0936", "domain": "Treasury", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Treasury.", "compliance": ["RBI", "FEMA"]}
+{"id": "P-0937", "domain": "Trade Finance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0938", "domain": "Trade Finance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0939", "domain": "Trade Finance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0940", "domain": "Trade Finance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0941", "domain": "Trade Finance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0942", "domain": "Trade Finance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0943", "domain": "Trade Finance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0944", "domain": "Trade Finance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0945", "domain": "Trade Finance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0946", "domain": "Trade Finance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0947", "domain": "Trade Finance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0948", "domain": "Trade Finance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0949", "domain": "Trade Finance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0950", "domain": "Trade Finance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0951", "domain": "Trade Finance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0952", "domain": "Trade Finance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0953", "domain": "Trade Finance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0954", "domain": "Trade Finance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Trade Finance.", "compliance": ["UCP 600", "RBI"]}
+{"id": "P-0955", "domain": "Merchant Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0956", "domain": "Merchant Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0957", "domain": "Merchant Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0958", "domain": "Merchant Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0959", "domain": "Merchant Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0960", "domain": "Merchant Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0961", "domain": "Merchant Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0962", "domain": "Merchant Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0963", "domain": "Merchant Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0964", "domain": "Merchant Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0965", "domain": "Merchant Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0966", "domain": "Merchant Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0967", "domain": "Merchant Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0968", "domain": "Merchant Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0969", "domain": "Merchant Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0970", "domain": "Merchant Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0971", "domain": "Merchant Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0972", "domain": "Merchant Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Merchant Payments.", "compliance": ["RBI", "PCI-DSS"]}
+{"id": "P-0973", "domain": "QR Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0974", "domain": "QR Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0975", "domain": "QR Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0976", "domain": "QR Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0977", "domain": "QR Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0978", "domain": "QR Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0979", "domain": "QR Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0980", "domain": "QR Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0981", "domain": "QR Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0982", "domain": "QR Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0983", "domain": "QR Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0984", "domain": "QR Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0985", "domain": "QR Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0986", "domain": "QR Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0987", "domain": "QR Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0988", "domain": "QR Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0989", "domain": "QR Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0990", "domain": "QR Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for QR Payments.", "compliance": ["NPCI"]}
+{"id": "P-0991", "domain": "ATM", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0992", "domain": "ATM", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0993", "domain": "ATM", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0994", "domain": "ATM", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0995", "domain": "ATM", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0996", "domain": "ATM", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0997", "domain": "ATM", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0998", "domain": "ATM", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-0999", "domain": "ATM", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for ATM.", "compliance": ["RBI", "NPCI"]}
+{"id": "P-1000", "domain": "ATM", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for ATM.", "compliance": ["RBI", "NPCI"]}

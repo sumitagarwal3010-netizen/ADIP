@@ -27,11 +27,16 @@ class ModelRegistry:
     def _register_defaults(self) -> None:
         for spec in [
             ModelSpec("llama3.1:8b", "ollama", 8192, "Local Llama 3.1 8B via Ollama", default=True),
-            ModelSpec("qwen2.5:7b", "ollama", 32768, "Local Qwen 2.5 7B via Ollama"),
+            ModelSpec("llama3.1:8b-meta", "llama", 8192, "Meta Llama 3.1 8B (Ollama alias)"),
+            ModelSpec("qwen2.5:7b", "qwen", 32768, "Local Qwen 2.5 7B via Ollama"),
             ModelSpec("mistral:7b", "ollama", 8192, "Local Mistral 7B via Ollama"),
-            ModelSpec("gpt-4o-mini", "openai", 128000, "OpenAI GPT-4o mini (future adapter)"),
-            ModelSpec("local-model", "lmstudio", 8192, "LM Studio local model (future adapter)"),
-            ModelSpec("gemini-1.5-flash", "gemini", 1000000, "Google Gemini 1.5 Flash (future adapter)"),
+            ModelSpec("mistral-small-latest", "mistral", 32768, "Mistral Small (cloud)"),
+            ModelSpec("deepseek-chat", "deepseek", 65536, "DeepSeek Chat (cloud)"),
+            ModelSpec("gpt-4o-mini", "openai", 128000, "OpenAI GPT-4o mini"),
+            ModelSpec("claude-3-5-sonnet-latest", "claude", 200000, "Anthropic Claude 3.5 Sonnet"),
+            ModelSpec("local-model", "lmstudio", 8192, "LM Studio local model"),
+            ModelSpec("gemini-1.5-flash", "gemini", 1000000, "Google Gemini 1.5 Flash"),
+            ModelSpec("qwen-plus", "qwen-cloud", 131072, "Qwen Plus via DashScope"),
         ]:
             self._models[spec.id] = spec
 

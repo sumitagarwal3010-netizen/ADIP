@@ -1,0 +1,1000 @@
+{"id": "B-0001", "domain": "UPI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0002", "domain": "UPI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0003", "domain": "UPI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0004", "domain": "UPI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for UPI.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0005", "domain": "UPI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for UPI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0006", "domain": "UPI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0007", "domain": "UPI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0008", "domain": "UPI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0009", "domain": "UPI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for UPI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0010", "domain": "UPI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0011", "domain": "UPI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0012", "domain": "UPI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0013", "domain": "UPI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for UPI.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0014", "domain": "UPI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0015", "domain": "UPI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0016", "domain": "UPI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0017", "domain": "UPI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0018", "domain": "UPI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0019", "domain": "IMPS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0020", "domain": "IMPS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0021", "domain": "IMPS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0022", "domain": "IMPS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for IMPS.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0023", "domain": "IMPS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for IMPS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0024", "domain": "IMPS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0025", "domain": "IMPS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0026", "domain": "IMPS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0027", "domain": "IMPS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for IMPS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0028", "domain": "IMPS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0029", "domain": "IMPS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0030", "domain": "IMPS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0031", "domain": "IMPS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for IMPS.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0032", "domain": "IMPS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0033", "domain": "IMPS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0034", "domain": "IMPS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0035", "domain": "IMPS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0036", "domain": "IMPS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0037", "domain": "NEFT", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0038", "domain": "NEFT", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0039", "domain": "NEFT", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0040", "domain": "NEFT", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NEFT.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0041", "domain": "NEFT", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NEFT.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0042", "domain": "NEFT", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0043", "domain": "NEFT", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0044", "domain": "NEFT", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0045", "domain": "NEFT", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NEFT.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0046", "domain": "NEFT", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0047", "domain": "NEFT", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0048", "domain": "NEFT", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0049", "domain": "NEFT", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NEFT.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0050", "domain": "NEFT", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0051", "domain": "NEFT", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0052", "domain": "NEFT", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0053", "domain": "NEFT", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0054", "domain": "NEFT", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0055", "domain": "RTGS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0056", "domain": "RTGS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0057", "domain": "RTGS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0058", "domain": "RTGS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RTGS.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0059", "domain": "RTGS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RTGS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0060", "domain": "RTGS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0061", "domain": "RTGS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0062", "domain": "RTGS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0063", "domain": "RTGS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RTGS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0064", "domain": "RTGS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0065", "domain": "RTGS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0066", "domain": "RTGS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0067", "domain": "RTGS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RTGS.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0068", "domain": "RTGS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0069", "domain": "RTGS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0070", "domain": "RTGS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0071", "domain": "RTGS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0072", "domain": "RTGS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0073", "domain": "Cards", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0074", "domain": "Cards", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0075", "domain": "Cards", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0076", "domain": "Cards", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Cards.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0077", "domain": "Cards", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Cards.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0078", "domain": "Cards", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0079", "domain": "Cards", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0080", "domain": "Cards", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0081", "domain": "Cards", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Cards.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0082", "domain": "Cards", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0083", "domain": "Cards", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0084", "domain": "Cards", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0085", "domain": "Cards", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Cards.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0086", "domain": "Cards", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0087", "domain": "Cards", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0088", "domain": "Cards", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0089", "domain": "Cards", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0090", "domain": "Cards", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0091", "domain": "Loans", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0092", "domain": "Loans", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0093", "domain": "Loans", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0094", "domain": "Loans", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Loans.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0095", "domain": "Loans", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Loans.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0096", "domain": "Loans", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0097", "domain": "Loans", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0098", "domain": "Loans", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0099", "domain": "Loans", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Loans.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0100", "domain": "Loans", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0101", "domain": "Loans", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0102", "domain": "Loans", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0103", "domain": "Loans", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Loans.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0104", "domain": "Loans", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0105", "domain": "Loans", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0106", "domain": "Loans", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0107", "domain": "Loans", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0108", "domain": "Loans", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0109", "domain": "KYC", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0110", "domain": "KYC", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0111", "domain": "KYC", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0112", "domain": "KYC", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for KYC.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0113", "domain": "KYC", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for KYC.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0114", "domain": "KYC", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0115", "domain": "KYC", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0116", "domain": "KYC", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0117", "domain": "KYC", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for KYC.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0118", "domain": "KYC", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0119", "domain": "KYC", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0120", "domain": "KYC", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0121", "domain": "KYC", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for KYC.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0122", "domain": "KYC", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0123", "domain": "KYC", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0124", "domain": "KYC", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0125", "domain": "KYC", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0126", "domain": "KYC", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0127", "domain": "AML", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0128", "domain": "AML", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0129", "domain": "AML", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0130", "domain": "AML", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for AML.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0131", "domain": "AML", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for AML.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0132", "domain": "AML", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0133", "domain": "AML", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0134", "domain": "AML", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0135", "domain": "AML", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for AML.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0136", "domain": "AML", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0137", "domain": "AML", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0138", "domain": "AML", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0139", "domain": "AML", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for AML.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0140", "domain": "AML", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0141", "domain": "AML", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0142", "domain": "AML", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0143", "domain": "AML", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0144", "domain": "AML", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0145", "domain": "NPCI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0146", "domain": "NPCI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0147", "domain": "NPCI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0148", "domain": "NPCI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NPCI.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0149", "domain": "NPCI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NPCI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0150", "domain": "NPCI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0151", "domain": "NPCI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0152", "domain": "NPCI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0153", "domain": "NPCI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NPCI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0154", "domain": "NPCI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0155", "domain": "NPCI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0156", "domain": "NPCI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0157", "domain": "NPCI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NPCI.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0158", "domain": "NPCI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0159", "domain": "NPCI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0160", "domain": "NPCI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0161", "domain": "NPCI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0162", "domain": "NPCI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0163", "domain": "RBI Compliance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0164", "domain": "RBI Compliance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0165", "domain": "RBI Compliance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0166", "domain": "RBI Compliance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0167", "domain": "RBI Compliance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0168", "domain": "RBI Compliance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0169", "domain": "RBI Compliance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0170", "domain": "RBI Compliance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0171", "domain": "RBI Compliance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0172", "domain": "RBI Compliance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0173", "domain": "RBI Compliance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0174", "domain": "RBI Compliance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0175", "domain": "RBI Compliance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0176", "domain": "RBI Compliance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0177", "domain": "RBI Compliance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0178", "domain": "RBI Compliance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0179", "domain": "RBI Compliance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0180", "domain": "RBI Compliance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0181", "domain": "Corporate Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0182", "domain": "Corporate Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0183", "domain": "Corporate Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0184", "domain": "Corporate Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0185", "domain": "Corporate Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0186", "domain": "Corporate Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0187", "domain": "Corporate Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0188", "domain": "Corporate Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0189", "domain": "Corporate Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0190", "domain": "Corporate Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0191", "domain": "Corporate Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0192", "domain": "Corporate Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0193", "domain": "Corporate Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0194", "domain": "Corporate Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0195", "domain": "Corporate Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0196", "domain": "Corporate Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0197", "domain": "Corporate Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0198", "domain": "Corporate Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0199", "domain": "Treasury", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0200", "domain": "Treasury", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0201", "domain": "Treasury", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0202", "domain": "Treasury", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Treasury.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0203", "domain": "Treasury", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Treasury.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0204", "domain": "Treasury", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0205", "domain": "Treasury", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0206", "domain": "Treasury", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0207", "domain": "Treasury", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Treasury.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0208", "domain": "Treasury", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0209", "domain": "Treasury", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0210", "domain": "Treasury", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0211", "domain": "Treasury", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Treasury.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0212", "domain": "Treasury", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0213", "domain": "Treasury", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0214", "domain": "Treasury", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0215", "domain": "Treasury", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0216", "domain": "Treasury", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0217", "domain": "Trade Finance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0218", "domain": "Trade Finance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0219", "domain": "Trade Finance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0220", "domain": "Trade Finance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Trade Finance.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0221", "domain": "Trade Finance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Trade Finance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0222", "domain": "Trade Finance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0223", "domain": "Trade Finance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0224", "domain": "Trade Finance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0225", "domain": "Trade Finance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Trade Finance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0226", "domain": "Trade Finance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0227", "domain": "Trade Finance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0228", "domain": "Trade Finance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0229", "domain": "Trade Finance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Trade Finance.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0230", "domain": "Trade Finance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0231", "domain": "Trade Finance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0232", "domain": "Trade Finance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0233", "domain": "Trade Finance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0234", "domain": "Trade Finance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0235", "domain": "Merchant Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0236", "domain": "Merchant Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0237", "domain": "Merchant Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0238", "domain": "Merchant Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0239", "domain": "Merchant Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0240", "domain": "Merchant Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0241", "domain": "Merchant Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0242", "domain": "Merchant Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0243", "domain": "Merchant Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0244", "domain": "Merchant Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0245", "domain": "Merchant Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0246", "domain": "Merchant Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0247", "domain": "Merchant Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0248", "domain": "Merchant Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0249", "domain": "Merchant Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0250", "domain": "Merchant Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0251", "domain": "Merchant Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0252", "domain": "Merchant Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0253", "domain": "QR Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0254", "domain": "QR Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0255", "domain": "QR Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0256", "domain": "QR Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for QR Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0257", "domain": "QR Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for QR Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0258", "domain": "QR Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0259", "domain": "QR Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0260", "domain": "QR Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0261", "domain": "QR Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for QR Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0262", "domain": "QR Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0263", "domain": "QR Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0264", "domain": "QR Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0265", "domain": "QR Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for QR Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0266", "domain": "QR Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0267", "domain": "QR Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0268", "domain": "QR Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0269", "domain": "QR Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0270", "domain": "QR Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0271", "domain": "ATM", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0272", "domain": "ATM", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0273", "domain": "ATM", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0274", "domain": "ATM", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for ATM.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0275", "domain": "ATM", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for ATM.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0276", "domain": "ATM", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0277", "domain": "ATM", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0278", "domain": "ATM", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0279", "domain": "ATM", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for ATM.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0280", "domain": "ATM", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0281", "domain": "ATM", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0282", "domain": "ATM", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0283", "domain": "ATM", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for ATM.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0284", "domain": "ATM", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0285", "domain": "ATM", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0286", "domain": "ATM", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0287", "domain": "ATM", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0288", "domain": "ATM", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0289", "domain": "Internet Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0290", "domain": "Internet Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0291", "domain": "Internet Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0292", "domain": "Internet Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Internet Banking.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0293", "domain": "Internet Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Internet Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0294", "domain": "Internet Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0295", "domain": "Internet Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0296", "domain": "Internet Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0297", "domain": "Internet Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Internet Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0298", "domain": "Internet Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0299", "domain": "Internet Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0300", "domain": "Internet Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0301", "domain": "Internet Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Internet Banking.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0302", "domain": "Internet Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0303", "domain": "Internet Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0304", "domain": "Internet Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0305", "domain": "Internet Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0306", "domain": "Internet Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0307", "domain": "Mobile Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0308", "domain": "Mobile Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0309", "domain": "Mobile Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0310", "domain": "Mobile Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0311", "domain": "Mobile Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0312", "domain": "Mobile Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0313", "domain": "Mobile Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0314", "domain": "Mobile Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0315", "domain": "Mobile Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0316", "domain": "Mobile Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0317", "domain": "Mobile Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0318", "domain": "Mobile Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0319", "domain": "Mobile Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0320", "domain": "Mobile Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0321", "domain": "Mobile Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0322", "domain": "Mobile Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0323", "domain": "Mobile Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0324", "domain": "Mobile Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0325", "domain": "Fraud", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0326", "domain": "Fraud", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0327", "domain": "Fraud", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0328", "domain": "Fraud", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Fraud.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0329", "domain": "Fraud", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Fraud.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0330", "domain": "Fraud", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0331", "domain": "Fraud", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0332", "domain": "Fraud", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0333", "domain": "Fraud", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Fraud.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0334", "domain": "Fraud", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0335", "domain": "Fraud", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0336", "domain": "Fraud", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0337", "domain": "Fraud", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Fraud.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0338", "domain": "Fraud", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0339", "domain": "Fraud", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0340", "domain": "Fraud", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0341", "domain": "Fraud", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0342", "domain": "Fraud", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0343", "domain": "Digital Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0344", "domain": "Digital Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0345", "domain": "Digital Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0346", "domain": "Digital Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Digital Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0347", "domain": "Digital Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Digital Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0348", "domain": "Digital Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0349", "domain": "Digital Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0350", "domain": "Digital Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0351", "domain": "Digital Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Digital Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0352", "domain": "Digital Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0353", "domain": "Digital Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0354", "domain": "Digital Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0355", "domain": "Digital Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Digital Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0356", "domain": "Digital Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0357", "domain": "Digital Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0358", "domain": "Digital Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0359", "domain": "Digital Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0360", "domain": "Digital Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0361", "domain": "UPI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0362", "domain": "UPI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0363", "domain": "UPI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0364", "domain": "UPI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for UPI.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0365", "domain": "UPI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for UPI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0366", "domain": "UPI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0367", "domain": "UPI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0368", "domain": "UPI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0369", "domain": "UPI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for UPI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0370", "domain": "UPI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0371", "domain": "UPI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0372", "domain": "UPI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0373", "domain": "UPI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for UPI.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0374", "domain": "UPI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0375", "domain": "UPI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0376", "domain": "UPI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0377", "domain": "UPI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0378", "domain": "UPI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0379", "domain": "IMPS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0380", "domain": "IMPS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0381", "domain": "IMPS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0382", "domain": "IMPS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for IMPS.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0383", "domain": "IMPS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for IMPS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0384", "domain": "IMPS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0385", "domain": "IMPS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0386", "domain": "IMPS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0387", "domain": "IMPS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for IMPS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0388", "domain": "IMPS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0389", "domain": "IMPS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0390", "domain": "IMPS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0391", "domain": "IMPS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for IMPS.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0392", "domain": "IMPS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0393", "domain": "IMPS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0394", "domain": "IMPS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0395", "domain": "IMPS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0396", "domain": "IMPS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0397", "domain": "NEFT", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0398", "domain": "NEFT", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0399", "domain": "NEFT", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0400", "domain": "NEFT", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NEFT.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0401", "domain": "NEFT", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NEFT.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0402", "domain": "NEFT", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0403", "domain": "NEFT", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0404", "domain": "NEFT", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0405", "domain": "NEFT", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NEFT.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0406", "domain": "NEFT", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0407", "domain": "NEFT", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0408", "domain": "NEFT", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0409", "domain": "NEFT", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NEFT.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0410", "domain": "NEFT", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0411", "domain": "NEFT", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0412", "domain": "NEFT", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0413", "domain": "NEFT", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0414", "domain": "NEFT", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0415", "domain": "RTGS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0416", "domain": "RTGS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0417", "domain": "RTGS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0418", "domain": "RTGS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RTGS.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0419", "domain": "RTGS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RTGS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0420", "domain": "RTGS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0421", "domain": "RTGS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0422", "domain": "RTGS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0423", "domain": "RTGS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RTGS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0424", "domain": "RTGS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0425", "domain": "RTGS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0426", "domain": "RTGS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0427", "domain": "RTGS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RTGS.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0428", "domain": "RTGS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0429", "domain": "RTGS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0430", "domain": "RTGS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0431", "domain": "RTGS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0432", "domain": "RTGS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0433", "domain": "Cards", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0434", "domain": "Cards", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0435", "domain": "Cards", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0436", "domain": "Cards", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Cards.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0437", "domain": "Cards", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Cards.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0438", "domain": "Cards", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0439", "domain": "Cards", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0440", "domain": "Cards", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0441", "domain": "Cards", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Cards.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0442", "domain": "Cards", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0443", "domain": "Cards", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0444", "domain": "Cards", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0445", "domain": "Cards", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Cards.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0446", "domain": "Cards", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0447", "domain": "Cards", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0448", "domain": "Cards", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0449", "domain": "Cards", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0450", "domain": "Cards", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0451", "domain": "Loans", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0452", "domain": "Loans", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0453", "domain": "Loans", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0454", "domain": "Loans", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Loans.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0455", "domain": "Loans", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Loans.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0456", "domain": "Loans", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0457", "domain": "Loans", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0458", "domain": "Loans", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0459", "domain": "Loans", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Loans.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0460", "domain": "Loans", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0461", "domain": "Loans", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0462", "domain": "Loans", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0463", "domain": "Loans", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Loans.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0464", "domain": "Loans", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0465", "domain": "Loans", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0466", "domain": "Loans", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0467", "domain": "Loans", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0468", "domain": "Loans", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0469", "domain": "KYC", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0470", "domain": "KYC", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0471", "domain": "KYC", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0472", "domain": "KYC", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for KYC.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0473", "domain": "KYC", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for KYC.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0474", "domain": "KYC", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0475", "domain": "KYC", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0476", "domain": "KYC", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0477", "domain": "KYC", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for KYC.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0478", "domain": "KYC", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0479", "domain": "KYC", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0480", "domain": "KYC", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0481", "domain": "KYC", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for KYC.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0482", "domain": "KYC", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0483", "domain": "KYC", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0484", "domain": "KYC", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0485", "domain": "KYC", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0486", "domain": "KYC", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0487", "domain": "AML", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0488", "domain": "AML", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0489", "domain": "AML", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0490", "domain": "AML", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for AML.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0491", "domain": "AML", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for AML.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0492", "domain": "AML", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0493", "domain": "AML", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0494", "domain": "AML", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0495", "domain": "AML", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for AML.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0496", "domain": "AML", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0497", "domain": "AML", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0498", "domain": "AML", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0499", "domain": "AML", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for AML.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0500", "domain": "AML", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0501", "domain": "AML", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0502", "domain": "AML", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0503", "domain": "AML", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0504", "domain": "AML", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0505", "domain": "NPCI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0506", "domain": "NPCI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0507", "domain": "NPCI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0508", "domain": "NPCI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NPCI.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0509", "domain": "NPCI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NPCI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0510", "domain": "NPCI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0511", "domain": "NPCI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0512", "domain": "NPCI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0513", "domain": "NPCI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NPCI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0514", "domain": "NPCI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0515", "domain": "NPCI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0516", "domain": "NPCI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0517", "domain": "NPCI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NPCI.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0518", "domain": "NPCI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0519", "domain": "NPCI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0520", "domain": "NPCI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0521", "domain": "NPCI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0522", "domain": "NPCI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0523", "domain": "RBI Compliance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0524", "domain": "RBI Compliance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0525", "domain": "RBI Compliance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0526", "domain": "RBI Compliance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0527", "domain": "RBI Compliance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0528", "domain": "RBI Compliance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0529", "domain": "RBI Compliance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0530", "domain": "RBI Compliance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0531", "domain": "RBI Compliance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0532", "domain": "RBI Compliance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0533", "domain": "RBI Compliance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0534", "domain": "RBI Compliance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0535", "domain": "RBI Compliance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0536", "domain": "RBI Compliance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0537", "domain": "RBI Compliance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0538", "domain": "RBI Compliance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0539", "domain": "RBI Compliance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0540", "domain": "RBI Compliance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0541", "domain": "Corporate Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0542", "domain": "Corporate Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0543", "domain": "Corporate Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0544", "domain": "Corporate Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0545", "domain": "Corporate Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0546", "domain": "Corporate Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0547", "domain": "Corporate Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0548", "domain": "Corporate Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0549", "domain": "Corporate Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0550", "domain": "Corporate Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0551", "domain": "Corporate Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0552", "domain": "Corporate Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0553", "domain": "Corporate Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0554", "domain": "Corporate Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0555", "domain": "Corporate Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0556", "domain": "Corporate Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0557", "domain": "Corporate Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0558", "domain": "Corporate Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0559", "domain": "Treasury", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0560", "domain": "Treasury", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0561", "domain": "Treasury", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0562", "domain": "Treasury", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Treasury.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0563", "domain": "Treasury", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Treasury.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0564", "domain": "Treasury", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0565", "domain": "Treasury", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0566", "domain": "Treasury", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0567", "domain": "Treasury", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Treasury.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0568", "domain": "Treasury", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0569", "domain": "Treasury", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0570", "domain": "Treasury", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0571", "domain": "Treasury", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Treasury.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0572", "domain": "Treasury", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0573", "domain": "Treasury", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0574", "domain": "Treasury", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0575", "domain": "Treasury", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0576", "domain": "Treasury", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0577", "domain": "Trade Finance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0578", "domain": "Trade Finance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0579", "domain": "Trade Finance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0580", "domain": "Trade Finance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Trade Finance.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0581", "domain": "Trade Finance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Trade Finance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0582", "domain": "Trade Finance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0583", "domain": "Trade Finance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0584", "domain": "Trade Finance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0585", "domain": "Trade Finance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Trade Finance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0586", "domain": "Trade Finance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0587", "domain": "Trade Finance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0588", "domain": "Trade Finance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0589", "domain": "Trade Finance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Trade Finance.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0590", "domain": "Trade Finance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0591", "domain": "Trade Finance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0592", "domain": "Trade Finance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0593", "domain": "Trade Finance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0594", "domain": "Trade Finance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0595", "domain": "Merchant Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0596", "domain": "Merchant Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0597", "domain": "Merchant Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0598", "domain": "Merchant Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0599", "domain": "Merchant Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0600", "domain": "Merchant Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0601", "domain": "Merchant Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0602", "domain": "Merchant Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0603", "domain": "Merchant Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0604", "domain": "Merchant Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0605", "domain": "Merchant Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0606", "domain": "Merchant Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0607", "domain": "Merchant Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0608", "domain": "Merchant Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0609", "domain": "Merchant Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0610", "domain": "Merchant Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0611", "domain": "Merchant Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0612", "domain": "Merchant Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0613", "domain": "QR Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0614", "domain": "QR Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0615", "domain": "QR Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0616", "domain": "QR Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for QR Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0617", "domain": "QR Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for QR Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0618", "domain": "QR Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0619", "domain": "QR Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0620", "domain": "QR Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0621", "domain": "QR Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for QR Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0622", "domain": "QR Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0623", "domain": "QR Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0624", "domain": "QR Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0625", "domain": "QR Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for QR Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0626", "domain": "QR Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0627", "domain": "QR Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0628", "domain": "QR Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0629", "domain": "QR Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0630", "domain": "QR Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0631", "domain": "ATM", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0632", "domain": "ATM", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0633", "domain": "ATM", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0634", "domain": "ATM", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for ATM.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0635", "domain": "ATM", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for ATM.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0636", "domain": "ATM", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0637", "domain": "ATM", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0638", "domain": "ATM", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0639", "domain": "ATM", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for ATM.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0640", "domain": "ATM", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0641", "domain": "ATM", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0642", "domain": "ATM", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0643", "domain": "ATM", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for ATM.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0644", "domain": "ATM", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0645", "domain": "ATM", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0646", "domain": "ATM", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0647", "domain": "ATM", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0648", "domain": "ATM", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0649", "domain": "Internet Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0650", "domain": "Internet Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0651", "domain": "Internet Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0652", "domain": "Internet Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Internet Banking.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0653", "domain": "Internet Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Internet Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0654", "domain": "Internet Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0655", "domain": "Internet Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0656", "domain": "Internet Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0657", "domain": "Internet Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Internet Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0658", "domain": "Internet Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0659", "domain": "Internet Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0660", "domain": "Internet Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0661", "domain": "Internet Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Internet Banking.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0662", "domain": "Internet Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Internet Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0663", "domain": "Internet Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0664", "domain": "Internet Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0665", "domain": "Internet Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Internet Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0666", "domain": "Internet Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Internet Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0667", "domain": "Mobile Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0668", "domain": "Mobile Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0669", "domain": "Mobile Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0670", "domain": "Mobile Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0671", "domain": "Mobile Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0672", "domain": "Mobile Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0673", "domain": "Mobile Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0674", "domain": "Mobile Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0675", "domain": "Mobile Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0676", "domain": "Mobile Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0677", "domain": "Mobile Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0678", "domain": "Mobile Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0679", "domain": "Mobile Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0680", "domain": "Mobile Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0681", "domain": "Mobile Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0682", "domain": "Mobile Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0683", "domain": "Mobile Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0684", "domain": "Mobile Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Mobile Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0685", "domain": "Fraud", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0686", "domain": "Fraud", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0687", "domain": "Fraud", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0688", "domain": "Fraud", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Fraud.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0689", "domain": "Fraud", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Fraud.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0690", "domain": "Fraud", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0691", "domain": "Fraud", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0692", "domain": "Fraud", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0693", "domain": "Fraud", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Fraud.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0694", "domain": "Fraud", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0695", "domain": "Fraud", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0696", "domain": "Fraud", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0697", "domain": "Fraud", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Fraud.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0698", "domain": "Fraud", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Fraud.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0699", "domain": "Fraud", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0700", "domain": "Fraud", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0701", "domain": "Fraud", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Fraud.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0702", "domain": "Fraud", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Fraud.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0703", "domain": "Digital Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0704", "domain": "Digital Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0705", "domain": "Digital Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0706", "domain": "Digital Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Digital Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0707", "domain": "Digital Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Digital Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0708", "domain": "Digital Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0709", "domain": "Digital Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0710", "domain": "Digital Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0711", "domain": "Digital Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Digital Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0712", "domain": "Digital Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0713", "domain": "Digital Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0714", "domain": "Digital Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0715", "domain": "Digital Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Digital Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0716", "domain": "Digital Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Digital Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0717", "domain": "Digital Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0718", "domain": "Digital Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0719", "domain": "Digital Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Digital Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0720", "domain": "Digital Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Digital Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0721", "domain": "UPI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0722", "domain": "UPI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0723", "domain": "UPI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0724", "domain": "UPI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for UPI.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0725", "domain": "UPI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for UPI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0726", "domain": "UPI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0727", "domain": "UPI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0728", "domain": "UPI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0729", "domain": "UPI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for UPI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0730", "domain": "UPI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0731", "domain": "UPI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0732", "domain": "UPI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0733", "domain": "UPI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for UPI.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0734", "domain": "UPI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for UPI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0735", "domain": "UPI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0736", "domain": "UPI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0737", "domain": "UPI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for UPI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0738", "domain": "UPI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for UPI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0739", "domain": "IMPS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0740", "domain": "IMPS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0741", "domain": "IMPS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0742", "domain": "IMPS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for IMPS.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0743", "domain": "IMPS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for IMPS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0744", "domain": "IMPS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0745", "domain": "IMPS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0746", "domain": "IMPS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0747", "domain": "IMPS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for IMPS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0748", "domain": "IMPS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0749", "domain": "IMPS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0750", "domain": "IMPS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0751", "domain": "IMPS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for IMPS.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0752", "domain": "IMPS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for IMPS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0753", "domain": "IMPS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0754", "domain": "IMPS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0755", "domain": "IMPS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for IMPS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0756", "domain": "IMPS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for IMPS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0757", "domain": "NEFT", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0758", "domain": "NEFT", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0759", "domain": "NEFT", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0760", "domain": "NEFT", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NEFT.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0761", "domain": "NEFT", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NEFT.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0762", "domain": "NEFT", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0763", "domain": "NEFT", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0764", "domain": "NEFT", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0765", "domain": "NEFT", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NEFT.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0766", "domain": "NEFT", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0767", "domain": "NEFT", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0768", "domain": "NEFT", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0769", "domain": "NEFT", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NEFT.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0770", "domain": "NEFT", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NEFT.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0771", "domain": "NEFT", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0772", "domain": "NEFT", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0773", "domain": "NEFT", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NEFT.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0774", "domain": "NEFT", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NEFT.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0775", "domain": "RTGS", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0776", "domain": "RTGS", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0777", "domain": "RTGS", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0778", "domain": "RTGS", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RTGS.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0779", "domain": "RTGS", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RTGS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0780", "domain": "RTGS", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0781", "domain": "RTGS", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0782", "domain": "RTGS", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0783", "domain": "RTGS", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RTGS.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0784", "domain": "RTGS", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0785", "domain": "RTGS", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0786", "domain": "RTGS", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0787", "domain": "RTGS", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RTGS.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0788", "domain": "RTGS", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RTGS.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0789", "domain": "RTGS", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0790", "domain": "RTGS", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0791", "domain": "RTGS", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RTGS.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0792", "domain": "RTGS", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RTGS.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0793", "domain": "Cards", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0794", "domain": "Cards", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0795", "domain": "Cards", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0796", "domain": "Cards", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Cards.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0797", "domain": "Cards", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Cards.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0798", "domain": "Cards", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0799", "domain": "Cards", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0800", "domain": "Cards", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0801", "domain": "Cards", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Cards.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0802", "domain": "Cards", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0803", "domain": "Cards", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0804", "domain": "Cards", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0805", "domain": "Cards", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Cards.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0806", "domain": "Cards", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Cards.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0807", "domain": "Cards", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0808", "domain": "Cards", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0809", "domain": "Cards", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Cards.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0810", "domain": "Cards", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Cards.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0811", "domain": "Loans", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0812", "domain": "Loans", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0813", "domain": "Loans", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0814", "domain": "Loans", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Loans.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0815", "domain": "Loans", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Loans.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0816", "domain": "Loans", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0817", "domain": "Loans", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0818", "domain": "Loans", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0819", "domain": "Loans", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Loans.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0820", "domain": "Loans", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0821", "domain": "Loans", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0822", "domain": "Loans", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0823", "domain": "Loans", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Loans.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0824", "domain": "Loans", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Loans.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0825", "domain": "Loans", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0826", "domain": "Loans", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0827", "domain": "Loans", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Loans.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0828", "domain": "Loans", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Loans.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0829", "domain": "KYC", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0830", "domain": "KYC", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0831", "domain": "KYC", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0832", "domain": "KYC", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for KYC.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0833", "domain": "KYC", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for KYC.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0834", "domain": "KYC", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0835", "domain": "KYC", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0836", "domain": "KYC", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0837", "domain": "KYC", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for KYC.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0838", "domain": "KYC", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0839", "domain": "KYC", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0840", "domain": "KYC", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0841", "domain": "KYC", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for KYC.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0842", "domain": "KYC", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for KYC.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0843", "domain": "KYC", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0844", "domain": "KYC", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0845", "domain": "KYC", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for KYC.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0846", "domain": "KYC", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for KYC.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0847", "domain": "AML", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0848", "domain": "AML", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0849", "domain": "AML", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0850", "domain": "AML", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for AML.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0851", "domain": "AML", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for AML.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0852", "domain": "AML", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0853", "domain": "AML", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0854", "domain": "AML", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0855", "domain": "AML", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for AML.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0856", "domain": "AML", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0857", "domain": "AML", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0858", "domain": "AML", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0859", "domain": "AML", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for AML.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0860", "domain": "AML", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for AML.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0861", "domain": "AML", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0862", "domain": "AML", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0863", "domain": "AML", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for AML.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0864", "domain": "AML", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for AML.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0865", "domain": "NPCI", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0866", "domain": "NPCI", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0867", "domain": "NPCI", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0868", "domain": "NPCI", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for NPCI.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0869", "domain": "NPCI", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for NPCI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0870", "domain": "NPCI", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0871", "domain": "NPCI", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0872", "domain": "NPCI", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0873", "domain": "NPCI", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for NPCI.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0874", "domain": "NPCI", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0875", "domain": "NPCI", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0876", "domain": "NPCI", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0877", "domain": "NPCI", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for NPCI.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0878", "domain": "NPCI", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for NPCI.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0879", "domain": "NPCI", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0880", "domain": "NPCI", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0881", "domain": "NPCI", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for NPCI.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0882", "domain": "NPCI", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for NPCI.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0883", "domain": "RBI Compliance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0884", "domain": "RBI Compliance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0885", "domain": "RBI Compliance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0886", "domain": "RBI Compliance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0887", "domain": "RBI Compliance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0888", "domain": "RBI Compliance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0889", "domain": "RBI Compliance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0890", "domain": "RBI Compliance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0891", "domain": "RBI Compliance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0892", "domain": "RBI Compliance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0893", "domain": "RBI Compliance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0894", "domain": "RBI Compliance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0895", "domain": "RBI Compliance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0896", "domain": "RBI Compliance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0897", "domain": "RBI Compliance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0898", "domain": "RBI Compliance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0899", "domain": "RBI Compliance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0900", "domain": "RBI Compliance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for RBI Compliance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0901", "domain": "Corporate Banking", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0902", "domain": "Corporate Banking", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0903", "domain": "Corporate Banking", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0904", "domain": "Corporate Banking", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0905", "domain": "Corporate Banking", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0906", "domain": "Corporate Banking", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0907", "domain": "Corporate Banking", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0908", "domain": "Corporate Banking", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0909", "domain": "Corporate Banking", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0910", "domain": "Corporate Banking", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0911", "domain": "Corporate Banking", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0912", "domain": "Corporate Banking", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0913", "domain": "Corporate Banking", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0914", "domain": "Corporate Banking", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0915", "domain": "Corporate Banking", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0916", "domain": "Corporate Banking", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0917", "domain": "Corporate Banking", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0918", "domain": "Corporate Banking", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Corporate Banking.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0919", "domain": "Treasury", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0920", "domain": "Treasury", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0921", "domain": "Treasury", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0922", "domain": "Treasury", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Treasury.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0923", "domain": "Treasury", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Treasury.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0924", "domain": "Treasury", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0925", "domain": "Treasury", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0926", "domain": "Treasury", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0927", "domain": "Treasury", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Treasury.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0928", "domain": "Treasury", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0929", "domain": "Treasury", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0930", "domain": "Treasury", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0931", "domain": "Treasury", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Treasury.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0932", "domain": "Treasury", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Treasury.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0933", "domain": "Treasury", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0934", "domain": "Treasury", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0935", "domain": "Treasury", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Treasury.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0936", "domain": "Treasury", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Treasury.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0937", "domain": "Trade Finance", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0938", "domain": "Trade Finance", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0939", "domain": "Trade Finance", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0940", "domain": "Trade Finance", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Trade Finance.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0941", "domain": "Trade Finance", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Trade Finance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0942", "domain": "Trade Finance", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0943", "domain": "Trade Finance", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0944", "domain": "Trade Finance", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0945", "domain": "Trade Finance", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Trade Finance.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0946", "domain": "Trade Finance", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0947", "domain": "Trade Finance", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0948", "domain": "Trade Finance", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0949", "domain": "Trade Finance", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Trade Finance.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0950", "domain": "Trade Finance", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Trade Finance.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0951", "domain": "Trade Finance", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0952", "domain": "Trade Finance", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0953", "domain": "Trade Finance", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Trade Finance.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0954", "domain": "Trade Finance", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Trade Finance.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0955", "domain": "Merchant Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0956", "domain": "Merchant Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0957", "domain": "Merchant Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0958", "domain": "Merchant Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0959", "domain": "Merchant Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0960", "domain": "Merchant Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0961", "domain": "Merchant Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0962", "domain": "Merchant Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0963", "domain": "Merchant Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0964", "domain": "Merchant Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0965", "domain": "Merchant Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0966", "domain": "Merchant Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0967", "domain": "Merchant Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0968", "domain": "Merchant Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0969", "domain": "Merchant Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0970", "domain": "Merchant Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0971", "domain": "Merchant Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0972", "domain": "Merchant Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for Merchant Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0973", "domain": "QR Payments", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0974", "domain": "QR Payments", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0975", "domain": "QR Payments", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0976", "domain": "QR Payments", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for QR Payments.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0977", "domain": "QR Payments", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for QR Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0978", "domain": "QR Payments", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0979", "domain": "QR Payments", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0980", "domain": "QR Payments", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0981", "domain": "QR Payments", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for QR Payments.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0982", "domain": "QR Payments", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0983", "domain": "QR Payments", "artifact_type": "Deployment", "prompt": "Produce a complete, enterprise-grade Deployment for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0984", "domain": "QR Payments", "artifact_type": "Test Plan", "prompt": "Produce a complete, enterprise-grade Test Plan for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0985", "domain": "QR Payments", "artifact_type": "Test Cases", "prompt": "Produce a complete, enterprise-grade Test Cases for QR Payments.", "expected_min_quality": 70, "expected_sections": 36}
+{"id": "B-0986", "domain": "QR Payments", "artifact_type": "Regression", "prompt": "Produce a complete, enterprise-grade Regression for QR Payments.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0987", "domain": "QR Payments", "artifact_type": "UAT", "prompt": "Produce a complete, enterprise-grade UAT for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0988", "domain": "QR Payments", "artifact_type": "Go Live", "prompt": "Produce a complete, enterprise-grade Go Live for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0989", "domain": "QR Payments", "artifact_type": "Audit", "prompt": "Produce a complete, enterprise-grade Audit for QR Payments.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0990", "domain": "QR Payments", "artifact_type": "Executive Summary", "prompt": "Produce a complete, enterprise-grade Executive Summary for QR Payments.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0991", "domain": "ATM", "artifact_type": "BRD", "prompt": "Produce a complete, enterprise-grade BRD for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0992", "domain": "ATM", "artifact_type": "PRD", "prompt": "Produce a complete, enterprise-grade PRD for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0993", "domain": "ATM", "artifact_type": "FRD", "prompt": "Produce a complete, enterprise-grade FRD for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0994", "domain": "ATM", "artifact_type": "SRS", "prompt": "Produce a complete, enterprise-grade SRS for ATM.", "expected_min_quality": 70, "expected_sections": 15}
+{"id": "B-0995", "domain": "ATM", "artifact_type": "NFR", "prompt": "Produce a complete, enterprise-grade NFR for ATM.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-0996", "domain": "ATM", "artifact_type": "HLD", "prompt": "Produce a complete, enterprise-grade HLD for ATM.", "expected_min_quality": 70, "expected_sections": 14}
+{"id": "B-0997", "domain": "ATM", "artifact_type": "LLD", "prompt": "Produce a complete, enterprise-grade LLD for ATM.", "expected_min_quality": 70, "expected_sections": 13}
+{"id": "B-0998", "domain": "ATM", "artifact_type": "API Design", "prompt": "Produce a complete, enterprise-grade API Design for ATM.", "expected_min_quality": 70, "expected_sections": 12}
+{"id": "B-0999", "domain": "ATM", "artifact_type": "Database Design", "prompt": "Produce a complete, enterprise-grade Database Design for ATM.", "expected_min_quality": 70, "expected_sections": 11}
+{"id": "B-1000", "domain": "ATM", "artifact_type": "Sequence Diagram", "prompt": "Produce a complete, enterprise-grade Sequence Diagram for ATM.", "expected_min_quality": 70, "expected_sections": 12}

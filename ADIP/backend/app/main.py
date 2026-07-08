@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 
 from app.api.v1.router import api_router
 from app.core.config import settings
@@ -41,6 +41,14 @@ def create_app() -> FastAPI:
     )
     # Request logging + latency metrics (Phase 16).
     app.add_middleware(RequestContextMiddleware)
+    # Optional rate limiting (off by default; enable in production).
+    if settings.rate_limit_enabled:
+        from app.core.rate_limit import RateLimitMiddleware
+        app.add_middleware(
+            RateLimitMiddleware,
+            rate=settings.rate_limit_rps,
+            burst=settings.rate_limit_burst,
+        )
 
     @app.exception_handler(ADIPError)
     async def _handle_adip_error(_request: Request, exc: ADIPError) -> JSONResponse:
@@ -61,6 +69,11 @@ def create_app() -> FastAPI:
     def get_metrics() -> dict:
         """In-process request metrics (counts, errors, avg latency, top paths)."""
         return metrics.snapshot()
+
+    @app.get("/metrics/prometheus", tags=["meta"])
+    def get_metrics_prometheus() -> Response:
+        """Prometheus text exposition of request metrics (for scraping)."""
+        return Response(content=metrics.prometheus_format(), media_type="text/plain; version=0.0.4")
 
     app.include_router(api_router, prefix=settings.api_v1_prefix)
 

@@ -1,0 +1,19 @@
+{
+  "name": "@adip/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for the ADIP AI SDLC platform",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "keywords": ["adip", "ai", "sdlc", "sdk"],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,43 @@
+# ADIP Prometheus alert rules (Role 10 — SRE).
+# Tuned to the SLOs in docs/09_Operations/SLI_SLO.md.
+groups:
+  - name: adip-availability
+    rules:
+      - alert: AdipBackendDown
+        expr: up{job="adip-backend"} == 0
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: "ADIP backend target is down"
+          description: "Prometheus cannot scrape {{ $labels.instance }} for 1m."
+
+      - alert: AdipHighErrorRate
+        # 5xx error ratio > 2% over 5m (SLO: 99.5% success).
+        expr: |
+          (rate(adip_request_errors_total[5m]) / clamp_min(rate(adip_requests_total[5m]), 1)) > 0.02
+        for: 5m
+        labels: { severity: critical }
+        annotations:
+          summary: "ADIP error rate above 2%"
+          description: "5xx ratio has exceeded the SLO error budget for 5 minutes."
+
+  - name: adip-latency
+    rules:
+      - alert: AdipHighLatency
+        # Average latency proxy for p95 (in-process gauge). SLO: p95 < 800ms.
+        expr: adip_request_latency_ms_avg > 800
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: "ADIP average latency above 800ms"
+          description: "Average request latency has exceeded 800ms for 5 minutes."
+
+  - name: adip-capacity
+    rules:
+      - alert: AdipTrafficSpike
+        expr: rate(adip_requests_total[1m]) > 200
+        for: 2m
+        labels: { severity: info }
+        annotations:
+          summary: "ADIP traffic spike"
+          description: "Sustained request rate above 200 rps — check capacity/HPA."

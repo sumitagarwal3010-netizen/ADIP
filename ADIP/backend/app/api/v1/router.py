@@ -10,8 +10,10 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from app.api.v1.endpoints import (
+    ai_engine,
     ai_review,
     analytics,
+    artifact_export,
     artifact_generation,
     artifact_quality,
     artifact_views,
@@ -20,10 +22,14 @@ from app.api.v1.endpoints import (
     knowledge_transformation,
     llm_meta,
     orchestrator,
+    platform_meta,
     prompt_benchmark,
+    prompt_governance,
+    prompt_studio,
     prompt_templates,
     prompt_testing,
     prompt_workbench,
+    regression,
     rubrics,
     sdlc,
     traceability,
@@ -74,3 +80,13 @@ api_router.include_router(ai_review.router)
 # Prompt benchmark/optimization + artifact quality rubrics.
 api_router.include_router(prompt_benchmark.router)
 api_router.include_router(rubrics.router)
+
+# Prompt Studio, artifact export engine, and prompt regression framework.
+api_router.include_router(prompt_studio.router)
+api_router.include_router(artifact_export.router)
+api_router.include_router(regression.router)
+
+# Enterprise engineering layer (additive meta APIs).
+api_router.include_router(ai_engine.router)
+api_router.include_router(prompt_governance.router)
+api_router.include_router(platform_meta.router)

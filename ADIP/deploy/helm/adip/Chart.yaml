@@ -1,0 +1,8 @@
+apiVersion: v2
+name: adip
+description: ADIP — Enterprise AI SDLC Platform (backend + frontend)
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+maintainers:
+  - name: ADIP Platform Team

@@ -15,10 +15,15 @@ from typing import Iterable
 from app.core.config import settings
 from app.core.logging import get_logger
 from app.llm.adapters.base import BaseAdapter
+from app.llm.adapters.claude_adapter import ClaudeAdapter
+from app.llm.adapters.deepseek_adapter import DeepSeekAdapter
 from app.llm.adapters.gemini_adapter import GeminiAdapter
+from app.llm.adapters.llama_adapter import LlamaAdapter
 from app.llm.adapters.lmstudio_adapter import LMStudioAdapter
+from app.llm.adapters.mistral_adapter import MistralAdapter
 from app.llm.adapters.ollama_adapter import OllamaAdapter
 from app.llm.adapters.openai_adapter import OpenAIAdapter
+from app.llm.adapters.qwen_adapter import QwenAdapter, QwenCloudAdapter
 from app.llm.registry import ModelSpec, registry
 from app.llm.types import CompletionRequest, CompletionResponse, StreamChunk
 
@@ -26,9 +31,15 @@ logger = get_logger(__name__)
 
 _ADAPTERS: dict[str, type[BaseAdapter]] = {
     "ollama": OllamaAdapter,
+    "llama": LlamaAdapter,
     "openai": OpenAIAdapter,
     "lmstudio": LMStudioAdapter,
     "gemini": GeminiAdapter,
+    "claude": ClaudeAdapter,
+    "mistral": MistralAdapter,
+    "deepseek": DeepSeekAdapter,
+    "qwen": QwenAdapter,
+    "qwen-cloud": QwenCloudAdapter,
 }
 
 

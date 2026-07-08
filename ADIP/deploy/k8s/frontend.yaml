@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adip-frontend
+  namespace: adip
+  labels: { app.kubernetes.io/name: adip-frontend, app.kubernetes.io/part-of: adip }
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app.kubernetes.io/name: adip-frontend }
+  template:
+    metadata:
+      labels: { app.kubernetes.io/name: adip-frontend }
+    spec:
+      containers:
+        - name: frontend
+          image: adip-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet: { path: /, port: 80 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /, port: 80 }
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "250m", memory: "128Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adip-frontend
+  namespace: adip
+  labels: { app.kubernetes.io/name: adip-frontend }
+spec:
+  selector: { app.kubernetes.io/name: adip-frontend }
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http

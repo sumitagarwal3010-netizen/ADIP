@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: adip
+  namespace: adip
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # Security headers + rate limiting are also enforced app-side; these are edge defaults.
+    nginx.ingress.kubernetes.io/limit-rps: "20"
+spec:
+  rules:
+    - host: adip.example.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: adip-backend
+                port: { number: 80 }
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: adip-frontend
+                port: { number: 80 }
+  # tls:
+  #   - hosts: [adip.example.com]
+  #     secretName: adip-tls
