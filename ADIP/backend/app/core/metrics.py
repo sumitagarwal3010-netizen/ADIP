@@ -60,6 +60,32 @@ class Metrics:
             for path, count in sorted(self.by_path.items()):
                 safe = path.replace('"', '\\"')
                 lines.append(f'adip_requests_by_path_total{{path="{safe}"}} {count}')
+        try:
+            from app.connectors.metrics import connector_metrics
+            from app.llm.prompt_log import prompt_log
+            from app.llm.runtime import llm_runtime
+            pl = prompt_log.stats()
+            rt = llm_runtime.snapshot()
+            cm = connector_metrics.snapshot()
+            lines.extend([
+                "# HELP adip_prompt_executions_total Prompt log entries.",
+                "# TYPE adip_prompt_executions_total counter",
+                f"adip_prompt_executions_total {pl.get('total', 0)}",
+                "# HELP adip_llm_inflight Current in-flight LLM requests.",
+                "# TYPE adip_llm_inflight gauge",
+                f"adip_llm_inflight {rt.get('inflight', 0)}",
+                "# HELP adip_llm_total_cost_usd Accumulated LLM cost estimate (USD).",
+                "# TYPE adip_llm_total_cost_usd counter",
+                f"adip_llm_total_cost_usd {rt.get('total_cost_usd', 0)}",
+                "# HELP adip_connector_run_total Connector sync runs.",
+                "# TYPE adip_connector_run_total counter",
+                f"adip_connector_run_total {cm.get('connector_run_total', 0)}",
+                "# HELP adip_connector_run_success_total Successful connector runs.",
+                "# TYPE adip_connector_run_success_total counter",
+                f"adip_connector_run_success_total {cm.get('connector_run_success_total', 0)}",
+            ])
+        except Exception:  # noqa: BLE001 - metrics must not fail scrape
+            pass
         return "\n".join(lines) + "\n"
 
 

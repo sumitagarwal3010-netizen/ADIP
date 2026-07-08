@@ -8,6 +8,7 @@ import HubIcon from '@mui/icons-material/Hub';
 import InsightsIcon from '@mui/icons-material/Insights';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { GlassCard } from '../components/common/GlassCard';
+import { CenterErrorBoundary } from '../components/common/CenterErrorBoundary';
 import { TraceabilityDashboard } from '../components/traceability/TraceabilityDashboard';
 import { RequirementTraceabilityMatrix } from '../components/traceability/RequirementTraceabilityMatrix';
 import { AiTraceability } from '../components/traceability/AiTraceability';
@@ -61,6 +62,7 @@ export function TraceabilityCenter({ initialTab = 'dashboard' }: TraceabilityCen
   };
 
   return (
+    <CenterErrorBoundary title="Traceability">
     <Box>
       <GlassCard sx={{ p: 1, mb: 1.5 }} hover={false}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
@@ -110,5 +112,6 @@ export function TraceabilityCenter({ initialTab = 'dashboard' }: TraceabilityCen
       {tab === 'events' && <EventLineagePanel />}
       {tab === 'reports' && <HubArtifactGenerator hubKey="traceability" />}
     </Box>
+    </CenterErrorBoundary>
   );
 }

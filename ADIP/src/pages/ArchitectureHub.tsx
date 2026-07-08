@@ -11,13 +11,27 @@ import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { DesignIntakeWorkflow } from '../components/architecture/DesignIntakeWorkflow';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
+import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
+import { useSdlcHubSummary } from '../sdk/hooks/useSdlcHubSummary';
 
 export function ArchitectureHub() {
   const { architecture } = useFilteredSimulation();
+  const backend = useSdlcHubSummary('architecture', {
+    score: architecture.readiness,
+    readiness: architecture.readiness >= 80 ? 'Ready' : 'On Track',
+  });
 
   return (
     <Box>
       <AIWorkspacePanel module="architecture" number={1} />
+      <SdlcBackendStrip
+        hubLabel="Architecture"
+        loading={backend.loading}
+        error={backend.error}
+        source={backend.source}
+        summary={backend.data}
+        onRetry={backend.retry}
+      />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Architecture Readiness" value={architecture.readiness} trend={1.5} /></Grid>

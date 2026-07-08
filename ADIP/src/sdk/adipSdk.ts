@@ -36,6 +36,22 @@ export class AdipSdk {
     return apiClient.traceabilityMatrix<T>(projectId);
   }
 
+  promptGovernanceReplay(limit = 20): Promise<{ entries: unknown[] }> {
+    const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+    return fetch(`${base}/prompt-governance/replay?limit=${limit}`).then((r) => {
+      if (!r.ok) throw new Error(r.statusText);
+      return r.json();
+    });
+  }
+
+  llmRuntimeStatus(): Promise<Record<string, unknown>> {
+    const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+    return fetch(`${base}/llm/runtime`).then((r) => {
+      if (!r.ok) throw new Error(r.statusText);
+      return r.json();
+    });
+  }
+
   executiveSummary<T = unknown>(projectId: number): Promise<T> {
     return apiClient.executiveSummary<T>(projectId);
   }

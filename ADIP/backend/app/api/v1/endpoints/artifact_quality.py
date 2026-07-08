@@ -39,3 +39,14 @@ def batch_score(request: BatchQualityRequest, engine: QualityEngine = Depends(ge
     reports = [engine.score_generated(request.project_id, t) for t in request.artifact_types]
     avg = round(sum(r.overall_score for r in reports) / len(reports)) if reports else 0
     return BatchQualityReport(project_id=request.project_id, average_score=avg, reports=reports)
+
+
+@router.get("/scorecard")
+def artifact_scorecard(
+    project_id: int = 1,
+    artifact_type: str = "BRD",
+    db: Session = Depends(get_db),
+):
+    """Composed quality scorecard: dimensions + rules + rubric."""
+    from app.services.quality_scorecard_service import QualityScorecardService
+    return QualityScorecardService(db).scorecard(project_id=project_id, artifact_type=artifact_type)

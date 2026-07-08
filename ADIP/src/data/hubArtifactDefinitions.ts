@@ -1,6 +1,7 @@
 import type { SimulationConfig } from '../hooks/useGenerationSimulation';
 import type { Artifact } from '../types/artifacts';
 import { buildSections, createArtifact } from './artifactBuilder';
+import { createHubDocArtifact, hubSimulation, HUB_FEATURE } from './hubArtifactFactory';
 
 export type HubKey =
   | 'production'
@@ -53,15 +54,10 @@ export interface HubArtifactConfig {
   build: (runId: string) => Artifact[];
 }
 
-const FEATURE = 'UPI Payments & Mobile Banking';
+const FEATURE = HUB_FEATURE;
 
 function sim(initial: string, activities: string[]): SimulationConfig {
-  const steps = activities.map((activity, i) => ({
-    progress: Math.min(100, Math.round(((i + 1) / activities.length) * 100)),
-    activity,
-    delayMs: 650,
-  }));
-  return { initialStatus: initial, steps };
+  return hubSimulation(initial, activities);
 }
 
 function productionArtifacts(runId: string): Artifact[] {
@@ -418,31 +414,31 @@ function auditCenterArtifacts(runId: string): Artifact[] {
 
 function auditArtifacts(runId: string): Artifact[] {
   return [
-    createArtifact({
-      id: `${runId}-ready`,
+    createHubDocArtifact({
+      runId,
+      suffix: 'ready',
       name: 'Audit_Readiness_Report.docx',
       generatedBy: 'Audit AI',
-      fileType: 'docx',
       approvalStatus: 'Pending Review',
       previewContent: `AUDIT READINESS REPORT\n\nScope: IT General Controls · Payments · AML/KYC\nReadiness Score: 88%\nOpen observations: 7 · Critical: 0 · High: 2`,
-      context: { subject: 'Audit Readiness' },
+      contextSubject: 'Audit Readiness',
     }),
-    createArtifact({
-      id: `${runId}-obs`,
+    createHubDocArtifact({
+      runId,
+      suffix: 'obs',
       name: 'Audit_Observation_Summary.docx',
       generatedBy: 'Audit AI',
-      fileType: 'docx',
-      previewContent: `AUDIT OBSERVATION SUMMARY\n\nOBS-001: Privileged access review lag (High)\nOBS-002: KYC document retention incomplete (Medium)\nOBS-003: PCI key rotation evidence gap (High)\n\nRemediation ETA: 45 days`,
       riskRating: 'High',
-      context: { subject: 'Audit Observations' },
+      previewContent: `AUDIT OBSERVATION SUMMARY\n\nOBS-001: Privileged access review lag (High)\nOBS-002: KYC document retention incomplete (Medium)\nOBS-003: PCI key rotation evidence gap (High)\n\nRemediation ETA: 45 days`,
+      contextSubject: 'Audit Observations',
     }),
-    createArtifact({
-      id: `${runId}-controls`,
+    createHubDocArtifact({
+      runId,
+      suffix: 'controls',
       name: 'Control_Effectiveness_Report.docx',
       generatedBy: 'Audit AI',
-      fileType: 'docx',
       previewContent: `CONTROL EFFECTIVENESS REPORT\n\nControls tested: 64\nEffective: 58 · Partially effective: 4 · Ineffective: 2\n\nAML transaction monitoring control rated Effective with enhancement recommendation.`,
-      context: { subject: 'Control Effectiveness' },
+      contextSubject: 'Control Effectiveness',
     }),
   ];
 }

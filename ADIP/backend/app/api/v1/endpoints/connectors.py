@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
 from app.schemas.connectors import (
+    ArtifactUseCaseRead,
     ConnectorCatalogItem,
     ConnectorCreate,
     ConnectorDashboard,
@@ -14,15 +15,25 @@ from app.schemas.connectors import (
     ConnectorRunRead,
     ConnectorTestResponse,
     ConnectorUpdate,
+    GenerateArtifactRequest,
+    GeneratedConnectorArtifact,
     NormalizedDataResponse,
+    PreviewSourcesRequest,
+    PreviewSourcesResponse,
+    PromptPreviewResponse,
 )
 from app.services.connector_service import ConnectorService
+from app.services.connector_artifact_service import ConnectorArtifactService
 
 router = APIRouter(prefix="/connectors", tags=["Enterprise Connectors"])
 
 
 def _svc(db: Session = Depends(get_db)) -> ConnectorService:
     return ConnectorService(db)
+
+
+def _artifact_svc(db: Session = Depends(get_db)) -> ConnectorArtifactService:
+    return ConnectorArtifactService(db)
 
 
 @router.get("/catalog", response_model=list[ConnectorCatalogItem])
@@ -67,6 +78,66 @@ def create_connector(body: ConnectorCreate, svc: ConnectorService = Depends(_svc
 def connector_ai_context(project_id: int = 1, db: Session = Depends(get_db)):
     from app.connectors.ai_context import build_connector_prompt_context
     return {"context": build_connector_prompt_context(db, project_id=project_id)}
+
+
+@router.get("/artifacts/use-cases", response_model=list[ArtifactUseCaseRead])
+def list_artifact_use_cases(svc: ConnectorArtifactService = Depends(_artifact_svc)):
+    return svc.list_use_cases()
+
+
+@router.post("/artifacts/preview-sources", response_model=PreviewSourcesResponse)
+def preview_artifact_sources(body: PreviewSourcesRequest, svc: ConnectorArtifactService = Depends(_artifact_svc)):
+    return PreviewSourcesResponse(**svc.preview_sources(
+        artifact_type=body.artifact_type,
+        connector_ids=body.connector_ids or None,
+        connector_types=body.connector_types or None,
+        project_id=body.project_id,
+        limit=body.limit,
+    ))
+
+
+@router.get("/artifacts/prompt-preview", response_model=PromptPreviewResponse)
+def preview_artifact_prompt(
+    artifact_type: str,
+    connector_types: str = "",
+    connector_ids: str = "",
+    svc: ConnectorArtifactService = Depends(_artifact_svc),
+):
+    ctypes = [t.strip() for t in connector_types.split(",") if t.strip()] or None
+    cids = [int(x) for x in connector_ids.split(",") if x.strip()] or None
+    return PromptPreviewResponse(**svc.preview_prompt(
+        artifact_type=artifact_type, connector_types=ctypes, connector_ids=cids,
+    ))
+
+
+@router.post("/artifacts/generate", response_model=GeneratedConnectorArtifact)
+def generate_connector_artifact(body: GenerateArtifactRequest, svc: ConnectorArtifactService = Depends(_artifact_svc)):
+    return GeneratedConnectorArtifact(**svc.generate(
+        artifact_type=body.artifact_type,
+        connector_ids=body.connector_ids or None,
+        connector_types=body.connector_types or None,
+        project_id=body.project_id,
+        dry_run=body.dry_run,
+    ))
+
+
+@router.get("/artifacts/{artifact_id}", response_model=GeneratedConnectorArtifact)
+def get_connector_artifact(artifact_id: str, svc: ConnectorArtifactService = Depends(_artifact_svc)):
+    from app.core.exceptions import NotFoundError
+    try:
+        return GeneratedConnectorArtifact(**svc.get_artifact(artifact_id))
+    except NotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@router.get("/artifacts/{artifact_id}/traceability")
+def get_artifact_traceability(artifact_id: str, svc: ConnectorArtifactService = Depends(_artifact_svc)):
+    from app.core.exceptions import NotFoundError
+    try:
+        art = svc.get_artifact(artifact_id)
+        return {"artifact_id": artifact_id, "traceability": art["traceability"], "evidence_links": art["evidence_links"]}
+    except NotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 @router.get("/{connector_id}", response_model=ConnectorRead)

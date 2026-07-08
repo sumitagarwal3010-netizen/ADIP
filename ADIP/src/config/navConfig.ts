@@ -21,6 +21,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import HubIcon from '@mui/icons-material/Hub';
 
 /** A leaf navigation entry. `path` is an existing application route (routing is untouched). */
 export interface NavLeaf {
@@ -98,6 +99,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { id: 'development', label: 'Development', icon: CodeIcon, path: '/development', children: [] },
       { id: 'testing', label: 'Testing', icon: ScienceIcon, path: '/testing', children: [] },
       { id: 'release', label: 'Release', icon: RocketLaunchIcon, path: '/release', children: [] },
+      { id: 'connector-workbench', label: 'Connector Artifact Workbench', icon: HubIcon, path: '/ai-sdlc/connector-artifact-workbench', children: [] },
     ],
   },
   {
@@ -123,6 +125,8 @@ export const NAV_GROUPS: NavGroup[] = [
       { id: 'workflow', label: 'Workflow', icon: TimelineIcon, path: '/executive/workflow-orchestration', children: [] },
       { id: 'reporting', label: 'Reporting', icon: AssessmentIcon, path: '/reports', children: [] },
       { id: 'administration', label: 'Administration', icon: TuneIcon, path: '/administration', children: [] },
+      { id: 'integrations', label: 'Integration Center', icon: HubIcon, path: '/administration/integrations', children: [] },
+      { id: 'team-engineering', label: 'Team Engineering Workbench', icon: ScienceIcon, path: '/platform/team-engineering-workbench', children: [] },
     ],
   },
 ];

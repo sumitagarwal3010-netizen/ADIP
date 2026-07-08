@@ -62,6 +62,24 @@ class OllamaAdapter(BaseAdapter):
         except (urllib.error.URLError, OSError, ValueError, json.JSONDecodeError):
             return []
 
+    def gpu_info(self) -> dict:
+        """Report GPU/CPU inference context from Ollama process list."""
+        try:
+            req = urllib.request.Request(f"{self.base_url}/api/ps", method="GET")
+            with urllib.request.urlopen(req, timeout=min(5, self.timeout_seconds)) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            models = data.get("models", [])
+            gpus = {m.get("size_vram", 0) for m in models if m.get("size_vram")}
+            return {
+                "available": True,
+                "active_models": len(models),
+                "gpu_in_use": any(gpus),
+                "vram_bytes": sum(gpus) if gpus else 0,
+                "fallback": "cpu" if not gpus else "gpu",
+            }
+        except (urllib.error.URLError, OSError, ValueError, json.JSONDecodeError):
+            return {"available": False, "active_models": 0, "gpu_in_use": False, "fallback": "cpu"}
+
     # --- request building ---
     def _payload(self, request: CompletionRequest, stream: bool) -> bytes:
         body = {

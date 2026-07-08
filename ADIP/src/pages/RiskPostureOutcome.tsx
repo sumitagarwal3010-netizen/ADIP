@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import ShieldIcon from '@mui/icons-material/Shield';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -5,8 +6,8 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import GavelIcon from '@mui/icons-material/Gavel';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import LayersIcon from '@mui/icons-material/Layers';
+import { Box, CircularProgress } from '@mui/material';
 import { ExecutiveOutcomePage, OutcomeKpiGrid, type OutcomeKpi, type OutcomeTab } from '../components/executive/ExecutiveOutcomePage';
-import { EnterpriseRiskCenter } from './EnterpriseRiskCenter';
 import { EnterpriseRiskRegisterPanel } from '../components/enterpriseRisk/RiskRegisterPanels';
 import { RegulatoryRiskPanel } from '../components/enterpriseRisk/DomainRiskPanels';
 import { AuditFindingsRiskPanel } from '../components/enterpriseRisk/ControlAssurancePanels';
@@ -14,6 +15,18 @@ import { useEnterpriseRisk } from '../context/EnterpriseRiskContext';
 import { usePersona } from '../context/PersonaContext';
 import { canAccessEnterpriseRisk } from '../data/enterpriseRiskEngine';
 import { computeAuditKpis } from '../data/auditCenterEngine';
+
+const EnterpriseRiskCenter = lazy(() =>
+  import('./EnterpriseRiskCenter').then((m) => ({ default: m.EnterpriseRiskCenter })),
+);
+
+function LazyCenterFallback() {
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'center', py: 3 }}>
+      <CircularProgress size={24} />
+    </Box>
+  );
+}
 
 export function RiskPostureOutcome() {
   const { personaId } = usePersona();
@@ -38,7 +51,11 @@ export function RiskPostureOutcome() {
     { key: 'critical-risks', label: 'Critical Risks', icon: ListAltIcon, content: <EnterpriseRiskRegisterPanel /> },
     { key: 'compliance', label: 'Compliance', icon: GavelIcon, content: <RegulatoryRiskPanel /> },
     { key: 'audit', label: 'Audit', icon: FactCheckIcon, content: <AuditFindingsRiskPanel /> },
-    { key: 'more', label: 'More', icon: LayersIcon, content: <EnterpriseRiskCenter initialTab="register" /> },
+    { key: 'more', label: 'More', icon: LayersIcon, content: (
+      <Suspense fallback={<LazyCenterFallback />}>
+        <EnterpriseRiskCenter initialTab="register" />
+      </Suspense>
+    ) },
   ];
 
   return (

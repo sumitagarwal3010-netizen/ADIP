@@ -63,3 +63,31 @@ class RegressionService:
             metrics=metrics, overall_verdict=verdict,
             regressions=regressions, improvements=improvements,
         )
+
+    def run_golden_mock(self, *, limit: int = 5) -> dto.GoldenRegressionReport:
+        """Mock golden-dataset regression — no live LLM; uses semantic similarity heuristics."""
+        from app.ml.semantic_similarity import similarity_score
+
+        cases_data = [
+            ("golden-brd-1", "Generate BRD for UPI settlement modernization", "UPI settlement BRD requirements NPCI"),
+            ("golden-frd-1", "Generate FRD for beneficiary management", "beneficiary management functional requirements"),
+            ("golden-hld-1", "Generate HLD for payments API", "payments API architecture microservices"),
+            ("golden-test-1", "Generate test plan for release 2.4", "test plan regression integration release"),
+            ("golden-audit-1", "Generate audit checklist for SOX", "audit checklist SOX control evidence"),
+        ][:limit]
+        cases: list[dto.GoldenRegressionCase] = []
+        for case_id, prompt, reference in cases_data:
+            mock_output = f"ADIP generated artifact for: {prompt}. Includes enterprise SDLC sections."
+            sim = similarity_score(mock_output, reference)
+            passed = sim.score >= 0.15
+            cases.append(dto.GoldenRegressionCase(
+                case_id=case_id, prompt=prompt, passed=passed,
+                similarity_score=round(sim.score, 3),
+                message="PASS" if passed else f"Low similarity {sim.score:.2f}",
+            ))
+        passed_n = sum(1 for c in cases if c.passed)
+        verdict = f"PASS {passed_n}/{len(cases)}" if passed_n == len(cases) else f"FAIL {passed_n}/{len(cases)}"
+        return dto.GoldenRegressionReport(
+            total=len(cases), passed=passed_n, failed=len(cases) - passed_n,
+            cases=cases, overall_verdict=verdict,
+        )

@@ -1,12 +1,15 @@
 """AI engineering meta endpoints (Role 6)."""
 from __future__ import annotations
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from app.ai.artifact_ops import ArtifactComparer, ArtifactImprover, ArtifactReviewer
 from app.ai.planning_engine import PlanningEngine
 from app.ai.reasoning_engine import ReasoningEngine
 from app.ai.reflection_engine import ReflectionEngine
+from app.core.prompt_security import assess_prompt
+from app.ml.hallucination import detect_hallucinations
+from app.ml.semantic_similarity import similarity_score
 from app.schemas.ai_engine import AnalyzeRequest, CompareArtifactsRequest, ReviewArtifactRequest
 
 router = APIRouter(prefix="/ai-engine", tags=["AI Engineering"])
@@ -14,7 +17,13 @@ router = APIRouter(prefix="/ai-engine", tags=["AI Engineering"])
 
 @router.post("/analyze")
 def analyze_prompt(body: AnalyzeRequest) -> dict:
-    reasoning = ReasoningEngine(body.strategy).analyze(body.prompt)
+    security = assess_prompt(body.prompt)
+    if not security.safe:
+        raise HTTPException(
+            status_code=400,
+            detail={"message": "Prompt rejected by security policy", "flags": security.flags},
+        )
+    reasoning = ReasoningEngine(body.strategy).analyze(security.sanitized)
     plan = PlanningEngine().plan(reasoning)
     reflection = ReflectionEngine().reflect(reasoning, plan)
     return {
@@ -29,6 +38,7 @@ def analyze_prompt(body: AnalyzeRequest) -> dict:
             "improvements": reflection.improvements,
             "adjusted_confidence": reflection.adjusted_confidence,
         },
+        "security": {"risk_score": security.risk_score, "flags": security.flags},
     }
 
 
@@ -36,9 +46,20 @@ def analyze_prompt(body: AnalyzeRequest) -> dict:
 def review_artifact(body: ReviewArtifactRequest) -> dict:
     review = ArtifactReviewer().review(body.content, body.artifact_type)
     improved = ArtifactImprover().improve(body.content, review)
-    return {"review": review.__dict__, "improved_preview": improved[:500]}
+    hallucination = detect_hallucinations(body.content)
+    return {
+        "review": review.__dict__,
+        "improved_preview": improved[:500],
+        "hallucination": hallucination.__dict__,
+    }
 
 
 @router.post("/compare-artifacts")
 def compare_artifacts(body: CompareArtifactsRequest) -> dict:
-    return ArtifactComparer().compare(body.left, body.right).__dict__
+    comparison = ArtifactComparer().compare(body.left, body.right)
+    semantic = similarity_score(body.left, body.right)
+    return {
+        **comparison.__dict__,
+        "semantic_similarity": semantic.score,
+        "grounded": semantic.grounded,
+    }

@@ -4,6 +4,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from app.ml.semantic_similarity import similarity_score
+
 
 @dataclass
 class HallucinationReport:
@@ -28,6 +30,9 @@ def detect_hallucinations(text: str, *, reference: str | None = None) -> Halluci
 
     if reference:
         ref_tokens = set(reference.lower().split())
+        semantic = similarity_score(text, reference)
+        if not semantic.grounded:
+            flags.append(f"Low semantic grounding vs reference ({semantic.score:.2f})")
         claims = [w for w in text.split() if w.isdigit() and len(w) > 3]
         for c in claims:
             if c not in reference and c not in " ".join(ref_tokens):

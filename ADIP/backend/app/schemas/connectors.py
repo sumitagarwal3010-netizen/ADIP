@@ -107,3 +107,67 @@ class NormalizedDataResponse(BaseModel):
     findings: list[dict[str, Any]]
     total_assets: int
     total_findings: int
+
+
+class ArtifactUseCaseRead(BaseModel):
+    id: str
+    label: str
+    description: str
+    supported_connectors: list[str]
+    multi_source: bool
+
+
+class PreviewSourcesRequest(BaseModel):
+    artifact_type: str
+    connector_ids: list[int] = Field(default_factory=list)
+    connector_types: list[str] = Field(default_factory=list)
+    project_id: int = 1
+    limit: int = 20
+
+
+class PreviewSourcesResponse(BaseModel):
+    artifact_type: str
+    connector_types: list[str]
+    records: list[dict[str, Any]]
+    total: int
+    mode: str
+    project_id: int
+    security_bypassed: bool
+
+
+class PromptPreviewResponse(BaseModel):
+    artifact_type: str
+    connector_types: list[str]
+    prompt_template_id: str
+    prompt: str
+    source_record_count: int
+
+
+class GenerateArtifactRequest(BaseModel):
+    artifact_type: str
+    connector_ids: list[int] = Field(default_factory=list)
+    connector_types: list[str] = Field(default_factory=list)
+    project_id: int = 1
+    dry_run: bool = False
+
+
+class GeneratedConnectorArtifact(BaseModel):
+    id: str
+    title: str
+    artifact_type: str
+    summary: str
+    body: str
+    source_connectors: list[str]
+    source_records: list[dict[str, Any]]
+    prompt: str
+    prompt_template_id: str
+    quality_score: float
+    confidence: str
+    quality_checks: list[str]
+    traceability: list[dict[str, Any]]
+    evidence_links: list[dict[str, Any]]
+    explainability: dict[str, Any]
+    dry_run: bool
+    mock_mode: bool
+    project_id: int
+    generated_at: str

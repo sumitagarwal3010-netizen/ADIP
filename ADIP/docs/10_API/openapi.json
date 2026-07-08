@@ -32,6 +32,30 @@
         }
       }
     },
+    "/ready": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "Readiness",
+        "description": "Readiness probe \u2014 verifies database connectivity.",
+        "operationId": "readiness_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Readiness Ready Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/health": {
       "get": {
         "tags": [
@@ -10965,6 +10989,138 @@
         }
       }
     },
+    "/api/v1/llm/estimate": {
+      "get": {
+        "tags": [
+          "LLM Infrastructure"
+        ],
+        "summary": "Llm Estimate",
+        "description": "Pre-flight token, cost and memory estimate for a prompt.",
+        "operationId": "llm_estimate_api_v1_llm_estimate_get",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Model"
+            }
+          },
+          {
+            "name": "prompt",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "Evaluate UPI settlement requirements",
+              "title": "Prompt"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Llm Estimate Api V1 Llm Estimate Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/llm/gpu": {
+      "get": {
+        "tags": [
+          "LLM Infrastructure"
+        ],
+        "summary": "Llm Gpu",
+        "description": "GPU/CPU inference context for the active local provider.",
+        "operationId": "llm_gpu_api_v1_llm_gpu_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Llm Gpu Api V1 Llm Gpu Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/llm/prompt-log": {
+      "get": {
+        "tags": [
+          "LLM Infrastructure"
+        ],
+        "summary": "Llm Prompt Log",
+        "description": "Recent prompt execution log and aggregate stats.",
+        "operationId": "llm_prompt_log_api_v1_llm_prompt_log_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Llm Prompt Log Api V1 Llm Prompt Log Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/llm/templates": {
       "get": {
         "tags": [
@@ -10982,6 +11138,30 @@
                   "additionalProperties": true,
                   "type": "object",
                   "title": "Response List Templates Api V1 Llm Templates Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/llm/smoke-test": {
+      "post": {
+        "tags": [
+          "LLM Infrastructure"
+        ],
+        "summary": "Llm Smoke Test",
+        "description": "Mock-mode LLM smoke test \u2014 registry, providers, templates, estimate; no external credentials.",
+        "operationId": "llm_smoke_test_api_v1_llm_smoke_test_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Llm Smoke Test Api V1 Llm Smoke Test Post"
                 }
               }
             }
@@ -12407,6 +12587,58 @@
         }
       }
     },
+    "/api/v1/artifact-quality/scorecard": {
+      "get": {
+        "tags": [
+          "Artifact Quality"
+        ],
+        "summary": "Artifact Scorecard",
+        "description": "Composed quality scorecard: dimensions + rules + rubric.",
+        "operationId": "artifact_scorecard_api_v1_artifact_quality_scorecard_get",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Project Id"
+            }
+          },
+          {
+            "name": "artifact_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "BRD",
+              "title": "Artifact Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/ai-review/review-artifact": {
       "post": {
         "tags": [
@@ -13337,6 +13569,1520 @@
           }
         }
       }
+    },
+    "/api/v1/prompt-regression/run-golden": {
+      "post": {
+        "tags": [
+          "Prompt Regression"
+        ],
+        "summary": "Run Golden Regression",
+        "description": "Run mock golden-dataset regression (no live LLM).",
+        "operationId": "run_golden_regression_api_v1_prompt_regression_run_golden_post",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 5,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoldenRegressionReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ai-engine/analyze": {
+      "post": {
+        "tags": [
+          "AI Engineering"
+        ],
+        "summary": "Analyze Prompt",
+        "operationId": "analyze_prompt_api_v1_ai_engine_analyze_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Analyze Prompt Api V1 Ai Engine Analyze Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ai-engine/review-artifact": {
+      "post": {
+        "tags": [
+          "AI Engineering"
+        ],
+        "summary": "Review Artifact",
+        "operationId": "review_artifact_api_v1_ai_engine_review_artifact_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewArtifactRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Review Artifact Api V1 Ai Engine Review Artifact Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ai-engine/compare-artifacts": {
+      "post": {
+        "tags": [
+          "AI Engineering"
+        ],
+        "summary": "Compare Artifacts",
+        "operationId": "compare_artifacts_api_v1_ai_engine_compare_artifacts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompareArtifactsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Compare Artifacts Api V1 Ai Engine Compare Artifacts Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/prompt-governance/replay": {
+      "get": {
+        "tags": [
+          "Prompt Governance"
+        ],
+        "summary": "Prompt Replay",
+        "operationId": "prompt_replay_api_v1_prompt_governance_replay_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Prompt Replay Api V1 Prompt Governance Replay Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/prompt-governance/audit": {
+      "get": {
+        "tags": [
+          "Prompt Governance"
+        ],
+        "summary": "Prompt Audit",
+        "operationId": "prompt_audit_api_v1_prompt_governance_audit_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Prompt Audit Api V1 Prompt Governance Audit Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/prompt-governance/fingerprint": {
+      "post": {
+        "tags": [
+          "Prompt Governance"
+        ],
+        "summary": "Prompt Fingerprint",
+        "operationId": "prompt_fingerprint_api_v1_prompt_governance_fingerprint_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FingerprintRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Prompt Fingerprint Api V1 Prompt Governance Fingerprint Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/prompt-governance/version": {
+      "post": {
+        "tags": [
+          "Prompt Governance"
+        ],
+        "summary": "Register Prompt Version",
+        "operationId": "register_prompt_version_api_v1_prompt_governance_version_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VersionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Register Prompt Version Api V1 Prompt Governance Version Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/prompt-governance/baseline": {
+      "post": {
+        "tags": [
+          "Prompt Governance"
+        ],
+        "summary": "Register Baseline",
+        "operationId": "register_baseline_api_v1_prompt_governance_baseline_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaselineRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Register Baseline Api V1 Prompt Governance Baseline Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/prompt-governance/drift": {
+      "post": {
+        "tags": [
+          "Prompt Governance"
+        ],
+        "summary": "Detect Prompt Drift",
+        "operationId": "detect_prompt_drift_api_v1_prompt_governance_drift_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DriftRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Detect Prompt Drift Api V1 Prompt Governance Drift Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/platform/services": {
+      "get": {
+        "tags": [
+          "Platform"
+        ],
+        "summary": "List Services",
+        "operationId": "list_services_api_v1_platform_services_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response List Services Api V1 Platform Services Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/platform/features": {
+      "get": {
+        "tags": [
+          "Platform"
+        ],
+        "summary": "List Features",
+        "operationId": "list_features_api_v1_platform_features_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response List Features Api V1 Platform Features Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/platform/dependencies": {
+      "get": {
+        "tags": [
+          "Platform"
+        ],
+        "summary": "Dependency Graph",
+        "operationId": "dependency_graph_api_v1_platform_dependencies_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Dependency Graph Api V1 Platform Dependencies Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/platform/plugins": {
+      "get": {
+        "tags": [
+          "Platform"
+        ],
+        "summary": "List Plugins",
+        "operationId": "list_plugins_api_v1_platform_plugins_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response List Plugins Api V1 Platform Plugins Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/catalog": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "List Catalog",
+        "operationId": "list_catalog_api_v1_connectors_catalog_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConnectorCatalogItem"
+                  },
+                  "type": "array",
+                  "title": "Response List Catalog Api V1 Connectors Catalog Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/dashboard": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Integration Dashboard",
+        "operationId": "integration_dashboard_api_v1_connectors_dashboard_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorDashboard"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/seed-defaults": {
+      "post": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Seed Default Connectors",
+        "operationId": "seed_default_connectors_api_v1_connectors_seed_defaults_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "List Connectors",
+        "operationId": "list_connectors_api_v1_connectors_get",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Project Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ConnectorRead"
+                  },
+                  "title": "Response List Connectors Api V1 Connectors Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Create Connector",
+        "operationId": "create_connector_api_v1_connectors_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectorCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/ai/context": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Connector Ai Context",
+        "operationId": "connector_ai_context_api_v1_connectors_ai_context_get",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Project Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/artifacts/use-cases": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "List Artifact Use Cases",
+        "operationId": "list_artifact_use_cases_api_v1_connectors_artifacts_use_cases_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtifactUseCaseRead"
+                  },
+                  "type": "array",
+                  "title": "Response List Artifact Use Cases Api V1 Connectors Artifacts Use Cases Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/artifacts/preview-sources": {
+      "post": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Preview Artifact Sources",
+        "operationId": "preview_artifact_sources_api_v1_connectors_artifacts_preview_sources_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreviewSourcesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreviewSourcesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/artifacts/prompt-preview": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Preview Artifact Prompt",
+        "operationId": "preview_artifact_prompt_api_v1_connectors_artifacts_prompt_preview_get",
+        "parameters": [
+          {
+            "name": "artifact_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Artifact Type"
+            }
+          },
+          {
+            "name": "connector_types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Connector Types"
+            }
+          },
+          {
+            "name": "connector_ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Connector Ids"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromptPreviewResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/artifacts/generate": {
+      "post": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Generate Connector Artifact",
+        "operationId": "generate_connector_artifact_api_v1_connectors_artifacts_generate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateArtifactRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedConnectorArtifact"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/artifacts/{artifact_id}": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Get Connector Artifact",
+        "operationId": "get_connector_artifact_api_v1_connectors_artifacts__artifact_id__get",
+        "parameters": [
+          {
+            "name": "artifact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Artifact Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedConnectorArtifact"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/artifacts/{artifact_id}/traceability": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Get Artifact Traceability",
+        "operationId": "get_artifact_traceability_api_v1_connectors_artifacts__artifact_id__traceability_get",
+        "parameters": [
+          {
+            "name": "artifact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Artifact Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/{connector_id}": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Get Connector",
+        "operationId": "get_connector_api_v1_connectors__connector_id__get",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Update Connector",
+        "operationId": "update_connector_api_v1_connectors__connector_id__patch",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectorUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/{connector_id}/test": {
+      "post": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Test Connector",
+        "operationId": "test_connector_api_v1_connectors__connector_id__test_post",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorTestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/{connector_id}/health": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Connector Health",
+        "operationId": "connector_health_api_v1_connectors__connector_id__health_get",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/{connector_id}/sync": {
+      "post": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Sync Connector",
+        "operationId": "sync_connector_api_v1_connectors__connector_id__sync_post",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorRunRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/{connector_id}/runs": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Connector Runs",
+        "operationId": "connector_runs_api_v1_connectors__connector_id__runs_get",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ConnectorRunRead"
+                  },
+                  "title": "Response Connector Runs Api V1 Connectors  Connector Id  Runs Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/{connector_id}/errors": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Connector Errors",
+        "operationId": "connector_errors_api_v1_connectors__connector_id__errors_get",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ConnectorErrorRead"
+                  },
+                  "title": "Response Connector Errors Api V1 Connectors  Connector Id  Errors Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/connectors/{connector_id}/data": {
+      "get": {
+        "tags": [
+          "Enterprise Connectors"
+        ],
+        "summary": "Connector Normalized Data",
+        "operationId": "connector_normalized_data_api_v1_connectors__connector_id__data_get",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Connector Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NormalizedDataResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rules": {
+      "get": {
+        "tags": [
+          "Rule Engine"
+        ],
+        "summary": "List Rules",
+        "operationId": "list_rules_api_v1_rules_get",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RuleDefinition"
+                  },
+                  "title": "Response List Rules Api V1 Rules Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rules/run": {
+      "post": {
+        "tags": [
+          "Rule Engine"
+        ],
+        "summary": "Run Rules",
+        "operationId": "run_rules_api_v1_rules_run_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RuleRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleRunReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rules/explain": {
+      "post": {
+        "tags": [
+          "Rule Engine"
+        ],
+        "summary": "Explain Rules",
+        "operationId": "explain_rules_api_v1_rules_explain_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RuleRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RuleResult"
+                  },
+                  "type": "array",
+                  "title": "Response Explain Rules Api V1 Rules Explain Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/team-takeover/metadata": {
+      "get": {
+        "tags": [
+          "Team Takeover"
+        ],
+        "summary": "Takeover Metadata",
+        "operationId": "takeover_metadata_api_v1_team_takeover_metadata_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -14116,6 +15862,23 @@
         },
         "type": "object",
         "title": "ActivityLogUpdate"
+      },
+      "AnalyzeRequest": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "strategy": {
+            "$ref": "#/components/schemas/ReasoningStrategy",
+            "default": "chain_of_thought"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt"
+        ],
+        "title": "AnalyzeRequest"
       },
       "ApplicationCreate": {
         "properties": {
@@ -15746,6 +17509,42 @@
         "type": "object",
         "title": "ArtifactUpdate"
       },
+      "ArtifactUseCaseRead": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "supported_connectors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Supported Connectors"
+          },
+          "multi_source": {
+            "type": "boolean",
+            "title": "Multi Source"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "description",
+          "supported_connectors",
+          "multi_source"
+        ],
+        "title": "ArtifactUseCaseRead"
+      },
       "AuditEvidenceCreate": {
         "properties": {
           "project_id": {
@@ -16081,6 +17880,24 @@
           "readiness"
         ],
         "title": "AuditSummary"
+      },
+      "BaselineRequest": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "prompt"
+        ],
+        "title": "BaselineRequest"
       },
       "BatchQualityReport": {
         "properties": {
@@ -16514,6 +18331,24 @@
         "type": "object",
         "title": "CodeReviewUpdate"
       },
+      "CompareArtifactsRequest": {
+        "properties": {
+          "left": {
+            "type": "string",
+            "title": "Left"
+          },
+          "right": {
+            "type": "string",
+            "title": "Right"
+          }
+        },
+        "type": "object",
+        "required": [
+          "left",
+          "right"
+        ],
+        "title": "CompareArtifactsRequest"
+      },
       "ComplianceRecordCreate": {
         "properties": {
           "evidence_id": {
@@ -16680,6 +18515,482 @@
           "Not Assessed"
         ],
         "title": "ComplianceStatus"
+      },
+      "ConnectorCatalogItem": {
+        "properties": {
+          "connector_type": {
+            "type": "string",
+            "title": "Connector Type"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "credential_ref_keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Credential Ref Keys"
+          },
+          "config_schema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Config Schema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "connector_type",
+          "display_name",
+          "category",
+          "description",
+          "credential_ref_keys",
+          "config_schema"
+        ],
+        "title": "ConnectorCatalogItem"
+      },
+      "ConnectorCreate": {
+        "properties": {
+          "connector_type": {
+            "type": "string",
+            "title": "Connector Type"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Id",
+            "default": 1
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled",
+            "default": true
+          },
+          "mock_mode": {
+            "type": "boolean",
+            "title": "Mock Mode",
+            "default": true
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run",
+            "default": false
+          },
+          "config": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Config"
+          },
+          "credential_refs": {
+            "items": {
+              "$ref": "#/components/schemas/CredentialRefIn"
+            },
+            "type": "array",
+            "title": "Credential Refs"
+          }
+        },
+        "type": "object",
+        "required": [
+          "connector_type",
+          "name"
+        ],
+        "title": "ConnectorCreate"
+      },
+      "ConnectorDashboard": {
+        "properties": {
+          "total_connectors": {
+            "type": "integer",
+            "title": "Total Connectors"
+          },
+          "enabled_connectors": {
+            "type": "integer",
+            "title": "Enabled Connectors"
+          },
+          "mock_connectors": {
+            "type": "integer",
+            "title": "Mock Connectors"
+          },
+          "healthy_connectors": {
+            "type": "integer",
+            "title": "Healthy Connectors"
+          },
+          "last_24h_runs": {
+            "type": "integer",
+            "title": "Last 24H Runs"
+          },
+          "last_24h_failures": {
+            "type": "integer",
+            "title": "Last 24H Failures"
+          },
+          "assets_synced_total": {
+            "type": "integer",
+            "title": "Assets Synced Total"
+          },
+          "findings_synced_total": {
+            "type": "integer",
+            "title": "Findings Synced Total"
+          },
+          "auth_mode": {
+            "type": "string",
+            "title": "Auth Mode"
+          },
+          "security_bypassed": {
+            "type": "boolean",
+            "title": "Security Bypassed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_connectors",
+          "enabled_connectors",
+          "mock_connectors",
+          "healthy_connectors",
+          "last_24h_runs",
+          "last_24h_failures",
+          "assets_synced_total",
+          "findings_synced_total",
+          "auth_mode",
+          "security_bypassed"
+        ],
+        "title": "ConnectorDashboard"
+      },
+      "ConnectorErrorRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "connector_id": {
+            "type": "integer",
+            "title": "Connector Id"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Run Id"
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "connector_id",
+          "run_id",
+          "error_code",
+          "message",
+          "created_at"
+        ],
+        "title": "ConnectorErrorRead"
+      },
+      "ConnectorRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "connector_type": {
+            "type": "string",
+            "title": "Connector Type"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "mock_mode": {
+            "type": "boolean",
+            "title": "Mock Mode"
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run"
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Id"
+          },
+          "last_sync_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sync At"
+          },
+          "last_health_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Health Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "connector_type",
+          "name",
+          "category",
+          "status",
+          "enabled",
+          "mock_mode",
+          "dry_run",
+          "project_id",
+          "last_sync_at",
+          "last_health_status"
+        ],
+        "title": "ConnectorRead"
+      },
+      "ConnectorRunRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "connector_id": {
+            "type": "integer",
+            "title": "Connector Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run"
+          },
+          "mock": {
+            "type": "boolean",
+            "title": "Mock"
+          },
+          "assets_synced": {
+            "type": "integer",
+            "title": "Assets Synced"
+          },
+          "findings_synced": {
+            "type": "integer",
+            "title": "Findings Synced"
+          },
+          "duration_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Ms"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "connector_id",
+          "status",
+          "dry_run",
+          "mock",
+          "assets_synced",
+          "findings_synced",
+          "duration_ms",
+          "message",
+          "created_at"
+        ],
+        "title": "ConnectorRunRead"
+      },
+      "ConnectorTestResponse": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "title": "Ok"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "latency_ms": {
+            "type": "number",
+            "title": "Latency Ms",
+            "default": 0.0
+          },
+          "mock": {
+            "type": "boolean",
+            "title": "Mock",
+            "default": false
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "ok",
+          "message"
+        ],
+        "title": "ConnectorTestResponse"
+      },
+      "ConnectorUpdate": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "enabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Enabled"
+          },
+          "mock_mode": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mock Mode"
+          },
+          "dry_run": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dry Run"
+          },
+          "config": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Config"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "title": "ConnectorUpdate"
       },
       "CopilotFindingCreate": {
         "properties": {
@@ -17259,6 +19570,35 @@
           "Executive AI Advisor"
         ],
         "title": "CopilotType"
+      },
+      "CredentialRefIn": {
+        "properties": {
+          "ref_type": {
+            "type": "string",
+            "title": "Ref Type",
+            "default": "env_var"
+          },
+          "ref_key": {
+            "type": "string",
+            "title": "Ref Key"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ref_key"
+        ],
+        "title": "CredentialRefIn"
       },
       "DefectCreate": {
         "properties": {
@@ -18313,6 +20653,29 @@
         "title": "DocxParagraph",
         "description": "A DOCX-ready paragraph (style + text) \u2014 consumed by a python-docx writer."
       },
+      "DriftRequest": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "threshold": {
+            "type": "number",
+            "title": "Threshold",
+            "default": 0.85
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "prompt"
+        ],
+        "title": "DriftRequest"
+      },
       "EngineeringKpis": {
         "properties": {
           "project": {
@@ -19126,6 +21489,56 @@
         ],
         "title": "FavoriteUpdate"
       },
+      "FingerprintRequest": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt"
+        ],
+        "title": "FingerprintRequest"
+      },
+      "GenerateArtifactRequest": {
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "title": "Artifact Type"
+          },
+          "connector_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Connector Ids"
+          },
+          "connector_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Connector Types"
+          },
+          "project_id": {
+            "type": "integer",
+            "title": "Project Id",
+            "default": 1
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "artifact_type"
+        ],
+        "title": "GenerateArtifactRequest"
+      },
       "GeneratedArtifact": {
         "properties": {
           "artifact_type": {
@@ -19220,6 +21633,128 @@
         ],
         "title": "GeneratedArtifact",
         "description": "A fully generated, render-agnostic artifact document."
+      },
+      "GeneratedConnectorArtifact": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "artifact_type": {
+            "type": "string",
+            "title": "Artifact Type"
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "source_connectors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Connectors"
+          },
+          "source_records": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Source Records"
+          },
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "prompt_template_id": {
+            "type": "string",
+            "title": "Prompt Template Id"
+          },
+          "quality_score": {
+            "type": "number",
+            "title": "Quality Score"
+          },
+          "confidence": {
+            "type": "string",
+            "title": "Confidence"
+          },
+          "quality_checks": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Quality Checks"
+          },
+          "traceability": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Traceability"
+          },
+          "evidence_links": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Evidence Links"
+          },
+          "explainability": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Explainability"
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run"
+          },
+          "mock_mode": {
+            "type": "boolean",
+            "title": "Mock Mode"
+          },
+          "project_id": {
+            "type": "integer",
+            "title": "Project Id"
+          },
+          "generated_at": {
+            "type": "string",
+            "title": "Generated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "artifact_type",
+          "summary",
+          "body",
+          "source_connectors",
+          "source_records",
+          "prompt",
+          "prompt_template_id",
+          "quality_score",
+          "confidence",
+          "quality_checks",
+          "traceability",
+          "evidence_links",
+          "explainability",
+          "dry_run",
+          "mock_mode",
+          "project_id",
+          "generated_at"
+        ],
+        "title": "GeneratedConnectorArtifact"
       },
       "GoLiveCreate": {
         "properties": {
@@ -19508,6 +22043,75 @@
           "No-Go"
         ],
         "title": "GoLiveVerdict"
+      },
+      "GoldenRegressionCase": {
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "title": "Case Id"
+          },
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "similarity_score": {
+            "type": "number",
+            "title": "Similarity Score"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "case_id",
+          "prompt",
+          "passed",
+          "similarity_score",
+          "message"
+        ],
+        "title": "GoldenRegressionCase"
+      },
+      "GoldenRegressionReport": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "passed": {
+            "type": "integer",
+            "title": "Passed"
+          },
+          "failed": {
+            "type": "integer",
+            "title": "Failed"
+          },
+          "cases": {
+            "items": {
+              "$ref": "#/components/schemas/GoldenRegressionCase"
+            },
+            "type": "array",
+            "title": "Cases"
+          },
+          "overall_verdict": {
+            "type": "string",
+            "title": "Overall Verdict"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total",
+          "passed",
+          "failed",
+          "cases",
+          "overall_verdict"
+        ],
+        "title": "GoldenRegressionReport"
       },
       "HTTPValidationError": {
         "properties": {
@@ -20200,6 +22804,42 @@
         ],
         "title": "MatrixPromptTemplate",
         "description": "A domain \u00d7 artifact-type prompt from the enterprise prompt matrix."
+      },
+      "NormalizedDataResponse": {
+        "properties": {
+          "assets": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Assets"
+          },
+          "findings": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Findings"
+          },
+          "total_assets": {
+            "type": "integer",
+            "title": "Total Assets"
+          },
+          "total_findings": {
+            "type": "integer",
+            "title": "Total Findings"
+          }
+        },
+        "type": "object",
+        "required": [
+          "assets",
+          "findings",
+          "total_assets",
+          "total_findings"
+        ],
+        "title": "NormalizedDataResponse"
       },
       "NotificationCreate": {
         "properties": {
@@ -22088,6 +24728,93 @@
         ],
         "title": "PortfolioHealthItem"
       },
+      "PreviewSourcesRequest": {
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "title": "Artifact Type"
+          },
+          "connector_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Connector Ids"
+          },
+          "connector_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Connector Types"
+          },
+          "project_id": {
+            "type": "integer",
+            "title": "Project Id",
+            "default": 1
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit",
+            "default": 20
+          }
+        },
+        "type": "object",
+        "required": [
+          "artifact_type"
+        ],
+        "title": "PreviewSourcesRequest"
+      },
+      "PreviewSourcesResponse": {
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "title": "Artifact Type"
+          },
+          "connector_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Connector Types"
+          },
+          "records": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Records"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "project_id": {
+            "type": "integer",
+            "title": "Project Id"
+          },
+          "security_bypassed": {
+            "type": "boolean",
+            "title": "Security Bypassed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "artifact_type",
+          "connector_types",
+          "records",
+          "total",
+          "mode",
+          "project_id",
+          "security_bypassed"
+        ],
+        "title": "PreviewSourcesResponse"
+      },
       "ProjectCreate": {
         "properties": {
           "name": {
@@ -22632,6 +25359,42 @@
           "name"
         ],
         "title": "PromptImport"
+      },
+      "PromptPreviewResponse": {
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "title": "Artifact Type"
+          },
+          "connector_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Connector Types"
+          },
+          "prompt_template_id": {
+            "type": "string",
+            "title": "Prompt Template Id"
+          },
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "source_record_count": {
+            "type": "integer",
+            "title": "Source Record Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "artifact_type",
+          "connector_types",
+          "prompt_template_id",
+          "prompt",
+          "source_record_count"
+        ],
+        "title": "PromptPreviewResponse"
       },
       "PromptRanking": {
         "properties": {
@@ -23191,6 +25954,15 @@
           "At Risk"
         ],
         "title": "Readiness"
+      },
+      "ReasoningStrategy": {
+        "type": "string",
+        "enum": [
+          "direct",
+          "chain_of_thought",
+          "tree_of_thought"
+        ],
+        "title": "ReasoningStrategy"
       },
       "RegressionMetric": {
         "properties": {
@@ -24322,6 +27094,24 @@
         "type": "object",
         "title": "RequirementUpdate"
       },
+      "ReviewArtifactRequest": {
+        "properties": {
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "artifact_type": {
+            "type": "string",
+            "title": "Artifact Type",
+            "default": "BRD"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "ReviewArtifactRequest"
+      },
       "ReviewFinding": {
         "properties": {
           "dimension": {
@@ -24608,6 +27398,181 @@
           "artifact_types"
         ],
         "title": "RubricList"
+      },
+      "RuleDefinition": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "requires_llm": {
+            "type": "boolean",
+            "title": "Requires Llm",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "category",
+          "description"
+        ],
+        "title": "RuleDefinition"
+      },
+      "RuleResult": {
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "title": "Rule Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "warning"
+            ],
+            "title": "Status"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "remediation": {
+            "type": "string",
+            "title": "Remediation",
+            "default": ""
+          },
+          "explainability": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Explainability"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rule_id",
+          "name",
+          "category",
+          "status",
+          "message"
+        ],
+        "title": "RuleResult"
+      },
+      "RuleRunReport": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "passed": {
+            "type": "integer",
+            "title": "Passed"
+          },
+          "failed": {
+            "type": "integer",
+            "title": "Failed"
+          },
+          "warnings": {
+            "type": "integer",
+            "title": "Warnings"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/RuleResult"
+            },
+            "type": "array",
+            "title": "Results"
+          },
+          "overall_status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "warning"
+            ],
+            "title": "Overall Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total",
+          "passed",
+          "failed",
+          "warnings",
+          "results",
+          "overall_status"
+        ],
+        "title": "RuleRunReport"
+      },
+      "RuleRunRequest": {
+        "properties": {
+          "artifact_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artifact Type"
+          },
+          "artifact_content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artifact Content"
+          },
+          "connector_records": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Connector Records"
+          },
+          "project_id": {
+            "type": "integer",
+            "title": "Project Id",
+            "default": 1
+          },
+          "categories": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Categories"
+          }
+        },
+        "type": "object",
+        "title": "RuleRunRequest"
       },
       "SdlcPhase": {
         "type": "string",
@@ -26841,6 +29806,35 @@
           "overall_score"
         ],
         "title": "VersionDiff"
+      },
+      "VersionRequest": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt",
+          "version"
+        ],
+        "title": "VersionRequest"
       },
       "WorkbenchCompareRequest": {
         "properties": {

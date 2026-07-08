@@ -29,3 +29,14 @@ class VersionRequest(BaseModel):
     prompt: str
     version: str
     parent_id: str | None = None
+
+
+class BaselineRequest(BaseModel):
+    key: str
+    prompt: str
+
+
+class DriftRequest(BaseModel):
+    key: str
+    prompt: str
+    threshold: float = 0.85

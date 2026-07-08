@@ -11,13 +11,28 @@ import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { DevelopmentIntakeWorkflow } from '../components/development/DevelopmentIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
+import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
+import { useSdlcHubSummary } from '../sdk/hooks/useSdlcHubSummary';
 
 export function DevelopmentHub() {
   const { development } = useFilteredSimulation();
+  const backend = useSdlcHubSummary('development', {
+    score: development.codeQuality,
+    readiness: development.codeQuality >= 80 ? 'Ready' : 'On Track',
+    totalItems: development.pullRequests,
+  });
 
   return (
     <Box>
       <AIWorkspacePanel module="development" number={1} />
+      <SdlcBackendStrip
+        hubLabel="Development"
+        loading={backend.loading}
+        error={backend.error}
+        source={backend.source}
+        summary={backend.data}
+        onRetry={backend.retry}
+      />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Pull Requests" value={development.pullRequests} suffix="" trend={8} compact /></Grid>

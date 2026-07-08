@@ -14,6 +14,9 @@ backend:
     ENVIRONMENT: production
     DEBUG: "false"
     RATE_LIMIT_ENABLED: "true"
+    ADIP_AUTH_MODE: oidc
+    CONNECTOR_DEFAULT_MOCK: "false"
+    CONNECTOR_SYNC_ENABLED: "true"
   resources:
     requests: { cpu: 250m, memory: 256Mi }
     limits: { cpu: "1", memory: 512Mi }

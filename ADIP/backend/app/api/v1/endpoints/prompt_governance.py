@@ -4,7 +4,7 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from app.prompt.governance import fingerprint_prompt, prompt_governance
-from app.schemas.ai_engine import FingerprintRequest, VersionRequest
+from app.schemas.ai_engine import BaselineRequest, DriftRequest, FingerprintRequest, VersionRequest
 
 router = APIRouter(prefix="/prompt-governance", tags=["Prompt Governance"])
 
@@ -41,3 +41,15 @@ def prompt_fingerprint(body: FingerprintRequest) -> dict:
 def register_prompt_version(body: VersionRequest) -> dict:
     node = prompt_governance.record_version(body.prompt, body.version, body.parent_id)
     return node.__dict__
+
+
+@router.post("/baseline")
+def register_baseline(body: BaselineRequest) -> dict:
+    fp = prompt_governance.set_baseline(body.key, body.prompt)
+    return {"key": body.key, "fingerprint": fp.hash}
+
+
+@router.post("/drift")
+def detect_prompt_drift(body: DriftRequest) -> dict:
+    report = prompt_governance.detect_drift(body.key, body.prompt, threshold=body.threshold)
+    return report.__dict__

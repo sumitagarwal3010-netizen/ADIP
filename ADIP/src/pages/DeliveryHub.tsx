@@ -7,12 +7,27 @@ import { ModuleHeader } from '../components/common/ModuleHeader';
 import { SeverityChip } from '../components/common/SeverityChip';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
+import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
+import { useSdlcHubSummary } from '../sdk/hooks/useSdlcHubSummary';
 
 export function DeliveryHub() {
   const { delivery } = useFilteredSimulation();
+  const backend = useSdlcHubSummary('delivery', {
+    score: delivery.testCoverageAvg,
+    readiness: delivery.testCoverageAvg >= 80 ? 'Ready' : 'On Track',
+    totalItems: delivery.requirementsAnalysed,
+  });
 
   return (
     <Box>
+      <SdlcBackendStrip
+        hubLabel="Delivery"
+        loading={backend.loading}
+        error={backend.error}
+        source={backend.source}
+        summary={backend.data}
+        onRetry={backend.retry}
+      />
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Requirements Analysed" value={delivery.requirementsAnalysed} suffix="" trend={4} delay={0} /></Grid>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Business Impact Index" value={delivery.businessImpactIndex} trend={1.8} delay={0.05} /></Grid>

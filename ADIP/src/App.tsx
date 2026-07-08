@@ -1,4 +1,5 @@
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { Suspense } from 'react';
+import { ThemeProvider, CssBaseline, Box, CircularProgress } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import { theme } from './theme/theme';
 import { AppRoutes } from './routes';
@@ -50,7 +51,15 @@ function App() {
                     <SimulationProvider>
                       <ExplainabilityProvider>
                         <BrowserRouter>
-                          <AppRoutes />
+                          <Suspense
+                            fallback={(
+                              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
+                                <CircularProgress size={32} />
+                              </Box>
+                            )}
+                          >
+                            <AppRoutes />
+                          </Suspense>
                         </BrowserRouter>
                       </ExplainabilityProvider>
                     </SimulationProvider>

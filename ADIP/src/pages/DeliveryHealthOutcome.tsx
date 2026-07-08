@@ -1,4 +1,4 @@
-import { AiDeliveryCopilotCenter } from './AiDeliveryCopilotCenter';
+import { Navigate } from 'react-router-dom';
 
 /**
  * The "Delivery Health" route is preserved for bookmark compatibility, but the
@@ -7,5 +7,5 @@ import { AiDeliveryCopilotCenter } from './AiDeliveryCopilotCenter';
  * (Requirements → Architecture → Development → Testing → Release → Audit).
  */
 export function DeliveryHealthOutcome() {
-  return <AiDeliveryCopilotCenter initialTab="requirements" />;
+  return <Navigate to="/executive/ai-copilot/requirements" replace />;
 }

@@ -52,7 +52,15 @@ Store only references in DB (`connector_credential_refs`):
 | Security Bypass (Prototype) | `enterprise/connectivity/SECURITY_BYPASS_PROTOTYPE.md` |
 | DevOps Deployment Notes | `enterprise/connectivity/DEVOPS_DEPLOYMENT_NOTES.md` |
 | SRE Runbook | `enterprise/connectivity/SRE_RUNBOOK.md` |
-| Testing Guide | `enterprise/connectivity/TESTING_GUIDE.md` |
+| Connector Artifact Workbench Guide | `enterprise/connectivity/CONNECTOR_ARTIFACT_WORKBENCH_GUIDE.md` |
+| Connector Usage Guide | `enterprise/connectivity/CONNECTOR_USAGE_GUIDE.md` |
+| LLM Prompt Guide (Connector Artifacts) | `enterprise/connectivity/LLM_PROMPT_GUIDE_CONNECTOR_ARTIFACTS.md` |
+| Connector Artifact Use Cases | `enterprise/connectivity/CONNECTOR_ARTIFACT_USE_CASES.md` |
+| SharePoint/Teams/Outlook Setup | `enterprise/connectivity/SHAREPOINT_TEAMS_OUTLOOK_SETUP.md` |
+| Jira/Confluence Setup | `enterprise/connectivity/JIRA_CONFLUENCE_SETUP.md` |
+| SonarQube/Prisma Setup | `enterprise/connectivity/SONARQUBE_PRISMA_SETUP.md` |
+| Demo Script (Management Review) | `enterprise/connectivity/DEMO_SCRIPT_MANAGEMENT_REVIEW.md` |
+| Troubleshooting Guide | `enterprise/connectivity/TROUBLESHOOTING_GUIDE.md` |
 
 ## Operations
 

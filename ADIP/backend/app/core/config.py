@@ -80,6 +80,11 @@ class Settings(BaseSettings):
     rate_limit_rps: float = Field(default=10.0)
     rate_limit_burst: int = Field(default=20)
 
+    # --- Auth (enterprise connectivity) ---
+    adip_auth_mode: str = Field(default="demo", alias="ADIP_AUTH_MODE")
+    connector_sync_enabled: bool = Field(default=True, alias="CONNECTOR_SYNC_ENABLED")
+    connector_default_mock: bool = Field(default=True, alias="CONNECTOR_DEFAULT_MOCK")
+
     @property
     def is_sqlite(self) -> bool:
         return self.database_url.startswith("sqlite")

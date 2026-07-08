@@ -268,6 +268,82 @@ export const apiClient = {
   transformationRoi<T = unknown>(): Promise<T> {
     return request<T>('/transformation/roi');
   },
+
+  // --- Enterprise connectors ---
+  connectorCatalog<T = unknown>(): Promise<T> {
+    return request<T>('/connectors/catalog');
+  },
+  connectorDashboard<T = unknown>(): Promise<T> {
+    return request<T>('/connectors/dashboard');
+  },
+  listConnectors<T = unknown>(projectId?: number): Promise<T> {
+    const q = projectId != null ? `?project_id=${projectId}` : '';
+    return request<T>(`/connectors${q}`);
+  },
+  testConnector<T = unknown>(connectorId: number): Promise<T> {
+    return request<T>(`/connectors/${connectorId}/test`, { method: 'POST' });
+  },
+  syncConnector<T = unknown>(connectorId: number): Promise<T> {
+    return request<T>(`/connectors/${connectorId}/sync`, { method: 'POST' });
+  },
+  seedConnectors<T = unknown>(): Promise<T> {
+    return request<T>('/connectors/seed-defaults', { method: 'POST' });
+  },
+  connectorArtifactUseCases<T = unknown>(): Promise<T> {
+    return request<T>('/connectors/artifacts/use-cases');
+  },
+  previewConnectorSources<T = unknown>(body: {
+    artifact_type: string;
+    connector_ids?: number[];
+    connector_types?: string[];
+    project_id?: number;
+    limit?: number;
+  }): Promise<T> {
+    return request<T>('/connectors/artifacts/preview-sources', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+  previewConnectorPrompt<T = unknown>(artifactType: string, connectorTypes: string[]): Promise<T> {
+    const q = new URLSearchParams({
+      artifact_type: artifactType,
+      connector_types: connectorTypes.join(','),
+    });
+    return request<T>(`/connectors/artifacts/prompt-preview?${q}`);
+  },
+  generateConnectorArtifact<T = unknown>(body: {
+    artifact_type: string;
+    connector_ids?: number[];
+    connector_types?: string[];
+    project_id?: number;
+    dry_run?: boolean;
+  }): Promise<T> {
+    return request<T>('/connectors/artifacts/generate', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+  getConnectorArtifact<T = unknown>(artifactId: string): Promise<T> {
+    return request<T>(`/connectors/artifacts/${artifactId}`);
+  },
+  llmSmokeTest<T = unknown>(): Promise<T> {
+    return request<T>('/llm/smoke-test', { method: 'POST' });
+  },
+  runGoldenRegression<T = unknown>(limit = 5): Promise<T> {
+    return request<T>(`/prompt-regression/run-golden?limit=${limit}`, { method: 'POST' });
+  },
+  artifactScorecard<T = unknown>(artifactType: string, projectId = 1): Promise<T> {
+    return request<T>(`/artifact-quality/scorecard?artifact_type=${encodeURIComponent(artifactType)}&project_id=${projectId}`);
+  },
+  runRules<T = unknown>(body: Record<string, unknown>): Promise<T> {
+    return request<T>('/rules/run', { method: 'POST', body: JSON.stringify(body) });
+  },
+  listRules<T = unknown>(): Promise<T> {
+    return request<T>('/rules');
+  },
+  teamTakeoverMetadata<T = unknown>(): Promise<T> {
+    return request<T>('/team-takeover/metadata');
+  },
 };
 
 export type ApiClient = typeof apiClient;

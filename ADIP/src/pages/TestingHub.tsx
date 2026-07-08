@@ -10,13 +10,28 @@ import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { TestingIntakeWorkflow } from '../components/testing/TestingIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
+import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
+import { useSdlcHubSummary } from '../sdk/hooks/useSdlcHubSummary';
 
 export function TestingHub() {
   const { testing } = useFilteredSimulation();
+  const backend = useSdlcHubSummary('testing', {
+    score: testing.coverage,
+    readiness: testing.coverage >= 80 ? 'Ready' : 'On Track',
+    totalItems: testing.totalTests,
+  });
 
   return (
     <Box>
       <AIWorkspacePanel module="testing" number={1} />
+      <SdlcBackendStrip
+        hubLabel="Testing"
+        loading={backend.loading}
+        error={backend.error}
+        source={backend.source}
+        summary={backend.data}
+        onRetry={backend.retry}
+      />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 2 }}><KpiCard label="Total Tests" value={testing.totalTests.toLocaleString()} suffix="" compact /></Grid>

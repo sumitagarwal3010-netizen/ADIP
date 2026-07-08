@@ -10,6 +10,7 @@ from .drift import DriftReport, detect_drift
 from .experiment_tracking import ExperimentTracker
 from .evaluation import EvaluationPipeline, EvaluationResult
 from .hallucination import HallucinationReport, detect_hallucinations
+from .semantic_similarity import SimilarityReport, similarity_score
 
 __all__ = [
     "DatasetVersion",
@@ -22,4 +23,6 @@ __all__ = [
     "EvaluationResult",
     "HallucinationReport",
     "detect_hallucinations",
+    "SimilarityReport",
+    "similarity_score",
 ]

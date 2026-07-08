@@ -17,6 +17,8 @@ from app.core.exceptions import ADIPError
 from app.core.logging import configure_logging, get_logger
 from app.core.metrics import metrics
 from app.core.middleware import RequestContextMiddleware
+from app.core.security_headers import SecurityHeadersMiddleware
+from app.core.auth_config import get_auth_settings
 
 configure_logging()
 logger = get_logger(__name__)
@@ -39,8 +41,11 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    # Request logging + latency metrics (Phase 16).
+    app.add_middleware(SecurityHeadersMiddleware)
     app.add_middleware(RequestContextMiddleware)
+    from app.core.auth_middleware import AuthMiddleware
+    app.add_middleware(AuthMiddleware)
+    get_auth_settings().warn_if_bypass()
     # Optional rate limiting (off by default; enable in production).
     if settings.rate_limit_enabled:
         from app.core.rate_limit import RateLimitMiddleware
@@ -59,6 +64,28 @@ def create_app() -> FastAPI:
     def health() -> dict[str, str]:
         """Liveness probe."""
         return {"status": "ok", "app": settings.app_name, "version": settings.app_version}
+
+    @app.get("/ready", tags=["meta"])
+    def readiness() -> dict:
+        """Readiness probe — verifies database connectivity."""
+        from sqlalchemy import text
+        from app.db.session import SessionLocal
+
+        db_ok = False
+        try:
+            with SessionLocal() as db:
+                db.execute(text("SELECT 1"))
+                db_ok = True
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Readiness check failed: %s", exc)
+        body = {
+            "status": "ok" if db_ok else "degraded",
+            "database": "ok" if db_ok else "unavailable",
+            "environment": settings.environment,
+        }
+        if db_ok:
+            return body
+        return JSONResponse(status_code=503, content=body)
 
     @app.get(f"{settings.api_v1_prefix}/health", tags=["meta"])
     def api_health() -> dict[str, str]:

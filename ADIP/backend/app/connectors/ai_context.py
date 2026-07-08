@@ -49,7 +49,55 @@ def map_finding_to_traceability(finding: dict[str, Any]) -> dict[str, Any]:
 def map_asset_to_artifact(asset: dict[str, Any]) -> dict[str, Any]:
     return {
         "name": f"{asset.get('title', 'Connector Asset')}.md",
-        "artifact_type": "EVIDENCE",
+        "artifact_type": asset.get("artifact_role", "EVIDENCE"),
         "source": asset.get("connector_type"),
+        "classification": asset.get("classification"),
         "preview": json.dumps(asset, indent=2)[:500],
     }
+
+
+def map_records_to_traceability(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    links = []
+    for r in records:
+        if r.get("kind") == "finding" or r.get("severity"):
+            links.append(map_finding_to_traceability(r))
+        else:
+            links.append({
+                "node_type": "connector_asset",
+                "external_id": r.get("external_id"),
+                "label": r.get("title"),
+                "phase": _phase_for_classification(r.get("classification", "")),
+                "evidence_source": r.get("connector_type"),
+            })
+    return links
+
+
+def build_evidence_links(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "external_id": r.get("external_id"),
+            "title": r.get("title"),
+            "connector_type": r.get("connector_type"),
+            "classification": r.get("classification"),
+            "artifact_role": r.get("artifact_role"),
+        }
+        for r in records
+    ]
+
+
+def _phase_for_classification(classification: str) -> str:
+    mapping = {
+        "requirement": "requirements",
+        "epic": "requirements",
+        "story": "requirements",
+        "architecture": "architecture",
+        "design_decision": "architecture",
+        "test_evidence": "testing",
+        "build_failure": "testing",
+        "release": "release",
+        "approval": "release",
+        "vulnerability": "testing",
+        "policy_violation": "governance",
+        "posture_finding": "governance",
+    }
+    return mapping.get(classification, "delivery")

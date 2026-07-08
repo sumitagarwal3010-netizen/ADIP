@@ -59,6 +59,36 @@
         "expr": "topk(10, adip_requests_by_path_total)",
         "refId": "A", "legendFormat": "{{path}}"
       }]
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "Connector Runs",
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 20 },
+      "targets": [{ "expr": "adip_connector_run_total", "refId": "A" }]
+    },
+    {
+      "id": 8,
+      "type": "stat",
+      "title": "Connector Failures",
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 20 },
+      "fieldConfig": { "defaults": { "thresholds": { "steps": [
+        { "color": "green", "value": null }, { "color": "red", "value": 1 } ] } } },
+      "targets": [{ "expr": "adip_connector_run_failure_total", "refId": "A" }]
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "Connector Assets Synced",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "targets": [{ "expr": "adip_connector_assets_synced_total", "refId": "A", "legendFormat": "assets" }]
+    },
+    {
+      "id": 10,
+      "type": "timeseries",
+      "title": "Connector Findings Synced",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+      "targets": [{ "expr": "adip_connector_findings_synced_total", "refId": "A", "legendFormat": "findings" }]
     }
   ]
 }

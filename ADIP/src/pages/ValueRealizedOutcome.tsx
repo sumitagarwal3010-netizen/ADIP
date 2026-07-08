@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import SavingsIcon from '@mui/icons-material/Savings';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -5,14 +6,26 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import SpeedIcon from '@mui/icons-material/Speed';
 import LayersIcon from '@mui/icons-material/Layers';
+import { Box, CircularProgress } from '@mui/material';
 import { ExecutiveOutcomePage, OutcomeKpiGrid, type OutcomeKpi, type OutcomeTab } from '../components/executive/ExecutiveOutcomePage';
-import { ValueRealizationCenter } from './ValueRealizationCenter';
 import { ExecutiveValueDashboardPanel } from '../components/valueRealization/ExecutiveValueDashboardPanel';
 import { RoiCalculatorPanel } from '../components/valueRealization/ScorecardRoiPanels';
 import { ProductivityAnalyticsPanel } from '../components/valueRealization/AnalyticsPanels';
 import { useValueRealization } from '../context/ValueRealizationContext';
 import { usePersona } from '../context/PersonaContext';
 import { canAccessValueRealization } from '../data/valueRealizationEngine';
+
+const ValueRealizationCenter = lazy(() =>
+  import('./ValueRealizationCenter').then((m) => ({ default: m.ValueRealizationCenter })),
+);
+
+function LazyCenterFallback() {
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'center', py: 3 }}>
+      <CircularProgress size={24} />
+    </Box>
+  );
+}
 
 export function ValueRealizedOutcome() {
   const { personaId } = usePersona();
@@ -34,7 +47,11 @@ export function ValueRealizedOutcome() {
     { key: 'benefits', label: 'Benefits', icon: VerifiedIcon, content: <ExecutiveValueDashboardPanel /> },
     { key: 'roi', label: 'ROI', icon: CalculateIcon, content: <RoiCalculatorPanel /> },
     { key: 'productivity', label: 'Productivity', icon: SpeedIcon, content: <ProductivityAnalyticsPanel /> },
-    { key: 'more', label: 'More', icon: LayersIcon, content: <ValueRealizationCenter initialTab="dashboard" /> },
+    { key: 'more', label: 'More', icon: LayersIcon, content: (
+      <Suspense fallback={<LazyCenterFallback />}>
+        <ValueRealizationCenter initialTab="dashboard" />
+      </Suspense>
+    ) },
   ];
 
   return (

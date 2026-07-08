@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Box, Button, Chip, TextField, Typography } from '@mui/material';
+import { Box, Button, Chip, TextField, Typography, Alert } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import HistoryIcon from '@mui/icons-material/History';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -34,6 +34,8 @@ import {
 } from '../../data/aiSessionStore';
 import { WorkspaceGovernancePanel } from './WorkspaceGovernancePanel';
 import { useCopilot } from '../../context/CopilotContext';
+import { analyzePromptWithBackend } from '../../services/aiWorkspaceBackend';
+import { isBackendMode } from '../../services/backend/apiConfig';
 
 interface AIWorkspacePanelProps {
   module: AIWorkspaceModule;
@@ -105,6 +107,7 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
   const [artifacts, setArtifacts] = useState<Artifact[]>([]);
   const [stage, setStage] = useState(0); // 0=input .. 4=governance
   const [showSim, setShowSim] = useState(false);
+  const [backendError, setBackendError] = useState<string | null>(null);
   const pendingArtifactRef = useRef(false);
 
   const sim = useGenerationSimulation({
@@ -178,13 +181,12 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
     setShowSim(true);
     setStage(1);
     setAnalysis(null);
+    setBackendError(null);
     if (!thenGenerate) setArtifacts([]);
     const captured = effectivePrompt;
-    // One prompt drives the whole AI SDLC: fan the prompt out to every copilot,
-    // the orchestrator summary, advisor insights and traceability via context.
     if (isOrchestrator) runOrchestration(captured);
-    sim.run(() => {
-      const result = generateAnalysisResult(config.analysisPhase, captured);
+
+    const finishAnalysis = (result: AnalysisResult) => {
       setAnalysis(result);
       setAnalysisPrompt(captured);
       setStage(2);
@@ -198,7 +200,28 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
       } else {
         recordSession(false, 0);
       }
-    });
+    };
+
+    const runMockPath = () => {
+      sim.run(() => {
+        finishAnalysis(generateAnalysisResult(config.analysisPhase, captured));
+      });
+    };
+
+    if (isBackendMode()) {
+      sim.run(async () => {
+        const backendResult = await analyzePromptWithBackend(config.analysisPhase, captured);
+        if (backendResult) {
+          finishAnalysis(backendResult);
+        } else {
+          setBackendError('Backend analysis unavailable — using mock analysis.');
+          finishAnalysis(generateAnalysisResult(config.analysisPhase, captured));
+        }
+      });
+      return;
+    }
+
+    runMockPath();
   };
 
   const applySuggested = (text: string) => {
@@ -216,6 +239,11 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
       <GlassCard sx={{ p: 2, mb: 1.5 }} glow={config.glow} hover={false}>
         <ModuleHeader number={number} title={config.title} subtitle={config.subtitle} />
         <FlowGuide stage={stage} />
+        {backendError && (
+          <Alert severity="info" sx={{ mb: 1, py: 0.25 }}>
+            {backendError}
+          </Alert>
+        )}
 
         {/* Structured intake (Transformation / Technology / EA / Portfolio) */}
         {config.intakeFields && config.intakeFields.length > 0 && (

@@ -17,6 +17,7 @@ from app.api.v1.endpoints import (
     artifact_generation,
     artifact_quality,
     artifact_views,
+    connectors,
     copilots,
     executive,
     knowledge_transformation,
@@ -31,7 +32,9 @@ from app.api.v1.endpoints import (
     prompt_workbench,
     regression,
     rubrics,
+    rules,
     sdlc,
+    team_takeover,
     traceability,
     validation,
 )
@@ -90,3 +93,6 @@ api_router.include_router(regression.router)
 api_router.include_router(ai_engine.router)
 api_router.include_router(prompt_governance.router)
 api_router.include_router(platform_meta.router)
+api_router.include_router(connectors.router)
+api_router.include_router(rules.router)
+api_router.include_router(team_takeover.router)

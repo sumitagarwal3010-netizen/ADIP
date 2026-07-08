@@ -10,6 +10,7 @@ export interface ConnectorRow {
   status: string;
   enabled: boolean;
   mock_mode: boolean;
+  dry_run?: boolean;
   last_health_status?: string;
 }
 

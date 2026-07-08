@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, Alert, CircularProgress } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { KpiCard } from '../common/KpiCard';
 import { GlassCard } from '../common/GlassCard';
@@ -8,6 +8,7 @@ import { TraceNodeChip } from './TraceNodeChip';
 import { colors } from '../../theme/colors';
 import { TRACE_THREADS, type TraceNode } from '../../data/traceabilityModel';
 import { lineageForThread, computeCoverage } from '../../data/traceabilityEngine';
+import { useTraceabilityMatrix } from '../../sdk/hooks/useTraceabilityData';
 
 interface TraceabilityDashboardProps {
   onSelectNode?: (node: TraceNode) => void;
@@ -17,14 +18,32 @@ export function TraceabilityDashboard({ onSelectNode }: TraceabilityDashboardPro
   const [threadId, setThreadId] = useState(TRACE_THREADS[0].id);
   const thread = TRACE_THREADS.find((t) => t.id === threadId) ?? TRACE_THREADS[0];
   const stages = useMemo(() => lineageForThread(thread.rootId), [thread.rootId]);
-  const coverage = useMemo(() => computeCoverage(), []);
+  const mockCoverage = useMemo(() => computeCoverage(), []);
+  const { data: matrixData, loading, error, source, retry } = useTraceabilityMatrix();
+  const coverage = mockCoverage;
+  const backendCoverage = typeof matrixData?.coverage_pct === 'number' ? matrixData.coverage_pct : null;
 
   const totalNodes = stages.reduce((acc, s) => acc + s.nodes.length, 0);
 
   return (
     <Box>
+      {loading && (
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+          <CircularProgress size={16} />
+          <Typography variant="caption" color="text.secondary">Loading traceability matrix ({source})…</Typography>
+        </Box>
+      )}
+      {error && (
+        <Alert severity="warning" sx={{ mb: 1 }} action={(
+          <Typography component="button" variant="caption" onClick={retry} sx={{ cursor: 'pointer', border: 0, bgcolor: 'transparent' }}>
+            Retry
+          </Typography>
+        )}>
+          Backend unavailable — showing mock coverage. {error}
+        </Alert>
+      )}
       <Grid container spacing={1.5}>
-        <Grid size={{ xs: 6, md: 3 }}><KpiCard label="End-to-End Coverage" value={coverage.overallCoverage} suffix="%" trend={3} compact /></Grid>
+        <Grid size={{ xs: 6, md: 3 }}><KpiCard label="End-to-End Coverage" value={backendCoverage ?? coverage.overallCoverage} suffix="%" trend={3} compact /></Grid>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Threads Fully Traced" value={`${coverage.threadsFullyTraced}/${coverage.totalThreads}`} suffix="" compact /></Grid>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Audit Readiness" value={coverage.auditReadiness} suffix="%" trend={2} compact /></Grid>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Broken / Missing Links" value={coverage.missingLinks.length} suffix="" trend={-1} compact /></Grid>

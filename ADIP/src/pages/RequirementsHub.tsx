@@ -11,14 +11,29 @@ import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { RequirementIntakeWorkflow } from '../components/requirements/RequirementIntakeWorkflow';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
+import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
+import { useSdlcHubSummary } from '../sdk/hooks/useSdlcHubSummary';
 import { colors } from '../theme/colors';
 
 export function RequirementsHub() {
   const { requirements } = useFilteredSimulation();
+  const backend = useSdlcHubSummary('requirements', {
+    score: requirements.qualityScore,
+    readiness: requirements.qualityScore >= 80 ? 'Ready' : 'On Track',
+    totalItems: requirements.analysed,
+  });
 
   return (
     <Box>
       <AIWorkspacePanel module="requirements" number={1} />
+      <SdlcBackendStrip
+        hubLabel="Requirements"
+        loading={backend.loading}
+        error={backend.error}
+        source={backend.source}
+        summary={backend.data}
+        onRetry={backend.retry}
+      />
       <Typography variant="caption" color="text.secondary" sx={{ mb: 1.5, display: 'block' }}>
         {requirements.analysisQueue} items in analysis queue
       </Typography>

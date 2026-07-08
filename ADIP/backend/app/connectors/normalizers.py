@@ -23,7 +23,10 @@ def normalize_finding(item: dict) -> dict:
         "source": item.get("connector_type"),
         "project_id": item.get("project_id", 1),
         "description": item.get("description", item.get("title", "")),
-        "status": "open",
+        "status": item.get("status", "open"),
+        "classification": item.get("classification"),
+        "artifact_role": item.get("artifact_role"),
+        "kind": "finding",
     }
 
 
@@ -34,7 +37,11 @@ def normalize_asset(item: dict) -> dict:
         "kind": item.get("kind", "asset"),
         "connector_type": item.get("connector_type"),
         "project_id": item.get("project_id", 1),
-        "metadata": {k: v for k, v in item.items() if k not in {"kind", "title", "external_id"}},
+        "classification": item.get("classification"),
+        "artifact_role": item.get("artifact_role"),
+        "metadata": {k: v for k, v in item.items() if k not in {
+            "kind", "title", "external_id", "classification", "artifact_role",
+        }},
     }
 
 

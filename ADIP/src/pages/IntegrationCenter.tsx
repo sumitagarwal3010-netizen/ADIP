@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { Alert, Box, Button, Chip, Grid, Typography } from '@mui/material';
 import SyncIcon from '@mui/icons-material/Sync';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -75,6 +76,9 @@ export function IntegrationCenter() {
             <Chip size="small" label={`Data source: ${source}`} />
             <Chip size="small" color="info" label={`Auth: ${dashboard.auth_mode}`} />
             <Button size="small" variant="outlined" onClick={handleSeed}>Seed demo connectors</Button>
+            <Button size="small" variant="text" component={RouterLink} to="/ai-sdlc/connector-artifact-workbench">
+              Artifact Workbench →
+            </Button>
           </Box>
         </GlassCard>
 

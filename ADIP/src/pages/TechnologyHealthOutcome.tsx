@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -5,8 +6,8 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import CloudIcon from '@mui/icons-material/Cloud';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import LayersIcon from '@mui/icons-material/Layers';
+import { Box, CircularProgress } from '@mui/material';
 import { ExecutiveOutcomePage, OutcomeKpiGrid, type OutcomeKpi, type OutcomeTab } from '../components/executive/ExecutiveOutcomePage';
-import { TechnologyStrategyCenter } from './TechnologyStrategyCenter';
 import { ModernizationWavesPanel } from '../components/technologyStrategy/InvestmentRiskPanels';
 import { CloudStrategyPanel } from '../components/technologyStrategy/PlatformStrategyPanels';
 import { TechnologyStandardsPanel } from '../components/technologyStrategy/StandardsLifecyclePanels';
@@ -14,6 +15,18 @@ import { useTechnologyStrategy } from '../context/TechnologyStrategyContext';
 import { useArchitectureRepository } from '../context/ArchitectureRepositoryContext';
 import { usePersona } from '../context/PersonaContext';
 import { canAccessTechnologyStrategy } from '../data/technologyStrategyEngine';
+
+const TechnologyStrategyCenter = lazy(() =>
+  import('./TechnologyStrategyCenter').then((m) => ({ default: m.TechnologyStrategyCenter })),
+);
+
+function LazyCenterFallback() {
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'center', py: 3 }}>
+      <CircularProgress size={24} />
+    </Box>
+  );
+}
 
 export function TechnologyHealthOutcome() {
   const { personaId } = usePersona();
@@ -36,7 +49,11 @@ export function TechnologyHealthOutcome() {
     { key: 'modernization', label: 'Modernization', icon: UpgradeIcon, content: <ModernizationWavesPanel /> },
     { key: 'cloud', label: 'Cloud', icon: CloudIcon, content: <CloudStrategyPanel /> },
     { key: 'architecture', label: 'Architecture', icon: AccountTreeIcon, content: <TechnologyStandardsPanel /> },
-    { key: 'more', label: 'More', icon: LayersIcon, content: <TechnologyStrategyCenter initialTab="standards" /> },
+    { key: 'more', label: 'More', icon: LayersIcon, content: (
+      <Suspense fallback={<LazyCenterFallback />}>
+        <TechnologyStrategyCenter initialTab="standards" />
+      </Suspense>
+    ) },
   ];
 
   return (

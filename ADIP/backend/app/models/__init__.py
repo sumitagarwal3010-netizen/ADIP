@@ -34,6 +34,15 @@ from app.models.platform import (
     Notification,
     TransformationProgram,
 )
+from app.models.connectors import (
+    ConnectorAsset,
+    ConnectorCredentialRef,
+    ConnectorError,
+    ConnectorFinding,
+    ConnectorRun,
+    EnterpriseConnector,
+    IdentityProviderConfig,
+)
 from app.models.prompt_workbench import (
     WorkbenchPrompt,
     WorkbenchPromptVersion,
@@ -93,4 +102,12 @@ __all__ = [
     "WorkbenchPrompt",
     "WorkbenchPromptVersion",
     "WorkbenchRun",
+    # connectors
+    "EnterpriseConnector",
+    "ConnectorCredentialRef",
+    "ConnectorRun",
+    "ConnectorError",
+    "ConnectorAsset",
+    "ConnectorFinding",
+    "IdentityProviderConfig",
 ]

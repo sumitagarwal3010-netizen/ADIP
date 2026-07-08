@@ -27,3 +27,19 @@ class RegressionReport(BaseModel):
     overall_verdict: str
     regressions: list[str]
     improvements: list[str]
+
+
+class GoldenRegressionCase(BaseModel):
+    case_id: str
+    prompt: str
+    passed: bool
+    similarity_score: float
+    message: str
+
+
+class GoldenRegressionReport(BaseModel):
+    total: int
+    passed: int
+    failed: int
+    cases: list[GoldenRegressionCase]
+    overall_verdict: str

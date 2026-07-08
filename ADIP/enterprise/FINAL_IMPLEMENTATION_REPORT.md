@@ -172,7 +172,11 @@
 
 ## Build status
 
-*Filled by validation run.*
+| Command | Result | Notes |
+|---------|--------|-------|
+| `pytest -q` | **PASS** | 14 test modules, 212 tests, 0 failures |
+| `npx tsc --noEmit` | **PASS** | No TypeScript errors |
+| `npm run build` | **PASS** | Vite build ~1.4s; single chunk ~3 MB (splitting recommended) |
 
 ---
 

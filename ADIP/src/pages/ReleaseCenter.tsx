@@ -13,13 +13,28 @@ import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { ReleaseIntakeWorkflow } from '../components/release/ReleaseIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
+import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
+import { useSdlcHubSummary } from '../sdk/hooks/useSdlcHubSummary';
 
 export function ReleaseCenter() {
   const { release } = useFilteredSimulation();
+  const backend = useSdlcHubSummary('release', {
+    score: release.confidence,
+    readiness: release.goNoGo,
+    totalItems: release.deploymentReadiness,
+  });
 
   return (
     <Box>
       <AIWorkspacePanel module="release" number={1} />
+      <SdlcBackendStrip
+        hubLabel="Release"
+        loading={backend.loading}
+        error={backend.error}
+        source={backend.source}
+        summary={backend.data}
+        onRetry={backend.retry}
+      />
 
       <Grid container spacing={1.5}>
         <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Release Confidence" value={release.confidence} trend={2} /></Grid>

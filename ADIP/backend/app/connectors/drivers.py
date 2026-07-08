@@ -4,35 +4,49 @@ from __future__ import annotations
 from typing import Any
 
 from app.connectors.base import BaseConnector
+from app.connectors.mock_catalog import samples_for
 from app.connectors.types import ConnectorCapability, ConnectorCategory, ConnectorTestResult, SyncPage
-
-
-def _items(kind: str, connector: str, labels: list[str]) -> list[dict[str, Any]]:
-    return [
-        {
-            "kind": kind,
-            "external_id": f"{connector}-{i}",
-            "title": label,
-            "connector_type": connector,
-            "severity": "medium" if kind == "finding" else None,
-            "project_id": 1,
-        }
-        for i, label in enumerate(labels, 1)
-    ]
 
 
 class _MockConnector(BaseConnector):
     """Generic mock connector with category-specific sample data."""
 
     def __init__(self, connector_type: str, category: ConnectorCategory,
-                 display_name: str, samples: list[dict[str, Any]], **kwargs) -> None:
+                 display_name: str, samples: list[dict[str, Any]] | None = None, **kwargs) -> None:
         super().__init__(**kwargs)
         self.connector_type = connector_type
         self.category = category
         self.display_name = display_name
-        self._samples = samples
+        self._samples = samples if samples is not None else samples_for(connector_type)
+
+    @property
+    def capabilities(self) -> ConnectorCapability:
+        cap = ConnectorCapability()
+        cap.supports_sync = True
+        cap.supports_pagination = True
+        cap.supports_dry_run = True
+        has_findings = any(s.get("kind") == "finding" for s in self._samples)
+        has_assets = any(s.get("kind") != "finding" for s in self._samples)
+        if has_assets:
+            cap.asset_types = list({s.get("classification", "asset") for s in self._samples if s.get("kind") != "finding"})
+        if has_findings:
+            cap.finding_types = list({s.get("classification", "finding") for s in self._samples if s.get("kind") == "finding"})
+        return cap
+
+    def validate_config(self) -> tuple[bool, list[str]]:
+        errors: list[str] = []
+        if not self.mock_mode and not self.dry_run:
+            base_url = self.config.get("base_url") or self.config.get("tenant_id")
+            if not base_url and self.connector_type not in ("aws", "gcp", "kubernetes", "prometheus", "grafana"):
+                errors.append("base_url or tenant_id required for live mode")
+            if not self.config.get("credential_ref") and not self.mock_mode:
+                errors.append("credential_ref required (env var or vault path — never store secrets in config)")
+        return len(errors) == 0, errors
 
     def _test_connection_live(self) -> ConnectorTestResult:
+        ok, errs = self.validate_config()
+        if not ok:
+            return ConnectorTestResult(ok=False, message="; ".join(errs))
         return ConnectorTestResult(ok=False, message="Configure credentials for live mode.")
 
     def fetch_page(self, cursor: str | None = None) -> SyncPage:
@@ -45,113 +59,85 @@ class _MockConnector(BaseConnector):
 
 # --- ALM ---
 def jira_connector(**kw) -> BaseConnector:
-    return _MockConnector("jira", ConnectorCategory.ALM, "Jira",
-        _items("asset", "jira", ["ADIP", "Payments Modernization"]) +
-        _items("finding", "jira", ["UPI-101: Settlement gap", "UPI-204: NPCI timeout"]), **kw)
+    return _MockConnector("jira", ConnectorCategory.ALM, "Jira", **kw)
 
 def confluence_connector(**kw) -> BaseConnector:
-    return _MockConnector("confluence", ConnectorCategory.ALM, "Confluence",
-        _items("asset", "confluence", ["Architecture Playbook", "Release Runbook"]), **kw)
+    return _MockConnector("confluence", ConnectorCategory.ALM, "Confluence", **kw)
 
 def github_enterprise_connector(**kw) -> BaseConnector:
-    return _MockConnector("github_enterprise", ConnectorCategory.ALM, "GitHub Enterprise",
-        _items("asset", "github_enterprise", ["adip-platform", "payments-service"]) +
-        _items("finding", "github_enterprise", ["PR #42: missing tests"]), **kw)
+    return _MockConnector("github_enterprise", ConnectorCategory.ALM, "GitHub Enterprise", **kw)
 
 def gitlab_connector(**kw) -> BaseConnector:
-    return _MockConnector("gitlab", ConnectorCategory.ALM, "GitLab",
-        _items("asset", "gitlab", ["adip/backend", "adip/frontend"]), **kw)
+    return _MockConnector("gitlab", ConnectorCategory.ALM, "GitLab", **kw)
 
 def azure_devops_connector(**kw) -> BaseConnector:
-    return _MockConnector("azure_devops", ConnectorCategory.ALM, "Azure DevOps",
-        _items("asset", "azure_devops", ["ADIP Program", "Sprint 12"]), **kw)
+    return _MockConnector("azure_devops", ConnectorCategory.ALM, "Azure DevOps", **kw)
 
 def jenkins_connector(**kw) -> BaseConnector:
-    return _MockConnector("jenkins", ConnectorCategory.ALM, "Jenkins",
-        _items("asset", "jenkins", ["adip-ci", "adip-nightly"]) +
-        _items("finding", "jenkins", ["Build #892 failed: integration tests"]), **kw)
+    return _MockConnector("jenkins", ConnectorCategory.ALM, "Jenkins", **kw)
 
 
 # --- Collaboration (Microsoft Graph + Slack) ---
 def sharepoint_connector(**kw) -> BaseConnector:
-    return _MockConnector("sharepoint", ConnectorCategory.COLLABORATION, "SharePoint",
-        _items("asset", "sharepoint", ["ADIP Governance Site", "Architecture Library"]), **kw)
+    return _MockConnector("sharepoint", ConnectorCategory.COLLABORATION, "SharePoint", **kw)
 
 def teams_connector(**kw) -> BaseConnector:
-    return _MockConnector("teams", ConnectorCategory.COLLABORATION, "Microsoft Teams",
-        _items("asset", "teams", ["#adip-delivery", "#architecture-review"]), **kw)
+    return _MockConnector("teams", ConnectorCategory.COLLABORATION, "Microsoft Teams", **kw)
 
 def outlook_connector(**kw) -> BaseConnector:
-    return _MockConnector("outlook", ConnectorCategory.COLLABORATION, "Outlook",
-        _items("asset", "outlook", ["Release Approvals", "Audit Evidence"]), **kw)
+    return _MockConnector("outlook", ConnectorCategory.COLLABORATION, "Outlook", **kw)
 
 def onedrive_connector(**kw) -> BaseConnector:
-    return _MockConnector("onedrive", ConnectorCategory.COLLABORATION, "OneDrive",
-        _items("asset", "onedrive", ["/ADIP/Artifacts", "/ADIP/Evidence"]), **kw)
+    return _MockConnector("onedrive", ConnectorCategory.COLLABORATION, "OneDrive", **kw)
 
 def slack_connector(**kw) -> BaseConnector:
-    return _MockConnector("slack", ConnectorCategory.COLLABORATION, "Slack",
-        _items("asset", "slack", ["#adip-alerts", "#sdlc-copilot"]), **kw)
+    return _MockConnector("slack", ConnectorCategory.COLLABORATION, "Slack", **kw)
 
 
 # --- Security scanners ---
 def sonarqube_connector(**kw) -> BaseConnector:
-    return _MockConnector("sonarqube", ConnectorCategory.SECURITY, "SonarQube",
-        _items("finding", "sonarqube", ["SQL injection risk in PaymentService", "Cognitive complexity breach"]), **kw)
+    return _MockConnector("sonarqube", ConnectorCategory.SECURITY, "SonarQube", **kw)
 
 def checkmarx_connector(**kw) -> BaseConnector:
-    return _MockConnector("checkmarx", ConnectorCategory.SECURITY, "Checkmarx",
-        _items("finding", "checkmarx", ["Hardcoded credential pattern", "XSS in portal"]), **kw)
+    return _MockConnector("checkmarx", ConnectorCategory.SECURITY, "Checkmarx", **kw)
 
 def prisma_cloud_connector(**kw) -> BaseConnector:
-    return _MockConnector("prisma_cloud", ConnectorCategory.SECURITY, "Prisma Cloud",
-        _items("finding", "prisma_cloud", ["S3 bucket public ACL", "K8s privileged pod"]), **kw)
+    return _MockConnector("prisma_cloud", ConnectorCategory.SECURITY, "Prisma Cloud", **kw)
 
 def snyk_connector(**kw) -> BaseConnector:
-    return _MockConnector("snyk", ConnectorCategory.SECURITY, "Snyk",
-        _items("finding", "snyk", ["CVE-2024-1234 in lodash", "License policy violation"]), **kw)
+    return _MockConnector("snyk", ConnectorCategory.SECURITY, "Snyk", **kw)
 
 def veracode_connector(**kw) -> BaseConnector:
-    return _MockConnector("veracode", ConnectorCategory.SECURITY, "Veracode",
-        _items("finding", "veracode", ["Flaw ID 8821: insufficient input validation"]), **kw)
+    return _MockConnector("veracode", ConnectorCategory.SECURITY, "Veracode", **kw)
 
 def trivy_connector(**kw) -> BaseConnector:
-    return _MockConnector("trivy", ConnectorCategory.SECURITY, "Trivy",
-        _items("finding", "trivy", ["OS package CVE in base image", "Secret in env file"]), **kw)
+    return _MockConnector("trivy", ConnectorCategory.SECURITY, "Trivy", **kw)
 
 def dependency_track_connector(**kw) -> BaseConnector:
-    return _MockConnector("dependency_track", ConnectorCategory.SECURITY, "Dependency-Track",
-        _items("finding", "dependency_track", ["Critical component vulnerability", "Outdated spring-core"]), **kw)
+    return _MockConnector("dependency_track", ConnectorCategory.SECURITY, "Dependency-Track", **kw)
 
 
 # --- Cloud / ops ---
 def aws_connector(**kw) -> BaseConnector:
-    return _MockConnector("aws", ConnectorCategory.CLOUD, "AWS",
-        _items("asset", "aws", ["account:123456789012", "eks:adip-prod"]), **kw)
+    return _MockConnector("aws", ConnectorCategory.CLOUD, "AWS", **kw)
 
 def azure_connector(**kw) -> BaseConnector:
-    return _MockConnector("azure", ConnectorCategory.CLOUD, "Azure",
-        _items("asset", "azure", ["subscription:adip-prod", "aks:adip-cluster"]), **kw)
+    return _MockConnector("azure", ConnectorCategory.CLOUD, "Azure", **kw)
 
 def gcp_connector(**kw) -> BaseConnector:
-    return _MockConnector("gcp", ConnectorCategory.CLOUD, "GCP",
-        _items("asset", "gcp", ["project:adip-banking", "gke:adip-primary"]), **kw)
+    return _MockConnector("gcp", ConnectorCategory.CLOUD, "GCP", **kw)
 
 def kubernetes_connector(**kw) -> BaseConnector:
-    return _MockConnector("kubernetes", ConnectorCategory.CLOUD, "Kubernetes",
-        _items("asset", "kubernetes", ["namespace:adip", "deployment:api"]), **kw)
+    return _MockConnector("kubernetes", ConnectorCategory.CLOUD, "Kubernetes", **kw)
 
 def argocd_connector(**kw) -> BaseConnector:
-    return _MockConnector("argocd", ConnectorCategory.CLOUD, "ArgoCD",
-        _items("asset", "argocd", ["app:adip-backend", "app:adip-frontend"]), **kw)
+    return _MockConnector("argocd", ConnectorCategory.CLOUD, "ArgoCD", **kw)
 
 def prometheus_connector(**kw) -> BaseConnector:
-    return _MockConnector("prometheus", ConnectorCategory.CLOUD, "Prometheus",
-        _items("asset", "prometheus", ["up{job=\"adip-api\"}", "http_request_duration"]), **kw)
+    return _MockConnector("prometheus", ConnectorCategory.CLOUD, "Prometheus", **kw)
 
 def grafana_connector(**kw) -> BaseConnector:
-    return _MockConnector("grafana", ConnectorCategory.CLOUD, "Grafana",
-        _items("asset", "grafana", ["ADIP SLO Dashboard", "Connector Health"]), **kw)
+    return _MockConnector("grafana", ConnectorCategory.CLOUD, "Grafana", **kw)
 
 
 DRIVER_FACTORIES: dict[str, Any] = {

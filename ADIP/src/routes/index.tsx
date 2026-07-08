@@ -3,18 +3,11 @@ import { AppLayout } from '../components/layouts/AppLayout';
 import { AuthGuard } from '../components/auth/AuthGuard';
 import { LoginPage } from '../pages/LoginPage';
 import { AuthenticationHealthDashboard } from '../pages/AuthenticationHealthDashboard';
-import { ExecutiveControlTower } from '../pages/ExecutiveControlTower';
 import { DeliveryHealthOutcome } from '../pages/DeliveryHealthOutcome';
 import { TechnologyHealthOutcome } from '../pages/TechnologyHealthOutcome';
 import { RiskPostureOutcome } from '../pages/RiskPostureOutcome';
 import { ValueRealizedOutcome } from '../pages/ValueRealizedOutcome';
 import { DeliveryHub } from '../pages/DeliveryHub';
-import { RequirementsHub } from '../pages/RequirementsHub';
-import { ArchitectureHub } from '../pages/ArchitectureHub';
-import { DevelopmentHub } from '../pages/DevelopmentHub';
-import { TestingHub } from '../pages/TestingHub';
-import { ReleaseCenter } from '../pages/ReleaseCenter';
-import { ProductionIntelligenceCenter } from '../pages/ProductionIntelligenceCenter';
 import { OperationsCenter } from '../pages/OperationsCenter';
 import { PortfolioHealthPage } from '../pages/PortfolioHealthPage';
 import { GovernanceCenter } from '../pages/GovernanceCenter';
@@ -23,25 +16,20 @@ import { GovernanceRiskPage } from '../pages/GovernanceRiskPage';
 import { GovernanceEvidencePage } from '../pages/GovernanceEvidencePage';
 import { ApprovalWorkflowDashboard } from '../pages/ApprovalWorkflowDashboard';
 import { KnowledgeLearningCenter } from '../pages/KnowledgeLearningCenter';
-import { ValueRealizationCenter } from '../pages/ValueRealizationCenter';
-import { PortfolioGovernanceCenter } from '../pages/PortfolioGovernanceCenter';
-import { ApplicationPortfolioCenter } from '../pages/ApplicationPortfolioCenter';
-import { ArchitectureRepositoryCenter } from '../pages/ArchitectureRepositoryCenter';
-import { TechnologyStrategyCenter } from '../pages/TechnologyStrategyCenter';
-import { TransformationPmoCenter } from '../pages/TransformationPmoCenter';
-import { EnterpriseRiskCenter } from '../pages/EnterpriseRiskCenter';
 import { Reports } from '../pages/Reports';
 import { ComplianceReports } from '../pages/ComplianceReports';
 import { AuditReports } from '../pages/AuditReports';
 import { TrendAnalytics } from '../pages/TrendAnalytics';
 import { Administration } from '../pages/Administration';
+import { IntegrationCenter } from '../pages/IntegrationCenter';
+import { ConnectorArtifactWorkbench } from '../pages/ConnectorArtifactWorkbench';
+import { TeamEngineeringWorkbench } from '../pages/TeamEngineeringWorkbench';
 import { RBACAdminDashboard } from '../pages/RBACAdminDashboard';
 import { OperationsIncidentsPage } from '../pages/OperationsIncidentsPage';
 import { OperationsAvailabilityPage } from '../pages/OperationsAvailabilityPage';
 import { KnowledgeBestPracticesPage } from '../pages/KnowledgeBestPracticesPage';
 import { KnowledgeReusableAssetsPage } from '../pages/KnowledgeReusableAssetsPage';
 import { KnowledgeLessonsLearnedPage } from '../pages/KnowledgeLessonsLearnedPage';
-import { TraceabilityCenter } from '../pages/TraceabilityCenter';
 import { PersonaLanding } from '../pages/PersonaLanding';
 import { WorkflowOrchestrationDashboard } from '../pages/WorkflowOrchestrationDashboard';
 import { AuditCenter } from '../pages/AuditCenter';
@@ -49,12 +37,29 @@ import { NotificationCenter } from '../pages/NotificationCenter';
 import { AbacAdminDashboard } from '../pages/AbacAdminDashboard';
 import { PersistenceAdminDashboard } from '../pages/PersistenceAdminDashboard';
 import { ActivityCenter } from '../pages/ActivityCenter';
-import { AiDeliveryCopilotCenter } from '../pages/AiDeliveryCopilotCenter';
-import { AIGovernanceCenter } from '../pages/AIGovernanceCenter';
 import { AIEvaluationCenter } from '../pages/AIEvaluationCenter';
 import { AIObservabilityCenter } from '../pages/AIObservabilityCenter';
-import { UniversalArtifactsRepository } from '../pages/UniversalArtifactsRepository';
 import { KpiCatalogCenter } from '../pages/KpiCatalogCenter';
+import {
+  ExecutiveControlTower,
+  AiDeliveryCopilotCenter,
+  TransformationPmoCenter,
+  UniversalArtifactsRepository,
+  AIGovernanceCenter,
+  TraceabilityCenter,
+  PortfolioGovernanceCenter,
+  ApplicationPortfolioCenter,
+  ArchitectureRepositoryCenter,
+  TechnologyStrategyCenter,
+  EnterpriseRiskCenter,
+  ValueRealizationCenter,
+  ProductionIntelligenceCenter,
+  RequirementsHub,
+  ArchitectureHub,
+  DevelopmentHub,
+  TestingHub,
+  ReleaseCenter,
+} from './lazyPages';
 
 export function AppRoutes() {
   return (
@@ -278,6 +283,9 @@ export function AppRoutes() {
         <Route path="reports/audit" element={<AuditReports />} />
         <Route path="reports/trends" element={<TrendAnalytics />} />
         <Route path="administration" element={<Administration />} />
+        <Route path="administration/integrations" element={<IntegrationCenter />} />
+        <Route path="ai-sdlc/connector-artifact-workbench" element={<ConnectorArtifactWorkbench />} />
+        <Route path="platform/team-engineering-workbench" element={<TeamEngineeringWorkbench />} />
         <Route path="administration/rbac" element={<RBACAdminDashboard />} />
         <Route path="administration/persistence" element={<PersistenceAdminDashboard />} />
         <Route path="administration/abac" element={<AbacAdminDashboard />} />

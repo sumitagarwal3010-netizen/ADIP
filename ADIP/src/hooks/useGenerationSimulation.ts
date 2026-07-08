@@ -32,7 +32,7 @@ export function useGenerationSimulation(config: SimulationConfig) {
   }, [clearTimers]);
 
   const run = useCallback(
-    (onComplete?: () => void) => {
+    (onComplete?: () => void | Promise<void>) => {
       clearTimers();
       setIsRunning(true);
       setProgress(0);
@@ -60,7 +60,7 @@ export function useGenerationSimulation(config: SimulationConfig) {
       const completeTimer = setTimeout(() => {
         setIsRunning(false);
         setStatusMessage('Generation complete');
-        onComplete?.();
+        void Promise.resolve(onComplete?.());
       }, cumulativeDelay + 400);
       timersRef.current.push(completeTimer);
     },
