@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { AIInsightBox } from '../common/AIInsightBox';
+import { CioAdvisorCockpit } from '../executive/CioAdvisorCockpit';
 import { useTechnologyStrategy } from '../../context/TechnologyStrategyContext';
 import { colors } from '../../theme/colors';
 
@@ -24,7 +25,10 @@ export function ExecutiveTechInsightsPanel() {
 
   return (
     <Box>
-      <AIInsightBox title="Technology Strategy — Executive Summary" insight={execSummary} />
+      <CioAdvisorCockpit advisor="technology" />
+      <Box sx={{ mt: 1.5 }}>
+        <AIInsightBox title="Technology Strategy — Executive Summary" insight={execSummary} />
+      </Box>
       <GlassCard sx={{ p: 2, mt: 1.5 }}>
         <ModuleHeader title="AI Technology Strategy Advisors" subtitle="Rule-based recommendations — no LLM required" />
         {aiInsights.map((insight) => (

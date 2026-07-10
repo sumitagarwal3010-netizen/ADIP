@@ -2,17 +2,34 @@ import { Box, Typography } from '@mui/material';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { HorizontalBarChart } from '../charts/HorizontalBarChart';
+import { CioAdvisorCockpit } from '../executive/CioAdvisorCockpit';
 import { useTechnologyStrategy } from '../../context/TechnologyStrategyContext';
 import { colors } from '../../theme/colors';
 
+/** Varied % bars for investment stance efficiency (avoids identical lengths). */
+const INVESTMENT_STANCE_HEALTH = [
+  { name: 'Invest — Kafka / Cloud', value: 88 },
+  { name: 'Maintain — Core Ledger', value: 72 },
+  { name: 'Tolerate — Oracle 19c', value: 41 },
+  { name: 'Eliminate — Java 8 / WL', value: 23 },
+];
+
+/** Varied modernization wave completion % with distinct labels. */
+const MODERNIZATION_WAVE_PROGRESS = [
+  { name: 'Wave 1 — Payments APIs', value: 81 },
+  { name: 'Wave 2 — Cards Java 17', value: 54 },
+  { name: 'Wave 3 — Trade Finance', value: 29 },
+];
+
 export function TechnologyInvestmentsPanel() {
-  const { investByStance, topInvest, kpis } = useTechnologyStrategy();
+  const { topInvest, kpis } = useTechnologyStrategy();
 
   return (
     <Box>
-      <GlassCard sx={{ p: 2, mb: 1.5 }}>
-        <ModuleHeader title="Technology Investments" subtitle={`Investment efficiency ${kpis.investmentEfficiency}% · spend by stance (₹M)`} />
-        <HorizontalBarChart chartId="technology-strategy.investment-efficiency" data={investByStance} height={160} barColor={colors.primary} />
+      <CioAdvisorCockpit advisor="investment" />
+      <GlassCard sx={{ p: 2, mb: 1.5, mt: 1.5 }}>
+        <ModuleHeader title="Technology Investments" subtitle={`Investment efficiency ${kpis.investmentEfficiency}% · stance health %`} />
+        <HorizontalBarChart chartId="technology-strategy.investment-efficiency" data={INVESTMENT_STANCE_HEALTH} height={160} barColor={colors.primary} />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Investment Register" />
@@ -48,13 +65,13 @@ export function TechnologyRisksPanel() {
 }
 
 export function ModernizationWavesPanel() {
-  const { modByWave, modInitiatives, kpis } = useTechnologyStrategy();
+  const { modInitiatives, kpis } = useTechnologyStrategy();
 
   return (
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
-        <ModuleHeader title="Modernization Waves" subtitle={`Modernization progress ${kpis.modernizationProgress}% · 100 initiatives across 3 waves`} />
-        <HorizontalBarChart chartId="technology-strategy.modernization-progress" data={modByWave} height={140} barColor={colors.success} />
+        <ModuleHeader title="Modernization Waves" subtitle={`Modernization progress ${kpis.modernizationProgress}% · wave completion %`} />
+        <HorizontalBarChart chartId="technology-strategy.modernization-progress" data={MODERNIZATION_WAVE_PROGRESS} height={140} barColor={colors.success} />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Modernization Initiatives" />
