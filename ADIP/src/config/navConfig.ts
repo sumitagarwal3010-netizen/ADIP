@@ -69,7 +69,7 @@ export const NAV_GROUPS: NavGroup[] = [
   },
   {
     id: 'delivery-ai',
-    label: 'Delivery AI',
+    label: 'AI SDLC',
     icon: AccountTreeIcon,
     children: [
       { id: 'requirements', label: 'Requirements', icon: AssignmentIcon, path: '/requirements', children: [] },
@@ -83,7 +83,7 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'Governance AI',
     icon: GavelIcon,
     children: [
-      { id: 'ai-governance', label: 'AI Governance', icon: SmartToyIcon, path: '/ai-governance-center', children: [] },
+      { id: 'ai-governance', label: 'Governance Command Center', icon: SmartToyIcon, path: '/ai-governance-center', children: [] },
       { id: 'compliance-automation', label: 'Compliance Automation', icon: ShieldIcon, path: '/governance/compliance', children: [] },
       { id: 'architecture-governance', label: 'Architecture Governance', icon: AccountTreeIcon, path: '/executive/architecture-repository/review-board', children: [] },
     ],
