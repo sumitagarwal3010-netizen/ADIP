@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Collapse, FormControlLabel, Grid, Switch, Typography } from '@mui/material';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { IntakeTextField } from '../workflow/IntakeTextField';
 import { IntakeSelectField } from '../workflow/IntakeSelectField';
 import { GenerationSimulationPanel } from '../workflow/GenerationSimulationPanel';
-import { GenerationRunHistoryPanel } from '../workflow/GenerationRunHistoryPanel';
-import { ArtifactRepositoryPanel } from '../workflow/ArtifactRepositoryPanel';
+import { ArtifactViewerPanel } from '../workflow/ArtifactViewerPanel';
 import { useGenerationSimulation } from '../../hooks/useGenerationSimulation';
 import type { SimulationConfig } from '../../hooks/useGenerationSimulation';
 import {
@@ -49,6 +48,8 @@ export function RequirementIntakeWorkflow() {
   const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoRequirementArtifacts());
   const [runs, setRuns] = useState<GenerationRun[]>([]);
   const [showSimulation, setShowSimulation] = useState(false);
+  const [showAssessment, setShowAssessment] = useState(false);
+  const [selectedArtifact, setSelectedArtifact] = useState<Artifact | null>(null);
 
   const { isRunning, progress, statusMessage, activityLog, run, reset } =
     useGenerationSimulation(REQUIREMENT_SIMULATION);
@@ -148,6 +149,42 @@ export function RequirementIntakeWorkflow() {
         </Box>
       </GlassCard>
 
+      <GlassCard sx={{ p: 1.5, mt: 1.25 }} hover={false}>
+        <ModuleHeader title="AI Delivery Snapshot" subtitle="Requirement assessment summary" />
+        <Grid container spacing={1}>
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Typography variant="caption" color="text.secondary">Completeness</Typography>
+            <Typography sx={{ fontSize: '0.9rem', fontWeight: 700 }}>87%</Typography>
+          </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Typography variant="caption" color="text.secondary">Compliance</Typography>
+            <Typography sx={{ fontSize: '0.82rem', fontWeight: 600 }}>UPI/NPCI, RBI Digital Lending</Typography>
+          </Grid>
+          <Grid size={{ xs: 12, md: 2 }}>
+            <Typography variant="caption" color="text.secondary">Risk</Typography>
+            <Typography sx={{ fontSize: '0.82rem', fontWeight: 600 }}>Medium</Typography>
+          </Grid>
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Typography variant="caption" color="text.secondary">Next step</Typography>
+            <Typography sx={{ fontSize: '0.82rem', fontWeight: 600 }}>Generate BRD + acceptance criteria</Typography>
+          </Grid>
+        </Grid>
+        <FormControlLabel
+          sx={{ mt: 0.75 }}
+          control={<Switch size="small" checked={showAssessment} onChange={(e) => setShowAssessment(e.target.checked)} />}
+          label={<Typography variant="caption" sx={{ fontWeight: 600 }}>View AI assessment</Typography>}
+        />
+        <Collapse in={showAssessment} timeout="auto" unmountOnExit>
+          <Box sx={{ p: 1, borderRadius: 1, bgcolor: colors.bg.glass, border: `1px solid ${colors.border.subtle}` }}>
+            <Typography variant="caption" sx={{ display: 'block' }}>Score: <strong>87%</strong></Typography>
+            <Typography variant="caption" sx={{ display: 'block' }}>Gaps: <strong>3</strong></Typography>
+            <Typography variant="caption" sx={{ display: 'block' }}>
+              Suggested action: Generate BRD + acceptance criteria, then resolve compliance mapping gaps.
+            </Typography>
+          </Box>
+        </Collapse>
+      </GlassCard>
+
       <GenerationSimulationPanel
         visible={showSimulation}
         statusMessage={statusMessage}
@@ -156,13 +193,76 @@ export function RequirementIntakeWorkflow() {
         agentLabel="Requirement Agent"
       />
 
-      <GenerationRunHistoryPanel runs={runs} />
+      <GlassCard sx={{ p: 2, mt: 1.5 }}>
+        <ModuleHeader
+          title="Generated Artifact Pack"
+          subtitle="AI-generated requirement deliverables"
+        />
+        {artifacts.length === 0 ? (
+          <Typography variant="caption" color="text.secondary" sx={{ display: 'block', py: 2, textAlign: 'center' }}>
+            No artifacts generated yet. Complete the intake form and click Generate Artifacts.
+          </Typography>
+        ) : (
+          <>
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                gap: 2,
+                py: 0.5,
+                borderBottom: `1px solid ${colors.border.subtle}`,
+                mb: 0.5,
+              }}
+            >
+              {['Artifact', 'Status', 'Model', ''].map((col) => (
+                <Typography
+                  key={col || 'action'}
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: '0.65rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.04em',
+                    minWidth: col === 'Artifact' ? 220 : col === 'Status' ? 110 : col === 'Model' ? 100 : 100,
+                    ml: col === '' ? 'auto' : undefined,
+                  }}
+                >
+                  {col}
+                </Typography>
+              ))}
+            </Box>
+            {artifacts.map((artifact) => (
+              <Box
+                key={artifact.id}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 2,
+                  py: 1,
+                  borderBottom: `1px solid ${colors.border.subtle}`,
+                  flexWrap: 'wrap',
+                }}
+              >
+                <Typography variant="caption" sx={{ minWidth: 220, fontWeight: 700 }}>{artifact.name}</Typography>
+                <Typography variant="caption" color="text.secondary" sx={{ minWidth: 110 }}>{artifact.approvalStatus}</Typography>
+                <Typography variant="caption" color="text.secondary" sx={{ minWidth: 100 }}>{artifact.modelUsed}</Typography>
+                <Button
+                  size="small"
+                  sx={{ ml: 'auto', fontSize: '0.7rem', minWidth: 100 }}
+                  onClick={() => setSelectedArtifact(artifact)}
+                >
+                  View Artifact
+                </Button>
+              </Box>
+            ))}
+          </>
+        )}
+      </GlassCard>
 
-      <ArtifactRepositoryPanel
-        artifacts={artifacts}
-        title="Generated Artifacts"
-        subtitle="AI-generated requirement deliverables"
-        emptyMessage="No artifacts generated yet. Complete the intake form and click Generate Artifacts."
+      <ArtifactViewerPanel
+        artifact={selectedArtifact}
+        open={selectedArtifact !== null}
+        onClose={() => setSelectedArtifact(null)}
       />
     </Box>
   );
