@@ -7,10 +7,15 @@ executive → artifacts → traceability), composed from existing services.
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.schemas.orchestrator import OrchestrationRequest, OrchestrationResponse
+from app.schemas.orchestrator import (
+    OrchestrationRequest,
+    OrchestrationResponse,
+    RequirementArtifactPackage,
+)
 from app.services.orchestrator_service import (
     COPILOT_SLUGS,
     DEFAULT_ARTIFACTS,
@@ -18,6 +23,10 @@ from app.services.orchestrator_service import (
 )
 
 router = APIRouter(prefix="/orchestrator", tags=["Prompt Orchestration"])
+
+
+class RequirementPackageRequest(BaseModel):
+    requirement: str
 
 
 def get_engine(db: Session = Depends(get_db)) -> PromptExecutionEngine:
@@ -46,3 +55,12 @@ def capabilities() -> dict:
             "artifacts", "traceability",
         ],
     }
+
+
+@router.post("/requirement-package", response_model=RequirementArtifactPackage)
+def requirement_package(
+    request: RequirementPackageRequest,
+    engine: PromptExecutionEngine = Depends(get_engine),
+) -> RequirementArtifactPackage:
+    """Generate requirement artifact package using backend LLM/fallback flow."""
+    return engine.generate_requirement_artifact_package(request.requirement)

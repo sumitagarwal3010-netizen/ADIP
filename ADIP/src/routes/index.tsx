@@ -193,6 +193,20 @@ export function AppRoutes() {
         <Route path="development" element={<DevelopmentHub />} />
         <Route path="testing" element={<TestingHub />} />
         <Route path="release" element={<ReleaseCenter />} />
+        {/* CIO demo navigation aliases */}
+        <Route path="executive-ai/executive-advisor" element={<Navigate to="/executive/delivery-health" replace />} />
+        <Route path="executive-ai/technology-advisor" element={<Navigate to="/executive/technology-strategy" replace />} />
+        <Route path="executive-ai/investment-advisor" element={<Navigate to="/executive/portfolio-governance" replace />} />
+        <Route path="delivery-ai/requirements" element={<Navigate to="/requirements" replace />} />
+        <Route path="delivery-ai/architecture" element={<Navigate to="/architecture" replace />} />
+        <Route path="delivery-ai/development" element={<Navigate to="/development" replace />} />
+        <Route path="delivery-ai/release" element={<Navigate to="/release" replace />} />
+        <Route path="governance-ai/ai-governance" element={<Navigate to="/ai-governance-center" replace />} />
+        <Route path="governance-ai/compliance-automation" element={<Navigate to="/governance/compliance" replace />} />
+        <Route path="governance-ai/architecture-governance" element={<Navigate to="/executive/architecture-repository/review-board" replace />} />
+        <Route path="enterprise-ai/enterprise-evidence-hub" element={<Navigate to="/ai-sdlc/connector-artifact-workbench" replace />} />
+        <Route path="enterprise-ai/knowledge-intelligence" element={<Navigate to="/knowledge-center" replace />} />
+        <Route path="enterprise-ai/administration" element={<Navigate to="/administration" replace />} />
         <Route path="production" element={<ProductionIntelligenceCenter initialTab="dashboard" />} />
         <Route path="production/incidents" element={<ProductionIntelligenceCenter initialTab="incidents" />} />
         <Route path="production/leakage" element={<ProductionIntelligenceCenter initialTab="leakage" />} />

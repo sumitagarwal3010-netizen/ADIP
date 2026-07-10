@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Box, Button, Chip, TextField, Typography, Alert } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import HistoryIcon from '@mui/icons-material/History';
@@ -30,12 +30,17 @@ import {
   createSessionId,
   loadSessions,
   nowDisplay,
+  normalizeRequirement,
+  loadRequirementPackage,
+  saveRequirementPackage,
   saveSession,
 } from '../../data/aiSessionStore';
 import { WorkspaceGovernancePanel } from './WorkspaceGovernancePanel';
 import { useCopilot } from '../../context/CopilotContext';
 import { analyzePromptWithBackend } from '../../services/aiWorkspaceBackend';
 import { isBackendMode } from '../../services/backend/apiConfig';
+import type { RequirementArtifactPackage } from '../../types/copilot';
+import { getDeterministicRequirementPackage } from '../../data/deterministicRequirementCatalog';
 
 interface AIWorkspacePanelProps {
   module: AIWorkspaceModule;
@@ -86,19 +91,12 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
   const config = AI_WORKSPACE_CONFIGS[module];
   const phaseConfig = PHASE_CONFIG[config.analysisPhase];
   const { recordArtifacts } = useArtifactsRegistry();
-  const { activePrompt, runOrchestration } = useCopilot();
+  const { runOrchestration, setRequirementArtifactPackage } = useCopilot();
 
   // The AI SDLC Copilot studio is the single prompt that drives every copilot.
   const isOrchestrator = module === 'ai-copilot';
 
-  const [prompt, setPrompt] = useState(isOrchestrator ? activePrompt : '');
-
-  // Seed the orchestrator prompt from context once so the studio opens populated
-  // with the default UPI Auto-Reversal demo scenario (editable by the user).
-  useEffect(() => {
-    if (isOrchestrator && !prompt.trim()) setPrompt(activePrompt);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [prompt, setPrompt] = useState('');
   const [intake, setIntake] = useState<Record<string, string>>({});
   const [history, setHistory] = useState<string[]>([]);
   const [sessions, setSessions] = useState<AISession[]>(() => loadSessions(module));
@@ -175,6 +173,50 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
     }));
   };
 
+  const buildArtifactsFromRequirementPackage = (
+    pkg: RequirementArtifactPackage,
+  ): Artifact[] => {
+    const mapping = [
+      ['brd', 'BRD'],
+      ['frd', 'FRD'],
+      ['user_stories', 'User Stories'],
+      ['acceptance_criteria', 'Acceptance Criteria'],
+      ['test_scenarios', 'Test Scenarios'],
+      ['traceability_matrix', 'Traceability Matrix'],
+      ['requirement_review', 'Requirement Review'],
+    ] as const;
+    return mapping
+      .map(([key, label], idx) => {
+        const item = pkg.artifacts[key];
+        if (!item) return null;
+        const generatedBy = item.metadata?.generated_by ?? 'Requirements Copilot (Deterministic Demo)';
+        const modelUsed = item.metadata?.model ?? 'Not applicable';
+        return createArtifact({
+          id: `${pkg.session_key}-${key}-${idx}`,
+          name: item.name,
+          generatedBy,
+          modelUsed,
+          fileType: item.file_type,
+          approvalStatus: pkg.source === 'failed' ? 'Rejected' : 'Pending Review',
+          riskRating: pkg.source === 'failed' ? 'High' : 'Medium',
+          previewContent: item.content,
+          executiveSummary: undefined,
+          context: {
+            subject: 'AI SDLC Copilot Requirement Artifacts',
+            sessionKey: pkg.session_key,
+            normalizedRequirement: pkg.normalized_requirement,
+            source: pkg.source,
+          },
+          sections: [
+            { title: 'Requirement', content: pkg.normalized_requirement },
+            { title: label, content: item.content },
+          ],
+        });
+      })
+      .filter((a): a is Artifact => a !== null)
+      .map((a) => ({ ...a, sourceHub: config.artifactHub, sourceLabel: config.title }));
+  };
+
   const runAnalysis = (thenGenerate: boolean) => {
     if (!hasInput) return;
     pendingArtifactRef.current = thenGenerate;
@@ -207,6 +249,84 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
         finishAnalysis(generateAnalysisResult(config.analysisPhase, captured));
       });
     };
+
+    if (isOrchestrator) {
+      sim.run(async () => {
+        try {
+          const normalized = normalizeRequirement(captured);
+          if (!normalized) {
+            setBackendError('Requirement is empty.');
+            setShowSim(false);
+            return;
+          }
+          const cached = loadRequirementPackage(normalized);
+          let pkg = cached ?? getDeterministicRequirementPackage(captured);
+          if (pkg && !cached) {
+            saveRequirementPackage(normalized, pkg);
+          }
+          if (!pkg) {
+            const msg = 'No approved deterministic template exists for this request.';
+            setRequirementArtifactPackage(null);
+            setBackendError(msg);
+            setAnalysis({
+              Summary: msg,
+              'Confidence Score': 0,
+              Recommendations: [],
+              'Risk Flags': [msg],
+            });
+            setAnalysisPrompt(captured);
+            setStage(2);
+            recordSession(false, 0);
+            return;
+          }
+          setRequirementArtifactPackage(pkg);
+          if (pkg.source === 'failed') {
+            setBackendError(pkg.failure_reason ?? 'Generation Failed');
+            setAnalysis({
+              Summary: pkg.failure_reason ?? 'Generation Failed',
+              'Confidence Score': 0,
+              Recommendations: [],
+              'Risk Flags': ['Generation Failed'],
+            });
+            setAnalysisPrompt(captured);
+            setStage(2);
+            recordSession(false, 0);
+            return;
+          }
+          const analysisFromPackage: AnalysisResult = {
+            Domain: pkg.requirement_profile.business_context ?? 'Requirement',
+            'Confidence Score': 100,
+            Summary: `Requirement profile generated for "${pkg.normalized_requirement}"`,
+            Recommendations: Object.values(pkg.artifacts).map((a) => `Generated ${a.name}`),
+            'Risk Flags': [],
+          };
+          setAnalysis(analysisFromPackage);
+          setAnalysisPrompt(captured);
+          setStage(2);
+          if (pendingArtifactRef.current) {
+            const generated = buildArtifactsFromRequirementPackage(pkg);
+            setArtifacts(generated);
+            recordArtifacts(generated);
+            setStage(4);
+            recordSession(true, generated.length);
+          } else {
+            recordSession(false, 0);
+          }
+        } catch (error) {
+          setBackendError((error as Error).message || 'Generation Failed');
+          setAnalysis({
+            Summary: 'Generation Failed',
+            'Confidence Score': 0,
+            Recommendations: [],
+            'Risk Flags': ['Generation Failed'],
+          });
+          setAnalysisPrompt(captured);
+          setStage(2);
+          recordSession(false, 0);
+        }
+      });
+      return;
+    }
 
     if (isBackendMode()) {
       sim.run(async () => {
@@ -423,8 +543,17 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
               startIcon={<DescriptionIcon sx={{ fontSize: 16 }} />}
               onClick={() => {
                 pendingArtifactRef.current = true;
+                const normalized = normalizeRequirement(analysisPrompt || effectivePrompt);
+                const cachedPackage = isOrchestrator ? loadRequirementPackage(normalized) : null;
+                if (isOrchestrator && !cachedPackage) {
+                  const msg = 'No approved deterministic template exists for this request.';
+                  setBackendError(msg);
+                  return;
+                }
                 const runId = createRunId(module.toUpperCase().slice(0, 4));
-                const generated = buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
+                const generated = isOrchestrator && cachedPackage
+                  ? buildArtifactsFromRequirementPackage(cachedPackage)
+                  : buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
                 setArtifacts(generated);
                 recordArtifacts(generated);
                 setStage(4);

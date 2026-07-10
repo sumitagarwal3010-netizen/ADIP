@@ -4,23 +4,14 @@ import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import SettingsIcon from '@mui/icons-material/Settings';
 import GavelIcon from '@mui/icons-material/Gavel';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import AssessmentIcon from '@mui/icons-material/Assessment';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import CodeIcon from '@mui/icons-material/Code';
-import ScienceIcon from '@mui/icons-material/Science';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
-import CloudIcon from '@mui/icons-material/Cloud';
-import SpeedIcon from '@mui/icons-material/Speed';
 import ShieldIcon from '@mui/icons-material/Shield';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import TimelineIcon from '@mui/icons-material/Timeline';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import TuneIcon from '@mui/icons-material/Tune';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import HubIcon from '@mui/icons-material/Hub';
 
 /** A leaf navigation entry. `path` is an existing application route (routing is untouched). */
@@ -67,66 +58,44 @@ export interface NavGroup {
  */
 export const NAV_GROUPS: NavGroup[] = [
   {
-    id: 'executive',
-    label: 'Executive',
+    id: 'executive-ai',
+    label: 'Executive AI',
     icon: DashboardIcon,
     children: [
-      { id: 'delivery-health', label: 'Enterprise AI Authoring Studio', icon: SmartToyIcon, path: '/executive/delivery-health', children: [] },
-      { id: 'technology-health', label: 'Technology Health', icon: RocketLaunchIcon, path: '/executive/technology-health', children: [] },
-      { id: 'risk-posture', label: 'Risk Posture', icon: ShieldIcon, path: '/executive/risk-posture', children: [] },
-      { id: 'value-realized', label: 'Value Realized', icon: TrendingUpIcon, path: '/executive/value-realized', children: [] },
+      { id: 'executive-advisor', label: 'Executive Advisor', icon: SmartToyIcon, path: '/executive/delivery-health', children: [] },
+      { id: 'technology-advisor', label: 'Technology Advisor', icon: RocketLaunchIcon, path: '/executive/technology-strategy', children: [] },
+      { id: 'investment-advisor', label: 'Investment Advisor', icon: TrendingUpIcon, path: '/executive/portfolio-governance', children: [] },
     ],
   },
   {
-    id: 'governance',
-    label: 'Governance',
-    icon: GavelIcon,
-    children: [
-      { id: 'portfolio-governance', label: 'Portfolio Governance', icon: GavelIcon, path: '/executive/portfolio-governance', children: [] },
-      { id: 'enterprise-architecture', label: 'Enterprise Architecture', icon: AccountTreeIcon, path: '/executive/architecture-repository', children: [] },
-      { id: 'technology-strategy', label: 'Technology Strategy', icon: RocketLaunchIcon, path: '/executive/technology-strategy', children: [] },
-      { id: 'risk-compliance', label: 'Risk & Compliance', icon: ShieldIcon, path: '/executive/enterprise-risk', children: [] },
-      { id: 'ai-governance', label: 'AI Governance', icon: SmartToyIcon, path: '/ai-governance-center', children: [] },
-    ],
-  },
-  {
-    id: 'ai-sdlc',
-    label: 'AI SDLC',
+    id: 'delivery-ai',
+    label: 'Delivery AI',
     icon: AccountTreeIcon,
     children: [
-      { id: 'requirements', label: 'Requirements Engineering', icon: AssignmentIcon, path: '/requirements', children: [] },
-      { id: 'design-architecture', label: 'Design & Architecture', icon: DesignServicesIcon, path: '/architecture', children: [] },
+      { id: 'requirements', label: 'Requirements', icon: AssignmentIcon, path: '/requirements', children: [] },
+      { id: 'architecture', label: 'Architecture', icon: DesignServicesIcon, path: '/architecture', children: [] },
       { id: 'development', label: 'Development', icon: CodeIcon, path: '/development', children: [] },
-      { id: 'testing', label: 'Testing', icon: ScienceIcon, path: '/testing', children: [] },
       { id: 'release', label: 'Release', icon: RocketLaunchIcon, path: '/release', children: [] },
-      { id: 'connector-workbench', label: 'Connector Artifact Workbench', icon: HubIcon, path: '/ai-sdlc/connector-artifact-workbench', children: [] },
     ],
   },
   {
-    id: 'operations',
-    label: 'Operations',
-    icon: SpeedIcon,
+    id: 'governance-ai',
+    label: 'Governance AI',
+    icon: GavelIcon,
     children: [
-      { id: 'production-intelligence', label: 'Production Intelligence', icon: CloudIcon, path: '/production', children: [] },
-      { id: 'service-operations', label: 'Service Operations', icon: SupportAgentIcon, path: '/operations', children: [] },
-      { id: 'ai-observability', label: 'AI Observability', icon: VisibilityIcon, path: '/ai-observability', children: [] },
+      { id: 'ai-governance', label: 'AI Governance', icon: SmartToyIcon, path: '/ai-governance-center', children: [] },
+      { id: 'compliance-automation', label: 'Compliance Automation', icon: ShieldIcon, path: '/governance/compliance', children: [] },
+      { id: 'architecture-governance', label: 'Architecture Governance', icon: AccountTreeIcon, path: '/executive/architecture-repository/review-board', children: [] },
     ],
   },
   {
-    id: 'platform',
-    label: 'Platform',
+    id: 'enterprise-ai',
+    label: 'Enterprise AI',
     icon: SettingsIcon,
     children: [
-      { id: 'artifacts', label: 'Artifacts Repository', icon: InventoryIcon, path: '/artifacts', children: [] },
-      // Knowledge & Transformation centers relocated from top level; same routes and icons.
-      { id: 'knowledge', label: 'Knowledge Center', icon: MenuBookIcon, path: '/knowledge-center', children: [] },
-      { id: 'transformation', label: 'Transformation Center', icon: RocketLaunchIcon, path: '/executive/transformation-pmo', children: [] },
-      { id: 'kpi-catalog', label: 'KPI Catalog', icon: LibraryBooksIcon, path: '/kpi-catalog', children: [] },
-      { id: 'workflow', label: 'Workflow', icon: TimelineIcon, path: '/executive/workflow-orchestration', children: [] },
-      { id: 'reporting', label: 'Reporting', icon: AssessmentIcon, path: '/reports', children: [] },
+      { id: 'enterprise-evidence-hub', label: 'Enterprise Evidence Hub', icon: HubIcon, path: '/ai-sdlc/connector-artifact-workbench', children: [] },
+      { id: 'knowledge-intelligence', label: 'Knowledge Intelligence', icon: MenuBookIcon, path: '/knowledge-center', children: [] },
       { id: 'administration', label: 'Administration', icon: TuneIcon, path: '/administration', children: [] },
-      { id: 'integrations', label: 'Integration Center', icon: HubIcon, path: '/administration/integrations', children: [] },
-      { id: 'team-engineering', label: 'Team Engineering Workbench', icon: ScienceIcon, path: '/platform/team-engineering-workbench', children: [] },
     ],
   },
 ];

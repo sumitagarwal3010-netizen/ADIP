@@ -85,7 +85,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Strategic Risks', to: '/executive/strategic-risks' },
       { label: 'AI Delivery Copilot', to: '/executive/ai-copilot' },
     ],
-    navHubs: ['executive', 'governance', 'ai-sdlc', 'platform'],
+    navHubs: ['executive-ai', 'governance-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Portfolio Health', value: (s) => pct(s.executive.portfolioHealth), suffix: '%', trend: 2.4 },
       { label: 'Open Risks', value: (s) => s.executive.openRisks, suffix: '', trend: -3 },
@@ -108,7 +108,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Release Center', to: '/release' },
       { label: 'AI Delivery Copilot', to: '/executive/ai-copilot' },
     ],
-    navHubs: ['executive', 'ai-sdlc', 'operations', 'platform'],
+    navHubs: ['executive-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Delivery Health', value: (s) => pct(s.delivery.codeQualityAvg), suffix: '%', trend: 1.5 },
       { label: 'Change Failure Rate', value: (s) => `${s.delivery.changeFailureRate}`, suffix: '%', trend: -1.1 },
@@ -133,7 +133,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'AI Controls', to: '/ai-governance-center/controls' },
       { label: 'Evidence', to: '/governance/audit-center/evidence' },
     ],
-    navHubs: ['governance', 'operations', 'ai-sdlc', 'platform'],
+    navHubs: ['governance-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Governance Score', value: (s) => pct(s.governance.governanceScore), suffix: '%', trend: 1.1 },
       { label: 'Security Findings', value: (s) => s.governance.securityFindings, suffix: '', trend: -2 },
@@ -158,7 +158,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Evidence Repository', to: '/governance/audit-center/evidence' },
       { label: 'Audit Traceability', to: '/traceability/evidence' },
     ],
-    navHubs: ['governance', 'ai-sdlc', 'platform'],
+    navHubs: ['governance-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Audit Observations', value: (s) => s.governance.auditObservations, suffix: '', trend: -3 },
       { label: 'Baseline Compliance', value: (s) => pct(s.governance.baselineCompliance), suffix: '%', trend: 1 },
@@ -183,7 +183,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Compliance Reports', to: '/reports/compliance' },
       { label: 'Evidence Repository', to: '/governance/audit-center/evidence' },
     ],
-    navHubs: ['governance', 'ai-sdlc', 'platform'],
+    navHubs: ['governance-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Baseline Compliance', value: (s) => pct(s.governance.baselineCompliance), suffix: '%', trend: 1 },
       { label: 'Policy Compliance', value: (s) => pct(s.governance.policyCompliance), suffix: '%', trend: 0.6 },
@@ -206,7 +206,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'AI Risk', to: '/ai-governance-center/risks' },
       { label: 'Impact Analysis', to: '/traceability/impact' },
     ],
-    navHubs: ['executive', 'governance', 'ai-sdlc', 'platform'],
+    navHubs: ['executive-ai', 'governance-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Open Risks', value: (s) => s.executive.openRisks, suffix: '', trend: -3 },
       { label: 'VAPT Findings', value: (s) => s.governance.vaptFindings, suffix: '', trend: -2 },
@@ -230,7 +230,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Impact Analysis', to: '/traceability/impact' },
       { label: 'Architecture Hub', to: '/architecture' },
     ],
-    navHubs: ['executive', 'governance', 'ai-sdlc', 'platform'],
+    navHubs: ['executive-ai', 'governance-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Architecture Risks', value: (s) => s.delivery.architectureRisks, suffix: '', trend: -1 },
       { label: 'Requirements Analysed', value: (s) => s.delivery.requirementsAnalysed, suffix: '', trend: 4 },
@@ -252,7 +252,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'Release Center', to: '/release' },
     ],
-    navHubs: ['operations', 'ai-sdlc', 'platform'],
+    navHubs: ['delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Service Health', value: (s) => pct(s.production.health), suffix: '%', trend: 1 },
       { label: 'Availability', value: (s) => `${s.production.availability}`, suffix: '%', trend: 0.02 },
@@ -274,7 +274,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Requirements', to: '/requirements' },
       { label: 'Testing Hub', to: '/testing' },
     ],
-    navHubs: ['ai-sdlc', 'platform'],
+    navHubs: ['delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Code Quality', value: (s) => pct(s.development.codeQuality), suffix: '%', trend: 1 },
       { label: 'Tech Debt', value: (s) => s.development.techDebt, suffix: '', trend: -2 },
@@ -296,7 +296,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Release Center', to: '/release' },
       { label: 'Development Hub', to: '/development' },
     ],
-    navHubs: ['ai-sdlc', 'platform'],
+    navHubs: ['delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Coverage', value: (s) => `${s.testing.coverage}`, suffix: '%', trend: 0.6 },
       { label: 'Automation', value: (s) => `${s.testing.automation}`, suffix: '%', trend: 1 },
@@ -319,7 +319,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Testing Hub', to: '/testing' },
       { label: 'Impact Analysis', to: '/traceability/impact' },
     ],
-    navHubs: ['ai-sdlc', 'operations', 'platform'],
+    navHubs: ['delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Release Confidence', value: (s) => pct(s.release.confidence), suffix: '%', trend: 1.8 },
       { label: 'Deployment Readiness', value: (s) => pct(s.release.deploymentReadiness), suffix: '%', trend: 1 },
@@ -341,7 +341,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Availability', to: '/operations/availability' },
       { label: 'Capacity', to: '/operations/capacity' },
     ],
-    navHubs: ['operations', 'executive', 'platform'],
+    navHubs: ['executive-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Operational Health', value: (s) => pct(s.operations.operationalHealth), suffix: '%', trend: 1 },
       { label: 'Capacity Utilization', value: (s) => pct(s.operations.capacityUtilization), suffix: '%', trend: 2 },
@@ -363,7 +363,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Prompt Governance', to: '/ai-governance-center/prompts' },
       { label: 'AI Traceability', to: '/traceability/ai' },
     ],
-    navHubs: ['governance', 'ai-sdlc', 'platform'],
+    navHubs: ['governance-ai', 'delivery-ai', 'enterprise-ai'],
     metrics: [
       { label: 'Governance Score', value: (s) => pct(s.governance.governanceScore), suffix: '%', trend: 1 },
       { label: 'Open Risks', value: (s) => s.executive.openRisks, suffix: '', trend: -3 },

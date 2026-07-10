@@ -181,6 +181,12 @@ export const apiClient = {
   orchestratorCapabilities<T = unknown>(): Promise<T> {
     return request<T>('/orchestrator/capabilities');
   },
+  requirementArtifactPackage<T = unknown>(requirement: string): Promise<T> {
+    return request<T>('/orchestrator/requirement-package', {
+      method: 'POST',
+      body: JSON.stringify({ requirement }),
+    });
+  },
 
   // --- Prompt templates (artifact-authoring) ---
   artifactPromptTemplates<T = unknown>(): Promise<T> {

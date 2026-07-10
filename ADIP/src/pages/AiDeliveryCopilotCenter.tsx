@@ -88,8 +88,14 @@ interface AiDeliveryCopilotCenterProps {
 
 export function AiDeliveryCopilotCenter({ initialTab = 'requirements' }: AiDeliveryCopilotCenterProps) {
   const { personaId } = usePersona();
-  const { kpis, selectedProject } = useCopilot();
+  const { kpis, selectedProject, requirementArtifactPackage } = useCopilot();
   const [tab, setTab] = useState<TabKey>(LEGACY_TAB_MAP[initialTab] ?? 'orchestrator');
+  const activeProjectLabel =
+    requirementArtifactPackage?.requirement_profile?.feature?.trim()
+      ? requirementArtifactPackage.requirement_profile.feature
+      : requirementArtifactPackage?.normalized_requirement?.trim()
+        ? requirementArtifactPackage.normalized_requirement
+      : selectedProject.name;
 
   if (!canAccessCopilot(personaId)) {
     return <Navigate to="/" replace />;
@@ -114,7 +120,7 @@ export function AiDeliveryCopilotCenter({ initialTab = 'requirements' }: AiDeliv
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, justifyContent: 'flex-end' }}>
           <Chip
             size="small"
-            label={`${selectedProject.name}`}
+            label={`${activeProjectLabel}`}
             sx={{ height: 20, fontSize: '0.6rem', bgcolor: `${colors.secondary}1f`, color: colors.secondary, border: `1px solid ${colors.border.purple}` }}
           />
           <Chip

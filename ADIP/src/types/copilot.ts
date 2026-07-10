@@ -110,6 +110,30 @@ export interface ExecutiveCopilotSummary {
   riskHotspots: string[];
 }
 
+export interface RequirementArtifactPackageItem {
+  name: string;
+  file_type: 'docx' | 'xlsx';
+  content: string;
+  metadata?: Record<string, string>;
+}
+
+export interface RequirementArtifactPackage {
+  session_key: string;
+  normalized_requirement: string;
+  source: 'llm' | 'fallback' | 'ollama' | 'deterministic-fallback' | 'failed';
+  failure_reason?: string | null;
+  requirement_profile: Record<string, string>;
+  artifacts: {
+    brd: RequirementArtifactPackageItem;
+    frd: RequirementArtifactPackageItem;
+    user_stories: RequirementArtifactPackageItem;
+    acceptance_criteria: RequirementArtifactPackageItem;
+    test_scenarios: RequirementArtifactPackageItem;
+    traceability_matrix: RequirementArtifactPackageItem;
+    requirement_review?: RequirementArtifactPackageItem;
+  } | Record<string, RequirementArtifactPackageItem>;
+}
+
 export const COPILOT_ALLOWED_PERSONAS: PersonaId[] = [
   'cio',
   'cto',

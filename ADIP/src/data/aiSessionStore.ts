@@ -6,6 +6,7 @@
  */
 
 import type { AIWorkspaceModule } from '../config/aiWorkspaceConfig';
+import type { RequirementArtifactPackage } from '../types/copilot';
 
 export interface AISession {
   id: string;
@@ -22,6 +23,7 @@ export interface AISession {
 }
 
 const KEY_PREFIX = 'adip.aiSessions.';
+const REQ_PACKAGE_KEY = 'adip.reqArtifactPackages';
 const MAX_SESSIONS = 12;
 
 function storageKey(module: AIWorkspaceModule): string {
@@ -73,4 +75,48 @@ export function nowDisplay(): string {
     hour: '2-digit',
     minute: '2-digit',
   });
+}
+
+export function normalizeRequirement(value: string): string {
+  return value.trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+export function requirementSessionKey(normalizedRequirement: string): string {
+  // Deterministic FNV-1a hash.
+  let hash = 2166136261;
+  for (let i = 0; i < normalizedRequirement.length; i += 1) {
+    hash ^= normalizedRequirement.charCodeAt(i);
+    hash +=
+      (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+  }
+  return `REQ-${(hash >>> 0).toString(16)}`;
+}
+
+export function loadRequirementPackage(
+  normalizedRequirement: string,
+): RequirementArtifactPackage | null {
+  if (typeof window === 'undefined' || !normalizedRequirement) return null;
+  try {
+    const raw = window.localStorage.getItem(REQ_PACKAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Record<string, RequirementArtifactPackage>;
+    return parsed[normalizedRequirement] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveRequirementPackage(
+  normalizedRequirement: string,
+  pkg: RequirementArtifactPackage,
+): void {
+  if (typeof window === 'undefined' || !normalizedRequirement) return;
+  try {
+    const raw = window.localStorage.getItem(REQ_PACKAGE_KEY);
+    const parsed = raw ? (JSON.parse(raw) as Record<string, RequirementArtifactPackage>) : {};
+    parsed[normalizedRequirement] = pkg;
+    window.localStorage.setItem(REQ_PACKAGE_KEY, JSON.stringify(parsed));
+  } catch {
+    // ignore
+  }
 }

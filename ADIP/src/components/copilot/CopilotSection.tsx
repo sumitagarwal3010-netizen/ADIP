@@ -144,21 +144,35 @@ interface CopilotSectionProps {
   sourceHub?: string;
   /** Human-readable label for the source-hub. */
   sourceLabel?: string;
+  /** If false, generation actions are disabled and an explanatory message is shown. */
+  canGenerate?: boolean;
+  generationDisabledMessage?: string;
 }
 
 function toRegistryArtifact(
   entry: GeneratedArtifactEntry,
   source: { hub?: string; label?: string },
 ): Artifact {
+  const requirementFlow =
+    source.hub === 'ai-copilot' && (source.label ?? '').toLowerCase().includes('requirement');
+  const modelUsed = requirementFlow
+    ? (entry.generatedBy.toLowerCase().includes('deterministic demo') ? 'Not applicable' : 'qwen3:8b')
+    : undefined;
   return createArtifact({
     id: `copilot-${entry.runId}`,
     name: entry.artifactName,
     generatedBy: entry.generatedBy,
+    modelUsed,
     fileType: entry.artifactName.toLowerCase().endsWith('.xlsx') ? 'xlsx' : 'docx',
     approvalStatus: 'Pending Review',
     riskRating: 'Medium',
     previewContent: entry.preview,
-    executiveSummary: `AI-generated ${entry.artifactName} produced by ${entry.generatedBy} at ${entry.generatedAt}.`,
+    executiveSummary: requirementFlow
+      ? entry.preview
+      : `AI-generated ${entry.artifactName} produced by ${entry.generatedBy} at ${entry.generatedAt}.`,
+    sections: requirementFlow
+      ? [{ title: 'Requirement Artifact Content', content: entry.preview }]
+      : undefined,
     context: { subject: source.label ?? 'AI SDLC Copilot' },
   });
 }
@@ -179,6 +193,8 @@ export function CopilotSection({
   initialArtifacts,
   sourceHub,
   sourceLabel,
+  canGenerate = true,
+  generationDisabledMessage = 'Generation is unavailable for the current request.',
 }: CopilotSectionProps) {
   const [artifacts, setArtifacts] = useState<GeneratedArtifactEntry[]>(() =>
     (initialArtifacts ?? []).map((a, i) => ({ ...a, runId: `seed-${i}` })),
@@ -340,7 +356,7 @@ export function CopilotSection({
                 key={a.id}
                 variant="contained"
                 size="small"
-                disabled={!!runningActionId}
+                disabled={!!runningActionId || !canGenerate}
                 onClick={() => runGenerate(a)}
                 startIcon={<Icon sx={{ fontSize: 16 }} />}
                 sx={{
@@ -355,6 +371,11 @@ export function CopilotSection({
             );
           })}
         </Box>
+        {!canGenerate && (
+          <Typography sx={{ fontSize: '0.7rem', color: colors.warning, mt: 1 }}>
+            {generationDisabledMessage}
+          </Typography>
+        )}
 
         {runningAction && (
           <Box sx={{ mt: 1.5 }}>

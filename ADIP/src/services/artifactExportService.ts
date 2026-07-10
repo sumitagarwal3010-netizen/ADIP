@@ -91,6 +91,15 @@ export function defaultFormatFor(artifact: Artifact): ExportFormat {
 
 function ensureSections(artifact: Artifact): ArtifactSection[] {
   if (artifact.sections && artifact.sections.length > 0) return artifact.sections;
+  const requirementFlow = isRequirementFlowArtifact(artifact);
+  if (requirementFlow) {
+    return [
+      {
+        title: 'Requirement Artifact Content',
+        content: artifact.previewContent,
+      },
+    ];
+  }
   return [
     {
       title: 'Executive Summary',
@@ -103,6 +112,31 @@ function ensureSections(artifact: Artifact): ArtifactSection[] {
       content: artifact.previewContent,
     },
   ];
+}
+
+function isRequirementFlowArtifact(artifact: Artifact): boolean {
+  return String((artifact as { context?: { subject?: string } }).context?.subject ?? '')
+    .toLowerCase()
+    .includes('requirement');
+}
+
+function conciseExecutiveSummary(artifact: Artifact): string | null {
+  if (!isRequirementFlowArtifact(artifact)) {
+    return artifact.executiveSummary ?? null;
+  }
+  const lines = artifact.previewContent
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+  if (!lines.length) return null;
+  const title = lines[0];
+  const firstContext = lines.find((line) =>
+    /document purpose|functional overview|objective|business problem/i.test(line),
+  );
+  if (firstContext) {
+    return `${title}. ${firstContext}`;
+  }
+  return `${title}. Deterministic requirement artifact package for approved prompt.`;
 }
 
 function buildHeaderRows(artifact: Artifact): string[][] {
@@ -129,10 +163,11 @@ function buildTxt(artifact: Artifact): Blob {
   lines.push('');
   buildHeaderRows(artifact).forEach(([k, v]) => lines.push(`${k.padEnd(14)}: ${v}`));
   lines.push('');
-  if (artifact.executiveSummary) {
+  const execSummary = conciseExecutiveSummary(artifact);
+  if (execSummary) {
     lines.push('EXECUTIVE SUMMARY');
     lines.push('─'.repeat(50));
-    lines.push(artifact.executiveSummary);
+    lines.push(execSummary);
     lines.push('');
   }
   ensureSections(artifact).forEach((section) => {
@@ -186,9 +221,10 @@ function buildPdf(artifact: Artifact): Blob {
   buildHeaderRows(artifact).forEach(([k, v]) => writeLine(`${k}: ${v}`, { size: 9 }));
   y += 10;
 
-  if (artifact.executiveSummary) {
+  const execSummary = conciseExecutiveSummary(artifact);
+  if (execSummary) {
     writeLine('Executive Summary', { size: 13, bold: true });
-    writeLine(artifact.executiveSummary, { size: 11 });
+    writeLine(execSummary, { size: 11 });
     y += 8;
   }
 
@@ -236,13 +272,16 @@ function buildDocxBody(artifact: Artifact): string {
   const parts: string[] = [];
   parts.push(docxParagraph(artifact.name, { heading: 1, bold: true, size: 36 }));
   buildHeaderRows(artifact).forEach(([k, v]) => parts.push(docxParagraph(`${k}: ${v}`, { size: 18 })));
-  if (artifact.executiveSummary) {
+  const execSummary = conciseExecutiveSummary(artifact);
+  if (execSummary) {
     parts.push(docxParagraph('Executive Summary', { heading: 2, bold: true, size: 26 }));
-    parts.push(docxParagraph(artifact.executiveSummary));
+    parts.push(docxParagraph(execSummary));
   }
   ensureSections(artifact).forEach((section) => {
     parts.push(docxParagraph(section.title, { heading: 2, bold: true, size: 26 }));
-    parts.push(docxParagraph(section.content));
+    section.content
+      .split('\n')
+      .forEach((line) => parts.push(docxParagraph(line.trim() ? line : ' ')));
   });
   return parts.join('');
 }
@@ -333,8 +372,9 @@ function buildSheetsForArtifact(artifact: Artifact): SheetSpec[] {
 
   // Sheet 2 — Sections
   const sections: string[][] = [['Section', 'Content']];
-  if (artifact.executiveSummary) {
-    sections.push(['Executive Summary', artifact.executiveSummary]);
+  const execSummary = conciseExecutiveSummary(artifact);
+  if (execSummary) {
+    sections.push(['Executive Summary', execSummary]);
   }
   ensureSections(artifact).forEach((s) => sections.push([s.title, s.content]));
 
@@ -438,8 +478,9 @@ function buildSlidesForArtifact(artifact: Artifact): SlideSpec[] {
     title: artifact.name,
     bullets: buildHeaderRows(artifact).map(([k, v]) => `${k}: ${v}`),
   });
-  if (artifact.executiveSummary) {
-    slides.push({ title: 'Executive Summary', bullets: chunkParagraph(artifact.executiveSummary) });
+  const execSummary = conciseExecutiveSummary(artifact);
+  if (execSummary) {
+    slides.push({ title: 'Executive Summary', bullets: chunkParagraph(execSummary) });
   }
   ensureSections(artifact).forEach((section) => {
     slides.push({ title: section.title, bullets: chunkParagraph(section.content) });

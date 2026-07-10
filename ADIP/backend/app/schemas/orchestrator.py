@@ -107,3 +107,19 @@ class OrchestrationResponse(BaseModel):
     artifacts: list[GeneratedArtifact]
     artifacts_markdown: list[MarkdownArtifact]
     traceability: TraceabilityChain
+
+
+class RequirementArtifactItem(BaseModel):
+    name: str
+    file_type: str
+    content: str
+    metadata: dict[str, str] = Field(default_factory=dict)
+
+
+class RequirementArtifactPackage(BaseModel):
+    session_key: str
+    normalized_requirement: str
+    source: str = Field(description="llm | fallback | failed")
+    failure_reason: Optional[str] = None
+    requirement_profile: dict[str, str]
+    artifacts: dict[str, RequirementArtifactItem]

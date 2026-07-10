@@ -11,6 +11,7 @@ import type {
   CopilotProject,
   CopilotRecommendation,
   ExecutiveCopilotSummary,
+  RequirementArtifactPackage,
   ReleaseReadiness,
 } from '../types/copilot';
 import {
@@ -80,6 +81,8 @@ interface CopilotContextValue {
   /** True once the user has explicitly run Analyze (vs. the seeded default). */
   orchestrationActive: boolean;
   runOrchestration: (prompt: string) => SdlcOrchestration;
+  requirementArtifactPackage: RequirementArtifactPackage | null;
+  setRequirementArtifactPackage: (pkg: RequirementArtifactPackage | null) => void;
 }
 
 const CopilotContext = createContext<CopilotContextValue | null>(null);
@@ -94,6 +97,7 @@ export function CopilotProvider({ children }: { children: ReactNode }) {
     orchestrateFromPrompt(DEFAULT_SDLC_PROMPT),
   );
   const [orchestrationActive, setOrchestrationActive] = useState(false);
+  const [requirementArtifactPackage, setRequirementArtifactPackage] = useState<RequirementArtifactPackage | null>(null);
 
   const runOrchestration = useCallback((prompt: string): SdlcOrchestration => {
     const result = orchestrateFromPrompt(prompt);
@@ -158,12 +162,15 @@ export function CopilotProvider({ children }: { children: ReactNode }) {
     orchestration,
     orchestrationActive,
     runOrchestration,
+    requirementArtifactPackage,
+    setRequirementArtifactPackage,
   }), [
     kpis, executive, selectedProjectId, selectedProject, projectRecommendations,
     projectRisks, projectImprovements, releaseReadiness, requirementInsights,
     architectureInsights, developmentInsights, testingInsights, auditInsights,
     topIssues, domainChart, recTrend, allRecommendations,
     activePrompt, orchestration, orchestrationActive, runOrchestration,
+    requirementArtifactPackage,
   ]);
 
   return <CopilotContext.Provider value={value}>{children}</CopilotContext.Provider>;
