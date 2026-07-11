@@ -112,9 +112,9 @@ export function AiDeliveryCopilotCenter({ initialTab = 'requirements' }: AiDeliv
       >
         <SmartToyIcon sx={{ color: colors.secondary, fontSize: 24 }} />
         <Box sx={{ flex: 1 }}>
-          <Box sx={{ fontSize: '0.9rem', fontWeight: 700 }}>Enterprise AI Authoring Studio</Box>
+          <Box sx={{ fontSize: '0.9rem', fontWeight: 700 }}>AI SDLC Delivery Workflow</Box>
           <Box sx={{ fontSize: '0.66rem', color: colors.text.secondary }}>
-            Cross-SDLC artifact generation and orchestration — AI agents author and drive deliverables across Requirements → Architecture → Development → Testing → Release → Audit.
+            Prompt-driven artifact generation across the complete software delivery lifecycle.
           </Box>
         </Box>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, justifyContent: 'flex-end' }}>

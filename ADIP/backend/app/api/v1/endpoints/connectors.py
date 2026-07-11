@@ -112,13 +112,17 @@ def preview_artifact_prompt(
 
 @router.post("/artifacts/generate", response_model=GeneratedConnectorArtifact)
 def generate_connector_artifact(body: GenerateArtifactRequest, svc: ConnectorArtifactService = Depends(_artifact_svc)):
-    return GeneratedConnectorArtifact(**svc.generate(
-        artifact_type=body.artifact_type,
-        connector_ids=body.connector_ids or None,
-        connector_types=body.connector_types or None,
-        project_id=body.project_id,
-        dry_run=body.dry_run,
-    ))
+    try:
+        return GeneratedConnectorArtifact(**svc.generate(
+            artifact_type=body.artifact_type,
+            connector_ids=body.connector_ids or None,
+            connector_types=body.connector_types or None,
+            project_id=body.project_id,
+            dry_run=body.dry_run,
+            prompt=body.prompt or None,
+        ))
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @router.get("/artifacts/{artifact_id}", response_model=GeneratedConnectorArtifact)

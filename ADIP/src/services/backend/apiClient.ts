@@ -323,6 +323,7 @@ export const apiClient = {
     connector_types?: string[];
     project_id?: number;
     dry_run?: boolean;
+    prompt?: string;
   }): Promise<T> {
     return request<T>('/connectors/artifacts/generate', {
       method: 'POST',

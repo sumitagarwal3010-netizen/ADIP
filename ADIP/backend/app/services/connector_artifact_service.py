@@ -17,7 +17,10 @@ from app.connectors.connector_artifact_prompts import (
 from app.connectors.mock_catalog import preview_for_connectors, samples_for
 from app.connectors.normalizers import normalize_asset, normalize_finding
 from app.connectors.registry import connector_registry
+from app.core.config import settings
 from app.core.auth_config import get_auth_settings
+from app.llm.service import llm_service
+from app.llm.types import CompletionRequest, Message, Role
 from app.services.connector_service import ConnectorService
 
 # In-memory store for demo-generated artifacts (pre-MVP; no new DB table)
@@ -143,14 +146,23 @@ class ConnectorArtifactService:
         confidence = "high" if score >= 0.8 else "medium" if score >= 0.65 else "low"
         return {"score": score, "checks": checks, "confidence": confidence}
 
-    def _generate_body(self, artifact_type: str, records: list[dict], ctypes: list[str]) -> str:
+    def _compose_prompt(self, base_prompt: str, *, prompt: str) -> str:
+        user_prompt = prompt.strip()
+        sections = [base_prompt]
+        if user_prompt:
+            sections.extend(["", "User requirement:", user_prompt])
+        return "\n".join(sections)
+
+    def _generate_body(self, artifact_type: str, records: list[dict], ctypes: list[str], *, prompt: str) -> str:
         uc = get_use_case(artifact_type)
         label = uc.label if uc else artifact_type.replace("_", " ").title()
         sections = [f"# {label}", "", "## Summary", ""]
         sections.append(
             f"Generated from {len(records)} connector record(s) across {', '.join(ctypes)} "
-            f"using ADIP connector artifact workbench (mock LLM path)."
+            f"using ADIP connector artifact workbench (mock mode)."
         )
+        if prompt.strip():
+            sections.extend(["", "## Requirement", "", prompt.strip()])
         sections.extend(["", "## Key findings from sources", ""])
         for r in records[:8]:
             sev = f" [{r.get('severity')}]" if r.get("severity") else ""
@@ -161,6 +173,31 @@ class ConnectorArtifactService:
         sections.extend(["", "## Recommendations", "", "- Review source records in Integration Center", "- Validate findings before production release"])
         return "\n".join(sections)
 
+    def _generate_body_with_llm(
+        self,
+        *,
+        base_prompt: str,
+        artifact_type: str,
+        records: list[dict[str, Any]],
+        ctypes: list[str],
+        prompt: str,
+    ) -> tuple[str, str]:
+        full_prompt = self._compose_prompt(base_prompt, prompt=prompt)
+        request = CompletionRequest(
+            model=settings.ollama_model,
+            messages=[
+                Message(Role.SYSTEM, "You are an enterprise connector artifact author. Return a concise markdown artifact grounded in the provided sources."),
+                Message(Role.USER, full_prompt),
+            ],
+            temperature=settings.llm_temperature,
+            max_tokens=settings.llm_max_tokens,
+        )
+        response = llm_service.complete(request)
+        body = response.content.strip()
+        if not body:
+            raise RuntimeError("LLM returned an empty connector artifact response.")
+        return body, full_prompt
+
     def generate(
         self,
         *,
@@ -169,6 +206,7 @@ class ConnectorArtifactService:
         connector_types: list[str] | None = None,
         project_id: int = 1,
         dry_run: bool = False,
+        prompt: str | None = None,
     ) -> dict[str, Any]:
         preview = self.preview_sources(
             artifact_type=artifact_type,
@@ -185,8 +223,25 @@ class ConnectorArtifactService:
         artifact_id = str(uuid.uuid4())
         uc = get_use_case(artifact_type)
         title = uc.label if uc else artifact_type.replace("_", " ").title()
+        prompt_text = prompt or ""
+        base_prompt = prompt_preview["prompt"]
+        generation_prompt = self._compose_prompt(base_prompt, prompt=prompt_text)
 
-        body = self._generate_body(artifact_type, records, ctypes) if not dry_run else f"[DRY RUN] Would generate: {title}"
+        if dry_run:
+            body = f"[DRY RUN] Would generate: {title}"
+            generation_mode = "dry_run"
+        elif settings.local_llm_enabled:
+            body, generation_prompt = self._generate_body_with_llm(
+                base_prompt=base_prompt,
+                artifact_type=artifact_type,
+                records=records,
+                ctypes=ctypes,
+                prompt=prompt_text,
+            )
+            generation_mode = "real_llm"
+        else:
+            body = self._generate_body(artifact_type, records, ctypes, prompt=prompt_text)
+            generation_mode = "mock_llm"
 
         artifact = {
             "id": artifact_id,
@@ -196,7 +251,7 @@ class ConnectorArtifactService:
             "body": body,
             "source_connectors": ctypes,
             "source_records": records,
-            "prompt": prompt_preview["prompt"],
+            "prompt": generation_prompt,
             "prompt_template_id": artifact_type,
             "quality_score": quality["score"],
             "confidence": quality["confidence"],
@@ -205,9 +260,9 @@ class ConnectorArtifactService:
             "evidence_links": build_evidence_links(records),
             "explainability": {
                 "contributing_records": [r.get("external_id") for r in records],
-                "prompt_used": prompt_preview["prompt"][:500] + "…" if len(prompt_preview["prompt"]) > 500 else prompt_preview["prompt"],
+                "prompt_used": generation_prompt[:500] + "…" if len(generation_prompt) > 500 else generation_prompt,
                 "quality_checks": quality["checks"],
-                "generation_mode": "mock_llm",
+                "generation_mode": generation_mode,
                 "provider": "adip-connector-workbench",
             },
             "dry_run": dry_run,

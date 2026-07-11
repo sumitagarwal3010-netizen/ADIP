@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   Alert, Box, Button, Chip, FormControl, Grid, InputLabel, MenuItem, Select,
-  Typography, LinearProgress, Paper,
+  Typography, LinearProgress, Paper, TextField,
 } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -32,6 +32,8 @@ export function ConnectorArtifactWorkbench() {
     quality_checks: string[];
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [requirement, setRequirement] = useState('');
+  const defaultRequirement = 'Describe the requirement for the evidence pack';
   const [copied, setCopied] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
 
@@ -107,6 +109,17 @@ export function ConnectorArtifactWorkbench() {
                   ))}
                 </Select>
               </FormControl>
+              <TextField
+                fullWidth
+                size="small"
+                multiline
+                minRows={3}
+                sx={{ mb: 1.5 }}
+                label="Requirement / prompt"
+                value={requirement}
+                placeholder={defaultRequirement}
+                onChange={(e) => setRequirement(e.target.value)}
+              />
               <Typography variant="caption" sx={{ color: colors.text.muted, display: 'block', mb: 1 }}>
                 Enterprise Sources: {enterpriseSources.join(', ')}
               </Typography>
@@ -120,10 +133,13 @@ export function ConnectorArtifactWorkbench() {
                 <Button size="small" variant="contained" startIcon={<AutoAwesomeIcon />} onClick={() => {
                   setLoading(true);
                   setError(null);
+                  const prompt = requirement.trim() || defaultRequirement;
                   setTimeout(() => {
                     const next = packs[artifactType];
                     setGenerated({
                       ...next,
+                      summary: `${next.summary} Requirement: ${prompt}`,
+                      body: `${next.body}\n\nRequirement / prompt\n- ${prompt}`,
                       quality_score: 0.91,
                       confidence: 'High',
                       source_connectors: enterpriseSources,

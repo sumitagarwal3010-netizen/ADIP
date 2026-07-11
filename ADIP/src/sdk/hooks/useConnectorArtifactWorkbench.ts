@@ -76,9 +76,15 @@ export function useConnectorArtifactWorkbench() {
   const [selectedConnectorIds, setSelectedConnectorIds] = useState<number[]>([]);
   const [sources, setSources] = useState<SourceRecord[]>(MOCK_SOURCES);
   const [promptPreview, setPromptPreview] = useState('');
+  const [requirement, setRequirement] = useState('');
   const [generated, setGenerated] = useState<GeneratedArtifact | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const defaultRequirement = useMemo(() => {
+    const useCase = useCases.find((u) => u.id === artifactType);
+    return useCase?.description ?? useCase?.label ?? artifactType.replace(/_/g, ' ');
+  }, [artifactType, useCases]);
 
   const targetConnectors = useMemo(() => {
     const uc = useCases.find((u) => u.id === artifactType);
@@ -116,39 +122,23 @@ export function useConnectorArtifactWorkbench() {
     try {
       const ids = targetConnectors.map((c) => c.id);
       const ctypes = [...new Set(targetConnectors.map((c) => c.connector_type))];
+      const prompt = requirement.trim() || defaultRequirement;
       const art = await apiClient.generateConnectorArtifact<GeneratedArtifact>({
         artifact_type: artifactType,
         connector_ids: ids,
         connector_types: ctypes,
         dry_run: dryRun,
+        prompt,
       });
       setGenerated(art);
       if (art.prompt) setPromptPreview(art.prompt);
     } catch (e) {
-      const mockArt: GeneratedArtifact = {
-        id: 'mock-artifact',
-        title: artifactType.replace(/_/g, ' '),
-        artifact_type: artifactType,
-        summary: 'Mock-generated artifact (backend unavailable)',
-        body: `# ${artifactType}\n\nGenerated from mock connector sources.\n\n- UPI-101 settlement gap\n- SonarQube critical finding`,
-        source_connectors: targetConnectors.map((c) => c.connector_type),
-        source_records: sources,
-        prompt: promptPreview || `[Mock] ${artifactType}`,
-        quality_score: 0.78,
-        confidence: 'medium',
-        quality_checks: ['Mock mode', `${sources.length} sources`],
-        traceability: sources.map((s) => ({ label: s.title, external_id: s.external_id, phase: 'delivery' })),
-        explainability: { contributing_records: sources.map((s) => s.external_id ?? ''), prompt_used: promptPreview, quality_checks: ['mock'], generation_mode: 'mock_llm' },
-        mock_mode: true,
-        dry_run: dryRun,
-        generated_at: new Date().toISOString(),
-      };
-      setGenerated(mockArt);
-      setError(e instanceof Error ? e.message : 'Using mock generation');
+      setGenerated(null);
+      setError(e instanceof Error ? e.message : 'Generation failed');
     } finally {
       setLoading(false);
     }
-  }, [artifactType, targetConnectors, sources, promptPreview]);
+  }, [artifactType, defaultRequirement, requirement, targetConnectors]);
 
   return {
     useCases,
@@ -160,6 +150,9 @@ export function useConnectorArtifactWorkbench() {
     targetConnectors,
     sources,
     promptPreview,
+    requirement,
+    setRequirement,
+    defaultRequirement,
     generated,
     loading,
     error,

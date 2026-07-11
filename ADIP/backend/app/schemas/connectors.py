@@ -149,6 +149,7 @@ class GenerateArtifactRequest(BaseModel):
     connector_types: list[str] = Field(default_factory=list)
     project_id: int = 1
     dry_run: bool = False
+    prompt: str = ""
 
 
 class GeneratedConnectorArtifact(BaseModel):

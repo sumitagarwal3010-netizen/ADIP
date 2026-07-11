@@ -73,6 +73,45 @@ def test_generate_prisma_sonar_security_report():
     assert severities  # normalized findings present
 
 
+def test_generate_biometric_login_uses_prompt_and_llm(monkeypatch):
+    from app.core.config import settings
+    from app.llm.service import llm_service
+    from app.llm.types import CompletionResponse, Usage
+
+    monkeypatch.setattr(settings, "local_llm_enabled", True, raising=False)
+
+    captured: dict[str, str] = {}
+
+    def fake_complete(request):
+        captured["prompt"] = request.messages[-1].content
+        assert "Implement biometric login for mobile banking" in captured["prompt"]
+        return CompletionResponse(
+            model=request.model,
+            content=(
+                "# Biometric Login Requirements\n\n"
+                "The solution should support secure biometric authentication for mobile banking "
+                "with device-bound enrollment, fallback PIN handling, and audit logging."
+            ),
+            usage=Usage(prompt_tokens=42, completion_tokens=64, total_tokens=106),
+            provider="ollama",
+        )
+
+    monkeypatch.setattr(llm_service, "complete", fake_complete)
+
+    r = client.post("/api/v1/connectors/artifacts/generate", json={
+        "artifact_type": "requirements_document",
+        "connector_types": ["jira", "sharepoint"],
+        "prompt": "Implement biometric login for mobile banking",
+    })
+    assert r.status_code == 200
+    art = r.json()
+    assert "biometric" in art["body"].lower()
+    assert "upi-101" not in art["body"].lower()
+    assert "sonarqube" not in art["body"].lower()
+    assert "biometric" in art["prompt"].lower()
+    assert art["explainability"]["generation_mode"] == "real_llm"
+
+
 def test_get_generated_artifact_and_traceability():
     gen = client.post("/api/v1/connectors/artifacts/generate", json={
         "artifact_type": "architecture_summary",
