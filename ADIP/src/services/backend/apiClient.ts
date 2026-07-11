@@ -351,6 +351,49 @@ export const apiClient = {
   teamTakeoverMetadata<T = unknown>(): Promise<T> {
     return request<T>('/team-takeover/metadata');
   },
+  capacityPlanningInfo<T = unknown>(): Promise<T> {
+    return request<T>('/benchmarks/capacity-planning');
+  },
+  runCapacityPlan<T = unknown>(body: {
+    profile?: string;
+    environment?: string;
+    inputs?: Record<string, unknown>;
+  }): Promise<T> {
+    return request<T>('/benchmarks/capacity-planning/plan', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+  capacitySection<T = unknown>(section: string, profile = 'medium'): Promise<T> {
+    return request<T>(`/benchmarks/capacity-planning/sections/${section}?profile=${profile}`);
+  },
+  runCapacityLoadTest<T = unknown>(concurrency = 10, scenarios?: string[]): Promise<T> {
+    return request<T>('/benchmarks/capacity-planning/load-test', {
+      method: 'POST',
+      body: JSON.stringify({ concurrency, scenarios: scenarios ?? ['prompt_execution'] }),
+    });
+  },
+  runEnterpriseCapacityPlan<T = unknown>(body: Record<string, unknown>): Promise<T> {
+    return request<T>('/benchmarks/capacity-planning/plan/enterprise', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+  compareCapacityScenarios<T = unknown>(body: Record<string, unknown>): Promise<T> {
+    return request<T>('/benchmarks/capacity-planning/compare', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+  calibrateCapacity<T = unknown>(profile = 'medium', source = 'mock'): Promise<T> {
+    return request<T>('/benchmarks/capacity-planning/calibrate', {
+      method: 'POST',
+      body: JSON.stringify({ profile, calibration: { source } }),
+    });
+  },
+  capacityHistory<T = unknown>(): Promise<T> {
+    return request<T>('/benchmarks/capacity-planning/history');
+  },
 };
 
 export type ApiClient = typeof apiClient;

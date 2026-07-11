@@ -17,6 +17,15 @@ backend:
     ADIP_AUTH_MODE: oidc
     CONNECTOR_DEFAULT_MOCK: "false"
     CONNECTOR_SYNC_ENABLED: "true"
+    ADIP_BENCHMARK_MODE: mock
+    CAPACITY_PROFILE: enterprise
+    BENCHMARK_OUTPUT_DIR: /var/adip/benchmarks
+    BENCHMARK_RETENTION_DAYS: "365"
+    OBJECT_STORAGE_PROVIDER: gcs
+    REDIS_ENABLED: "true"
+    PROMETHEUS_ENABLED: "true"
+    GRAFANA_ENABLED: "true"
+    LOCAL_LLM_ENABLED: "false"
   resources:
     requests: { cpu: 250m, memory: 256Mi }
     limits: { cpu: "1", memory: 512Mi }

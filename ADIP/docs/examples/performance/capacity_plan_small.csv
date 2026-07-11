@@ -1,0 +1,12 @@
+section,metric,value
+cost,monthly_total_usd,73.31
+object_storage,storage_per_year_bytes,10848474000.0
+database,cloud_sql_gb_year,0.23
+network,total_annual_gb,216.73
+forecast,day,0.12
+forecast,week,0.86
+forecast,month,3.69
+forecast,quarter,11.08
+forecast,year,38.19
+forecast,3yr,114.57
+forecast,5yr,190.95

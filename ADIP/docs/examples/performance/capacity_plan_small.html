@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>ADIP Capacity Plan — small</title>
+<style>body{font-family:system-ui;max-width:900px;margin:2rem auto;padding:0 1rem}</style>
+</head><body># ADIP Enterprise Capacity Planning Report — small<br>
+<br>
+_Generated: 2026-07-09T01:22:43.312328+00:00_  |  Environment: **development**<br>
+<br>
+## Executive Summary<br>
+<br>
+- Monthly cost estimate: **$73.31** (annual $879.74)<br>
+- Object storage/year: **10.85 GB**<br>
+- Cloud SQL/year: **0.23 GB**<br>
+- Network egress/month: **15.77 GB**<br>
+- GKE nodes (est.): **2**<br>
+<br>
+## Inputs<br>
+<br>
+ |  Metric  |  Value  | <br>
+ | --- | --- | <br>
+ |  Users  |  100  | <br>
+ |  Concurrent users  |  25  | <br>
+ |  Prompts/day  |  1200  | <br>
+ |  Artifacts/day  |  400  | <br>
+ |  Retention days  |  90  | <br>
+<br>
+## Object Storage<br>
+<br>
+- Uploads/day: 370  |  month: 11100<br>
+- Storage/day: 120.54 MB<br>
+- After compression: 7.05 GB<br>
+- After deduplication: 5.99 GB<br>
+- After versioning: 7.49 GB<br>
+- Archive (coldline): 4.34 GB<br>
+<br>
+## Database Growth<br>
+<br>
+ |  Table  |  Rows/day  |  Year storage  | <br>
+ | --- | ---: | ---: | <br>
+ |  artifacts  |  60  |  16.59 MB  | <br>
+ |  prompt_history  |  300  |  110.59 MB  | <br>
+ |  prompt_replay  |  60  |  11.06 MB  | <br>
+ |  prompt_metadata  |  120  |  16.59 MB  | <br>
+ |  golden_datasets  |  4  |  2.95 MB  | <br>
+ |  benchmark_results  |  32  |  5.90 MB  | <br>
+ |  connector_metadata  |  12  |  1.59 MB  | <br>
+ |  connector_runs  |  14  |  1.33 MB  | <br>
+<br>
+**Total Cloud SQL:** 0.23 GB/year  |  Backup: 0.26 GB<br>
+<br>
+## Network<br>
+<br>
+- Ingress/month: 2.29 GB  |  Egress/month: 15.77 GB<br>
+- Annual bandwidth: 216.73 GB<br>
+<br>
+## Cost Breakdown<br>
+<br>
+ |  Component  |  Monthly USD  | <br>
+ | --- | ---: | <br>
+ |  Compute  |  $36.00  | <br>
+ |  Database  |  $0.00  | <br>
+ |  Redis  |  $7.50  | <br>
+ |  Object storage  |  $0.06  | <br>
+ |  Vector storage  |  $0.00  | <br>
+ |  Networking  |  $0.65  | <br>
+ |  LLM  |  $21.60  | <br>
+ |  Monitoring  |  $7.50  | <br>
+ |  **Total**  |  **$73.31**  | <br>
+<br>
+## Growth Forecast<br>
+<br>
+ |  Period  |  Storage GB  |  Database GB  |  Artifacts  | <br>
+ | --- | ---: | ---: | ---: | <br>
+ |  day  |  0.12  |  0.0  |  400  | <br>
+ |  week  |  0.86  |  0.0  |  2800  | <br>
+ |  month  |  3.69  |  0.02  |  12000  | <br>
+ |  quarter  |  11.08  |  0.06  |  36000  | <br>
+ |  year  |  38.19  |  0.2  |  124100  | <br>
+ |  3yr  |  114.57  |  0.59  |  372300  | <br>
+ |  5yr  |  190.95  |  0.98  |  620500  | <br>
+</body></html>

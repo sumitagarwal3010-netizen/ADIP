@@ -1,0 +1,9 @@
+scenario,monthly_cost,gke_nodes,storage_gb,notes
+small,244.37,2,10.85,managed_llm
+small,332.37,2,10.85,local_llm
+large,824.37,2,10.85,managed_llm
+large,912.37,2,10.85,local_llm
+region_single_region,244.37,2,10.85,single_region
+region_multi_zone,281.03,3,12.48,multi_zone
+llm_managed_llm,389.37,2,10.85,managed_llm
+llm_local_llm,477.37,2,10.85,local_llm

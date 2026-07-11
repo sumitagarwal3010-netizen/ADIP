@@ -1,0 +1,1374 @@
+{
+  "plan": {
+    "profile": "small",
+    "environment": "development",
+    "generated_at": "2026-07-09T01:22:43.312328+00:00",
+    "inputs": {
+      "profile": "small",
+      "environment": "development",
+      "applications": 1,
+      "projects": 10,
+      "users": 100,
+      "concurrent_users": 25,
+      "prompts_per_day": 1200,
+      "artifacts_per_day": 400,
+      "documents_per_day": 200,
+      "uploads_per_day": 150,
+      "avg_document_size_kb": 250.0,
+      "avg_artifact_size_kb": 48.0,
+      "avg_prompt_size_tokens": 500,
+      "connector_syncs_per_day": 96,
+      "retention_days": 90,
+      "embedding_enabled": true,
+      "embedding_dimensions": 384,
+      "local_llm": false,
+      "managed_llm": true,
+      "run_load_test": false,
+      "load_concurrency": 10,
+      "run_infra_scenarios": false
+    },
+    "object_storage": {
+      "breakdown": [
+        {
+          "category": "requirements",
+          "uploads_per_day": 22.2,
+          "avg_size_bytes": 180000.0,
+          "storage_per_day_bytes": 3996000.0,
+          "storage_year_bytes": 1458540000.0,
+          "storage_3yr_bytes": 4375620000.0,
+          "storage_5yr_bytes": 7292700000.0
+        },
+        {
+          "category": "architecture",
+          "uploads_per_day": 22.2,
+          "avg_size_bytes": 420000.0,
+          "storage_per_day_bytes": 9324000.0,
+          "storage_year_bytes": 3403260000.0,
+          "storage_3yr_bytes": 10209780000.0,
+          "storage_5yr_bytes": 17016300000.0
+        },
+        {
+          "category": "design",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 310000.0,
+          "storage_per_day_bytes": 2294000.0,
+          "storage_year_bytes": 837310000.0,
+          "storage_3yr_bytes": 2511930000.0,
+          "storage_5yr_bytes": 4186550000.0
+        },
+        {
+          "category": "user_stories",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 45000.0,
+          "storage_per_day_bytes": 333000.0,
+          "storage_year_bytes": 121545000.0,
+          "storage_3yr_bytes": 364635000.0,
+          "storage_5yr_bytes": 607725000.0
+        },
+        {
+          "category": "source_code_exports",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 2500000.0,
+          "storage_per_day_bytes": 18500000.0,
+          "storage_year_bytes": 6752500000.0,
+          "storage_3yr_bytes": 20257500000.0,
+          "storage_5yr_bytes": 33762500000.0
+        },
+        {
+          "category": "test_reports",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 95000.0,
+          "storage_per_day_bytes": 703000.0,
+          "storage_year_bytes": 256595000.0,
+          "storage_3yr_bytes": 769785000.0,
+          "storage_5yr_bytes": 1282975000.0
+        },
+        {
+          "category": "evidence",
+          "uploads_per_day": 22.2,
+          "avg_size_bytes": 120000.0,
+          "storage_per_day_bytes": 2664000.0,
+          "storage_year_bytes": 972360000.0,
+          "storage_3yr_bytes": 2917080000.0,
+          "storage_5yr_bytes": 4861800000.0
+        },
+        {
+          "category": "compliance_evidence",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 280000.0,
+          "storage_per_day_bytes": 2072000.0,
+          "storage_year_bytes": 756280000.0,
+          "storage_3yr_bytes": 2268840000.0,
+          "storage_5yr_bytes": 3781400000.0
+        },
+        {
+          "category": "audit_evidence",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 350000.0,
+          "storage_per_day_bytes": 2590000.0,
+          "storage_year_bytes": 945350000.0,
+          "storage_3yr_bytes": 2836050000.0,
+          "storage_5yr_bytes": 4726750000.0
+        },
+        {
+          "category": "screenshots",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 850000.0,
+          "storage_per_day_bytes": 6290000.0,
+          "storage_year_bytes": 2295850000.0,
+          "storage_3yr_bytes": 6887550000.0,
+          "storage_5yr_bytes": 11479250000.0
+        },
+        {
+          "category": "images",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 1200000.0,
+          "storage_per_day_bytes": 8880000.0,
+          "storage_year_bytes": 3241200000.0,
+          "storage_3yr_bytes": 9723600000.0,
+          "storage_5yr_bytes": 16206000000.0
+        },
+        {
+          "category": "pdf",
+          "uploads_per_day": 29.6,
+          "avg_size_bytes": 520000.0,
+          "storage_per_day_bytes": 15392000.0,
+          "storage_year_bytes": 5618080000.0,
+          "storage_3yr_bytes": 16854240000.0,
+          "storage_5yr_bytes": 28090400000.0
+        },
+        {
+          "category": "docx",
+          "uploads_per_day": 29.6,
+          "avg_size_bytes": 210000.0,
+          "storage_per_day_bytes": 6216000.0,
+          "storage_year_bytes": 2268840000.0,
+          "storage_3yr_bytes": 6806520000.0,
+          "storage_5yr_bytes": 11344200000.0
+        },
+        {
+          "category": "xlsx",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 180000.0,
+          "storage_per_day_bytes": 1332000.0,
+          "storage_year_bytes": 486180000.0,
+          "storage_3yr_bytes": 1458540000.0,
+          "storage_5yr_bytes": 2430900000.0
+        },
+        {
+          "category": "csv",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 35000.0,
+          "storage_per_day_bytes": 259000.0,
+          "storage_year_bytes": 94535000.0,
+          "storage_3yr_bytes": 283605000.0,
+          "storage_5yr_bytes": 472675000.0
+        },
+        {
+          "category": "zip",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 5000000.0,
+          "storage_per_day_bytes": 37000000.0,
+          "storage_year_bytes": 13505000000.0,
+          "storage_3yr_bytes": 40515000000.0,
+          "storage_5yr_bytes": 67525000000.0
+        },
+        {
+          "category": "generated_artifacts",
+          "uploads_per_day": 29.6,
+          "avg_size_bytes": 48000.0,
+          "storage_per_day_bytes": 1420800.0,
+          "storage_year_bytes": 518592000.0,
+          "storage_3yr_bytes": 1555776000.0,
+          "storage_5yr_bytes": 2592960000.0
+        },
+        {
+          "category": "prompt_outputs",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 12000.0,
+          "storage_per_day_bytes": 88800.0,
+          "storage_year_bytes": 32412000.0,
+          "storage_3yr_bytes": 97236000.0,
+          "storage_5yr_bytes": 162060000.0
+        },
+        {
+          "category": "connector_payloads",
+          "uploads_per_day": 29.6,
+          "avg_size_bytes": 8000.0,
+          "storage_per_day_bytes": 236800.0,
+          "storage_year_bytes": 86432000.0,
+          "storage_3yr_bytes": 259296000.0,
+          "storage_5yr_bytes": 432160000.0
+        },
+        {
+          "category": "model_outputs",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 25000.0,
+          "storage_per_day_bytes": 185000.0,
+          "storage_year_bytes": 67525000.0,
+          "storage_3yr_bytes": 202575000.0,
+          "storage_5yr_bytes": 337625000.0
+        },
+        {
+          "category": "version_history",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 55000.0,
+          "storage_per_day_bytes": 407000.0,
+          "storage_year_bytes": 148555000.0,
+          "storage_3yr_bytes": 445665000.0,
+          "storage_5yr_bytes": 742775000.0
+        },
+        {
+          "category": "retention_copies",
+          "uploads_per_day": 7.4,
+          "avg_size_bytes": 48000.0,
+          "storage_per_day_bytes": 355200.0,
+          "storage_year_bytes": 129648000.0,
+          "storage_3yr_bytes": 388944000.0,
+          "storage_5yr_bytes": 648240000.0
+        }
+      ],
+      "uploads_per_day": 370.0,
+      "uploads_per_month": 11100.0,
+      "uploads_per_year": 135050.0,
+      "avg_upload_bytes": 325780.0,
+      "median_upload_bytes": 180000.0,
+      "max_upload_bytes": 5000000.0,
+      "object_count_year": 135050.0,
+      "storage_per_day_bytes": 120538600.0,
+      "storage_per_month_bytes": 3616158000.0,
+      "storage_per_year_bytes": 10848474000.0,
+      "storage_3yr_bytes": 131989767000.0,
+      "storage_5yr_bytes": 219982945000.0,
+      "after_compression_bytes": 7051508100.0,
+      "after_deduplication_bytes": 5993781885.0,
+      "after_versioning_bytes": 7492227356.25,
+      "after_encryption_bytes": 7642071903.375,
+      "archive_coldline_bytes": 4339389600.0
+    },
+    "database_growth": {
+      "tables": [
+        {
+          "table": "artifacts",
+          "rows_per_day": 60.0,
+          "rows_per_month": 1800.0,
+          "rows_per_year": 5400.0,
+          "bytes_per_row": 3072,
+          "storage_year_bytes": 16588800.0,
+          "index_overhead_bytes": 4147200.0
+        },
+        {
+          "table": "prompt_history",
+          "rows_per_day": 300.0,
+          "rows_per_month": 9000.0,
+          "rows_per_year": 27000.0,
+          "bytes_per_row": 4096,
+          "storage_year_bytes": 110592000.0,
+          "index_overhead_bytes": 27648000.0
+        },
+        {
+          "table": "prompt_replay",
+          "rows_per_day": 60.0,
+          "rows_per_month": 1800.0,
+          "rows_per_year": 5400.0,
+          "bytes_per_row": 2048,
+          "storage_year_bytes": 11059200.0,
+          "index_overhead_bytes": 2764800.0
+        },
+        {
+          "table": "prompt_metadata",
+          "rows_per_day": 120.0,
+          "rows_per_month": 3600.0,
+          "rows_per_year": 10800.0,
+          "bytes_per_row": 1536,
+          "storage_year_bytes": 16588800.0,
+          "index_overhead_bytes": 4147200.0
+        },
+        {
+          "table": "golden_datasets",
+          "rows_per_day": 4.0,
+          "rows_per_month": 120.0,
+          "rows_per_year": 360.0,
+          "bytes_per_row": 8192,
+          "storage_year_bytes": 2949120.0,
+          "index_overhead_bytes": 737280.0
+        },
+        {
+          "table": "benchmark_results",
+          "rows_per_day": 32.0,
+          "rows_per_month": 960.0,
+          "rows_per_year": 2880.0,
+          "bytes_per_row": 2048,
+          "storage_year_bytes": 5898240.0,
+          "index_overhead_bytes": 1474560.0
+        },
+        {
+          "table": "connector_metadata",
+          "rows_per_day": 11.5,
+          "rows_per_month": 345.59999999999997,
+          "rows_per_year": 1036.8,
+          "bytes_per_row": 1536,
+          "storage_year_bytes": 1592524.7999999998,
+          "index_overhead_bytes": 398131.19999999995
+        },
+        {
+          "table": "connector_runs",
+          "rows_per_day": 14.4,
+          "rows_per_month": 431.99999999999994,
+          "rows_per_year": 1295.9999999999998,
+          "bytes_per_row": 1024,
+          "storage_year_bytes": 1327103.9999999998,
+          "index_overhead_bytes": 331775.99999999994
+        },
+        {
+          "table": "connector_logs",
+          "rows_per_day": 19.2,
+          "rows_per_month": 576.0000000000001,
+          "rows_per_year": 1728.0000000000002,
+          "bytes_per_row": 512,
+          "storage_year_bytes": 884736.0000000001,
+          "index_overhead_bytes": 221184.00000000003
+        },
+        {
+          "table": "traceability",
+          "rows_per_day": 40.0,
+          "rows_per_month": 1200.0,
+          "rows_per_year": 3600.0,
+          "bytes_per_row": 2048,
+          "storage_year_bytes": 7372800.0,
+          "index_overhead_bytes": 1843200.0
+        },
+        {
+          "table": "rule_execution",
+          "rows_per_day": 32.0,
+          "rows_per_month": 960.0,
+          "rows_per_year": 2880.0,
+          "bytes_per_row": 1024,
+          "storage_year_bytes": 2949120.0,
+          "index_overhead_bytes": 737280.0
+        },
+        {
+          "table": "audit_history",
+          "rows_per_day": 20.0,
+          "rows_per_month": 600.0,
+          "rows_per_year": 1800.0,
+          "bytes_per_row": 1536,
+          "storage_year_bytes": 2764800.0,
+          "index_overhead_bytes": 691200.0
+        },
+        {
+          "table": "metrics",
+          "rows_per_day": 120.0,
+          "rows_per_month": 3600.0,
+          "rows_per_year": 10800.0,
+          "bytes_per_row": 256,
+          "storage_year_bytes": 2764800.0,
+          "index_overhead_bytes": 691200.0
+        },
+        {
+          "table": "logs",
+          "rows_per_day": 200.0,
+          "rows_per_month": 6000.0,
+          "rows_per_year": 18000.0,
+          "bytes_per_row": 512,
+          "storage_year_bytes": 9216000.0,
+          "index_overhead_bytes": 2304000.0
+        },
+        {
+          "table": "embeddings",
+          "rows_per_day": 40.0,
+          "rows_per_month": 1200.0,
+          "rows_per_year": 3600.0,
+          "bytes_per_row": 2048,
+          "storage_year_bytes": 7372800.0,
+          "index_overhead_bytes": 1843200.0
+        }
+      ],
+      "total_rows_per_day": 1073.12,
+      "total_rows_per_year": 96580.79999999999,
+      "cloud_sql_gb_year": 0.23,
+      "backup_gb_year": 0.26,
+      "index_growth_gb_year": 0.06
+    },
+    "vector_db": [
+      {
+        "dimensions": 384,
+        "vectors_per_document": 3.5,
+        "storage_bytes_year": 100800000.0,
+        "index_size_bytes": 151200000.0,
+        "providers": {
+          "pgvector": {
+            "storage_gb": 0.101,
+            "recall_est": 0.92,
+            "latency_ms_p50": 22
+          },
+          "vertex_ai": {
+            "storage_gb": 0.101,
+            "recall_est": 0.95,
+            "latency_ms_p50": 25
+          },
+          "pinecone": {
+            "storage_gb": 0.101,
+            "recall_est": 0.94,
+            "latency_ms_p50": 20
+          },
+          "weaviate": {
+            "storage_gb": 0.101,
+            "recall_est": 0.93,
+            "latency_ms_p50": 18
+          },
+          "milvus": {
+            "storage_gb": 0.101,
+            "recall_est": 0.94,
+            "latency_ms_p50": 12
+          },
+          "qdrant": {
+            "storage_gb": 0.101,
+            "recall_est": 0.93,
+            "latency_ms_p50": 10
+          }
+        }
+      },
+      {
+        "dimensions": 768,
+        "vectors_per_document": 3.5,
+        "storage_bytes_year": 197568000.0,
+        "index_size_bytes": 296352000.0,
+        "providers": {
+          "pgvector": {
+            "storage_gb": 0.198,
+            "recall_est": 0.92,
+            "latency_ms_p50": 30
+          },
+          "vertex_ai": {
+            "storage_gb": 0.198,
+            "recall_est": 0.95,
+            "latency_ms_p50": 25
+          },
+          "pinecone": {
+            "storage_gb": 0.198,
+            "recall_est": 0.94,
+            "latency_ms_p50": 20
+          },
+          "weaviate": {
+            "storage_gb": 0.198,
+            "recall_est": 0.93,
+            "latency_ms_p50": 18
+          },
+          "milvus": {
+            "storage_gb": 0.198,
+            "recall_est": 0.94,
+            "latency_ms_p50": 12
+          },
+          "qdrant": {
+            "storage_gb": 0.198,
+            "recall_est": 0.93,
+            "latency_ms_p50": 10
+          }
+        }
+      },
+      {
+        "dimensions": 1024,
+        "vectors_per_document": 3.5,
+        "storage_bytes_year": 262080000.0,
+        "index_size_bytes": 524160000.0,
+        "providers": {
+          "pgvector": {
+            "storage_gb": 0.262,
+            "recall_est": 0.92,
+            "latency_ms_p50": 35
+          },
+          "vertex_ai": {
+            "storage_gb": 0.262,
+            "recall_est": 0.95,
+            "latency_ms_p50": 25
+          },
+          "pinecone": {
+            "storage_gb": 0.262,
+            "recall_est": 0.94,
+            "latency_ms_p50": 20
+          },
+          "weaviate": {
+            "storage_gb": 0.262,
+            "recall_est": 0.93,
+            "latency_ms_p50": 18
+          },
+          "milvus": {
+            "storage_gb": 0.262,
+            "recall_est": 0.94,
+            "latency_ms_p50": 12
+          },
+          "qdrant": {
+            "storage_gb": 0.262,
+            "recall_est": 0.93,
+            "latency_ms_p50": 10
+          }
+        }
+      },
+      {
+        "dimensions": 1536,
+        "vectors_per_document": 3.5,
+        "storage_bytes_year": 391104000.0,
+        "index_size_bytes": 782208000.0,
+        "providers": {
+          "pgvector": {
+            "storage_gb": 0.391,
+            "recall_est": 0.92,
+            "latency_ms_p50": 45
+          },
+          "vertex_ai": {
+            "storage_gb": 0.391,
+            "recall_est": 0.95,
+            "latency_ms_p50": 25
+          },
+          "pinecone": {
+            "storage_gb": 0.391,
+            "recall_est": 0.94,
+            "latency_ms_p50": 20
+          },
+          "weaviate": {
+            "storage_gb": 0.391,
+            "recall_est": 0.93,
+            "latency_ms_p50": 18
+          },
+          "milvus": {
+            "storage_gb": 0.391,
+            "recall_est": 0.94,
+            "latency_ms_p50": 12
+          },
+          "qdrant": {
+            "storage_gb": 0.391,
+            "recall_est": 0.93,
+            "latency_ms_p50": 10
+          }
+        }
+      }
+    ],
+    "network": {
+      "rest_ingress_gb_month": 0.04,
+      "rest_egress_gb_month": 0.76,
+      "streaming_gb_month": 0.01,
+      "websocket_gb_month": 7.5,
+      "connector_traffic_gb_month": 0.02,
+      "prompt_traffic_gb_month": 0.07,
+      "artifact_download_gb_month": 0.59,
+      "dashboard_gb_month": 7.5,
+      "total_ingress_gb_month": 2.29,
+      "total_egress_gb_month": 15.77,
+      "total_annual_gb": 216.73
+    },
+    "gpu": null,
+    "redis": {
+      "prompt_cache_mb": 0.59,
+      "connector_cache_mb": 0.01,
+      "session_cache_mb": 1.25,
+      "artifact_cache_mb": 0.08,
+      "metadata_cache_mb": 5.0,
+      "total_mb": 6.92,
+      "ttl_hours": 24
+    },
+    "costs": {
+      "environment": "development",
+      "profile": "small",
+      "compute_monthly_usd": 36.0,
+      "database_monthly_usd": 0.0,
+      "redis_monthly_usd": 7.5,
+      "object_storage_monthly_usd": 0.06,
+      "vector_storage_monthly_usd": 0.0,
+      "networking_monthly_usd": 0.65,
+      "llm_monthly_usd": 21.6,
+      "monitoring_monthly_usd": 7.5,
+      "monthly_total_usd": 73.31,
+      "annual_total_usd": 879.74,
+      "by_provider": [
+        {
+          "provider": "gcs",
+          "storage_gb_month_usd": 0.14,
+          "put_cost_month_usd": 0.06,
+          "get_cost_month_usd": 0.02,
+          "lifecycle_savings_usd": 0.02,
+          "monthly_total_usd": 0.2,
+          "annual_total_usd": 2.38
+        },
+        {
+          "provider": "aws_s3",
+          "storage_gb_month_usd": 0.16,
+          "put_cost_month_usd": 0.01,
+          "get_cost_month_usd": 0.0,
+          "lifecycle_savings_usd": 0.0,
+          "monthly_total_usd": 0.17,
+          "annual_total_usd": 2.06
+        },
+        {
+          "provider": "azure_blob",
+          "storage_gb_month_usd": 0.13,
+          "put_cost_month_usd": 0.01,
+          "get_cost_month_usd": 0.0,
+          "lifecycle_savings_usd": 0.0,
+          "monthly_total_usd": 0.14,
+          "annual_total_usd": 1.63
+        },
+        {
+          "provider": "minio",
+          "storage_gb_month_usd": 0.0,
+          "put_cost_month_usd": 0.0,
+          "get_cost_month_usd": 0.0,
+          "lifecycle_savings_usd": 0.0,
+          "monthly_total_usd": 0.0,
+          "annual_total_usd": 0.0
+        }
+      ]
+    },
+    "growth_forecast": [
+      {
+        "period": "day",
+        "storage_gb": 0.12,
+        "database_gb": 0.0,
+        "object_storage_gb": 0.03,
+        "embeddings_gb": 0.001,
+        "artifacts_count": 400.0,
+        "prompts_count": 1200.0
+      },
+      {
+        "period": "week",
+        "storage_gb": 0.86,
+        "database_gb": 0.0,
+        "object_storage_gb": 0.21,
+        "embeddings_gb": 0.008,
+        "artifacts_count": 2800.0,
+        "prompts_count": 8400.0
+      },
+      {
+        "period": "month",
+        "storage_gb": 3.69,
+        "database_gb": 0.02,
+        "object_storage_gb": 0.89,
+        "embeddings_gb": 0.032,
+        "artifacts_count": 12000.0,
+        "prompts_count": 36000.0
+      },
+      {
+        "period": "quarter",
+        "storage_gb": 11.08,
+        "database_gb": 0.06,
+        "object_storage_gb": 2.67,
+        "embeddings_gb": 0.097,
+        "artifacts_count": 36000.0,
+        "prompts_count": 108000.0
+      },
+      {
+        "period": "year",
+        "storage_gb": 38.19,
+        "database_gb": 0.2,
+        "object_storage_gb": 9.22,
+        "embeddings_gb": 0.334,
+        "artifacts_count": 124100.0,
+        "prompts_count": 372300.0
+      },
+      {
+        "period": "3yr",
+        "storage_gb": 114.57,
+        "database_gb": 0.59,
+        "object_storage_gb": 27.66,
+        "embeddings_gb": 1.001,
+        "artifacts_count": 372300.0,
+        "prompts_count": 1116900.0
+      },
+      {
+        "period": "5yr",
+        "storage_gb": 190.95,
+        "database_gb": 0.98,
+        "object_storage_gb": 46.11,
+        "embeddings_gb": 1.668,
+        "artifacts_count": 620500.0,
+        "prompts_count": 1861500.0
+      }
+    ],
+    "gke": {
+      "profile": "small",
+      "backend": {
+        "component": "adip-backend",
+        "replicas": 2,
+        "cpu_request": "250m",
+        "cpu_limit": "250m",
+        "memory_request": "256Mi",
+        "memory_limit": "256Mi",
+        "notes": ""
+      },
+      "frontend": {
+        "component": "adip-frontend",
+        "replicas": 2,
+        "cpu_request": "50m",
+        "cpu_limit": "250m",
+        "memory_request": "64Mi",
+        "memory_limit": "128Mi",
+        "notes": ""
+      },
+      "worker": {
+        "component": "connector-worker",
+        "replicas": 1,
+        "cpu_request": "250m",
+        "cpu_limit": "1000m",
+        "memory_request": "512Mi",
+        "memory_limit": "1Gi",
+        "notes": "Background connector sync scheduler"
+      },
+      "llm": null,
+      "node_pool_vcpu": 2.1,
+      "node_pool_memory_gi": 2.5,
+      "node_count_est": 2,
+      "cloud_sql_storage_gb": 0.11,
+      "gcs_storage_gb": 0.28,
+      "monthly_storage_growth_gb": 0.39,
+      "assumptions": [
+        "Profile small: 25 DAU, 200 prompts/day",
+        "Retention 30 days; token estimate ~4 chars/token",
+        "CPU/memory from mock scenario peaks + 50% headroom",
+        "Node pool at 70% target utilization",
+        "Cloud SQL and GCS sized from daily write heuristics"
+      ]
+    },
+    "infra_scenarios": null,
+    "load_tests": [],
+    "resource_profile": null,
+    "reports": {
+      "json": "/Users/nikhil/Documents/ADIP/adip/docs/examples/performance/capacity_plan_small.json",
+      "markdown": "/Users/nikhil/Documents/ADIP/adip/docs/examples/performance/capacity_plan_small.md",
+      "html": "/Users/nikhil/Documents/ADIP/adip/docs/examples/performance/capacity_plan_small.html",
+      "csv": "/Users/nikhil/Documents/ADIP/adip/docs/examples/performance/capacity_plan_small.csv",
+      "executive_summary": "/Users/nikhil/Documents/ADIP/adip/docs/examples/performance/capacity_plan_small_executive_summary.md"
+    }
+  },
+  "enterprise": {
+    "kubernetes_platform": {
+      "deployments": [
+        {
+          "kind": "adip-backend",
+          "count": 1,
+          "replicas": 2,
+          "notes": ""
+        },
+        {
+          "kind": "adip-frontend",
+          "count": 1,
+          "replicas": 2,
+          "notes": ""
+        },
+        {
+          "kind": "connector-worker",
+          "count": 1,
+          "replicas": 1,
+          "notes": ""
+        }
+      ],
+      "statefulsets": [
+        {
+          "kind": "redis",
+          "count": 1,
+          "replicas": 1,
+          "notes": ""
+        }
+      ],
+      "daemonsets": [
+        {
+          "kind": "prometheus-node-exporter",
+          "count": 1,
+          "replicas": 1,
+          "notes": "Per node"
+        },
+        {
+          "kind": "fluent-bit",
+          "count": 1,
+          "replicas": 1,
+          "notes": "Log shipping"
+        }
+      ],
+      "jobs": [
+        {
+          "kind": "migration-job",
+          "count": 2,
+          "replicas": 1,
+          "notes": ""
+        }
+      ],
+      "cronjobs": [
+        {
+          "kind": "connector-sync",
+          "count": 1,
+          "replicas": 1,
+          "notes": ""
+        },
+        {
+          "kind": "backup-snapshot",
+          "count": 1,
+          "replicas": 1,
+          "notes": ""
+        },
+        {
+          "kind": "benchmark-scheduler",
+          "count": 1,
+          "replicas": 1,
+          "notes": ""
+        }
+      ],
+      "hpa_count": 1,
+      "vpa_count": 0,
+      "pdb_count": 2,
+      "ingress_count": 1,
+      "services_count": 7,
+      "pvc_count": 3,
+      "pvc_total_gi": 13.5,
+      "configmaps_count": 18,
+      "secrets_count": 14,
+      "namespaces": [
+        "adip-app",
+        "adip-connectors",
+        "adip-observability"
+      ],
+      "total_resources": 25,
+      "cluster_complexity": "low"
+    },
+    "multi_region": {
+      "topology": "multi_zone",
+      "regions": 1,
+      "zones_per_region": 3,
+      "cloud_sql_replicas": 1,
+      "object_storage_replication": "regional",
+      "redis_replication": "cross_zone",
+      "cross_region_egress_gb_month": 0.0,
+      "replication_lag_ms_est": 8.0,
+      "monthly_cost_multiplier": 1.15,
+      "latency_p50_ms_est": 30.0,
+      "storage_multiplier": 1.0
+    },
+    "high_availability": {
+      "target": "99.9",
+      "availability_pct": 99.9,
+      "backend_replicas": 3,
+      "frontend_replicas": 2,
+      "database_ha": "regional_ha",
+      "connector_redundancy": 1,
+      "llm_redundancy": 1,
+      "max_downtime_minutes_month": 43.2
+    },
+    "disaster_recovery": {
+      "rpo_minutes": 30,
+      "rto_minutes": 120,
+      "snapshot_schedule": "daily",
+      "backup_retention_days": 90,
+      "cross_region_backup": false,
+      "recovery_test_frequency_days": 180,
+      "backup_storage_gb": 7.09,
+      "monthly_backup_cost_usd": 0.57
+    },
+    "connector_scaling": [
+      {
+        "connector": "sharepoint",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 20.0,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "teams",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 20.8,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "outlook",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 21.6,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "onedrive",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 22.4,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "jira",
+        "api_rate_limit_per_min": 60,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 23.2,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "confluence",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 24.0,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "azure_devops",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 24.8,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "github",
+        "api_rate_limit_per_min": 60,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 25.6,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "gitlab",
+        "api_rate_limit_per_min": 60,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 26.4,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "sonarqube",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 27.2,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "prisma",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 28.0,
+        "peak_sync_window": "02:00-04:00 UTC"
+      },
+      {
+        "connector": "servicenow",
+        "api_rate_limit_per_min": 30,
+        "throughput_per_hour": 17.6,
+        "parallel_workers": 1,
+        "queue_depth": 5,
+        "retry_window_minutes": 15,
+        "daily_sync_duration_min": 28.8,
+        "peak_sync_window": "02:00-04:00 UTC"
+      }
+    ],
+    "ai_workloads": [
+      {
+        "workload": "prompt_execution",
+        "cpu_millicores": 250,
+        "ram_mb": 128,
+        "latency_ms_p50": 150.0,
+        "storage_mb_day": 6.0
+      },
+      {
+        "workload": "prompt_replay",
+        "cpu_millicores": 75,
+        "ram_mb": 64,
+        "latency_ms_p50": 120.0,
+        "storage_mb_day": 2.4
+      },
+      {
+        "workload": "prompt_regression",
+        "cpu_millicores": 125,
+        "ram_mb": 102,
+        "latency_ms_p50": 180.0,
+        "storage_mb_day": 3.6
+      },
+      {
+        "workload": "artifact_generation",
+        "cpu_millicores": 200,
+        "ram_mb": 153,
+        "latency_ms_p50": 225.0,
+        "storage_mb_day": 12.0
+      },
+      {
+        "workload": "embeddings",
+        "cpu_millicores": 150,
+        "ram_mb": 192,
+        "latency_ms_p50": 300.0,
+        "storage_mb_day": 9.6
+      },
+      {
+        "workload": "hallucination_detection",
+        "cpu_millicores": 100,
+        "ram_mb": 76,
+        "latency_ms_p50": 165.0,
+        "storage_mb_day": 1.2
+      },
+      {
+        "workload": "semantic_similarity",
+        "cpu_millicores": 75,
+        "ram_mb": 64,
+        "latency_ms_p50": 135.0,
+        "storage_mb_day": 2.4
+      },
+      {
+        "workload": "rule_engine",
+        "cpu_millicores": 50,
+        "ram_mb": 38,
+        "latency_ms_p50": 75.0,
+        "storage_mb_day": 1.2
+      },
+      {
+        "workload": "traceability",
+        "cpu_millicores": 62,
+        "ram_mb": 51,
+        "latency_ms_p50": 105.0,
+        "storage_mb_day": 1.8
+      },
+      {
+        "workload": "connector_ai",
+        "cpu_millicores": 125,
+        "ram_mb": 89,
+        "latency_ms_p50": 150.0,
+        "storage_mb_day": 4.8
+      }
+    ],
+    "rag_benchmark": {
+      "chunk_size_tokens": 512,
+      "chunk_count": 63000,
+      "embedding_latency_ms": 44.0,
+      "retrieval_latency_ms": 27.0,
+      "context_assembly_ms": 8.0,
+      "top_k": 5,
+      "context_window_utilization_pct": 50.0,
+      "vector_growth_gb_year": 0.097
+    },
+    "persona_models": [
+      {
+        "persona": "executive",
+        "daily_prompts": 24.0,
+        "connector_calls_day": 1.0,
+        "artifacts_day": 20.0,
+        "storage_mb_day": 0.0
+      },
+      {
+        "persona": "program_manager",
+        "daily_prompts": 96.0,
+        "connector_calls_day": 5.8,
+        "artifacts_day": 40.0,
+        "storage_mb_day": 0.01
+      },
+      {
+        "persona": "project_manager",
+        "daily_prompts": 120.0,
+        "connector_calls_day": 7.7,
+        "artifacts_day": 48.0,
+        "storage_mb_day": 0.01
+      },
+      {
+        "persona": "developer",
+        "daily_prompts": 300.0,
+        "connector_calls_day": 14.4,
+        "artifacts_day": 80.0,
+        "storage_mb_day": 0.02
+      },
+      {
+        "persona": "architect",
+        "daily_prompts": 144.0,
+        "connector_calls_day": 9.6,
+        "artifacts_day": 60.0,
+        "storage_mb_day": 0.01
+      },
+      {
+        "persona": "tester",
+        "daily_prompts": 120.0,
+        "connector_calls_day": 4.8,
+        "artifacts_day": 32.0,
+        "storage_mb_day": 0.01
+      },
+      {
+        "persona": "auditor",
+        "daily_prompts": 60.0,
+        "connector_calls_day": 11.5,
+        "artifacts_day": 24.0,
+        "storage_mb_day": 0.01
+      },
+      {
+        "persona": "operations",
+        "daily_prompts": 72.0,
+        "connector_calls_day": 9.6,
+        "artifacts_day": 20.0,
+        "storage_mb_day": 0.0
+      },
+      {
+        "persona": "sre",
+        "daily_prompts": 96.0,
+        "connector_calls_day": 14.4,
+        "artifacts_day": 16.0,
+        "storage_mb_day": 0.0
+      },
+      {
+        "persona": "devops",
+        "daily_prompts": 84.0,
+        "connector_calls_day": 11.5,
+        "artifacts_day": 20.0,
+        "storage_mb_day": 0.0
+      },
+      {
+        "persona": "platform_admin",
+        "daily_prompts": 48.0,
+        "connector_calls_day": 7.7,
+        "artifacts_day": 16.0,
+        "storage_mb_day": 0.0
+      },
+      {
+        "persona": "compliance_officer",
+        "daily_prompts": 36.0,
+        "connector_calls_day": 7.7,
+        "artifacts_day": 24.0,
+        "storage_mb_day": 0.01
+      }
+    ],
+    "cost_optimization": {
+      "items": [
+        {
+          "strategy": "reserved_instances",
+          "monthly_savings_usd": 10.08,
+          "annual_savings_usd": 120.96,
+          "effort": "medium",
+          "recommendation": "Commit 1-year GKE/Compute reserved capacity for baseline nodes."
+        },
+        {
+          "strategy": "autoscaling",
+          "monthly_savings_usd": 4.32,
+          "annual_savings_usd": 51.84,
+          "effort": "low",
+          "recommendation": "Enable HPA on backend; scale to zero for benchmark workers off-peak."
+        },
+        {
+          "strategy": "storage_lifecycle",
+          "monthly_savings_usd": 0.01,
+          "annual_savings_usd": 0.18,
+          "effort": "low",
+          "recommendation": "Move aged artifacts to Nearline after 30d, Coldline after 90d."
+        },
+        {
+          "strategy": "compression",
+          "monthly_savings_usd": 0.08,
+          "annual_savings_usd": 0.91,
+          "effort": "low",
+          "recommendation": "Enable gzip compression on CSV/JSON exports and log archives."
+        },
+        {
+          "strategy": "caching",
+          "monthly_savings_usd": 0.75,
+          "annual_savings_usd": 9.0,
+          "effort": "low",
+          "recommendation": "Expand prompt and connector metadata cache TTL during steady state."
+        },
+        {
+          "strategy": "object_deduplication",
+          "monthly_savings_usd": 0.01,
+          "annual_savings_usd": 0.09,
+          "effort": "medium",
+          "recommendation": "Content-hash dedup for version history and retention copies."
+        },
+        {
+          "strategy": "cold_storage",
+          "monthly_savings_usd": 0.07,
+          "annual_savings_usd": 0.78,
+          "effort": "low",
+          "recommendation": "Archive 4.3 GB to Coldline tier."
+        }
+      ],
+      "total_monthly_savings_usd": 15.32,
+      "total_annual_savings_usd": 183.84
+    },
+    "scenario_comparison": {
+      "baseline": "small",
+      "rows": [
+        {
+          "scenario": "small",
+          "profile": "small",
+          "monthly_cost_usd": 244.37,
+          "gke_nodes": 2,
+          "storage_gb_year": 10.85,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 150.0,
+          "notes": "managed_llm"
+        },
+        {
+          "scenario": "small",
+          "profile": "small",
+          "monthly_cost_usd": 332.37,
+          "gke_nodes": 2,
+          "storage_gb_year": 10.85,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 80.0,
+          "notes": "local_llm"
+        },
+        {
+          "scenario": "large",
+          "profile": "large",
+          "monthly_cost_usd": 824.37,
+          "gke_nodes": 2,
+          "storage_gb_year": 10.85,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 150.0,
+          "notes": "managed_llm"
+        },
+        {
+          "scenario": "large",
+          "profile": "large",
+          "monthly_cost_usd": 912.37,
+          "gke_nodes": 2,
+          "storage_gb_year": 10.85,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 80.0,
+          "notes": "local_llm"
+        },
+        {
+          "scenario": "region_single_region",
+          "profile": "medium",
+          "monthly_cost_usd": 244.37,
+          "gke_nodes": 2,
+          "storage_gb_year": 10.85,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 35.0,
+          "notes": "single_region"
+        },
+        {
+          "scenario": "region_multi_zone",
+          "profile": "medium",
+          "monthly_cost_usd": 281.03,
+          "gke_nodes": 3,
+          "storage_gb_year": 12.48,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 36.5,
+          "notes": "multi_zone"
+        },
+        {
+          "scenario": "llm_managed_llm",
+          "profile": "medium",
+          "monthly_cost_usd": 389.37,
+          "gke_nodes": 2,
+          "storage_gb_year": 10.85,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 150.0,
+          "notes": "managed_llm"
+        },
+        {
+          "scenario": "llm_local_llm",
+          "profile": "medium",
+          "monthly_cost_usd": 477.37,
+          "gke_nodes": 2,
+          "storage_gb_year": 10.85,
+          "cloud_sql_gb_year": 0.23,
+          "latency_ms_est": 80.0,
+          "notes": "local_llm"
+        }
+      ],
+      "deltas": {
+        "small": 88.0,
+        "large": 668.0,
+        "region_single_region": 0.0,
+        "region_multi_zone": 36.66,
+        "llm_managed_llm": 145.0,
+        "llm_local_llm": 233.0
+      },
+      "recommendation": "Lowest cost: small at $244.37/mo"
+    },
+    "benchmark_history": {
+      "entries": [
+        {
+          "timestamp": "2026-07-09T01:22:43.312328+00:00",
+          "profile": "small",
+          "monthly_cost_usd": 73.31,
+          "storage_gb_year": 10.848,
+          "database_gb_year": 0.23,
+          "gke_nodes": 2
+        }
+      ],
+      "cost_drift_pct": 0.0,
+      "storage_drift_pct": 0.0,
+      "capacity_drift_pct": 0.0,
+      "trend": "insufficient_data"
+    },
+    "calibration": {
+      "mock_mode": true,
+      "estimated": {
+        "cpu_millicores": 250.0,
+        "ram_mb": 512.0,
+        "storage_gb": 10.848474,
+        "network_egress_gb": 15.77,
+        "prompt_rps": 10.0
+      },
+      "actual": {
+        "cpu_millicores": 850.0,
+        "ram_mb": 2048.0,
+        "storage_gb": 45.0,
+        "network_egress_gb": 120.0,
+        "prompt_rps": 12.5
+      },
+      "accuracy_pct": {
+        "cpu_millicores": 29.4,
+        "ram_mb": 25.0,
+        "storage_gb": 24.1,
+        "network_egress_gb": 13.1,
+        "prompt_rps": 80.0
+      },
+      "correction_factors": {
+        "cpu_millicores": 3.4,
+        "ram_mb": 4.0,
+        "storage_gb": 4.148,
+        "network_egress_gb": 7.609,
+        "prompt_rps": 1.25
+      },
+      "future_adjustments": [
+        "Increase cpu_millicores estimate by 240%",
+        "Increase ram_mb estimate by 300%",
+        "Increase storage_gb estimate by 315%",
+        "Increase network_egress_gb estimate by 661%",
+        "Increase prompt_rps estimate by 25%"
+      ]
+    },
+    "architect_recommendations": {
+      "recommendations": [
+        {
+          "category": "healthy",
+          "severity": "info",
+          "finding": "No bottlenecks detected.",
+          "recommendation": "Continue monitoring via calibration mode."
+        }
+      ],
+      "best_gke_profile": "small",
+      "best_storage_tier": "standard",
+      "best_ha_topology": "99.9",
+      "best_dr_topology": "multi_zone",
+      "overall_status": "healthy"
+    }
+  },
+  "extended_reports": {}
+}

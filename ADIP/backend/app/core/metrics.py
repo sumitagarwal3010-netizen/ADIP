@@ -84,6 +84,38 @@ class Metrics:
                 "# TYPE adip_connector_run_success_total counter",
                 f"adip_connector_run_success_total {cm.get('connector_run_success_total', 0)}",
             ])
+            # Capacity planning gauges (estimator snapshots — updated on /capacity-planning/plan)
+            from app.perf.capacity.metrics_store import capacity_metrics
+            cm2 = capacity_metrics.snapshot()
+            lines.extend([
+                "# HELP adip_capacity_storage_gb_year Object storage estimate (GB/year).",
+                "# TYPE adip_capacity_storage_gb_year gauge",
+                f"adip_capacity_storage_gb_year {cm2.get('object_storage_gb_year', 0)}",
+                "# HELP adip_capacity_database_gb_year Cloud SQL estimate (GB/year).",
+                "# TYPE adip_capacity_database_gb_year gauge",
+                f"adip_capacity_database_gb_year {cm2.get('database_gb_year', 0)}",
+                "# HELP adip_capacity_monthly_cost_usd Monthly cost estimate (USD).",
+                "# TYPE adip_capacity_monthly_cost_usd gauge",
+                f"adip_capacity_monthly_cost_usd {cm2.get('monthly_cost_usd', 0)}",
+                "# HELP adip_capacity_gke_nodes_est Estimated GKE node count.",
+                "# TYPE adip_capacity_gke_nodes_est gauge",
+                f"adip_capacity_gke_nodes_est {cm2.get('gke_nodes', 0)}",
+                "# HELP adip_capacity_redis_mb Redis memory estimate (MB).",
+                "# TYPE adip_capacity_redis_mb gauge",
+                f"adip_capacity_redis_mb {cm2.get('redis_mb', 0)}",
+                "# HELP adip_capacity_network_egress_gb_month Network egress (GB/month).",
+                "# TYPE adip_capacity_network_egress_gb_month gauge",
+                f"adip_capacity_network_egress_gb_month {cm2.get('network_egress_gb_month', 0)}",
+                "# HELP adip_capacity_vector_storage_gb Vector storage estimate (GB).",
+                "# TYPE adip_capacity_vector_storage_gb gauge",
+                f"adip_capacity_vector_storage_gb {cm2.get('vector_storage_gb', 0)}",
+                "# HELP adip_capacity_prompt_throughput_rps Prompt load-test throughput.",
+                "# TYPE adip_capacity_prompt_throughput_rps gauge",
+                f"adip_capacity_prompt_throughput_rps {cm2.get('prompt_throughput_rps', 0)}",
+                "# HELP adip_capacity_benchmark_runs_total Capacity plan runs.",
+                "# TYPE adip_capacity_benchmark_runs_total counter",
+                f"adip_capacity_benchmark_runs_total {cm2.get('plan_runs', 0)}",
+            ])
         except Exception:  # noqa: BLE001 - metrics must not fail scrape
             pass
         return "\n".join(lines) + "\n"

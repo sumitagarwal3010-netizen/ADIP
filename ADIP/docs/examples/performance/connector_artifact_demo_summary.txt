@@ -1,0 +1,10 @@
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/nikhil/Documents/ADIP/adip/backend/.venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: enterprise_connectors
+[SQL: SELECT enterprise_connectors.id, enterprise_connectors.connector_type, enterprise_connectors.name, enterprise_connectors.category, enterprise_connectors.status, enterprise_connectors.enabled, enterprise_connectors.mock_mode, enterprise_connectors.dry_run, enterprise_connectors.config_json, enterprise_connectors.project_id, enterprise_connectors.last_sync_at, enterprise_connectors.last_health_at, enterprise_connectors.last_health_status, enterprise_connectors.created_at, enterprise_connectors.updated_at 
+FROM enterprise_connectors ORDER BY enterprise_connectors.id]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)

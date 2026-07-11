@@ -1,0 +1,17 @@
+2026-07-09 06:52:42 | WARNING  | auth | SECURITY BYPASS ACTIVE: ADIP_AUTH_MODE=demo — authentication/authorization enforcement is disabled. Use only for local/pre-MVP prototype.
+2026-07-09 06:52:42 | WARNING  | auth | SECURITY BYPASS ACTIVE: ADIP_AUTH_MODE=demo — authentication/authorization enforcement is disabled. Use only for local/pre-MVP prototype.
+2026-07-09 06:52:42 | INFO     | app.main | ADIP Backend v0.1.0 initialized (env=development)
+2026-07-09 06:52:42 | DEBUG    | asyncio | Using selector: KqueueSelector
+2026-07-09 06:52:42 | INFO     | request | request_id=a688f466e39d POST /api/v1/connectors/artifacts/generate -> 200 in 1.8ms
+2026-07-09 06:52:42 | INFO     | httpx | HTTP Request: POST http://testserver/api/v1/connectors/artifacts/generate "HTTP/1.1 200 OK"
+{
+  "title": "Release readiness report",
+  "quality_score": 0.95,
+  "source_connectors": [
+    "jira",
+    "sonarqube",
+    "teams",
+    "jenkins"
+  ],
+  "summary": "Connector-grounded Release readiness report from 14 source record(s)."
+}

@@ -16,3 +16,6 @@ python-dotenv>=1.0.1,<2.0
 # Testing
 pytest>=8.3.4,<9.0
 httpx>=0.28.1,<0.29
+
+# Optional — capacity planning Excel export
+openpyxl>=3.1,<4.0

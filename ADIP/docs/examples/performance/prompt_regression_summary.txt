@@ -1,0 +1,6 @@
+Verdict: FAIL 4/5
+  [PASS] golden-brd-1 similarity=0.178
+  [PASS] golden-frd-1 similarity=0.175
+  [FAIL] golden-hld-1 similarity=0.131
+  [PASS] golden-test-1 similarity=0.204
+  [PASS] golden-audit-1 similarity=0.191

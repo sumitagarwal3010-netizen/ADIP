@@ -20,6 +20,8 @@ from app.api.v1.endpoints import (
     connectors,
     copilots,
     executive,
+    capacity_planning,
+    infra_sizing_benchmark,
     knowledge_transformation,
     llm_meta,
     orchestrator,
@@ -82,6 +84,8 @@ api_router.include_router(ai_review.router)
 
 # Prompt benchmark/optimization + artifact quality rubrics.
 api_router.include_router(prompt_benchmark.router)
+api_router.include_router(infra_sizing_benchmark.router)
+api_router.include_router(capacity_planning.router)
 api_router.include_router(rubrics.router)
 
 # Prompt Studio, artifact export engine, and prompt regression framework.

@@ -12849,6 +12849,499 @@
         }
       }
     },
+    "/api/v1/benchmarks/infra-sizing": {
+      "get": {
+        "tags": [
+          "Infra Sizing Benchmark"
+        ],
+        "summary": "Infra Sizing Info",
+        "description": "Profiles, scenarios, and assumptions for infra sizing benchmark.",
+        "operationId": "infra_sizing_info_api_v1_benchmarks_infra_sizing_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/infra-sizing/profiles/{profile}": {
+      "get": {
+        "tags": [
+          "Infra Sizing Benchmark"
+        ],
+        "summary": "Infra Sizing Profile",
+        "operationId": "infra_sizing_profile_api_v1_benchmarks_infra_sizing_profiles__profile__get",
+        "parameters": [
+          {
+            "name": "profile",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": [
+                "small",
+                "medium",
+                "large",
+                "enterprise"
+              ],
+              "type": "string",
+              "title": "Profile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/infra-sizing/run": {
+      "post": {
+        "tags": [
+          "Infra Sizing Benchmark"
+        ],
+        "summary": "Run Infra Sizing",
+        "description": "Run mock infra sizing benchmark and return GKE/GCP estimates.",
+        "operationId": "run_infra_sizing_api_v1_benchmarks_infra_sizing_run_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InfraSizingRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InfraSizingReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning": {
+      "get": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Capacity Planning Info",
+        "operationId": "capacity_planning_info_api_v1_benchmarks_capacity_planning_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/plan": {
+      "post": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Run Capacity Plan",
+        "operationId": "run_capacity_plan_api_v1_benchmarks_capacity_planning_plan_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapacityPlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CapacityPlanningReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/plan/enterprise": {
+      "post": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Run Enterprise Plan",
+        "operationId": "run_enterprise_plan_api_v1_benchmarks_capacity_planning_plan_enterprise_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnterprisePlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnterpriseCapacityReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/compare": {
+      "post": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Compare Capacity Scenarios",
+        "operationId": "compare_capacity_scenarios_api_v1_benchmarks_capacity_planning_compare_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScenarioCompareRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScenarioComparisonReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/calibrate": {
+      "post": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Run Calibration",
+        "operationId": "run_calibration_api_v1_benchmarks_capacity_planning_calibrate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalibrationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalibrationReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/history": {
+      "get": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Get Benchmark History",
+        "operationId": "get_benchmark_history_api_v1_benchmarks_capacity_planning_history_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BenchmarkHistoryReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/sections/{section}": {
+      "get": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Estimate Section",
+        "operationId": "estimate_section_api_v1_benchmarks_capacity_planning_sections__section__get",
+        "parameters": [
+          {
+            "name": "section",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Section"
+            }
+          },
+          {
+            "name": "profile",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "medium",
+              "title": "Profile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/load-test": {
+      "post": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Run Load Test Api",
+        "operationId": "run_load_test_api_api_v1_benchmarks_capacity_planning_load_test_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoadTestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LoadTestResult"
+                  },
+                  "type": "array",
+                  "title": "Response Run Load Test Api Api V1 Benchmarks Capacity Planning Load Test Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/load-test/suite": {
+      "post": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Run Load Suite Api",
+        "operationId": "run_load_suite_api_api_v1_benchmarks_capacity_planning_load_test_suite_post",
+        "parameters": [
+          {
+            "name": "concurrency",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "title": "Concurrency"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LoadTestResult"
+                  },
+                  "title": "Response Run Load Suite Api Api V1 Benchmarks Capacity Planning Load Test Suite Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/capacity-planning/excel": {
+      "post": {
+        "tags": [
+          "Capacity Planning"
+        ],
+        "summary": "Generate Excel Api",
+        "operationId": "generate_excel_api_api_v1_benchmarks_capacity_planning_excel_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapacityPlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/artifact-rubrics": {
       "get": {
         "tags": [
@@ -15863,6 +16356,39 @@
         "type": "object",
         "title": "ActivityLogUpdate"
       },
+      "AiWorkloadEstimate": {
+        "properties": {
+          "workload": {
+            "type": "string",
+            "title": "Workload"
+          },
+          "cpu_millicores": {
+            "type": "integer",
+            "title": "Cpu Millicores"
+          },
+          "ram_mb": {
+            "type": "integer",
+            "title": "Ram Mb"
+          },
+          "latency_ms_p50": {
+            "type": "number",
+            "title": "Latency Ms P50"
+          },
+          "storage_mb_day": {
+            "type": "number",
+            "title": "Storage Mb Day"
+          }
+        },
+        "type": "object",
+        "required": [
+          "workload",
+          "cpu_millicores",
+          "ram_mb",
+          "latency_ms_p50",
+          "storage_mb_day"
+        ],
+        "title": "AiWorkloadEstimate"
+      },
       "AnalyzeRequest": {
         "properties": {
           "prompt": {
@@ -16149,6 +16675,80 @@
           "approval_status"
         ],
         "title": "ApprovalUpdate"
+      },
+      "ArchitectRecommendation": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "info",
+              "warning",
+              "critical"
+            ],
+            "title": "Severity"
+          },
+          "finding": {
+            "type": "string",
+            "title": "Finding"
+          },
+          "recommendation": {
+            "type": "string",
+            "title": "Recommendation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "severity",
+          "finding",
+          "recommendation"
+        ],
+        "title": "ArchitectRecommendation"
+      },
+      "ArchitectRecommendationReport": {
+        "properties": {
+          "recommendations": {
+            "items": {
+              "$ref": "#/components/schemas/ArchitectRecommendation"
+            },
+            "type": "array",
+            "title": "Recommendations"
+          },
+          "best_gke_profile": {
+            "type": "string",
+            "title": "Best Gke Profile"
+          },
+          "best_storage_tier": {
+            "type": "string",
+            "title": "Best Storage Tier"
+          },
+          "best_ha_topology": {
+            "type": "string",
+            "title": "Best Ha Topology"
+          },
+          "best_dr_topology": {
+            "type": "string",
+            "title": "Best Dr Topology"
+          },
+          "overall_status": {
+            "type": "string",
+            "title": "Overall Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "recommendations",
+          "best_gke_profile",
+          "best_storage_tier",
+          "best_ha_topology",
+          "best_dr_topology",
+          "overall_status"
+        ],
+        "title": "ArchitectRecommendationReport"
       },
       "ArchitectureCreate": {
         "properties": {
@@ -17999,6 +18599,80 @@
         ],
         "title": "BenchmarkEntry"
       },
+      "BenchmarkHistoryEntry": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "profile": {
+            "type": "string",
+            "title": "Profile"
+          },
+          "monthly_cost_usd": {
+            "type": "number",
+            "title": "Monthly Cost Usd"
+          },
+          "storage_gb_year": {
+            "type": "number",
+            "title": "Storage Gb Year"
+          },
+          "database_gb_year": {
+            "type": "number",
+            "title": "Database Gb Year"
+          },
+          "gke_nodes": {
+            "type": "integer",
+            "title": "Gke Nodes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestamp",
+          "profile",
+          "monthly_cost_usd",
+          "storage_gb_year",
+          "database_gb_year",
+          "gke_nodes"
+        ],
+        "title": "BenchmarkHistoryEntry"
+      },
+      "BenchmarkHistoryReport": {
+        "properties": {
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/BenchmarkHistoryEntry"
+            },
+            "type": "array",
+            "title": "Entries"
+          },
+          "cost_drift_pct": {
+            "type": "number",
+            "title": "Cost Drift Pct"
+          },
+          "storage_drift_pct": {
+            "type": "number",
+            "title": "Storage Drift Pct"
+          },
+          "capacity_drift_pct": {
+            "type": "number",
+            "title": "Capacity Drift Pct"
+          },
+          "trend": {
+            "type": "string",
+            "title": "Trend"
+          }
+        },
+        "type": "object",
+        "required": [
+          "entries",
+          "cost_drift_pct",
+          "storage_drift_pct",
+          "capacity_drift_pct",
+          "trend"
+        ],
+        "title": "BenchmarkHistoryReport"
+      },
       "BenchmarkReport": {
         "properties": {
           "total_runs": {
@@ -18078,6 +18752,448 @@
           "prompts"
         ],
         "title": "BenchmarkRequest"
+      },
+      "CalibrationInput": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": [
+              "kubectl_top",
+              "prometheus",
+              "cloud_monitoring",
+              "grafana",
+              "mock"
+            ],
+            "title": "Source"
+          },
+          "cpu_millicores_actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cpu Millicores Actual"
+          },
+          "ram_mb_actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ram Mb Actual"
+          },
+          "storage_gb_actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Storage Gb Actual"
+          },
+          "network_egress_gb_actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Network Egress Gb Actual"
+          },
+          "prompt_rps_actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Rps Actual"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source"
+        ],
+        "title": "CalibrationInput"
+      },
+      "CalibrationReport": {
+        "properties": {
+          "mock_mode": {
+            "type": "boolean",
+            "title": "Mock Mode"
+          },
+          "estimated": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Estimated"
+          },
+          "actual": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Actual"
+          },
+          "accuracy_pct": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Accuracy Pct"
+          },
+          "correction_factors": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Correction Factors"
+          },
+          "future_adjustments": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Future Adjustments"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mock_mode",
+          "estimated",
+          "actual",
+          "accuracy_pct",
+          "correction_factors",
+          "future_adjustments"
+        ],
+        "title": "CalibrationReport"
+      },
+      "CalibrationRequest": {
+        "properties": {
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile",
+            "default": "medium"
+          },
+          "calibration": {
+            "$ref": "#/components/schemas/CalibrationInput"
+          }
+        },
+        "type": "object",
+        "required": [
+          "calibration"
+        ],
+        "title": "CalibrationRequest"
+      },
+      "CapacityPlanRequest": {
+        "properties": {
+          "inputs": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CapacityPlanningInputs"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile",
+            "default": "medium"
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "development",
+              "uat",
+              "production"
+            ],
+            "title": "Environment",
+            "default": "production"
+          }
+        },
+        "type": "object",
+        "title": "CapacityPlanRequest"
+      },
+      "CapacityPlanningInputs": {
+        "properties": {
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile",
+            "default": "medium"
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "development",
+              "uat",
+              "production"
+            ],
+            "title": "Environment",
+            "default": "production"
+          },
+          "applications": {
+            "type": "integer",
+            "title": "Applications",
+            "default": 1
+          },
+          "projects": {
+            "type": "integer",
+            "title": "Projects",
+            "default": 10
+          },
+          "users": {
+            "type": "integer",
+            "title": "Users",
+            "default": 100
+          },
+          "concurrent_users": {
+            "type": "integer",
+            "title": "Concurrent Users",
+            "default": 25
+          },
+          "prompts_per_day": {
+            "type": "integer",
+            "title": "Prompts Per Day",
+            "default": 1200
+          },
+          "artifacts_per_day": {
+            "type": "integer",
+            "title": "Artifacts Per Day",
+            "default": 400
+          },
+          "documents_per_day": {
+            "type": "integer",
+            "title": "Documents Per Day",
+            "default": 200
+          },
+          "uploads_per_day": {
+            "type": "integer",
+            "title": "Uploads Per Day",
+            "default": 150
+          },
+          "avg_document_size_kb": {
+            "type": "number",
+            "title": "Avg Document Size Kb",
+            "default": 250.0
+          },
+          "avg_artifact_size_kb": {
+            "type": "number",
+            "title": "Avg Artifact Size Kb",
+            "default": 48.0
+          },
+          "avg_prompt_size_tokens": {
+            "type": "integer",
+            "title": "Avg Prompt Size Tokens",
+            "default": 500
+          },
+          "connector_syncs_per_day": {
+            "type": "integer",
+            "title": "Connector Syncs Per Day",
+            "default": 96
+          },
+          "retention_days": {
+            "type": "integer",
+            "title": "Retention Days",
+            "default": 90
+          },
+          "embedding_enabled": {
+            "type": "boolean",
+            "title": "Embedding Enabled",
+            "default": true
+          },
+          "embedding_dimensions": {
+            "type": "integer",
+            "title": "Embedding Dimensions",
+            "default": 384
+          },
+          "local_llm": {
+            "type": "boolean",
+            "title": "Local Llm",
+            "default": false
+          },
+          "managed_llm": {
+            "type": "boolean",
+            "title": "Managed Llm",
+            "default": true
+          },
+          "run_load_test": {
+            "type": "boolean",
+            "title": "Run Load Test",
+            "default": false
+          },
+          "load_concurrency": {
+            "type": "integer",
+            "title": "Load Concurrency",
+            "default": 10
+          },
+          "run_infra_scenarios": {
+            "type": "boolean",
+            "title": "Run Infra Scenarios",
+            "default": true
+          }
+        },
+        "type": "object",
+        "title": "CapacityPlanningInputs"
+      },
+      "CapacityPlanningReport": {
+        "properties": {
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile"
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "development",
+              "uat",
+              "production"
+            ],
+            "title": "Environment"
+          },
+          "generated_at": {
+            "type": "string",
+            "title": "Generated At"
+          },
+          "inputs": {
+            "$ref": "#/components/schemas/CapacityPlanningInputs"
+          },
+          "object_storage": {
+            "$ref": "#/components/schemas/ObjectStorageEstimate"
+          },
+          "database_growth": {
+            "$ref": "#/components/schemas/DatabaseGrowthReport"
+          },
+          "vector_db": {
+            "items": {
+              "$ref": "#/components/schemas/VectorDbEstimate"
+            },
+            "type": "array",
+            "title": "Vector Db"
+          },
+          "network": {
+            "$ref": "#/components/schemas/NetworkEstimate"
+          },
+          "gpu": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GpuEstimate"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "redis": {
+            "$ref": "#/components/schemas/RedisEstimate"
+          },
+          "costs": {
+            "$ref": "#/components/schemas/CostEstimate"
+          },
+          "growth_forecast": {
+            "items": {
+              "$ref": "#/components/schemas/GrowthForecastPoint"
+            },
+            "type": "array",
+            "title": "Growth Forecast"
+          },
+          "gke": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Gke"
+          },
+          "infra_scenarios": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Infra Scenarios"
+          },
+          "load_tests": {
+            "items": {
+              "$ref": "#/components/schemas/LoadTestResult"
+            },
+            "type": "array",
+            "title": "Load Tests"
+          },
+          "resource_profile": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResourceProfile"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reports": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Reports"
+          }
+        },
+        "type": "object",
+        "required": [
+          "profile",
+          "environment",
+          "generated_at",
+          "inputs",
+          "object_storage",
+          "database_growth",
+          "vector_db",
+          "network",
+          "gpu",
+          "redis",
+          "costs",
+          "growth_forecast",
+          "gke"
+        ],
+        "title": "CapacityPlanningReport"
       },
       "ClassificationDTO": {
         "properties": {
@@ -18886,6 +20002,54 @@
         ],
         "title": "ConnectorRunRead"
       },
+      "ConnectorScalingEstimate": {
+        "properties": {
+          "connector": {
+            "type": "string",
+            "title": "Connector"
+          },
+          "api_rate_limit_per_min": {
+            "type": "integer",
+            "title": "Api Rate Limit Per Min"
+          },
+          "throughput_per_hour": {
+            "type": "number",
+            "title": "Throughput Per Hour"
+          },
+          "parallel_workers": {
+            "type": "integer",
+            "title": "Parallel Workers"
+          },
+          "queue_depth": {
+            "type": "integer",
+            "title": "Queue Depth"
+          },
+          "retry_window_minutes": {
+            "type": "integer",
+            "title": "Retry Window Minutes"
+          },
+          "daily_sync_duration_min": {
+            "type": "number",
+            "title": "Daily Sync Duration Min"
+          },
+          "peak_sync_window": {
+            "type": "string",
+            "title": "Peak Sync Window"
+          }
+        },
+        "type": "object",
+        "required": [
+          "connector",
+          "api_rate_limit_per_min",
+          "throughput_per_hour",
+          "parallel_workers",
+          "queue_depth",
+          "retry_window_minutes",
+          "daily_sync_duration_min",
+          "peak_sync_window"
+        ],
+        "title": "ConnectorScalingEstimate"
+      },
       "ConnectorTestResponse": {
         "properties": {
           "ok": {
@@ -19571,6 +20735,152 @@
         ],
         "title": "CopilotType"
       },
+      "CostEstimate": {
+        "properties": {
+          "environment": {
+            "type": "string",
+            "enum": [
+              "development",
+              "uat",
+              "production"
+            ],
+            "title": "Environment"
+          },
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile"
+          },
+          "compute_monthly_usd": {
+            "type": "number",
+            "title": "Compute Monthly Usd"
+          },
+          "database_monthly_usd": {
+            "type": "number",
+            "title": "Database Monthly Usd"
+          },
+          "redis_monthly_usd": {
+            "type": "number",
+            "title": "Redis Monthly Usd"
+          },
+          "object_storage_monthly_usd": {
+            "type": "number",
+            "title": "Object Storage Monthly Usd"
+          },
+          "vector_storage_monthly_usd": {
+            "type": "number",
+            "title": "Vector Storage Monthly Usd"
+          },
+          "networking_monthly_usd": {
+            "type": "number",
+            "title": "Networking Monthly Usd"
+          },
+          "llm_monthly_usd": {
+            "type": "number",
+            "title": "Llm Monthly Usd"
+          },
+          "monitoring_monthly_usd": {
+            "type": "number",
+            "title": "Monitoring Monthly Usd"
+          },
+          "monthly_total_usd": {
+            "type": "number",
+            "title": "Monthly Total Usd"
+          },
+          "annual_total_usd": {
+            "type": "number",
+            "title": "Annual Total Usd"
+          },
+          "by_provider": {
+            "items": {
+              "$ref": "#/components/schemas/StorageCostEstimate"
+            },
+            "type": "array",
+            "title": "By Provider"
+          }
+        },
+        "type": "object",
+        "required": [
+          "environment",
+          "profile",
+          "compute_monthly_usd",
+          "database_monthly_usd",
+          "redis_monthly_usd",
+          "object_storage_monthly_usd",
+          "vector_storage_monthly_usd",
+          "networking_monthly_usd",
+          "llm_monthly_usd",
+          "monitoring_monthly_usd",
+          "monthly_total_usd",
+          "annual_total_usd",
+          "by_provider"
+        ],
+        "title": "CostEstimate"
+      },
+      "CostOptimizationItem": {
+        "properties": {
+          "strategy": {
+            "type": "string",
+            "title": "Strategy"
+          },
+          "monthly_savings_usd": {
+            "type": "number",
+            "title": "Monthly Savings Usd"
+          },
+          "annual_savings_usd": {
+            "type": "number",
+            "title": "Annual Savings Usd"
+          },
+          "effort": {
+            "type": "string",
+            "title": "Effort"
+          },
+          "recommendation": {
+            "type": "string",
+            "title": "Recommendation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "strategy",
+          "monthly_savings_usd",
+          "annual_savings_usd",
+          "effort",
+          "recommendation"
+        ],
+        "title": "CostOptimizationItem"
+      },
+      "CostOptimizationReport": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CostOptimizationItem"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total_monthly_savings_usd": {
+            "type": "number",
+            "title": "Total Monthly Savings Usd"
+          },
+          "total_annual_savings_usd": {
+            "type": "number",
+            "title": "Total Annual Savings Usd"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total_monthly_savings_usd",
+          "total_annual_savings_usd"
+        ],
+        "title": "CostOptimizationReport"
+      },
       "CredentialRefIn": {
         "properties": {
           "ref_type": {
@@ -19599,6 +20909,90 @@
           "ref_key"
         ],
         "title": "CredentialRefIn"
+      },
+      "DatabaseGrowthEstimate": {
+        "properties": {
+          "table": {
+            "type": "string",
+            "title": "Table"
+          },
+          "rows_per_day": {
+            "type": "number",
+            "title": "Rows Per Day"
+          },
+          "rows_per_month": {
+            "type": "number",
+            "title": "Rows Per Month"
+          },
+          "rows_per_year": {
+            "type": "number",
+            "title": "Rows Per Year"
+          },
+          "bytes_per_row": {
+            "type": "integer",
+            "title": "Bytes Per Row"
+          },
+          "storage_year_bytes": {
+            "type": "number",
+            "title": "Storage Year Bytes"
+          },
+          "index_overhead_bytes": {
+            "type": "number",
+            "title": "Index Overhead Bytes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "table",
+          "rows_per_day",
+          "rows_per_month",
+          "rows_per_year",
+          "bytes_per_row",
+          "storage_year_bytes",
+          "index_overhead_bytes"
+        ],
+        "title": "DatabaseGrowthEstimate"
+      },
+      "DatabaseGrowthReport": {
+        "properties": {
+          "tables": {
+            "items": {
+              "$ref": "#/components/schemas/DatabaseGrowthEstimate"
+            },
+            "type": "array",
+            "title": "Tables"
+          },
+          "total_rows_per_day": {
+            "type": "number",
+            "title": "Total Rows Per Day"
+          },
+          "total_rows_per_year": {
+            "type": "number",
+            "title": "Total Rows Per Year"
+          },
+          "cloud_sql_gb_year": {
+            "type": "number",
+            "title": "Cloud Sql Gb Year"
+          },
+          "backup_gb_year": {
+            "type": "number",
+            "title": "Backup Gb Year"
+          },
+          "index_growth_gb_year": {
+            "type": "number",
+            "title": "Index Growth Gb Year"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tables",
+          "total_rows_per_day",
+          "total_rows_per_year",
+          "cloud_sql_gb_year",
+          "backup_gb_year",
+          "index_growth_gb_year"
+        ],
+        "title": "DatabaseGrowthReport"
       },
       "DefectCreate": {
         "properties": {
@@ -20597,6 +21991,54 @@
         ],
         "title": "DimensionScore"
       },
+      "DisasterRecoveryPlan": {
+        "properties": {
+          "rpo_minutes": {
+            "type": "integer",
+            "title": "Rpo Minutes"
+          },
+          "rto_minutes": {
+            "type": "integer",
+            "title": "Rto Minutes"
+          },
+          "snapshot_schedule": {
+            "type": "string",
+            "title": "Snapshot Schedule"
+          },
+          "backup_retention_days": {
+            "type": "integer",
+            "title": "Backup Retention Days"
+          },
+          "cross_region_backup": {
+            "type": "boolean",
+            "title": "Cross Region Backup"
+          },
+          "recovery_test_frequency_days": {
+            "type": "integer",
+            "title": "Recovery Test Frequency Days"
+          },
+          "backup_storage_gb": {
+            "type": "number",
+            "title": "Backup Storage Gb"
+          },
+          "monthly_backup_cost_usd": {
+            "type": "number",
+            "title": "Monthly Backup Cost Usd"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rpo_minutes",
+          "rto_minutes",
+          "snapshot_schedule",
+          "backup_retention_days",
+          "cross_region_backup",
+          "recovery_test_frequency_days",
+          "backup_storage_gb",
+          "monthly_backup_cost_usd"
+        ],
+        "title": "DisasterRecoveryPlan"
+      },
       "DocxArtifact": {
         "properties": {
           "artifact_type": {
@@ -20727,6 +22169,215 @@
           "automation_pct"
         ],
         "title": "EngineeringKpis"
+      },
+      "EnterpriseCapacityReport": {
+        "properties": {
+          "plan": {
+            "$ref": "#/components/schemas/CapacityPlanningReport"
+          },
+          "enterprise": {
+            "$ref": "#/components/schemas/EnterpriseExtensions"
+          },
+          "extended_reports": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Extended Reports"
+          }
+        },
+        "type": "object",
+        "required": [
+          "plan",
+          "enterprise"
+        ],
+        "title": "EnterpriseCapacityReport"
+      },
+      "EnterpriseExtensions": {
+        "properties": {
+          "kubernetes_platform": {
+            "$ref": "#/components/schemas/K8sPlatformPlan"
+          },
+          "multi_region": {
+            "$ref": "#/components/schemas/MultiRegionPlan"
+          },
+          "high_availability": {
+            "$ref": "#/components/schemas/HaPlan"
+          },
+          "disaster_recovery": {
+            "$ref": "#/components/schemas/DisasterRecoveryPlan"
+          },
+          "connector_scaling": {
+            "items": {
+              "$ref": "#/components/schemas/ConnectorScalingEstimate"
+            },
+            "type": "array",
+            "title": "Connector Scaling"
+          },
+          "ai_workloads": {
+            "items": {
+              "$ref": "#/components/schemas/AiWorkloadEstimate"
+            },
+            "type": "array",
+            "title": "Ai Workloads"
+          },
+          "rag_benchmark": {
+            "$ref": "#/components/schemas/RagBenchmarkEstimate"
+          },
+          "persona_models": {
+            "items": {
+              "$ref": "#/components/schemas/PersonaCapacityEstimate"
+            },
+            "type": "array",
+            "title": "Persona Models"
+          },
+          "cost_optimization": {
+            "$ref": "#/components/schemas/CostOptimizationReport"
+          },
+          "scenario_comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ScenarioComparisonReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "benchmark_history": {
+            "$ref": "#/components/schemas/BenchmarkHistoryReport"
+          },
+          "calibration": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CalibrationReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "architect_recommendations": {
+            "$ref": "#/components/schemas/ArchitectRecommendationReport"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kubernetes_platform",
+          "multi_region",
+          "high_availability",
+          "disaster_recovery",
+          "connector_scaling",
+          "ai_workloads",
+          "rag_benchmark",
+          "persona_models",
+          "cost_optimization",
+          "benchmark_history",
+          "architect_recommendations"
+        ],
+        "title": "EnterpriseExtensions"
+      },
+      "EnterprisePlanRequest": {
+        "properties": {
+          "inputs": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CapacityPlanningInputs"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile",
+            "default": "medium"
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "development",
+              "uat",
+              "production"
+            ],
+            "title": "Environment",
+            "default": "production"
+          },
+          "region_topology": {
+            "type": "string",
+            "enum": [
+              "single_region",
+              "multi_zone",
+              "active_passive",
+              "active_active",
+              "cross_region",
+              "geo_dr"
+            ],
+            "title": "Region Topology",
+            "default": "multi_zone"
+          },
+          "ha_target": {
+            "type": "string",
+            "enum": [
+              "99",
+              "99.5",
+              "99.9",
+              "99.95",
+              "99.99"
+            ],
+            "title": "Ha Target",
+            "default": "99.9"
+          },
+          "gke_mode": {
+            "type": "string",
+            "enum": [
+              "gke_standard",
+              "gke_autopilot"
+            ],
+            "title": "Gke Mode",
+            "default": "gke_standard"
+          },
+          "llm_mode": {
+            "type": "string",
+            "enum": [
+              "local_llm",
+              "managed_llm",
+              "vertex_ai",
+              "ollama"
+            ],
+            "title": "Llm Mode",
+            "default": "managed_llm"
+          },
+          "run_scenario_comparison": {
+            "type": "boolean",
+            "title": "Run Scenario Comparison",
+            "default": true
+          },
+          "run_calibration": {
+            "type": "boolean",
+            "title": "Run Calibration",
+            "default": false
+          },
+          "calibration": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CalibrationInput"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "title": "EnterprisePlanRequest"
       },
       "ExecutiveDashboard": {
         "properties": {
@@ -21756,6 +23407,133 @@
         ],
         "title": "GeneratedConnectorArtifact"
       },
+      "GkePodSizing": {
+        "properties": {
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "replicas": {
+            "type": "integer",
+            "title": "Replicas"
+          },
+          "cpu_request": {
+            "type": "string",
+            "title": "Cpu Request"
+          },
+          "cpu_limit": {
+            "type": "string",
+            "title": "Cpu Limit"
+          },
+          "memory_request": {
+            "type": "string",
+            "title": "Memory Request"
+          },
+          "memory_limit": {
+            "type": "string",
+            "title": "Memory Limit"
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "component",
+          "replicas",
+          "cpu_request",
+          "cpu_limit",
+          "memory_request",
+          "memory_limit"
+        ],
+        "title": "GkePodSizing"
+      },
+      "GkeSizingEstimate": {
+        "properties": {
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile"
+          },
+          "backend": {
+            "$ref": "#/components/schemas/GkePodSizing"
+          },
+          "frontend": {
+            "$ref": "#/components/schemas/GkePodSizing"
+          },
+          "worker": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GkePodSizing"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "llm": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GkePodSizing"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "node_pool_vcpu": {
+            "type": "number",
+            "title": "Node Pool Vcpu"
+          },
+          "node_pool_memory_gi": {
+            "type": "number",
+            "title": "Node Pool Memory Gi"
+          },
+          "node_count_est": {
+            "type": "integer",
+            "title": "Node Count Est"
+          },
+          "cloud_sql_storage_gb": {
+            "type": "number",
+            "title": "Cloud Sql Storage Gb"
+          },
+          "gcs_storage_gb": {
+            "type": "number",
+            "title": "Gcs Storage Gb"
+          },
+          "monthly_storage_growth_gb": {
+            "type": "number",
+            "title": "Monthly Storage Growth Gb"
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "profile",
+          "backend",
+          "frontend",
+          "node_pool_vcpu",
+          "node_pool_memory_gi",
+          "node_count_est",
+          "cloud_sql_storage_gb",
+          "gcs_storage_gb",
+          "monthly_storage_growth_gb"
+        ],
+        "title": "GkeSizingEstimate"
+      },
       "GoLiveCreate": {
         "properties": {
           "release_id": {
@@ -22113,6 +23891,97 @@
         ],
         "title": "GoldenRegressionReport"
       },
+      "GpuEstimate": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "model_size_gb": {
+            "type": "number",
+            "title": "Model Size Gb"
+          },
+          "vram_required_gb": {
+            "type": "number",
+            "title": "Vram Required Gb"
+          },
+          "recommended_gpu": {
+            "type": "string",
+            "title": "Recommended Gpu"
+          },
+          "latency_ms_p50": {
+            "type": "number",
+            "title": "Latency Ms P50"
+          },
+          "throughput_rps": {
+            "type": "number",
+            "title": "Throughput Rps"
+          },
+          "max_concurrent": {
+            "type": "integer",
+            "title": "Max Concurrent"
+          },
+          "cpu_fallback": {
+            "type": "boolean",
+            "title": "Cpu Fallback"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mode",
+          "model_size_gb",
+          "vram_required_gb",
+          "recommended_gpu",
+          "latency_ms_p50",
+          "throughput_rps",
+          "max_concurrent",
+          "cpu_fallback"
+        ],
+        "title": "GpuEstimate"
+      },
+      "GrowthForecastPoint": {
+        "properties": {
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "storage_gb": {
+            "type": "number",
+            "title": "Storage Gb"
+          },
+          "database_gb": {
+            "type": "number",
+            "title": "Database Gb"
+          },
+          "object_storage_gb": {
+            "type": "number",
+            "title": "Object Storage Gb"
+          },
+          "embeddings_gb": {
+            "type": "number",
+            "title": "Embeddings Gb"
+          },
+          "artifacts_count": {
+            "type": "number",
+            "title": "Artifacts Count"
+          },
+          "prompts_count": {
+            "type": "number",
+            "title": "Prompts Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "period",
+          "storage_gb",
+          "database_gb",
+          "object_storage_gb",
+          "embeddings_gb",
+          "artifacts_count",
+          "prompts_count"
+        ],
+        "title": "GrowthForecastPoint"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -22125,6 +23994,61 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "HaPlan": {
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "99",
+              "99.5",
+              "99.9",
+              "99.95",
+              "99.99"
+            ],
+            "title": "Target"
+          },
+          "availability_pct": {
+            "type": "number",
+            "title": "Availability Pct"
+          },
+          "backend_replicas": {
+            "type": "integer",
+            "title": "Backend Replicas"
+          },
+          "frontend_replicas": {
+            "type": "integer",
+            "title": "Frontend Replicas"
+          },
+          "database_ha": {
+            "type": "string",
+            "title": "Database Ha"
+          },
+          "connector_redundancy": {
+            "type": "integer",
+            "title": "Connector Redundancy"
+          },
+          "llm_redundancy": {
+            "type": "integer",
+            "title": "Llm Redundancy"
+          },
+          "max_downtime_minutes_month": {
+            "type": "number",
+            "title": "Max Downtime Minutes Month"
+          }
+        },
+        "type": "object",
+        "required": [
+          "target",
+          "availability_pct",
+          "backend_replicas",
+          "frontend_replicas",
+          "database_ha",
+          "connector_redundancy",
+          "llm_redundancy",
+          "max_downtime_minutes_month"
+        ],
+        "title": "HaPlan"
       },
       "ImpactAnalysis": {
         "properties": {
@@ -22219,6 +24143,221 @@
           "changes_applied"
         ],
         "title": "ImprovedArtifact"
+      },
+      "InfraSizingReport": {
+        "properties": {
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile"
+          },
+          "generated_at": {
+            "type": "string",
+            "title": "Generated At"
+          },
+          "mock_mode": {
+            "type": "boolean",
+            "title": "Mock Mode",
+            "default": true
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioMetrics"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          },
+          "totals": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Totals"
+          },
+          "gke": {
+            "$ref": "#/components/schemas/GkeSizingEstimate"
+          },
+          "markdown_summary": {
+            "type": "string",
+            "title": "Markdown Summary",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "profile",
+          "generated_at",
+          "scenarios",
+          "totals",
+          "gke"
+        ],
+        "title": "InfraSizingReport"
+      },
+      "InfraSizingRunRequest": {
+        "properties": {
+          "profile": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "enterprise"
+            ],
+            "title": "Profile",
+            "default": "medium"
+          },
+          "scenarios": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          }
+        },
+        "type": "object",
+        "title": "InfraSizingRunRequest"
+      },
+      "K8sPlatformPlan": {
+        "properties": {
+          "deployments": {
+            "items": {
+              "$ref": "#/components/schemas/K8sResourceCount"
+            },
+            "type": "array",
+            "title": "Deployments"
+          },
+          "statefulsets": {
+            "items": {
+              "$ref": "#/components/schemas/K8sResourceCount"
+            },
+            "type": "array",
+            "title": "Statefulsets"
+          },
+          "daemonsets": {
+            "items": {
+              "$ref": "#/components/schemas/K8sResourceCount"
+            },
+            "type": "array",
+            "title": "Daemonsets"
+          },
+          "jobs": {
+            "items": {
+              "$ref": "#/components/schemas/K8sResourceCount"
+            },
+            "type": "array",
+            "title": "Jobs"
+          },
+          "cronjobs": {
+            "items": {
+              "$ref": "#/components/schemas/K8sResourceCount"
+            },
+            "type": "array",
+            "title": "Cronjobs"
+          },
+          "hpa_count": {
+            "type": "integer",
+            "title": "Hpa Count"
+          },
+          "vpa_count": {
+            "type": "integer",
+            "title": "Vpa Count"
+          },
+          "pdb_count": {
+            "type": "integer",
+            "title": "Pdb Count"
+          },
+          "ingress_count": {
+            "type": "integer",
+            "title": "Ingress Count"
+          },
+          "services_count": {
+            "type": "integer",
+            "title": "Services Count"
+          },
+          "pvc_count": {
+            "type": "integer",
+            "title": "Pvc Count"
+          },
+          "pvc_total_gi": {
+            "type": "number",
+            "title": "Pvc Total Gi"
+          },
+          "configmaps_count": {
+            "type": "integer",
+            "title": "Configmaps Count"
+          },
+          "secrets_count": {
+            "type": "integer",
+            "title": "Secrets Count"
+          },
+          "namespaces": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Namespaces"
+          },
+          "total_resources": {
+            "type": "integer",
+            "title": "Total Resources"
+          },
+          "cluster_complexity": {
+            "type": "string",
+            "title": "Cluster Complexity"
+          }
+        },
+        "type": "object",
+        "required": [
+          "deployments",
+          "statefulsets",
+          "daemonsets",
+          "jobs",
+          "cronjobs",
+          "hpa_count",
+          "vpa_count",
+          "pdb_count",
+          "ingress_count",
+          "services_count",
+          "pvc_count",
+          "pvc_total_gi",
+          "configmaps_count",
+          "secrets_count",
+          "namespaces",
+          "total_resources",
+          "cluster_complexity"
+        ],
+        "title": "K8sPlatformPlan"
+      },
+      "K8sResourceCount": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "replicas": {
+            "type": "integer",
+            "title": "Replicas",
+            "default": 1
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "count"
+        ],
+        "title": "K8sResourceCount"
       },
       "KnowledgeArticleCreate": {
         "properties": {
@@ -22625,6 +24764,72 @@
         ],
         "title": "KnowledgeSearchResult"
       },
+      "LoadTestRequest": {
+        "properties": {
+          "concurrency": {
+            "type": "integer",
+            "title": "Concurrency",
+            "default": 10
+          },
+          "scenarios": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          }
+        },
+        "type": "object",
+        "title": "LoadTestRequest"
+      },
+      "LoadTestResult": {
+        "properties": {
+          "concurrency": {
+            "type": "integer",
+            "title": "Concurrency"
+          },
+          "scenario": {
+            "type": "string",
+            "title": "Scenario"
+          },
+          "samples": {
+            "type": "integer",
+            "title": "Samples"
+          },
+          "p50_ms": {
+            "type": "number",
+            "title": "P50 Ms"
+          },
+          "p95_ms": {
+            "type": "number",
+            "title": "P95 Ms"
+          },
+          "p99_ms": {
+            "type": "number",
+            "title": "P99 Ms"
+          },
+          "errors": {
+            "type": "integer",
+            "title": "Errors"
+          },
+          "rps": {
+            "type": "number",
+            "title": "Rps"
+          }
+        },
+        "type": "object",
+        "required": [
+          "concurrency",
+          "scenario",
+          "samples",
+          "p50_ms",
+          "p95_ms",
+          "p99_ms",
+          "errors",
+          "rps"
+        ],
+        "title": "LoadTestResult"
+      },
       "MarkdownArtifact": {
         "properties": {
           "artifact_type": {
@@ -22804,6 +25009,140 @@
         ],
         "title": "MatrixPromptTemplate",
         "description": "A domain \u00d7 artifact-type prompt from the enterprise prompt matrix."
+      },
+      "MultiRegionPlan": {
+        "properties": {
+          "topology": {
+            "type": "string",
+            "enum": [
+              "single_region",
+              "multi_zone",
+              "active_passive",
+              "active_active",
+              "cross_region",
+              "geo_dr"
+            ],
+            "title": "Topology"
+          },
+          "regions": {
+            "type": "integer",
+            "title": "Regions"
+          },
+          "zones_per_region": {
+            "type": "integer",
+            "title": "Zones Per Region"
+          },
+          "cloud_sql_replicas": {
+            "type": "integer",
+            "title": "Cloud Sql Replicas"
+          },
+          "object_storage_replication": {
+            "type": "string",
+            "title": "Object Storage Replication"
+          },
+          "redis_replication": {
+            "type": "string",
+            "title": "Redis Replication"
+          },
+          "cross_region_egress_gb_month": {
+            "type": "number",
+            "title": "Cross Region Egress Gb Month"
+          },
+          "replication_lag_ms_est": {
+            "type": "number",
+            "title": "Replication Lag Ms Est"
+          },
+          "monthly_cost_multiplier": {
+            "type": "number",
+            "title": "Monthly Cost Multiplier"
+          },
+          "latency_p50_ms_est": {
+            "type": "number",
+            "title": "Latency P50 Ms Est"
+          },
+          "storage_multiplier": {
+            "type": "number",
+            "title": "Storage Multiplier"
+          }
+        },
+        "type": "object",
+        "required": [
+          "topology",
+          "regions",
+          "zones_per_region",
+          "cloud_sql_replicas",
+          "object_storage_replication",
+          "redis_replication",
+          "cross_region_egress_gb_month",
+          "replication_lag_ms_est",
+          "monthly_cost_multiplier",
+          "latency_p50_ms_est",
+          "storage_multiplier"
+        ],
+        "title": "MultiRegionPlan"
+      },
+      "NetworkEstimate": {
+        "properties": {
+          "rest_ingress_gb_month": {
+            "type": "number",
+            "title": "Rest Ingress Gb Month"
+          },
+          "rest_egress_gb_month": {
+            "type": "number",
+            "title": "Rest Egress Gb Month"
+          },
+          "streaming_gb_month": {
+            "type": "number",
+            "title": "Streaming Gb Month"
+          },
+          "websocket_gb_month": {
+            "type": "number",
+            "title": "Websocket Gb Month"
+          },
+          "connector_traffic_gb_month": {
+            "type": "number",
+            "title": "Connector Traffic Gb Month"
+          },
+          "prompt_traffic_gb_month": {
+            "type": "number",
+            "title": "Prompt Traffic Gb Month"
+          },
+          "artifact_download_gb_month": {
+            "type": "number",
+            "title": "Artifact Download Gb Month"
+          },
+          "dashboard_gb_month": {
+            "type": "number",
+            "title": "Dashboard Gb Month"
+          },
+          "total_ingress_gb_month": {
+            "type": "number",
+            "title": "Total Ingress Gb Month"
+          },
+          "total_egress_gb_month": {
+            "type": "number",
+            "title": "Total Egress Gb Month"
+          },
+          "total_annual_gb": {
+            "type": "number",
+            "title": "Total Annual Gb"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rest_ingress_gb_month",
+          "rest_egress_gb_month",
+          "streaming_gb_month",
+          "websocket_gb_month",
+          "connector_traffic_gb_month",
+          "prompt_traffic_gb_month",
+          "artifact_download_gb_month",
+          "dashboard_gb_month",
+          "total_ingress_gb_month",
+          "total_egress_gb_month",
+          "total_annual_gb"
+        ],
+        "title": "NetworkEstimate"
       },
       "NormalizedDataResponse": {
         "properties": {
@@ -23017,6 +25356,107 @@
         },
         "type": "object",
         "title": "NotificationUpdate"
+      },
+      "ObjectStorageEstimate": {
+        "properties": {
+          "breakdown": {
+            "items": {
+              "$ref": "#/components/schemas/StorageBreakdown"
+            },
+            "type": "array",
+            "title": "Breakdown"
+          },
+          "uploads_per_day": {
+            "type": "number",
+            "title": "Uploads Per Day"
+          },
+          "uploads_per_month": {
+            "type": "number",
+            "title": "Uploads Per Month"
+          },
+          "uploads_per_year": {
+            "type": "number",
+            "title": "Uploads Per Year"
+          },
+          "avg_upload_bytes": {
+            "type": "number",
+            "title": "Avg Upload Bytes"
+          },
+          "median_upload_bytes": {
+            "type": "number",
+            "title": "Median Upload Bytes"
+          },
+          "max_upload_bytes": {
+            "type": "number",
+            "title": "Max Upload Bytes"
+          },
+          "object_count_year": {
+            "type": "number",
+            "title": "Object Count Year"
+          },
+          "storage_per_day_bytes": {
+            "type": "number",
+            "title": "Storage Per Day Bytes"
+          },
+          "storage_per_month_bytes": {
+            "type": "number",
+            "title": "Storage Per Month Bytes"
+          },
+          "storage_per_year_bytes": {
+            "type": "number",
+            "title": "Storage Per Year Bytes"
+          },
+          "storage_3yr_bytes": {
+            "type": "number",
+            "title": "Storage 3Yr Bytes"
+          },
+          "storage_5yr_bytes": {
+            "type": "number",
+            "title": "Storage 5Yr Bytes"
+          },
+          "after_compression_bytes": {
+            "type": "number",
+            "title": "After Compression Bytes"
+          },
+          "after_deduplication_bytes": {
+            "type": "number",
+            "title": "After Deduplication Bytes"
+          },
+          "after_versioning_bytes": {
+            "type": "number",
+            "title": "After Versioning Bytes"
+          },
+          "after_encryption_bytes": {
+            "type": "number",
+            "title": "After Encryption Bytes"
+          },
+          "archive_coldline_bytes": {
+            "type": "number",
+            "title": "Archive Coldline Bytes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "breakdown",
+          "uploads_per_day",
+          "uploads_per_month",
+          "uploads_per_year",
+          "avg_upload_bytes",
+          "median_upload_bytes",
+          "max_upload_bytes",
+          "object_count_year",
+          "storage_per_day_bytes",
+          "storage_per_month_bytes",
+          "storage_per_year_bytes",
+          "storage_3yr_bytes",
+          "storage_5yr_bytes",
+          "after_compression_bytes",
+          "after_deduplication_bytes",
+          "after_versioning_bytes",
+          "after_encryption_bytes",
+          "archive_coldline_bytes"
+        ],
+        "title": "ObjectStorageEstimate"
       },
       "OptimizationRequest": {
         "properties": {
@@ -24400,6 +26840,39 @@
         ],
         "title": "PdfBlock",
         "description": "A PDF-ready content block (kind + text) \u2014 consumed by a PDF writer."
+      },
+      "PersonaCapacityEstimate": {
+        "properties": {
+          "persona": {
+            "type": "string",
+            "title": "Persona"
+          },
+          "daily_prompts": {
+            "type": "number",
+            "title": "Daily Prompts"
+          },
+          "connector_calls_day": {
+            "type": "number",
+            "title": "Connector Calls Day"
+          },
+          "artifacts_day": {
+            "type": "number",
+            "title": "Artifacts Day"
+          },
+          "storage_mb_day": {
+            "type": "number",
+            "title": "Storage Mb Day"
+          }
+        },
+        "type": "object",
+        "required": [
+          "persona",
+          "daily_prompts",
+          "connector_calls_day",
+          "artifacts_day",
+          "storage_mb_day"
+        ],
+        "title": "PersonaCapacityEstimate"
       },
       "PersonaCreate": {
         "properties": {
@@ -25945,6 +28418,54 @@
         "title": "QualityScoreRequest",
         "description": "Score an artifact by generating it, or score a provided artifact body."
       },
+      "RagBenchmarkEstimate": {
+        "properties": {
+          "chunk_size_tokens": {
+            "type": "integer",
+            "title": "Chunk Size Tokens"
+          },
+          "chunk_count": {
+            "type": "integer",
+            "title": "Chunk Count"
+          },
+          "embedding_latency_ms": {
+            "type": "number",
+            "title": "Embedding Latency Ms"
+          },
+          "retrieval_latency_ms": {
+            "type": "number",
+            "title": "Retrieval Latency Ms"
+          },
+          "context_assembly_ms": {
+            "type": "number",
+            "title": "Context Assembly Ms"
+          },
+          "top_k": {
+            "type": "integer",
+            "title": "Top K"
+          },
+          "context_window_utilization_pct": {
+            "type": "number",
+            "title": "Context Window Utilization Pct"
+          },
+          "vector_growth_gb_year": {
+            "type": "number",
+            "title": "Vector Growth Gb Year"
+          }
+        },
+        "type": "object",
+        "required": [
+          "chunk_size_tokens",
+          "chunk_count",
+          "embedding_latency_ms",
+          "retrieval_latency_ms",
+          "context_assembly_ms",
+          "top_k",
+          "context_window_utilization_pct",
+          "vector_growth_gb_year"
+        ],
+        "title": "RagBenchmarkEstimate"
+      },
       "Readiness": {
         "type": "string",
         "enum": [
@@ -25963,6 +28484,49 @@
           "tree_of_thought"
         ],
         "title": "ReasoningStrategy"
+      },
+      "RedisEstimate": {
+        "properties": {
+          "prompt_cache_mb": {
+            "type": "number",
+            "title": "Prompt Cache Mb"
+          },
+          "connector_cache_mb": {
+            "type": "number",
+            "title": "Connector Cache Mb"
+          },
+          "session_cache_mb": {
+            "type": "number",
+            "title": "Session Cache Mb"
+          },
+          "artifact_cache_mb": {
+            "type": "number",
+            "title": "Artifact Cache Mb"
+          },
+          "metadata_cache_mb": {
+            "type": "number",
+            "title": "Metadata Cache Mb"
+          },
+          "total_mb": {
+            "type": "number",
+            "title": "Total Mb"
+          },
+          "ttl_hours": {
+            "type": "integer",
+            "title": "Ttl Hours"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt_cache_mb",
+          "connector_cache_mb",
+          "session_cache_mb",
+          "artifact_cache_mb",
+          "metadata_cache_mb",
+          "total_mb",
+          "ttl_hours"
+        ],
+        "title": "RedisEstimate"
       },
       "RegressionMetric": {
         "properties": {
@@ -27094,6 +29658,44 @@
         "type": "object",
         "title": "RequirementUpdate"
       },
+      "ResourceProfile": {
+        "properties": {
+          "peak_ram_mb": {
+            "type": "number",
+            "title": "Peak Ram Mb"
+          },
+          "avg_ram_mb": {
+            "type": "number",
+            "title": "Avg Ram Mb"
+          },
+          "peak_cpu_percent": {
+            "type": "number",
+            "title": "Peak Cpu Percent"
+          },
+          "avg_cpu_percent": {
+            "type": "number",
+            "title": "Avg Cpu Percent"
+          },
+          "thread_count": {
+            "type": "integer",
+            "title": "Thread Count"
+          },
+          "psutil_available": {
+            "type": "boolean",
+            "title": "Psutil Available"
+          }
+        },
+        "type": "object",
+        "required": [
+          "peak_ram_mb",
+          "avg_ram_mb",
+          "peak_cpu_percent",
+          "avg_cpu_percent",
+          "thread_count",
+          "psutil_available"
+        ],
+        "title": "ResourceProfile"
+      },
       "ReviewArtifactRequest": {
         "properties": {
           "content": {
@@ -27574,6 +30176,223 @@
         "type": "object",
         "title": "RuleRunRequest"
       },
+      "ScenarioCompareRequest": {
+        "properties": {
+          "profiles": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "small",
+                "medium",
+                "large",
+                "enterprise"
+              ]
+            },
+            "type": "array",
+            "title": "Profiles"
+          },
+          "region_topologies": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "single_region",
+                "multi_zone",
+                "active_passive",
+                "active_active",
+                "cross_region",
+                "geo_dr"
+              ]
+            },
+            "type": "array",
+            "title": "Region Topologies"
+          },
+          "llm_modes": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "local_llm",
+                "managed_llm",
+                "vertex_ai",
+                "ollama"
+              ]
+            },
+            "type": "array",
+            "title": "Llm Modes"
+          }
+        },
+        "type": "object",
+        "title": "ScenarioCompareRequest"
+      },
+      "ScenarioComparisonReport": {
+        "properties": {
+          "baseline": {
+            "type": "string",
+            "title": "Baseline"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioComparisonRow"
+            },
+            "type": "array",
+            "title": "Rows"
+          },
+          "deltas": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Deltas"
+          },
+          "recommendation": {
+            "type": "string",
+            "title": "Recommendation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "baseline",
+          "rows",
+          "deltas",
+          "recommendation"
+        ],
+        "title": "ScenarioComparisonReport"
+      },
+      "ScenarioComparisonRow": {
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "title": "Scenario"
+          },
+          "profile": {
+            "type": "string",
+            "title": "Profile"
+          },
+          "monthly_cost_usd": {
+            "type": "number",
+            "title": "Monthly Cost Usd"
+          },
+          "gke_nodes": {
+            "type": "integer",
+            "title": "Gke Nodes"
+          },
+          "storage_gb_year": {
+            "type": "number",
+            "title": "Storage Gb Year"
+          },
+          "cloud_sql_gb_year": {
+            "type": "number",
+            "title": "Cloud Sql Gb Year"
+          },
+          "latency_ms_est": {
+            "type": "number",
+            "title": "Latency Ms Est"
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario",
+          "profile",
+          "monthly_cost_usd",
+          "gke_nodes",
+          "storage_gb_year",
+          "cloud_sql_gb_year",
+          "latency_ms_est"
+        ],
+        "title": "ScenarioComparisonRow"
+      },
+      "ScenarioMetrics": {
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "title": "Scenario"
+          },
+          "input_tokens": {
+            "type": "integer",
+            "title": "Input Tokens",
+            "default": 0
+          },
+          "output_tokens": {
+            "type": "integer",
+            "title": "Output Tokens",
+            "default": 0
+          },
+          "total_tokens": {
+            "type": "integer",
+            "title": "Total Tokens",
+            "default": 0
+          },
+          "latency_ms": {
+            "type": "number",
+            "title": "Latency Ms",
+            "default": 0.0
+          },
+          "duration_ms": {
+            "type": "number",
+            "title": "Duration Ms",
+            "default": 0.0
+          },
+          "peak_memory_mb": {
+            "type": "number",
+            "title": "Peak Memory Mb",
+            "default": 0.0
+          },
+          "cpu_millicores_est": {
+            "type": "integer",
+            "title": "Cpu Millicores Est",
+            "default": 0
+          },
+          "artifact_output_bytes": {
+            "type": "integer",
+            "title": "Artifact Output Bytes",
+            "default": 0
+          },
+          "db_rows_est": {
+            "type": "integer",
+            "title": "Db Rows Est",
+            "default": 0
+          },
+          "vector_embedding_bytes_est": {
+            "type": "integer",
+            "title": "Vector Embedding Bytes Est",
+            "default": 0
+          },
+          "object_storage_bytes_est": {
+            "type": "integer",
+            "title": "Object Storage Bytes Est",
+            "default": 0
+          },
+          "log_storage_bytes_est": {
+            "type": "integer",
+            "title": "Log Storage Bytes Est",
+            "default": 0
+          },
+          "mock_mode": {
+            "type": "boolean",
+            "title": "Mock Mode",
+            "default": true
+          },
+          "ok": {
+            "type": "boolean",
+            "title": "Ok",
+            "default": true
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario"
+        ],
+        "title": "ScenarioMetrics"
+      },
       "SdlcPhase": {
         "type": "string",
         "enum": [
@@ -27903,6 +30722,92 @@
         },
         "type": "object",
         "title": "SourceCodeMetadataUpdate"
+      },
+      "StorageBreakdown": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "uploads_per_day": {
+            "type": "number",
+            "title": "Uploads Per Day"
+          },
+          "avg_size_bytes": {
+            "type": "number",
+            "title": "Avg Size Bytes"
+          },
+          "storage_per_day_bytes": {
+            "type": "number",
+            "title": "Storage Per Day Bytes"
+          },
+          "storage_year_bytes": {
+            "type": "number",
+            "title": "Storage Year Bytes"
+          },
+          "storage_3yr_bytes": {
+            "type": "number",
+            "title": "Storage 3Yr Bytes"
+          },
+          "storage_5yr_bytes": {
+            "type": "number",
+            "title": "Storage 5Yr Bytes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "uploads_per_day",
+          "avg_size_bytes",
+          "storage_per_day_bytes",
+          "storage_year_bytes",
+          "storage_3yr_bytes",
+          "storage_5yr_bytes"
+        ],
+        "title": "StorageBreakdown"
+      },
+      "StorageCostEstimate": {
+        "properties": {
+          "provider": {
+            "type": "string",
+            "title": "Provider"
+          },
+          "storage_gb_month_usd": {
+            "type": "number",
+            "title": "Storage Gb Month Usd"
+          },
+          "put_cost_month_usd": {
+            "type": "number",
+            "title": "Put Cost Month Usd"
+          },
+          "get_cost_month_usd": {
+            "type": "number",
+            "title": "Get Cost Month Usd"
+          },
+          "lifecycle_savings_usd": {
+            "type": "number",
+            "title": "Lifecycle Savings Usd"
+          },
+          "monthly_total_usd": {
+            "type": "number",
+            "title": "Monthly Total Usd"
+          },
+          "annual_total_usd": {
+            "type": "number",
+            "title": "Annual Total Usd"
+          }
+        },
+        "type": "object",
+        "required": [
+          "provider",
+          "storage_gb_month_usd",
+          "put_cost_month_usd",
+          "get_cost_month_usd",
+          "lifecycle_savings_usd",
+          "monthly_total_usd",
+          "annual_total_usd"
+        ],
+        "title": "StorageCostEstimate"
       },
       "StoryStatus": {
         "type": "string",
@@ -29775,6 +32680,43 @@
           "ai_confidence"
         ],
         "title": "ValueMetrics"
+      },
+      "VectorDbEstimate": {
+        "properties": {
+          "dimensions": {
+            "type": "integer",
+            "title": "Dimensions"
+          },
+          "vectors_per_document": {
+            "type": "number",
+            "title": "Vectors Per Document"
+          },
+          "storage_bytes_year": {
+            "type": "number",
+            "title": "Storage Bytes Year"
+          },
+          "index_size_bytes": {
+            "type": "number",
+            "title": "Index Size Bytes"
+          },
+          "providers": {
+            "additionalProperties": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "object",
+            "title": "Providers"
+          }
+        },
+        "type": "object",
+        "required": [
+          "dimensions",
+          "vectors_per_document",
+          "storage_bytes_year",
+          "index_size_bytes",
+          "providers"
+        ],
+        "title": "VectorDbEstimate"
       },
       "VersionDiff": {
         "properties": {

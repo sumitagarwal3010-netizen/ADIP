@@ -1,0 +1,56 @@
+2026-07-09 06:52:40 | WARNING  | auth | SECURITY BYPASS ACTIVE: ADIP_AUTH_MODE=demo — authentication/authorization enforcement is disabled. Use only for local/pre-MVP prototype.
+2026-07-09 06:52:40 | WARNING  | auth | SECURITY BYPASS ACTIVE: ADIP_AUTH_MODE=demo — authentication/authorization enforcement is disabled. Use only for local/pre-MVP prototype.
+2026-07-09 06:52:40 | INFO     | app.main | ADIP Backend v0.1.0 initialized (env=development)
+2026-07-09 06:52:40 | DEBUG    | asyncio | Using selector: KqueueSelector
+2026-07-09 06:52:40 | INFO     | request | request_id=1b7e0ea40c37 POST /api/v1/llm/smoke-test -> 200 in 13.8ms
+2026-07-09 06:52:40 | INFO     | httpx | HTTP Request: POST http://testserver/api/v1/llm/smoke-test "HTTP/1.1 200 OK"
+{
+  "status": "fail",
+  "mode": "mock",
+  "checks": [
+    {
+      "check": "models_registered",
+      "ok": true,
+      "count": 11
+    },
+    {
+      "check": "providers_available",
+      "ok": true,
+      "providers": [
+        "ollama",
+        "llama",
+        "openai",
+        "lmstudio",
+        "gemini",
+        "claude",
+        "mistral",
+        "deepseek",
+        "qwen",
+        "qwen-cloud"
+      ]
+    },
+    {
+      "check": "health_endpoint",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "check": "token_estimate",
+      "ok": false,
+      "estimate": {
+        "model": "llama3.1:8b",
+        "prompt_tokens": 10,
+        "expected_completion_tokens": 1024,
+        "estimated_cost_usd": 0.0,
+        "estimated_memory_mb": 6000,
+        "context_window": 8192,
+        "fits_context": true
+      }
+    },
+    {
+      "check": "templates_loaded",
+      "ok": true,
+      "count": 4
+    }
+  ]
+}

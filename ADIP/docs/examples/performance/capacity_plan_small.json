@@ -1,0 +1,734 @@
+{
+  "profile": "small",
+  "environment": "development",
+  "generated_at": "2026-07-09T01:22:43.312328+00:00",
+  "inputs": {
+    "profile": "small",
+    "environment": "development",
+    "applications": 1,
+    "projects": 10,
+    "users": 100,
+    "concurrent_users": 25,
+    "prompts_per_day": 1200,
+    "artifacts_per_day": 400,
+    "documents_per_day": 200,
+    "uploads_per_day": 150,
+    "avg_document_size_kb": 250.0,
+    "avg_artifact_size_kb": 48.0,
+    "avg_prompt_size_tokens": 500,
+    "connector_syncs_per_day": 96,
+    "retention_days": 90,
+    "embedding_enabled": true,
+    "embedding_dimensions": 384,
+    "local_llm": false,
+    "managed_llm": true,
+    "run_load_test": false,
+    "load_concurrency": 10,
+    "run_infra_scenarios": false
+  },
+  "object_storage": {
+    "breakdown": [
+      {
+        "category": "requirements",
+        "uploads_per_day": 22.2,
+        "avg_size_bytes": 180000.0,
+        "storage_per_day_bytes": 3996000.0,
+        "storage_year_bytes": 1458540000.0,
+        "storage_3yr_bytes": 4375620000.0,
+        "storage_5yr_bytes": 7292700000.0
+      },
+      {
+        "category": "architecture",
+        "uploads_per_day": 22.2,
+        "avg_size_bytes": 420000.0,
+        "storage_per_day_bytes": 9324000.0,
+        "storage_year_bytes": 3403260000.0,
+        "storage_3yr_bytes": 10209780000.0,
+        "storage_5yr_bytes": 17016300000.0
+      },
+      {
+        "category": "design",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 310000.0,
+        "storage_per_day_bytes": 2294000.0,
+        "storage_year_bytes": 837310000.0,
+        "storage_3yr_bytes": 2511930000.0,
+        "storage_5yr_bytes": 4186550000.0
+      },
+      {
+        "category": "user_stories",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 45000.0,
+        "storage_per_day_bytes": 333000.0,
+        "storage_year_bytes": 121545000.0,
+        "storage_3yr_bytes": 364635000.0,
+        "storage_5yr_bytes": 607725000.0
+      },
+      {
+        "category": "source_code_exports",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 2500000.0,
+        "storage_per_day_bytes": 18500000.0,
+        "storage_year_bytes": 6752500000.0,
+        "storage_3yr_bytes": 20257500000.0,
+        "storage_5yr_bytes": 33762500000.0
+      },
+      {
+        "category": "test_reports",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 95000.0,
+        "storage_per_day_bytes": 703000.0,
+        "storage_year_bytes": 256595000.0,
+        "storage_3yr_bytes": 769785000.0,
+        "storage_5yr_bytes": 1282975000.0
+      },
+      {
+        "category": "evidence",
+        "uploads_per_day": 22.2,
+        "avg_size_bytes": 120000.0,
+        "storage_per_day_bytes": 2664000.0,
+        "storage_year_bytes": 972360000.0,
+        "storage_3yr_bytes": 2917080000.0,
+        "storage_5yr_bytes": 4861800000.0
+      },
+      {
+        "category": "compliance_evidence",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 280000.0,
+        "storage_per_day_bytes": 2072000.0,
+        "storage_year_bytes": 756280000.0,
+        "storage_3yr_bytes": 2268840000.0,
+        "storage_5yr_bytes": 3781400000.0
+      },
+      {
+        "category": "audit_evidence",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 350000.0,
+        "storage_per_day_bytes": 2590000.0,
+        "storage_year_bytes": 945350000.0,
+        "storage_3yr_bytes": 2836050000.0,
+        "storage_5yr_bytes": 4726750000.0
+      },
+      {
+        "category": "screenshots",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 850000.0,
+        "storage_per_day_bytes": 6290000.0,
+        "storage_year_bytes": 2295850000.0,
+        "storage_3yr_bytes": 6887550000.0,
+        "storage_5yr_bytes": 11479250000.0
+      },
+      {
+        "category": "images",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 1200000.0,
+        "storage_per_day_bytes": 8880000.0,
+        "storage_year_bytes": 3241200000.0,
+        "storage_3yr_bytes": 9723600000.0,
+        "storage_5yr_bytes": 16206000000.0
+      },
+      {
+        "category": "pdf",
+        "uploads_per_day": 29.6,
+        "avg_size_bytes": 520000.0,
+        "storage_per_day_bytes": 15392000.0,
+        "storage_year_bytes": 5618080000.0,
+        "storage_3yr_bytes": 16854240000.0,
+        "storage_5yr_bytes": 28090400000.0
+      },
+      {
+        "category": "docx",
+        "uploads_per_day": 29.6,
+        "avg_size_bytes": 210000.0,
+        "storage_per_day_bytes": 6216000.0,
+        "storage_year_bytes": 2268840000.0,
+        "storage_3yr_bytes": 6806520000.0,
+        "storage_5yr_bytes": 11344200000.0
+      },
+      {
+        "category": "xlsx",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 180000.0,
+        "storage_per_day_bytes": 1332000.0,
+        "storage_year_bytes": 486180000.0,
+        "storage_3yr_bytes": 1458540000.0,
+        "storage_5yr_bytes": 2430900000.0
+      },
+      {
+        "category": "csv",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 35000.0,
+        "storage_per_day_bytes": 259000.0,
+        "storage_year_bytes": 94535000.0,
+        "storage_3yr_bytes": 283605000.0,
+        "storage_5yr_bytes": 472675000.0
+      },
+      {
+        "category": "zip",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 5000000.0,
+        "storage_per_day_bytes": 37000000.0,
+        "storage_year_bytes": 13505000000.0,
+        "storage_3yr_bytes": 40515000000.0,
+        "storage_5yr_bytes": 67525000000.0
+      },
+      {
+        "category": "generated_artifacts",
+        "uploads_per_day": 29.6,
+        "avg_size_bytes": 48000.0,
+        "storage_per_day_bytes": 1420800.0,
+        "storage_year_bytes": 518592000.0,
+        "storage_3yr_bytes": 1555776000.0,
+        "storage_5yr_bytes": 2592960000.0
+      },
+      {
+        "category": "prompt_outputs",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 12000.0,
+        "storage_per_day_bytes": 88800.0,
+        "storage_year_bytes": 32412000.0,
+        "storage_3yr_bytes": 97236000.0,
+        "storage_5yr_bytes": 162060000.0
+      },
+      {
+        "category": "connector_payloads",
+        "uploads_per_day": 29.6,
+        "avg_size_bytes": 8000.0,
+        "storage_per_day_bytes": 236800.0,
+        "storage_year_bytes": 86432000.0,
+        "storage_3yr_bytes": 259296000.0,
+        "storage_5yr_bytes": 432160000.0
+      },
+      {
+        "category": "model_outputs",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 25000.0,
+        "storage_per_day_bytes": 185000.0,
+        "storage_year_bytes": 67525000.0,
+        "storage_3yr_bytes": 202575000.0,
+        "storage_5yr_bytes": 337625000.0
+      },
+      {
+        "category": "version_history",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 55000.0,
+        "storage_per_day_bytes": 407000.0,
+        "storage_year_bytes": 148555000.0,
+        "storage_3yr_bytes": 445665000.0,
+        "storage_5yr_bytes": 742775000.0
+      },
+      {
+        "category": "retention_copies",
+        "uploads_per_day": 7.4,
+        "avg_size_bytes": 48000.0,
+        "storage_per_day_bytes": 355200.0,
+        "storage_year_bytes": 129648000.0,
+        "storage_3yr_bytes": 388944000.0,
+        "storage_5yr_bytes": 648240000.0
+      }
+    ],
+    "uploads_per_day": 370.0,
+    "uploads_per_month": 11100.0,
+    "uploads_per_year": 135050.0,
+    "avg_upload_bytes": 325780.0,
+    "median_upload_bytes": 180000.0,
+    "max_upload_bytes": 5000000.0,
+    "object_count_year": 135050.0,
+    "storage_per_day_bytes": 120538600.0,
+    "storage_per_month_bytes": 3616158000.0,
+    "storage_per_year_bytes": 10848474000.0,
+    "storage_3yr_bytes": 131989767000.0,
+    "storage_5yr_bytes": 219982945000.0,
+    "after_compression_bytes": 7051508100.0,
+    "after_deduplication_bytes": 5993781885.0,
+    "after_versioning_bytes": 7492227356.25,
+    "after_encryption_bytes": 7642071903.375,
+    "archive_coldline_bytes": 4339389600.0
+  },
+  "database_growth": {
+    "tables": [
+      {
+        "table": "artifacts",
+        "rows_per_day": 60.0,
+        "rows_per_month": 1800.0,
+        "rows_per_year": 5400.0,
+        "bytes_per_row": 3072,
+        "storage_year_bytes": 16588800.0,
+        "index_overhead_bytes": 4147200.0
+      },
+      {
+        "table": "prompt_history",
+        "rows_per_day": 300.0,
+        "rows_per_month": 9000.0,
+        "rows_per_year": 27000.0,
+        "bytes_per_row": 4096,
+        "storage_year_bytes": 110592000.0,
+        "index_overhead_bytes": 27648000.0
+      },
+      {
+        "table": "prompt_replay",
+        "rows_per_day": 60.0,
+        "rows_per_month": 1800.0,
+        "rows_per_year": 5400.0,
+        "bytes_per_row": 2048,
+        "storage_year_bytes": 11059200.0,
+        "index_overhead_bytes": 2764800.0
+      },
+      {
+        "table": "prompt_metadata",
+        "rows_per_day": 120.0,
+        "rows_per_month": 3600.0,
+        "rows_per_year": 10800.0,
+        "bytes_per_row": 1536,
+        "storage_year_bytes": 16588800.0,
+        "index_overhead_bytes": 4147200.0
+      },
+      {
+        "table": "golden_datasets",
+        "rows_per_day": 4.0,
+        "rows_per_month": 120.0,
+        "rows_per_year": 360.0,
+        "bytes_per_row": 8192,
+        "storage_year_bytes": 2949120.0,
+        "index_overhead_bytes": 737280.0
+      },
+      {
+        "table": "benchmark_results",
+        "rows_per_day": 32.0,
+        "rows_per_month": 960.0,
+        "rows_per_year": 2880.0,
+        "bytes_per_row": 2048,
+        "storage_year_bytes": 5898240.0,
+        "index_overhead_bytes": 1474560.0
+      },
+      {
+        "table": "connector_metadata",
+        "rows_per_day": 11.5,
+        "rows_per_month": 345.59999999999997,
+        "rows_per_year": 1036.8,
+        "bytes_per_row": 1536,
+        "storage_year_bytes": 1592524.7999999998,
+        "index_overhead_bytes": 398131.19999999995
+      },
+      {
+        "table": "connector_runs",
+        "rows_per_day": 14.4,
+        "rows_per_month": 431.99999999999994,
+        "rows_per_year": 1295.9999999999998,
+        "bytes_per_row": 1024,
+        "storage_year_bytes": 1327103.9999999998,
+        "index_overhead_bytes": 331775.99999999994
+      },
+      {
+        "table": "connector_logs",
+        "rows_per_day": 19.2,
+        "rows_per_month": 576.0000000000001,
+        "rows_per_year": 1728.0000000000002,
+        "bytes_per_row": 512,
+        "storage_year_bytes": 884736.0000000001,
+        "index_overhead_bytes": 221184.00000000003
+      },
+      {
+        "table": "traceability",
+        "rows_per_day": 40.0,
+        "rows_per_month": 1200.0,
+        "rows_per_year": 3600.0,
+        "bytes_per_row": 2048,
+        "storage_year_bytes": 7372800.0,
+        "index_overhead_bytes": 1843200.0
+      },
+      {
+        "table": "rule_execution",
+        "rows_per_day": 32.0,
+        "rows_per_month": 960.0,
+        "rows_per_year": 2880.0,
+        "bytes_per_row": 1024,
+        "storage_year_bytes": 2949120.0,
+        "index_overhead_bytes": 737280.0
+      },
+      {
+        "table": "audit_history",
+        "rows_per_day": 20.0,
+        "rows_per_month": 600.0,
+        "rows_per_year": 1800.0,
+        "bytes_per_row": 1536,
+        "storage_year_bytes": 2764800.0,
+        "index_overhead_bytes": 691200.0
+      },
+      {
+        "table": "metrics",
+        "rows_per_day": 120.0,
+        "rows_per_month": 3600.0,
+        "rows_per_year": 10800.0,
+        "bytes_per_row": 256,
+        "storage_year_bytes": 2764800.0,
+        "index_overhead_bytes": 691200.0
+      },
+      {
+        "table": "logs",
+        "rows_per_day": 200.0,
+        "rows_per_month": 6000.0,
+        "rows_per_year": 18000.0,
+        "bytes_per_row": 512,
+        "storage_year_bytes": 9216000.0,
+        "index_overhead_bytes": 2304000.0
+      },
+      {
+        "table": "embeddings",
+        "rows_per_day": 40.0,
+        "rows_per_month": 1200.0,
+        "rows_per_year": 3600.0,
+        "bytes_per_row": 2048,
+        "storage_year_bytes": 7372800.0,
+        "index_overhead_bytes": 1843200.0
+      }
+    ],
+    "total_rows_per_day": 1073.12,
+    "total_rows_per_year": 96580.79999999999,
+    "cloud_sql_gb_year": 0.23,
+    "backup_gb_year": 0.26,
+    "index_growth_gb_year": 0.06
+  },
+  "vector_db": [
+    {
+      "dimensions": 384,
+      "vectors_per_document": 3.5,
+      "storage_bytes_year": 100800000.0,
+      "index_size_bytes": 151200000.0,
+      "providers": {
+        "pgvector": {
+          "storage_gb": 0.101,
+          "recall_est": 0.92,
+          "latency_ms_p50": 22
+        },
+        "vertex_ai": {
+          "storage_gb": 0.101,
+          "recall_est": 0.95,
+          "latency_ms_p50": 25
+        },
+        "pinecone": {
+          "storage_gb": 0.101,
+          "recall_est": 0.94,
+          "latency_ms_p50": 20
+        },
+        "weaviate": {
+          "storage_gb": 0.101,
+          "recall_est": 0.93,
+          "latency_ms_p50": 18
+        },
+        "milvus": {
+          "storage_gb": 0.101,
+          "recall_est": 0.94,
+          "latency_ms_p50": 12
+        },
+        "qdrant": {
+          "storage_gb": 0.101,
+          "recall_est": 0.93,
+          "latency_ms_p50": 10
+        }
+      }
+    },
+    {
+      "dimensions": 768,
+      "vectors_per_document": 3.5,
+      "storage_bytes_year": 197568000.0,
+      "index_size_bytes": 296352000.0,
+      "providers": {
+        "pgvector": {
+          "storage_gb": 0.198,
+          "recall_est": 0.92,
+          "latency_ms_p50": 30
+        },
+        "vertex_ai": {
+          "storage_gb": 0.198,
+          "recall_est": 0.95,
+          "latency_ms_p50": 25
+        },
+        "pinecone": {
+          "storage_gb": 0.198,
+          "recall_est": 0.94,
+          "latency_ms_p50": 20
+        },
+        "weaviate": {
+          "storage_gb": 0.198,
+          "recall_est": 0.93,
+          "latency_ms_p50": 18
+        },
+        "milvus": {
+          "storage_gb": 0.198,
+          "recall_est": 0.94,
+          "latency_ms_p50": 12
+        },
+        "qdrant": {
+          "storage_gb": 0.198,
+          "recall_est": 0.93,
+          "latency_ms_p50": 10
+        }
+      }
+    },
+    {
+      "dimensions": 1024,
+      "vectors_per_document": 3.5,
+      "storage_bytes_year": 262080000.0,
+      "index_size_bytes": 524160000.0,
+      "providers": {
+        "pgvector": {
+          "storage_gb": 0.262,
+          "recall_est": 0.92,
+          "latency_ms_p50": 35
+        },
+        "vertex_ai": {
+          "storage_gb": 0.262,
+          "recall_est": 0.95,
+          "latency_ms_p50": 25
+        },
+        "pinecone": {
+          "storage_gb": 0.262,
+          "recall_est": 0.94,
+          "latency_ms_p50": 20
+        },
+        "weaviate": {
+          "storage_gb": 0.262,
+          "recall_est": 0.93,
+          "latency_ms_p50": 18
+        },
+        "milvus": {
+          "storage_gb": 0.262,
+          "recall_est": 0.94,
+          "latency_ms_p50": 12
+        },
+        "qdrant": {
+          "storage_gb": 0.262,
+          "recall_est": 0.93,
+          "latency_ms_p50": 10
+        }
+      }
+    },
+    {
+      "dimensions": 1536,
+      "vectors_per_document": 3.5,
+      "storage_bytes_year": 391104000.0,
+      "index_size_bytes": 782208000.0,
+      "providers": {
+        "pgvector": {
+          "storage_gb": 0.391,
+          "recall_est": 0.92,
+          "latency_ms_p50": 45
+        },
+        "vertex_ai": {
+          "storage_gb": 0.391,
+          "recall_est": 0.95,
+          "latency_ms_p50": 25
+        },
+        "pinecone": {
+          "storage_gb": 0.391,
+          "recall_est": 0.94,
+          "latency_ms_p50": 20
+        },
+        "weaviate": {
+          "storage_gb": 0.391,
+          "recall_est": 0.93,
+          "latency_ms_p50": 18
+        },
+        "milvus": {
+          "storage_gb": 0.391,
+          "recall_est": 0.94,
+          "latency_ms_p50": 12
+        },
+        "qdrant": {
+          "storage_gb": 0.391,
+          "recall_est": 0.93,
+          "latency_ms_p50": 10
+        }
+      }
+    }
+  ],
+  "network": {
+    "rest_ingress_gb_month": 0.04,
+    "rest_egress_gb_month": 0.76,
+    "streaming_gb_month": 0.01,
+    "websocket_gb_month": 7.5,
+    "connector_traffic_gb_month": 0.02,
+    "prompt_traffic_gb_month": 0.07,
+    "artifact_download_gb_month": 0.59,
+    "dashboard_gb_month": 7.5,
+    "total_ingress_gb_month": 2.29,
+    "total_egress_gb_month": 15.77,
+    "total_annual_gb": 216.73
+  },
+  "gpu": null,
+  "redis": {
+    "prompt_cache_mb": 0.59,
+    "connector_cache_mb": 0.01,
+    "session_cache_mb": 1.25,
+    "artifact_cache_mb": 0.08,
+    "metadata_cache_mb": 5.0,
+    "total_mb": 6.92,
+    "ttl_hours": 24
+  },
+  "costs": {
+    "environment": "development",
+    "profile": "small",
+    "compute_monthly_usd": 36.0,
+    "database_monthly_usd": 0.0,
+    "redis_monthly_usd": 7.5,
+    "object_storage_monthly_usd": 0.06,
+    "vector_storage_monthly_usd": 0.0,
+    "networking_monthly_usd": 0.65,
+    "llm_monthly_usd": 21.6,
+    "monitoring_monthly_usd": 7.5,
+    "monthly_total_usd": 73.31,
+    "annual_total_usd": 879.74,
+    "by_provider": [
+      {
+        "provider": "gcs",
+        "storage_gb_month_usd": 0.14,
+        "put_cost_month_usd": 0.06,
+        "get_cost_month_usd": 0.02,
+        "lifecycle_savings_usd": 0.02,
+        "monthly_total_usd": 0.2,
+        "annual_total_usd": 2.38
+      },
+      {
+        "provider": "aws_s3",
+        "storage_gb_month_usd": 0.16,
+        "put_cost_month_usd": 0.01,
+        "get_cost_month_usd": 0.0,
+        "lifecycle_savings_usd": 0.0,
+        "monthly_total_usd": 0.17,
+        "annual_total_usd": 2.06
+      },
+      {
+        "provider": "azure_blob",
+        "storage_gb_month_usd": 0.13,
+        "put_cost_month_usd": 0.01,
+        "get_cost_month_usd": 0.0,
+        "lifecycle_savings_usd": 0.0,
+        "monthly_total_usd": 0.14,
+        "annual_total_usd": 1.63
+      },
+      {
+        "provider": "minio",
+        "storage_gb_month_usd": 0.0,
+        "put_cost_month_usd": 0.0,
+        "get_cost_month_usd": 0.0,
+        "lifecycle_savings_usd": 0.0,
+        "monthly_total_usd": 0.0,
+        "annual_total_usd": 0.0
+      }
+    ]
+  },
+  "growth_forecast": [
+    {
+      "period": "day",
+      "storage_gb": 0.12,
+      "database_gb": 0.0,
+      "object_storage_gb": 0.03,
+      "embeddings_gb": 0.001,
+      "artifacts_count": 400.0,
+      "prompts_count": 1200.0
+    },
+    {
+      "period": "week",
+      "storage_gb": 0.86,
+      "database_gb": 0.0,
+      "object_storage_gb": 0.21,
+      "embeddings_gb": 0.008,
+      "artifacts_count": 2800.0,
+      "prompts_count": 8400.0
+    },
+    {
+      "period": "month",
+      "storage_gb": 3.69,
+      "database_gb": 0.02,
+      "object_storage_gb": 0.89,
+      "embeddings_gb": 0.032,
+      "artifacts_count": 12000.0,
+      "prompts_count": 36000.0
+    },
+    {
+      "period": "quarter",
+      "storage_gb": 11.08,
+      "database_gb": 0.06,
+      "object_storage_gb": 2.67,
+      "embeddings_gb": 0.097,
+      "artifacts_count": 36000.0,
+      "prompts_count": 108000.0
+    },
+    {
+      "period": "year",
+      "storage_gb": 38.19,
+      "database_gb": 0.2,
+      "object_storage_gb": 9.22,
+      "embeddings_gb": 0.334,
+      "artifacts_count": 124100.0,
+      "prompts_count": 372300.0
+    },
+    {
+      "period": "3yr",
+      "storage_gb": 114.57,
+      "database_gb": 0.59,
+      "object_storage_gb": 27.66,
+      "embeddings_gb": 1.001,
+      "artifacts_count": 372300.0,
+      "prompts_count": 1116900.0
+    },
+    {
+      "period": "5yr",
+      "storage_gb": 190.95,
+      "database_gb": 0.98,
+      "object_storage_gb": 46.11,
+      "embeddings_gb": 1.668,
+      "artifacts_count": 620500.0,
+      "prompts_count": 1861500.0
+    }
+  ],
+  "gke": {
+    "profile": "small",
+    "backend": {
+      "component": "adip-backend",
+      "replicas": 2,
+      "cpu_request": "250m",
+      "cpu_limit": "250m",
+      "memory_request": "256Mi",
+      "memory_limit": "256Mi",
+      "notes": ""
+    },
+    "frontend": {
+      "component": "adip-frontend",
+      "replicas": 2,
+      "cpu_request": "50m",
+      "cpu_limit": "250m",
+      "memory_request": "64Mi",
+      "memory_limit": "128Mi",
+      "notes": ""
+    },
+    "worker": {
+      "component": "connector-worker",
+      "replicas": 1,
+      "cpu_request": "250m",
+      "cpu_limit": "1000m",
+      "memory_request": "512Mi",
+      "memory_limit": "1Gi",
+      "notes": "Background connector sync scheduler"
+    },
+    "llm": null,
+    "node_pool_vcpu": 2.1,
+    "node_pool_memory_gi": 2.5,
+    "node_count_est": 2,
+    "cloud_sql_storage_gb": 0.11,
+    "gcs_storage_gb": 0.28,
+    "monthly_storage_growth_gb": 0.39,
+    "assumptions": [
+      "Profile small: 25 DAU, 200 prompts/day",
+      "Retention 30 days; token estimate ~4 chars/token",
+      "CPU/memory from mock scenario peaks + 50% headroom",
+      "Node pool at 70% target utilization",
+      "Cloud SQL and GCS sized from daily write heuristics"
+    ]
+  },
+  "infra_scenarios": null,
+  "load_tests": [],
+  "resource_profile": null,
+  "reports": {}
+}

@@ -7,12 +7,13 @@ import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { CenterErrorBoundary } from '../components/common/CenterErrorBoundary';
 import { RuleResultsPanel, type RuleResultRow } from '../components/workbench/RuleResultsPanel';
+import { CapacityEnterprisePanel } from '../components/workbench/CapacityEnterprisePanel';
 import { getAuthMode } from '../services/auth/authConfig';
 import { apiClient } from '../services/backend/apiClient';
 import { isBackendMode } from '../services/backend/apiConfig';
 import { useConnectorDashboard } from '../sdk/hooks/useConnectors';
 
-type TabKey = 'llm' | 'regression' | 'quality' | 'rules';
+type TabKey = 'llm' | 'regression' | 'quality' | 'rules' | 'capacity' | 'storage' | 'cost' | 'forecast' | 'enterprise';
 
 export function TeamEngineeringWorkbench() {
   const [tab, setTab] = useState<TabKey>('llm');
@@ -23,6 +24,9 @@ export function TeamEngineeringWorkbench() {
   const [scorecard, setScorecard] = useState<Record<string, unknown> | null>(null);
   const [ruleResults, setRuleResults] = useState<RuleResultRow[]>([]);
   const [artifactType, setArtifactType] = useState('BRD');
+  const [capacityProfile, setCapacityProfile] = useState('medium');
+  const [capacityReport, setCapacityReport] = useState<Record<string, unknown> | null>(null);
+  const [storageSection, setStorageSection] = useState<Record<string, unknown> | null>(null);
   const authMode = getAuthMode();
   const { data: dashboard } = useConnectorDashboard();
 
@@ -88,6 +92,44 @@ export function TeamEngineeringWorkbench() {
     }
   };
 
+  const runCapacityPlan = async () => {
+    setLoading(true);
+    try {
+      const r = await apiClient.runCapacityPlan<Record<string, unknown>>({
+        profile: capacityProfile,
+        environment: 'production',
+        inputs: { run_infra_scenarios: false },
+      });
+      setCapacityReport(r);
+      setMsg(`Capacity plan: $${(r.costs as { monthly_total_usd?: number })?.monthly_total_usd ?? '—'}/mo`);
+    } catch {
+      setCapacityReport({
+        profile: capacityProfile,
+        costs: { monthly_total_usd: 1250, annual_total_usd: 15000 },
+        gke: { node_count_est: 3 },
+        object_storage: { storage_per_year_bytes: 5e9 },
+        database_growth: { cloud_sql_gb_year: 12 },
+      });
+      setMsg('Mock capacity plan (backend unavailable)');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const runStorageSection = async () => {
+    setLoading(true);
+    try {
+      const r = await apiClient.capacitySection<Record<string, unknown>>('object_storage', capacityProfile);
+      setStorageSection(r);
+      setMsg(`Object storage: ${Math.round((r.storage_per_year_bytes as number) / 1e9)} GB/year`);
+    } catch {
+      setStorageSection({ uploads_per_day: 120, storage_per_year_bytes: 4.2e9, after_compression_bytes: 2.7e9 });
+      setMsg('Mock object storage estimate');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <CenterErrorBoundary title="Team Engineering Workbench">
       <Box>
@@ -102,11 +144,16 @@ export function TeamEngineeringWorkbench() {
           {msg && <Alert severity="success" sx={{ mt: 1 }}>{msg}</Alert>}
         </GlassCard>
 
-        <Tabs value={tab} onChange={(_, v) => setTab(v)} sx={{ mb: 1 }}>
+        <Tabs value={tab} onChange={(_, v) => setTab(v)} sx={{ mb: 1 }} variant="scrollable" scrollButtons="auto">
           <Tab label="LLM Test" value="llm" />
           <Tab label="Prompt Regression" value="regression" />
           <Tab label="Artifact Quality" value="quality" />
           <Tab label="Rule Results" value="rules" />
+          <Tab label="Capacity Planning" value="capacity" />
+          <Tab label="Object Storage" value="storage" />
+          <Tab label="Cost" value="cost" />
+          <Tab label="Growth Forecast" value="forecast" />
+          <Tab label="Enterprise Capacity" value="enterprise" />
         </Tabs>
 
         {tab === 'llm' && (
@@ -157,6 +204,68 @@ export function TeamEngineeringWorkbench() {
               <RuleResultsPanel results={ruleResults} overallStatus={msg ?? undefined} />
             </Box>
           </GlassCard>
+        )}
+
+        {(tab === 'capacity' || tab === 'cost' || tab === 'forecast') && (
+          <GlassCard sx={{ p: 2 }}>
+            <FormControl size="small" sx={{ minWidth: 140, mr: 1, mb: 1 }}>
+              <InputLabel>Profile</InputLabel>
+              <Select value={capacityProfile} label="Profile" onChange={(e) => setCapacityProfile(e.target.value)}>
+                {['small', 'medium', 'large', 'enterprise'].map((p) => (
+                  <MenuItem key={p} value={p}>{p}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <Button variant="contained" onClick={runCapacityPlan}>Run capacity plan</Button>
+            {capacityReport && (
+              <Typography variant="body2" component="pre" sx={{ mt: 2, fontSize: 11, whiteSpace: 'pre-wrap' }}>
+                {JSON.stringify(
+                  tab === 'cost'
+                    ? capacityReport.costs
+                    : tab === 'forecast'
+                      ? capacityReport.growth_forecast
+                      : {
+                          profile: capacityReport.profile,
+                          gke: capacityReport.gke,
+                          costs: capacityReport.costs,
+                          network: capacityReport.network,
+                          redis: capacityReport.redis,
+                          gpu: capacityReport.gpu,
+                        },
+                  null,
+                  2,
+                )}
+              </Typography>
+            )}
+          </GlassCard>
+        )}
+
+        {tab === 'storage' && (
+          <GlassCard sx={{ p: 2 }}>
+            <FormControl size="small" sx={{ minWidth: 140, mr: 1, mb: 1 }}>
+              <InputLabel>Profile</InputLabel>
+              <Select value={capacityProfile} label="Profile" onChange={(e) => setCapacityProfile(e.target.value)}>
+                {['small', 'medium', 'large', 'enterprise'].map((p) => (
+                  <MenuItem key={p} value={p}>{p}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <Button variant="contained" onClick={runStorageSection}>Estimate object storage</Button>
+            {storageSection && (
+              <Typography variant="body2" component="pre" sx={{ mt: 2, fontSize: 11, whiteSpace: 'pre-wrap' }}>
+                {JSON.stringify(storageSection, null, 2)}
+              </Typography>
+            )}
+          </GlassCard>
+        )}
+
+        {tab === 'enterprise' && (
+          <CapacityEnterprisePanel
+            profile={capacityProfile}
+            loading={loading}
+            setLoading={setLoading}
+            setMsg={setMsg}
+          />
         )}
       </Box>
     </CenterErrorBoundary>

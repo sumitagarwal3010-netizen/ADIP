@@ -1,0 +1,47 @@
+# ADIP benchmark environment profiles — used by run_all_benchmarks.py
+# Maps logical environment to runtime settings (no secrets).
+
+dev:
+  adip_env: development
+  capacity_profile: small
+  benchmark_mode: mock
+  auth_mode: demo
+  connector_mode: mock
+  local_llm_enabled: false
+  object_storage_provider: local
+  redis_enabled: false
+  retention_days: 30
+  load_concurrency: 2
+  run_infra_scenarios: true
+  prometheus_enabled: false
+  grafana_enabled: false
+
+uat:
+  adip_env: uat
+  capacity_profile: medium
+  benchmark_mode: mock
+  auth_mode: demo
+  connector_mode: staged
+  local_llm_enabled: false
+  object_storage_provider: minio
+  redis_enabled: true
+  retention_days: 90
+  load_concurrency: 10
+  run_infra_scenarios: true
+  prometheus_enabled: true
+  grafana_enabled: false
+
+prod:
+  adip_env: production
+  capacity_profile: enterprise
+  benchmark_mode: mock
+  auth_mode: oidc
+  connector_mode: live
+  local_llm_enabled: true
+  object_storage_provider: gcs
+  redis_enabled: true
+  retention_days: 365
+  load_concurrency: 50
+  run_infra_scenarios: true
+  prometheus_enabled: true
+  grafana_enabled: true
