@@ -46,6 +46,10 @@ import {
   getArchitectureScenarioArtifacts,
 } from '../../data/deterministicArchitectureWorkspace';
 import { getDeterministicReleaseArtifacts } from '../../data/deterministicReleaseWorkspace';
+import {
+  getDeterministicDevelopmentAnalysis,
+  getDeterministicDevelopmentArtifacts,
+} from '../../data/deterministicDevelopmentWorkspace';
 
 interface AIWorkspacePanelProps {
   module: AIWorkspaceModule;
@@ -162,6 +166,13 @@ export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWo
   const buildGeneratedArtifacts = (captured: string, runId: string): Artifact[] => {
     if (module === 'architecture') {
       return getArchitectureScenarioArtifacts(captured, runId).map((a) => ({
+        ...a,
+        sourceHub: config.artifactHub,
+        sourceLabel: config.title,
+      }));
+    }
+    if (module === 'development') {
+      return getDeterministicDevelopmentArtifacts(captured, runId).map((a) => ({
         ...a,
         sourceHub: config.artifactHub,
         sourceLabel: config.title,
@@ -470,6 +481,18 @@ export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWo
     if (module === 'architecture') {
       sim.run(() => {
         finishAnalysis(getArchitectureScenarioAnalysis(captured));
+      });
+      return;
+    }
+    if (module === 'development') {
+      sim.run(() => {
+        try {
+          finishAnalysis(getDeterministicDevelopmentAnalysis(captured));
+        } catch (error) {
+          setBackendError((error as Error).message);
+          setStage(2);
+          recordSession(false, 0);
+        }
       });
       return;
     }

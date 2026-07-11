@@ -330,7 +330,7 @@ export const ROUTE_RESOURCE_MAP: Record<string, { resource: ResourceType; permis
   '/traceability/evidence': { resource: 'artifacts', permission: 'view' },
   '/requirements': { resource: 'requirements', permission: 'view' },
   '/architecture': { resource: 'architecture', permission: 'view' },
-  '/development': { resource: 'code', permission: 'view' },
+  '/development': { resource: 'dashboards', permission: 'view' },
   '/testing': { resource: 'tests', permission: 'view' },
   '/release': { resource: 'releases', permission: 'view' },
   '/production': { resource: 'incidents', permission: 'view' },

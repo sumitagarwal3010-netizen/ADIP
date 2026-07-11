@@ -15,6 +15,7 @@ import {
   createRunId,
   formatTimestamp,
   getDemoDevelopmentArtifacts,
+  targetTechnologyStackOptions,
 } from '../../data/developmentArtifactFactory';
 import type { Artifact, GenerationRun } from '../../types/artifacts';
 import { colors } from '../../theme/colors';
@@ -33,6 +34,7 @@ const DEVELOPMENT_SIMULATION: SimulationConfig = {
 export function DevelopmentIntakeWorkflow() {
   const [approvedHld, setApprovedHld] = useState('');
   const [approvedLld, setApprovedLld] = useState('');
+  const [targetTechnologyStack, setTargetTechnologyStack] = useState('');
   const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoDevelopmentArtifacts());
   const [runs, setRuns] = useState<GenerationRun[]>([]);
   const [showSimulation, setShowSimulation] = useState(false);
@@ -41,7 +43,7 @@ export function DevelopmentIntakeWorkflow() {
     useGenerationSimulation(DEVELOPMENT_SIMULATION);
 
   const handleGenerate = () => {
-    if (!approvedHld || !approvedLld) return;
+    if (!approvedHld || !approvedLld || !targetTechnologyStack) return;
 
     const runId = createRunId('DEV');
     const timestamp = formatTimestamp();
@@ -53,16 +55,23 @@ export function DevelopmentIntakeWorkflow() {
     ]);
 
     run(() => {
-      setArtifacts(buildDevelopmentArtifacts(approvedHld, approvedLld, runId));
-      setRuns((prev) =>
-        prev.map((r) => (r.runId === runId ? { ...r, status: 'Completed' } : r)),
-      );
+      try {
+        setArtifacts(buildDevelopmentArtifacts(approvedHld, approvedLld, targetTechnologyStack, runId));
+        setRuns((prev) =>
+          prev.map((r) => (r.runId === runId ? { ...r, status: 'Completed' } : r)),
+        );
+      } catch {
+        setRuns((prev) =>
+          prev.map((r) => (r.runId === runId ? { ...r, status: 'Failed' } : r)),
+        );
+      }
     });
   };
 
   const handleClear = () => {
     setApprovedHld('');
     setApprovedLld('');
+    setTargetTechnologyStack('');
     reset();
     setShowSimulation(false);
   };
@@ -72,7 +81,7 @@ export function DevelopmentIntakeWorkflow() {
       <GlassCard sx={{ p: 2, mt: 1.5 }} glow="purple">
         <ModuleHeader title="Development Intake" subtitle="Generate development artifacts from approved design" />
         <Grid container spacing={1.5}>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <IntakeSelectField
               label="Approved HLD"
               options={approvedHldOptions.map((o) => ({ value: o.id, label: o.label }))}
@@ -80,7 +89,7 @@ export function DevelopmentIntakeWorkflow() {
               onChange={(e) => setApprovedHld(e.target.value as string)}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <IntakeSelectField
               label="Approved LLD"
               options={approvedLldOptions.map((o) => ({ value: o.id, label: o.label }))}
@@ -88,11 +97,19 @@ export function DevelopmentIntakeWorkflow() {
               onChange={(e) => setApprovedLld(e.target.value as string)}
             />
           </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <IntakeSelectField
+              label="Target Technology Stack"
+              options={targetTechnologyStackOptions}
+              value={targetTechnologyStack}
+              onChange={(e) => setTargetTechnologyStack(e.target.value as string)}
+            />
+          </Grid>
         </Grid>
         <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
           <Button
             variant="contained"
-            disabled={isRunning || !approvedHld || !approvedLld}
+            disabled={isRunning || !approvedHld || !approvedLld || !targetTechnologyStack}
             onClick={handleGenerate}
             sx={{ minWidth: 180, bgcolor: colors.secondary }}
           >

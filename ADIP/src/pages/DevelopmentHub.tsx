@@ -1,5 +1,4 @@
 import { Box, Grid, Typography } from '@mui/material';
-import { KpiCard } from '../components/common/KpiCard';
 import { DrilldownTableRow } from '../components/common/DrilldownTableRow';
 import { BarChartPanel } from '../components/charts/BarChartPanel';
 import { GlassCard } from '../components/common/GlassCard';
@@ -35,14 +34,6 @@ export function DevelopmentHub() {
       />
 
       <Grid container spacing={1.5}>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Pull Requests" value={development.pullRequests} suffix="" trend={8} compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Commits" value={development.commits} suffix="" trend={5} compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Code Quality" value={development.codeQuality} trend={1.2} compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Tech Debt" value={development.techDebt} suffix="" trend={-3} compact /></Grid>
-        <Grid size={{ xs: 6, md: 2.4 }}><KpiCard label="Dev Health" value={development.health} trend={2} compact /></Grid>
-      </Grid>
-
-      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 12, md: 7 }}>
           <GlassCard sx={{ p: 2 }}>
             <ModuleHeader title="Quality vs Technical Debt" />
