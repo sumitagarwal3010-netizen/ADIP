@@ -45,6 +45,7 @@ import {
   getArchitectureScenarioAnalysis,
   getArchitectureScenarioArtifacts,
 } from '../../data/deterministicArchitectureWorkspace';
+import { getDeterministicReleaseArtifacts } from '../../data/deterministicReleaseWorkspace';
 
 interface AIWorkspacePanelProps {
   module: AIWorkspaceModule;
@@ -161,6 +162,13 @@ export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWo
   const buildGeneratedArtifacts = (captured: string, runId: string): Artifact[] => {
     if (module === 'architecture') {
       return getArchitectureScenarioArtifacts(captured, runId).map((a) => ({
+        ...a,
+        sourceHub: config.artifactHub,
+        sourceLabel: config.title,
+      }));
+    }
+    if (module === 'release') {
+      return getDeterministicReleaseArtifacts(captured, runId).map((a) => ({
         ...a,
         sourceHub: config.artifactHub,
         sourceLabel: config.title,
@@ -435,12 +443,19 @@ export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWo
       setAnalysisPrompt(captured);
       setStage(2);
       if (pendingArtifactRef.current) {
-        const runId = createRunId(module.toUpperCase().slice(0, 4));
-        const generated = buildGeneratedArtifacts(captured, runId);
-        setArtifacts(generated);
-        recordArtifacts(generated);
-        setStage(4);
-        recordSession(true, generated.length);
+        try {
+          const runId = createRunId(module.toUpperCase().slice(0, 4));
+          const generated = buildGeneratedArtifacts(captured, runId);
+          setArtifacts(generated);
+          recordArtifacts(generated);
+          setStage(4);
+          recordSession(true, generated.length);
+        } catch (error) {
+          setBackendError((error as Error).message);
+          setArtifacts([]);
+          setStage(2);
+          recordSession(false, 0);
+        }
       } else {
         recordSession(false, 0);
       }
@@ -760,13 +775,17 @@ export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWo
                   return;
                 }
                 const runId = createRunId(module.toUpperCase().slice(0, 4));
-                const generated = isOrchestrator && cachedPackage
-                  ? buildArtifactsFromRequirementPackage(cachedPackage)
-                  : buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
-                setArtifacts(generated);
-                recordArtifacts(generated);
-                setStage(4);
-                recordSession(true, generated.length);
+                try {
+                  const generated = isOrchestrator && cachedPackage
+                    ? buildArtifactsFromRequirementPackage(cachedPackage)
+                    : buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
+                  setArtifacts(generated);
+                  recordArtifacts(generated);
+                  setStage(4);
+                  recordSession(true, generated.length);
+                } catch (error) {
+                  setBackendError((error as Error).message);
+                }
               }}
               sx={{ mt: 1.5, bgcolor: colors.primary, fontSize: '0.75rem' }}
             >
@@ -779,12 +798,16 @@ export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWo
               variant="outlined"
               startIcon={<DescriptionIcon sx={{ fontSize: 16 }} />}
               onClick={() => {
-                const runId = createRunId(module.toUpperCase().slice(0, 4));
-                const generated = buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
-                setArtifacts(generated);
-                recordArtifacts(generated);
-                setStage(4);
-                recordSession(true, generated.length);
+                try {
+                  const runId = createRunId(module.toUpperCase().slice(0, 4));
+                  const generated = buildGeneratedArtifacts(analysisPrompt || effectivePrompt, runId);
+                  setArtifacts(generated);
+                  recordArtifacts(generated);
+                  setStage(4);
+                  recordSession(true, generated.length);
+                } catch (error) {
+                  setBackendError((error as Error).message);
+                }
               }}
               sx={{ mt: 1.5, fontSize: '0.75rem' }}
             >

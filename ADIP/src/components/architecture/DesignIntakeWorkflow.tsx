@@ -4,6 +4,7 @@ import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { IntakeSelectField } from '../workflow/IntakeSelectField';
 import { ArtifactRepositoryPanel } from '../workflow/ArtifactRepositoryPanel';
+import { GenerationSimulationPanel } from '../workflow/GenerationSimulationPanel';
 import { useGenerationSimulation } from '../../hooks/useGenerationSimulation';
 import type { SimulationConfig } from '../../hooks/useGenerationSimulation';
 import {
@@ -35,14 +36,16 @@ export function DesignIntakeWorkflow({ children }: DesignIntakeWorkflowProps) {
   const [approvedBrd, setApprovedBrd] = useState('');
   const [approvedFrd, setApprovedFrd] = useState('');
   const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoDesignArtifacts());
+  const [showSimulation, setShowSimulation] = useState(false);
 
-  const { isRunning, run, reset } =
+  const { isRunning, progress, statusMessage, activityLog, run, reset } =
     useGenerationSimulation(DESIGN_SIMULATION);
 
   const handleGenerate = () => {
     if (!approvedBrd || !approvedFrd) return;
 
     const runId = createRunId('ARCH');
+    setShowSimulation(true);
 
     run(() => {
       setArtifacts(buildDesignArtifacts(approvedBrd, approvedFrd, runId));
@@ -53,6 +56,7 @@ export function DesignIntakeWorkflow({ children }: DesignIntakeWorkflowProps) {
     setApprovedBrd('');
     setApprovedFrd('');
     reset();
+    setShowSimulation(false);
   };
 
   return (
@@ -91,6 +95,14 @@ export function DesignIntakeWorkflow({ children }: DesignIntakeWorkflowProps) {
           </Button>
         </Box>
       </GlassCard>
+
+      <GenerationSimulationPanel
+        visible={showSimulation}
+        statusMessage={statusMessage}
+        progress={progress}
+        activityLog={activityLog}
+        agentLabel="Design Agent"
+      />
 
       {children}
 

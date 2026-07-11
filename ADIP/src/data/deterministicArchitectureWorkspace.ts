@@ -91,110 +91,210 @@ const SCENARIOS: Record<ScenarioKey, ArchitectureScenario> = {
     },
     artifacts: [
       {
-        name: 'UPI_Limit_Enhancement_HLD.docx',
+        name: 'UPI_HLD.docx',
         fileType: 'docx',
         approvalStatus: 'Pending Review',
         riskRating: 'Medium',
-        generatedBy: 'Architecture Agent',
-        modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'HLD prepared for UPI limit enhancement target state.',
-        executiveSummary:
-          'High Level Design defines a resilient policy-driven architecture to manage dynamic UPI limit upgrades with risk and compliance control points.',
-        previewContent:
-          'UPI LIMIT ENHANCEMENT - HIGH LEVEL DESIGN\nVersion 1.0\n\nBusiness Context\nRetail customers request higher UPI limits with instant approval expectation.\n\nArchitecture Overview\nChannel -> API Gateway -> Limit Decision Service -> Fraud + Compliance + CBS.\n\nLogical Components\nLimit Decision Service, Policy Engine, Audit Ledger, Notification Hub.\n\nTechnology Stack\nSpring Boot, Kafka, Redis, PostgreSQL, OpenTelemetry.\n\nNon Functional Requirements\n120ms decision latency, 99.95% availability, immutable audit retention 7 years.\n\nDeployment View\n3 AZ active-active deployment with regional failover.\n\nRisks\nProfile sync drift, policy cache staleness, fraud model timeout.',
+        generatedBy: 'Payments Enterprise Architecture',
+        modelUsed: 'deterministic-architecture-scenario-v2',
+        changeSummary: 'UPI HLD expanded with infrastructure and control viewpoints.',
+        executiveSummary: 'Enterprise high-level architecture for UPI limit enhancement covering channel integration, policy decisions, NPCI dependencies, and production operating controls.',
+        previewContent: 'UPI LIMIT ENHANCEMENT HLD\nScope: KYC L2 customers, mobile + net banking channels.\nArchitecture spine: API Gateway -> Limit Decision Service -> Fraud + Compliance + CBS + NPCI adapters.\nCore stores: Redis policy cache, Postgres decision ledger, Kafka event bus.\nDeployment: dual-region active-active with regional failover.\nSequence: request -> eligibility -> fraud -> compliance -> approve/reject -> notify.\nRisk posture: medium with mitigation plan for profile-drift and downstream timeout.',
         sections: [
-          { title: 'Business Context', content: 'KYC L2 customers demand higher transfer ceilings while RBI/NPCI controls mandate explainable limit decisions and traceable approvals.' },
-          { title: 'Architecture Overview', content: 'The design introduces a Limit Decision Service between channels and core banking adapters. All decisions are policy-evaluated, fraud-scored, and logged to the audit ledger before confirmation.' },
-          { title: 'Logical Components', content: '1) API Gateway\n2) Limit Decision Service\n3) Fraud Risk Scoring Adapter\n4) Compliance Rules Engine Adapter\n5) CBS Update Adapter\n6) Audit Event Ledger\n7) Notification Hub' },
-          { title: 'Technology Stack', content: 'Runtime: Java 21 + Spring Boot\nMessaging: Kafka (payments.limit.events.v1)\nCache: Redis Cluster\nStorage: PostgreSQL + WORM-backed audit archive\nObservability: Prometheus + Grafana + OpenTelemetry' },
-          { title: 'Non Functional Requirements', content: 'p95 decision latency <= 120ms\nThroughput >= 1,800 req/sec peak\nRTO <= 15 min, RPO <= 2 min\nAudit retention: 7 years with tamper-evident hash chain' },
-          { title: 'Deployment View', content: 'Kubernetes active-active across Mumbai and Hyderabad regions. Stateful components use synchronous replication for decision trail integrity.' },
-          { title: 'Risks', content: 'Risk-01: Fraud adapter timeout during peak traffic.\nRisk-02: Policy mismatch across environments.\nRisk-03: Customer master latency impacts eligibility checks.' },
+          { title: 'Document Scope', content: 'Defines target-state architecture for raising daily UPI limits from configurable baseline to approved upper thresholds for eligible KYC L2 accounts.' },
+          { title: 'Business Context', content: 'Program objective is to increase transaction success for high-trust customers while preserving fraud and regulatory controls.' },
+          { title: 'Assumptions', content: 'Customer profile service remains source of truth; NPCI participant health feed available with 30s freshness; fraud model v4.3 is production-certified.' },
+          { title: 'Out of Scope', content: 'No changes to onboarding KYC workflows, merchant MDR calculations, or non-UPI payment rails.' },
+          { title: 'Logical Architecture', content: 'Ingress via API Gateway; orchestration in Limit Decision Service; external checks via Fraud Adapter, Compliance Rule Adapter, and CBS Adapter; notification fan-out via Event Bus.' },
+          { title: 'Technology Architecture', content: 'Java 21 microservices, Redis cluster for policy profile lookup, Kafka for domain events, PostgreSQL for immutable decisions, OpenTelemetry for traces.' },
+          { title: 'Integration Dependencies', content: 'Dependencies: NPCI switch adapter, Core Banking update API, Fraud scoring API, Compliance policy engine, Notification service.' },
+          { title: 'Security and Compliance', content: 'mTLS for service-to-service, signed payload verification for channel calls, tamper-evident audit chain retained for 7 years.' },
+          { title: 'Deployment and DR', content: 'Mumbai + Hyderabad regions in active-active. RTO 15 minutes, RPO 2 minutes, weighted routing for controlled rollout.' },
+          { title: 'Risks and Mitigations', content: 'Risk: customer profile lag. Mitigation: pre-commit profile freshness check.\nRisk: CBS timeout. Mitigation: compensation queue + replay job.' },
+          { title: 'Implementation Notes', content: 'Phase rollout at 10%, 35%, 100% customer cohorts with SRE watchpoints for decision latency and reject ratio drift.' },
         ],
       },
       {
-        name: 'UPI_Limit_Enhancement_LLD.docx',
+        name: 'UPI_LLD.docx',
         fileType: 'docx',
         approvalStatus: 'Draft',
         riskRating: 'Medium',
-        generatedBy: 'Architecture Agent',
-        modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'LLD completed for limit decision and orchestration flows.',
-        executiveSummary:
-          'Low Level Design specifies service contracts, synchronous and asynchronous flows, persistence schema, and operational controls for UPI limit upgrades.',
-        previewContent:
-          'UPI LIMIT ENHANCEMENT - LLD\n\nComponent Design\nLimitDecisionController, EligibilityEvaluator, PolicyResolver.\n\nInterfaces\nPOST /v1/upi/limits/evaluate, POST /v1/upi/limits/confirm.\n\nDatabase Design\nlimit_request, limit_decision, limit_audit_event.\n\nSequence Flow\nRequest -> evaluate -> score -> compliance -> confirm -> notify.\n\nError Handling\nDeterministic error codes for KYC mismatch, risk breach, CBS timeout.\n\nConfiguration\nThreshold profile by customer segment and risk tier.',
+        generatedBy: 'Payments Solution Design',
+        modelUsed: 'deterministic-architecture-scenario-v2',
+        changeSummary: 'UPI LLD enriched with module and sequence detail.',
+        executiveSummary: 'Low-level design defining modules, contract boundaries, persistence schema, runtime policies, and operational exception handling for limit enhancement.',
+        previewContent: 'UPI LLD\nModules: DecisionController, EligibilityEvaluator, LimitPolicyResolver, FraudOrchestrator, ComplianceOrchestrator, CbsUpdatePublisher.\nPersistence: limit_request, limit_decision, decision_event, audit_signature.\nRuntime controls: idempotency token, cache TTL 60s, retry strategy per adapter.\nPrimary sequence: evaluate -> score -> compliance -> persist -> publish -> notify.',
         sections: [
-          { title: 'Component Design', content: 'Components: LimitDecisionController, EligibilityService, RiskOrchestrator, ComplianceOrchestrator, CoreBankingPublisher, AuditTrailWriter.' },
-          { title: 'Interfaces', content: 'Interface-A: POST /v1/limits/evaluate\nInterface-B: POST /v1/limits/confirm\nInterface-C: GET /v1/limits/{customerId}/history' },
-          { title: 'Database Design', content: 'Tables:\n- limit_request (request_id, customer_id, requested_limit, channel)\n- limit_decision (decision_id, request_id, approved_limit, reason_code)\n- limit_audit_event (event_id, decision_id, actor, timestamp, signature)' },
-          { title: 'Sequence Flow', content: '1. Channel submits evaluate.\n2. Eligibility and profile checks execute.\n3. Fraud score + compliance checks complete.\n4. Decision persisted and event published.\n5. Confirmation call updates CBS and sends notification.' },
-          { title: 'Error Handling', content: 'LIM-401: KYC not eligible\nLIM-409: policy violation\nLIM-504: core banking timeout\nLIM-429: throttled request window exceeded' },
-          { title: 'Configuration', content: 'Config sets per segment: retail_standard, retail_premium, msmes. Each profile configures max daily limit, cooling period, and risk override policy.' },
+          { title: 'Design Intent', content: 'Translate HLD components into executable modules with deterministic decision semantics.' },
+          { title: 'Module Decomposition', content: 'Controller layer for request validation; service layer for decision orchestration; adapter layer for downstream integrations.' },
+          { title: 'Interface Contracts', content: 'POST /v1/upi/limits/evaluate, POST /v1/upi/limits/confirm, GET /v1/upi/limits/{customerId}/history.' },
+          { title: 'Data Model', content: 'limit_request(request_id, customer_id, requested_limit, channel, consent_ref);\nlimit_decision(decision_id, status, reason_code, approved_limit);\naudit_signature(event_id, signature_hash).' },
+          { title: 'Cache Strategy', content: 'Redis key: limitPolicy:{segment}:{kycLevel}. TTL 60s. Cache stampede protected via single-flight lock.' },
+          { title: 'Sequence Flow - Success Path', content: 'Validate request -> check profile freshness -> resolve policy -> call fraud engine -> run compliance checks -> persist decision -> publish domain event.' },
+          { title: 'Sequence Flow - Failure Paths', content: 'Fraud hold -> status=PENDING_REVIEW; CBS timeout -> status=RECONCILE_PENDING; policy violation -> status=REJECTED with reason code.' },
+          { title: 'Error Taxonomy', content: 'LIM-401 ineligible KYC; LIM-409 policy threshold breach; LIM-422 fraud escalation; LIM-504 downstream timeout.' },
+          { title: 'Configuration Baseline', content: 'Segment-specific max limits, cooling period, retry budgets, and risk override flags managed through versioned config repo.' },
+          { title: 'Observability', content: 'Trace IDs propagated end-to-end; RED metrics per endpoint; alert thresholds on p95 latency, timeout ratio, and reconcile queue depth.' },
+          { title: 'Implementation Notes', content: 'Contract test suite required for CBS and Fraud adapters before deployment to staging.' },
         ],
       },
       {
-        name: 'UPI_Limit_API_Specification.yaml',
+        name: 'UPI_API_Specification.yaml',
         fileType: 'yaml',
         approvalStatus: 'Draft',
         riskRating: 'Low',
-        generatedBy: 'Architecture Agent',
-        modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'API contract documented for UPI limit workflow.',
-        executiveSummary:
-          'API specification defines deterministic contracts for evaluate/confirm journeys with banking-grade auth, idempotency, and retry boundaries.',
-        previewContent:
-          'openapi: 3.0.3\ninfo:\n  title: UPI Limit Enhancement API\npaths:\n  /v1/limits/evaluate:\n    post:\n      security:\n        - mTLS: []\n      responses:\n        "200":\n          description: Eligibility decision',
+        generatedBy: 'API Governance Office',
+        modelUsed: 'deterministic-architecture-scenario-v2',
+        changeSummary: 'UPI API specification expanded with schemas and examples.',
+        executiveSummary: 'Complete OpenAPI contract for UPI limit enhancement evaluate/confirm/query APIs with security, error models, and rate limits.',
+        previewContent: `openapi: 3.0.3
+info:
+  title: UPI Limit Enhancement API
+  version: 1.2.0
+  description: APIs for evaluating and confirming customer UPI limit upgrades.
+servers:
+  - url: https://api.bank.example/payments
+security:
+  - oauth2ClientCredentials: [upi.limit.write, upi.limit.read]
+  - mtls: []
+paths:
+  /v1/upi/limits/evaluate:
+    post:
+      summary: Evaluate UPI limit enhancement eligibility
+      x-rate-limit: 200 requests/min per channelId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluateLimitRequest'
+            example:
+              customerId: CUST348901
+              channelId: MOBILE_APP
+              requestedLimit: 200000
+              consentRef: CONS-7721
+      responses:
+        '200':
+          description: Decision generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluateLimitResponse'
+        '409':
+          description: Policy breach
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/upi/limits/confirm:
+    post:
+      summary: Confirm approved decision and trigger CBS update
+      x-rate-limit: 120 requests/min per channelId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmLimitRequest'
+      responses:
+        '202':
+          description: Confirmation accepted
+        '504':
+          description: Downstream timeout
+  /v1/upi/limits/{customerId}/history:
+    get:
+      summary: Fetch recent limit decisions for customer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Decision history
+components:
+  securitySchemes:
+    oauth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.bank.example/oauth/token
+          scopes:
+            upi.limit.write: write access
+            upi.limit.read: read access
+    mtls:
+      type: mutualTLS
+  schemas:
+    EvaluateLimitRequest:
+      type: object
+      required: [customerId, channelId, requestedLimit]
+      properties:
+        customerId: { type: string }
+        channelId: { type: string }
+        requestedLimit: { type: number, format: double }
+        consentRef: { type: string }
+    EvaluateLimitResponse:
+      type: object
+      properties:
+        decisionId: { type: string }
+        status: { type: string, enum: [APPROVED, REJECTED, PENDING_REVIEW] }
+        approvedLimit: { type: number }
+        reasonCode: { type: string }
+    ConfirmLimitRequest:
+      type: object
+      required: [decisionId]
+      properties:
+        decisionId: { type: string }
+        confirmationActor: { type: string }
+    ErrorResponse:
+      type: object
+      properties:
+        code: { type: string }
+        message: { type: string }
+        correlationId: { type: string }`,
         sections: [
-          { title: 'Endpoint Catalog', content: 'POST /v1/limits/evaluate\nPOST /v1/limits/confirm\nGET /v1/limits/{customerId}/history' },
-          { title: 'Authentication', content: 'mTLS between channel and API gateway; OAuth2 client credentials for service-to-service calls; HMAC signature for request integrity.' },
-          { title: 'Request Payload', content: '{ customerId, channelId, requestedLimit, kycLevel, consentId, requestTimestamp }' },
-          { title: 'Response Payload', content: '{ decisionId, status, approvedLimit, reasonCode, effectiveFrom, advisoryMessages[] }' },
-          { title: 'Error Codes', content: '400 INVALID_PAYLOAD\n401 AUTH_FAILURE\n409 POLICY_BREACH\n422 FRAUD_REVIEW_REQUIRED\n504 DOWNSTREAM_TIMEOUT' },
-          { title: 'Retry Strategy', content: 'Idempotency-Key required for evaluate/confirm endpoints. Client retries: max 2 attempts with exponential backoff (200ms, 600ms).' },
-          { title: 'Performance Targets', content: 'Evaluate endpoint p95 <= 120ms, confirm endpoint p95 <= 220ms, error budget 0.05% monthly.' },
+          { title: 'Auth and Trust Model', content: 'OAuth2 client credentials for channel authorization; mutual TLS for network trust; signed payload header required on write endpoints.' },
+          { title: 'Error Codes', content: 'LIM-401 ineligible account\nLIM-409 policy threshold breached\nLIM-422 fraud escalation\nLIM-504 downstream timeout' },
+          { title: 'Rate Limits', content: 'Evaluate: 200 rpm/channel; Confirm: 120 rpm/channel; History: 300 rpm/channel with burst=50.' },
+          { title: 'Implementation Notes', content: 'Idempotency-Key header mandatory for POST endpoints; keys retained 48h to prevent duplicate processing.' },
         ],
       },
       {
-        name: 'UPI_Limit_Integration_Design.docx',
+        name: 'UPI_Integration_Design.docx',
         fileType: 'docx',
         approvalStatus: 'Pending Review',
         riskRating: 'Medium',
-        generatedBy: 'Architecture Agent',
-        modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'Integration design prepared for payment ecosystem adapters.',
-        executiveSummary:
-          'Integration design defines channel-to-core orchestration and event choreography for near-real-time UPI limit synchronization.',
-        previewContent:
-          'INTEGRATION DESIGN\nSource: Mobile App, Net Banking\nTarget: CBS, Fraud, NPCI Adapter\nPattern: Synchronous decision + async event distribution\nTopics: payments.limit.events.v1',
+        generatedBy: 'Integration Architecture Guild',
+        modelUsed: 'deterministic-architecture-scenario-v2',
+        changeSummary: 'UPI integration blueprint deepened with runtime behavior.',
+        executiveSummary: 'Integration design for synchronous decisioning and asynchronous propagation across NPCI, Core Banking, fraud, and notification services.',
+        previewContent: 'UPI Integration Design\nEntry protocol: REST/JSON over TLS 1.3.\nDownstream protocols: gRPC (fraud), REST (CBS), ISO/UPI adapter (NPCI), Kafka events (notifications/audit).\nRecovery: reconcile_pending queue and replay scheduler.',
         sections: [
-          { title: 'Source Systems', content: 'Mobile Banking Channel, Net Banking Portal, Branch Assisted Service Console.' },
-          { title: 'Target Systems', content: 'Core Banking System, Fraud Monitoring Platform, NPCI UPI Adapter, Notification Hub, Audit Vault.' },
-          { title: 'Integration Pattern', content: 'Request/Response for decisioning + Event-driven fan-out for post-decision synchronization.' },
-          { title: 'Message Flow', content: 'Channel -> API Gateway -> Limit Decision Service -> CBS/Fraud checks -> decision -> Kafka event -> downstream subscribers.' },
-          { title: 'Event Topics', content: 'payments.limit.decisioned.v1\npayments.limit.confirmed.v1\npayments.limit.rejected.v1' },
-          { title: 'Exception Handling', content: 'Compensation for partial update: if CBS update fails after decision, event status=RECONCILE_PENDING and operations alert generated.' },
+          { title: 'Scope', content: 'Covers runtime integration behavior for limit enhancement decision, confirmation, and post-decision synchronization.' },
+          { title: 'Source and Target Systems', content: 'Sources: Mobile Banking, Net Banking.\nTargets: Fraud Engine, Compliance Service, NPCI Adapter, CBS, Notification Hub.' },
+          { title: 'Protocol Mapping', content: 'Ingress REST -> internal gRPC for low-latency checks -> event publication through Kafka for downstream consumers.' },
+          { title: 'Message Contracts', content: 'Domain events: payments.limit.decisioned.v1, payments.limit.confirmed.v1, payments.limit.reconciled.v1.' },
+          { title: 'Retry and Timeout Strategy', content: 'Fraud: timeout 400ms, retry 1.\nCBS: timeout 2s, retry 2.\nNPCI adapter: timeout 3s, retry 2 with jitter.' },
+          { title: 'Idempotency', content: 'Decision and confirmation flows enforce idempotency with request hash + channelId + 24h key retention.' },
+          { title: 'Circuit Breaker Configuration', content: 'Open after 5 consecutive failures in 30s; half-open probes every 20s; fallback path writes reconcile_pending.' },
+          { title: 'Reconciliation', content: 'Scheduler reconciles decision ledger against CBS and NPCI state every hour; unresolved mismatches escalate to operations queue.' },
+          { title: 'Dependencies', content: 'Requires Fraud model v4.3 latency SLA and CBS /limit-update endpoint availability >= 99.9%.' },
+          { title: 'Implementation Notes', content: 'Integration test harness includes synthetic timeout, out-of-order callback, and duplicate message scenarios.' },
         ],
       },
       {
-        name: 'UPI_Limit_Architecture_Review_Report.docx',
-        fileType: 'docx',
-        approvalStatus: 'Pending Review',
-        riskRating: 'Medium',
-        generatedBy: 'Enterprise Architecture Board',
-        modelUsed: 'architecture-review-template-v3',
-        changeSummary: 'Architecture board review report generated.',
-        executiveSummary:
-          'Review confirms target design is aligned to digital payments modernization standards with two risk actions before production cutover.',
-        previewContent:
-          'ARCHITECTURE REVIEW REPORT\nBoard: EA + Risk + Security\nFindings: 7\nDecisions: Proceed with conditions\nActions: 2 high-priority closures',
+        name: 'UPI_Architecture_Diagram.png',
+        fileType: 'png',
+        approvalStatus: 'Draft',
+        riskRating: 'Low',
+        generatedBy: 'Platform Design Visualization',
+        modelUsed: 'deterministic-architecture-scenario-v2',
+        changeSummary: 'UPI system diagram enriched with deployment and protocol context.',
+        executiveSummary: 'Detailed topology diagram describing components, trust zones, protocol paths, and event data flow.',
+        previewContent: '[UPI Architecture Diagram Description]\nZone A (Channel DMZ): Mobile App, Net Banking, API Gateway (HTTPS/TLS).\nZone B (Service Mesh): Limit Decision Service, Redis Policy Cache, Fraud Adapter, Compliance Adapter.\nZone C (Core Integrations): NPCI UPI Adapter (ISO/UPI), CBS Adapter (REST), Notification Hub.\nZone D (Data/Observability): PostgreSQL Decision Ledger, Kafka Event Bus, Audit Vault, Metrics/Tracing stack.\nData Flow: request enters Zone A -> decision orchestration in Zone B -> synchronous checks in Zone C -> decision persisted in Zone D -> notifications/events fan-out.\nResilience Paths: timeout branches routed to reconcile_pending queue; replay processor runs in Zone D.',
         sections: [
-          { title: 'Review Board', content: 'Participants: Head of EA, Payments Architect, Security Architect, Risk Engineering Lead, Production SRE Lead.' },
-          { title: 'Findings', content: 'F-01 Event replay policy required.\nF-02 Cache invalidation control acceptable.\nF-03 Audit signature rotation to be automated.' },
-          { title: 'Decisions', content: 'Decision-1: Approved for SIT.\nDecision-2: Production gated on event replay drill and signature rotation automation.' },
-          { title: 'Risks', content: 'R-High-01 Fraud adapter latency spikes.\nR-Med-02 Cross-region replication lag.' },
-          { title: 'Action Items', content: 'A1: Complete replay drill evidence by 22-Jul.\nA2: Implement key rotation automation by 25-Jul.' },
-          { title: 'Approval Status', content: 'Conditional Approval - Pre-production controls pending closure.' },
+          { title: 'Diagram Legend', content: 'Solid lines = synchronous calls, dashed lines = asynchronous event streams, red edges = failure/retry routes.' },
+          { title: 'Deployment Zones', content: 'Each zone deployed across Mumbai and Hyderabad with independent load balancers and service-mesh policies.' },
         ],
       },
     ],
@@ -237,110 +337,213 @@ const SCENARIOS: Record<ScenarioKey, ArchitectureScenario> = {
     },
     artifacts: [
       {
-        name: 'NPCI_Switch_Solution_Architecture.docx',
+        name: 'NPCI_Integration_Design.docx',
         fileType: 'docx',
         approvalStatus: 'Pending Review',
         riskRating: 'High',
         generatedBy: 'Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'Solution architecture drafted for NPCI switch integration.',
-        executiveSummary:
-          'Solution architecture establishes a decoupled payment orchestration layer with canonical payloads and callback-safe reconciliation.',
-        previewContent:
-          'SOLUTION ARCHITECTURE - NPCI SWITCH INTEGRATION\nCanonical command layer, adapter isolation, callback reconciliation, failover routing.',
+        changeSummary: 'NPCI integration pattern finalized.',
+        executiveSummary: 'Integration design for NPCI switch connectivity with resilient orchestration and deterministic reconciliation.',
+        previewContent: 'NPCI Integration Design\nPattern: REST ingress + ISO8583/UPI switch messaging.\nResilience: idempotency, retries, circuit breaker, timeout policy.',
         sections: [
-          { title: 'Business Context', content: 'UPI transaction growth requires resilient switch integration while preserving transaction integrity and customer trust.' },
-          { title: 'Architecture Overview', content: 'Channel traffic converges at Payment Gateway, then routed through canonical orchestration to Switch Adapter and Settlement Callback Processor.' },
-          { title: 'Logical Components', content: 'Payment Gateway, Canonical Mapper, NPCI Adapter, Retry Coordinator, Callback Processor, Reconciliation Ledger.' },
-          { title: 'Technology Stack', content: 'Java/Kotlin microservices, Kafka streams, PostgreSQL ledger, Redis idempotency cache, gRPC internal contracts.' },
-          { title: 'Non Functional Requirements', content: '99.99% switch integration availability, callback processing < 300ms p95, duplicate debit tolerance = zero.' },
-          { title: 'Deployment View', content: 'Blue-green deployment with canary routing for adapter releases; dual-region hot standby.' },
-          { title: 'Risks', content: 'Callback race conditions, schema drift risk, dependency on external switch SLA.' },
+          { title: 'Document Scope', content: 'Defines bank-side integration pattern for NPCI switch transactions and callback handling.' },
+          { title: 'Architecture Pattern', content: 'REST ingress service with canonical message model translated to ISO8583/UPI switch envelopes.' },
+          { title: 'Ingress API Controls', content: 'Request signing, schema validation, and request-id normalization before switch transmission.' },
+          { title: 'Switch Messaging Strategy', content: 'Message routing by transaction type; ISO8583 mandatory fields plus UPI metadata extension fields.' },
+          { title: 'Retry Policy', content: 'Retry only for transient network/switch timeout responses using 2s, 5s, 10s backoff.' },
+          { title: 'Timeout and Circuit Breakers', content: 'Downstream timeout 2500ms; circuit opens after 5 failures in 30s; half-open probes every 20s.' },
+          { title: 'Idempotency Design', content: 'Bank transaction key + channel + amount hash retained 48h to block duplicate postings.' },
+          { title: 'Reconciliation and Settlement', content: 'Callback event stream reconciled against ingress ledger at 15-minute intervals with mismatch categorization.' },
+          { title: 'Dependencies', content: 'NPCI SLA, settlement service availability, fraud control service for high-value traffic.' },
+          { title: 'Risk Register', content: 'Top risks: callback race conditions, schema drift, deferred settlement callback spikes.' },
+          { title: 'Implementation Notes', content: 'Mandatory chaos tests for callback delay and duplicate callback delivery before production certification.' },
         ],
       },
       {
-        name: 'NPCI_Switch_Integration_Design.docx',
-        fileType: 'docx',
-        approvalStatus: 'Draft',
-        riskRating: 'High',
-        generatedBy: 'Architecture Agent',
-        modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'Detailed integration design defined for switch traffic.',
-        executiveSummary:
-          'Integration design details source-target topology, topic taxonomy, error contracts, and switch outage handling procedures.',
-        previewContent:
-          'INTEGRATION DESIGN\nPattern: Canonical request-response + event callbacks\nTopics: payments.switch.requested.v1, payments.switch.callback.v1',
-        sections: [
-          { title: 'Source Systems', content: 'Mobile Banking, Merchant Acquirer API, Net Banking, Branch Payment Console.' },
-          { title: 'Target Systems', content: 'NPCI Switch, Settlement Engine, Fraud Engine, Customer Notification Service.' },
-          { title: 'Integration Pattern', content: 'Canonical synchronous invocation for authorization + asynchronous callback ingestion for final settlement state.' },
-          { title: 'Message Flow', content: 'Ingress -> canonical map -> switch adapter -> NPCI ack -> callback event -> reconciliation -> customer status update.' },
-          { title: 'Event Topics', content: 'payments.switch.requested.v1\npayments.switch.acknowledged.v1\npayments.switch.callback.v1\npayments.switch.reconciled.v1' },
-          { title: 'Exception Handling', content: 'Out-of-order callbacks are buffered by transaction key; unreconciled states route to exception queue after 90 seconds.' },
-        ],
-      },
-      {
-        name: 'NPCI_Switch_API_Specification.yaml',
+        name: 'NPCI_API_Contract.yaml',
         fileType: 'yaml',
         approvalStatus: 'Draft',
         riskRating: 'Medium',
         generatedBy: 'Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'API contract finalized for switch orchestration endpoints.',
-        executiveSummary:
-          'API contract enforces deterministic request lifecycle, strict idempotency, and callback verification for switch transactions.',
-        previewContent:
-          'openapi: 3.0.3\ninfo:\n  title: NPCI Switch Orchestration API\npaths:\n  /v1/switch/payments\n  /v1/switch/callbacks',
+        changeSummary: 'NPCI-facing API contract documented.',
+        executiveSummary: 'REST-to-switch API contract covering payment initiation, callback intake, and status queries.',
+        previewContent: `openapi: 3.0.3
+info:
+  title: NPCI Switch Integration Contract
+  version: 2.0.0
+  description: Bank gateway APIs for NPCI request routing and callback processing.
+servers:
+  - url: https://api.bank.example/npci
+paths:
+  /v1/npci/payments:
+    post:
+      summary: Submit payment request to NPCI switch
+      x-rate-limit: 300 requests/min per client
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NpciPaymentRequest'
+            example:
+              txnId: TXN-889102
+              payerVpa: user@bank
+              payeeVpa: merchant@upi
+              amount: 1540.25
+              purposeCode: P2M
+      responses:
+        '202':
+          description: Accepted for switch processing
+        '409':
+          description: Duplicate transaction detected
+  /v1/npci/callbacks:
+    post:
+      summary: Receive NPCI callback and update status
+      x-rate-limit: 500 requests/min per sourceIp
+      responses:
+        '200': { description: Callback acknowledged }
+        '422': { description: Invalid callback payload }
+  /v1/npci/status/{txnId}:
+    get:
+      summary: Get consolidated transaction status
+      parameters:
+        - in: path
+          name: txnId
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Consolidated status
+components:
+  schemas:
+    NpciPaymentRequest:
+      type: object
+      required: [txnId, payerVpa, payeeVpa, amount]
+      properties:
+        txnId: { type: string }
+        payerVpa: { type: string }
+        payeeVpa: { type: string }
+        amount: { type: number, format: double }
+        purposeCode: { type: string }
+        channel: { type: string, enum: [MOBILE, NETBANKING, API] }
+    NpciStatusResponse:
+      type: object
+      properties:
+        gatewayStatus: { type: string }
+        switchStatus: { type: string }
+        settlementStatus: { type: string }
+        reasonCode: { type: string }
+    ErrorResponse:
+      type: object
+      properties:
+        code: { type: string }
+        message: { type: string }
+        correlationId: { type: string }`,
         sections: [
-          { title: 'Endpoint Catalog', content: 'POST /v1/switch/payments\nPOST /v1/switch/callbacks\nGET /v1/switch/transactions/{txnId}' },
-          { title: 'Authentication', content: 'mTLS for partner banks, JWT for internal services, signed callback payload verification.' },
-          { title: 'Request Payload', content: '{ txnId, payerVpa, payeeVpa, amount, txnType, timestamp, channelRef }' },
-          { title: 'Response Payload', content: '{ gatewayRef, switchRef, status, settlementStatus, lastUpdatedAt }' },
-          { title: 'Error Codes', content: '422 SWITCH_SCHEMA_INVALID\n425 CALLBACK_NOT_YET_AVAILABLE\n504 SWITCH_TIMEOUT\n409 DUPLICATE_TXN_ID' },
-          { title: 'Retry Strategy', content: 'Gateway retries only for timeout and network exceptions; max 3 attempts with jittered backoff, always idempotent by txnId.' },
-          { title: 'Performance Targets', content: 'Authorization path <= 180ms p95, callback ingestion <= 120ms p95, reconciliation completion <= 2 minutes.' },
+          { title: 'Auth and Access', content: 'mTLS required for all endpoints; JWT service token with npci.write/npci.read scopes for authorized clients.' },
+          { title: 'Error Codes', content: 'NPCI-409 duplicate request\nNPCI-422 callback schema violation\nNPCI-504 switch timeout\nNPCI-507 reconciliation pending' },
+          { title: 'Request/Response Mapping', content: 'REST fields mapped to switch protocol by canonical mapper. Status API normalizes switch + settlement response.' },
+          { title: 'Rate Limits', content: 'Ingress 300 rpm/client; callbacks 500 rpm/source; status queries 900 rpm/client with burst 80.' },
         ],
       },
       {
-        name: 'NPCI_Switch_Risk_Assessment.docx',
-        fileType: 'docx',
-        approvalStatus: 'Pending Review',
-        riskRating: 'High',
-        generatedBy: 'Risk Architecture Office',
-        modelUsed: 'risk-assessment-matrix-v2',
-        changeSummary: 'Risk matrix generated for switch integration design.',
-        executiveSummary:
-          'Risk assessment highlights duplicate transaction and delayed callback exposure, with controls mapped for production readiness.',
-        previewContent:
-          'RISK ASSESSMENT\nRisk Category: Operational + Transaction Integrity\nTop risk: duplicate debit under callback delay.',
+        name: 'NPCI_Sequence_Diagram.png',
+        fileType: 'png',
+        approvalStatus: 'Draft',
+        riskRating: 'Low',
+        generatedBy: 'Architecture Agent',
+        modelUsed: 'deterministic-architecture-scenario',
+        changeSummary: 'End-to-end NPCI transaction sequence documented.',
+        executiveSummary: 'Sequence diagram for request, switch processing, callback, and reconciliation.',
+        previewContent: '[NPCI Sequence Diagram]\nApp -> Gateway -> Mapper -> Switch Adapter -> NPCI\nNPCI callback -> Callback API -> Reconciliation -> Status update',
         sections: [
-          { title: 'Risk Register', content: 'RA-01 Duplicate debit\nRA-02 Callback delay > SLA\nRA-03 Adapter schema mismatch\nRA-04 Monitoring blind spots' },
-          { title: 'Likelihood and Impact', content: 'RA-01: Medium/High\nRA-02: High/Medium\nRA-03: Medium/High\nRA-04: Medium/Medium' },
-          { title: 'Controls', content: 'Idempotency ledger, callback TTL policy, contract tests against NPCI schemas, end-to-end trace IDs.' },
-          { title: 'Residual Risk', content: 'Residual portfolio risk: Medium-High until full callback replay drill is certified.' },
-          { title: 'Control Owners', content: 'Payments Platform Lead, Settlement SRE Lead, Fraud Integration Owner.' },
-          { title: 'Approval Status', content: 'Risk acceptance pending on CAB rehearsal evidence.' },
+          { title: 'Component Interaction', content: 'Actors: Channel App, API Gateway, Canonical Mapper, Switch Adapter, NPCI Switch, Callback Processor, Reconciliation Engine.' },
+          { title: 'Protocol Path', content: 'HTTPS for ingress, ISO8583/UPI over secure tunnel for switch hop, Kafka event stream for reconciliation updates.' },
+          { title: 'Deployment Context', content: 'Gateway and mapper in DMZ app zone; switch adapter in integration zone; reconciliation in data processing zone.' },
+          { title: 'Flow Notes', content: 'Diagram contains success path, timeout retry path, duplicate callback path, and manual exception route.' },
         ],
       },
       {
-        name: 'NPCI_Switch_Architecture_Review_Report.docx',
-        fileType: 'docx',
+        name: 'NPCI_Interface_Mapping.xlsx',
+        fileType: 'xlsx',
         approvalStatus: 'Pending Review',
         riskRating: 'Medium',
-        generatedBy: 'Enterprise Architecture Board',
-        modelUsed: 'architecture-review-template-v3',
-        changeSummary: 'Review report prepared for NPCI switch architecture.',
-        executiveSummary:
-          'Review board accepted architecture direction and requested strict callback reconciliation controls before cutover.',
-        previewContent:
-          'REVIEW REPORT\nDecision: Proceed with controlled pilot\nAction: Complete callback replay certification.',
+        generatedBy: 'Architecture Agent',
+        modelUsed: 'deterministic-architecture-scenario',
+        changeSummary: 'Field-level interface mapping completed.',
+        executiveSummary: 'Interface mapping workbook aligns REST payload fields to switch protocol message positions and validations.',
+        previewContent: `Sheet: RequestMapping (24 rows)
+1 rest.txnId -> iso.field11
+2 rest.amount -> iso.field4
+3 rest.txnTimestamp -> iso.field7
+4 rest.payerVpa -> upi.payerVPA
+5 rest.payeeVpa -> upi.payeeVPA
+6 rest.channel -> iso.field41
+7 rest.deviceId -> upi.deviceFingerprint
+8 rest.customerId -> upi.customerRef
+9 rest.purposeCode -> upi.purpose
+10 rest.note -> upi.remarks
+11 rest.mcc -> iso.field18
+12 rest.bankRef -> iso.field37
+13 rest.geoLat -> upi.geo.lat
+14 rest.geoLon -> upi.geo.lon
+15 rest.ipAddress -> upi.network.ip
+16 rest.appVersion -> upi.client.version
+17 rest.retryCount -> upi.meta.retryCount
+18 rest.idempotencyKey -> upi.meta.idempotencyKey
+19 rest.signature -> upi.security.signature
+20 rest.traceId -> upi.meta.traceId
+21 rest.sessionId -> upi.meta.sessionId
+22 rest.riskScore -> upi.risk.preScore
+23 rest.routingCode -> iso.field32
+24 rest.instrumentType -> upi.instrument
+Sheet: ResponseMapping (20 rows)
+1 iso.responseCode -> api.reasonCode
+2 iso.approvalCode -> api.switchRef
+3 iso.stan -> api.networkStan
+4 iso.rrn -> api.rrn
+5 upi.status -> api.switchStatus
+6 upi.finality -> api.settlementStatus
+7 upi.errorContext -> api.detailMessage
+8 upi.updatedAt -> api.lastUpdatedAt
+9 upi.callbackRef -> api.callbackReference
+10 upi.reconcileFlag -> api.reconcileRequired
+11 upi.fraudFlag -> api.fraudFlag
+12 upi.ruleId -> api.ruleReference
+13 upi.retryAfter -> api.retryAfterMs
+14 upi.routeNode -> api.routeNode
+15 upi.partnerCode -> api.partnerCode
+16 upi.mode -> api.mode
+17 upi.currency -> api.currency
+18 upi.amount -> api.amount
+19 upi.payerRef -> api.payerReference
+20 upi.payeeRef -> api.payeeReference`,
         sections: [
-          { title: 'Review Board', content: 'EA Chair, Payment Switch Architect, Risk Ops, Security Engineering, Production Reliability.' },
-          { title: 'Findings', content: 'Canonical abstraction rated strong.\nRetry policy approved with idempotency guarantees.\nCallback ordering edge case needs production simulation.' },
-          { title: 'Decisions', content: 'Approved for pilot traffic up to 10%.\nFull rollout contingent on reconciliation metrics >= 99.98%.' },
-          { title: 'Risks', content: 'Unreconciled callback backlog in peak windows.' },
-          { title: 'Action Items', content: 'Run chaos test for callback delays.\nPublish settlement reconciliation dashboard for CAB.' },
-          { title: 'Approval Status', content: 'Conditional Approval - Pilot allowed.' },
+          { title: 'Validation Rules', content: 'Field-level constraints include mandatory, type, max length, regex, and checksum validators for payment identity fields.' },
+          { title: 'Mapping Governance', content: 'Mapping sheet versioned with backward compatibility status and effective-from date per row.' },
+        ],
+      },
+      {
+        name: 'NPCI_Error_Handling.docx',
+        fileType: 'docx',
+        approvalStatus: 'Draft',
+        riskRating: 'High',
+        generatedBy: 'Architecture Agent',
+        modelUsed: 'deterministic-architecture-scenario',
+        changeSummary: 'Error and exception playbook defined for NPCI traffic.',
+        executiveSummary: 'Error handling playbook for switch errors, callback failures, and reconciliation exceptions.',
+        previewContent: 'NPCI Error Handling\nClasses: network_timeout, switch_reject, callback_mismatch, duplicate_txn.\nActions: retry, quarantine, escalate, reconcile.',
+        sections: [
+          { title: 'Purpose', content: 'Defines deterministic error classification, response actions, and operator playbooks for NPCI transaction failures.' },
+          { title: 'Error Domains', content: 'Transport, switch-business, callback-validation, reconciliation, and dependency-failure domains.' },
+          { title: 'Error Taxonomy', content: 'E-NET-01 timeout\nE-NET-02 connection reset\nE-SW-04 business reject\nE-CB-02 callback mismatch\nE-RCN-07 reconciliation gap' },
+          { title: 'Automated Recovery Rules', content: 'Transient transport errors retry with bounded backoff; duplicate requests return cached outcome without reprocessing.' },
+          { title: 'Manual Recovery Procedures', content: 'Unresolved reconciliation gaps > 30 minutes routed to L2 operations with transaction replay checklist.' },
+          { title: 'Escalation Matrix', content: 'P1: payment stuck > 10 min\nP2: callback mismatch cluster > 50 txns\nP3: non-critical mapping anomalies.' },
+          { title: 'Monitoring Signals', content: 'Timeout rate, duplicate suppression rate, callback mismatch ratio, reconciliation backlog depth.' },
+          { title: 'Dependencies', content: 'Requires SIEM integration, incident ticketing API, and replay tooling for affected transaction windows.' },
+          { title: 'Implementation Notes', content: 'Error response contract is immutable for v2; new error classes require governance approval.' },
         ],
       },
     ],
@@ -383,110 +586,127 @@ const SCENARIOS: Record<ScenarioKey, ArchitectureScenario> = {
     },
     artifacts: [
       {
-        name: 'Biometric_Login_Security_Architecture.docx',
+        name: 'Biometric_Security_Architecture.docx',
         fileType: 'docx',
         approvalStatus: 'Pending Review',
         riskRating: 'Medium',
         generatedBy: 'Security Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'Security architecture baseline created for biometric login.',
-        executiveSummary:
-          'Architecture defines secure biometric login flow with cryptographic proofing, session hardening, and adaptive risk response.',
-        previewContent:
-          'SECURITY ARCHITECTURE\nBiometric assertion -> attestation check -> risk score -> session issue / step-up.',
+        changeSummary: 'Security architecture authored for biometric login.',
+        executiveSummary: 'Biometric security architecture with FIDO2/WebAuthn, device binding, MFA fallback, and token hardening.',
+        previewContent: 'Biometric Security Architecture\nFlow: WebAuthn assertion -> attestation -> risk decision -> token issue.\nSecurity: hardware-backed keys, JWE sessions, SIEM telemetry.',
         sections: [
-          { title: 'Business Context', content: 'Bank requires lower login friction while reducing account takeover incidents in mobile channels.' },
-          { title: 'Architecture Overview', content: 'Mobile app captures platform biometric assertion; Identity Gateway verifies attestation and risk before issuing short-lived session token.' },
-          { title: 'Logical Components', content: 'Identity Gateway, Biometric Assertion Validator, Device Attestation Service, Adaptive Risk Engine, Session Manager, SIEM Audit Pipeline.' },
-          { title: 'Technology Stack', content: 'FIDO2/WebAuthn, JWT + JWE tokens, HSM-backed key management, Redis session state, SIEM forwarding via Kafka.' },
-          { title: 'Non Functional Requirements', content: 'Auth p95 <= 1.6s, 99.99% auth service availability, zero biometric template storage, audit event SLA <= 5s.' },
-          { title: 'Deployment View', content: 'IAM cluster in dual region; attestation verification service isolated in security subnet; centralized policy service.' },
-          { title: 'Risks', content: 'Rooted device spoofing, false positives from aggressive risk score, fallback OTP interception attempts.' },
+          { title: 'Scope', content: 'Covers biometric login for mobile banking and high-risk fallback controls.' },
+          { title: 'Security Assumptions', content: 'Platform authenticators are hardware-backed; device attestation evidence is available at login time.' },
+          { title: 'Authentication Architecture', content: 'FIDO2/WebAuthn assertion validated by Identity Gateway, then risk-scored before token issuance.' },
+          { title: 'Device Binding Model', content: 'Device public key fingerprint linked to customer identity; mismatch triggers step-up MFA and security event.' },
+          { title: 'MFA and Challenge Policy', content: 'Adaptive MFA invoked for anomalous geolocation, unusual device posture, or high-value account profiles.' },
+          { title: 'Token Lifecycle', content: 'Short-lived access tokens, rotating refresh tokens, and emergency revocation propagation to edge caches.' },
+          { title: 'Encryption and Key Management', content: 'JWE for token payloads; HSM-managed key hierarchy; quarterly key rotation with dual-control approvals.' },
+          { title: 'Audit and Forensics', content: 'Every auth decision logged with correlation ID, risk signal vector, and policy decision reference.' },
+          { title: 'Compliance Alignment', content: 'Mapped to RBI cyber framework, internal IAM baseline, and privacy consent controls.' },
+          { title: 'Risks and Mitigations', content: 'Rooted-device spoofing mitigated by attestation hard-fail; fallback abuse mitigated by velocity controls and SOC monitoring.' },
         ],
       },
       {
-        name: 'Biometric_Login_LLD.docx',
+        name: 'Threat_Model.docx',
         fileType: 'docx',
         approvalStatus: 'Draft',
-        riskRating: 'Medium',
+        riskRating: 'High',
         generatedBy: 'Security Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'LLD documented for biometric auth implementation.',
-        executiveSummary:
-          'LLD defines biometric verification components, trust boundaries, token lifecycle, and security telemetry mappings.',
-        previewContent:
-          'LLD\nComponents: AssertionValidator, RiskScorer, SessionIssuer\nFlows: biometric success, fallback MFA, risk-block.',
+        changeSummary: 'STRIDE threat model completed.',
+        executiveSummary: 'Threat model for biometric login using STRIDE with mitigation ownership and residual risk classification.',
+        previewContent: 'Threat Model (STRIDE)\nSpoofing: device cloning\nTampering: assertion replay\nRepudiation: missing event trace\nInfo Disclosure: token theft\nDoS: auth flood\nElevation: fallback abuse',
         sections: [
-          { title: 'Component Design', content: 'AssertionValidator verifies signed biometric assertions.\nRiskScorer computes auth risk using device, geo, and behavioral attributes.\nSessionIssuer creates bound access tokens.' },
-          { title: 'Interfaces', content: 'POST /v1/auth/biometric/verify\nPOST /v1/auth/mfa/challenge\nPOST /v1/auth/session/issue' },
-          { title: 'Database Design', content: 'auth_event_log, device_binding_registry, session_token_ledger (hashed token refs only).' },
-          { title: 'Sequence Flow', content: 'Biometric verify -> attestation check -> risk score -> allow/step-up/block -> session token issue -> SIEM log.' },
-          { title: 'Error Handling', content: 'BIO-403 attestation failed\nBIO-409 risk threshold exceeded\nBIO-429 challenge throttled\nBIO-498 fallback exhausted' },
-          { title: 'Configuration', content: 'Risk policy versioned by segment; threshold profiles: retail, premium, high-net-worth.' },
+          { title: 'Methodology', content: 'Threat analysis executed using STRIDE with attack tree overlays for credential abuse paths.' },
+          { title: 'Assets in Scope', content: 'Authentication assertions, token service, risk engine, IAM policies, audit telemetry pipeline.' },
+          { title: 'Spoofing Threats', content: 'Device clone and synthetic assertion attempts; mitigated by attestation verification and nonce checks.' },
+          { title: 'Tampering Threats', content: 'Request payload manipulation mitigated by signed request envelopes and schema strict mode.' },
+          { title: 'Repudiation Threats', content: 'Non-repudiation ensured through immutable audit signatures and synchronized timestamps.' },
+          { title: 'Information Disclosure', content: 'Token leakage risks reduced via JWE encryption, short token TTL, and secure enclave storage.' },
+          { title: 'Denial of Service', content: 'Bot-driven auth flooding countered by adaptive rate limiting and progressive challenge response.' },
+          { title: 'Elevation of Privilege', content: 'Fallback path abuse constrained through RBAC policy checks and anomaly-triggered hard blocks.' },
+          { title: 'Residual Risk Summary', content: 'Residual risks: medium for social-engineering fallback; low for replay after nonce enforcement.' },
         ],
       },
       {
-        name: 'Biometric_Login_API_Specification.yaml',
-        fileType: 'yaml',
+        name: 'Authentication_Flow.png',
+        fileType: 'png',
         approvalStatus: 'Draft',
         riskRating: 'Low',
         generatedBy: 'Security Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'API specification authored for biometric auth services.',
-        executiveSummary:
-          'API specification formalizes biometric verification and MFA fallback contracts with strict security controls.',
-        previewContent:
-          'openapi: 3.0.3\ninfo:\n  title: Biometric Authentication API\npaths:\n  /v1/auth/biometric/verify\n  /v1/auth/mfa/challenge',
+        changeSummary: 'Authentication flow diagram rendered.',
+        executiveSummary: 'Sequence diagram for biometric login, risk evaluation, MFA branch, and session issue path.',
+        previewContent: '[Authentication Flow]\nApp -> Identity Gateway -> Attestation Service -> Risk Engine -> Token Service\nFallback branch -> MFA Service -> Token Service',
         sections: [
-          { title: 'Endpoint Catalog', content: 'POST /v1/auth/biometric/verify\nPOST /v1/auth/mfa/challenge\nPOST /v1/auth/session/issue' },
-          { title: 'Authentication', content: 'Mutual TLS + signed device assertion, nonce validation, and per-device token binding.' },
-          { title: 'Request Payload', content: '{ deviceId, assertionBlob, attestationToken, appVersion, nonce, channel }' },
-          { title: 'Response Payload', content: '{ authDecision, riskScore, challengeRequired, sessionToken, expiresAt }' },
-          { title: 'Error Codes', content: '401 INVALID_ASSERTION\n403 ATTESTATION_FAILED\n409 RISK_BLOCKED\n429 CHALLENGE_RATE_LIMIT' },
-          { title: 'Retry Strategy', content: 'No automatic retry for verification failure; challenge endpoint allows controlled retries with progressive cool-off.' },
-          { title: 'Performance Targets', content: 'Verify endpoint <= 1.6s p95, challenge endpoint <= 700ms p95.' },
+          { title: 'Flow Description', content: 'Step 1 biometric assertion capture; Step 2 device attestation validation; Step 3 risk score computation; Step 4 allow/challenge/deny decision; Step 5 token issuance and audit log write.' },
+          { title: 'Protocols and Trust', content: 'HTTPS/TLS for channel ingress, mTLS for internal IAM calls, signed challenge tokens for MFA continuation.' },
+          { title: 'Deployment Zones', content: 'Client zone, IAM ingress zone, security control zone, and audit/analytics zone with unidirectional event ingestion.' },
+          { title: 'Failure Branches', content: 'Diagram includes attestation failure, risk-block branch, challenge timeout branch, and SOC escalation path.' },
         ],
       },
       {
-        name: 'Biometric_Login_Risk_Assessment.docx',
-        fileType: 'docx',
-        approvalStatus: 'Pending Review',
-        riskRating: 'High',
-        generatedBy: 'Cyber Security Office',
-        modelUsed: 'security-risk-matrix-v4',
-        changeSummary: 'Security risk assessment completed for biometric login.',
-        executiveSummary:
-          'Risk assessment identifies residual exposure around compromised device posture and recommends compensating controls before go-live.',
-        previewContent:
-          'RISK ASSESSMENT\nThreats: device compromise, replay attack, credential stuffing fallback.\nResidual Risk: Medium.',
-        sections: [
-          { title: 'Threat Model', content: 'Attack vectors: rooted/jailbroken device, replay of signed assertion, SIM swap before OTP fallback.' },
-          { title: 'Controls Evaluation', content: 'Current controls: attestation, nonce validation, token binding, adaptive risk.\nGaps: fallback monitoring granularity, device health revocation window.' },
-          { title: 'Risk Scoring', content: 'Likelihood/Impact:\nCompromised device spoof: M/H\nReplay assertion: L/H\nFallback abuse: M/M' },
-          { title: 'Mitigations', content: 'Add jailbreak intelligence feed, enforce stricter OTP fallback window, integrate behavioral anomaly scoring.' },
-          { title: 'Residual Risk', content: 'Residual risk classified Medium, acceptable with control closure in Sprint 28.' },
-          { title: 'Approval Status', content: 'Pending CISO and IAM governance sign-off.' },
-        ],
-      },
-      {
-        name: 'Biometric_Login_Architecture_Review_Report.docx',
+        name: 'IAM_Policy.docx',
         fileType: 'docx',
         approvalStatus: 'Pending Review',
         riskRating: 'Medium',
-        generatedBy: 'Architecture Review Board',
-        modelUsed: 'architecture-review-template-v3',
-        changeSummary: 'Review board report captured for security architecture.',
-        executiveSummary:
-          'Review board validated design principles and mandated production telemetry baselines for fraud analytics.',
-        previewContent:
-          'REVIEW REPORT\nDecision: Approved for controlled rollout.\nCondition: telemetry dashboards and fallback controls live before launch.',
+        generatedBy: 'Security Architecture Agent',
+        modelUsed: 'deterministic-architecture-scenario',
+        changeSummary: 'IAM policy set aligned for biometric rollout.',
+        executiveSummary: 'IAM policy baseline including RBAC, privileged session constraints, and emergency break-glass governance.',
+        previewContent: 'IAM Policy\nRoles: customer, support-agent, fraud-analyst, IAM-admin.\nRBAC + ABAC constraints with region and channel context.',
         sections: [
-          { title: 'Review Board', content: 'CISO delegate, IAM Lead, Mobile Platform Architect, Fraud Engineering Manager.' },
-          { title: 'Findings', content: 'Strong zero-template storage posture.\nAttestation pipeline robust.\nFallback OTP policy needs stricter abuse thresholds.' },
-          { title: 'Decisions', content: 'Approve phased launch (5%, 25%, 100%) with fraud watchpoints.' },
-          { title: 'Risks', content: 'Risk of user friction increase if fallback triggers exceed 8%.' },
-          { title: 'Action Items', content: 'Deploy fallback abuse dashboard.\nFinalize privacy notice update.\nRun red-team replay simulation.' },
-          { title: 'Approval Status', content: 'Conditional approval granted.' },
+          { title: 'Policy Scope', content: 'IAM policy controls for biometric login, fallback authentication, support access, and privileged administration.' },
+          { title: 'Role Catalog', content: 'Roles: retail_customer, assisted_banking_agent, fraud_analyst, iam_policy_admin, security_auditor.' },
+          { title: 'Permission Matrix', content: 'Each role mapped to explicit actions on auth sessions, challenge flows, and customer lock/unlock operations.' },
+          { title: 'ABAC Conditions', content: 'Conditional checks on channel, geolocation risk tier, and device posture for privileged operations.' },
+          { title: 'Privileged Access Governance', content: 'Break-glass access requires dual approval and automatic expiry within 60 minutes.' },
+          { title: 'Session Governance', content: 'High-risk policy edits require step-up auth and immutable change history capture.' },
+          { title: 'Audit Controls', content: 'Policy mutation events streamed to SIEM; monthly attestation report generated for IAM governance board.' },
+          { title: 'Compliance Notes', content: 'Aligned to internal IAM standard 5.2 and enterprise segregation-of-duties controls.' },
+        ],
+      },
+      {
+        name: 'Security_Control_Matrix.xlsx',
+        fileType: 'xlsx',
+        approvalStatus: 'Draft',
+        riskRating: 'Medium',
+        generatedBy: 'Security Architecture Agent',
+        modelUsed: 'deterministic-architecture-scenario',
+        changeSummary: 'Control matrix mapped to implementation checkpoints.',
+        executiveSummary: 'Security control matrix linking biometric threats, technical controls, test cases, and compliance checkpoints.',
+        previewContent: `Sheet: ControlMatrix (24 rows)
+1 CTRL-01 Preventive WebAuthn attestation
+2 CTRL-02 Preventive Device binding
+3 CTRL-03 Preventive Signed nonce validation
+4 CTRL-04 Preventive Token encryption at rest
+5 CTRL-05 Preventive Token rotation policy
+6 CTRL-06 Preventive mTLS internal auth calls
+7 CTRL-07 Detective Impossible travel detection
+8 CTRL-08 Detective Login velocity anomaly
+9 CTRL-09 Detective Device fingerprint drift
+10 CTRL-10 Detective MFA challenge abuse monitor
+11 CTRL-11 Detective IAM policy mutation alert
+12 CTRL-12 Detective Session hijack heuristic
+13 CTRL-13 Corrective Session revocation API
+14 CTRL-14 Corrective Forced credential reset
+15 CTRL-15 Corrective Device quarantine
+16 CTRL-16 Corrective Account lock with escalation
+17 CTRL-17 Governance Monthly entitlement review
+18 CTRL-18 Governance Policy dual-approval
+19 CTRL-19 Governance Break-glass logging
+20 CTRL-20 Compliance RBI control mapping
+21 CTRL-21 Compliance Privacy consent evidence
+22 CTRL-22 Compliance Audit signature retention
+23 CTRL-23 Resilience IAM failover drill
+24 CTRL-24 Resilience SIEM pipeline health
+Sheet: EvidenceRefs (20 rows)
+1 TEST-AUTH-001 ... 20 TEST-AUTH-020`,
+        sections: [
+          { title: 'Coverage Summary', content: 'Matrix links each control to STRIDE threat category, owner team, test evidence ID, and residual risk score.' },
+          { title: 'Control Governance', content: 'Control status reviewed every release; high-risk controls require explicit security board sign-off.' },
         ],
       },
     ],
@@ -535,102 +755,129 @@ const SCENARIOS: Record<ScenarioKey, ArchitectureScenario> = {
         riskRating: 'Medium',
         generatedBy: 'Data Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'Entity model and dictionary prepared for settlement domain.',
-        executiveSummary:
-          'Data model defines settlement entities, cardinality, retention classes, and lineage attributes required for payout control and audit.',
-        previewContent:
-          'DATA MODEL\nEntities: settlement_batch, payout_instruction, reconciliation_break, merchant_account, fee_component, settlement_event.',
+        changeSummary: 'Merchant settlement entity model finalized.',
+        executiveSummary: 'Entity model for settlement processing with lineage and retention attributes.',
+        previewContent: `Sheet: EntityDictionary (32 rows)
+1 settlement_batch.batch_id PK uuid
+2 settlement_batch.merchant_id FK uuid
+3 settlement_batch.batch_date date
+4 settlement_batch.gross_amount decimal(18,2)
+5 settlement_batch.net_amount decimal(18,2)
+6 settlement_batch.currency char(3)
+7 settlement_batch.status varchar(20)
+8 settlement_batch.created_at timestamp
+9 settlement_batch.closed_at timestamp
+10 merchant_account.id PK uuid
+11 merchant_account.merchant_code varchar(30)
+12 merchant_account.legal_name varchar(150)
+13 merchant_account.settlement_cycle varchar(20)
+14 merchant_account.bank_account_masked varchar(30)
+15 merchant_account.risk_tier varchar(10)
+16 payout_instruction.id PK uuid
+17 payout_instruction.batch_id FK uuid
+18 payout_instruction.amount decimal(18,2)
+19 payout_instruction.payout_mode varchar(20)
+20 payout_instruction.payout_status varchar(20)
+21 payout_instruction.settlement_ref varchar(40)
+22 reconciliation_break.id PK uuid
+23 reconciliation_break.batch_id FK uuid
+24 reconciliation_break.break_reason varchar(80)
+25 reconciliation_break.break_amount decimal(18,2)
+26 reconciliation_break.status varchar(20)
+27 fee_component.id PK uuid
+28 fee_component.batch_id FK uuid
+29 fee_component.fee_code varchar(20)
+30 fee_component.fee_amount decimal(18,2)
+31 fee_component.tax_amount decimal(18,2)
+32 lineage_event.source_event_id varchar(64)
+Sheet: RelationshipMap
+merchant_account 1..N settlement_batch
+settlement_batch 1..N payout_instruction
+settlement_batch 1..N reconciliation_break
+settlement_batch 1..N fee_component`,
         sections: [
-          { title: 'Entity Model', content: 'Core entities: merchant_account, settlement_batch, payout_instruction, payout_line_item, reconciliation_break, fee_component, settlement_event.' },
-          { title: 'Relationships', content: 'merchant_account 1..N settlement_batch\nsettlement_batch 1..N payout_instruction\npayout_instruction 1..N payout_line_item\nsettlement_batch 1..N reconciliation_break' },
-          { title: 'Data Dictionary', content: 'settlement_batch.batch_id (PK)\nsettlement_batch.net_amount_inr\npayout_instruction.status\nreconciliation_break.reason_code\nsettlement_event.event_ts_utc' },
-          { title: 'Retention', content: 'Operational store: 13 months\nReconciliation evidence: 7 years\nAudit archive (WORM): 10 years' },
-          { title: 'Lineage', content: 'Each payout_line_item references source transaction_id and ingest_event_id to ensure full backward traceability.' },
+          { title: 'Normalization Approach', content: 'Core operational schema modeled in 3NF; denormalized read projections built separately for reporting use cases.' },
+          { title: 'Retention Policy', content: 'Operational partitions retained 13 months; compliance archive retained 10 years with immutable lock.' },
+          { title: 'Lineage Controls', content: 'Every payout row stores source_event_id and ingest_offset for backward traceability into ingest stream.' },
         ],
       },
       {
-        name: 'Merchant_Settlement_Integration_Design.docx',
+        name: 'Merchant_ER_Diagram.png',
+        fileType: 'png',
+        approvalStatus: 'Draft',
+        riskRating: 'Low',
+        generatedBy: 'Data Architecture Agent',
+        modelUsed: 'deterministic-architecture-scenario',
+        changeSummary: 'ER diagram generated for settlement schema.',
+        executiveSummary: 'ER diagram visualizing settlement entities, cardinalities, and dependency edges.',
+        previewContent: '[Merchant ER Diagram]\nmerchant_account 1..N settlement_batch 1..N payout_instruction\nsettlement_batch 1..N reconciliation_break\nsettlement_batch 1..N fee_component',
+        sections: [
+          { title: 'Diagram Description', content: 'Entities: merchant_account, settlement_batch, payout_instruction, reconciliation_break, fee_component, settlement_event.\nEdges show PK/FK cardinality and lifecycle dependencies.' },
+          { title: 'Deployment Context', content: 'Operational DB in primary data zone; read replicas in analytics zone; archive service in compliance zone.' },
+          { title: 'Data Flow Notes', content: 'Ingested transactions aggregate into settlement_batch, then fan-out into payout and reconciliation entities.' },
+        ],
+      },
+      {
+        name: 'Merchant_Data_Dictionary.docx',
         fileType: 'docx',
         approvalStatus: 'Pending Review',
         riskRating: 'Medium',
         generatedBy: 'Data Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'Integration blueprint completed for settlement data flows.',
-        executiveSummary:
-          'Integration design aligns ingestion, reconciliation, and payout publication with event contracts and operational controls.',
-        previewContent:
-          'INTEGRATION DESIGN\nPattern: event sourcing + periodic netting windows\nTopics: settlement.ingested.v1, settlement.netted.v1, settlement.payout.ready.v1',
+        changeSummary: 'Data dictionary completed for settlement schema.',
+        executiveSummary: 'Column-level dictionary for settlement entities, data types, and business semantics.',
+        previewContent: 'Data Dictionary\nsettlement_batch.batch_status (varchar20)\npayout_instruction.payout_mode (varchar20)\nreconciliation_break.break_reason (varchar50)\nfee_component.fee_amount (decimal18,2)',
         sections: [
-          { title: 'Source Systems', content: 'Merchant transaction ingest, fee calculator, dispute management, tax computation service.' },
-          { title: 'Target Systems', content: 'Settlement engine, payout processor, finance GL posting, compliance archive.' },
-          { title: 'Integration Pattern', content: 'Event-sourced settlement stream with deterministic netting windows and reconciliation checkpoints.' },
-          { title: 'Message Flow', content: 'Ingest event -> settlement aggregation -> fee/tax enrichment -> net payout event -> payout processor -> GL posting.' },
-          { title: 'Event Topics', content: 'settlement.ingested.v1\nsettlement.enriched.v1\nsettlement.netted.v1\nsettlement.payout.ready.v1' },
-          { title: 'Exception Handling', content: 'Late events route to adjustment queue; reconciliation break tickets auto-created with impacted merchant and batch IDs.' },
+          { title: 'Document Scope', content: 'Defines semantic meaning, data type, constraints, ownership, and quality rules for settlement schema attributes.' },
+          { title: 'Domain Glossary', content: 'Settlement batch, payout instruction, reconciliation break, fee component, finality state, posting reference.' },
+          { title: 'Attribute Standards', content: 'Naming conventions, nullable policy, timezone standard (UTC), currency precision standards.' },
+          { title: 'Key Fields', content: 'batch_id, merchant_id, payout_status, break_reason, settlement_ref, source_event_id, lineage_version.' },
+          { title: 'Validation Rules', content: 'Monetary fields > 0, status enumerations constrained, timestamp monotonicity checks per lifecycle stage.' },
+          { title: 'Ownership Matrix', content: 'Data owner by field family: Operations, Finance, Risk, Reconciliation Engineering.' },
+          { title: 'Data Quality Checks', content: 'Completeness > 99.8%, referential integrity = 100%, duplicate payout instruction tolerance = 0.' },
+          { title: 'Retention and Purge', content: 'Operational table TTL policy plus controlled archive compaction with legal hold exceptions.' },
+          { title: 'Implementation Notes', content: 'Dictionary version increment required for any new regulatory reporting field additions.' },
         ],
       },
       {
-        name: 'Merchant_Settlement_API_Specification.yaml',
-        fileType: 'yaml',
+        name: 'Merchant_Database_Design.docx',
+        fileType: 'docx',
+        approvalStatus: 'Pending Review',
+        riskRating: 'Medium',
+        generatedBy: 'Data Architecture Agent',
+        modelUsed: 'deterministic-architecture-scenario',
+        changeSummary: 'Physical database design authored.',
+        executiveSummary: 'Database design for settlement workloads with index, partition, and maintenance strategy.',
+        previewContent: 'Database Design\nIndexes: idx_batch_date, idx_merchant_status, idx_break_open.\nPartitions: settlement_batch by settlement_date monthly.\nStorage: hot PG cluster + archive object store.',
+        sections: [
+          { title: 'Physical Schema Scope', content: 'Covers DDL design, index strategy, partitioning, and storage lifecycle for settlement write-heavy workloads.' },
+          { title: 'Table Design', content: 'Primary tables optimized for append-heavy ingest and bounded update paths during reconciliation closures.' },
+          { title: 'Primary and Foreign Keys', content: 'Strict PK/FK constraints enforce lineage integrity from merchant_account through payout and reconciliation artifacts.' },
+          { title: 'Index Strategy', content: 'Composite indexes for merchant/date and batch/status; selective partial index for open reconciliation breaks.' },
+          { title: 'Partitioning Plan', content: 'Monthly range partitions on settlement_date; subpartition by merchant hash for high-volume merchants.' },
+          { title: 'Storage and Archival', content: 'Hot OLTP storage for active partitions; archived partitions offloaded to immutable object storage.' },
+          { title: 'Performance Baselines', content: 'Target: payout lookup p95 < 150ms, reconciliation query p95 < 280ms under peak cycle load.' },
+          { title: 'Dependencies', content: 'Requires CDC pipeline, schema registry governance, and archival lifecycle orchestration service.' },
+          { title: 'Risk Notes', content: 'Risk: skewed merchant partitions. Mitigation: adaptive partition balancing and query plan telemetry.' },
+          { title: 'Implementation Notes', content: 'DDL migration order strictly sequenced: base tables -> constraints -> indexes -> partition automation jobs.' },
+        ],
+      },
+      {
+        name: 'Merchant_Data_Flow.png',
+        fileType: 'png',
         approvalStatus: 'Draft',
         riskRating: 'Low',
         generatedBy: 'Data Architecture Agent',
         modelUsed: 'deterministic-architecture-scenario',
-        changeSummary: 'Settlement API contract defined for merchant and operations consumers.',
-        executiveSummary:
-          'API specification provides operational and merchant-facing contracts for settlement status, payout details, and reconciliation visibility.',
-        previewContent:
-          'openapi: 3.0.3\ninfo:\n  title: Merchant Settlement API\npaths:\n  /v1/settlement/batches\n  /v1/settlement/payouts/{payoutId}',
+        changeSummary: 'Data flow diagram published for settlement lifecycle.',
+        executiveSummary: 'Data flow from transaction ingestion to settlement posting, reconciliation, and compliance archive.',
+        previewContent: '[Merchant Data Flow]\nIngest Stream -> Settlement Aggregator -> Fee Engine -> Payout Builder -> GL Posting\n                             \\-> Reconciliation -> Break Queue -> Ops Dashboard',
         sections: [
-          { title: 'Endpoint Catalog', content: 'GET /v1/settlement/batches\nGET /v1/settlement/payouts/{payoutId}\nGET /v1/settlement/reconciliation/breaks' },
-          { title: 'Authentication', content: 'OAuth2 for internal ops users, signed JWT for merchant portal integrations, scope-based authorization.' },
-          { title: 'Request Payload', content: 'Filter fields: merchantId, batchDate, payoutStatus, settlementMode.' },
-          { title: 'Response Payload', content: 'Batch summary, payout breakdown, fee/tax components, reconciliation status, lineage reference IDs.' },
-          { title: 'Error Codes', content: '404 BATCH_NOT_FOUND\n409 BATCH_STILL_PROCESSING\n422 INVALID_MERCHANT_SCOPE\n503 SETTLEMENT_READ_MODEL_STALE' },
-          { title: 'Retry Strategy', content: 'Read APIs support safe retries with ETag validation; stale read responses include retry-after headers.' },
-          { title: 'Performance Targets', content: 'Batch list <= 220ms p95, payout detail <= 180ms p95, reconciliation list <= 300ms p95.' },
-        ],
-      },
-      {
-        name: 'Merchant_Settlement_Technology_Standards.docx',
-        fileType: 'docx',
-        approvalStatus: 'Pending Review',
-        riskRating: 'Low',
-        generatedBy: 'Enterprise Standards Office',
-        modelUsed: 'standards-catalog-v2',
-        changeSummary: 'Technology standards mapping created for settlement platform.',
-        executiveSummary:
-          'Standards mapping aligns settlement data platform with enterprise approved patterns for storage, messaging, and governance.',
-        previewContent:
-          'TECHNOLOGY STANDARDS\nStorage: PostgreSQL 15 + object archive\nMessaging: Kafka with schema registry\nGovernance: data classification level C2.',
-        sections: [
-          { title: 'Approved Platforms', content: 'Kafka 3.x, PostgreSQL 15, Debezium CDC, object storage with immutable lock policies.' },
-          { title: 'Data Governance Standards', content: 'PII masking in analytics copies, tokenized merchant identifiers for support tooling, C2 classification policy compliance.' },
-          { title: 'Reliability Standards', content: 'Dual-region recovery, CDC lag alarms <= 30 seconds, data quality checks before payout finalization.' },
-          { title: 'Security Standards', content: 'At-rest encryption via KMS, in-transit TLS 1.3, row-level access controls for financial operations users.' },
-          { title: 'Observability Standards', content: 'Lineage events exported to enterprise catalog, settlement run metrics to unified monitoring dashboards.' },
-          { title: 'Approval Status', content: 'Standards conformant; minor waiver requested for temporary legacy GL adapter.' },
-        ],
-      },
-      {
-        name: 'Merchant_Settlement_Modernization_Roadmap.docx',
-        fileType: 'docx',
-        approvalStatus: 'Draft',
-        riskRating: 'Medium',
-        generatedBy: 'Data Transformation Office',
-        modelUsed: 'roadmap-template-v3',
-        changeSummary: 'Modernization roadmap produced for settlement domain.',
-        executiveSummary:
-          'Roadmap phases migration from batch-heavy settlement processing to event-native architecture with full lineage and compliance observability.',
-        previewContent:
-          'MODERNIZATION ROADMAP\nPhase 1 canonical model\nPhase 2 event-native reconciliation\nPhase 3 real-time payout insights',
-        sections: [
-          { title: 'Phase Plan', content: 'Phase 1 (Q3): Canonical entity rollout.\nPhase 2 (Q4): Event-native reconciliation.\nPhase 3 (Q1): Real-time merchant payout analytics.' },
-          { title: 'Capability Milestones', content: 'Milestone-1 Batch-to-event adapter complete.\nMilestone-2 Reconciliation break automation >= 85%.\nMilestone-3 Self-service merchant settlement dashboard live.' },
-          { title: 'Investment and Outcomes', content: 'Estimated program spend: INR 6.8 Cr.\nExpected annual savings: INR 2.4 Cr via manual reconciliation reduction.' },
-          { title: 'Risk and Mitigation', content: 'Risk: legacy GL integration delay.\nMitigation: phased adapter parallel run for two cycle windows.' },
-          { title: 'Governance Gates', content: 'Gate A: Data governance clearance.\nGate B: Operations readiness.\nGate C: Finance and compliance sign-off.' },
-          { title: 'Approval Status', content: 'Draft for steering committee review.' },
+          { title: 'Data Flow Description', content: 'Transaction ingest stream enters aggregation service, enriched by fee/tax calculators, emitted to payout builder, then posted to GL and archive.' },
+          { title: 'Component Connectivity', content: 'Kafka topics link ingest, settlement aggregation, reconciliation processor, and reporting readers.' },
+          { title: 'Protocol and Format', content: 'Avro messages with schema registry compatibility; internal REST for control operations; JDBC for OLTP writes.' },
+          { title: 'Zones and Boundaries', content: 'Ingest zone, processing zone, storage zone, analytics zone, and compliance archive zone shown in layered topology.' },
+          { title: 'Flow Guarantees', content: 'Exactly-once for payout command stream; at-least-once for observability streams with dedupe at consumer edge.' },
         ],
       },
     ],
@@ -647,19 +894,19 @@ function normalizePrompt(prompt: string): string {
 
 export function matchArchitectureScenario(prompt: string): ArchitectureScenario {
   const n = normalizePrompt(prompt);
-  if (n === normalizePrompt(PROMPTS[0]) || (n.includes('upi') && n.includes('limit'))) {
+  if (n === normalizePrompt(PROMPTS[0])) {
     return SCENARIOS['upi-limit-enhancement'];
   }
-  if (n === normalizePrompt(PROMPTS[1]) || (n.includes('npci') && n.includes('switch'))) {
+  if (n === normalizePrompt(PROMPTS[1])) {
     return SCENARIOS['npci-switch-integration'];
   }
-  if (n === normalizePrompt(PROMPTS[2]) || (n.includes('biometric') && n.includes('login'))) {
+  if (n === normalizePrompt(PROMPTS[2])) {
     return SCENARIOS['biometric-login-security'];
   }
-  if (n === normalizePrompt(PROMPTS[3]) || (n.includes('merchant') && n.includes('settlement'))) {
+  if (n === normalizePrompt(PROMPTS[3])) {
     return SCENARIOS['merchant-settlement-data-model'];
   }
-  return SCENARIOS['upi-limit-enhancement'];
+  throw new Error(`Unsupported Architecture prompt: ${prompt}`);
 }
 
 export function getArchitectureScenarioAnalysis(prompt: string): AnalysisResult {

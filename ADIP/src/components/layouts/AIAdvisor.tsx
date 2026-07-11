@@ -16,7 +16,7 @@ export function AIAdvisor() {
     refreshIntervalMs,
   } = useSimulation();
   const [input, setInput] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const inChatMode = querySession !== null;
 
   const handleAsk = (text: string) => {
