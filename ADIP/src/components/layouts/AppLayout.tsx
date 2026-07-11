@@ -237,7 +237,7 @@ export function AppLayout() {
         sx={{
           flex: 1,
           ml: `${layout.sidebarWidth}px`,
-          mr: `${layout.aiAdvisorWidth}px`,
+          mr: 0,
           mt: `${layout.topBarHeight + layout.demoBannerHeight}px`,
           p: 2,
           pb: 6,
@@ -255,7 +255,7 @@ export function AppLayout() {
           position: 'fixed',
           bottom: 0,
           left: layout.sidebarWidth,
-          right: layout.aiAdvisorWidth,
+          right: 0,
           height: 32,
           display: 'flex',
           alignItems: 'center',

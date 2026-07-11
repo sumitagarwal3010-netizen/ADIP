@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Box, Typography, Button, TextField, Chip } from '@mui/material';
+import { Box, Typography, Button, TextField, Chip, IconButton } from '@mui/material';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import SendIcon from '@mui/icons-material/Send';
+import CloseIcon from '@mui/icons-material/Close';
 import { motion } from 'framer-motion';
 import { colors } from '../../theme/colors';
 import { layout } from '../../theme/theme';
@@ -15,6 +16,7 @@ export function AIAdvisor() {
     refreshIntervalMs,
   } = useSimulation();
   const [input, setInput] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const inChatMode = querySession !== null;
 
   const handleAsk = (text: string) => {
@@ -30,27 +32,56 @@ export function AIAdvisor() {
   };
 
   return (
-    <Box
-      component={motion.aside}
-      initial={{ x: 20, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.4, delay: 0.1 }}
-      sx={{
-        width: layout.aiAdvisorWidth,
-        minWidth: layout.aiAdvisorWidth,
-        height: `calc(100vh - ${layout.demoBannerHeight}px)`,
-        position: 'fixed',
-        right: 0,
-        top: layout.demoBannerHeight,
-        zIndex: 1200,
-        background: `linear-gradient(180deg, ${colors.bg.tertiary} 0%, ${colors.bg.primary} 100%)`,
-        borderLeft: `1px solid ${colors.border.subtle}`,
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-      }}
-    >
-      <Box sx={{ p: 2, borderBottom: `1px solid ${colors.border.subtle}` }}>
+    <>
+      <Box
+        component="button"
+        type="button"
+        aria-label="Open AI Advisor"
+        onClick={() => setIsOpen(true)}
+        sx={{
+          position: 'fixed',
+          right: 20,
+          bottom: 44,
+          width: 52,
+          height: 52,
+          borderRadius: '50%',
+          border: 'none',
+          zIndex: 1350,
+          cursor: 'pointer',
+          display: isOpen ? 'none' : 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#fff',
+          background: `linear-gradient(135deg, ${colors.secondary} 0%, ${colors.primary} 100%)`,
+          boxShadow: `0 0 20px ${colors.secondary}66`,
+        }}
+      >
+        <SmartToyIcon sx={{ fontSize: 24 }} />
+      </Box>
+
+      {isOpen && (
+        <Box
+          component={motion.aside}
+          initial={{ x: layout.aiAdvisorWidth, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: layout.aiAdvisorWidth, opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          sx={{
+            width: layout.aiAdvisorWidth,
+            minWidth: layout.aiAdvisorWidth,
+            height: `calc(100vh - ${layout.demoBannerHeight}px)`,
+            position: 'fixed',
+            right: 0,
+            top: layout.demoBannerHeight,
+            zIndex: 1300,
+            background: `linear-gradient(180deg, ${colors.bg.tertiary} 0%, ${colors.bg.primary} 100%)`,
+            borderLeft: `1px solid ${colors.border.subtle}`,
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+          }}
+        >
+          <Box sx={{ p: 2, borderBottom: `1px solid ${colors.border.subtle}` }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Box
             sx={{
@@ -72,6 +103,14 @@ export function AIAdvisor() {
               Operations Query Console · Live
             </Typography>
           </Box>
+          <IconButton
+            size="small"
+            aria-label="Close AI Advisor"
+            onClick={() => setIsOpen(false)}
+            sx={{ ml: 'auto', color: colors.text.secondary }}
+          >
+            <CloseIcon sx={{ fontSize: 18 }} />
+          </IconButton>
         </Box>
       </Box>
 
@@ -239,6 +278,8 @@ export function AIAdvisor() {
           Auto-refresh {refreshIntervalMs / 1000}s · Tick #{state.tick}
         </Typography>
       </Box>
-    </Box>
+        </Box>
+      )}
+    </>
   );
 }
