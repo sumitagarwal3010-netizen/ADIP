@@ -7,8 +7,27 @@ import { HorizontalBarChart } from '../charts/HorizontalBarChart';
 import { useTechnologyStrategy } from '../../context/TechnologyStrategyContext';
 import { colors } from '../../theme/colors';
 
+/** Category health % — varied lengths / realistic banking tech labels. */
+const CATEGORY_HEALTH = [
+  { name: 'Payments APIs', value: 86 },
+  { name: 'Core Banking', value: 71 },
+  { name: 'Data / Analytics', value: 64 },
+  { name: 'Integration / MQ', value: 48 },
+  { name: 'Security / IAM', value: 79 },
+  { name: 'AI / ML Platforms', value: 57 },
+];
+
+/** Lifecycle posture % — varied, not identical bars. */
+const LIFECYCLE_POSTURE = [
+  { name: 'Strategic / Preferred', value: 34 },
+  { name: 'Approved', value: 22 },
+  { name: 'Emerging', value: 11 },
+  { name: 'Legacy', value: 18 },
+  { name: 'Deprecated / EOS', value: 15 },
+];
+
 export function ExecutiveTechnologyDashboardPanel() {
-  const { kpis, roadmap, byCategory, lifecycleDist } = useTechnologyStrategy();
+  const { kpis, roadmap } = useTechnologyStrategy();
 
   return (
     <Box>
@@ -46,8 +65,8 @@ export function ExecutiveTechnologyDashboardPanel() {
         </Grid>
         <Grid size={{ xs: 12, md: 5 }}>
           <GlassCard sx={{ p: 2 }}>
-            <ModuleHeader title="Technologies by Category" subtitle="200 technologies" />
-            <HorizontalBarChart chartId="technology-strategy.technology-health" data={byCategory} height={220} barColor={colors.info} />
+            <ModuleHeader title="Platform Health by Domain" subtitle="CIO posture % — varied estate health" />
+            <HorizontalBarChart chartId="technology-strategy.technology-health" data={CATEGORY_HEALTH} height={220} barColor={colors.info} />
           </GlassCard>
         </Grid>
       </Grid>
@@ -55,8 +74,8 @@ export function ExecutiveTechnologyDashboardPanel() {
       <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 12, md: 6 }}>
           <GlassCard sx={{ p: 2 }}>
-            <ModuleHeader title="Technology Lifecycle Distribution" subtitle="emerging → strategic → retired" />
-            <HorizontalBarChart chartId="technology-strategy.technology-debt" data={lifecycleDist} height={200} barColor={colors.warning} />
+            <ModuleHeader title="Technology Lifecycle Posture" subtitle="Share of estate by lifecycle band %" />
+            <HorizontalBarChart chartId="technology-strategy.technology-debt" data={LIFECYCLE_POSTURE} height={200} barColor={colors.warning} />
           </GlassCard>
         </Grid>
       </Grid>

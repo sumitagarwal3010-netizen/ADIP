@@ -14,10 +14,10 @@ import { useEnterpriseRisk } from '../context/EnterpriseRiskContext';
 import { computeAiGovernanceKpis } from '../data/aiUseCaseRegistryMock';
 import { MODEL_INVENTORY, AI_RISKS, AI_CONTROLS, computeAIControlsKpis } from '../data/aiGovernanceModulesMock';
 import { computeEvaluationScores } from '../data/aiEvaluationMock';
-import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
+import { CioAdvisorCockpit } from '../components/executive/CioAdvisorCockpit';
 
 export function ExecutiveControlTower() {
-  const { executive, dynamicInsights, aiGovernance } = useFilteredSimulation();
+  const { dynamicInsights, aiGovernance } = useFilteredSimulation();
   const { workflows } = useWorkflow();
   const { kpis: copilotKpis } = useCopilot();
   const { kpis: valueKpis } = useValueRealization();
@@ -25,7 +25,14 @@ export function ExecutiveControlTower() {
   const { kpis: ermKpis } = useEnterpriseRisk();
   const navigate = useNavigate();
 
-  const strategicPriorities = executive.scorecard.slice(0, 5);
+  // Varied CIO scorecard bars — realistic banking tech focus areas (not identical lengths).
+  const strategicPriorities = [
+    { label: 'UPI / Payments Stability', value: 78 },
+    { label: 'Release Confidence', value: 64 },
+    { label: 'Regulatory Posture', value: 91 },
+    { label: 'Modernization Progress', value: 52 },
+    { label: 'Investment Efficiency', value: 71 },
+  ];
   const recentDecisions = workflows.slice(0, 6);
 
   // Enterprise AI Health — compact rollup from existing AI governance + evaluation data.
@@ -43,8 +50,8 @@ export function ExecutiveControlTower() {
 
   return (
     <Box>
-      <AIWorkspacePanel module="executive" number={1} />
-      <Grid container spacing={1.5}>
+      <CioAdvisorCockpit advisor="executive" defaultPromptId="cio-briefing" />
+      <Grid container spacing={1.5} sx={{ mt: 0.5 }}>
         <Grid size={{ xs: 6, md: 3 }}>
           <KpiCard label="Delivery Health" value={copilotKpis.deliveryHealth} suffix="%" trend={2.4} chartId="copilot.delivery-health" delay={0} />
         </Grid>
