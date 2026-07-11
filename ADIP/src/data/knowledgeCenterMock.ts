@@ -13,6 +13,7 @@ import type {
   ReusableControl,
   SdlcPlaybook,
 } from '../types/knowledgeCenter';
+import { telemetryScore } from './enterpriseTelemetry';
 
 const DOMAINS = ['Payments', 'Mobile Banking', 'Net Banking', 'Cards', 'Enterprise'] as const;
 const APPS = ['UPI Gateway', 'Payment Switch', 'Fraud Engine', 'Mobile SDK', 'Net Banking Portal', 'Card Processor', 'AML Engine', 'KYC Service'];
@@ -101,7 +102,7 @@ export const BEST_PRACTICES: BestPractice[] = Array.from({ length: 150 }, (_, i)
       'Run architecture review for cross-domain changes',
     ], i),
     owner: pick(OWNERS, i),
-    adoptionRate: 40 + (i % 55),
+    adoptionRate: telemetryScore(`kc:bp-adopt:${i}`),
     tags: [domain, pick(TAGS, i)],
   };
 });
@@ -199,7 +200,7 @@ export const REUSABLE_CONTROLS: ReusableControl[] = Array.from({ length: 100 }, 
   description: `Reusable ${pick(CONTROL_TYPES, i)} control for ${pick(DOMAINS, i)} domain.`,
   framework: pick(FRAMEWORKS, i),
   reuseCount: 8 + (i % 45),
-  effectiveness: 70 + (i % 28),
+  effectiveness: telemetryScore(`kc:ctrl-eff:${i}`),
 }));
 
 export const LEARNING_RECOMMENDATIONS: LearningRecommendation[] = Array.from({ length: 60 }, (_, i) => {

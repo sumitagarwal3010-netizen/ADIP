@@ -17,6 +17,7 @@ import type {
   ReferenceArchitecture,
   TechnologyPlatform,
 } from '../types/architectureRepository';
+import { generateRealisticSeries, telemetryInRange, telemetryScore } from './enterpriseTelemetry';
 
 const DOMAINS = ['business', 'application', 'data', 'integration', 'technology', 'security', 'cloud', 'infrastructure', 'ai', 'reference'] as const;
 const CAPABILITY_AREAS = [
@@ -58,10 +59,10 @@ export const ARCH_CAPABILITIES: BusinessCapability[] = Array.from({ length: 100 
   id: `CAP-${String(i + 1).padStart(3, '0')}`,
   name: `${pick(CAPABILITY_AREAS, i)} — ${pick(CAPABILITY_NAMES, i)}`,
   domainArea: pick(CAPABILITY_AREAS, i),
-  maturity: 45 + (i % 50),
+  maturity: telemetryScore(`arch:mat:${i}`),
   applicationCount: 2 + (i % 8),
   criticality: pick(RISK, i),
-  architectureHealth: 55 + (i % 42),
+  architectureHealth: telemetryScore(`arch:health:${i}`),
 }));
 
 export const ARCH_APPLICATIONS: ArchitectureApplication[] = Array.from({ length: 300 }, (_, i) => {
@@ -73,10 +74,10 @@ export const ARCH_APPLICATIONS: ArchitectureApplication[] = Array.from({ length:
     domain: pick(DOMAINS, i),
     complianceState: pick(COMPLIANCE, i),
     lifecycle: pick(LIFECYCLE, i),
-    cloudReadiness: 30 + (i % 65),
-    aiReadiness: 25 + (i % 70),
-    architectureRisk: 20 + (i % 70),
-    standardsAdherence: 50 + (i % 48),
+    cloudReadiness: telemetryScore(`arch:cloud:${i}`),
+    aiReadiness: telemetryScore(`arch:ai:${i}`),
+    architectureRisk: telemetryInRange(`arch:risk:${i}`, 12, 92),
+    standardsAdherence: telemetryScore(`arch:adh:${i}`),
   };
 });
 
@@ -132,7 +133,7 @@ export const ARCH_CLOUD_SERVICES: CloudService[] = Array.from({ length: 50 }, (_
   name: `${pick(CLOUD_SERVICES, i)} ${Math.floor(i / CLOUD_SERVICES.length) + 1}`,
   provider: pick(['AWS', 'Azure', 'GCP', 'Private Cloud'] as const, i),
   category: pick(['compute', 'storage', 'database', 'serverless', 'networking', 'analytics'], i),
-  adoptionLevel: 30 + (i % 65),
+  adoptionLevel: telemetryScore(`arch:cld-adopt:${i}`),
   approved: i % 4 !== 0,
 }));
 
@@ -141,30 +142,30 @@ export const ARCH_STANDARDS: ArchitectureStandard[] = Array.from({ length: 100 }
   name: `${pick(STD_CATEGORIES, i)} Standard ${(i % 15) + 1}`,
   domain: pick(DOMAINS, i),
   category: pick(STD_CATEGORIES, i),
-  adoptionRate: 50 + (i % 48),
+  adoptionRate: telemetryScore(`arch:std:${i}`),
   mandatory: i % 2 === 0,
 }));
 
 export const ARCH_PRINCIPLES: ArchitecturePrinciple[] = [
   { id: 'PRIN-01', name: 'API-First', domain: 'integration', statement: 'All capabilities exposed through standardized, versioned APIs.', adherence: 78 },
   { id: 'PRIN-02', name: 'Cloud-Native by Default', domain: 'cloud', statement: 'New workloads are designed for cloud elasticity and resilience.', adherence: 64 },
-  { id: 'PRIN-03', name: 'Secure by Design', domain: 'security', statement: 'Security controls embedded from design through production.', adherence: 82 },
-  { id: 'PRIN-04', name: 'Data as an Asset', domain: 'data', statement: 'Data is governed, classified, and reused across the bank.', adherence: 71 },
-  { id: 'PRIN-05', name: 'Buy over Build', domain: 'application', statement: 'Prefer proven platforms over bespoke development.', adherence: 68 },
-  { id: 'PRIN-06', name: 'Event-Driven Integration', domain: 'integration', statement: 'Loose coupling through events for real-time banking.', adherence: 59 },
-  { id: 'PRIN-07', name: 'Reusable Reference Architectures', domain: 'reference', statement: 'Solutions align to approved reference architectures.', adherence: 66 },
-  { id: 'PRIN-08', name: 'Responsible AI', domain: 'ai', statement: 'AI solutions are explainable, governed, and auditable.', adherence: 61 },
+  { id: 'PRIN-03', name: 'Secure by Design', domain: 'security', statement: 'Security controls embedded from design through production.', adherence: 93 },
+  { id: 'PRIN-04', name: 'Data as an Asset', domain: 'data', statement: 'Data is governed, classified, and reused across the bank.', adherence: 68 },
+  { id: 'PRIN-05', name: 'Buy over Build', domain: 'application', statement: 'Prefer proven platforms over bespoke development.', adherence: 51 },
+  { id: 'PRIN-06', name: 'Event-Driven Integration', domain: 'integration', statement: 'Loose coupling through events for real-time banking.', adherence: 44 },
+  { id: 'PRIN-07', name: 'Reusable Reference Architectures', domain: 'reference', statement: 'Solutions align to approved reference architectures.', adherence: 71 },
+  { id: 'PRIN-08', name: 'Responsible AI', domain: 'ai', statement: 'AI solutions are explainable, governed, and auditable.', adherence: 86 },
 ];
 
 export const ARCH_REFERENCE_ARCHITECTURES: ReferenceArchitecture[] = [
   { id: 'REF-01', name: 'Real-Time Payments Reference', domain: 'integration', adoptionRate: 72, applicationsAligned: 28 },
   { id: 'REF-02', name: 'Cloud-Native Microservices', domain: 'cloud', adoptionRate: 61, applicationsAligned: 44 },
-  { id: 'REF-03', name: 'Secure API Gateway Pattern', domain: 'security', adoptionRate: 80, applicationsAligned: 52 },
+  { id: 'REF-03', name: 'Secure API Gateway Pattern', domain: 'security', adoptionRate: 93, applicationsAligned: 52 },
   { id: 'REF-04', name: 'Data Lakehouse Reference', domain: 'data', adoptionRate: 55, applicationsAligned: 19 },
   { id: 'REF-05', name: 'AML/Fraud Streaming Reference', domain: 'ai', adoptionRate: 48, applicationsAligned: 14 },
-  { id: 'REF-06', name: 'Mobile Banking BFF Pattern', domain: 'application', adoptionRate: 69, applicationsAligned: 33 },
-  { id: 'REF-07', name: 'Zero-Trust Network Reference', domain: 'infrastructure', adoptionRate: 57, applicationsAligned: 22 },
-  { id: 'REF-08', name: 'GenAI Assistant Reference', domain: 'ai', adoptionRate: 41, applicationsAligned: 9 },
+  { id: 'REF-06', name: 'Mobile Banking BFF Pattern', domain: 'application', adoptionRate: 81, applicationsAligned: 33 },
+  { id: 'REF-07', name: 'Zero-Trust Network Reference', domain: 'infrastructure', adoptionRate: 39, applicationsAligned: 22 },
+  { id: 'REF-08', name: 'GenAI Assistant Reference', domain: 'ai', adoptionRate: 27, applicationsAligned: 9 },
 ];
 
 export const ARCH_REVIEWS: ArchitectureReview[] = Array.from({ length: 100 }, (_, i) => {
@@ -177,7 +178,7 @@ export const ARCH_REVIEWS: ArchitectureReview[] = Array.from({ length: 100 }, (_
     status: pick(REVIEW_STATUS, i),
     submittedBy: pick(['Solution Architect', 'App Owner', 'Domain Architect', 'Platform Lead'], i),
     reviewer: pick(['Chief Architect', 'Security Architect', 'Cloud Architect', 'Data Architect'], i),
-    complianceScore: 50 + (i % 48),
+    complianceScore: telemetryScore(`arch:rev:${i}`),
     submittedAt: `2025-${String((i % 12) + 1).padStart(2, '0')}-${String((i % 28) + 1).padStart(2, '0')}`,
   };
 });
@@ -234,14 +235,21 @@ export const ARCH_DEBT_ITEMS: ArchitectureDebtItem[] = Array.from({ length: 150 
   };
 });
 
+const archHealthSeries = generateRealisticSeries(5, 'arch-history-health');
+const archStdSeries = [38, 52, 49, 77, 84];
+const archDebtSeries = generateRealisticSeries(5, 'arch-history-debt');
+const archCloudSeries = generateRealisticSeries(5, 'arch-history-cloud');
+const archAiSeries = generateRealisticSeries(5, 'arch-history-ai');
+const archRefSeries = generateRealisticSeries(5, 'arch-history-ref');
+
 export const ARCH_HISTORY: ArchitectureHistoryPoint[] = ['2021', '2022', '2023', '2024', '2025'].map((year, i) => ({
   year,
-  architectureHealth: 58 + i * 5,
-  standardsCompliance: 60 + i * 6,
-  architectureDebt: 62 - i * 5,
-  cloudReadiness: 32 + i * 11,
-  aiReadiness: 24 + i * 12,
-  referenceAdoption: 38 + i * 8,
+  architectureHealth: archHealthSeries[i],
+  standardsCompliance: archStdSeries[i],
+  architectureDebt: archDebtSeries[i],
+  cloudReadiness: archCloudSeries[i],
+  aiReadiness: archAiSeries[i],
+  referenceAdoption: archRefSeries[i],
 }));
 
 export const ARCH_TRACEABILITY_CHAINS: ArchitectureTraceabilityChain[] = [
@@ -259,7 +267,7 @@ export const ARCH_TRACEABILITY_CHAINS: ArchitectureTraceabilityChain[] = [
 
 export const ARCHITECTURE_REPOSITORY_EXEC_SUMMARY =
   'Enterprise Architecture Repository is the authoritative system of record across 100 business capabilities, 300 applications, 200 integrations, and 50 technology platforms. ' +
-  'Architecture health: 78% · Standards compliance: 72% · Architecture debt index: 38 · Reference architecture adoption: 62%. ' +
-  'Cloud readiness: 66% · AI readiness: 60% · 18 platforms flagged end-of-support/end-of-life. ' +
+  'Secure-by-Design adherence leads at 93% while Event-Driven Integration sits at 44% and GenAI reference adoption is only 27%. ' +
+  'Zero-Trust reference adoption is weak at 39%; Observability-linked standards remain a gap. ' +
   'Architecture Review Board has 24 reviews in queue, 31 open findings, and 14 active exceptions. ' +
-  'AI advisors recommend modernizing 22 platforms, retiring 9 non-compliant integrations, and aligning 28 applications to approved reference architectures.';
+  'AI advisors recommend lifting Event-Driven and GenAI reference adoption, and remediating non-compliant integrations before new cloud builds.';

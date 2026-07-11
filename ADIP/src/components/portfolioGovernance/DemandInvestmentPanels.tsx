@@ -1,7 +1,8 @@
 import { Box, Typography } from '@mui/material';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
-import { HorizontalBarChart } from '../charts/HorizontalBarChart';
+import { FunnelChart } from '../charts/FunnelChart';
+import { EnterpriseBarChart } from '../charts/EnterpriseBarChart';
 import { usePortfolioGovernance } from '../../context/PortfolioGovernanceContext';
 import { colors } from '../../theme/colors';
 
@@ -12,7 +13,7 @@ export function DemandPipelinePanel() {
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Demand Intake Pipeline" subtitle={`${demands.length} demand requests across 5 business units`} />
-        <HorizontalBarChart chartId="portfolio-governance.demand-backlog" data={demandPipeline} height={200} barColor={colors.secondary} />
+        <FunnelChart chartId="portfolio-governance.demand-backlog" data={demandPipeline} height={240} barColor={colors.secondary} />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Top Prioritized Demands" subtitle="Demand Prioritization Copilot ranking" />
@@ -60,7 +61,15 @@ export function InvestmentGovernancePanel() {
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Investment Governance" subtitle={`Funding utilization: ${kpis.fundingUtilization}%`} />
-        <HorizontalBarChart chartId="portfolio-governance.funding-utilization" data={fundingByPortfolio} height={200} barColor={colors.primary} />
+        <EnterpriseBarChart
+          chartId="portfolio-governance.funding-utilization"
+          data={fundingByPortfolio}
+          height={240}
+          barColor={colors.primary}
+          defaultTarget={80}
+          dynamicScale
+          highlightOutliers
+        />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Recent Funding Decisions" />

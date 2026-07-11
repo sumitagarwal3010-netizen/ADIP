@@ -690,10 +690,11 @@ function deriveGovernance(prev, d, derived) {
   next.policyCompliance = round(clamp(99 - sev.critical * 3 - sev.high * 1, 78, 99), 0);
   next.topFindings = d.activeFindings.slice(0, 6).map((f) => ({ ...f }));
   next.complianceStandards = [
-    { name: 'NPCI UPI Guidelines', score: round(clamp(95 - countActive(d.activeIncidents, 'upi') * 2 - sev.critical * 2, 75, 98), 0) },
-    { name: 'PCI-DSS', score: round(clamp(94 - sev.high * 1.5, 78, 98), 0) },
-    { name: 'RBI IT Framework', score: round(clamp(96 - sev.critical * 2, 80, 99), 0) },
-    { name: 'ISO 27001', score: round(clamp(97 - sev.medium * 0.5, 88, 99), 0) },
+    { name: 'RBI', score: round(clamp(96 - sev.critical * 1.5, 88, 98), 0) },
+    { name: 'SEBI', score: round(clamp(88 - sev.high * 1.2, 72, 94), 0) },
+    { name: 'IRDAI', score: round(clamp(73 - sev.medium * 0.8, 55, 82), 0) },
+    { name: 'CERT-In', score: round(clamp(94 - sev.critical * 1.2, 84, 97), 0) },
+    { name: 'FIU', score: round(clamp(61 - sev.high * 1.5, 42, 72), 0) },
   ];
   // refresh latest audit-trail entry to reflect current condition
   next.auditTrail = [
@@ -878,8 +879,9 @@ function buildInsights(prev, d, derived, channels) {
     insights.push(`Escaped defects climbing (${d.escapedDefects}) — delivery score at ${round(derived.deliveryHealth, 0)}%, change failure rate elevated.`);
   }
   if (insights.length === 0) {
-    insights.push(`Operations telemetry stable at simulated ${formatSimTime(d.simHour)} — no material cascades this cycle.`);
-    insights.push(`Payments running at ${round(peakLoad(d.simHour) * 100, 0)}% of peak load.`);
+    insights.push('Observability maturity remains weak at 49% — prioritize telemetry coverage before next release wave.');
+    insights.push('FIU compliance remains below target at 61%; GCP adoption is lagging at 48%.');
+    insights.push('Security remains strongest at 93%; Treasury modernization is blocked at 41%.');
   }
   return insights.slice(0, 5);
 }

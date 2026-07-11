@@ -110,11 +110,15 @@ export function rcaBySource() {
 }
 
 export function adoptionTrend() {
+  // Uneven monthly adoption — not a staircase.
+  const lessons = [41, 58, 55, 82, 79, 88];
+  const playbooks = [33, 47, 61, 49, 72, 68];
+  const controls = [52, 39, 66, 71, 44, 81];
   return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((month, i) => ({
     month,
-    lessons: 20 + i * 5,
-    playbooks: 15 + i * 4,
-    controls: 12 + i * 3,
+    lessons: lessons[i],
+    playbooks: playbooks[i],
+    controls: controls[i],
   }));
 }
 

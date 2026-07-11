@@ -1,55 +1,50 @@
-import { Box, Typography } from '@mui/material';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
+import { EnterpriseBarChart } from './EnterpriseBarChart';
 import { colors } from '../../theme/colors';
-import { useSimulation } from '../../context/SimulationContext';
 
 interface HorizontalBarChartProps {
-  data: { name: string; value: number }[];
+  data: { name: string; value: number; target?: number; previous?: number }[];
   height?: number;
   barColor?: string;
   chartId?: string;
+  /** Override value suffix. Auto-detects counts when max > 100. */
+  suffix?: string;
+  showTarget?: boolean;
+  defaultTarget?: number;
+  dynamicScale?: boolean;
 }
 
-export function HorizontalBarChart({ data, height = 160, barColor = colors.primary, chartId }: HorizontalBarChartProps) {
-  const { openKpiDrilldown } = useSimulation();
-
-  const handleBarClick = (barData: { payload?: { name: string; value: number } }) => {
-    if (!chartId || !barData?.payload) return;
-    const { name, value } = barData.payload;
-    openKpiDrilldown({
-      chartId,
-      segment: name,
-      label: name,
-      value,
-      suffix: '%',
-    });
-  };
+/**
+ * Compatibility wrapper — all HorizontalBarChart call sites now render
+ * EnterpriseBarChart (labels, dynamic scale, targets, trends, outliers).
+ */
+export function HorizontalBarChart({
+  data,
+  height = 160,
+  barColor = colors.primary,
+  chartId,
+  suffix,
+  showTarget,
+  defaultTarget,
+  dynamicScale = true,
+}: HorizontalBarChartProps) {
+  const maxVal = data.reduce((m, d) => Math.max(m, d.value), 0);
+  const resolvedSuffix = suffix ?? (maxVal > 100 ? '' : '%');
+  // Counts / ₹M charts: no % target line unless caller opts in.
+  const resolvedShowTarget = showTarget ?? resolvedSuffix === '%';
 
   return (
-    <Box sx={{ height, cursor: chartId ? 'pointer' : 'default' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} layout="vertical" margin={{ left: 0, right: 16, top: 0, bottom: 0 }}>
-          <XAxis type="number" domain={[0, 100]} hide />
-          <YAxis
-            type="category"
-            dataKey="name"
-            width={110}
-            tick={{ fill: colors.text.secondary, fontSize: 11 }}
-            axisLine={false}
-            tickLine={false}
-          />
-          <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={14} onClick={handleBarClick}>
-            {data.map((_, i) => (
-              <Cell key={i} fill={barColor} fillOpacity={0.85 - i * 0.05} />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-      {data.map((d) => (
-        <Typography key={d.name} variant="caption" sx={{ display: 'none' }}>
-          {d.value}%
-        </Typography>
-      ))}
-    </Box>
+    <EnterpriseBarChart
+      data={data}
+      height={height}
+      barColor={barColor}
+      chartId={chartId}
+      suffix={resolvedSuffix}
+      showTarget={resolvedShowTarget}
+      defaultTarget={defaultTarget ?? 80}
+      dynamicScale={dynamicScale}
+      showLabels
+      showTrend={resolvedSuffix === '%'}
+      highlightOutliers
+    />
   );
 }

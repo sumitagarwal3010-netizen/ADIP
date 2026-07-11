@@ -9,6 +9,7 @@ import type {
   RiskObservation,
 } from '../types/copilot';
 import { WORKFLOW_ORCHESTRATION_MOCK } from './workflowOrchestrationMock';
+import { telemetryScore } from './enterpriseTelemetry';
 
 const DOMAINS = ['Payments', 'Mobile Banking', 'Net Banking', 'Cards', 'Enterprise'];
 const STAGES = ['requirements', 'architecture', 'development', 'testing', 'release', 'production'];
@@ -26,7 +27,7 @@ function hoursAgo(h: number): string {
 
 export const COPILOT_PROJECTS: CopilotProject[] = Array.from({ length: 50 }, (_, i) => {
   const wf = WORKFLOW_ORCHESTRATION_MOCK[i % WORKFLOW_ORCHESTRATION_MOCK.length];
-  const health = 55 + (i % 40);
+  const health = telemetryScore(`copilot:health:${i}`);
   const deliveryRisk = Math.max(10, 100 - health + (i % 15));
   return {
     id: `PRJ-${String(i + 1).padStart(3, '0')}`,
@@ -37,7 +38,7 @@ export const COPILOT_PROJECTS: CopilotProject[] = Array.from({ length: 50 }, (_,
     stage: pick(STAGES, i),
     healthScore: health,
     deliveryRisk,
-    testingRisk: Math.min(95, 30 + (i % 50)),
+    testingRisk: telemetryScore(`copilot:test-risk:${i}`),
     auditRisk: Math.min(95, 25 + ((i * 3) % 55)),
     releaseRisk: Math.min(95, 20 + ((i * 5) % 60)),
     executiveSummary: `Project health at ${health}% with elevated ${deliveryRisk > 60 ? 'delivery' : 'testing'} risk in ${pick(DOMAINS, i)}.`,

@@ -1,18 +1,40 @@
 import { Box, Typography } from '@mui/material';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
+import { HeatmapGrid } from '../charts/HeatmapGrid';
+import { EnterpriseBarChart } from '../charts/EnterpriseBarChart';
 import { HorizontalBarChart } from '../charts/HorizontalBarChart';
 import { useEnterpriseRisk } from '../../context/EnterpriseRiskContext';
 import { colors } from '../../theme/colors';
 
 export function EnterpriseRiskRegisterPanel() {
   const { byBusinessUnit, topRisks, kpis } = useEnterpriseRisk();
+  const columns = ['Inherent', 'Residual', 'Appetite'];
+  const rowLabels = byBusinessUnit.map((b) => b.name);
+  const rows = byBusinessUnit.map((b) => {
+    const residual = b.value;
+    const inherent = Math.min(98, residual + 12);
+    const appetite = Math.max(20, 100 - residual);
+    return [inherent, residual, appetite];
+  });
 
   return (
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Enterprise Risk Register" subtitle={`500 risks · exposure ${kpis.enterpriseRiskExposure}/100 · residual ${kpis.residualRisk}/100`} />
-        <HorizontalBarChart chartId="enterprise-risk.enterprise-risk-exposure" data={byBusinessUnit} height={180} barColor={colors.info} />
+        <HeatmapGrid chartId="enterprise-risk.enterprise-risk-exposure" rows={rows} columns={columns} rowLabels={rowLabels} />
+      </GlassCard>
+      <GlassCard sx={{ p: 2, mb: 1.5 }}>
+        <ModuleHeader title="Risk Posture by Business Unit" />
+        <EnterpriseBarChart
+          chartId="enterprise-risk.enterprise-risk-exposure"
+          data={byBusinessUnit}
+          height={200}
+          barColor={colors.info}
+          defaultTarget={70}
+          dynamicScale
+          highlightOutliers
+        />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Top Residual Risks" />

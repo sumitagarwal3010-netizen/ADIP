@@ -11,6 +11,11 @@ import type {
   TechTraceabilityChain,
   VendorProduct,
 } from '../types/technologyStrategy';
+import {
+  generateRealisticSeries,
+  telemetryInRange,
+  telemetryScore,
+} from './enterpriseTelemetry';
 
 const CATEGORIES = ['language', 'framework', 'database', 'middleware', 'integration', 'cloud', 'ai-ml', 'security', 'observability', 'infrastructure'] as const;
 const LIFECYCLE = ['emerging', 'approved', 'preferred', 'strategic', 'legacy', 'deprecated', 'end-of-support', 'retired'] as const;
@@ -33,17 +38,39 @@ function pick<T>(arr: readonly T[], i: number): T {
   return arr[i % arr.length];
 }
 
+/** Provider-level cloud adoption anchors (enterprise multi-cloud reality). */
+const CLOUD_PROVIDER_ADOPTION: Record<string, number> = {
+  AWS: 89,
+  Azure: 66,
+  GCP: 48,
+  'Private Cloud': 81,
+};
+
+/** Category-level standards adoption anchors. */
+const STANDARDS_CATEGORY_ADOPTION: Record<string, number> = {
+  security: 93,
+  infrastructure: 84,
+  cloud: 72,
+  language: 61,
+  observability: 49,
+  'ai-ml': 88,
+  database: 68,
+  integration: 74,
+  framework: 71,
+  middleware: 57,
+};
+
 export const TECHNOLOGIES: Technology[] = Array.from({ length: 200 }, (_, i) => ({
   id: `TECH-${String(i + 1).padStart(4, '0')}`,
   name: `${pick(TECH_NAMES, i)}${i >= TECH_NAMES.length ? ` v${Math.floor(i / TECH_NAMES.length) + 1}` : ''}`,
   category: pick(CATEGORIES, i),
   lifecycle: pick(LIFECYCLE, i),
   stance: pick(STANCE, i),
-  adoptionRate: 20 + (i % 78),
+  adoptionRate: telemetryScore(`tech:adopt:${i}`),
   applicationCount: 1 + (i % 40),
   vendor: pick(VENDORS, i),
   riskLevel: pick(RISK, i),
-  strategicFit: 30 + (i % 68),
+  strategicFit: telemetryInRange(`tech:fit:${i}`, 22, 96),
 }));
 
 export const STRATEGIC_PLATFORMS: StrategicPlatform[] = Array.from({ length: 50 }, (_, i) => ({
@@ -51,8 +78,8 @@ export const STRATEGIC_PLATFORMS: StrategicPlatform[] = Array.from({ length: 50 
   name: `${pick(['Payments', 'Core Banking', 'Data', 'Integration', 'API', 'Cloud', 'AI', 'Security'], i)} Platform ${(i % 12) + 1}`,
   domain: pick(DOMAINS, i),
   lifecycle: pick(['preferred', 'strategic', 'approved', 'emerging'] as const, i),
-  adoptionRate: 35 + (i % 55),
-  targetAdoption: 80 + (i % 20),
+  adoptionRate: telemetryScore(`splt:adopt:${i}`),
+  targetAdoption: telemetryInRange(`splt:target:${i}`, 72, 98),
   applicationsOnboarded: 5 + (i % 45),
   annualInvestment: 5_000_000 + (i % 20) * 2_500_000,
 }));
@@ -65,18 +92,23 @@ export const VENDOR_PRODUCTS: VendorProduct[] = Array.from({ length: 100 }, (_, 
   contractValue: 1_000_000 + (i % 30) * 1_500_000,
   renewalYear: `${2026 + (i % 4)}`,
   riskLevel: pick(RISK, i),
-  lockInRisk: 20 + (i % 75),
+  lockInRisk: telemetryInRange(`vendor:lock:${i}`, 18, 94),
   alternativesAvailable: i % 5,
 }));
 
-export const TECH_STANDARDS: TechnologyStandard[] = Array.from({ length: 100 }, (_, i) => ({
-  id: `TSTD-${String(i + 1).padStart(3, '0')}`,
-  name: `${pick(['API', 'Data', 'Security', 'Cloud', 'Integration', 'AI', 'Observability'], i)} Standard ${(i % 15) + 1}`,
-  category: pick(CATEGORIES, i),
-  adoptionRate: 45 + (i % 53),
-  mandatory: i % 2 === 0,
-  complianceRate: 50 + (i % 48),
-}));
+export const TECH_STANDARDS: TechnologyStandard[] = Array.from({ length: 100 }, (_, i) => {
+  const category = pick(CATEGORIES, i);
+  const anchor = STANDARDS_CATEGORY_ADOPTION[category] ?? 65;
+  const jitter = telemetryInRange(`tstd:j:${i}`, -18, 14);
+  return {
+    id: `TSTD-${String(i + 1).padStart(3, '0')}`,
+    name: `${pick(['API', 'Data', 'Security', 'Cloud', 'Integration', 'AI', 'Observability'], i)} Standard ${(i % 15) + 1}`,
+    category,
+    adoptionRate: Math.max(12, Math.min(98, anchor + jitter)),
+    mandatory: i % 2 === 0,
+    complianceRate: telemetryScore(`tstd:comp:${i}`),
+  };
+});
 
 export const TECH_RISKS: TechnologyRisk[] = Array.from({ length: 150 }, (_, i) => {
   const tech = TECHNOLOGIES[i % TECHNOLOGIES.length];
@@ -86,15 +118,23 @@ export const TECH_RISKS: TechnologyRisk[] = Array.from({ length: 150 }, (_, i) =
     title: pick(['EOL platform in production', 'Single-vendor lock-in', 'Unpatched CVE exposure', 'Critical skills gap', 'Non-compliant version', 'Vendor concentration'], i),
     category: pick(['obsolescence', 'vendor-lockin', 'security', 'skills-gap', 'compliance', 'concentration'] as const, i),
     severity: pick(RISK, i + 1),
-    likelihood: 25 + (i % 70),
+    likelihood: telemetryInRange(`trsk:like:${i}`, 18, 94),
     mitigationStatus: pick(['open', 'planned', 'in-progress', 'mitigated'] as const, i),
   };
+});
+
+/** Wave mix skewed: Wave 1 heavy, Wave 3 thin — not equal thirds. */
+const MOD_WAVE: Array<1 | 2 | 3> = Array.from({ length: 100 }, (_, i) => {
+  const roll = telemetryScore(`mod:wave:${i}`);
+  if (roll >= 72) return 1;
+  if (roll >= 42) return 2;
+  return 3;
 });
 
 export const MODERNIZATION_INITIATIVES: ModernizationInitiative[] = Array.from({ length: 100 }, (_, i) => ({
   id: `MOD-${String(i + 1).padStart(4, '0')}`,
   name: `${pick(['Mainframe Decomposition', 'Cloud Migration', 'API Modernization', 'Database Upgrade', 'Java Upgrade', 'Event-Driven Refactor'], i)} ${(i % 18) + 1}`,
-  wave: ((i % 3) + 1) as 1 | 2 | 3,
+  wave: MOD_WAVE[i],
   fromTechnology: pick(['Java 8', 'Mainframe COBOL', 'Oracle 19c', 'WebLogic', '.NET Framework 4.8', 'IBM MQ'], i),
   toTechnology: pick(['Java 17', 'Spring Boot 3', 'PostgreSQL 16', 'Kubernetes', '.NET 8', 'Kafka 3.6'], i),
   status: pick(['planned', 'in-progress', 'completed', 'at-risk'] as const, i),
@@ -104,34 +144,46 @@ export const MODERNIZATION_INITIATIVES: ModernizationInitiative[] = Array.from({
   targetYear: `${2026 + (i % 4)}`,
 }));
 
-export const CLOUD_PLATFORMS: CloudPlatform[] = Array.from({ length: 50 }, (_, i) => ({
-  id: `CLD-${String(i + 1).padStart(3, '0')}`,
-  name: `${pick(CLOUD_NAMES, i)} ${Math.floor(i / CLOUD_NAMES.length) + 1}`,
-  provider: pick(['AWS', 'Azure', 'GCP', 'Private Cloud'] as const, i),
-  serviceType: pick(['compute', 'storage', 'database', 'serverless', 'networking', 'analytics'], i),
-  adoptionRate: 25 + (i % 70),
-  monthlySpend: 50_000 + (i % 40) * 25_000,
-  approved: i % 4 !== 0,
-}));
+export const CLOUD_PLATFORMS: CloudPlatform[] = Array.from({ length: 50 }, (_, i) => {
+  const provider = pick(['AWS', 'Azure', 'GCP', 'Private Cloud'] as const, i);
+  const anchor = CLOUD_PROVIDER_ADOPTION[provider];
+  const jitter = telemetryInRange(`cld:j:${i}`, -16, 11);
+  return {
+    id: `CLD-${String(i + 1).padStart(3, '0')}`,
+    name: `${pick(CLOUD_NAMES, i)} ${Math.floor(i / CLOUD_NAMES.length) + 1}`,
+    provider,
+    serviceType: pick(['compute', 'storage', 'database', 'serverless', 'networking', 'analytics'], i),
+    adoptionRate: Math.max(14, Math.min(97, anchor + jitter)),
+    monthlySpend: 50_000 + (i % 40) * 25_000,
+    approved: i % 4 !== 0,
+  };
+});
 
 export const AI_PLATFORMS: AiPlatform[] = Array.from({ length: 50 }, (_, i) => ({
   id: `AIP-${String(i + 1).padStart(3, '0')}`,
   name: `${pick(AI_NAMES, i)} ${Math.floor(i / AI_NAMES.length) + 1}`,
   category: pick(['llm', 'ml-ops', 'data-platform', 'vector-db', 'agent-framework', 'governance'] as const, i),
-  adoptionRate: 18 + (i % 65),
-  maturity: 30 + (i % 60),
+  adoptionRate: telemetryScore(`aip:adopt:${i}`),
+  maturity: telemetryScore(`aip:mat:${i}`),
   approved: i % 3 !== 0,
   useCases: i % 12,
 }));
 
+const healthSeries = generateRealisticSeries(5, 'tech-roadmap-health');
+const standardsSeries = [38, 52, 49, 77, 84];
+const cloudSeries = generateRealisticSeries(5, 'tech-roadmap-cloud');
+const aiSeries = generateRealisticSeries(5, 'tech-roadmap-ai');
+const modSeries = generateRealisticSeries(5, 'tech-roadmap-mod');
+const debtSeries = generateRealisticSeries(5, 'tech-roadmap-debt');
+
 export const TECH_ROADMAP: TechRoadmapPoint[] = ['2021', '2022', '2023', '2024', '2025'].map((year, i) => ({
   year,
-  technologyHealth: 56 + i * 5,
-  standardsAdoption: 58 + i * 6,
-  cloudAdoption: 28 + i * 12,
-  aiAdoption: 18 + i * 13,
-  modernizationProgress: 20 + i * 14,
-  technologyDebt: 64 - i * 6,
+  technologyHealth: healthSeries[i],
+  standardsAdoption: standardsSeries[i],
+  cloudAdoption: cloudSeries[i],
+  aiAdoption: aiSeries[i],
+  modernizationProgress: modSeries[i],
+  technologyDebt: debtSeries[i],
 }));
 
 export const TECH_INVESTMENTS: TechInvestment[] = Array.from({ length: 30 }, (_, i) => ({
@@ -140,8 +192,8 @@ export const TECH_INVESTMENTS: TechInvestment[] = Array.from({ length: 30 }, (_,
   category: pick(CATEGORIES, i),
   stance: pick(STANCE, i),
   annualSpend: 3_000_000 + (i % 20) * 2_000_000,
-  efficiencyScore: 40 + (i % 58),
-  strategicFit: 35 + (i % 63),
+  efficiencyScore: telemetryScore(`tinv:eff:${i}`),
+  strategicFit: telemetryScore(`tinv:fit:${i}`),
 }));
 
 export const TECH_TRACEABILITY_CHAINS: TechTraceabilityChain[] = [
@@ -157,7 +209,8 @@ export const TECH_TRACEABILITY_CHAINS: TechTraceabilityChain[] = [
 
 export const TECHNOLOGY_STRATEGY_EXEC_SUMMARY =
   'Technology Strategy & Roadmap establishes the executive planning layer above the Architecture Repository — governing 200 technologies, 50 strategic platforms, 100 vendor products, and a 5-year modernization roadmap. ' +
-  'Technology health: 76% · Standards adoption: 71% · Strategic platform adoption: 64% · Cloud adoption: 62% · AI platform adoption: 48%. ' +
-  'Technology debt index: 34 · Modernization progress: 58% · Vendor concentration: 38% (Oracle, Microsoft, IBM) · Investment efficiency: 67%. ' +
-  '18 technologies flagged for retirement, 22 for modernization across 3 waves. ' +
-  'AI advisors recommend consolidating 8 overlapping platforms, exiting 5 high-lock-in vendors, and prioritizing ₹4.2B modernization investment over FY26–FY28.';
+  'AWS leads cloud adoption at 89% while GCP lags at 48%; Private Cloud holds 81%, Azure 66%. ' +
+  'Standards: Security strongest at 93%, Observability weakest at 49%, API at 61%. ' +
+  'Modernization Wave 1 at 86% vs Wave 3 at 38%; blocked work at 27%. ' +
+  'Roadmap health moved 38→52→49→77→84 (2021–2025) with a 2023 regression. ' +
+  'AI advisors flag Observability maturity, GCP adoption, and Wave 3 / blocked modernization as priority interventions.';

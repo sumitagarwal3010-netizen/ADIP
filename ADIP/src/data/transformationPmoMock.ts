@@ -13,6 +13,7 @@ import type {
   TransformationRisk,
   TransformationTraceabilityChain,
 } from '../types/transformationPmo';
+import { generateRealisticSeries, telemetryInRange, telemetryScore } from './enterpriseTelemetry';
 
 const BUSINESS_UNITS = ['Retail Banking', 'Corporate Banking', 'Treasury & Markets', 'Risk & Compliance', 'Digital & Payments'];
 const PILLARS = ['Digital First', 'Customer Experience', 'Operational Excellence', 'Risk & Resilience', 'Growth & Innovation'];
@@ -35,7 +36,7 @@ export const TPMO_OBJECTIVES: StrategicObjective[] = Array.from({ length: 20 }, 
   name: `${pick(PILLARS, i)} — ${pick(['Grow digital adoption', 'Reduce cost-to-serve', 'Improve resilience', 'Modernize core', 'Accelerate payments', 'Embed AI'], i)}`,
   pillar: pick(PILLARS, i),
   targetYear: `${2026 + (i % 4)}`,
-  achievement: 35 + (i % 60),
+  achievement: telemetryScore(`tpmo:obj-ach:${i}`),
   keyResults: 3 + (i % 4),
   keyResultsMet: (i % 4),
   owner: pick(SPONSORS, i),
@@ -43,7 +44,7 @@ export const TPMO_OBJECTIVES: StrategicObjective[] = Array.from({ length: 20 }, 
 
 export const TPMO_PROGRAMS: TransformationProgram[] = Array.from({ length: 50 }, (_, i) => {
   const budget = 50_000_000 + (i % 20) * 25_000_000;
-  const completion = 10 + (i % 88);
+  const completion = telemetryScore(`tpmo:prog-comp:${i}`);
   const benefitTarget = 80_000_000 + (i % 20) * 40_000_000;
   return {
     id: `TPGM-${String(i + 1).padStart(3, '0')}`,
@@ -51,7 +52,7 @@ export const TPMO_PROGRAMS: TransformationProgram[] = Array.from({ length: 50 },
     businessUnit: pick(BUSINESS_UNITS, i),
     objectiveId: TPMO_OBJECTIVES[i % TPMO_OBJECTIVES.length].id,
     status: pick(PROG_STATUS, i),
-    health: 45 + (i % 52),
+    health: telemetryScore(`tpmo:prog-health:${i}`),
     budget,
     spent: Math.round(budget * (0.2 + (i % 7) * 0.1)),
     completion,
@@ -72,7 +73,7 @@ export const TPMO_INITIATIVES: StrategicInitiative[] = Array.from({ length: 200 
     programId: prog.id,
     status: pick(INIT_STATUS, i),
     priority: (i % 100) + 1,
-    completion: 5 + (i % 92),
+    completion: telemetryScore(`tpmo:init-comp:${i}`),
     businessUnit: prog.businessUnit,
     expectedBenefit: 5_000_000 + (i % 20) * 3_000_000,
     owner: pick(SPONSORS, i),
@@ -87,7 +88,7 @@ export const TPMO_MILESTONES: TransformationMilestone[] = Array.from({ length: 5
     programId: prog.id,
     status: pick(MS_STATUS, i),
     dueDate: `${2025 + (i % 3)}-${String((i % 12) + 1).padStart(2, '0')}-${String((i % 28) + 1).padStart(2, '0')}`,
-    completion: 10 + (i % 90),
+    completion: telemetryScore(`tpmo:ms-comp:${i}`),
     critical: i % 5 === 0,
   };
 });
@@ -102,7 +103,7 @@ export const TPMO_COMMITMENTS: ExecutiveCommitment[] = Array.from({ length: 100 
     stakeholder: pick(['Board', 'Executive Committee', 'Regulator', 'CEO', 'Audit Committee'], i),
     status: pick(COMMIT_STATUS, i),
     dueDate: `${2025 + (i % 3)}-${String((i % 12) + 1).padStart(2, '0')}-${String((i % 28) + 1).padStart(2, '0')}`,
-    confidence: 40 + (i % 58),
+    confidence: telemetryScore(`tpmo:cmt-conf:${i}`),
   };
 });
 
@@ -142,32 +143,48 @@ export const TPMO_RISKS: TransformationRisk[] = Array.from({ length: 50 }, (_, i
     programId: prog.id,
     category: pick(['delivery', 'financial', 'resource', 'dependency', 'adoption', 'regulatory'] as const, i),
     severity: pick(RISK, i + 1),
-    likelihood: 25 + (i % 70),
+    likelihood: telemetryInRange(`tpmo:risk-like:${i}`, 15, 94),
     mitigationStatus: pick(['open', 'planned', 'in-progress', 'mitigated'] as const, i),
   };
 });
 
+/** Uneven BU health anchors matching enterprise risk telemetry. */
+const BU_HEALTH_ANCHORS: Record<string, number> = {
+  'Retail Banking': 82,
+  'Corporate Banking': 56,
+  'Treasury & Markets': 41,
+  'Digital & Payments': 74,
+  'Risk & Compliance': 91,
+};
+
 export const TPMO_BUSINESS_UNITS: BusinessUnitPerformance[] = BUSINESS_UNITS.map((name, i) => {
   const programs = TPMO_PROGRAMS.filter((p) => p.businessUnit === name);
-  const health = programs.length ? Math.round(programs.reduce((s, p) => s + p.health, 0) / programs.length) : 60;
+  const avgHealth = programs.length ? Math.round(programs.reduce((s, p) => s + p.health, 0) / programs.length) : 60;
+  const health = BU_HEALTH_ANCHORS[name] ?? avgHealth;
   return {
     id: `TBU-${String(i + 1).padStart(2, '0')}`,
     name,
     programCount: programs.length,
     transformationHealth: health,
-    benefitRealization: 45 + (i % 40),
-    milestoneCompletion: 50 + (i % 38),
-    budgetUtilization: 55 + (i % 35),
+    benefitRealization: telemetryScore(`tpmo:bu-ben:${i}`),
+    milestoneCompletion: telemetryScore(`tpmo:bu-ms:${i}`),
+    budgetUtilization: telemetryInRange(`tpmo:bu-bud:${i}`, 40, 96),
   };
 });
 
+const tpmoHealthSeries = generateRealisticSeries(5, 'tpmo-history-health');
+const tpmoDelivSeries = generateRealisticSeries(5, 'tpmo-history-deliv');
+const tpmoBenSeries = [38, 52, 49, 77, 84];
+const tpmoMsSeries = generateRealisticSeries(5, 'tpmo-history-ms');
+const tpmoRoiSeries = generateRealisticSeries(5, 'tpmo-history-roi');
+
 export const TPMO_HISTORY: TransformationHistoryPoint[] = ['2021', '2022', '2023', '2024', '2025'].map((year, i) => ({
   year,
-  transformationHealth: 58 + i * 5,
-  programDelivery: 54 + i * 6,
-  benefitsRealization: 40 + i * 9,
-  milestoneCompletion: 60 + i * 6,
-  transformationRoi: 110 + i * 18,
+  transformationHealth: tpmoHealthSeries[i],
+  programDelivery: tpmoDelivSeries[i],
+  benefitsRealization: tpmoBenSeries[i],
+  milestoneCompletion: tpmoMsSeries[i],
+  transformationRoi: 80 + (tpmoRoiSeries[i] ?? 50),
 }));
 
 /**
@@ -196,7 +213,11 @@ export const TPMO_APP_ASSESSMENTS: TransformationAppAssessment[] = Array.from({ 
   const prog = TPMO_PROGRAMS[i % TPMO_PROGRAMS.length];
   const healthClass = appHealthClassFor(i);
   const health =
-    healthClass === 'healthy' ? 72 + (i % 24) : healthClass === 'at-risk' ? 50 + (i % 18) : 18 + (i % 30);
+    healthClass === 'healthy'
+      ? telemetryInRange(`tpmo:app-h:${i}`, 72, 96)
+      : healthClass === 'at-risk'
+        ? telemetryInRange(`tpmo:app-ar:${i}`, 50, 68)
+        : telemetryInRange(`tpmo:app-c:${i}`, 12, 47);
   const riskRating: TransformationAppAssessment['riskRating'] =
     healthClass === 'critical' ? (i % 2 === 0 ? 'critical' : 'high') : healthClass === 'at-risk' ? (i % 2 === 0 ? 'high' : 'medium') : (i % 3 === 0 ? 'medium' : 'low');
   const status: TransformationAppAssessment['status'] =
@@ -232,7 +253,7 @@ export const TPMO_TRACEABILITY_CHAINS: TransformationTraceabilityChain[] = [
 
 export const TRANSFORMATION_PMO_EXEC_SUMMARY =
   'Enterprise Transformation PMO provides executive oversight across 50 transformation programs, 200 strategic initiatives, 500 milestones, and 100 executive commitments spanning 5 business units. ' +
-  'Transformation health: 74% · Program delivery: 68% · Strategic objective achievement: 62% · Benefits realization: 58% · Milestone completion: 71%. ' +
-  'Executive commitments met: 64% · Dependency risk: 32% · Transformation ROI: 182% · Board readiness: 78%. ' +
+  'Risk & Compliance leads at 91% transformation health and Retail Banking at 82%; Digital & Payments holds 74%. ' +
+  'Treasury & Markets is blocked/weak at 41% and Corporate Banking lags at 56% — board recovery focus. ' +
   '9 programs are at-risk/off-track, 14 cross-program dependencies are blocked or at-risk, and ₹2.4B benefits remain to be realized. ' +
-  'AI advisors recommend recovery plans for 6 programs, re-sequencing 8 dependencies, and escalating 11 executive commitments at risk of being missed.';
+  'AI advisors recommend recovery plans for Treasury programs, re-sequencing blocked dependencies, and escalating at-risk executive commitments.';

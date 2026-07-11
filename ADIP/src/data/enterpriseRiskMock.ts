@@ -12,6 +12,7 @@ import type {
   RiskTraceabilityChain,
   TechnologyRiskItem,
 } from '../types/enterpriseRisk';
+import { generateRealisticSeries, generateRiskTelemetry, telemetryInRange, telemetryScore } from './enterpriseTelemetry';
 
 const CATEGORIES = ['operational', 'technology', 'cyber', 'ai', 'regulatory', 'financial', 'strategic', 'third-party'] as const;
 const RISK = ['low', 'medium', 'high', 'critical'] as const;
@@ -39,11 +40,11 @@ export const ERM_CONTROLS: RiskControl[] = Array.from({ length: 300 }, (_, i) =>
   effectiveness: pick(CTRL_EFF, i),
   automated: i % 2 === 0,
   lastTested: `2025-${String((i % 12) + 1).padStart(2, '0')}-${String((i % 28) + 1).padStart(2, '0')}`,
-  coverage: 50 + (i % 48),
+  coverage: telemetryScore(`erm:ctrl:${i}`),
 }));
 
 export const ERM_ENTERPRISE_RISKS: EnterpriseRisk[] = Array.from({ length: 500 }, (_, i) => {
-  const inherent = 30 + (i % 68);
+  const inherent = telemetryInRange(`erm:inh:${i}`, 18, 94);
   const control = ERM_CONTROLS[i % ERM_CONTROLS.length];
   return {
     id: `RISK-${String(i + 1).padStart(4, '0')}`,
@@ -51,9 +52,9 @@ export const ERM_ENTERPRISE_RISKS: EnterpriseRisk[] = Array.from({ length: 500 }
     category: pick(CATEGORIES, i),
     businessUnit: pick(BUSINESS_UNITS, i),
     inherentScore: inherent,
-    residualScore: Math.max(10, Math.round(inherent * (0.4 + (i % 5) * 0.1))),
+    residualScore: Math.max(10, Math.round(inherent * (0.35 + (telemetryScore(`erm:res:${i}`) / 100) * 0.45))),
     severity: pick(RISK, i),
-    likelihood: 20 + (i % 75),
+    likelihood: telemetryInRange(`erm:like:${i}`, 15, 94),
     status: pick(RISK_STATUS, i),
     owner: pick(OWNERS, i),
     controlId: control.id,
@@ -67,7 +68,7 @@ export const ERM_TECHNOLOGY_RISKS: TechnologyRiskItem[] = Array.from({ length: 2
   applicationArea: pick(DOMAINS, i),
   category: pick(['obsolescence', 'availability', 'capacity', 'change', 'data-integrity'] as const, i),
   severity: pick(RISK, i + 1),
-  residualScore: 25 + (i % 70),
+  residualScore: telemetryScore(`erm:tech:${i}`),
   status: pick(RISK_STATUS, i),
 }));
 
@@ -76,7 +77,7 @@ export const ERM_CYBER_RISKS: CyberRiskItem[] = Array.from({ length: 150 }, (_, 
   title: `${pick(['Ransomware exposure', 'Phishing campaign', 'DDoS risk', 'Insider threat', 'Unpatched CVE', 'Data breach risk'], i)} — ${pick(DOMAINS, i)}`,
   threatType: pick(['malware', 'phishing', 'ddos', 'insider', 'vulnerability', 'data-breach', 'ransomware'] as const, i),
   severity: pick(RISK, i + 2),
-  exposureScore: 30 + (i % 68),
+  exposureScore: telemetryScore(`erm:cyber:${i}`),
   status: pick(RISK_STATUS, i),
   assetArea: pick(DOMAINS, i),
 }));
@@ -87,7 +88,7 @@ export const ERM_AI_RISKS: AiRiskItem[] = Array.from({ length: 100 }, (_, i) => 
   category: pick(['bias', 'explainability', 'drift', 'privacy', 'security', 'governance', 'hallucination'] as const, i),
   severity: pick(RISK, i + 1),
   modelArea: pick(['Fraud', 'Credit', 'AML', 'Customer Service', 'KYC', 'Marketing'], i),
-  residualScore: 28 + (i % 65),
+  residualScore: telemetryScore(`erm:ai:${i}`),
   status: pick(RISK_STATUS, i),
 }));
 
@@ -136,13 +137,18 @@ export const ERM_ASSURANCE_REVIEWS: AssuranceReview[] = Array.from({ length: 100
   type: pick(['first-line', 'second-line', 'third-line'] as const, i),
   category: pick(CATEGORIES, i),
   status: pick(ASSURANCE_STATUS, i),
-  coverage: 45 + (i % 52),
+  coverage: telemetryScore(`erm:asr:${i}`),
   scheduledFor: `2026-${String((i % 12) + 1).padStart(2, '0')}-${String((i % 28) + 1).padStart(2, '0')}`,
 }));
 
+/** Risk posture by BU — uneven enterprise reality (not equal exposure). */
+const RISK_BU_EXPOSURE = generateRiskTelemetry();
+
 export const ERM_RISK_APPETITE: RiskAppetiteItem[] = CATEGORIES.map((category, i) => {
-  const threshold = 60 + (i % 4) * 5;
-  const exposure = 40 + (i % 50);
+  const threshold = [72, 65, 58, 70, 68, 62, 55, 60][i] ?? 60;
+  const exposure = [
+    41, 58, 82, 49, 91, 66, 33, 74,
+  ][i] ?? telemetryScore(`erm:app:${i}`);
   return {
     id: `APP-${String(i + 1).padStart(2, '0')}`,
     category,
@@ -153,16 +159,24 @@ export const ERM_RISK_APPETITE: RiskAppetiteItem[] = CATEGORIES.map((category, i
   };
 });
 
+const ermExpSeries = generateRealisticSeries(5, 'erm-history-exp');
+const ermResSeries = generateRealisticSeries(5, 'erm-history-res');
+const ermCtrlSeries = [38, 52, 49, 77, 84];
+const ermAsrSeries = generateRealisticSeries(5, 'erm-history-asr');
+const ermCyberSeries = generateRealisticSeries(5, 'erm-history-cyber');
+const ermAiSeries = generateRealisticSeries(5, 'erm-history-ai');
+
 export const ERM_HISTORY: RiskHistoryPoint[] = ['2021', '2022', '2023', '2024', '2025'].map((year, i) => ({
   year,
-  enterpriseRiskExposure: 64 - i * 3,
-  residualRisk: 52 - i * 3,
-  controlEffectiveness: 62 + i * 6,
-  assuranceCoverage: 55 + i * 8,
-  cyberRiskScore: 58 - i * 2,
-  aiRiskScore: 48 + i * 3,
+  enterpriseRiskExposure: ermExpSeries[i],
+  residualRisk: ermResSeries[i],
+  controlEffectiveness: ermCtrlSeries[i],
+  assuranceCoverage: ermAsrSeries[i],
+  cyberRiskScore: ermCyberSeries[i],
+  aiRiskScore: ermAiSeries[i],
 }));
 
+export { RISK_BU_EXPOSURE };
 export const ERM_TRACEABILITY_CHAINS: RiskTraceabilityChain[] = [
   { stage: 'Risk', entity: 'RISK-0042 Data leakage — Payments', link: 'Control', outcome: 'CTRL-0118 Encryption Control' },
   { stage: 'Control', entity: 'CTRL-0118', link: 'Audit Finding', outcome: 'FND-0024 Weak encryption' },
@@ -177,7 +191,7 @@ export const ERM_TRACEABILITY_CHAINS: RiskTraceabilityChain[] = [
 
 export const ENTERPRISE_RISK_EXEC_SUMMARY =
   'Enterprise Risk Management & Integrated Assurance provides the board a single view across 500 enterprise risks, 200 technology risks, 150 cyber risks, 100 AI risks, and 150 regulatory risks, governed by 300 controls and 200 audit findings. ' +
-  'Enterprise risk exposure: 51 · Residual risk: 38 · Control effectiveness: 74% · Open critical risks: 42. ' +
-  'Risk appetite breaches: 3 categories · Regulatory exposure: ₹1.8B · Cyber risk score: 56 · AI risk score: 49 · Audit risk score: 47 · Assurance coverage: 79%. ' +
-  'AI advisors flag cyber and AI as top emerging risk hotspots, 28 control gaps tied to overdue audit findings, and 11 regulatory exposures approaching deadlines. ' +
-  'Recommended board actions: close 42 critical risks, remediate 28 control gaps, and approve assurance plan covering under-assured AI and third-party domains.';
+  'Retail Banking residual posture is healthy at 82% while Treasury sits weak at 41% and Corporate Banking at 56%. ' +
+  'Risk & Compliance leads at 91%; Digital Payments holds 74%. ' +
+  'FIU compliance remains below target at 61% while RBI is strongest at 96% and CERT-In at 94%. ' +
+  'AI advisors flag Treasury modernization risk, FIU compliance lag, and cyber appetite breaches as board priorities.';

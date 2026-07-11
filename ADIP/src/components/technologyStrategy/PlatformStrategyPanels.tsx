@@ -1,9 +1,10 @@
 import { Box, Typography } from '@mui/material';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
-import { HorizontalBarChart } from '../charts/HorizontalBarChart';
+import { EnterpriseBarChart } from '../charts/EnterpriseBarChart';
 import { useTechnologyStrategy } from '../../context/TechnologyStrategyContext';
 import { colors } from '../../theme/colors';
+import { generateCloudTelemetry } from '../../data/enterpriseTelemetry';
 
 export function StrategicPlatformsPanel() {
   const { platformAdoptionChart, topPlatforms, kpis } = useTechnologyStrategy();
@@ -12,7 +13,15 @@ export function StrategicPlatformsPanel() {
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Strategic Platforms" subtitle={`50 platforms · adoption ${kpis.strategicPlatformAdoption}%`} />
-        <HorizontalBarChart chartId="technology-strategy.strategic-platform-adoption" data={platformAdoptionChart} height={220} barColor={colors.primary} />
+        <EnterpriseBarChart
+          chartId="technology-strategy.strategic-platform-adoption"
+          data={platformAdoptionChart}
+          height={280}
+          barColor={colors.primary}
+          defaultTarget={80}
+          dynamicScale
+          highlightOutliers
+        />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Platform Adoption Register" />
@@ -31,12 +40,35 @@ export function StrategicPlatformsPanel() {
 
 export function CloudStrategyPanel() {
   const { cloudByProvider, topClouds, kpis } = useTechnologyStrategy();
+  const cloudMeta = generateCloudTelemetry();
+  const chartData = (cloudByProvider.length ? cloudByProvider : cloudMeta).map((c) => {
+    const meta = cloudMeta.find((m) => m.name === c.name);
+    return {
+      name: c.name,
+      value: c.value,
+      target: 80,
+      trend: meta?.trend,
+      trendDelta: meta?.trendDelta,
+      trendLabel: meta?.trendLabel,
+    };
+  });
 
   return (
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Cloud Strategy" subtitle={`Cloud adoption ${kpis.cloudAdoption}% · multi-cloud posture`} />
-        <HorizontalBarChart chartId="technology-strategy.cloud-adoption" data={cloudByProvider} height={160} barColor={colors.info} />
+        <EnterpriseBarChart
+          chartId="technology-strategy.cloud-adoption"
+          data={chartData}
+          height={220}
+          barColor={colors.info}
+          defaultTarget={80}
+          showTarget
+          showTrend
+          showLabels
+          highlightOutliers
+          dynamicScale
+        />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Cloud Platform Catalog" subtitle="50 cloud platforms" />
@@ -46,6 +78,12 @@ export function CloudStrategyPanel() {
             <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.65rem', display: 'block' }}>
               {c.serviceType} · Adoption: {c.adoptionRate}% · ₹{Math.round(c.monthlySpend / 1000)}K/mo · {c.approved ? 'Approved' : 'Not approved'}
             </Typography>
+            <Box sx={{ mt: 0.4, display: 'flex', gap: 1, alignItems: 'center' }}>
+              <Box sx={{ flex: 1, height: 5, borderRadius: 1, bgcolor: 'rgba(148,163,184,0.15)', overflow: 'hidden' }}>
+                <Box sx={{ width: `${c.adoptionRate}%`, height: '100%', bgcolor: colors.info, opacity: 0.9 }} />
+              </Box>
+              <Typography variant="caption" sx={{ fontSize: '0.6rem', color: colors.text.muted, minWidth: 32 }}>{c.adoptionRate}%</Typography>
+            </Box>
           </Box>
         ))}
       </GlassCard>
@@ -60,7 +98,17 @@ export function AiPlatformStrategyPanel() {
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="AI Platform Strategy" subtitle={`AI platform adoption ${kpis.aiPlatformAdoption}% · governed AI stack`} />
-        <HorizontalBarChart chartId="technology-strategy.ai-platform-adoption" data={aiByCategory} height={180} barColor={colors.secondary} />
+        <EnterpriseBarChart
+          chartId="technology-strategy.ai-platform-adoption"
+          data={aiByCategory}
+          height={200}
+          barColor={colors.secondary}
+          suffix=""
+          showTarget={false}
+          showTrend={false}
+          dynamicScale
+          highlightOutliers
+        />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="AI Platform Catalog" subtitle="50 AI platforms · LLM · ML-Ops · vector-DB · agents · governance" />
@@ -84,7 +132,17 @@ export function VendorLandscapePanel() {
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Vendor Landscape" subtitle={`Vendor concentration ${kpis.vendorConcentration}% (top 3) · contract value ₹M`} />
-        <HorizontalBarChart chartId="technology-strategy.vendor-concentration" data={vendorChart} height={200} barColor={colors.warning} />
+        <EnterpriseBarChart
+          chartId="technology-strategy.vendor-concentration"
+          data={vendorChart}
+          height={240}
+          barColor={colors.warning}
+          suffix=""
+          showTarget={false}
+          showTrend={false}
+          dynamicScale
+          highlightOutliers
+        />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Vendor Risk & Lock-in" subtitle="100 vendor products" />

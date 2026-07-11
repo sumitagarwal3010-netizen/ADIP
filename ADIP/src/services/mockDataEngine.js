@@ -530,10 +530,11 @@ export function createInitialState() {
       ],
       topFindings: GOVERNANCE_CATALOG.slice(0, 5).map((f) => ({ ...f })),
       complianceStandards: [
-        { name: 'NPCI UPI Guidelines', score: 91 },
-        { name: 'PCI-DSS', score: 88 },
-        { name: 'RBI IT Framework', score: 94 },
-        { name: 'ISO 27001', score: 96 },
+        { name: 'RBI', score: 96 },
+        { name: 'SEBI', score: 88 },
+        { name: 'IRDAI', score: 73 },
+        { name: 'CERT-In', score: 94 },
+        { name: 'FIU', score: 61 },
       ],
       auditTrail: [
         { event: 'TLS cert expiry flagged – Payment Gateway', time: '12m ago' },

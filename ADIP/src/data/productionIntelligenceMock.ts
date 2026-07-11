@@ -13,6 +13,7 @@ import type {
   ReleaseEvent,
   TraceabilityChain,
 } from '../types/productionIntelligence';
+import { telemetryInRange, telemetryScore } from './enterpriseTelemetry';
 
 const DOMAINS = ['Payments', 'Mobile Banking', 'Net Banking', 'Cards', 'Enterprise'] as const;
 const APP_NAMES = [
@@ -51,14 +52,14 @@ export const PRODUCTION_APPLICATIONS: ProductionApplication[] = Array.from({ len
     name,
     domain: pick(DOMAINS, i),
     owner: pick(['Application Owner', 'Operations Manager', 'Head of Payments'], i),
-    availability: 98.5 + (i % 15) / 10,
-    reliability: 95 + (i % 40) / 10,
-    performance: 88 + (i % 10),
+    availability: 96 + telemetryInRange(`prod:avail:${i}`, 0, 35) / 10,
+    reliability: 90 + telemetryInRange(`prod:rel:${i}`, 0, 80) / 10,
+    performance: telemetryScore(`prod:perf:${i}`),
     incidentCount: incidents,
     defectCount: defects,
     auditFindings: i % 5,
     complianceStatus: pick(COMPLIANCE, i),
-    riskScore: Math.min(95, 20 + incidents * 4 + defects * 3 + (i % 20)),
+    riskScore: telemetryScore(`prod:risk:${i}`),
   };
 });
 
@@ -148,8 +149,8 @@ export const CUSTOMER_SIGNALS: CustomerSignal[] = Array.from({ length: 150 }, (_
 
 export const RELEASE_EVENTS: ReleaseEvent[] = Array.from({ length: 100 }, (_, i) => {
   const app = PRODUCTION_APPLICATIONS[i % PRODUCTION_APPLICATIONS.length];
-  const success = 70 + (i % 28);
-  const rollback = i % 8 === 0 ? 15 + (i % 20) : i % 5;
+  const success = telemetryScore(`prod:rel-success:${i}`);
+  const rollback = telemetryInRange(`prod:rel-rb:${i}`, 2, 38);
   return {
     id: `REL-${String(i + 1).padStart(3, '0')}`,
     name: `${app.name} Release ${24 + (i % 6)}.${i % 10}`,
@@ -158,10 +159,10 @@ export const RELEASE_EVENTS: ReleaseEvent[] = Array.from({ length: 100 }, (_, i)
     deployedAt: hoursAgo(i * 24),
     successRate: success,
     rollbackRate: rollback,
-    incidentCreationRate: Math.min(40, 5 + (i % 15)),
-    defectLeakageRate: Math.min(35, 3 + (i % 12)),
-    customerImpact: Math.min(90, 10 + (i % 30)),
-    businessImpact: Math.min(85, 8 + (i % 25)),
+    incidentCreationRate: telemetryInRange(`prod:rel-inc:${i}`, 3, 42),
+    defectLeakageRate: telemetryInRange(`prod:rel-def:${i}`, 2, 36),
+    customerImpact: telemetryScore(`prod:rel-cust:${i}`),
+    businessImpact: telemetryScore(`prod:rel-biz:${i}`),
     goNoGo: success >= 85 ? 'Go' : success >= 70 ? 'Conditional Go' : 'No-Go',
   };
 });

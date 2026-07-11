@@ -10,6 +10,7 @@ import type {
   ValueProject,
   ValueTrendPoint,
 } from '../types/valueRealization';
+import { generateRealisticSeries } from './enterpriseTelemetry';
 
 const BU_NAMES = ['Retail Banking', 'Corporate Banking', 'Digital Channels', 'Payments', 'Enterprise Technology'] as const;
 const PORTFOLIO_NAMES = [
@@ -76,34 +77,38 @@ export const VALUE_PROJECTS: ValueProject[] = Array.from({ length: 500 }, (_, i)
   };
 });
 
+const vrProdSeries = generateRealisticSeries(5, 'vr-trend-prod');
+const vrRiskSeries = generateRealisticSeries(5, 'vr-trend-risk');
+const vrRoiSeries = [38, 52, 49, 77, 84];
+
 export const VALUE_TREND_HISTORY: ValueTrendPoint[] = ['2021', '2022', '2023', '2024', '2025'].map((year, i) => ({
   year,
   hoursSaved: 12000 + i * 8500,
   valueRealized: 3_200_000 + i * 2_100_000,
-  productivityGain: 12 + i * 6,
-  riskReduction: 8 + i * 5,
-  roi: 95 + i * 35,
+  productivityGain: vrProdSeries[i],
+  riskReduction: vrRiskSeries[i],
+  roi: 80 + (vrRoiSeries[i] ?? 50),
 }));
 
 export const PRODUCTIVITY_GAINS: ProductivityGain[] = [
-  { domain: 'requirements', hoursSaved: 12400, productivityPercent: 32, fteEquivalent: 6.2 },
+  { domain: 'requirements', hoursSaved: 12400, productivityPercent: 41, fteEquivalent: 6.2 },
   { domain: 'architecture', hoursSaved: 9800, productivityPercent: 28, fteEquivalent: 4.9 },
-  { domain: 'development', hoursSaved: 18600, productivityPercent: 35, fteEquivalent: 9.3 },
+  { domain: 'development', hoursSaved: 18600, productivityPercent: 52, fteEquivalent: 9.3 },
   { domain: 'testing', hoursSaved: 15200, productivityPercent: 38, fteEquivalent: 7.6 },
-  { domain: 'release', hoursSaved: 8600, productivityPercent: 30, fteEquivalent: 4.3 },
-  { domain: 'governance', hoursSaved: 7200, productivityPercent: 26, fteEquivalent: 3.6 },
-  { domain: 'audit', hoursSaved: 6400, productivityPercent: 42, fteEquivalent: 3.2 },
+  { domain: 'release', hoursSaved: 8600, productivityPercent: 19, fteEquivalent: 4.3 },
+  { domain: 'governance', hoursSaved: 7200, productivityPercent: 33, fteEquivalent: 3.6 },
+  { domain: 'audit', hoursSaved: 6400, productivityPercent: 61, fteEquivalent: 3.2 },
   { domain: 'operations', hoursSaved: 5800, productivityPercent: 22, fteEquivalent: 2.9 },
-  { domain: 'knowledge', hoursSaved: 4200, productivityPercent: 45, fteEquivalent: 2.1 },
+  { domain: 'knowledge', hoursSaved: 4200, productivityPercent: 74, fteEquivalent: 2.1 },
 ];
 
 export const MATURITY_SCORES: MaturityScore[] = [
-  { dimension: 'sdlc', label: 'SDLC Maturity', score: 78, target: 90, trend: 8 },
-  { dimension: 'governance', label: 'Governance Maturity', score: 82, target: 92, trend: 6 },
-  { dimension: 'audit', label: 'Audit Maturity', score: 75, target: 88, trend: 9 },
-  { dimension: 'ai', label: 'AI Maturity', score: 71, target: 85, trend: 14 },
-  { dimension: 'operational', label: 'Operational Maturity', score: 80, target: 90, trend: 5 },
-  { dimension: 'transformation', label: 'Transformation Maturity', score: 76, target: 88, trend: 11 },
+  { dimension: 'sdlc', label: 'SDLC Maturity', score: 84, target: 90, trend: 8 },
+  { dimension: 'governance', label: 'Governance Maturity', score: 91, target: 92, trend: 4 },
+  { dimension: 'audit', label: 'Audit Maturity', score: 58, target: 88, trend: -3 },
+  { dimension: 'ai', label: 'AI Maturity', score: 49, target: 85, trend: 14 },
+  { dimension: 'operational', label: 'Operational Maturity', score: 72, target: 90, trend: 5 },
+  { dimension: 'transformation', label: 'Transformation Maturity', score: 41, target: 88, trend: 11 },
 ];
 
 export const BENCHMARK_METRICS: BenchmarkMetric[] = [

@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
-import { HorizontalBarChart } from '../charts/HorizontalBarChart';
+import { RadarChart } from '../charts/RadarChart';
 import { usePortfolioGovernance } from '../../context/PortfolioGovernanceContext';
 import { colors } from '../../theme/colors';
 
@@ -12,7 +12,13 @@ export function StrategicAlignmentPanel() {
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Strategic Alignment Scoring" subtitle={`Enterprise alignment: ${kpis.strategicAlignment}%`} />
-        <HorizontalBarChart chartId="portfolio-governance.strategic-alignment" data={alignmentByObjective} height={220} barColor={colors.success} />
+        <RadarChart
+          chartId="portfolio-governance.strategic-alignment"
+          data={alignmentByObjective}
+          height={280}
+          barColor={colors.success}
+          target={80}
+        />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Strategic Objectives" />

@@ -4,6 +4,8 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { HorizontalBarChart } from '../charts/HorizontalBarChart';
+import { EnterpriseBarChart } from '../charts/EnterpriseBarChart';
+import { GaugeChart } from '../charts/GaugeChart';
 import { useEnterpriseRisk } from '../../context/EnterpriseRiskContext';
 import { colors } from '../../theme/colors';
 
@@ -88,12 +90,31 @@ export function AiRiskPanel() {
 
 export function RegulatoryRiskPanel() {
   const { regByRegulator, topRegulatory, kpis } = useEnterpriseRisk();
+  const avg = regByRegulator.length
+    ? Math.round(regByRegulator.reduce((s, r) => s + r.value, 0) / regByRegulator.length)
+    : 80;
 
   return (
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
-        <ModuleHeader title="Regulatory & Compliance Risk" subtitle={`Regulatory exposure ₹${kpis.regulatoryExposure}M · 150 regulatory risks (₹M by regulator)`} />
-        <HorizontalBarChart chartId="enterprise-risk.regulatory-exposure" data={regByRegulator} height={180} barColor={colors.warning} />
+        <ModuleHeader title="Regulatory & Compliance Risk" subtitle={`Regulatory exposure ₹${kpis.regulatoryExposure}M · compliance posture by regulator`} />
+        <Box sx={{ display: 'flex', gap: 2, alignItems: 'stretch', flexWrap: 'wrap' }}>
+          <Box sx={{ flex: '0 0 160px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <GaugeChart chartId="enterprise-risk.regulatory-exposure" value={avg} label="Avg Compliance" size={150} />
+          </Box>
+          <Box sx={{ flex: 1, minWidth: 220 }}>
+            <EnterpriseBarChart
+              chartId="enterprise-risk.regulatory-exposure"
+              data={regByRegulator}
+              height={200}
+              barColor={colors.warning}
+              defaultTarget={85}
+              dynamicScale
+              highlightOutliers
+              showTrend
+            />
+          </Box>
+        </Box>
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Regulatory Risk Register" />

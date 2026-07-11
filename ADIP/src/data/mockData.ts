@@ -22,17 +22,17 @@ export const trendMonths = [
 ];
 
 export const executiveKpis = [
-  { label: 'Delivery Health', value: 95, trend: 3.2, data: sparkline7d() },
-  { label: 'Operational Health', value: 95, trend: 2.1, data: sparkline7d() },
-  { label: 'Governance Health', value: 97, trend: 1.4, data: sparkline7d() },
-  { label: 'Engineering Velocity', value: 90, trend: 4.8, data: sparkline7d() },
+  { label: 'Delivery Health', value: 88, trend: 3.2, data: sparkline7d() },
+  { label: 'Operational Health', value: 74, trend: -2.1, data: sparkline7d() },
+  { label: 'Governance Health', value: 93, trend: 1.4, data: sparkline7d() },
+  { label: 'Engineering Velocity', value: 61, trend: 4.8, data: sparkline7d() },
 ];
 
 export const domainHealth = [
-  { name: 'Net Banking', score: 93, changes: 42, risks: 3, incidents: 2, trend: sparkline7d() },
-  { name: 'Mobile Banking', score: 91, changes: 38, risks: 4, incidents: 1, trend: sparkline7d() },
-  { name: 'Payments', score: 88, changes: 51, risks: 7, incidents: 4, trend: sparkline7d() },
-  { name: 'Cards & Loans', score: 90, changes: 29, risks: 2, incidents: 1, trend: sparkline7d() },
+  { name: 'Net Banking', score: 91, changes: 42, risks: 3, incidents: 2, trend: sparkline7d() },
+  { name: 'Mobile Banking', score: 74, changes: 38, risks: 4, incidents: 1, trend: sparkline7d() },
+  { name: 'Payments', score: 58, changes: 51, risks: 7, incidents: 4, trend: sparkline7d() },
+  { name: 'Cards & Loans', score: 82, changes: 29, risks: 2, incidents: 1, trend: sparkline7d() },
 ];
 
 export const portfolioMetrics = [
@@ -58,19 +58,19 @@ export const requirementsByRisk = [
 ];
 
 export const businessImpact = [
-  { name: 'Customer Experience', value: 92 },
-  { name: 'Revenue Impact', value: 78 },
-  { name: 'Compliance', value: 85 },
-  { name: 'Operational Risk', value: 67 },
+  { name: 'Customer Experience', value: 82 },
+  { name: 'Revenue Impact', value: 61 },
+  { name: 'Compliance', value: 93 },
+  { name: 'Operational Risk', value: 44 },
   { name: 'Security Posture', value: 88 },
 ];
 
 export const releaseReadiness = [
-  { dimension: 'Architecture', score: 94, status: 'Ready' },
-  { dimension: 'Development', score: 88, status: 'At Risk' },
-  { dimension: 'Testing', score: 91, status: 'Ready' },
-  { dimension: 'Operations', score: 86, status: 'At Risk' },
-  { dimension: 'Governance', score: 97, status: 'Ready' },
+  { dimension: 'Architecture', score: 93, status: 'Ready' },
+  { dimension: 'Development', score: 71, status: 'At Risk' },
+  { dimension: 'Testing', score: 49, status: 'At Risk' },
+  { dimension: 'Operations', score: 66, status: 'At Risk' },
+  { dimension: 'Governance', score: 91, status: 'Ready' },
 ];
 
 export const topRisks = [
@@ -281,10 +281,11 @@ export const governanceMetrics = {
 };
 
 export const complianceStandards = [
-  { name: 'ISO 27001', score: 94 },
-  { name: 'PCI-DSS', score: 89 },
-  { name: 'GDPR', score: 96 },
-  { name: 'RBI Guidelines', score: 91 },
+  { name: 'RBI', score: 96 },
+  { name: 'SEBI', score: 88 },
+  { name: 'IRDAI', score: 73 },
+  { name: 'CERT-In', score: 94 },
+  { name: 'FIU', score: 61 },
 ];
 
 // Learning Hub

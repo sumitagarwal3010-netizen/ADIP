@@ -13,6 +13,7 @@ import type {
   TechnologyRisk,
   TechnologyStack,
 } from '../types/applicationPortfolio';
+import { generateRealisticSeries, telemetryInRange, telemetryScore } from './enterpriseTelemetry';
 
 const BU_NAMES = ['Retail Banking', 'Corporate Banking', 'Digital Channels', 'Payments', 'Enterprise Technology'] as const;
 const PORTFOLIO_NAMES = [
@@ -64,7 +65,7 @@ export const APM_PORTFOLIOS: ApmPortfolio[] = Array.from({ length: 10 }, (_, i) 
     name: PORTFOLIO_NAMES[i],
     businessUnitId: bu.id,
     applicationCount: 25 + i * 3,
-    avgHealth: 62 + (i % 30),
+    avgHealth: telemetryScore(`apm:pf-health:${i}`),
   };
 });
 
@@ -87,10 +88,10 @@ export const APM_APPLICATIONS: ApplicationRecord[] = Array.from({ length: 300 },
   const portfolio = APM_PORTFOLIOS[i % APM_PORTFOLIOS.length];
   const domain = APM_DOMAINS[i % APM_DOMAINS.length];
   const stack = APM_TECH_STACKS[i % APM_TECH_STACKS.length];
-  const debt = 15 + (i % 75);
-  const cloud = 30 + (i % 65);
-  const ai = 25 + (i % 70);
-  const risk = 20 + (i % 70);
+  const debt = telemetryInRange(`apm:debt:${i}`, 12, 94);
+  const cloud = telemetryScore(`apm:cloud:${i}`);
+  const ai = telemetryScore(`apm:ai:${i}`);
+  const risk = telemetryInRange(`apm:risk:${i}`, 12, 94);
   return {
     id: `APP-${String(i + 1).padStart(4, '0')}`,
     name: `${pick(APP_PREFIXES, i)} ${domain.name} ${(i % 20) + 1}`,
@@ -113,7 +114,7 @@ export const APM_APPLICATIONS: ApplicationRecord[] = Array.from({ length: 300 },
     riskScore: risk,
     complianceStatus: pick(COMPLIANCE, i),
     auditStatus: pick(AUDIT, i),
-    productionHealth: 58 + (i % 40),
+    productionHealth: telemetryScore(`apm:prod:${i}`),
     linkedProjectId: i % 3 === 0 ? `PRJ-${String((i % 100) + 1).padStart(4, '0')}` : undefined,
     linkedDemandId: i % 4 === 0 ? `DM-${String((i % 200) + 1).padStart(4, '0')}` : undefined,
     linkedWorkflowId: i % 5 === 0 ? `WF-${String((i % 50) + 1).padStart(4, '0')}` : undefined,
@@ -153,7 +154,7 @@ export const APM_TECHNICAL_DEBT: TechnicalDebtItem[] = Array.from({ length: 150 
     applicationId: app.id,
     title: pick(['Legacy framework upgrade', 'Missing test coverage', 'Monolith decomposition', 'API standardization', 'Documentation gap'], i),
     category: pick(['code', 'architecture', 'testing', 'documentation', 'infrastructure'], i),
-    score: 20 + (i % 70),
+    score: telemetryInRange(`apm:td-score:${i}`, 15, 94),
     effortDays: 10 + (i % 90),
     priority: pick(['high', 'medium', 'low'] as const, i),
   };
@@ -167,7 +168,7 @@ export const APM_MODERNIZATION: ModernizationOpportunity[] = Array.from({ length
     title: pick(['Cloud-native refactor', 'API-first redesign', 'Container migration', 'Microservices split', 'Platform consolidation'], i),
     approach: pick(['replatform', 'refactor', 'rehost', 'replace'], i),
     savingsEstimate: 150_000 + (i % 25) * 80_000,
-    readinessScore: 40 + (i % 55),
+    readinessScore: telemetryScore(`apm:mod-ready:${i}`),
   };
 });
 
@@ -188,20 +189,25 @@ export const APM_AI_ASSESSMENTS: AiReadinessAssessment[] = Array.from({ length: 
     id: `AIR-${String(i + 1).padStart(4, '0')}`,
     applicationId: app.id,
     readinessScore: app.aiReadinessScore,
-    dataQuality: 50 + (i % 45),
-    apiMaturity: 45 + (i % 50),
-    governanceScore: 55 + (i % 40),
+    dataQuality: telemetryScore(`apm:data-q:${i}`),
+    apiMaturity: telemetryScore(`apm:api-mat:${i}`),
+    governanceScore: telemetryScore(`apm:ai-gov:${i}`),
     useCases: [pick(['Fraud detection', 'Chatbot', 'Document AI', 'Predictive analytics', 'Process automation'], i)],
   };
 });
 
+const apmHealthSeries = generateRealisticSeries(5, 'apm-lifecycle-health');
+const apmDebtSeries = generateRealisticSeries(5, 'apm-lifecycle-debt');
+const apmCloudSeries = [38, 52, 49, 77, 84];
+const apmAiSeries = generateRealisticSeries(5, 'apm-lifecycle-ai');
+
 export const APM_LIFECYCLE_HISTORY: LifecycleHistoryPoint[] = ['2021', '2022', '2023', '2024', '2025'].map((year, i) => ({
   year,
   applicationCount: 280 + i * 8,
-  avgHealth: 62 + i * 5,
-  technicalDebt: 58 - i * 4,
-  cloudReadiness: 35 + i * 10,
-  aiReadiness: 28 + i * 12,
+  avgHealth: apmHealthSeries[i],
+  technicalDebt: apmDebtSeries[i],
+  cloudReadiness: apmCloudSeries[i],
+  aiReadiness: apmAiSeries[i],
   annualCost: 95_000_000 + i * 12_000_000,
   rationalizationSavings: 2_500_000 + i * 3_200_000,
 }));
@@ -220,6 +226,7 @@ export const APM_TRACEABILITY_CHAINS: ApmTraceabilityChain[] = [
 
 export const APPLICATION_PORTFOLIO_EXEC_SUMMARY =
   'Application Portfolio Management Center is the single system of record for 300 banking applications across 20 domains. ' +
-  'Application health: 74% · 48 tier-1 critical apps · Technical debt index: 42 · Cloud readiness: 68% · AI readiness: 61%. ' +
+  'Health and cloud readiness are uneven — Security Hardening and Payments lead while Core Banking and Treasury domains lag on debt and production health. ' +
+  'GCP-aligned cloud readiness trails AWS-heavy estates; Observability-linked AI data quality remains a weak area for many apps. ' +
   'Annual portfolio cost: ₹143M · Rationalization savings opportunity: ₹14.1M · 38 obsolete technology stacks flagged. ' +
-  'AI advisors recommend retiring 12 apps, consolidating 8 duplicate capabilities, and prioritizing 24 modernization candidates.';
+  'AI advisors recommend retiring declining apps, consolidating duplicates, and prioritizing modernization where readiness is strong.';

@@ -12,6 +12,7 @@ import type {
   StrategicObjective,
   StrategicProgram,
 } from '../types/portfolioGovernance';
+import { generateRealisticSeries, telemetryInRange, telemetryScore } from './enterpriseTelemetry';
 
 const BU_NAMES = ['Retail Banking', 'Corporate Banking', 'Digital Channels', 'Payments', 'Enterprise Technology'] as const;
 const PORTFOLIO_NAMES = [
@@ -56,9 +57,9 @@ export const PG_PORTFOLIOS: Portfolio[] = Array.from({ length: 10 }, (_, i) => {
     businessUnitId: bu.id,
     programCount: 2 + (i % 4),
     projectCount: 8 + i * 2,
-    healthScore: 62 + (i % 30),
-    fundingUtilization: 68 + (i % 28),
-    strategicAlignment: 70 + (i % 25),
+    healthScore: telemetryScore(`pg:pf-health:${i}`),
+    fundingUtilization: telemetryInRange(`pg:pf-fund:${i}`, 48, 96),
+    strategicAlignment: telemetryScore(`pg:pf-align:${i}`),
   };
 });
 
@@ -67,7 +68,7 @@ export const PG_STRATEGIC_OBJECTIVES: StrategicObjective[] = OBJECTIVES.map((nam
   name,
   businessUnitId: PG_BUSINESS_UNITS[i % PG_BUSINESS_UNITS.length].id,
   weight: 10 + (i % 5) * 5,
-  alignmentScore: 72 + (i % 22),
+  alignmentScore: telemetryScore(`pg:obj-align:${i}`),
   programsAligned: 2 + (i % 6),
 }));
 
@@ -81,7 +82,7 @@ export const PG_STRATEGIC_PROGRAMS: StrategicProgram[] = Array.from({ length: 25
     objectiveId: PG_STRATEGIC_OBJECTIVES[i % PG_STRATEGIC_OBJECTIVES.length].id,
     projectCount: 3 + (i % 6),
     status: pick(['active', 'planned', 'completed', 'at-risk'] as const, i),
-    healthScore: 58 + (i % 38),
+    healthScore: telemetryScore(`pg:pgm-health:${i}`),
     benefitsForecast: 500_000 + (i % 20) * 120_000,
     riskLevel: pick(RISK_LEVELS, i + 2),
   };
@@ -97,8 +98,8 @@ export const PG_DEMAND_REQUESTS: DemandRequest[] = Array.from({ length: 200 }, (
     portfolioId: portfolio.id,
     submitter: pick(['Business Head', 'Product Owner', 'Transformation Office', 'PMO Lead', 'Domain Architect'], i),
     status: pick(DEMAND_STATUSES, i),
-    prioritizationScore: 40 + (i % 55),
-    strategicAlignment: 50 + (i % 45),
+    prioritizationScore: telemetryScore(`pg:dm-prio:${i}`),
+    strategicAlignment: telemetryScore(`pg:dm-align:${i}`),
     estimatedCost: 200_000 + (i % 30) * 85_000,
     benefitForecast: 350_000 + (i % 25) * 95_000,
     riskLevel: pick(RISK_LEVELS, i),
@@ -133,7 +134,7 @@ export const PG_PROJECTS: PortfolioProject[] = Array.from({ length: 100 }, (_, i
     businessUnitId: program.businessUnitId,
     demandId: demand.id,
     status: pick(PROJECT_STATUSES, i),
-    deliveryConfidence: 55 + (i % 40),
+    deliveryConfidence: telemetryScore(`pg:prj-conf:${i}`),
     prioritizationScore: demand.prioritizationScore,
     riskLevel: pick(RISK_LEVELS, i + 1),
     fundingApproved: demand.estimatedCost * (0.6 + (i % 4) * 0.1),
@@ -150,7 +151,7 @@ PG_FUNDING_REQUESTS.forEach((fr, i) => {
 
 export const PG_RESOURCES: Resource[] = Array.from({ length: 500 }, (_, i) => {
   const portfolio = PG_PORTFOLIOS[i % PG_PORTFOLIOS.length];
-  const utilization = 55 + (i % 45);
+  const utilization = telemetryInRange(`pg:res-util:${i}`, 42, 98);
   return {
     id: `RES-${String(i + 1).padStart(4, '0')}`,
     name: `Resource ${i + 1}`,
@@ -181,6 +182,11 @@ export const PG_CAPACITY_PLANS: CapacityPlan[] = Array.from({ length: 40 }, (_, 
   };
 });
 
+const pgHealthSeries = generateRealisticSeries(12, 'pg-history-health');
+const pgFundSeries = generateRealisticSeries(12, 'pg-history-fund');
+const pgCapSeries = generateRealisticSeries(12, 'pg-history-cap');
+const pgAlignSeries = generateRealisticSeries(12, 'pg-history-align');
+
 export const PG_PORTFOLIO_HISTORY: PortfolioHistoryPoint[] = (() => {
   const points: PortfolioHistoryPoint[] = [];
   for (let y = 2023; y <= 2025; y++) {
@@ -188,12 +194,12 @@ export const PG_PORTFOLIO_HISTORY: PortfolioHistoryPoint[] = (() => {
       const idx = (y - 2023) * 4 + q - 1;
       points.push({
         quarter: `Q${q} ${y}`,
-        portfolioHealth: 58 + idx * 2 + (idx % 3),
-        fundingUtilization: 62 + idx * 1.5,
-        capacityUtilization: 70 + (idx % 6) * 2,
+        portfolioHealth: pgHealthSeries[idx],
+        fundingUtilization: pgFundSeries[idx],
+        capacityUtilization: pgCapSeries[idx],
         demandBacklog: 180 - idx * 3,
         benefitsRealized: 2_500_000 + idx * 450_000,
-        strategicAlignment: 65 + idx * 1.8,
+        strategicAlignment: pgAlignSeries[idx],
       });
     }
   }
@@ -205,7 +211,7 @@ export const PG_BENEFIT_FORECASTS: BenefitForecast[] = PG_PROJECTS.slice(0, 60).
   projectName: p.name,
   forecast: p.benefitsForecast,
   realized: p.benefitsRealized,
-  confidence: 60 + (i % 35),
+  confidence: telemetryScore(`pg:ben-conf:${i}`),
   quarter: pick(['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025'], i),
 }));
 
@@ -223,5 +229,6 @@ export const PG_TRACEABILITY_CHAINS: PortfolioTraceabilityChain[] = [
 
 export const PORTFOLIO_GOVERNANCE_EXEC_SUMMARY =
   'Portfolio Governance Center provides end-to-end visibility from demand intake through funding, portfolio balancing, capacity planning, and benefits realization. ' +
-  '200 demand requests in pipeline · 100 active projects across 25 programs · ₹142M funding utilization at 84% · 78% strategic alignment · ' +
-  'AI advisors flag 12 kill candidates, 11 duplicate initiatives, and 3 critical resource bottlenecks. Transformation progress: 72%.';
+  '200 demand requests in pipeline · 100 active projects across 25 programs. Security Hardening and Payments Modernization lead on health; Core Banking Renewal and Cloud Migration remain weak spots. ' +
+  'Funding utilization and strategic alignment are uneven across portfolios — Innovation & AI objectives under-funded vs weight. ' +
+  'AI advisors flag kill candidates, duplicate initiatives, and critical resource bottlenecks where utilization exceeds 88%.';

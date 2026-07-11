@@ -13,6 +13,7 @@ import {
   ERM_TECHNOLOGY_RISKS,
   ERM_TRACEABILITY_CHAINS,
 } from './enterpriseRiskMock';
+import { generateComplianceTelemetry, generateRiskTelemetry } from './enterpriseTelemetry';
 
 export function canAccessEnterpriseRisk(personaId: PersonaId): boolean {
   return ENTERPRISE_RISK_ALLOWED_PERSONAS.includes(personaId);
@@ -60,9 +61,8 @@ export function risksBySeverity() {
 }
 
 export function risksByBusinessUnit() {
-  const counts = new Map<string, number>();
-  for (const r of ERM_ENTERPRISE_RISKS) counts.set(r.businessUnit, (counts.get(r.businessUnit) ?? 0) + 1);
-  return Array.from(counts.entries()).map(([name, value]) => ({ name, value }));
+  // Use residual risk posture % (not equalized counts) for chart realism.
+  return generateRiskTelemetry().map((r) => ({ name: r.name, value: r.value }));
 }
 
 export function topEnterpriseRisks(limit = 20) {
@@ -108,9 +108,11 @@ export function topRegulatoryRisks(limit = 18) {
 }
 
 export function regulatoryExposureByRegulator() {
-  const by = new Map<string, number>();
-  for (const r of ERM_REGULATORY_RISKS) by.set(r.regulator, (by.get(r.regulator) ?? 0) + Math.round(r.exposureValue / 1_000_000));
-  return Array.from(by.entries()).map(([name, value]) => ({ name, value }));
+  // Compliance posture % by regulator (enterprise uneven mix).
+  return generateComplianceTelemetry().map((c) => ({
+    name: c.name === 'FIU' ? 'FIU-IND' : c.name,
+    value: c.value,
+  }));
 }
 
 export function openAuditFindings(limit = 20) {
@@ -159,13 +161,19 @@ export function generateRiskAiInsights(): RiskAiInsight[] {
   const cyber = topCyberRisks(3);
   const ai = topAiRisks(3);
   const reg = topRegulatoryRisks(3);
+  const bu = generateRiskTelemetry();
+  const compliance = generateComplianceTelemetry();
+  const treasury = bu.find((b) => b.name === 'Treasury');
+  const retail = bu.find((b) => b.name === 'Retail Banking');
+  const fiu = compliance.find((c) => c.name === 'FIU');
+  const rbi = compliance.find((c) => c.name === 'RBI');
 
   return [
     {
       id: 'erm-ai-001',
       capability: 'risk-hotspot',
       title: 'Risk Hotspot Advisor',
-      recommendation: `${kpis.openCriticalRisks} open critical risks; enterprise risk exposure ${kpis.enterpriseRiskExposure}. Hotspots concentrated in cyber, AI, and payments — prioritize ${critical[0]?.title ?? 'top risk'}.`,
+      recommendation: `Treasury residual posture is weak at ${treasury?.value ?? 41}% while Retail Banking remains strongest at ${retail?.value ?? 82}%. Prioritize Treasury remediation and ${critical[0]?.title ?? 'top critical risk'}.`,
       confidence: 89,
       impact: 'high',
       relatedIds: critical.map((r) => r.id),
@@ -201,7 +209,7 @@ export function generateRiskAiInsights(): RiskAiInsight[] {
       id: 'erm-ai-005',
       capability: 'regulatory-exposure',
       title: 'Regulatory Exposure Advisor',
-      recommendation: `Regulatory exposure ₹${kpis.regulatoryExposure}M. 11 exposures approaching deadlines (${reg.map((r) => r.regulator).join(', ')}). Prioritize filings and remediation.`,
+      recommendation: `FIU compliance remains below target at ${fiu?.value ?? 61}% while RBI is strongest at ${rbi?.value ?? 96}%. Close FIU gaps before the next regulatory review cycle.`,
       confidence: 85,
       impact: 'high',
       relatedIds: reg.map((r) => r.id),
@@ -246,7 +254,7 @@ export function generateRiskAiInsights(): RiskAiInsight[] {
       id: 'erm-ai-010',
       capability: 'executive-summary',
       title: 'Executive Risk Summary Advisor',
-      recommendation: `Residual risk ${kpis.residualRisk} vs exposure ${kpis.enterpriseRiskExposure}. Board priorities: close ${kpis.openCriticalRisks} critical risks, remediate control gaps, and approve assurance plan.`,
+      recommendation: `Corporate Banking at ${bu.find((b) => b.name === 'Corporate Banking')?.value ?? 56}% and Treasury at ${treasury?.value ?? 41}% drag enterprise posture. Board priorities: close ${kpis.openCriticalRisks} critical risks and lift FIU compliance from ${fiu?.value ?? 61}%.`,
       confidence: 88,
       impact: 'high',
       relatedIds: critical.map((r) => r.id),

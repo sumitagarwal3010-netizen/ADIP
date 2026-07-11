@@ -13,6 +13,11 @@ import {
   TECH_TRACEABILITY_CHAINS,
   VENDOR_PRODUCTS,
 } from './technologyStrategyMock';
+import {
+  generateCloudTelemetry,
+  generateModernizationTelemetry,
+  generateStandardsTelemetry,
+} from './enterpriseTelemetry';
 
 export function canAccessTechnologyStrategy(personaId: PersonaId): boolean {
   return TECHNOLOGY_STRATEGY_ALLOWED_PERSONAS.includes(personaId);
@@ -75,14 +80,7 @@ export function stanceDistribution() {
 }
 
 export function standardsAdoptionByCategory() {
-  const by = new Map<string, { total: number; count: number }>();
-  for (const s of TECH_STANDARDS) {
-    const cur = by.get(s.category) ?? { total: 0, count: 0 };
-    cur.total += s.adoptionRate;
-    cur.count += 1;
-    by.set(s.category, cur);
-  }
-  return Array.from(by.entries()).map(([name, { total, count }]) => ({ name, value: Math.round(total / count) }));
+  return generateStandardsTelemetry().map((c) => ({ name: c.name, value: c.value }));
 }
 
 export function topStrategicPlatforms(limit = 15) {
@@ -94,9 +92,7 @@ export function strategicPlatformAdoptionChart() {
 }
 
 export function cloudAdoptionByProvider() {
-  const by = new Map<string, number>();
-  for (const c of CLOUD_PLATFORMS) by.set(c.provider, (by.get(c.provider) ?? 0) + c.adoptionRate);
-  return Array.from(by.entries()).map(([name, value]) => ({ name, value: Math.round(value / CLOUD_PLATFORMS.filter((c) => c.provider === name).length) }));
+  return generateCloudTelemetry().map((c) => ({ name: c.name, value: c.value }));
 }
 
 export function topCloudPlatforms(limit = 15) {
@@ -140,12 +136,7 @@ export function topTechnologyRisks(limit = 20) {
 }
 
 export function modernizationByWave() {
-  const by = new Map<string, number>();
-  for (const m of MODERNIZATION_INITIATIVES) {
-    const key = `Wave ${m.wave}`;
-    by.set(key, (by.get(key) ?? 0) + 1);
-  }
-  return Array.from(by.entries()).map(([name, value]) => ({ name, value })).sort((a, b) => a.name.localeCompare(b.name));
+  return generateModernizationTelemetry().map((m) => ({ name: m.name, value: m.value }));
 }
 
 export function modernizationInitiatives(limit = 20) {
@@ -173,6 +164,15 @@ export function generateTechAiInsights(): TechAiInsight[] {
   const retire = retirementCandidates(5);
   const vendorRisks = topVendorRisks(5);
   const modern = modernizationInitiatives(3);
+  const cloud = generateCloudTelemetry();
+  const standards = generateStandardsTelemetry();
+  const mod = generateModernizationTelemetry();
+  const gcp = cloud.find((c) => c.name === 'GCP');
+  const aws = cloud.find((c) => c.name === 'AWS');
+  const observability = standards.find((s) => s.name === 'Observability');
+  const security = standards.find((s) => s.name === 'Security');
+  const wave3 = mod.find((m) => m.name === 'Wave 3');
+  const blocked = mod.find((m) => m.name === 'Blocked');
 
   return [
     {
@@ -206,10 +206,10 @@ export function generateTechAiInsights(): TechAiInsight[] {
       id: 'tech-ai-004',
       capability: 'cloud-strategy',
       title: 'Cloud Strategy Advisor',
-      recommendation: `Cloud adoption ${kpis.cloudAdoption}%. Standardize on 2 strategic providers, optimize ₹ spend on low-adoption services, and accelerate serverless for event-driven payments.`,
+      recommendation: `GCP adoption is lagging at ${gcp?.value ?? 48}% while AWS remains strongest at ${aws?.value ?? 89}%. Rebalance workloads and close the Hybrid gap (${cloud.find((c) => c.name === 'Hybrid')?.value ?? 57}%).`,
       confidence: 83,
       impact: 'high',
-      relatedIds: CLOUD_PLATFORMS.filter((c) => !c.approved).slice(0, 5).map((c) => c.id),
+      relatedIds: CLOUD_PLATFORMS.filter((c) => c.provider === 'GCP').slice(0, 5).map((c) => c.id),
     },
     {
       id: 'tech-ai-005',
@@ -233,7 +233,7 @@ export function generateTechAiInsights(): TechAiInsight[] {
       id: 'tech-ai-007',
       capability: 'modernization',
       title: 'Modernization Advisor',
-      recommendation: `Modernization progress ${kpis.modernizationProgress}% across 3 waves. Prioritize ${modern[0]?.name} (${modern[0]?.applicationsImpacted} apps, ₹${Math.round((modern[0]?.investment ?? 0) / 1_000_000)}M).`,
+      recommendation: `Wave 3 modernization is at ${wave3?.value ?? 38}% and blocked work sits at ${blocked?.value ?? 27}%. Unblock dependencies before expanding Wave 1 (${mod.find((m) => m.name === 'Wave 1')?.value ?? 86}%).`,
       confidence: 86,
       impact: 'high',
       relatedIds: modern.map((m) => m.id),
@@ -242,7 +242,7 @@ export function generateTechAiInsights(): TechAiInsight[] {
       id: 'tech-ai-008',
       capability: 'standards-compliance',
       title: 'Standards Compliance Advisor',
-      recommendation: `Standards adoption ${kpis.standardsAdoption}%. Enforce mandatory API, security, and cloud standards on non-compliant technologies before new builds.`,
+      recommendation: `Observability maturity dropped to ${observability?.value ?? 49}%. Security remains strongest at ${security?.value ?? 93}%; lift API (${standards.find((s) => s.name === 'API')?.value ?? 61}%) and Observability before new builds.`,
       confidence: 85,
       impact: 'medium',
       relatedIds: TECH_STANDARDS.filter((s) => s.mandatory && s.complianceRate < 70).slice(0, 5).map((s) => s.id),
