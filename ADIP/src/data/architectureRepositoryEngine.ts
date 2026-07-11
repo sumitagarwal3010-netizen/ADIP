@@ -2,6 +2,11 @@ import type { PersonaId } from '../config/personaConfig';
 import type { ArchAiInsight, ArchitectureRepositoryKpis } from '../types/architectureRepository';
 import { ARCHITECTURE_REPOSITORY_ALLOWED_PERSONAS } from '../types/architectureRepository';
 import {
+  ARCHITECTURE_DOMAIN_MATURITY,
+  STANDARDS_ADOPTION_BY_DOMAIN,
+  architectureDomainMaturityChart,
+} from './deterministicChartBenchmarks';
+import {
   ARCH_APPLICATIONS,
   ARCH_CAPABILITIES,
   ARCH_CLOUD_SERVICES,
@@ -53,10 +58,39 @@ export function capabilitiesByArea() {
   return Array.from(counts.entries()).map(([name, value]) => ({ name, value }));
 }
 
+export function domainMaturityChart() {
+  return architectureDomainMaturityChart();
+}
+
+export function standardsAdoptionByDomain() {
+  return STANDARDS_ADOPTION_BY_DOMAIN.map((d) => ({
+    ...d,
+    name: d.name.charAt(0).toUpperCase() + d.name.slice(1),
+  }));
+}
+
 export function applicationsByDomain() {
+  return ARCHITECTURE_DOMAIN_MATURITY.map((d) => ({
+    name: d.domain,
+    value: d.currentScore,
+    target: d.target,
+    trend: d.trend,
+    trendDelta: d.trendDelta,
+    trendLabel: d.trendLabel,
+    riskBand: d.riskBand,
+    openReviewItems: d.openReviewItems,
+    lastUpdated: d.lastUpdated,
+  }));
+}
+
+function _applicationsByDomainCounts() {
   const counts = new Map<string, number>();
   for (const a of ARCH_APPLICATIONS) counts.set(a.domain, (counts.get(a.domain) ?? 0) + 1);
   return Array.from(counts.entries()).map(([name, value]) => ({ name, value }));
+}
+
+export function applicationCountByDomain() {
+  return _applicationsByDomainCounts();
 }
 
 export function complianceDistribution() {
@@ -71,7 +105,7 @@ export function lifecycleDistribution() {
   return Array.from(counts.entries()).map(([name, value]) => ({ name: name.replace(/-/g, ' '), value }));
 }
 
-export function standardsAdoptionByDomain() {
+export function standardsAdoptionByDomainLegacy() {
   const byDomain = new Map<string, { total: number; count: number }>();
   for (const s of ARCH_STANDARDS) {
     const cur = byDomain.get(s.domain) ?? { total: 0, count: 0 };

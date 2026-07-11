@@ -16,6 +16,8 @@ import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerato
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
 import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { colors } from '../theme/colors';
+import { HorizontalBarChart } from '../components/charts/HorizontalBarChart';
+import { AI_OVERSIGHT_CONTROL_COVERAGE } from '../data/deterministicChartBenchmarks';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { computeAiGovernanceKpis } from '../data/aiUseCaseRegistryMock';
 import {
@@ -410,6 +412,10 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
             <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Human Reviews" value={ctrlKpis.humanReviews} suffix="" compact /></Grid>
             <Grid size={{ xs: 6, md: 3 }}><KpiCard label="Guardrail Coverage" value={ctrlKpis.guardrailCoverage} suffix="%" compact /></Grid>
           </Grid>
+          <GlassCard sx={{ p: 2, mt: 1.5 }}>
+            <ModuleHeader title="AI Control Coverage by Domain" subtitle="Guardrail and oversight coverage — current vs target" />
+            <HorizontalBarChart chartId="ai-governance.control-coverage" data={AI_OVERSIGHT_CONTROL_COVERAGE} height={200} barColor={colors.secondary} defaultTarget={90} />
+          </GlassCard>
           <GlassCard sx={{ p: 2, mt: 1.5 }}>
             <ModuleHeader title="AI Control Library" subtitle={`${AI_CONTROLS.length} deployed controls · click any row for detail`} />
             <HeaderRow columns={[{ label: 'ID', minWidth: 72 }, { label: 'Control', flex: true }, { label: 'Domain', minWidth: 120 }, { label: 'Coverage', minWidth: 80 }, { label: 'Status', minWidth: 100, right: true }]} />

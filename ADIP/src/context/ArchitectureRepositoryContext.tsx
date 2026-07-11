@@ -3,6 +3,8 @@ import type { ArchAiInsight, ArchitectureRepositoryKpis } from '../types/archite
 import {
   activeExceptions,
   applicationsByDomain,
+  domainMaturityChart,
+  applicationCountByDomain,
   archIntegrationLinks,
   capabilitiesByArea,
   cloudServiceAdoption,
@@ -62,6 +64,8 @@ interface ArchitectureRepositoryContextValue {
   traceabilityChains: typeof ARCH_TRACEABILITY_CHAINS;
   capabilityAreas: ReturnType<typeof capabilitiesByArea>;
   appsByDomain: ReturnType<typeof applicationsByDomain>;
+  domainMaturity: ReturnType<typeof domainMaturityChart>;
+  appCountByDomain: ReturnType<typeof applicationCountByDomain>;
   complianceDist: ReturnType<typeof complianceDistribution>;
   lifecycleDist: ReturnType<typeof lifecycleDistribution>;
   standardsAdoption: ReturnType<typeof standardsAdoptionByDomain>;
@@ -103,6 +107,8 @@ export function ArchitectureRepositoryProvider({ children }: { children: ReactNo
     traceabilityChains: ARCH_TRACEABILITY_CHAINS,
     capabilityAreas: capabilitiesByArea(),
     appsByDomain: applicationsByDomain(),
+    domainMaturity: domainMaturityChart(),
+    appCountByDomain: applicationCountByDomain(),
     complianceDist: complianceDistribution(),
     lifecycleDist: lifecycleDistribution(),
     standardsAdoption: standardsAdoptionByDomain(),

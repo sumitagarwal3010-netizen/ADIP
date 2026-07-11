@@ -8,7 +8,7 @@ import { useArchitectureRepository } from '../../context/ArchitectureRepositoryC
 import { colors } from '../../theme/colors';
 
 export function ExecutiveArchitectureDashboardPanel() {
-  const { kpis, history, capabilityAreas, complianceDist } = useArchitectureRepository();
+  const { kpis, history, domainMaturity, complianceDist } = useArchitectureRepository();
 
   return (
     <Box>
@@ -46,8 +46,8 @@ export function ExecutiveArchitectureDashboardPanel() {
         </Grid>
         <Grid size={{ xs: 12, md: 5 }}>
           <GlassCard sx={{ p: 2 }}>
-            <ModuleHeader title="Capabilities by Banking Area" subtitle="100 business capabilities" />
-            <HorizontalBarChart chartId="architecture-repository.architecture-health" data={capabilityAreas.slice(0, 10)} height={220} barColor={colors.info} />
+            <ModuleHeader title="Architecture Domain Maturity" subtitle="Current score vs target · banking enterprise domains" />
+            <HorizontalBarChart chartId="architecture-repository.domain-maturity" data={domainMaturity.slice(0, 6)} height={220} barColor={colors.info} defaultTarget={85} />
           </GlassCard>
         </Grid>
       </Grid>

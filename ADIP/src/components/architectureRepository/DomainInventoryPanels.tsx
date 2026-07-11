@@ -12,13 +12,17 @@ const DOMAIN_LABELS = [
 ];
 
 export function ArchitectureDomainsPanel() {
-  const { appsByDomain, capabilities, applications, integrations, apis, databases } = useArchitectureRepository();
+  const { domainMaturity, capabilities, applications, integrations, apis, databases, appCountByDomain } = useArchitectureRepository();
 
   return (
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
-        <ModuleHeader title="Architecture Domains" subtitle="Applications mapped across 10 architecture domains" />
-        <HorizontalBarChart chartId="architecture-repository.architecture-health" data={appsByDomain} height={220} barColor={colors.info} />
+        <ModuleHeader title="Architecture Domain Maturity" subtitle="Current score vs target across 10 enterprise architecture domains" />
+        <HorizontalBarChart chartId="architecture-repository.domain-maturity" data={domainMaturity} height={320} barColor={colors.info} defaultTarget={85} />
+      </GlassCard>
+      <GlassCard sx={{ p: 2, mb: 1.5 }}>
+        <ModuleHeader title="Architecture Domains" subtitle="Application inventory distribution (counts)" />
+        <HorizontalBarChart chartId="architecture-repository.application-count" data={appCountByDomain} height={200} barColor={colors.secondary} showTarget={false} suffix="" />
       </GlassCard>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
         <ModuleHeader title="Domain Coverage" />
@@ -67,14 +71,14 @@ export function BusinessCapabilitiesPanel() {
 }
 
 export function ApplicationArchitecturePanel() {
-  const { applications, appsByDomain } = useArchitectureRepository();
+  const { applications, domainMaturity } = useArchitectureRepository();
   const sample = applications.slice(0, 18);
 
   return (
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }}>
-        <ModuleHeader title="Application Architecture" subtitle={`${applications.length} applications by domain`} />
-        <HorizontalBarChart chartId="architecture-repository.architecture-health" data={appsByDomain} height={200} barColor={colors.info} />
+        <ModuleHeader title="Application Architecture" subtitle={`${applications.length} applications · domain maturity overlay`} />
+        <HorizontalBarChart chartId="architecture-repository.domain-maturity" data={domainMaturity} height={280} barColor={colors.info} defaultTarget={85} />
       </GlassCard>
       <GlassCard sx={{ p: 2 }}>
         <ModuleHeader title="Application Architecture Register" />

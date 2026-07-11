@@ -15,6 +15,8 @@ import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { colors } from '../theme/colors';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { HorizontalBarChart } from '../components/charts/HorizontalBarChart';
+import { COMPLIANCE_READINESS_BARS } from '../data/deterministicChartBenchmarks';
 import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { useMemo, useState } from 'react';
 
@@ -170,6 +172,11 @@ export function GovernanceCompliancePage() {
           </Grid>
         ))}
       </Grid>
+
+      <GlassCard sx={{ p: 2, mt: 1.5 }}>
+        <ModuleHeader title="Regulatory Readiness by Framework" subtitle="Deterministic compliance posture — current vs target" />
+        <HorizontalBarChart chartId="governance.compliance-readiness" data={COMPLIANCE_READINESS_BARS} height={220} barColor={colors.success} defaultTarget={90} />
+      </GlassCard>
 
       <GlassCard sx={{ p: 2, mt: 1.5 }}>
         <ModuleHeader title="Regulatory Compliance Control Register" subtitle="Context: RBI / PCI-DSS / ISO27001 tracking" />

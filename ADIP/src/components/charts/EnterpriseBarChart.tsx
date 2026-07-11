@@ -11,6 +11,9 @@ export interface EnterpriseBarDatum {
   trend?: TrendDirection;
   trendDelta?: number;
   trendLabel?: string;
+  riskBand?: string;
+  openReviewItems?: number;
+  lastUpdated?: string;
 }
 
 export interface EnterpriseBarChartProps {
@@ -159,12 +162,15 @@ export function EnterpriseBarChart({
           const profile = profileForValue(d.value);
 
           const tip = [
-            `${d.name}: ${d.value}${suffix}`,
+            d.name,
+            `Current: ${d.value}${suffix}`,
             target != null ? `Target: ${target}${suffix}` : null,
-            gap != null ? `Gap: ${gap >= 0 ? '+' : ''}${gap}${suffix}` : null,
-            d.previous != null ? `Previous: ${d.previous}${suffix}` : null,
+            gap != null ? `Gap: ${Math.abs(gap)}${suffix}` : null,
             `Trend: ${trend.trendLabel}`,
-            `Band: ${profile}`,
+            d.riskBand ? `Risk: ${d.riskBand}` : `Band: ${profile}`,
+            d.openReviewItems != null ? `Open Review Items: ${d.openReviewItems}` : null,
+            d.lastUpdated ? `Last Updated: ${d.lastUpdated}` : null,
+            d.previous != null ? `Previous: ${d.previous}${suffix}` : null,
           ]
             .filter(Boolean)
             .join('\n');

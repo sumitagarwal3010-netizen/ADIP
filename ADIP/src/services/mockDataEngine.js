@@ -353,7 +353,7 @@ export function createInitialState() {
         { title: 'Legacy ISO8583 adapter on settlement', severity: 'medium' },
       ],
       recommendations: [
-        'Deploy circuit breaker on Fraud Engine before UPI Release 24.6',
+        'Deploy circuit breaker protection between the UPI Switch and Fraud Engine before UPI Release 24.6',
         'Introduce async settlement reconciliation for merchant auto-settlement',
       ],
     },
