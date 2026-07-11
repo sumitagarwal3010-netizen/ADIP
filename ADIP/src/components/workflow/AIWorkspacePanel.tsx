@@ -41,11 +41,16 @@ import { analyzePromptWithBackend } from '../../services/aiWorkspaceBackend';
 import { isBackendMode } from '../../services/backend/apiConfig';
 import type { RequirementArtifactPackage } from '../../types/copilot';
 import { getDeterministicRequirementPackage } from '../../data/deterministicRequirementCatalog';
+import {
+  getArchitectureScenarioAnalysis,
+  getArchitectureScenarioArtifacts,
+} from '../../data/deterministicArchitectureWorkspace';
 
 interface AIWorkspacePanelProps {
   module: AIWorkspaceModule;
   /** Header number (optional) to slot into a numbered hub layout. */
   number?: number;
+  hideFlowGuide?: boolean;
 }
 
 const FLOW_STEPS = ['User Prompt', 'AI Analysis', 'Recommendations', 'Generated Artifacts', 'Governance Workflow'];
@@ -91,7 +96,7 @@ function fileTypeFromName(name: string): 'docx' | 'xlsx' {
   return name.toLowerCase().endsWith('.xlsx') ? 'xlsx' : 'docx';
 }
 
-export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
+export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWorkspacePanelProps) {
   const config = AI_WORKSPACE_CONFIGS[module];
   const phaseConfig = PHASE_CONFIG[config.analysisPhase];
   const { recordArtifacts } = useArtifactsRegistry();
@@ -154,6 +159,14 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
    * existing `buildHubArtifacts` pipeline. No artifact logic is duplicated.
    */
   const buildGeneratedArtifacts = (captured: string, runId: string): Artifact[] => {
+    if (module === 'architecture') {
+      return getArchitectureScenarioArtifacts(captured, runId).map((a) => ({
+        ...a,
+        sourceHub: config.artifactHub,
+        sourceLabel: config.title,
+      }));
+    }
+
     if (module === 'requirements') {
       const normalized = normalizeRequirement(captured);
       const exact: Record<string, string[]> = {
@@ -439,6 +452,13 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
       });
     };
 
+    if (module === 'architecture') {
+      sim.run(() => {
+        finishAnalysis(getArchitectureScenarioAnalysis(captured));
+      });
+      return;
+    }
+
     if (isOrchestrator) {
       sim.run(async () => {
         try {
@@ -547,7 +567,7 @@ export function AIWorkspacePanel({ module, number }: AIWorkspacePanelProps) {
     <Box>
       <GlassCard sx={{ p: 2, mb: 1.5 }} glow={config.glow} hover={false}>
         <ModuleHeader number={number} title={config.title} subtitle={config.subtitle} />
-        <FlowGuide stage={stage} />
+        {!hideFlowGuide && <FlowGuide stage={stage} />}
         {backendError && (
           <Alert severity="info" sx={{ mb: 1, py: 0.25 }}>
             {backendError}

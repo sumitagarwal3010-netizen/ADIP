@@ -1,10 +1,8 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Box, Button, Grid } from '@mui/material';
 import { GlassCard } from '../common/GlassCard';
 import { ModuleHeader } from '../common/ModuleHeader';
 import { IntakeSelectField } from '../workflow/IntakeSelectField';
-import { GenerationSimulationPanel } from '../workflow/GenerationSimulationPanel';
-import { GenerationRunHistoryPanel } from '../workflow/GenerationRunHistoryPanel';
 import { ArtifactRepositoryPanel } from '../workflow/ArtifactRepositoryPanel';
 import { useGenerationSimulation } from '../../hooks/useGenerationSimulation';
 import type { SimulationConfig } from '../../hooks/useGenerationSimulation';
@@ -13,10 +11,9 @@ import {
   approvedFrdOptions,
   buildDesignArtifacts,
   createRunId,
-  formatTimestamp,
   getDemoDesignArtifacts,
 } from '../../data/designArtifactFactory';
-import type { Artifact, GenerationRun } from '../../types/artifacts';
+import type { Artifact } from '../../types/artifacts';
 import { colors } from '../../theme/colors';
 
 const DESIGN_SIMULATION: SimulationConfig = {
@@ -30,33 +27,25 @@ const DESIGN_SIMULATION: SimulationConfig = {
   ],
 };
 
-export function DesignIntakeWorkflow() {
+interface DesignIntakeWorkflowProps {
+  children?: ReactNode;
+}
+
+export function DesignIntakeWorkflow({ children }: DesignIntakeWorkflowProps) {
   const [approvedBrd, setApprovedBrd] = useState('');
   const [approvedFrd, setApprovedFrd] = useState('');
   const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoDesignArtifacts());
-  const [runs, setRuns] = useState<GenerationRun[]>([]);
-  const [showSimulation, setShowSimulation] = useState(false);
 
-  const { isRunning, progress, statusMessage, activityLog, run, reset } =
+  const { isRunning, run, reset } =
     useGenerationSimulation(DESIGN_SIMULATION);
 
   const handleGenerate = () => {
     if (!approvedBrd || !approvedFrd) return;
 
     const runId = createRunId('ARCH');
-    const timestamp = formatTimestamp();
-
-    setShowSimulation(true);
-    setRuns((prev) => [
-      { runId, timestamp, generatedBy: 'Design AI', status: 'In Progress' },
-      ...prev,
-    ]);
 
     run(() => {
       setArtifacts(buildDesignArtifacts(approvedBrd, approvedFrd, runId));
-      setRuns((prev) =>
-        prev.map((r) => (r.runId === runId ? { ...r, status: 'Completed' } : r)),
-      );
     });
   };
 
@@ -64,7 +53,6 @@ export function DesignIntakeWorkflow() {
     setApprovedBrd('');
     setApprovedFrd('');
     reset();
-    setShowSimulation(false);
   };
 
   return (
@@ -104,15 +92,7 @@ export function DesignIntakeWorkflow() {
         </Box>
       </GlassCard>
 
-      <GenerationSimulationPanel
-        visible={showSimulation}
-        statusMessage={statusMessage}
-        progress={progress}
-        activityLog={activityLog}
-        agentLabel="Design Agent"
-      />
-
-      <GenerationRunHistoryPanel runs={runs} />
+      {children}
 
       <ArtifactRepositoryPanel
         artifacts={artifacts}

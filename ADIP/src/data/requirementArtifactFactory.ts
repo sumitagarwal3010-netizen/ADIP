@@ -15,10 +15,38 @@ function today(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+function normalize(value: string, fallback: string): string {
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : fallback;
+}
+
+function toFeatureCode(feature: string): string {
+  const alnum = feature.toUpperCase().replace(/[^A-Z0-9]+/g, '');
+  return (alnum.slice(0, 6) || 'FEATURE').padEnd(6, 'X');
+}
+
+function toStoryClauses(requirementDescription: string): string[] {
+  const clauses = requirementDescription
+    .split(/[.;\n]+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (clauses.length === 0) return ['Implement the requirement behavior as specified'];
+  return clauses.slice(0, 3);
+}
+
 export function buildRequirementArtifacts(intake: RequirementIntake, runId: string): Artifact[] {
   const date = today();
-  const feature = intake.featureName || 'Untitled Feature';
-  const domain = intake.domain || 'General';
+  const feature = normalize(intake.featureName, 'Untitled Feature');
+  const domain = normalize(intake.domain, 'General');
+  const businessObjective = normalize(intake.businessObjective, `Deliver ${feature} outcomes for ${domain}.`);
+  const requirementDescription = normalize(
+    intake.requirementDescription,
+    `${feature} implementation requirements for ${domain}.`,
+  );
+  const complianceNotes = normalize(intake.complianceNotes, `Apply ${domain} compliance controls for ${feature}.`);
+  const storyClauses = toStoryClauses(requirementDescription);
+  const featureCode = toFeatureCode(feature);
+  const reqIds = storyClauses.map((_, i) => `REQ-${featureCode}-${String(i + 1).padStart(2, '0')}`);
 
   const artifacts: Artifact[] = [
     {
@@ -36,13 +64,13 @@ ${feature}
 Domain: ${domain}
 
 1. Executive Summary
-   ${intake.businessObjective || 'Business objective to be defined.'}
+   The ${feature} initiative in ${domain} targets: ${businessObjective}
 
 2. Requirement Description
-   ${intake.requirementDescription || 'No detailed description provided.'}
+   ${requirementDescription}
 
 3. Compliance Notes
-   ${intake.complianceNotes || 'No compliance constraints specified.'}`,
+   ${complianceNotes}`,
       generationHistory: [
         { version: '1.0', generatedDate: date, generatedBy: 'Requirement AI', modelUsed: 'Gemini', changeSummary: `Generated from intake run ${runId}` },
       ],
@@ -60,13 +88,13 @@ Domain: ${domain}
 ${feature}
 
 FR-001: Core Capability
-  System shall implement ${feature} within the ${domain} domain.
+  System shall implement ${feature} within the ${domain} domain according to: ${requirementDescription}
 
 FR-002: Business Objective Alignment
-  ${intake.businessObjective || 'Align delivery to stated business goals.'}
+  ${businessObjective}
 
 FR-003: Compliance Controls
-  ${intake.complianceNotes || 'Apply standard regulatory controls.'}`,
+  ${complianceNotes}`,
       generationHistory: [
         { version: '1.0', generatedDate: date, generatedBy: 'Requirement AI', modelUsed: 'Gemini', changeSummary: `Derived from BRD for ${feature}` },
       ],
@@ -84,9 +112,9 @@ FR-003: Compliance Controls
 
 | ID       | Epic        | Story                                              | Points |
 |----------|-------------|----------------------------------------------------|--------|
-| US-001   | ${feature}  | As a user, I want ${feature.toLowerCase()}...      | 5      |
-| US-002   | ${feature}  | As ops, I want monitoring for ${domain}...         | 3      |
-| US-003   | Compliance  | As compliance, I want audit trail for changes...   | 3      |`,
+| US-001   | ${feature}  | As a ${domain} user, I want ${feature} so that ${storyClauses[0] || requirementDescription}. | 5 |
+| US-002   | ${feature}  | As a product owner, I want ${feature} behavior to satisfy: ${storyClauses[1] || requirementDescription}. | 3 |
+| US-003   | Compliance  | As a compliance officer, I want ${feature} to enforce ${complianceNotes}. | 3 |`,
       generationHistory: [
         { version: '1.0', generatedDate: date, generatedBy: 'Requirement AI', modelUsed: 'Gemini', changeSummary: `Story breakdown from FRD — ${feature}` },
       ],
@@ -104,14 +132,14 @@ FR-003: Compliance Controls
 ${feature}
 
 AC-001: Feature Delivery
-  GIVEN valid ${domain} configuration
-  WHEN ${feature} is activated
-  THEN business objective is measurable within 30 days
+  GIVEN ${domain} configuration for ${feature}
+  WHEN users execute the capability described as "${storyClauses[0] || requirementDescription}"
+  THEN the system fulfills: ${businessObjective}
 
 AC-002: Compliance
-  GIVEN regulatory constraints
-  WHEN feature processes transactions
-  THEN ${intake.complianceNotes || 'standard compliance checks apply'}`,
+  GIVEN compliance constraints "${complianceNotes}"
+  WHEN ${feature} processes ${domain} workflows
+  THEN all compliance checks in the intake notes are enforced`,
       generationHistory: [
         { version: '1.0', generatedDate: date, generatedBy: 'Requirement AI', modelUsed: 'Gemini', changeSummary: `Acceptance criteria from user stories — ${feature}` },
       ],
@@ -129,11 +157,13 @@ AC-002: Compliance
 
 | Req ID | BRD Section | FRD Ref | User Story | Test Case | Status    |
 |--------|-------------|---------|------------|-----------|-----------|
-| REQ-01 | Exec Summary| FR-001  | US-001     | TC-001    | Mapped    |
-| REQ-02 | Compliance  | FR-003  | US-003     | TC-004    | Mapped    |
-| REQ-03 | ${domain}   | FR-002  | US-002     | TC-002    | In Review |
+| ${reqIds[0] || `REQ-${featureCode}-01`} | Exec Summary | FR-001 | US-001 | TC-001 | Mapped |
+| ${reqIds[1] || `REQ-${featureCode}-02`} | Compliance   | FR-003 | US-003 | TC-004 | Mapped |
+| ${reqIds[2] || `REQ-${featureCode}-03`} | ${domain}    | FR-002 | US-002 | TC-002 | Mapped |
 
-Coverage: 94% requirements traced to test cases`,
+Feature: ${feature}
+Requirement Basis: ${requirementDescription}
+Coverage: 100% generated requirements traced to test cases`,
       generationHistory: [
         { version: '1.0', generatedDate: date, generatedBy: 'Requirement AI', modelUsed: 'Gemini', changeSummary: `RTM linking BRD/FRD/stories for ${feature}` },
       ],
