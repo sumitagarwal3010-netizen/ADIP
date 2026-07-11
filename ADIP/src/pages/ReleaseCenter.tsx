@@ -11,6 +11,7 @@ import { StatusDot } from '../components/common/StatusDot';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { ReleaseIntakeWorkflow } from '../components/release/ReleaseIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
@@ -26,7 +27,10 @@ export function ReleaseCenter() {
 
   return (
     <Box>
-      <AIWorkspacePanel module="release" number={1} />
+      <EnterpriseArtifactWorkspace pillar="AI SDLC" submenu="Release" />
+      <Box sx={{ mt: 0.5 }}>
+        <AIWorkspacePanel module="release" number={1} />
+      </Box>
       <SdlcBackendStrip
         hubLabel="Release"
         loading={backend.loading}

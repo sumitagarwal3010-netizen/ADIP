@@ -8,6 +8,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { CenterErrorBoundary } from '../components/common/CenterErrorBoundary';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { colors } from '../theme/colors';
 
 export function ConnectorArtifactWorkbench() {
@@ -80,11 +81,12 @@ export function ConnectorArtifactWorkbench() {
   return (
     <CenterErrorBoundary title="Enterprise Evidence Hub">
       <Box>
-        <GlassCard sx={{ p: 2, mb: 1.5 }} glow="blue" hover={false}>
-          <ModuleHeader
-            title="Enterprise Evidence Hub"
-            subtitle="Enterprise Sources -> Evidence Collection -> AI Validation -> Generated Pack -> Approval / Publish"
-          />
+        <EnterpriseArtifactWorkspace pillar="Enterprise AI" submenu="Enterprise Evidence Hub" />
+
+        <GlassCard sx={{ p: 2, mb: 1.5, mt: 0.5 }} glow="blue" hover={false}>
+          <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontWeight: 600, mb: 1 }}>
+            Enterprise Sources → Evidence Collection → AI Validation → Generated Pack → Approval / Publish
+          </Typography>
           <Alert severity="info" sx={{ mb: 1, py: 0.25 }}>
             Deterministic local automation mode for enterprise governance demos.
           </Alert>

@@ -1,0 +1,1952 @@
+[
+  {
+    "prompt_id": "PR-001",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "label": "Today's CIO Briefing",
+    "purpose": "Automates CIO briefings, portfolio summaries, delivery forecasting, strategic decisions and executive action tracking.",
+    "page_id": "PAGE-EXE-ADV",
+    "default_context": "Mobile Banking v9.2 portfolio, biometric login readiness, critical delivery risks and executive decisions.",
+    "primary_artifact_id": "AR-001",
+    "supporting_artifact_ids": [
+      "AR-002",
+      "AR-003"
+    ],
+    "workflow_id": "WF-EXEC-BRIEF",
+    "reviewer_role": "CIO Chief of Staff",
+    "approver_role": "CIO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-001",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-002",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "label": "Portfolio Health Summary",
+    "purpose": "Automates CIO briefings, portfolio summaries, delivery forecasting, strategic decisions and executive action tracking.",
+    "page_id": "PAGE-EXE-ADV",
+    "default_context": "Mobile Banking v9.2 portfolio, biometric login readiness, critical delivery risks and executive decisions.",
+    "primary_artifact_id": "AR-002",
+    "supporting_artifact_ids": [
+      "AR-001",
+      "AR-003"
+    ],
+    "workflow_id": "WF-EXEC-BRIEF",
+    "reviewer_role": "CIO Chief of Staff",
+    "approver_role": "CIO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-001",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-003",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "label": "Top Delivery Risks",
+    "purpose": "Automates CIO briefings, portfolio summaries, delivery forecasting, strategic decisions and executive action tracking.",
+    "page_id": "PAGE-EXE-ADV",
+    "default_context": "Mobile Banking v9.2 portfolio, biometric login readiness, critical delivery risks and executive decisions.",
+    "primary_artifact_id": "AR-004",
+    "supporting_artifact_ids": [
+      "AR-001",
+      "AR-002"
+    ],
+    "workflow_id": "WF-EXEC-BRIEF",
+    "reviewer_role": "CIO Chief of Staff",
+    "approver_role": "CIO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-001",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-004",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "label": "Executive Action Plan",
+    "purpose": "Automates CIO briefings, portfolio summaries, delivery forecasting, strategic decisions and executive action tracking.",
+    "page_id": "PAGE-EXE-ADV",
+    "default_context": "Mobile Banking v9.2 portfolio, biometric login readiness, critical delivery risks and executive decisions.",
+    "primary_artifact_id": "AR-005",
+    "supporting_artifact_ids": [
+      "AR-001",
+      "AR-002"
+    ],
+    "workflow_id": "WF-EXEC-BRIEF",
+    "reviewer_role": "CIO Chief of Staff",
+    "approver_role": "CIO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-001",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-005",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "label": "Quarterly Delivery Outlook",
+    "purpose": "Automates CIO briefings, portfolio summaries, delivery forecasting, strategic decisions and executive action tracking.",
+    "page_id": "PAGE-EXE-ADV",
+    "default_context": "Mobile Banking v9.2 portfolio, biometric login readiness, critical delivery risks and executive decisions.",
+    "primary_artifact_id": "AR-007",
+    "supporting_artifact_ids": [
+      "AR-001",
+      "AR-002"
+    ],
+    "workflow_id": "WF-EXEC-BRIEF",
+    "reviewer_role": "CIO Chief of Staff",
+    "approver_role": "CIO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-001",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-006",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "label": "Critical Business Decisions",
+    "purpose": "Automates CIO briefings, portfolio summaries, delivery forecasting, strategic decisions and executive action tracking.",
+    "page_id": "PAGE-EXE-ADV",
+    "default_context": "Mobile Banking v9.2 portfolio, biometric login readiness, critical delivery risks and executive decisions.",
+    "primary_artifact_id": "AR-005",
+    "supporting_artifact_ids": [
+      "AR-001",
+      "AR-002"
+    ],
+    "workflow_id": "WF-EXEC-BRIEF",
+    "reviewer_role": "CIO Chief of Staff",
+    "approver_role": "CIO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-001",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-007",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "label": "Modernization Candidates",
+    "purpose": "Automates technology lifecycle analysis, modernization planning, cloud migration sequencing and technical-debt prioritization.",
+    "page_id": "PAGE-TEC-ADV",
+    "default_context": "Enterprise application estate, modernization backlog, technology standards, cloud readiness and technical debt.",
+    "primary_artifact_id": "AR-010",
+    "supporting_artifact_ids": [
+      "AR-008",
+      "AR-009"
+    ],
+    "workflow_id": "WF-TECH-REVIEW",
+    "reviewer_role": "Architecture Review Board",
+    "approver_role": "CTO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-002",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-008",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "label": "Technology Health Review",
+    "purpose": "Automates technology lifecycle analysis, modernization planning, cloud migration sequencing and technical-debt prioritization.",
+    "page_id": "PAGE-TEC-ADV",
+    "default_context": "Enterprise application estate, modernization backlog, technology standards, cloud readiness and technical debt.",
+    "primary_artifact_id": "AR-013",
+    "supporting_artifact_ids": [
+      "AR-008",
+      "AR-009"
+    ],
+    "workflow_id": "WF-TECH-REVIEW",
+    "reviewer_role": "Architecture Review Board",
+    "approver_role": "CTO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-002",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-009",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "label": "Cloud Migration Roadmap",
+    "purpose": "Automates technology lifecycle analysis, modernization planning, cloud migration sequencing and technical-debt prioritization.",
+    "page_id": "PAGE-TEC-ADV",
+    "default_context": "Enterprise application estate, modernization backlog, technology standards, cloud readiness and technical debt.",
+    "primary_artifact_id": "AR-011",
+    "supporting_artifact_ids": [
+      "AR-008",
+      "AR-009"
+    ],
+    "workflow_id": "WF-TECH-REVIEW",
+    "reviewer_role": "Architecture Review Board",
+    "approver_role": "CTO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-002",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-010",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "label": "Technical Debt Analysis",
+    "purpose": "Automates technology lifecycle analysis, modernization planning, cloud migration sequencing and technical-debt prioritization.",
+    "page_id": "PAGE-TEC-ADV",
+    "default_context": "Enterprise application estate, modernization backlog, technology standards, cloud readiness and technical debt.",
+    "primary_artifact_id": "AR-009",
+    "supporting_artifact_ids": [
+      "AR-008",
+      "AR-010"
+    ],
+    "workflow_id": "WF-TECH-REVIEW",
+    "reviewer_role": "Architecture Review Board",
+    "approver_role": "CTO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-002",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-011",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "label": "Platform Standardization",
+    "purpose": "Automates technology lifecycle analysis, modernization planning, cloud migration sequencing and technical-debt prioritization.",
+    "page_id": "PAGE-TEC-ADV",
+    "default_context": "Enterprise application estate, modernization backlog, technology standards, cloud readiness and technical debt.",
+    "primary_artifact_id": "AR-012",
+    "supporting_artifact_ids": [
+      "AR-008",
+      "AR-009"
+    ],
+    "workflow_id": "WF-TECH-REVIEW",
+    "reviewer_role": "Architecture Review Board",
+    "approver_role": "CTO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-002",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-012",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "label": "Legacy Retirement Plan",
+    "purpose": "Automates technology lifecycle analysis, modernization planning, cloud migration sequencing and technical-debt prioritization.",
+    "page_id": "PAGE-TEC-ADV",
+    "default_context": "Enterprise application estate, modernization backlog, technology standards, cloud readiness and technical debt.",
+    "primary_artifact_id": "AR-010",
+    "supporting_artifact_ids": [
+      "AR-008",
+      "AR-009"
+    ],
+    "workflow_id": "WF-TECH-REVIEW",
+    "reviewer_role": "Architecture Review Board",
+    "approver_role": "CTO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-002",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-013",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "label": "ROI Prioritization",
+    "purpose": "Automates ROI analysis, investment prioritization, budget optimization and multi-year technology planning.",
+    "page_id": "PAGE-INV-ADV",
+    "default_context": "FY27 technology portfolio, three-year benefits, costs, dependencies and funding constraints.",
+    "primary_artifact_id": "AR-015",
+    "supporting_artifact_ids": [
+      "AR-014",
+      "AR-016"
+    ],
+    "workflow_id": "WF-INVESTMENT",
+    "reviewer_role": "Finance Business Partner",
+    "approver_role": "CIO/CFO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-003",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-014",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "label": "Investment Roadmap",
+    "purpose": "Automates ROI analysis, investment prioritization, budget optimization and multi-year technology planning.",
+    "page_id": "PAGE-INV-ADV",
+    "default_context": "FY27 technology portfolio, three-year benefits, costs, dependencies and funding constraints.",
+    "primary_artifact_id": "AR-014",
+    "supporting_artifact_ids": [
+      "AR-015",
+      "AR-016"
+    ],
+    "workflow_id": "WF-INVESTMENT",
+    "reviewer_role": "Finance Business Partner",
+    "approver_role": "CIO/CFO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-003",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-015",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "label": "Budget Optimization",
+    "purpose": "Automates ROI analysis, investment prioritization, budget optimization and multi-year technology planning.",
+    "page_id": "PAGE-INV-ADV",
+    "default_context": "FY27 technology portfolio, three-year benefits, costs, dependencies and funding constraints.",
+    "primary_artifact_id": "AR-016",
+    "supporting_artifact_ids": [
+      "AR-014",
+      "AR-015"
+    ],
+    "workflow_id": "WF-INVESTMENT",
+    "reviewer_role": "Finance Business Partner",
+    "approver_role": "CIO/CFO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-003",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-016",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "label": "Vendor Cost Analysis",
+    "purpose": "Automates ROI analysis, investment prioritization, budget optimization and multi-year technology planning.",
+    "page_id": "PAGE-INV-ADV",
+    "default_context": "FY27 technology portfolio, three-year benefits, costs, dependencies and funding constraints.",
+    "primary_artifact_id": "AR-017",
+    "supporting_artifact_ids": [
+      "AR-014",
+      "AR-015"
+    ],
+    "workflow_id": "WF-INVESTMENT",
+    "reviewer_role": "Finance Business Partner",
+    "approver_role": "CIO/CFO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-003",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-017",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "label": "Strategic Investment Plan",
+    "purpose": "Automates ROI analysis, investment prioritization, budget optimization and multi-year technology planning.",
+    "page_id": "PAGE-INV-ADV",
+    "default_context": "FY27 technology portfolio, three-year benefits, costs, dependencies and funding constraints.",
+    "primary_artifact_id": "AR-019",
+    "supporting_artifact_ids": [
+      "AR-014",
+      "AR-015"
+    ],
+    "workflow_id": "WF-INVESTMENT",
+    "reviewer_role": "Finance Business Partner",
+    "approver_role": "CIO/CFO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-003",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-018",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "label": "3-Year Technology Vision",
+    "purpose": "Automates ROI analysis, investment prioritization, budget optimization and multi-year technology planning.",
+    "page_id": "PAGE-INV-ADV",
+    "default_context": "FY27 technology portfolio, three-year benefits, costs, dependencies and funding constraints.",
+    "primary_artifact_id": "AR-014",
+    "supporting_artifact_ids": [
+      "AR-015",
+      "AR-016"
+    ],
+    "workflow_id": "WF-INVESTMENT",
+    "reviewer_role": "Finance Business Partner",
+    "approver_role": "CIO/CFO",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-003",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-019",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "label": "Biometric Login",
+    "purpose": "Automates business analysis, requirement decomposition, ambiguity detection, acceptance criteria and traceability.",
+    "page_id": "PAGE-SDLC-REQ",
+    "default_context": "Mobile Banking biometric login for enrolled retail customers with MPIN fallback and auditable controls.",
+    "primary_artifact_id": "AR-020",
+    "supporting_artifact_ids": [
+      "AR-021",
+      "AR-022"
+    ],
+    "workflow_id": "WF-SDLC-REQ",
+    "reviewer_role": "Product Owner",
+    "approver_role": "Business Sponsor",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-004",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-020",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "label": "Device Binding",
+    "purpose": "Automates business analysis, requirement decomposition, ambiguity detection, acceptance criteria and traceability.",
+    "page_id": "PAGE-SDLC-REQ",
+    "default_context": "Mobile Banking biometric login for enrolled retail customers with MPIN fallback and auditable controls.",
+    "primary_artifact_id": "AR-021",
+    "supporting_artifact_ids": [
+      "AR-020",
+      "AR-022"
+    ],
+    "workflow_id": "WF-SDLC-REQ",
+    "reviewer_role": "Product Owner",
+    "approver_role": "Business Sponsor",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-004",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-021",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "label": "Passkey Authentication",
+    "purpose": "Automates business analysis, requirement decomposition, ambiguity detection, acceptance criteria and traceability.",
+    "page_id": "PAGE-SDLC-REQ",
+    "default_context": "Mobile Banking biometric login for enrolled retail customers with MPIN fallback and auditable controls.",
+    "primary_artifact_id": "AR-020",
+    "supporting_artifact_ids": [
+      "AR-021",
+      "AR-022"
+    ],
+    "workflow_id": "WF-SDLC-REQ",
+    "reviewer_role": "Product Owner",
+    "approver_role": "Business Sponsor",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-004",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-022",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "label": "UPI Lite",
+    "purpose": "Automates business analysis, requirement decomposition, ambiguity detection, acceptance criteria and traceability.",
+    "page_id": "PAGE-SDLC-REQ",
+    "default_context": "Mobile Banking biometric login for enrolled retail customers with MPIN fallback and auditable controls.",
+    "primary_artifact_id": "AR-020",
+    "supporting_artifact_ids": [
+      "AR-021",
+      "AR-022"
+    ],
+    "workflow_id": "WF-SDLC-REQ",
+    "reviewer_role": "Product Owner",
+    "approver_role": "Business Sponsor",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-004",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-023",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "label": "QR Cash Withdrawal",
+    "purpose": "Automates business analysis, requirement decomposition, ambiguity detection, acceptance criteria and traceability.",
+    "page_id": "PAGE-SDLC-REQ",
+    "default_context": "Mobile Banking biometric login for enrolled retail customers with MPIN fallback and auditable controls.",
+    "primary_artifact_id": "AR-023",
+    "supporting_artifact_ids": [
+      "AR-020",
+      "AR-021"
+    ],
+    "workflow_id": "WF-SDLC-REQ",
+    "reviewer_role": "Product Owner",
+    "approver_role": "Business Sponsor",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-004",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-024",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "label": "AI Fraud Detection",
+    "purpose": "Automates business analysis, requirement decomposition, ambiguity detection, acceptance criteria and traceability.",
+    "page_id": "PAGE-SDLC-REQ",
+    "default_context": "Mobile Banking biometric login for enrolled retail customers with MPIN fallback and auditable controls.",
+    "primary_artifact_id": "AR-020",
+    "supporting_artifact_ids": [
+      "AR-021",
+      "AR-022"
+    ],
+    "workflow_id": "WF-SDLC-REQ",
+    "reviewer_role": "Product Owner",
+    "approver_role": "Business Sponsor",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-004",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-025",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "label": "Design Biometric Login",
+    "purpose": "Automates solution design, architecture decomposition, API and data design, security review and deployment planning.",
+    "page_id": "PAGE-SDLC-DSN",
+    "default_context": "Biometric login solution using platform biometrics, IAM, device registry, audit service and feature flags.",
+    "primary_artifact_id": "AR-027",
+    "supporting_artifact_ids": [
+      "AR-028",
+      "AR-029"
+    ],
+    "workflow_id": "WF-SDLC-DESIGN",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-005",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-026",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "label": "Design Passkey Authentication",
+    "purpose": "Automates solution design, architecture decomposition, API and data design, security review and deployment planning.",
+    "page_id": "PAGE-SDLC-DSN",
+    "default_context": "Biometric login solution using platform biometrics, IAM, device registry, audit service and feature flags.",
+    "primary_artifact_id": "AR-029",
+    "supporting_artifact_ids": [
+      "AR-027",
+      "AR-028"
+    ],
+    "workflow_id": "WF-SDLC-DESIGN",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-005",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-027",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "label": "Design QR Withdrawal",
+    "purpose": "Automates solution design, architecture decomposition, API and data design, security review and deployment planning.",
+    "page_id": "PAGE-SDLC-DSN",
+    "default_context": "Biometric login solution using platform biometrics, IAM, device registry, audit service and feature flags.",
+    "primary_artifact_id": "AR-030",
+    "supporting_artifact_ids": [
+      "AR-027",
+      "AR-028"
+    ],
+    "workflow_id": "WF-SDLC-DESIGN",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-005",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-028",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "label": "Design UPI Lite",
+    "purpose": "Automates solution design, architecture decomposition, API and data design, security review and deployment planning.",
+    "page_id": "PAGE-SDLC-DSN",
+    "default_context": "Biometric login solution using platform biometrics, IAM, device registry, audit service and feature flags.",
+    "primary_artifact_id": "AR-027",
+    "supporting_artifact_ids": [
+      "AR-028",
+      "AR-029"
+    ],
+    "workflow_id": "WF-SDLC-DESIGN",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-005",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-029",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "label": "Design AI Fraud Detection",
+    "purpose": "Automates solution design, architecture decomposition, API and data design, security review and deployment planning.",
+    "page_id": "PAGE-SDLC-DSN",
+    "default_context": "Biometric login solution using platform biometrics, IAM, device registry, audit service and feature flags.",
+    "primary_artifact_id": "AR-033",
+    "supporting_artifact_ids": [
+      "AR-027",
+      "AR-028"
+    ],
+    "workflow_id": "WF-SDLC-DESIGN",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-005",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-030",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "label": "Design Device Binding",
+    "purpose": "Automates solution design, architecture decomposition, API and data design, security review and deployment planning.",
+    "page_id": "PAGE-SDLC-DSN",
+    "default_context": "Biometric login solution using platform biometrics, IAM, device registry, audit service and feature flags.",
+    "primary_artifact_id": "AR-028",
+    "supporting_artifact_ids": [
+      "AR-027",
+      "AR-029"
+    ],
+    "workflow_id": "WF-SDLC-DESIGN",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-005",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-031",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "label": "Sprint Planning",
+    "purpose": "Automates sprint decomposition, engineering planning, API contracts, CI/CD tasks and code-review readiness.",
+    "page_id": "PAGE-SDLC-DEV",
+    "default_context": "Biometric login implementation across mobile client, authentication API, device registry and CI/CD pipeline.",
+    "primary_artifact_id": "AR-035",
+    "supporting_artifact_ids": [
+      "AR-036",
+      "AR-037"
+    ],
+    "workflow_id": "WF-SDLC-DEV",
+    "reviewer_role": "Tech Lead",
+    "approver_role": "Product Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-006",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-032",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "label": "Backend Development Plan",
+    "purpose": "Automates sprint decomposition, engineering planning, API contracts, CI/CD tasks and code-review readiness.",
+    "page_id": "PAGE-SDLC-DEV",
+    "default_context": "Biometric login implementation across mobile client, authentication API, device registry and CI/CD pipeline.",
+    "primary_artifact_id": "AR-036",
+    "supporting_artifact_ids": [
+      "AR-035",
+      "AR-037"
+    ],
+    "workflow_id": "WF-SDLC-DEV",
+    "reviewer_role": "Tech Lead",
+    "approver_role": "Product Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-006",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-033",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "label": "Frontend Development Plan",
+    "purpose": "Automates sprint decomposition, engineering planning, API contracts, CI/CD tasks and code-review readiness.",
+    "page_id": "PAGE-SDLC-DEV",
+    "default_context": "Biometric login implementation across mobile client, authentication API, device registry and CI/CD pipeline.",
+    "primary_artifact_id": "AR-036",
+    "supporting_artifact_ids": [
+      "AR-035",
+      "AR-037"
+    ],
+    "workflow_id": "WF-SDLC-DEV",
+    "reviewer_role": "Tech Lead",
+    "approver_role": "Product Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-006",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-034",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "label": "Code Review",
+    "purpose": "Automates sprint decomposition, engineering planning, API contracts, CI/CD tasks and code-review readiness.",
+    "page_id": "PAGE-SDLC-DEV",
+    "default_context": "Biometric login implementation across mobile client, authentication API, device registry and CI/CD pipeline.",
+    "primary_artifact_id": "AR-041",
+    "supporting_artifact_ids": [
+      "AR-035",
+      "AR-036"
+    ],
+    "workflow_id": "WF-SDLC-DEV",
+    "reviewer_role": "Tech Lead",
+    "approver_role": "Product Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-006",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-035",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "label": "API Development",
+    "purpose": "Automates sprint decomposition, engineering planning, API contracts, CI/CD tasks and code-review readiness.",
+    "page_id": "PAGE-SDLC-DEV",
+    "default_context": "Biometric login implementation across mobile client, authentication API, device registry and CI/CD pipeline.",
+    "primary_artifact_id": "AR-037",
+    "supporting_artifact_ids": [
+      "AR-035",
+      "AR-036"
+    ],
+    "workflow_id": "WF-SDLC-DEV",
+    "reviewer_role": "Tech Lead",
+    "approver_role": "Product Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-006",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-036",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "label": "DevOps Pipeline",
+    "purpose": "Automates sprint decomposition, engineering planning, API contracts, CI/CD tasks and code-review readiness.",
+    "page_id": "PAGE-SDLC-DEV",
+    "default_context": "Biometric login implementation across mobile client, authentication API, device registry and CI/CD pipeline.",
+    "primary_artifact_id": "AR-038",
+    "supporting_artifact_ids": [
+      "AR-035",
+      "AR-036"
+    ],
+    "workflow_id": "WF-SDLC-DEV",
+    "reviewer_role": "Tech Lead",
+    "approver_role": "Product Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-006",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-037",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "label": "Release Readiness",
+    "purpose": "Automates release readiness, deployment, CAB approval, rollback planning, go-live validation and hypercare.",
+    "page_id": "PAGE-SDLC-REL",
+    "default_context": "Mobile Banking v9.2 phased biometric-login rollout with rollback, CAB approval and 72-hour hypercare.",
+    "primary_artifact_id": "AR-045",
+    "supporting_artifact_ids": [
+      "AR-042",
+      "AR-043"
+    ],
+    "workflow_id": "WF-SDLC-RELEASE",
+    "reviewer_role": "SRE Lead",
+    "approver_role": "Change Advisory Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-007",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-038",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "label": "CAB Approval",
+    "purpose": "Automates release readiness, deployment, CAB approval, rollback planning, go-live validation and hypercare.",
+    "page_id": "PAGE-SDLC-REL",
+    "default_context": "Mobile Banking v9.2 phased biometric-login rollout with rollback, CAB approval and 72-hour hypercare.",
+    "primary_artifact_id": "AR-043",
+    "supporting_artifact_ids": [
+      "AR-042",
+      "AR-044"
+    ],
+    "workflow_id": "WF-SDLC-RELEASE",
+    "reviewer_role": "SRE Lead",
+    "approver_role": "Change Advisory Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-007",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-039",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "label": "Rollback Planning",
+    "purpose": "Automates release readiness, deployment, CAB approval, rollback planning, go-live validation and hypercare.",
+    "page_id": "PAGE-SDLC-REL",
+    "default_context": "Mobile Banking v9.2 phased biometric-login rollout with rollback, CAB approval and 72-hour hypercare.",
+    "primary_artifact_id": "AR-044",
+    "supporting_artifact_ids": [
+      "AR-042",
+      "AR-043"
+    ],
+    "workflow_id": "WF-SDLC-RELEASE",
+    "reviewer_role": "SRE Lead",
+    "approver_role": "Change Advisory Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-007",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-040",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "label": "Production Deployment",
+    "purpose": "Automates release readiness, deployment, CAB approval, rollback planning, go-live validation and hypercare.",
+    "page_id": "PAGE-SDLC-REL",
+    "default_context": "Mobile Banking v9.2 phased biometric-login rollout with rollback, CAB approval and 72-hour hypercare.",
+    "primary_artifact_id": "AR-046",
+    "supporting_artifact_ids": [
+      "AR-042",
+      "AR-043"
+    ],
+    "workflow_id": "WF-SDLC-RELEASE",
+    "reviewer_role": "SRE Lead",
+    "approver_role": "Change Advisory Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-007",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-041",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "label": "Hypercare Planning",
+    "purpose": "Automates release readiness, deployment, CAB approval, rollback planning, go-live validation and hypercare.",
+    "page_id": "PAGE-SDLC-REL",
+    "default_context": "Mobile Banking v9.2 phased biometric-login rollout with rollback, CAB approval and 72-hour hypercare.",
+    "primary_artifact_id": "AR-047",
+    "supporting_artifact_ids": [
+      "AR-042",
+      "AR-043"
+    ],
+    "workflow_id": "WF-SDLC-RELEASE",
+    "reviewer_role": "SRE Lead",
+    "approver_role": "Change Advisory Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-007",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-042",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "label": "Release Risk Review",
+    "purpose": "Automates release readiness, deployment, CAB approval, rollback planning, go-live validation and hypercare.",
+    "page_id": "PAGE-SDLC-REL",
+    "default_context": "Mobile Banking v9.2 phased biometric-login rollout with rollback, CAB approval and 72-hour hypercare.",
+    "primary_artifact_id": "AR-042",
+    "supporting_artifact_ids": [
+      "AR-043",
+      "AR-044"
+    ],
+    "workflow_id": "WF-SDLC-RELEASE",
+    "reviewer_role": "SRE Lead",
+    "approver_role": "Change Advisory Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-007",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-043",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "label": "AI Use Case Approval",
+    "purpose": "Automates AI use-case registration, model and prompt risk review, responsible-AI checks, approvals and monitoring plans.",
+    "page_id": "PAGE-GOV-AIO",
+    "default_context": "AI fraud detection use case, model risk tiering, human oversight, prompt controls and monitoring.",
+    "primary_artifact_id": "AR-051",
+    "supporting_artifact_ids": [
+      "AR-049",
+      "AR-050"
+    ],
+    "workflow_id": "WF-GOV-AI",
+    "reviewer_role": "Model Risk Reviewer",
+    "approver_role": "AI Governance Committee",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-008",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-044",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "label": "Prompt Risk Review",
+    "purpose": "Automates AI use-case registration, model and prompt risk review, responsible-AI checks, approvals and monitoring plans.",
+    "page_id": "PAGE-GOV-AIO",
+    "default_context": "AI fraud detection use case, model risk tiering, human oversight, prompt controls and monitoring.",
+    "primary_artifact_id": "AR-052",
+    "supporting_artifact_ids": [
+      "AR-049",
+      "AR-050"
+    ],
+    "workflow_id": "WF-GOV-AI",
+    "reviewer_role": "Model Risk Reviewer",
+    "approver_role": "AI Governance Committee",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-008",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-045",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "label": "Bias Assessment",
+    "purpose": "Automates AI use-case registration, model and prompt risk review, responsible-AI checks, approvals and monitoring plans.",
+    "page_id": "PAGE-GOV-AIO",
+    "default_context": "AI fraud detection use case, model risk tiering, human oversight, prompt controls and monitoring.",
+    "primary_artifact_id": "AR-053",
+    "supporting_artifact_ids": [
+      "AR-049",
+      "AR-050"
+    ],
+    "workflow_id": "WF-GOV-AI",
+    "reviewer_role": "Model Risk Reviewer",
+    "approver_role": "AI Governance Committee",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-008",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-046",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "label": "Model Governance",
+    "purpose": "Automates AI use-case registration, model and prompt risk review, responsible-AI checks, approvals and monitoring plans.",
+    "page_id": "PAGE-GOV-AIO",
+    "default_context": "AI fraud detection use case, model risk tiering, human oversight, prompt controls and monitoring.",
+    "primary_artifact_id": "AR-050",
+    "supporting_artifact_ids": [
+      "AR-049",
+      "AR-051"
+    ],
+    "workflow_id": "WF-GOV-AI",
+    "reviewer_role": "Model Risk Reviewer",
+    "approver_role": "AI Governance Committee",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-008",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-047",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "label": "Responsible AI Review",
+    "purpose": "Automates AI use-case registration, model and prompt risk review, responsible-AI checks, approvals and monitoring plans.",
+    "page_id": "PAGE-GOV-AIO",
+    "default_context": "AI fraud detection use case, model risk tiering, human oversight, prompt controls and monitoring.",
+    "primary_artifact_id": "AR-055",
+    "supporting_artifact_ids": [
+      "AR-049",
+      "AR-050"
+    ],
+    "workflow_id": "WF-GOV-AI",
+    "reviewer_role": "Model Risk Reviewer",
+    "approver_role": "AI Governance Committee",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-008",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-048",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "label": "Human Oversight Review",
+    "purpose": "Automates AI use-case registration, model and prompt risk review, responsible-AI checks, approvals and monitoring plans.",
+    "page_id": "PAGE-GOV-AIO",
+    "default_context": "AI fraud detection use case, model risk tiering, human oversight, prompt controls and monitoring.",
+    "primary_artifact_id": "AR-056",
+    "supporting_artifact_ids": [
+      "AR-049",
+      "AR-050"
+    ],
+    "workflow_id": "WF-GOV-AI",
+    "reviewer_role": "Model Risk Reviewer",
+    "approver_role": "AI Governance Committee",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-008",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-049",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "label": "RBI Compliance Pack",
+    "purpose": "Automates control mapping, evidence collection, gap detection, remediation tracking and regulatory pack generation.",
+    "page_id": "PAGE-GOV-CMP",
+    "default_context": "RBI and PCI control coverage, evidence validation, open gaps, remediation and audit closure.",
+    "primary_artifact_id": "AR-058",
+    "supporting_artifact_ids": [
+      "AR-057",
+      "AR-059"
+    ],
+    "workflow_id": "WF-GOV-COMP",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Compliance Head",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-009",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-050",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "label": "PCI DSS Review",
+    "purpose": "Automates control mapping, evidence collection, gap detection, remediation tracking and regulatory pack generation.",
+    "page_id": "PAGE-GOV-CMP",
+    "default_context": "RBI and PCI control coverage, evidence validation, open gaps, remediation and audit closure.",
+    "primary_artifact_id": "AR-057",
+    "supporting_artifact_ids": [
+      "AR-058",
+      "AR-059"
+    ],
+    "workflow_id": "WF-GOV-COMP",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Compliance Head",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-009",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-051",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "label": "Audit Readiness",
+    "purpose": "Automates control mapping, evidence collection, gap detection, remediation tracking and regulatory pack generation.",
+    "page_id": "PAGE-GOV-CMP",
+    "default_context": "RBI and PCI control coverage, evidence validation, open gaps, remediation and audit closure.",
+    "primary_artifact_id": "AR-057",
+    "supporting_artifact_ids": [
+      "AR-058",
+      "AR-059"
+    ],
+    "workflow_id": "WF-GOV-COMP",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Compliance Head",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-009",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-052",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "label": "Control Validation",
+    "purpose": "Automates control mapping, evidence collection, gap detection, remediation tracking and regulatory pack generation.",
+    "page_id": "PAGE-GOV-CMP",
+    "default_context": "RBI and PCI control coverage, evidence validation, open gaps, remediation and audit closure.",
+    "primary_artifact_id": "AR-060",
+    "supporting_artifact_ids": [
+      "AR-057",
+      "AR-058"
+    ],
+    "workflow_id": "WF-GOV-COMP",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Compliance Head",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-009",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-053",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "label": "Compliance Summary",
+    "purpose": "Automates control mapping, evidence collection, gap detection, remediation tracking and regulatory pack generation.",
+    "page_id": "PAGE-GOV-CMP",
+    "default_context": "RBI and PCI control coverage, evidence validation, open gaps, remediation and audit closure.",
+    "primary_artifact_id": "AR-058",
+    "supporting_artifact_ids": [
+      "AR-057",
+      "AR-059"
+    ],
+    "workflow_id": "WF-GOV-COMP",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Compliance Head",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-009",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-054",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "label": "Remediation Planning",
+    "purpose": "Automates control mapping, evidence collection, gap detection, remediation tracking and regulatory pack generation.",
+    "page_id": "PAGE-GOV-CMP",
+    "default_context": "RBI and PCI control coverage, evidence validation, open gaps, remediation and audit closure.",
+    "primary_artifact_id": "AR-061",
+    "supporting_artifact_ids": [
+      "AR-057",
+      "AR-058"
+    ],
+    "workflow_id": "WF-GOV-COMP",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Compliance Head",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-009",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-055",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "label": "Architecture Review",
+    "purpose": "Automates architecture review, standards validation, cloud readiness, technology exception management and approval recommendations.",
+    "page_id": "PAGE-GOV-ARC",
+    "default_context": "Solution architecture, API standards, cloud readiness, technology exceptions and approval conditions.",
+    "primary_artifact_id": "AR-064",
+    "supporting_artifact_ids": [
+      "AR-065",
+      "AR-066"
+    ],
+    "workflow_id": "WF-GOV-ARCH",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-010",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-056",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "label": "Standards Validation",
+    "purpose": "Automates architecture review, standards validation, cloud readiness, technology exception management and approval recommendations.",
+    "page_id": "PAGE-GOV-ARC",
+    "default_context": "Solution architecture, API standards, cloud readiness, technology exceptions and approval conditions.",
+    "primary_artifact_id": "AR-065",
+    "supporting_artifact_ids": [
+      "AR-064",
+      "AR-066"
+    ],
+    "workflow_id": "WF-GOV-ARCH",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-010",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-057",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "label": "Technology Exception",
+    "purpose": "Automates architecture review, standards validation, cloud readiness, technology exception management and approval recommendations.",
+    "page_id": "PAGE-GOV-ARC",
+    "default_context": "Solution architecture, API standards, cloud readiness, technology exceptions and approval conditions.",
+    "primary_artifact_id": "AR-068",
+    "supporting_artifact_ids": [
+      "AR-064",
+      "AR-065"
+    ],
+    "workflow_id": "WF-GOV-ARCH",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-010",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-058",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "label": "Cloud Readiness",
+    "purpose": "Automates architecture review, standards validation, cloud readiness, technology exception management and approval recommendations.",
+    "page_id": "PAGE-GOV-ARC",
+    "default_context": "Solution architecture, API standards, cloud readiness, technology exceptions and approval conditions.",
+    "primary_artifact_id": "AR-067",
+    "supporting_artifact_ids": [
+      "AR-064",
+      "AR-065"
+    ],
+    "workflow_id": "WF-GOV-ARCH",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-010",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-059",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "label": "API Review",
+    "purpose": "Automates architecture review, standards validation, cloud readiness, technology exception management and approval recommendations.",
+    "page_id": "PAGE-GOV-ARC",
+    "default_context": "Solution architecture, API standards, cloud readiness, technology exceptions and approval conditions.",
+    "primary_artifact_id": "AR-066",
+    "supporting_artifact_ids": [
+      "AR-064",
+      "AR-065"
+    ],
+    "workflow_id": "WF-GOV-ARCH",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-010",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-060",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "label": "Solution Approval",
+    "purpose": "Automates architecture review, standards validation, cloud readiness, technology exception management and approval recommendations.",
+    "page_id": "PAGE-GOV-ARC",
+    "default_context": "Solution architecture, API standards, cloud readiness, technology exceptions and approval conditions.",
+    "primary_artifact_id": "AR-069",
+    "supporting_artifact_ids": [
+      "AR-064",
+      "AR-065"
+    ],
+    "workflow_id": "WF-GOV-ARCH",
+    "reviewer_role": "Enterprise Architect",
+    "approver_role": "Architecture Review Board",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-010",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-061",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "label": "Generate Audit Pack",
+    "purpose": "Automates evidence collection from enterprise systems, validation, packaging and publication of audit, release and architecture packs.",
+    "page_id": "PAGE-ENT-EVD",
+    "default_context": "Evidence from Jira, Confluence, SharePoint, ServiceNow and SonarQube for release and audit packs.",
+    "primary_artifact_id": "AR-071",
+    "supporting_artifact_ids": [
+      "AR-072",
+      "AR-073"
+    ],
+    "workflow_id": "WF-EVIDENCE",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Audit Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-011",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-062",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "label": "Generate Release Pack",
+    "purpose": "Automates evidence collection from enterprise systems, validation, packaging and publication of audit, release and architecture packs.",
+    "page_id": "PAGE-ENT-EVD",
+    "default_context": "Evidence from Jira, Confluence, SharePoint, ServiceNow and SonarQube for release and audit packs.",
+    "primary_artifact_id": "AR-072",
+    "supporting_artifact_ids": [
+      "AR-071",
+      "AR-073"
+    ],
+    "workflow_id": "WF-EVIDENCE",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Audit Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-011",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-063",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "label": "Collect Jira Evidence",
+    "purpose": "Automates evidence collection from enterprise systems, validation, packaging and publication of audit, release and architecture packs.",
+    "page_id": "PAGE-ENT-EVD",
+    "default_context": "Evidence from Jira, Confluence, SharePoint, ServiceNow and SonarQube for release and audit packs.",
+    "primary_artifact_id": "AR-074",
+    "supporting_artifact_ids": [
+      "AR-071",
+      "AR-072"
+    ],
+    "workflow_id": "WF-EVIDENCE",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Audit Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-011",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-064",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "label": "Collect Sonar Findings",
+    "purpose": "Automates evidence collection from enterprise systems, validation, packaging and publication of audit, release and architecture packs.",
+    "page_id": "PAGE-ENT-EVD",
+    "default_context": "Evidence from Jira, Confluence, SharePoint, ServiceNow and SonarQube for release and audit packs.",
+    "primary_artifact_id": "AR-075",
+    "supporting_artifact_ids": [
+      "AR-071",
+      "AR-072"
+    ],
+    "workflow_id": "WF-EVIDENCE",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Audit Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-011",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-065",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "label": "Generate Executive Summary",
+    "purpose": "Automates evidence collection from enterprise systems, validation, packaging and publication of audit, release and architecture packs.",
+    "page_id": "PAGE-ENT-EVD",
+    "default_context": "Evidence from Jira, Confluence, SharePoint, ServiceNow and SonarQube for release and audit packs.",
+    "primary_artifact_id": "AR-076",
+    "supporting_artifact_ids": [
+      "AR-071",
+      "AR-072"
+    ],
+    "workflow_id": "WF-EVIDENCE",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Audit Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-011",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-066",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "label": "Generate Architecture Pack",
+    "purpose": "Automates evidence collection from enterprise systems, validation, packaging and publication of audit, release and architecture packs.",
+    "page_id": "PAGE-ENT-EVD",
+    "default_context": "Evidence from Jira, Confluence, SharePoint, ServiceNow and SonarQube for release and audit packs.",
+    "primary_artifact_id": "AR-073",
+    "supporting_artifact_ids": [
+      "AR-071",
+      "AR-072"
+    ],
+    "workflow_id": "WF-EVIDENCE",
+    "reviewer_role": "Control Owner",
+    "approver_role": "Audit Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-011",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-067",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "label": "Find Similar BRD",
+    "purpose": "Automates enterprise search, document discovery, reuse analysis, standards mapping and knowledge recommendations.",
+    "page_id": "PAGE-ENT-KNW",
+    "default_context": "Enterprise documents, prior delivery artifacts, standards, policies and reusable test assets.",
+    "primary_artifact_id": "AR-079",
+    "supporting_artifact_ids": [
+      "AR-078",
+      "AR-080"
+    ],
+    "workflow_id": "WF-KNOWLEDGE",
+    "reviewer_role": "Domain Owner",
+    "approver_role": "Knowledge Governance Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-012",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-068",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "label": "Find Architecture",
+    "purpose": "Automates enterprise search, document discovery, reuse analysis, standards mapping and knowledge recommendations.",
+    "page_id": "PAGE-ENT-KNW",
+    "default_context": "Enterprise documents, prior delivery artifacts, standards, policies and reusable test assets.",
+    "primary_artifact_id": "AR-080",
+    "supporting_artifact_ids": [
+      "AR-078",
+      "AR-079"
+    ],
+    "workflow_id": "WF-KNOWLEDGE",
+    "reviewer_role": "Domain Owner",
+    "approver_role": "Knowledge Governance Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-012",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-069",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "label": "Search Standards",
+    "purpose": "Automates enterprise search, document discovery, reuse analysis, standards mapping and knowledge recommendations.",
+    "page_id": "PAGE-ENT-KNW",
+    "default_context": "Enterprise documents, prior delivery artifacts, standards, policies and reusable test assets.",
+    "primary_artifact_id": "AR-081",
+    "supporting_artifact_ids": [
+      "AR-078",
+      "AR-079"
+    ],
+    "workflow_id": "WF-KNOWLEDGE",
+    "reviewer_role": "Domain Owner",
+    "approver_role": "Knowledge Governance Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-012",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-070",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "label": "Search Policies",
+    "purpose": "Automates enterprise search, document discovery, reuse analysis, standards mapping and knowledge recommendations.",
+    "page_id": "PAGE-ENT-KNW",
+    "default_context": "Enterprise documents, prior delivery artifacts, standards, policies and reusable test assets.",
+    "primary_artifact_id": "AR-078",
+    "supporting_artifact_ids": [
+      "AR-079",
+      "AR-080"
+    ],
+    "workflow_id": "WF-KNOWLEDGE",
+    "reviewer_role": "Domain Owner",
+    "approver_role": "Knowledge Governance Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-012",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-071",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "label": "Reuse Test Cases",
+    "purpose": "Automates enterprise search, document discovery, reuse analysis, standards mapping and knowledge recommendations.",
+    "page_id": "PAGE-ENT-KNW",
+    "default_context": "Enterprise documents, prior delivery artifacts, standards, policies and reusable test assets.",
+    "primary_artifact_id": "AR-082",
+    "supporting_artifact_ids": [
+      "AR-078",
+      "AR-079"
+    ],
+    "workflow_id": "WF-KNOWLEDGE",
+    "reviewer_role": "Domain Owner",
+    "approver_role": "Knowledge Governance Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-012",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-072",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "label": "Search Previous Releases",
+    "purpose": "Automates enterprise search, document discovery, reuse analysis, standards mapping and knowledge recommendations.",
+    "page_id": "PAGE-ENT-KNW",
+    "default_context": "Enterprise documents, prior delivery artifacts, standards, policies and reusable test assets.",
+    "primary_artifact_id": "AR-078",
+    "supporting_artifact_ids": [
+      "AR-079",
+      "AR-080"
+    ],
+    "workflow_id": "WF-KNOWLEDGE",
+    "reviewer_role": "Domain Owner",
+    "approver_role": "Knowledge Governance Lead",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-012",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-073",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "label": "User Access Review",
+    "purpose": "Automates access reviews, role audits, connector health monitoring, model inventory and platform configuration assurance.",
+    "page_id": "PAGE-ENT-ADM",
+    "default_context": "Users, RBAC, connectors, model inventory, platform configuration and operational health.",
+    "primary_artifact_id": "AR-084",
+    "supporting_artifact_ids": [
+      "AR-085",
+      "AR-086"
+    ],
+    "workflow_id": "WF-ADMIN",
+    "reviewer_role": "Security Administrator",
+    "approver_role": "Platform Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-013",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-074",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "label": "Role Audit",
+    "purpose": "Automates access reviews, role audits, connector health monitoring, model inventory and platform configuration assurance.",
+    "page_id": "PAGE-ENT-ADM",
+    "default_context": "Users, RBAC, connectors, model inventory, platform configuration and operational health.",
+    "primary_artifact_id": "AR-085",
+    "supporting_artifact_ids": [
+      "AR-084",
+      "AR-086"
+    ],
+    "workflow_id": "WF-ADMIN",
+    "reviewer_role": "Security Administrator",
+    "approver_role": "Platform Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-013",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-075",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "label": "Connector Health",
+    "purpose": "Automates access reviews, role audits, connector health monitoring, model inventory and platform configuration assurance.",
+    "page_id": "PAGE-ENT-ADM",
+    "default_context": "Users, RBAC, connectors, model inventory, platform configuration and operational health.",
+    "primary_artifact_id": "AR-086",
+    "supporting_artifact_ids": [
+      "AR-084",
+      "AR-085"
+    ],
+    "workflow_id": "WF-ADMIN",
+    "reviewer_role": "Security Administrator",
+    "approver_role": "Platform Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-013",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-076",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "label": "Model Configuration",
+    "purpose": "Automates access reviews, role audits, connector health monitoring, model inventory and platform configuration assurance.",
+    "page_id": "PAGE-ENT-ADM",
+    "default_context": "Users, RBAC, connectors, model inventory, platform configuration and operational health.",
+    "primary_artifact_id": "AR-087",
+    "supporting_artifact_ids": [
+      "AR-084",
+      "AR-085"
+    ],
+    "workflow_id": "WF-ADMIN",
+    "reviewer_role": "Security Administrator",
+    "approver_role": "Platform Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-013",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-077",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "label": "Platform Health",
+    "purpose": "Automates access reviews, role audits, connector health monitoring, model inventory and platform configuration assurance.",
+    "page_id": "PAGE-ENT-ADM",
+    "default_context": "Users, RBAC, connectors, model inventory, platform configuration and operational health.",
+    "primary_artifact_id": "AR-089",
+    "supporting_artifact_ids": [
+      "AR-084",
+      "AR-085"
+    ],
+    "workflow_id": "WF-ADMIN",
+    "reviewer_role": "Security Administrator",
+    "approver_role": "Platform Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-013",
+    "generation_mode": "deterministic",
+    "status": "active"
+  },
+  {
+    "prompt_id": "PR-078",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "label": "License Utilization",
+    "purpose": "Automates access reviews, role audits, connector health monitoring, model inventory and platform configuration assurance.",
+    "page_id": "PAGE-ENT-ADM",
+    "default_context": "Users, RBAC, connectors, model inventory, platform configuration and operational health.",
+    "primary_artifact_id": "AR-089",
+    "supporting_artifact_ids": [
+      "AR-084",
+      "AR-085"
+    ],
+    "workflow_id": "WF-ADMIN",
+    "reviewer_role": "Security Administrator",
+    "approver_role": "Platform Owner",
+    "supported_formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "demo_pack_id": "DP-013",
+    "generation_mode": "deterministic",
+    "status": "active"
+  }
+]

@@ -337,7 +337,7 @@ export function AIWorkspacePanel({ module, number, hideFlowGuide = false }: AIWo
           },
         },
       };
-      const defaultDetails = (name: string) => ({
+      const defaultDetails = (_name: string) => ({
         summary: `Requirement deliverable for query: ${captured}`,
         findings:
           '- Requirement-specific scope and control expectations documented.\n- Functional and risk constraints aligned to entered query context.\n- Approval dependencies identified for delivery readiness.',

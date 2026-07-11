@@ -1,4 +1,4 @@
-import { Box, Typography, Tooltip } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { colors } from '../../theme/colors';
 import { useSimulation } from '../../context/SimulationContext';
 

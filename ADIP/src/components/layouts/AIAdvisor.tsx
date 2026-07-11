@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { colors } from '../../theme/colors';
 import { layout } from '../../theme/theme';
 import { useSimulation } from '../../context/SimulationContext';
+import { useAIAdvisor } from '../../context/AIAdvisorContext';
 
 export function AIAdvisor() {
   const {
@@ -15,8 +16,8 @@ export function AIAdvisor() {
     askQuestion,
     refreshIntervalMs,
   } = useSimulation();
+  const { isOpen, setIsOpen } = useAIAdvisor();
   const [input, setInput] = useState('');
-  const [isOpen, setIsOpen] = useState(true);
   const inChatMode = querySession !== null;
 
   const handleAsk = (text: string) => {

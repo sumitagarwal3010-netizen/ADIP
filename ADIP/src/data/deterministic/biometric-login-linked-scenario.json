@@ -1,0 +1,255 @@
+{
+  "scenario_id": "SCN-BIO-001",
+  "name": "Biometric Login",
+  "application_id": "APP-MB-001",
+  "release_id": "REL-MB-9.2-BIO",
+  "flow": [
+    {
+      "stage_id": "STG-REQ",
+      "page_id": "PAGE-SDLC-REQ",
+      "prompt_id": "PR-019",
+      "primary_artifact_id": "AR-020",
+      "status": "reviewed"
+    },
+    {
+      "stage_id": "STG-DSN",
+      "page_id": "PAGE-SDLC-DSN",
+      "prompt_id": "PR-025",
+      "primary_artifact_id": "AR-027",
+      "status": "reviewed"
+    },
+    {
+      "stage_id": "STG-DEV",
+      "page_id": "PAGE-SDLC-DEV",
+      "prompt_id": "PR-031",
+      "primary_artifact_id": "AR-035",
+      "status": "in_progress"
+    },
+    {
+      "stage_id": "STG-REL",
+      "page_id": "PAGE-SDLC-REL",
+      "prompt_id": "PR-037",
+      "primary_artifact_id": "AR-042",
+      "status": "approval_pending"
+    }
+  ],
+  "traceability": {
+    "requirements": [
+      {
+        "id": "BR-BIO-001",
+        "text": "Retail customers shall authenticate using device biometrics with MPIN fallback.",
+        "status": "approved"
+      },
+      {
+        "id": "FR-BIO-001",
+        "text": "The app shall validate device enrollment, biometric availability and token freshness.",
+        "status": "approved"
+      },
+      {
+        "id": "NFR-BIO-001",
+        "text": "Successful login shall complete within three seconds at p95.",
+        "status": "approved"
+      }
+    ],
+    "design_components": [
+      {
+        "id": "CMP-BIO-APP",
+        "name": "Mobile Biometric Client",
+        "requirements": [
+          "BR-BIO-001",
+          "FR-BIO-001"
+        ]
+      },
+      {
+        "id": "CMP-BIO-AUTH",
+        "name": "Authentication Orchestrator",
+        "requirements": [
+          "FR-BIO-001",
+          "NFR-BIO-001"
+        ]
+      },
+      {
+        "id": "CMP-BIO-AUDIT",
+        "name": "Authentication Audit Service",
+        "requirements": [
+          "BR-BIO-001"
+        ]
+      }
+    ],
+    "apis": [
+      {
+        "id": "API-BIO-001",
+        "method": "POST",
+        "path": "/v1/auth/biometric",
+        "component_id": "CMP-BIO-AUTH",
+        "requirements": [
+          "FR-BIO-001",
+          "NFR-BIO-001"
+        ]
+      },
+      {
+        "id": "API-BIO-002",
+        "method": "GET",
+        "path": "/v1/devices/{deviceId}/binding-status",
+        "component_id": "CMP-BIO-AUTH",
+        "requirements": [
+          "FR-BIO-001"
+        ]
+      },
+      {
+        "id": "API-BIO-003",
+        "method": "POST",
+        "path": "/v1/auth/fallback/mpin",
+        "component_id": "CMP-BIO-AUTH",
+        "requirements": [
+          "BR-BIO-001"
+        ]
+      }
+    ],
+    "sprint_tasks": [
+      {
+        "id": "TASK-BIO-001",
+        "story_id": "US-BIO-001",
+        "title": "Implement biometric assertion validation",
+        "api_ids": [
+          "API-BIO-001"
+        ],
+        "status": "in_progress"
+      },
+      {
+        "id": "TASK-BIO-002",
+        "story_id": "US-BIO-001",
+        "title": "Integrate device-binding status",
+        "api_ids": [
+          "API-BIO-002"
+        ],
+        "status": "ready"
+      },
+      {
+        "id": "TASK-BIO-003",
+        "story_id": "US-BIO-002",
+        "title": "Implement MPIN fallback flow",
+        "api_ids": [
+          "API-BIO-003"
+        ],
+        "status": "ready"
+      },
+      {
+        "id": "TASK-BIO-004",
+        "story_id": "US-BIO-003",
+        "title": "Add structured audit events",
+        "component_ids": [
+          "CMP-BIO-AUDIT"
+        ],
+        "status": "ready"
+      }
+    ],
+    "tests": [
+      {
+        "id": "TC-BIO-001",
+        "type": "api",
+        "verifies": [
+          "FR-BIO-001",
+          "API-BIO-001"
+        ],
+        "expected": "Valid biometric assertion returns tokens."
+      },
+      {
+        "id": "TC-BIO-002",
+        "type": "negative",
+        "verifies": [
+          "FR-BIO-001",
+          "API-BIO-001"
+        ],
+        "expected": "Replay nonce is rejected and audited."
+      },
+      {
+        "id": "TC-BIO-003",
+        "type": "performance",
+        "verifies": [
+          "NFR-BIO-001",
+          "API-BIO-001"
+        ],
+        "expected": "p95 response time is at or below three seconds."
+      },
+      {
+        "id": "TC-BIO-004",
+        "type": "fallback",
+        "verifies": [
+          "BR-BIO-001",
+          "API-BIO-003"
+        ],
+        "expected": "Three failed biometric attempts route to MPIN."
+      }
+    ],
+    "controls": [
+      {
+        "id": "CTRL-IAM-07",
+        "name": "Strong customer authentication",
+        "requirements": [
+          "BR-BIO-001"
+        ],
+        "tests": [
+          "TC-BIO-001",
+          "TC-BIO-004"
+        ]
+      },
+      {
+        "id": "CTRL-SEC-12",
+        "name": "Replay protection",
+        "requirements": [
+          "FR-BIO-001"
+        ],
+        "tests": [
+          "TC-BIO-002"
+        ]
+      },
+      {
+        "id": "CTRL-LOG-04",
+        "name": "Immutable authentication audit logging",
+        "requirements": [
+          "BR-BIO-001"
+        ],
+        "tests": [
+          "TC-BIO-002"
+        ]
+      }
+    ],
+    "release_artifacts": [
+      {
+        "id": "RELART-BIO-001",
+        "type": "Release Plan",
+        "release_id": "REL-MB-9.2-BIO",
+        "source_ids": [
+          "TASK-BIO-001",
+          "TASK-BIO-002",
+          "TASK-BIO-003",
+          "TASK-BIO-004"
+        ]
+      },
+      {
+        "id": "RELART-BIO-002",
+        "type": "CAB Pack",
+        "release_id": "REL-MB-9.2-BIO",
+        "source_ids": [
+          "TC-BIO-001",
+          "TC-BIO-002",
+          "TC-BIO-003",
+          "TC-BIO-004",
+          "CTRL-IAM-07",
+          "CTRL-SEC-12",
+          "CTRL-LOG-04"
+        ]
+      },
+      {
+        "id": "RELART-BIO-003",
+        "type": "Rollback Plan",
+        "release_id": "REL-MB-9.2-BIO",
+        "source_ids": [
+          "API-BIO-001",
+          "API-BIO-003"
+        ]
+      }
+    ]
+  }
+}

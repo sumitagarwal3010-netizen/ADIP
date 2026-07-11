@@ -1,11 +1,14 @@
-import { Navigate } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 
 /**
- * The "Delivery Health" route is preserved for bookmark compatibility, but the
- * conceptual experience has been renamed to **AI SDLC Copilot** and replaces
- * the KPI-first outcome page with the 6-tab AI Copilot workflow
- * (Requirements → Architecture → Development → Testing → Release → Audit).
+ * Executive Advisor — deterministic artifact workspace for CIO briefings,
+ * portfolio summaries, and executive action tracking.
  */
 export function DeliveryHealthOutcome() {
-  return <Navigate to="/executive/ai-copilot/requirements" replace />;
+  return (
+    <Box>
+      <EnterpriseArtifactWorkspace pillar="Executive AI" submenu="Executive Advisor" />
+    </Box>
+  );
 }

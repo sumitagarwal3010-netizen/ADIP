@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from '@mui/material';
 import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { StatusDot } from '../components/common/StatusDot';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { colors } from '../theme/colors';
@@ -32,6 +33,8 @@ export function Administration() {
 
   return (
     <Box>
+      <EnterpriseArtifactWorkspace pillar="Enterprise AI" submenu="Administration" />
+
       <Grid container spacing={1.5}>
         {sections.map((section) => (
           <Grid key={section.title} size={{ xs: 12, md: 6 }}>

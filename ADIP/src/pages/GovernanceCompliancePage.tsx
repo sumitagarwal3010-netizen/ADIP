@@ -15,6 +15,7 @@ import { GlassCard } from '../components/common/GlassCard';
 import { ModuleHeader } from '../components/common/ModuleHeader';
 import { colors } from '../theme/colors';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { useMemo, useState } from 'react';
 
 const kpis = [
@@ -121,6 +122,8 @@ export function GovernanceCompliancePage() {
 
   return (
     <Box>
+      <EnterpriseArtifactWorkspace pillar="Governance" submenu="Compliance Automation" />
+
       <GlassCard sx={{ p: 2, mb: 1.5 }} glow="green" hover={false}>
         <ModuleHeader title="Compliance Automation Prompts" subtitle="Deterministic compliance packs by control objective" />
         <Box sx={{ display: 'flex', gap: 0.75, flexWrap: 'wrap', mb: 1.25 }}>

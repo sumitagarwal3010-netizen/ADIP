@@ -7,6 +7,7 @@ import { SeverityChip } from '../components/common/SeverityChip';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { RequirementIntakeWorkflow } from '../components/requirements/RequirementIntakeWorkflow';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
 import { useSdlcHubSummary } from '../sdk/hooks/useSdlcHubSummary';
@@ -23,7 +24,10 @@ export function RequirementsHub() {
 
   return (
     <Box>
-      <AIWorkspacePanel module="requirements" number={1} />
+      <EnterpriseArtifactWorkspace pillar="AI SDLC" submenu="Requirements Engineering" />
+      <Box sx={{ mt: 0.5 }}>
+        <AIWorkspacePanel module="requirements" number={1} />
+      </Box>
       {showGovernanceWorkflow && (
         <SdlcBackendStrip
           hubLabel="Requirements"

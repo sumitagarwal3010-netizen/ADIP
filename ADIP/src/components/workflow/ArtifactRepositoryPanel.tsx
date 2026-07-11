@@ -40,20 +40,28 @@ function ArtifactRow({
       sx={{
         display: 'flex',
         alignItems: 'center',
-        gap: 2,
+        gap: 1,
         py: 1,
         borderBottom: `1px solid ${colors.border.subtle}`,
         flexWrap: 'wrap',
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, minWidth: 180 }}>
-        <FileIcon sx={{ fontSize: 16, color: colors.primary }} />
-        <Typography variant="caption" sx={{ fontWeight: 700 }}>{artifact.name}</Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, minWidth: 0, flex: { xs: '1 1 100%', md: '1 1 220px' } }}>
+        <FileIcon sx={{ fontSize: 16, color: colors.primary, flexShrink: 0 }} />
+        <Typography variant="caption" sx={{ fontWeight: 700, minWidth: 0 }}>{artifact.name}</Typography>
+        <Button
+          size="small"
+          startIcon={<VisibilityIcon sx={{ fontSize: 14 }} />}
+          onClick={onView}
+          sx={{ fontSize: '0.7rem', minWidth: 64, flexShrink: 0, ml: 0.5 }}
+        >
+          View
+        </Button>
       </Box>
-      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 100 }}>{artifact.generatedBy}</Typography>
-      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 60 }}>{artifact.modelUsed}</Typography>
-      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 40 }}>v{artifact.version}</Typography>
-      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 80 }}>{artifact.generatedDate}</Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 90, display: { xs: 'none', lg: 'block' } }}>{artifact.generatedBy}</Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 52, display: { xs: 'none', md: 'block' } }}>{artifact.modelUsed}</Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 36, display: { xs: 'none', md: 'block' } }}>v{artifact.version}</Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 72, display: { xs: 'none', sm: 'block' } }}>{artifact.generatedDate}</Typography>
       <Chip
         label={artifact.approvalStatus}
         size="small"
@@ -66,14 +74,6 @@ function ArtifactRow({
           border: `1px solid ${statusColor}44`,
         }}
       />
-      <Button
-        size="small"
-        startIcon={<VisibilityIcon sx={{ fontSize: 14 }} />}
-        onClick={onView}
-        sx={{ ml: 'auto', fontSize: '0.7rem', minWidth: 100 }}
-      >
-        View Artifact
-      </Button>
     </Box>
   );
 }
@@ -83,6 +83,7 @@ interface ArtifactRepositoryPanelProps {
   title?: string;
   subtitle?: string;
   emptyMessage?: string;
+  onBeforeView?: () => void;
 }
 
 export function ArtifactRepositoryPanel({
@@ -90,8 +91,14 @@ export function ArtifactRepositoryPanel({
   title = 'Generated Artifacts',
   subtitle = 'AI-generated deliverables',
   emptyMessage = 'No artifacts generated yet. Click Generate to create AI deliverables.',
+  onBeforeView,
 }: ArtifactRepositoryPanelProps) {
   const [selected, setSelected] = useState<Artifact | null>(null);
+
+  const handleView = (artifact: Artifact) => {
+    onBeforeView?.();
+    setSelected(artifact);
+  };
 
   return (
     <>
@@ -131,7 +138,7 @@ export function ArtifactRepositoryPanel({
               ))}
             </Box>
             {artifacts.map((artifact) => (
-              <ArtifactRow key={artifact.id} artifact={artifact} onView={() => setSelected(artifact)} />
+              <ArtifactRow key={artifact.id} artifact={artifact} onView={() => handleView(artifact)} />
             ))}
           </>
         )}

@@ -1,0 +1,2859 @@
+[
+  {
+    "demo_pack_id": "DP-001",
+    "page_id": "PAGE-EXE-ADV",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "selected_prompt_id": "PR-001",
+    "selected_prompt": "Today's CIO Briefing",
+    "input_context": {
+      "title": "Mobile Banking v9.2 portfolio, biometric login readiness, critical delivery risks and executive decisions.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-001"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-001-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-001-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-001-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-001-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-001",
+        "role": "primary",
+        "title": "Executive Brief — Today's CIO Briefing",
+        "summary": "Mobile Banking v9.2 executive briefing generated from portfolio, release and risk data.",
+        "sections": [
+          {
+            "section_id": "AR-001-SEC-01",
+            "heading": "Executive context",
+            "content": "Executive context: Mobile Banking v9.2 executive briefing generated from portfolio, release and risk data."
+          },
+          {
+            "section_id": "AR-001-SEC-02",
+            "heading": "top changes",
+            "content": "top changes: Mobile Banking v9.2 executive briefing generated from portfolio, release and risk data."
+          },
+          {
+            "section_id": "AR-001-SEC-03",
+            "heading": "key risks",
+            "content": "key risks: Mobile Banking v9.2 executive briefing generated from portfolio, release and risk data."
+          },
+          {
+            "section_id": "AR-001-SEC-04",
+            "heading": "decisions required",
+            "content": "decisions required: Mobile Banking v9.2 executive briefing generated from portfolio, release and risk data."
+          },
+          {
+            "section_id": "AR-001-SEC-05",
+            "heading": "recommended actions",
+            "content": "recommended actions: Mobile Banking v9.2 executive briefing generated from portfolio, release and risk data."
+          },
+          {
+            "section_id": "AR-001-SEC-06",
+            "heading": "owners",
+            "content": "owners: Mobile Banking v9.2 executive briefing generated from portfolio, release and risk data."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-002",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-003",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-001-KPI-01",
+        "label": "Portfolio health",
+        "value": 87,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-001-KPI-02",
+        "label": "Strategic initiatives on track",
+        "value": 8,
+        "unit": "of 12"
+      },
+      {
+        "kpi_id": "DP-001-KPI-03",
+        "label": "Critical decisions",
+        "value": 2,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-001-KPI-04",
+        "label": "High risks",
+        "value": 1,
+        "unit": ""
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-001-CH-01",
+      "type": "bar",
+      "title": "Executive Advisor demo metrics",
+      "categories": [
+        "Green",
+        "Amber",
+        "Red"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            8,
+            3,
+            1
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-001-001",
+      "prompt_id": "PR-001",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-001-RISK-01",
+        "statement": "Android 15 biometric defect may affect 8% of active users.",
+        "severity": "high",
+        "owner": "CIO Chief of Staff",
+        "due_date": "2026-07-15",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-001-REC-01",
+        "text": "Approve 10% phased rollout with device-level feature flags.",
+        "owner": "CIO Chief of Staff",
+        "target_date": "2026-07-15",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-001-REC-02",
+        "text": "Authorize 72-hour hypercare.",
+        "owner": "Mobile Banking Product Head",
+        "target_date": "2026-07-15",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "CIO Chief of Staff"
+      },
+      {
+        "role": "review_owner",
+        "name": "Mobile Banking Product Head"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-15",
+      "approval_due": "2026-07-15"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-001-DL-JSON",
+        "artifact_id": "AR-001",
+        "format": "json",
+        "filename": "dp-001-executive-brief.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-001-DL-PDF",
+        "artifact_id": "AR-001",
+        "format": "pdf",
+        "filename": "dp-001-executive-brief.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-001-DL-DOCX",
+        "artifact_id": "AR-001",
+        "format": "docx",
+        "filename": "dp-001-executive-brief.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-002",
+    "page_id": "PAGE-TEC-ADV",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "selected_prompt_id": "PR-007",
+    "selected_prompt": "Modernization Candidates",
+    "input_context": {
+      "title": "Enterprise application estate, modernization backlog, technology standards, cloud readiness and technical debt.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-002"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-002-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-002-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-002-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-002-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-010",
+        "role": "primary",
+        "title": "Modernization Roadmap — Modernization Candidates",
+        "summary": "Modernization candidates ranked using criticality, EOL exposure, cost and cloud readiness.",
+        "sections": [
+          {
+            "section_id": "AR-010-SEC-01",
+            "heading": "Wave plan",
+            "content": "Wave plan: Modernization candidates ranked using criticality, EOL exposure, cost and cloud readiness."
+          },
+          {
+            "section_id": "AR-010-SEC-02",
+            "heading": "candidate systems",
+            "content": "candidate systems: Modernization candidates ranked using criticality, EOL exposure, cost and cloud readiness."
+          },
+          {
+            "section_id": "AR-010-SEC-03",
+            "heading": "dependencies",
+            "content": "dependencies: Modernization candidates ranked using criticality, EOL exposure, cost and cloud readiness."
+          },
+          {
+            "section_id": "AR-010-SEC-04",
+            "heading": "milestones",
+            "content": "milestones: Modernization candidates ranked using criticality, EOL exposure, cost and cloud readiness."
+          },
+          {
+            "section_id": "AR-010-SEC-05",
+            "heading": "risks",
+            "content": "risks: Modernization candidates ranked using criticality, EOL exposure, cost and cloud readiness."
+          },
+          {
+            "section_id": "AR-010-SEC-06",
+            "heading": "benefits",
+            "content": "benefits: Modernization candidates ranked using criticality, EOL exposure, cost and cloud readiness."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-008",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-009",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-002-KPI-01",
+        "label": "Applications assessed",
+        "value": 42,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-002-KPI-02",
+        "label": "Priority candidates",
+        "value": 9,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-002-KPI-03",
+        "label": "EOL technologies",
+        "value": 6,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-002-KPI-04",
+        "label": "Estimated annual saving",
+        "value": 1.4,
+        "unit": "₹ crore"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-002-CH-01",
+      "type": "bar",
+      "title": "Technology Advisor demo metrics",
+      "categories": [
+        "Wave 1",
+        "Wave 2",
+        "Wave 3"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            4,
+            3,
+            2
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-002-001",
+      "prompt_id": "PR-007",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-002-RISK-01",
+        "statement": "Nine critical workloads depend on unsupported middleware.",
+        "severity": "high",
+        "owner": "Enterprise Architecture",
+        "due_date": "2026-07-31",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-002-REC-01",
+        "text": "Start Wave 1 with authentication and notification services.",
+        "owner": "Enterprise Architecture",
+        "target_date": "2026-07-31",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-002-REC-02",
+        "text": "Retire WebLogic exceptions by December 2027.",
+        "owner": "Platform Engineering",
+        "target_date": "2026-07-31",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Enterprise Architecture"
+      },
+      {
+        "role": "review_owner",
+        "name": "Platform Engineering"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-31",
+      "approval_due": "2026-07-31"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-002-DL-JSON",
+        "artifact_id": "AR-010",
+        "format": "json",
+        "filename": "dp-002-modernization-roadmap.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-002-DL-PDF",
+        "artifact_id": "AR-010",
+        "format": "pdf",
+        "filename": "dp-002-modernization-roadmap.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-002-DL-DOCX",
+        "artifact_id": "AR-010",
+        "format": "docx",
+        "filename": "dp-002-modernization-roadmap.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-003",
+    "page_id": "PAGE-INV-ADV",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "selected_prompt_id": "PR-013",
+    "selected_prompt": "ROI Prioritization",
+    "input_context": {
+      "title": "FY27 technology portfolio, three-year benefits, costs, dependencies and funding constraints.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-003"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-003-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-003-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-003-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-003-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-015",
+        "role": "primary",
+        "title": "ROI Analysis — ROI Prioritization",
+        "summary": "Identity modernization business case prioritized against strategic value and delivery risk.",
+        "sections": [
+          {
+            "section_id": "AR-015-SEC-01",
+            "heading": "Cash flows",
+            "content": "Cash flows: Identity modernization business case prioritized against strategic value and delivery risk."
+          },
+          {
+            "section_id": "AR-015-SEC-02",
+            "heading": "assumptions",
+            "content": "assumptions: Identity modernization business case prioritized against strategic value and delivery risk."
+          },
+          {
+            "section_id": "AR-015-SEC-03",
+            "heading": "ROI",
+            "content": "ROI: Identity modernization business case prioritized against strategic value and delivery risk."
+          },
+          {
+            "section_id": "AR-015-SEC-04",
+            "heading": "payback",
+            "content": "payback: Identity modernization business case prioritized against strategic value and delivery risk."
+          },
+          {
+            "section_id": "AR-015-SEC-05",
+            "heading": "NPV",
+            "content": "NPV: Identity modernization business case prioritized against strategic value and delivery risk."
+          },
+          {
+            "section_id": "AR-015-SEC-06",
+            "heading": "sensitivity",
+            "content": "sensitivity: Identity modernization business case prioritized against strategic value and delivery risk."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-014",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-016",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-003-KPI-01",
+        "label": "Investment ask",
+        "value": 2.1,
+        "unit": "₹ crore"
+      },
+      {
+        "kpi_id": "DP-003-KPI-02",
+        "label": "3-year benefit",
+        "value": 4.8,
+        "unit": "₹ crore"
+      },
+      {
+        "kpi_id": "DP-003-KPI-03",
+        "label": "ROI",
+        "value": 128,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-003-KPI-04",
+        "label": "Payback",
+        "value": 16,
+        "unit": "months"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-003-CH-01",
+      "type": "bar",
+      "title": "Investment Advisor demo metrics",
+      "categories": [
+        "Year 1",
+        "Year 2",
+        "Year 3"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            -0.8,
+            1.5,
+            2.0
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-003-001",
+      "prompt_id": "PR-013",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-003-RISK-01",
+        "statement": "Benefit depends on customer adoption reaching 45% by year two.",
+        "severity": "high",
+        "owner": "Investment Office",
+        "due_date": "2026-07-20",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-003-REC-01",
+        "text": "Fund Passkey and biometric capabilities as one identity-modernization wave.",
+        "owner": "Investment Office",
+        "target_date": "2026-07-20",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-003-REC-02",
+        "text": "Track call-centre reduction monthly.",
+        "owner": "Finance Business Partner",
+        "target_date": "2026-07-20",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Investment Office"
+      },
+      {
+        "role": "review_owner",
+        "name": "Finance Business Partner"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-20",
+      "approval_due": "2026-07-20"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-003-DL-JSON",
+        "artifact_id": "AR-015",
+        "format": "json",
+        "filename": "dp-003-roi-analysis.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-003-DL-PDF",
+        "artifact_id": "AR-015",
+        "format": "pdf",
+        "filename": "dp-003-roi-analysis.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-003-DL-DOCX",
+        "artifact_id": "AR-015",
+        "format": "docx",
+        "filename": "dp-003-roi-analysis.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-004",
+    "page_id": "PAGE-SDLC-REQ",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "selected_prompt_id": "PR-019",
+    "selected_prompt": "Biometric Login",
+    "input_context": {
+      "title": "Mobile Banking biometric login for enrolled retail customers with MPIN fallback and auditable controls.",
+      "scenario_id": "SCN-BIO-001",
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-004"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-004-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-004-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-004-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-004-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-020",
+        "role": "primary",
+        "title": "Business Requirements Document — Biometric Login",
+        "summary": "Biometric login requirements generated for enrolled retail customers with secure MPIN fallback.",
+        "sections": [
+          {
+            "section_id": "AR-020-SEC-01",
+            "heading": "Executive summary",
+            "content": "Executive summary: Biometric login requirements generated for enrolled retail customers with secure MPIN fallback."
+          },
+          {
+            "section_id": "AR-020-SEC-02",
+            "heading": "objectives",
+            "content": "objectives: Biometric login requirements generated for enrolled retail customers with secure MPIN fallback."
+          },
+          {
+            "section_id": "AR-020-SEC-03",
+            "heading": "scope",
+            "content": "scope: Biometric login requirements generated for enrolled retail customers with secure MPIN fallback."
+          },
+          {
+            "section_id": "AR-020-SEC-04",
+            "heading": "stakeholders",
+            "content": "stakeholders: Biometric login requirements generated for enrolled retail customers with secure MPIN fallback."
+          },
+          {
+            "section_id": "AR-020-SEC-05",
+            "heading": "business requirements",
+            "content": "business requirements: Biometric login requirements generated for enrolled retail customers with secure MPIN fallback."
+          },
+          {
+            "section_id": "AR-020-SEC-06",
+            "heading": "assumptions",
+            "content": "assumptions: Biometric login requirements generated for enrolled retail customers with secure MPIN fallback."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-021",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-022",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-004-KPI-01",
+        "label": "Requirements",
+        "value": 18,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-004-KPI-02",
+        "label": "Acceptance criteria",
+        "value": 24,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-004-KPI-03",
+        "label": "Ambiguities",
+        "value": 2,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-004-KPI-04",
+        "label": "Traceability",
+        "value": 100,
+        "unit": "%"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-004-CH-01",
+      "type": "bar",
+      "title": "Requirements Engineering demo metrics",
+      "categories": [
+        "Business",
+        "Functional",
+        "NFR",
+        "Control"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            5,
+            7,
+            4,
+            2
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-004-001",
+      "prompt_id": "PR-019",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-004-RISK-01",
+        "statement": "IAM device-binding status API contract is not yet final.",
+        "severity": "high",
+        "owner": "Business Analyst",
+        "due_date": "2026-07-14",
+        "status": "open"
+      },
+      {
+        "risk_id": "DP-004-RISK-02",
+        "statement": "Accessibility behavior for unsupported devices needs confirmation.",
+        "severity": "medium",
+        "owner": "Product Owner",
+        "due_date": "2026-07-14",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-004-REC-01",
+        "text": "Approve BR-01 to BR-05 and FR-01 to FR-07.",
+        "owner": "Business Analyst",
+        "target_date": "2026-07-14",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-004-REC-02",
+        "text": "Resolve IAM dependency before design baseline.",
+        "owner": "Product Owner",
+        "target_date": "2026-07-14",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Business Analyst"
+      },
+      {
+        "role": "review_owner",
+        "name": "Product Owner"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-14",
+      "approval_due": "2026-07-14"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-004-DL-JSON",
+        "artifact_id": "AR-020",
+        "format": "json",
+        "filename": "dp-004-business-requirements-document.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-004-DL-PDF",
+        "artifact_id": "AR-020",
+        "format": "pdf",
+        "filename": "dp-004-business-requirements-document.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-004-DL-DOCX",
+        "artifact_id": "AR-020",
+        "format": "docx",
+        "filename": "dp-004-business-requirements-document.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-005",
+    "page_id": "PAGE-SDLC-DSN",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "selected_prompt_id": "PR-025",
+    "selected_prompt": "Design Biometric Login",
+    "input_context": {
+      "title": "Biometric login solution using platform biometrics, IAM, device registry, audit service and feature flags.",
+      "scenario_id": "SCN-BIO-001",
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-005"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-005-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-005-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-005-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-005-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-027",
+        "role": "primary",
+        "title": "High-Level Design — Design Biometric Login",
+        "summary": "Architecture connects Mobile App, API Gateway, Authentication Orchestrator, IAM, Device Registry and Audit Service.",
+        "sections": [
+          {
+            "section_id": "AR-027-SEC-01",
+            "heading": "Context",
+            "content": "Context: Architecture connects Mobile App, API Gateway, Authentication Orchestrator, IAM, Device Registry and Audit Service."
+          },
+          {
+            "section_id": "AR-027-SEC-02",
+            "heading": "components",
+            "content": "components: Architecture connects Mobile App, API Gateway, Authentication Orchestrator, IAM, Device Registry and Audit Service."
+          },
+          {
+            "section_id": "AR-027-SEC-03",
+            "heading": "integrations",
+            "content": "integrations: Architecture connects Mobile App, API Gateway, Authentication Orchestrator, IAM, Device Registry and Audit Service."
+          },
+          {
+            "section_id": "AR-027-SEC-04",
+            "heading": "data flow",
+            "content": "data flow: Architecture connects Mobile App, API Gateway, Authentication Orchestrator, IAM, Device Registry and Audit Service."
+          },
+          {
+            "section_id": "AR-027-SEC-05",
+            "heading": "security",
+            "content": "security: Architecture connects Mobile App, API Gateway, Authentication Orchestrator, IAM, Device Registry and Audit Service."
+          },
+          {
+            "section_id": "AR-027-SEC-06",
+            "heading": "deployment",
+            "content": "deployment: Architecture connects Mobile App, API Gateway, Authentication Orchestrator, IAM, Device Registry and Audit Service."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-028",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-029",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-005-KPI-01",
+        "label": "Components",
+        "value": 6,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-005-KPI-02",
+        "label": "APIs",
+        "value": 3,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-005-KPI-03",
+        "label": "Security controls",
+        "value": 7,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-005-KPI-04",
+        "label": "Architecture score",
+        "value": 92,
+        "unit": "/100"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-005-CH-01",
+      "type": "bar",
+      "title": "Design & Architecture demo metrics",
+      "categories": [
+        "Approved",
+        "Conditional",
+        "Open"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            12,
+            2,
+            1
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-005-001",
+      "prompt_id": "PR-025",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-005-RISK-01",
+        "statement": "Nonce-cache failure could increase replay risk.",
+        "severity": "high",
+        "owner": "Solution Architect",
+        "due_date": "2026-07-16",
+        "status": "open"
+      },
+      {
+        "risk_id": "DP-005-RISK-02",
+        "statement": "Cross-zone failover test remains open.",
+        "severity": "medium",
+        "owner": "Enterprise Architect",
+        "due_date": "2026-07-16",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-005-REC-01",
+        "text": "Use platform biometric APIs only; do not store biometric templates.",
+        "owner": "Solution Architect",
+        "target_date": "2026-07-16",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-005-REC-02",
+        "text": "Add Redis-backed nonce cache and mTLS.",
+        "owner": "Enterprise Architect",
+        "target_date": "2026-07-16",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Solution Architect"
+      },
+      {
+        "role": "review_owner",
+        "name": "Enterprise Architect"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-16",
+      "approval_due": "2026-07-16"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-005-DL-JSON",
+        "artifact_id": "AR-027",
+        "format": "json",
+        "filename": "dp-005-high-level-design.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-005-DL-PDF",
+        "artifact_id": "AR-027",
+        "format": "pdf",
+        "filename": "dp-005-high-level-design.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-005-DL-DOCX",
+        "artifact_id": "AR-027",
+        "format": "docx",
+        "filename": "dp-005-high-level-design.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-006",
+    "page_id": "PAGE-SDLC-DEV",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "selected_prompt_id": "PR-031",
+    "selected_prompt": "Sprint Planning",
+    "input_context": {
+      "title": "Biometric login implementation across mobile client, authentication API, device registry and CI/CD pipeline.",
+      "scenario_id": "SCN-BIO-001",
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-006"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-006-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-006-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-006-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-006-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-035",
+        "role": "primary",
+        "title": "Sprint Backlog — Sprint Planning",
+        "summary": "Sprint backlog decomposes biometric enrollment, login, audit logging, mobile integration and pipeline gates.",
+        "sections": [
+          {
+            "section_id": "AR-035-SEC-01",
+            "heading": "Stories",
+            "content": "Stories: Sprint backlog decomposes biometric enrollment, login, audit logging, mobile integration and pipeline gates."
+          },
+          {
+            "section_id": "AR-035-SEC-02",
+            "heading": "tasks",
+            "content": "tasks: Sprint backlog decomposes biometric enrollment, login, audit logging, mobile integration and pipeline gates."
+          },
+          {
+            "section_id": "AR-035-SEC-03",
+            "heading": "estimates",
+            "content": "estimates: Sprint backlog decomposes biometric enrollment, login, audit logging, mobile integration and pipeline gates."
+          },
+          {
+            "section_id": "AR-035-SEC-04",
+            "heading": "dependencies",
+            "content": "dependencies: Sprint backlog decomposes biometric enrollment, login, audit logging, mobile integration and pipeline gates."
+          },
+          {
+            "section_id": "AR-035-SEC-05",
+            "heading": "acceptance criteria",
+            "content": "acceptance criteria: Sprint backlog decomposes biometric enrollment, login, audit logging, mobile integration and pipeline gates."
+          },
+          {
+            "section_id": "AR-035-SEC-06",
+            "heading": "sprint goal",
+            "content": "sprint goal: Sprint backlog decomposes biometric enrollment, login, audit logging, mobile integration and pipeline gates."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-036",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-037",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-006-KPI-01",
+        "label": "Stories",
+        "value": 8,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-006-KPI-02",
+        "label": "Tasks",
+        "value": 21,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-006-KPI-03",
+        "label": "Story points",
+        "value": 34,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-006-KPI-04",
+        "label": "Ready",
+        "value": 88,
+        "unit": "%"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-006-CH-01",
+      "type": "bar",
+      "title": "Development demo metrics",
+      "categories": [
+        "To Do",
+        "In Progress",
+        "Done"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            11,
+            7,
+            3
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-006-001",
+      "prompt_id": "PR-031",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-006-RISK-01",
+        "statement": "IAM test environment availability may delay integration.",
+        "severity": "high",
+        "owner": "Engineering Lead",
+        "due_date": "2026-07-25",
+        "status": "open"
+      },
+      {
+        "risk_id": "DP-006-RISK-02",
+        "statement": "Android 15 device coverage is limited.",
+        "severity": "medium",
+        "owner": "Scrum Team",
+        "due_date": "2026-07-25",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-006-REC-01",
+        "text": "Complete API contract first.",
+        "owner": "Engineering Lead",
+        "target_date": "2026-07-25",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-006-REC-02",
+        "text": "Reserve two Android 15 devices for integration testing.",
+        "owner": "Scrum Team",
+        "target_date": "2026-07-25",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Engineering Lead"
+      },
+      {
+        "role": "review_owner",
+        "name": "Scrum Team"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-25",
+      "approval_due": "2026-07-25"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-006-DL-JSON",
+        "artifact_id": "AR-035",
+        "format": "json",
+        "filename": "dp-006-sprint-backlog.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-006-DL-PDF",
+        "artifact_id": "AR-035",
+        "format": "pdf",
+        "filename": "dp-006-sprint-backlog.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-006-DL-DOCX",
+        "artifact_id": "AR-035",
+        "format": "docx",
+        "filename": "dp-006-sprint-backlog.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-007",
+    "page_id": "PAGE-SDLC-REL",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "selected_prompt_id": "PR-037",
+    "selected_prompt": "Release Readiness",
+    "input_context": {
+      "title": "Mobile Banking v9.2 phased biometric-login rollout with rollback, CAB approval and 72-hour hypercare.",
+      "scenario_id": "SCN-BIO-001",
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-007"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-007-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-007-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-007-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-007-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-045",
+        "role": "primary",
+        "title": "Release Checklist — Release Readiness",
+        "summary": "Mobile Banking v9.2 release pack supports phased biometric-login rollout and rollback by feature flag.",
+        "sections": [
+          {
+            "section_id": "AR-045-SEC-01",
+            "heading": "Code freeze",
+            "content": "Code freeze: Mobile Banking v9.2 release pack supports phased biometric-login rollout and rollback by feature flag."
+          },
+          {
+            "section_id": "AR-045-SEC-02",
+            "heading": "approvals",
+            "content": "approvals: Mobile Banking v9.2 release pack supports phased biometric-login rollout and rollback by feature flag."
+          },
+          {
+            "section_id": "AR-045-SEC-03",
+            "heading": "tests",
+            "content": "tests: Mobile Banking v9.2 release pack supports phased biometric-login rollout and rollback by feature flag."
+          },
+          {
+            "section_id": "AR-045-SEC-04",
+            "heading": "monitoring",
+            "content": "monitoring: Mobile Banking v9.2 release pack supports phased biometric-login rollout and rollback by feature flag."
+          },
+          {
+            "section_id": "AR-045-SEC-05",
+            "heading": "backups",
+            "content": "backups: Mobile Banking v9.2 release pack supports phased biometric-login rollout and rollback by feature flag."
+          },
+          {
+            "section_id": "AR-045-SEC-06",
+            "heading": "communications",
+            "content": "communications: Mobile Banking v9.2 release pack supports phased biometric-login rollout and rollback by feature flag."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-042",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-043",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-007-KPI-01",
+        "label": "Readiness",
+        "value": 93,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-007-KPI-02",
+        "label": "Test pass rate",
+        "value": 98.6,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-007-KPI-03",
+        "label": "Open P1/P2 defects",
+        "value": 0,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-007-KPI-04",
+        "label": "Rollback time",
+        "value": 20,
+        "unit": "minutes"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-007-CH-01",
+      "type": "bar",
+      "title": "Release demo metrics",
+      "categories": [
+        "10%",
+        "50%",
+        "100%"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            1,
+            3,
+            7
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-007-001",
+      "prompt_id": "PR-037",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-007-RISK-01",
+        "statement": "One medium SonarQube finding requires documented exception.",
+        "severity": "high",
+        "owner": "Release Manager",
+        "due_date": "2026-07-18",
+        "status": "open"
+      },
+      {
+        "risk_id": "DP-007-RISK-02",
+        "statement": "Performance evidence awaits final sign-off.",
+        "severity": "medium",
+        "owner": "SRE Lead",
+        "due_date": "2026-07-18",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-007-REC-01",
+        "text": "Approve 10%-50%-100% rollout.",
+        "owner": "Release Manager",
+        "target_date": "2026-07-18",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-007-REC-02",
+        "text": "Activate 72-hour hypercare and war room.",
+        "owner": "SRE Lead",
+        "target_date": "2026-07-18",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Release Manager"
+      },
+      {
+        "role": "review_owner",
+        "name": "SRE Lead"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-18",
+      "approval_due": "2026-07-18"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-007-DL-JSON",
+        "artifact_id": "AR-045",
+        "format": "json",
+        "filename": "dp-007-release-checklist.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-007-DL-PDF",
+        "artifact_id": "AR-045",
+        "format": "pdf",
+        "filename": "dp-007-release-checklist.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-007-DL-DOCX",
+        "artifact_id": "AR-045",
+        "format": "docx",
+        "filename": "dp-007-release-checklist.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-008",
+    "page_id": "PAGE-GOV-AIO",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "selected_prompt_id": "PR-043",
+    "selected_prompt": "AI Use Case Approval",
+    "input_context": {
+      "title": "AI fraud detection use case, model risk tiering, human oversight, prompt controls and monitoring.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-008"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-008-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-008-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-008-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-008-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-051",
+        "role": "primary",
+        "title": "AI Approval Pack — AI Use Case Approval",
+        "summary": "AI Fraud Detection approval pack includes model card, risk assessment, bias review and human-oversight conditions.",
+        "sections": [
+          {
+            "section_id": "AR-051-SEC-01",
+            "heading": "Use case",
+            "content": "Use case: AI Fraud Detection approval pack includes model card, risk assessment, bias review and human-oversight conditions."
+          },
+          {
+            "section_id": "AR-051-SEC-02",
+            "heading": "risk",
+            "content": "risk: AI Fraud Detection approval pack includes model card, risk assessment, bias review and human-oversight conditions."
+          },
+          {
+            "section_id": "AR-051-SEC-03",
+            "heading": "controls",
+            "content": "controls: AI Fraud Detection approval pack includes model card, risk assessment, bias review and human-oversight conditions."
+          },
+          {
+            "section_id": "AR-051-SEC-04",
+            "heading": "validation",
+            "content": "validation: AI Fraud Detection approval pack includes model card, risk assessment, bias review and human-oversight conditions."
+          },
+          {
+            "section_id": "AR-051-SEC-05",
+            "heading": "approvals",
+            "content": "approvals: AI Fraud Detection approval pack includes model card, risk assessment, bias review and human-oversight conditions."
+          },
+          {
+            "section_id": "AR-051-SEC-06",
+            "heading": "conditions",
+            "content": "conditions: AI Fraud Detection approval pack includes model card, risk assessment, bias review and human-oversight conditions."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-049",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-050",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-008-KPI-01",
+        "label": "Risk tier",
+        "value": 3,
+        "unit": "High"
+      },
+      {
+        "kpi_id": "DP-008-KPI-02",
+        "label": "Controls satisfied",
+        "value": 14,
+        "unit": "of 16"
+      },
+      {
+        "kpi_id": "DP-008-KPI-03",
+        "label": "Bias variance",
+        "value": 2.4,
+        "unit": "pp"
+      },
+      {
+        "kpi_id": "DP-008-KPI-04",
+        "label": "Human review coverage",
+        "value": 100,
+        "unit": "%"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-008-CH-01",
+      "type": "bar",
+      "title": "AI Oversight demo metrics",
+      "categories": [
+        "Satisfied",
+        "Conditional",
+        "Open"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            14,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-008-001",
+      "prompt_id": "PR-043",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-008-RISK-01",
+        "statement": "Explainability remains limited for graph-derived risk signals.",
+        "severity": "high",
+        "owner": "AI Governance Analyst",
+        "due_date": "2026-07-22",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-008-REC-01",
+        "text": "Require analyst confirmation for transactions above ₹2 lakh.",
+        "owner": "AI Governance Analyst",
+        "target_date": "2026-07-22",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-008-REC-02",
+        "text": "Run quarterly bias and drift review.",
+        "owner": "Model Risk Reviewer",
+        "target_date": "2026-07-22",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "AI Governance Analyst"
+      },
+      {
+        "role": "review_owner",
+        "name": "Model Risk Reviewer"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-22",
+      "approval_due": "2026-07-22"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-008-DL-JSON",
+        "artifact_id": "AR-051",
+        "format": "json",
+        "filename": "dp-008-ai-approval-pack.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-008-DL-PDF",
+        "artifact_id": "AR-051",
+        "format": "pdf",
+        "filename": "dp-008-ai-approval-pack.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-008-DL-DOCX",
+        "artifact_id": "AR-051",
+        "format": "docx",
+        "filename": "dp-008-ai-approval-pack.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-009",
+    "page_id": "PAGE-GOV-CMP",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "selected_prompt_id": "PR-049",
+    "selected_prompt": "RBI Compliance Pack",
+    "input_context": {
+      "title": "RBI and PCI control coverage, evidence validation, open gaps, remediation and audit closure.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-009"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-009-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-009-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-009-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-009-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-058",
+        "role": "primary",
+        "title": "Compliance Report — RBI Compliance Pack",
+        "summary": "RBI C-SITE pack maps controls to validated evidence and remediation owners.",
+        "sections": [
+          {
+            "section_id": "AR-058-SEC-01",
+            "heading": "Framework score",
+            "content": "Framework score: RBI C-SITE pack maps controls to validated evidence and remediation owners."
+          },
+          {
+            "section_id": "AR-058-SEC-02",
+            "heading": "open gaps",
+            "content": "open gaps: RBI C-SITE pack maps controls to validated evidence and remediation owners."
+          },
+          {
+            "section_id": "AR-058-SEC-03",
+            "heading": "overdue actions",
+            "content": "overdue actions: RBI C-SITE pack maps controls to validated evidence and remediation owners."
+          },
+          {
+            "section_id": "AR-058-SEC-04",
+            "heading": "trends",
+            "content": "trends: RBI C-SITE pack maps controls to validated evidence and remediation owners."
+          },
+          {
+            "section_id": "AR-058-SEC-05",
+            "heading": "recommendations",
+            "content": "recommendations: RBI C-SITE pack maps controls to validated evidence and remediation owners."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-057",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-059",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-009-KPI-01",
+        "label": "Compliance score",
+        "value": 91,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-009-KPI-02",
+        "label": "Controls assessed",
+        "value": 64,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-009-KPI-03",
+        "label": "High gaps",
+        "value": 4,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-009-KPI-04",
+        "label": "Evidence coverage",
+        "value": 96,
+        "unit": "%"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-009-CH-01",
+      "type": "bar",
+      "title": "Compliance Automation demo metrics",
+      "categories": [
+        "Compliant",
+        "Partial",
+        "Gap"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            58,
+            2,
+            4
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-009-001",
+      "prompt_id": "PR-049",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-009-RISK-01",
+        "statement": "Android certificate pinning is not enforced across all supported versions.",
+        "severity": "high",
+        "owner": "Compliance Analyst",
+        "due_date": "2026-08-31",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-009-REC-01",
+        "text": "Complete certificate pinning by 31 August 2026.",
+        "owner": "Compliance Analyst",
+        "target_date": "2026-08-31",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-009-REC-02",
+        "text": "Validate privileged-access review evidence.",
+        "owner": "Control Owners",
+        "target_date": "2026-08-31",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Compliance Analyst"
+      },
+      {
+        "role": "review_owner",
+        "name": "Control Owners"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-08-31",
+      "approval_due": "2026-08-31"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-009-DL-JSON",
+        "artifact_id": "AR-058",
+        "format": "json",
+        "filename": "dp-009-compliance-report.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-009-DL-PDF",
+        "artifact_id": "AR-058",
+        "format": "pdf",
+        "filename": "dp-009-compliance-report.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-009-DL-DOCX",
+        "artifact_id": "AR-058",
+        "format": "docx",
+        "filename": "dp-009-compliance-report.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-010",
+    "page_id": "PAGE-GOV-ARC",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "selected_prompt_id": "PR-055",
+    "selected_prompt": "Architecture Review",
+    "input_context": {
+      "title": "Solution architecture, API standards, cloud readiness, technology exceptions and approval conditions.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-010"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-010-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-010-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-010-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-010-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-064",
+        "role": "primary",
+        "title": "Architecture Review Report — Architecture Review",
+        "summary": "Architecture review evaluates biometric-login design against security, API, resilience and operational standards.",
+        "sections": [
+          {
+            "section_id": "AR-064-SEC-01",
+            "heading": "Scope",
+            "content": "Scope: Architecture review evaluates biometric-login design against security, API, resilience and operational standards."
+          },
+          {
+            "section_id": "AR-064-SEC-02",
+            "heading": "scores",
+            "content": "scores: Architecture review evaluates biometric-login design against security, API, resilience and operational standards."
+          },
+          {
+            "section_id": "AR-064-SEC-03",
+            "heading": "findings",
+            "content": "findings: Architecture review evaluates biometric-login design against security, API, resilience and operational standards."
+          },
+          {
+            "section_id": "AR-064-SEC-04",
+            "heading": "risks",
+            "content": "risks: Architecture review evaluates biometric-login design against security, API, resilience and operational standards."
+          },
+          {
+            "section_id": "AR-064-SEC-05",
+            "heading": "recommendations",
+            "content": "recommendations: Architecture review evaluates biometric-login design against security, API, resilience and operational standards."
+          },
+          {
+            "section_id": "AR-064-SEC-06",
+            "heading": "decision",
+            "content": "decision: Architecture review evaluates biometric-login design against security, API, resilience and operational standards."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-065",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-066",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-010-KPI-01",
+        "label": "Architecture score",
+        "value": 88,
+        "unit": "/100"
+      },
+      {
+        "kpi_id": "DP-010-KPI-02",
+        "label": "Standards passed",
+        "value": 17,
+        "unit": "of 19"
+      },
+      {
+        "kpi_id": "DP-010-KPI-03",
+        "label": "Conditions",
+        "value": 2,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-010-KPI-04",
+        "label": "Exceptions",
+        "value": 1,
+        "unit": ""
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-010-CH-01",
+      "type": "bar",
+      "title": "Architecture Assurance demo metrics",
+      "categories": [
+        "Security",
+        "Resilience",
+        "API",
+        "Operations"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            92,
+            84,
+            90,
+            86
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-010-001",
+      "prompt_id": "PR-055",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-010-RISK-01",
+        "statement": "Rate limiting and cross-zone failover evidence are incomplete.",
+        "severity": "high",
+        "owner": "Architecture Analyst",
+        "due_date": "2026-07-17",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-010-REC-01",
+        "text": "Approve with conditions for rate limiting and DR test.",
+        "owner": "Architecture Analyst",
+        "target_date": "2026-07-17",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-010-REC-02",
+        "text": "Expire Oracle 12c exception on 31 December 2027.",
+        "owner": "Architecture Review Board",
+        "target_date": "2026-07-17",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Architecture Analyst"
+      },
+      {
+        "role": "review_owner",
+        "name": "Architecture Review Board"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-17",
+      "approval_due": "2026-07-17"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-010-DL-JSON",
+        "artifact_id": "AR-064",
+        "format": "json",
+        "filename": "dp-010-architecture-review-report.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-010-DL-PDF",
+        "artifact_id": "AR-064",
+        "format": "pdf",
+        "filename": "dp-010-architecture-review-report.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-010-DL-DOCX",
+        "artifact_id": "AR-064",
+        "format": "docx",
+        "filename": "dp-010-architecture-review-report.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-011",
+    "page_id": "PAGE-ENT-EVD",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "selected_prompt_id": "PR-062",
+    "selected_prompt": "Generate Release Pack",
+    "input_context": {
+      "title": "Evidence from Jira, Confluence, SharePoint, ServiceNow and SonarQube for release and audit packs.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-011"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-011-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-011-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-011-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-011-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-072",
+        "role": "primary",
+        "title": "Release Readiness Report — Generate Release Pack",
+        "summary": "Release evidence pack consolidates design approvals, test results, changes, defects and scan findings.",
+        "sections": [
+          {
+            "section_id": "AR-072-SEC-01",
+            "heading": "Builds",
+            "content": "Builds: Release evidence pack consolidates design approvals, test results, changes, defects and scan findings."
+          },
+          {
+            "section_id": "AR-072-SEC-02",
+            "heading": "defects",
+            "content": "defects: Release evidence pack consolidates design approvals, test results, changes, defects and scan findings."
+          },
+          {
+            "section_id": "AR-072-SEC-03",
+            "heading": "scans",
+            "content": "scans: Release evidence pack consolidates design approvals, test results, changes, defects and scan findings."
+          },
+          {
+            "section_id": "AR-072-SEC-04",
+            "heading": "test evidence",
+            "content": "test evidence: Release evidence pack consolidates design approvals, test results, changes, defects and scan findings."
+          },
+          {
+            "section_id": "AR-072-SEC-05",
+            "heading": "approvals",
+            "content": "approvals: Release evidence pack consolidates design approvals, test results, changes, defects and scan findings."
+          },
+          {
+            "section_id": "AR-072-SEC-06",
+            "heading": "readiness",
+            "content": "readiness: Release evidence pack consolidates design approvals, test results, changes, defects and scan findings."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-071",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-073",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-011-KPI-01",
+        "label": "Evidence items",
+        "value": 48,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-011-KPI-02",
+        "label": "Validated",
+        "value": 45,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-011-KPI-03",
+        "label": "Coverage",
+        "value": 93.8,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-011-KPI-04",
+        "label": "Connector errors",
+        "value": 1,
+        "unit": ""
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-011-CH-01",
+      "type": "bar",
+      "title": "Enterprise Evidence Hub demo metrics",
+      "categories": [
+        "SharePoint",
+        "Jira",
+        "ServiceNow",
+        "SonarQube"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            14,
+            18,
+            9,
+            7
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-011-001",
+      "prompt_id": "PR-062",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-011-RISK-01",
+        "statement": "Prisma connector is rate-limited and one evidence item is stale.",
+        "severity": "high",
+        "owner": "Evidence Analyst",
+        "due_date": "2026-07-18",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-011-REC-01",
+        "text": "Retry Prisma sync with backoff.",
+        "owner": "Evidence Analyst",
+        "target_date": "2026-07-18",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-011-REC-02",
+        "text": "Request refreshed performance-test sign-off.",
+        "owner": "Release Manager",
+        "target_date": "2026-07-18",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Evidence Analyst"
+      },
+      {
+        "role": "review_owner",
+        "name": "Release Manager"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-18",
+      "approval_due": "2026-07-18"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-011-DL-JSON",
+        "artifact_id": "AR-072",
+        "format": "json",
+        "filename": "dp-011-release-readiness-report.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-011-DL-PDF",
+        "artifact_id": "AR-072",
+        "format": "pdf",
+        "filename": "dp-011-release-readiness-report.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-011-DL-DOCX",
+        "artifact_id": "AR-072",
+        "format": "docx",
+        "filename": "dp-011-release-readiness-report.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-012",
+    "page_id": "PAGE-ENT-KNW",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "selected_prompt_id": "PR-067",
+    "selected_prompt": "Find Similar BRD",
+    "input_context": {
+      "title": "Enterprise documents, prior delivery artifacts, standards, policies and reusable test assets.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-012"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-012-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-012-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-012-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-012-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-079",
+        "role": "primary",
+        "title": "Similarity Report — Find Similar BRD",
+        "summary": "Similarity analysis identifies reusable requirements, acceptance criteria, API contracts and test cases.",
+        "sections": [
+          {
+            "section_id": "AR-079-SEC-01",
+            "heading": "Reference artifact",
+            "content": "Reference artifact: Similarity analysis identifies reusable requirements, acceptance criteria, API contracts and test cases."
+          },
+          {
+            "section_id": "AR-079-SEC-02",
+            "heading": "similarity",
+            "content": "similarity: Similarity analysis identifies reusable requirements, acceptance criteria, API contracts and test cases."
+          },
+          {
+            "section_id": "AR-079-SEC-03",
+            "heading": "reusable sections",
+            "content": "reusable sections: Similarity analysis identifies reusable requirements, acceptance criteria, API contracts and test cases."
+          },
+          {
+            "section_id": "AR-079-SEC-04",
+            "heading": "conflicts",
+            "content": "conflicts: Similarity analysis identifies reusable requirements, acceptance criteria, API contracts and test cases."
+          },
+          {
+            "section_id": "AR-079-SEC-05",
+            "heading": "recommendation",
+            "content": "recommendation: Similarity analysis identifies reusable requirements, acceptance criteria, API contracts and test cases."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-078",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-080",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-012-KPI-01",
+        "label": "Sources searched",
+        "value": 1260,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-012-KPI-02",
+        "label": "Similar artifacts",
+        "value": 5,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-012-KPI-03",
+        "label": "Top similarity",
+        "value": 82,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-012-KPI-04",
+        "label": "Effort saved",
+        "value": 18,
+        "unit": "person-days"
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-012-CH-01",
+      "type": "bar",
+      "title": "Knowledge Intelligence demo metrics",
+      "categories": [
+        "Reusable",
+        "Adapt",
+        "Do not reuse"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            14,
+            4,
+            1
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-012-001",
+      "prompt_id": "PR-067",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-012-RISK-01",
+        "statement": "Prior passkey BRD assumes a different IAM token model.",
+        "severity": "high",
+        "owner": "Knowledge Analyst",
+        "due_date": "2026-07-13",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-012-REC-01",
+        "text": "Reuse 14 acceptance criteria from Device Binding.",
+        "owner": "Knowledge Analyst",
+        "target_date": "2026-07-13",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-012-REC-02",
+        "text": "Revalidate token assumptions before reuse.",
+        "owner": "Domain Owner",
+        "target_date": "2026-07-13",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Knowledge Analyst"
+      },
+      {
+        "role": "review_owner",
+        "name": "Domain Owner"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-13",
+      "approval_due": "2026-07-13"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-012-DL-JSON",
+        "artifact_id": "AR-079",
+        "format": "json",
+        "filename": "dp-012-similarity-report.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-012-DL-PDF",
+        "artifact_id": "AR-079",
+        "format": "pdf",
+        "filename": "dp-012-similarity-report.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-012-DL-DOCX",
+        "artifact_id": "AR-079",
+        "format": "docx",
+        "filename": "dp-012-similarity-report.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "demo_pack_id": "DP-013",
+    "page_id": "PAGE-ENT-ADM",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "selected_prompt_id": "PR-077",
+    "selected_prompt": "Platform Health",
+    "input_context": {
+      "title": "Users, RBAC, connectors, model inventory, platform configuration and operational health.",
+      "scenario_id": null,
+      "as_of_date": "2026-07-11",
+      "data_classification": "Internal",
+      "generation_seed": "DP-013"
+    },
+    "automation_steps": [
+      {
+        "step": 1,
+        "id": "DP-013-S1",
+        "label": "Load deterministic context",
+        "status": "completed"
+      },
+      {
+        "step": 2,
+        "id": "DP-013-S2",
+        "label": "Apply prompt-to-artifact mapping",
+        "status": "completed"
+      },
+      {
+        "step": 3,
+        "id": "DP-013-S3",
+        "label": "Generate structured sections and metrics",
+        "status": "completed"
+      },
+      {
+        "step": 4,
+        "id": "DP-013-S4",
+        "label": "Validate IDs, states and downloads",
+        "status": "completed"
+      }
+    ],
+    "generated_artifacts": [
+      {
+        "artifact_id": "AR-089",
+        "role": "primary",
+        "title": "Administration Health Report — Platform Health",
+        "summary": "Administration pack covers users, RBAC, connectors, model configuration and platform health.",
+        "sections": [
+          {
+            "section_id": "AR-089-SEC-01",
+            "heading": "Availability",
+            "content": "Availability: Administration pack covers users, RBAC, connectors, model configuration and platform health."
+          },
+          {
+            "section_id": "AR-089-SEC-02",
+            "heading": "jobs",
+            "content": "jobs: Administration pack covers users, RBAC, connectors, model configuration and platform health."
+          },
+          {
+            "section_id": "AR-089-SEC-03",
+            "heading": "connectors",
+            "content": "connectors: Administration pack covers users, RBAC, connectors, model configuration and platform health."
+          },
+          {
+            "section_id": "AR-089-SEC-04",
+            "heading": "storage",
+            "content": "storage: Administration pack covers users, RBAC, connectors, model configuration and platform health."
+          },
+          {
+            "section_id": "AR-089-SEC-05",
+            "heading": "errors",
+            "content": "errors: Administration pack covers users, RBAC, connectors, model configuration and platform health."
+          },
+          {
+            "section_id": "AR-089-SEC-06",
+            "heading": "actions",
+            "content": "actions: Administration pack covers users, RBAC, connectors, model configuration and platform health."
+          }
+        ]
+      },
+      {
+        "artifact_id": "AR-084",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      },
+      {
+        "artifact_id": "AR-085",
+        "role": "supporting",
+        "summary": "Relevant supporting evidence generated from the same deterministic context."
+      }
+    ],
+    "kpis": [
+      {
+        "kpi_id": "DP-013-KPI-01",
+        "label": "Platform health",
+        "value": 94,
+        "unit": "%"
+      },
+      {
+        "kpi_id": "DP-013-KPI-02",
+        "label": "Connectors healthy",
+        "value": 21,
+        "unit": "of 24"
+      },
+      {
+        "kpi_id": "DP-013-KPI-03",
+        "label": "Dormant users",
+        "value": 14,
+        "unit": ""
+      },
+      {
+        "kpi_id": "DP-013-KPI-04",
+        "label": "Privileged anomalies",
+        "value": 3,
+        "unit": ""
+      }
+    ],
+    "chart": {
+      "chart_id": "DP-013-CH-01",
+      "type": "bar",
+      "title": "Administration demo metrics",
+      "categories": [
+        "Healthy",
+        "Degraded",
+        "Offline"
+      ],
+      "series": [
+        {
+          "name": "Value",
+          "values": [
+            21,
+            2,
+            1
+          ]
+        }
+      ]
+    },
+    "recent_run": {
+      "run_id": "RUN-013-001",
+      "prompt_id": "PR-077",
+      "started_at": "2026-07-11T10:00:00+05:30",
+      "completed_at": "2026-07-11T10:00:04+05:30",
+      "duration_ms": 4000,
+      "status": "completed",
+      "artifacts_generated": 3
+    },
+    "risks": [
+      {
+        "risk_id": "DP-013-RISK-01",
+        "statement": "Three dormant accounts retain privileged access.",
+        "severity": "high",
+        "owner": "Platform Administrator",
+        "due_date": "2026-07-16",
+        "status": "open"
+      },
+      {
+        "risk_id": "DP-013-RISK-02",
+        "statement": "Prisma connector remains degraded due to rate limits.",
+        "severity": "medium",
+        "owner": "Security Administrator",
+        "due_date": "2026-07-16",
+        "status": "open"
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation_id": "DP-013-REC-01",
+        "text": "Disable or recertify dormant privileged accounts.",
+        "owner": "Platform Administrator",
+        "target_date": "2026-07-16",
+        "status": "proposed"
+      },
+      {
+        "recommendation_id": "DP-013-REC-02",
+        "text": "Tune connector retry and backoff policy.",
+        "owner": "Security Administrator",
+        "target_date": "2026-07-16",
+        "status": "proposed"
+      }
+    ],
+    "owners": [
+      {
+        "role": "content_owner",
+        "name": "Platform Administrator"
+      },
+      {
+        "role": "review_owner",
+        "name": "Security Administrator"
+      }
+    ],
+    "dates": {
+      "generated_on": "2026-07-11",
+      "review_due": "2026-07-16",
+      "approval_due": "2026-07-16"
+    },
+    "status": "generated",
+    "workflow_state_id": "WS-04",
+    "review_state_id": "RS-02",
+    "approval_state_id": "AS-02",
+    "download_metadata": [
+      {
+        "download_id": "DP-013-DL-JSON",
+        "artifact_id": "AR-089",
+        "format": "json",
+        "filename": "dp-013-administration-health-report.json",
+        "mime_type": "application/json",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-013-DL-PDF",
+        "artifact_id": "AR-089",
+        "format": "pdf",
+        "filename": "dp-013-administration-health-report.pdf",
+        "mime_type": "application/pdf",
+        "enabled": true
+      },
+      {
+        "download_id": "DP-013-DL-DOCX",
+        "artifact_id": "AR-089",
+        "format": "docx",
+        "filename": "dp-013-administration-health-report.docx",
+        "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "enabled": true
+      }
+    ]
+  }
+]

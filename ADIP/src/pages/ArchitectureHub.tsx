@@ -7,13 +7,17 @@ import { AIInsightBox } from '../components/common/AIInsightBox';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { DesignIntakeWorkflow } from '../components/architecture/DesignIntakeWorkflow';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 
 export function ArchitectureHub() {
   const { architecture } = useFilteredSimulation();
 
   return (
     <Box>
-      <AIWorkspacePanel module="architecture" number={1} hideFlowGuide />
+      <EnterpriseArtifactWorkspace pillar="AI SDLC" submenu="Design & Architecture" />
+      <Box sx={{ mt: 0.5 }}>
+        <AIWorkspacePanel module="architecture" number={1} hideFlowGuide />
+      </Box>
 
       <DesignIntakeWorkflow>
         <Grid container spacing={1.5}>

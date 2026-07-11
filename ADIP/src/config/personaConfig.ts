@@ -272,7 +272,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Development Hub', to: '/development' },
       { label: 'Architecture Hub', to: '/architecture' },
       { label: 'Requirements', to: '/requirements' },
-      { label: 'Testing Hub', to: '/testing' },
+      { label: 'Release Center', to: '/ai-sdlc/release' },
     ],
     navHubs: ['delivery-ai', 'enterprise-ai'],
     metrics: [
@@ -291,7 +291,7 @@ export const PERSONAS: PersonaConfig[] = [
     title: 'QA Lead',
     mission: 'Test coverage, automation, and release sign-off quality.',
     quickLinks: [
-      { label: 'Testing Hub', to: '/testing' },
+      { label: 'Requirements Engineering', to: '/ai-sdlc/requirements-engineering' },
       { label: 'Requirement Matrix', to: '/traceability/matrix' },
       { label: 'Release Center', to: '/release' },
       { label: 'Development Hub', to: '/development' },
@@ -316,7 +316,7 @@ export const PERSONAS: PersonaConfig[] = [
       { label: 'Release Center', to: '/release' },
       { label: 'Approval Workflow', to: '/governance/approval-workflow' },
       { label: 'Production', to: '/production' },
-      { label: 'Testing Hub', to: '/testing' },
+      { label: 'Requirements Engineering', to: '/ai-sdlc/requirements-engineering' },
       { label: 'Impact Analysis', to: '/traceability/impact' },
     ],
     navHubs: ['delivery-ai', 'enterprise-ai'],

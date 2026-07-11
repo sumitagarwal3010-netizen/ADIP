@@ -46,15 +46,8 @@ export interface NavGroup {
 }
 
 /**
- * Hierarchical, executive-grade navigation tree — rationalized to "centers only".
- *
- * LEFT navigation = centers (each section resolves to a center landing route).
- * RIGHT side = functional tabs within the selected center.
- *
- * No left-nav leaf duplicates a horizontal tab that lives inside its center, so
- * every section here is a single center entry (no nested child leaves). This file
- * only reorganizes how routes are surfaced; it does not add or change any routing
- * target, engine, or mock data. Deep routes remain reachable as tabs within centers.
+ * Hierarchical navigation — 4 groups, 13 direct entries (Phase 1).
+ * Parked from nav: Capacity Planning, Infrastructure Sizing, Testing.
  */
 export const NAV_GROUPS: NavGroup[] = [
   {
@@ -62,9 +55,9 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'Executive AI',
     icon: DashboardIcon,
     children: [
-      { id: 'executive-advisor', label: 'Executive Advisor', icon: SmartToyIcon, path: '/executive/delivery-health', children: [] },
-      { id: 'technology-advisor', label: 'Technology Advisor', icon: RocketLaunchIcon, path: '/executive/technology-strategy', children: [] },
-      { id: 'investment-advisor', label: 'Investment Advisor', icon: TrendingUpIcon, path: '/executive/portfolio-governance', children: [] },
+      { id: 'executive-advisor', label: 'Executive Advisor', icon: SmartToyIcon, path: '/executive-ai/executive-advisor', children: [] },
+      { id: 'technology-advisor', label: 'Technology Advisor', icon: RocketLaunchIcon, path: '/executive-ai/technology-advisor', children: [] },
+      { id: 'investment-advisor', label: 'Investment Advisor', icon: TrendingUpIcon, path: '/executive-ai/investment-advisor', children: [] },
     ],
   },
   {
@@ -72,20 +65,20 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'AI SDLC',
     icon: AccountTreeIcon,
     children: [
-      { id: 'requirements', label: 'Requirements', icon: AssignmentIcon, path: '/requirements', children: [] },
-      { id: 'architecture', label: 'Architecture', icon: DesignServicesIcon, path: '/architecture', children: [] },
-      { id: 'development', label: 'Development', icon: CodeIcon, path: '/development', children: [] },
-      { id: 'release', label: 'Release', icon: RocketLaunchIcon, path: '/release', children: [] },
+      { id: 'requirements-engineering', label: 'Requirements Engineering', icon: AssignmentIcon, path: '/ai-sdlc/requirements-engineering', children: [] },
+      { id: 'design-architecture', label: 'Design & Architecture', icon: DesignServicesIcon, path: '/ai-sdlc/design-architecture', children: [] },
+      { id: 'development', label: 'Development', icon: CodeIcon, path: '/ai-sdlc/development', children: [] },
+      { id: 'release', label: 'Release', icon: RocketLaunchIcon, path: '/ai-sdlc/release', children: [] },
     ],
   },
   {
     id: 'governance-ai',
-    label: 'Governance AI',
+    label: 'Governance',
     icon: GavelIcon,
     children: [
-      { id: 'ai-governance', label: 'Governance Command Center', icon: SmartToyIcon, path: '/ai-governance-center', children: [] },
-      { id: 'compliance-automation', label: 'Compliance Automation', icon: ShieldIcon, path: '/governance/compliance', children: [] },
-      { id: 'architecture-governance', label: 'Architecture Governance', icon: AccountTreeIcon, path: '/executive/architecture-repository/review-board', children: [] },
+      { id: 'ai-oversight', label: 'AI Oversight', icon: SmartToyIcon, path: '/governance/ai-oversight', children: [] },
+      { id: 'compliance-automation', label: 'Compliance Automation', icon: ShieldIcon, path: '/governance/compliance-automation', children: [] },
+      { id: 'architecture-assurance', label: 'Architecture Assurance', icon: AccountTreeIcon, path: '/governance/architecture-assurance', children: [] },
     ],
   },
   {
@@ -93,9 +86,9 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'Enterprise AI',
     icon: SettingsIcon,
     children: [
-      { id: 'enterprise-evidence-hub', label: 'Enterprise Evidence Hub', icon: HubIcon, path: '/ai-sdlc/connector-artifact-workbench', children: [] },
-      { id: 'knowledge-intelligence', label: 'Knowledge Intelligence', icon: MenuBookIcon, path: '/knowledge-center', children: [] },
-      { id: 'administration', label: 'Administration', icon: TuneIcon, path: '/administration', children: [] },
+      { id: 'enterprise-evidence-hub', label: 'Enterprise Evidence Hub', icon: HubIcon, path: '/enterprise-ai/enterprise-evidence-hub', children: [] },
+      { id: 'knowledge-intelligence', label: 'Knowledge Intelligence', icon: MenuBookIcon, path: '/enterprise-ai/knowledge-intelligence', children: [] },
+      { id: 'administration', label: 'Administration', icon: TuneIcon, path: '/enterprise-ai/administration', children: [] },
     ],
   },
 ];

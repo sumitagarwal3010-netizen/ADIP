@@ -14,6 +14,7 @@ import { ProductivityAnalyticsPanel } from '../components/valueRealization/Analy
 import { useValueRealization } from '../context/ValueRealizationContext';
 import { usePersona } from '../context/PersonaContext';
 import { canAccessValueRealization } from '../data/valueRealizationEngine';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 
 const ValueRealizationCenter = lazy(() =>
   import('./ValueRealizationCenter').then((m) => ({ default: m.ValueRealizationCenter })),
@@ -55,11 +56,14 @@ export function ValueRealizedOutcome() {
   ];
 
   return (
-    <ExecutiveOutcomePage
-      icon={SavingsIcon}
-      title="Value Realized"
-      subtitle="Realized value, business benefits, ROI, and productivity — full value realization under More"
-      tabs={tabs}
-    />
+    <Box>
+      <EnterpriseArtifactWorkspace pillar="Executive AI" submenu="Investment Advisor" />
+      <ExecutiveOutcomePage
+        icon={SavingsIcon}
+        title="Overview"
+        subtitle="Realized value, business benefits, ROI, and productivity — full value realization under More"
+        tabs={tabs}
+      />
+    </Box>
   );
 }

@@ -3,6 +3,21 @@ import JSZip from 'jszip';
 import { buildBlob } from './artifactExportService';
 import type { Artifact } from '../types/artifacts';
 
+
+async function blobToArrayBuffer(blob: Blob): Promise<ArrayBuffer> {
+  if (typeof blob.arrayBuffer === 'function') {
+    return blob.arrayBuffer();
+  }
+
+  return new Promise<ArrayBuffer>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as ArrayBuffer);
+    reader.onerror = () =>
+      reject(reader.error ?? new Error('Unable to read Blob'));
+    reader.readAsArrayBuffer(blob);
+  });
+}
+
 describe('artifactExportService requirement flow export', () => {
   it('docx export includes detailed sections without duplicating executive summary', async () => {
     const requirementText = 'Plan delivery for biometric login on mobile banking';
@@ -37,7 +52,7 @@ FR-BIO-002 Device Binding`;
     };
 
     const { blob } = await buildBlob({ artifact, format: 'docx' });
-    const buf = await blob.arrayBuffer();
+    const buf = await blobToArrayBuffer(blob);
     const zip = await JSZip.loadAsync(buf);
     const docXml = await zip.file('word/document.xml')?.async('string');
 

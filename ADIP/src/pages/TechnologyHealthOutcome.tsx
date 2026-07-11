@@ -15,6 +15,7 @@ import { useTechnologyStrategy } from '../context/TechnologyStrategyContext';
 import { useArchitectureRepository } from '../context/ArchitectureRepositoryContext';
 import { usePersona } from '../context/PersonaContext';
 import { canAccessTechnologyStrategy } from '../data/technologyStrategyEngine';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 
 const TechnologyStrategyCenter = lazy(() =>
   import('./TechnologyStrategyCenter').then((m) => ({ default: m.TechnologyStrategyCenter })),
@@ -57,11 +58,14 @@ export function TechnologyHealthOutcome() {
   ];
 
   return (
-    <ExecutiveOutcomePage
-      icon={RocketLaunchIcon}
-      title="Technology Health"
-      subtitle="Modernization, cloud adoption, and architecture compliance — full technology strategy under More"
-      tabs={tabs}
-    />
+    <Box>
+      <EnterpriseArtifactWorkspace pillar="Executive AI" submenu="Technology Advisor" />
+      <ExecutiveOutcomePage
+        icon={RocketLaunchIcon}
+        title="Overview"
+        subtitle="Modernization, cloud adoption, and architecture compliance — full technology strategy under More"
+        tabs={tabs}
+      />
+    </Box>
   );
 }

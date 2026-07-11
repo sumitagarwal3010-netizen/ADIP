@@ -46,7 +46,7 @@ const domainOptions = DOMAINS.filter((d) => d.id !== 'all').map((d) => ({
 export function RequirementIntakeWorkflow() {
   const [intake, setIntake] = useState<RequirementIntake>(EMPTY_INTAKE);
   const [artifacts, setArtifacts] = useState<Artifact[]>(() => getDemoRequirementArtifacts());
-  const [runs, setRuns] = useState<GenerationRun[]>([]);
+  const [, setRuns] = useState<GenerationRun[]>([]);
   const [showSimulation, setShowSimulation] = useState(false);
   const [showAssessment, setShowAssessment] = useState(false);
   const [selectedArtifact, setSelectedArtifact] = useState<Artifact | null>(null);

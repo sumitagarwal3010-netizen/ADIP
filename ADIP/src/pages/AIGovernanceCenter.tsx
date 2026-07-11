@@ -14,6 +14,7 @@ import { SeverityChip } from '../components/common/SeverityChip';
 import { DrilldownTableRow } from '../components/common/DrilldownTableRow';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { computeAiGovernanceKpis } from '../data/aiUseCaseRegistryMock';
@@ -183,7 +184,10 @@ export function AIGovernanceCenter({ initialSection = 'use-cases' }: AIGovernanc
 
   return (
     <Box>
-      <AIWorkspacePanel module="ai-governance" number={1} />
+      <EnterpriseArtifactWorkspace pillar="Governance" submenu="AI Oversight" />
+      <Box sx={{ mt: 0.5 }}>
+        <AIWorkspacePanel module="ai-governance" number={1} />
+      </Box>
 
       <GlassCard sx={{ p: 2, mb: 1.5 }} glow="purple" hover={false}>
         <ModuleHeader

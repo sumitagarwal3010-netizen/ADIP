@@ -23,6 +23,9 @@ export function formatTimestamp(): string {
 }
 
 export interface ArtifactContext {
+  source?: string;
+  normalizedRequirement?: unknown;
+  sessionKey?: string;
   feature?: string;
   domain?: string;
   subject?: string;

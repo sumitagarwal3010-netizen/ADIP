@@ -68,10 +68,10 @@ export function AppRoutes() {
       <Route element={<AuthGuard />}>
       <Route element={<AppLayout />}>
         <Route index element={<ExecutiveControlTower />} />
-        <Route path="executive/delivery-health" element={<DeliveryHealthOutcome />} />
-        <Route path="executive/technology-health" element={<TechnologyHealthOutcome />} />
+        <Route path="executive/delivery-health" element={<Navigate to="/executive-ai/executive-advisor" replace />} />
+        <Route path="executive/technology-health" element={<Navigate to="/executive-ai/technology-advisor" replace />} />
+        <Route path="executive/value-realized" element={<Navigate to="/executive-ai/investment-advisor" replace />} />
         <Route path="executive/risk-posture" element={<RiskPostureOutcome />} />
-        <Route path="executive/value-realized" element={<ValueRealizedOutcome />} />
         <Route path="persona" element={<PersonaLanding />} />
         <Route path="executive/portfolio-health" element={<PortfolioHealthPage />} />
         {/* Legacy redirect: program-status is now Transformation PMO · Program Health */}
@@ -133,7 +133,7 @@ export function AppRoutes() {
         <Route path="executive/application-portfolio/rationalization" element={<ApplicationPortfolioCenter initialTab="rationalization" />} />
         <Route path="executive/application-portfolio/insights" element={<ApplicationPortfolioCenter initialTab="insights" />} />
         <Route path="executive/application-portfolio/reports" element={<ApplicationPortfolioCenter initialTab="reports" />} />
-        <Route path="executive/architecture-repository" element={<ArchitectureRepositoryCenter initialTab="domains" />} />
+        <Route path="executive/architecture-repository" element={<Navigate to="/governance/architecture-assurance" replace />} />
         <Route path="executive/architecture-repository/domains" element={<ArchitectureRepositoryCenter initialTab="domains" />} />
         <Route path="executive/architecture-repository/capabilities" element={<ArchitectureRepositoryCenter initialTab="capabilities" />} />
         <Route path="executive/architecture-repository/applications" element={<ArchitectureRepositoryCenter initialTab="applications" />} />
@@ -188,25 +188,25 @@ export function AppRoutes() {
         <Route path="executive/enterprise-risk/insights" element={<EnterpriseRiskCenter initialTab="insights" />} />
         <Route path="executive/enterprise-risk/reports" element={<EnterpriseRiskCenter initialTab="reports" />} />
         <Route path="delivery" element={<DeliveryHub />} />
-        <Route path="requirements" element={<RequirementsHub />} />
-        <Route path="architecture" element={<ArchitectureHub />} />
-        <Route path="development" element={<DevelopmentHub />} />
+        <Route path="requirements" element={<Navigate to="/ai-sdlc/requirements-engineering" replace />} />
+        <Route path="architecture" element={<Navigate to="/ai-sdlc/design-architecture" replace />} />
+        <Route path="development" element={<Navigate to="/ai-sdlc/development" replace />} />
         <Route path="testing" element={<TestingHub />} />
-        <Route path="release" element={<ReleaseCenter />} />
-        {/* CIO demo navigation aliases */}
-        <Route path="executive-ai/executive-advisor" element={<Navigate to="/executive/delivery-health" replace />} />
-        <Route path="executive-ai/technology-advisor" element={<Navigate to="/executive/technology-strategy" replace />} />
-        <Route path="executive-ai/investment-advisor" element={<Navigate to="/executive/portfolio-governance" replace />} />
-        <Route path="delivery-ai/requirements" element={<Navigate to="/requirements" replace />} />
-        <Route path="delivery-ai/architecture" element={<Navigate to="/architecture" replace />} />
-        <Route path="delivery-ai/development" element={<Navigate to="/development" replace />} />
-        <Route path="delivery-ai/release" element={<Navigate to="/release" replace />} />
-        <Route path="governance-ai/ai-governance" element={<Navigate to="/ai-governance-center" replace />} />
-        <Route path="governance-ai/compliance-automation" element={<Navigate to="/governance/compliance" replace />} />
-        <Route path="governance-ai/architecture-governance" element={<Navigate to="/executive/architecture-repository/review-board" replace />} />
-        <Route path="enterprise-ai/enterprise-evidence-hub" element={<Navigate to="/ai-sdlc/connector-artifact-workbench" replace />} />
-        <Route path="enterprise-ai/knowledge-intelligence" element={<Navigate to="/knowledge-center" replace />} />
-        <Route path="enterprise-ai/administration" element={<Navigate to="/administration" replace />} />
+        <Route path="release" element={<Navigate to="/ai-sdlc/release" replace />} />
+        {/* Canonical navigation routes (Phase 1) */}
+        <Route path="executive-ai/executive-advisor" element={<DeliveryHealthOutcome />} />
+        <Route path="executive-ai/technology-advisor" element={<TechnologyHealthOutcome />} />
+        <Route path="executive-ai/investment-advisor" element={<ValueRealizedOutcome />} />
+        <Route path="ai-sdlc/requirements-engineering" element={<RequirementsHub />} />
+        <Route path="ai-sdlc/design-architecture" element={<ArchitectureHub />} />
+        <Route path="ai-sdlc/development" element={<DevelopmentHub />} />
+        <Route path="ai-sdlc/release" element={<ReleaseCenter />} />
+        <Route path="governance/ai-oversight" element={<AIGovernanceCenter initialSection="use-cases" />} />
+        <Route path="governance/compliance-automation" element={<GovernanceCompliancePage />} />
+        <Route path="governance/architecture-assurance" element={<ArchitectureRepositoryCenter initialTab="domains" />} />
+        <Route path="enterprise-ai/enterprise-evidence-hub" element={<ConnectorArtifactWorkbench />} />
+        <Route path="enterprise-ai/knowledge-intelligence" element={<KnowledgeLearningCenter initialTab="dashboard" />} />
+        <Route path="enterprise-ai/administration" element={<Administration />} />
         <Route path="production" element={<ProductionIntelligenceCenter initialTab="dashboard" />} />
         <Route path="production/incidents" element={<ProductionIntelligenceCenter initialTab="incidents" />} />
         <Route path="production/leakage" element={<ProductionIntelligenceCenter initialTab="leakage" />} />
@@ -227,7 +227,7 @@ export function AppRoutes() {
         <Route path="operations/notifications/history" element={<NotificationCenter initialTab="history" />} />
         <Route path="operations/notifications/reports" element={<NotificationCenter initialTab="reports" />} />
         <Route path="governance" element={<GovernanceCenter />} />
-        <Route path="governance/compliance" element={<GovernanceCompliancePage />} />
+        <Route path="governance/compliance" element={<Navigate to="/governance/compliance-automation" replace />} />
         <Route path="governance/risk" element={<GovernanceRiskPage />} />
         <Route path="governance/evidence" element={<GovernanceEvidencePage />} />
         <Route path="governance/approval-workflow" element={<ApprovalWorkflowDashboard />} />
@@ -253,13 +253,13 @@ export function AppRoutes() {
           AI Governance Center. This eliminates duplicate AI reporting,
           duplicate KPIs, and conflicting hardcoded vs. mock data.
         */}
-        <Route path="ai-governance" element={<Navigate to="/ai-governance-center" replace />} />
+        <Route path="ai-governance" element={<Navigate to="/governance/ai-oversight" replace />} />
         <Route path="ai-governance/model-inventory" element={<Navigate to="/ai-governance-center/models" replace />} />
         <Route path="ai-governance/prompt-governance" element={<Navigate to="/ai-governance-center/prompts" replace />} />
         <Route path="ai-governance/ai-risk" element={<Navigate to="/ai-governance-center/risks" replace />} />
         <Route path="ai-governance/ai-controls" element={<Navigate to="/ai-governance-center/controls" replace />} />
         <Route path="ai-governance/ai-incidents" element={<Navigate to="/ai-governance-center/risks" replace />} />
-        <Route path="ai-governance-center" element={<AIGovernanceCenter initialSection="use-cases" />} />
+        <Route path="ai-governance-center" element={<Navigate to="/governance/ai-oversight" replace />} />
         <Route path="ai-governance-center/models" element={<AIGovernanceCenter initialSection="models" />} />
         <Route path="ai-governance-center/prompts" element={<AIGovernanceCenter initialSection="prompts" />} />
         <Route path="ai-governance-center/risks" element={<AIGovernanceCenter initialSection="risks" />} />
@@ -278,7 +278,7 @@ export function AppRoutes() {
         <Route path="traceability/evidence" element={<TraceabilityCenter initialTab="evidence" />} />
         <Route path="traceability/events" element={<TraceabilityCenter initialTab="events" />} />
         <Route path="traceability/reports" element={<TraceabilityCenter initialTab="reports" />} />
-        <Route path="knowledge-center" element={<KnowledgeLearningCenter initialTab="dashboard" />} />
+        <Route path="knowledge-center" element={<Navigate to="/enterprise-ai/knowledge-intelligence" replace />} />
         <Route path="knowledge-center/lessons" element={<KnowledgeLearningCenter initialTab="lessons" />} />
         <Route path="knowledge-center/best-practices" element={<KnowledgeLearningCenter initialTab="best-practices" />} />
         <Route path="knowledge-center/patterns" element={<KnowledgeLearningCenter initialTab="patterns" />} />
@@ -296,9 +296,9 @@ export function AppRoutes() {
         <Route path="reports/compliance" element={<ComplianceReports />} />
         <Route path="reports/audit" element={<AuditReports />} />
         <Route path="reports/trends" element={<TrendAnalytics />} />
-        <Route path="administration" element={<Administration />} />
+        <Route path="administration" element={<Navigate to="/enterprise-ai/administration" replace />} />
         <Route path="administration/integrations" element={<IntegrationCenter />} />
-        <Route path="ai-sdlc/connector-artifact-workbench" element={<ConnectorArtifactWorkbench />} />
+        <Route path="ai-sdlc/connector-artifact-workbench" element={<Navigate to="/enterprise-ai/enterprise-evidence-hub" replace />} />
         <Route path="platform/team-engineering-workbench" element={<TeamEngineeringWorkbench />} />
         <Route path="administration/rbac" element={<RBACAdminDashboard />} />
         <Route path="administration/persistence" element={<PersistenceAdminDashboard />} />

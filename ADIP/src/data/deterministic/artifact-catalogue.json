@@ -1,0 +1,2210 @@
+[
+  {
+    "artifact_id": "AR-001",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "name": "Executive Brief",
+    "target_audience": [
+      "CIO",
+      "Executive Committee"
+    ],
+    "required_sections": [
+      "Executive context",
+      "top changes",
+      "key risks",
+      "decisions required",
+      "recommended actions",
+      "owners",
+      "timeline"
+    ],
+    "sample_realistic_data": "Mobile Banking v9.2 remains on track, but Android 15 biometric login defects may affect 8% of active users. Recommend phased rollout with device-level feature flags.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-002",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "name": "CIO Dashboard Pack",
+    "target_audience": [
+      "CIO",
+      "CTO",
+      "COO"
+    ],
+    "required_sections": [
+      "Portfolio KPIs",
+      "delivery health",
+      "incidents",
+      "risk heatmap",
+      "cost and benefit",
+      "key actions"
+    ],
+    "sample_realistic_data": "12 strategic initiatives: 8 green, 3 amber, 1 red. UPI Lite and Passkey Login are the highest-value near-term releases.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-003",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "name": "Business Impact Assessment",
+    "target_audience": [
+      "CIO",
+      "Business Heads"
+    ],
+    "required_sections": [
+      "Change summary",
+      "customer impact",
+      "operational impact",
+      "financial impact",
+      "regulatory impact",
+      "recommendation"
+    ],
+    "sample_realistic_data": "Passkey adoption is expected to reduce password-reset calls by 32% and improve successful login conversion by 4.5 percentage points.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-004",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "name": "Delivery Risk Report",
+    "target_audience": [
+      "CIO",
+      "Delivery Heads"
+    ],
+    "required_sections": [
+      "Risk statement",
+      "probability",
+      "impact",
+      "affected releases",
+      "mitigations",
+      "owner",
+      "due date"
+    ],
+    "sample_realistic_data": "Critical dependency: IAM device-binding API must complete performance testing before Mobile Banking v9.2 code freeze.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-005",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "name": "Executive Decision Note",
+    "target_audience": [
+      "Executive Committee"
+    ],
+    "required_sections": [
+      "Decision",
+      "options",
+      "trade-offs",
+      "recommendation",
+      "financial impact",
+      "risk",
+      "approval requested"
+    ],
+    "sample_realistic_data": "Approve controlled rollout of biometric login to 10% of Android users before full release.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-006",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "name": "Steering Committee Presentation",
+    "target_audience": [
+      "Steering Committee"
+    ],
+    "required_sections": [
+      "Objective",
+      "progress",
+      "milestones",
+      "risks",
+      "decisions",
+      "next steps"
+    ],
+    "sample_realistic_data": "Decision requested: approve two-week hypercare and temporary 24x7 war-room coverage.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-007",
+    "pillar": "Executive AI",
+    "submenu": "Executive Advisor",
+    "name": "Quarterly Portfolio Summary",
+    "target_audience": [
+      "CIO",
+      "PMO"
+    ],
+    "required_sections": [
+      "Portfolio overview",
+      "investment progress",
+      "delivery trends",
+      "benefits",
+      "risks",
+      "outlook"
+    ],
+    "sample_realistic_data": "Quarterly delivery predictability improved from 72% to 81%; cloud cost optimization delivered ₹1.4 crore annualized savings.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-008",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "name": "Technology Strategy",
+    "target_audience": [
+      "CIO",
+      "CTO",
+      "Enterprise Architecture"
+    ],
+    "required_sections": [
+      "Current state",
+      "target state",
+      "technology principles",
+      "priorities",
+      "roadmap",
+      "investment themes"
+    ],
+    "sample_realistic_data": "Prioritize migration of customer-facing Java 8/WebLogic workloads to Java 21, Spring Boot and GKE over the next 18 months.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-009",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "name": "Technical Debt Report",
+    "target_audience": [
+      "CTO",
+      "Engineering Heads"
+    ],
+    "required_sections": [
+      "Debt inventory",
+      "severity",
+      "business impact",
+      "remediation options",
+      "cost",
+      "priority"
+    ],
+    "sample_realistic_data": "27 applications use unsupported middleware; 9 directly support critical payment journeys.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-010",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "name": "Modernization Roadmap",
+    "target_audience": [
+      "CTO",
+      "Portfolio Leaders"
+    ],
+    "required_sections": [
+      "Wave plan",
+      "candidate systems",
+      "dependencies",
+      "milestones",
+      "risks",
+      "benefits"
+    ],
+    "sample_realistic_data": "Wave 1: Mobile Banking authentication and notification services; Wave 2: payment orchestration and customer profile.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-011",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "name": "Cloud Migration Assessment",
+    "target_audience": [
+      "Cloud Council",
+      "Architecture"
+    ],
+    "required_sections": [
+      "Readiness",
+      "blockers",
+      "landing zone",
+      "migration pattern",
+      "security",
+      "cost"
+    ],
+    "sample_realistic_data": "Mobile Banking API tier is rehost-ready; session state and batch scheduler require redesign before migration.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-012",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "name": "Technology Standards Report",
+    "target_audience": [
+      "Architecture Review Board"
+    ],
+    "required_sections": [
+      "Approved technologies",
+      "exceptions",
+      "EOL risks",
+      "remediation",
+      "owners"
+    ],
+    "sample_realistic_data": "Oracle 12c and WebLogic 12c are non-standard; exception expires 31 Dec 2027.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-013",
+    "pillar": "Executive AI",
+    "submenu": "Technology Advisor",
+    "name": "Platform Health Report",
+    "target_audience": [
+      "CTO",
+      "Platform Heads"
+    ],
+    "required_sections": [
+      "Availability",
+      "capacity",
+      "patching",
+      "vulnerabilities",
+      "support status",
+      "recommendations"
+    ],
+    "sample_realistic_data": "Three GKE clusters exceed 70% peak CPU; autoscaling and node-pool segregation are recommended.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-014",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "name": "Investment Business Case",
+    "target_audience": [
+      "CIO",
+      "CFO",
+      "Investment Committee"
+    ],
+    "required_sections": [
+      "Problem",
+      "options",
+      "benefits",
+      "cost",
+      "ROI",
+      "risk",
+      "recommendation"
+    ],
+    "sample_realistic_data": "Passkey authentication requires ₹2.1 crore investment and is projected to deliver ₹4.8 crore benefit over three years.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-015",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "name": "ROI Analysis",
+    "target_audience": [
+      "CIO",
+      "Finance"
+    ],
+    "required_sections": [
+      "Cash flows",
+      "assumptions",
+      "ROI",
+      "payback",
+      "NPV",
+      "sensitivity"
+    ],
+    "sample_realistic_data": "Expected payback period: 16 months; three-year ROI: 128%.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-016",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "name": "Budget Recommendation",
+    "target_audience": [
+      "CIO",
+      "CFO"
+    ],
+    "required_sections": [
+      "Budget baseline",
+      "variance",
+      "reprioritization",
+      "savings",
+      "funding recommendation"
+    ],
+    "sample_realistic_data": "Reallocate ₹80 lakh from deferred legacy upgrade to identity modernization.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-017",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "name": "Cost-Benefit Report",
+    "target_audience": [
+      "Business Sponsor",
+      "Finance"
+    ],
+    "required_sections": [
+      "Direct cost",
+      "indirect cost",
+      "quantified benefits",
+      "qualitative benefits",
+      "risks"
+    ],
+    "sample_realistic_data": "Reduced authentication failures are expected to lower call-centre demand by 18,000 calls per month.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-018",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "name": "Portfolio Prioritization Matrix",
+    "target_audience": [
+      "Investment Committee"
+    ],
+    "required_sections": [
+      "Initiative",
+      "strategic fit",
+      "value",
+      "urgency",
+      "risk",
+      "effort",
+      "rank"
+    ],
+    "sample_realistic_data": "1) Passkey Login, 2) Fraud Analytics, 3) UPI Lite, 4) QR Cash Withdrawal.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-019",
+    "pillar": "Executive AI",
+    "submenu": "Investment Advisor",
+    "name": "Executive Funding Proposal",
+    "target_audience": [
+      "CIO",
+      "CFO",
+      "Board"
+    ],
+    "required_sections": [
+      "Funding ask",
+      "milestones",
+      "benefits",
+      "governance",
+      "decision required"
+    ],
+    "sample_realistic_data": "Approve ₹3.5 crore FY27 funding for Identity Modernization Wave 1.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-020",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "name": "Business Requirements Document",
+    "target_audience": [
+      "Business",
+      "Product",
+      "Delivery"
+    ],
+    "required_sections": [
+      "Executive summary",
+      "objectives",
+      "scope",
+      "stakeholders",
+      "business requirements",
+      "assumptions",
+      "risks",
+      "success measures"
+    ],
+    "sample_realistic_data": "Retail customers shall authenticate to Mobile Banking using fingerprint or Face ID with secure fallback to MPIN.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-021",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "name": "Functional Requirements Document",
+    "target_audience": [
+      "BA",
+      "Engineering",
+      "QA"
+    ],
+    "required_sections": [
+      "Actors",
+      "functional requirements",
+      "flows",
+      "exception handling",
+      "interfaces",
+      "controls"
+    ],
+    "sample_realistic_data": "The app shall verify device enrollment, biometric availability and token freshness before initiating biometric authentication.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-022",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "name": "User Stories",
+    "target_audience": [
+      "Product Owner",
+      "Scrum Team"
+    ],
+    "required_sections": [
+      "Epic",
+      "story",
+      "persona",
+      "value",
+      "acceptance criteria",
+      "priority"
+    ],
+    "sample_realistic_data": "As a retail customer, I want to log in using my registered biometric so that I can access banking services securely and quickly.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-023",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "name": "Use Case Specification",
+    "target_audience": [
+      "BA",
+      "Architecture",
+      "QA"
+    ],
+    "required_sections": [
+      "Trigger",
+      "preconditions",
+      "main flow",
+      "alternate flows",
+      "exceptions",
+      "postconditions"
+    ],
+    "sample_realistic_data": "Alternate flow: after three biometric failures, route the customer to MPIN authentication and record an audit event.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-024",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "name": "Acceptance Criteria",
+    "target_audience": [
+      "Product Owner",
+      "QA"
+    ],
+    "required_sections": [
+      "Given/When/Then scenarios",
+      "security",
+      "performance",
+      "usability"
+    ],
+    "sample_realistic_data": "Given an enrolled device, when valid biometric authentication succeeds, then the dashboard shall load within 3 seconds.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-025",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "name": "Requirements Traceability Matrix",
+    "target_audience": [
+      "BA",
+      "QA",
+      "Governance"
+    ],
+    "required_sections": [
+      "Requirement",
+      "design component",
+      "API",
+      "test case",
+      "control",
+      "status"
+    ],
+    "sample_realistic_data": "BR-01 → Authentication Service → /v1/auth/biometric → TC-BIO-001 → IAM-07.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-026",
+    "pillar": "AI SDLC",
+    "submenu": "Requirements Engineering",
+    "name": "Requirement Review Report",
+    "target_audience": [
+      "BA Lead",
+      "Product Owner"
+    ],
+    "required_sections": [
+      "Completeness",
+      "ambiguity",
+      "conflicts",
+      "dependencies",
+      "risks",
+      "recommendations"
+    ],
+    "sample_realistic_data": "Open dependency: IAM service must expose device-binding status before final requirement approval.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-027",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "High-Level Design",
+    "target_audience": [
+      "Architecture",
+      "Engineering"
+    ],
+    "required_sections": [
+      "Context",
+      "components",
+      "integrations",
+      "data flow",
+      "security",
+      "deployment",
+      "NFRs"
+    ],
+    "sample_realistic_data": "Mobile App → API Gateway → Authentication Orchestrator → IAM → Device Registry → Audit Service.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-028",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "Low-Level Design",
+    "target_audience": [
+      "Developers",
+      "Tech Leads"
+    ],
+    "required_sections": [
+      "Classes",
+      "services",
+      "data models",
+      "API contracts",
+      "validation",
+      "error handling",
+      "sequence"
+    ],
+    "sample_realistic_data": "BiometricAuthService validates signed device assertion, checks nonce replay, then requests an IAM session token.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-029",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "Solution Architecture",
+    "target_audience": [
+      "Architecture Review Board"
+    ],
+    "required_sections": [
+      "Logical architecture",
+      "physical architecture",
+      "technology stack",
+      "interfaces",
+      "controls"
+    ],
+    "sample_realistic_data": "Use platform biometric APIs; never transmit biometric templates to bank systems.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-030",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "Sequence Diagram",
+    "target_audience": [
+      "Architecture",
+      "Development",
+      "QA"
+    ],
+    "required_sections": [
+      "Actors",
+      "ordered calls",
+      "success and failure paths"
+    ],
+    "sample_realistic_data": "Customer → Mobile App → API Gateway → Auth Service → IAM → Audit Service → Dashboard.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-031",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "API Specification",
+    "target_audience": [
+      "Development",
+      "Integration"
+    ],
+    "required_sections": [
+      "Endpoints",
+      "request/response",
+      "authentication",
+      "errors",
+      "limits",
+      "examples"
+    ],
+    "sample_realistic_data": "POST /v1/auth/biometric verifies device assertion and returns access and refresh tokens.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-032",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "Database Design",
+    "target_audience": [
+      "DBA",
+      "Developers"
+    ],
+    "required_sections": [
+      "Entities",
+      "keys",
+      "relationships",
+      "retention",
+      "indexes",
+      "audit fields"
+    ],
+    "sample_realistic_data": "device_registration(device_id, customer_id, public_key_hash, status, registered_at).",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-033",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "Security Design",
+    "target_audience": [
+      "CISO",
+      "AppSec",
+      "Architecture"
+    ],
+    "required_sections": [
+      "Threat model",
+      "controls",
+      "crypto",
+      "secrets",
+      "logging",
+      "fraud controls"
+    ],
+    "sample_realistic_data": "Apply replay protection, certificate pinning, device attestation and risk-based step-up authentication.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-034",
+    "pillar": "AI SDLC",
+    "submenu": "Design & Architecture",
+    "name": "Deployment Diagram",
+    "target_audience": [
+      "SRE",
+      "DevOps",
+      "Architecture"
+    ],
+    "required_sections": [
+      "Environments",
+      "workloads",
+      "dependencies",
+      "network zones",
+      "resilience"
+    ],
+    "sample_realistic_data": "Stateless auth pods on GKE across three zones with Redis-backed nonce cache and Cloud SQL metadata.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-035",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "name": "Sprint Backlog",
+    "target_audience": [
+      "Product Owner",
+      "Scrum Team"
+    ],
+    "required_sections": [
+      "Stories",
+      "tasks",
+      "estimates",
+      "dependencies",
+      "acceptance criteria",
+      "sprint goal"
+    ],
+    "sample_realistic_data": "Sprint goal: complete biometric enrollment and login APIs with Android client integration.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-036",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "name": "Development Plan",
+    "target_audience": [
+      "Engineering Leads"
+    ],
+    "required_sections": [
+      "Workstreams",
+      "components",
+      "sequencing",
+      "dependencies",
+      "milestones",
+      "risks"
+    ],
+    "sample_realistic_data": "Week 1: API contracts and DB migration; Week 2: IAM integration; Week 3: mobile implementation.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-037",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "name": "API Contract",
+    "target_audience": [
+      "Backend",
+      "Frontend",
+      "QA"
+    ],
+    "required_sections": [
+      "Endpoint",
+      "schema",
+      "errors",
+      "auth",
+      "examples",
+      "versioning"
+    ],
+    "sample_realistic_data": "POST /v1/devices/{id}/biometric-enrollment returns enrollment challenge and expiry.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-038",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "name": "CI/CD Pipeline",
+    "target_audience": [
+      "DevOps",
+      "SRE"
+    ],
+    "required_sections": [
+      "Build",
+      "unit tests",
+      "security scans",
+      "artifact publish",
+      "deploy",
+      "rollback"
+    ],
+    "sample_realistic_data": "Pipeline gates: unit coverage ≥80%, SAST critical findings=0, API contract tests pass.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-039",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "name": "Coding Standards",
+    "target_audience": [
+      "Developers",
+      "Reviewers"
+    ],
+    "required_sections": [
+      "Language standards",
+      "secure coding",
+      "logging",
+      "exceptions",
+      "testing"
+    ],
+    "sample_realistic_data": "Sensitive authentication events must use structured audit logs without customer PII.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-040",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "name": "Test Strategy",
+    "target_audience": [
+      "QA",
+      "Developers"
+    ],
+    "required_sections": [
+      "Unit",
+      "integration",
+      "API",
+      "performance",
+      "security",
+      "regression",
+      "entry/exit"
+    ],
+    "sample_realistic_data": "Run device-matrix tests across Android 13–15 and iOS 17–18.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-041",
+    "pillar": "AI SDLC",
+    "submenu": "Development",
+    "name": "Code Review Checklist",
+    "target_audience": [
+      "Tech Leads",
+      "AppSec"
+    ],
+    "required_sections": [
+      "Correctness",
+      "security",
+      "performance",
+      "maintainability",
+      "observability"
+    ],
+    "sample_realistic_data": "Verify no biometric material is logged or persisted by the application.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-042",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "name": "Release Plan",
+    "target_audience": [
+      "Release Manager",
+      "Engineering"
+    ],
+    "required_sections": [
+      "Scope",
+      "schedule",
+      "environments",
+      "dependencies",
+      "communications",
+      "owners"
+    ],
+    "sample_realistic_data": "Release Mobile Banking v9.2 with passkey and biometric login using a 10%-50%-100% phased rollout.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-043",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "name": "CAB Pack",
+    "target_audience": [
+      "Change Advisory Board"
+    ],
+    "required_sections": [
+      "Change summary",
+      "risk",
+      "impact",
+      "test evidence",
+      "implementation",
+      "rollback",
+      "approvals"
+    ],
+    "sample_realistic_data": "Medium-risk change with customer authentication impact; rollback within 20 minutes via feature flag.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-044",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "name": "Rollback Plan",
+    "target_audience": [
+      "SRE",
+      "Release Manager"
+    ],
+    "required_sections": [
+      "Triggers",
+      "decision authority",
+      "steps",
+      "data rollback",
+      "validation",
+      "communication"
+    ],
+    "sample_realistic_data": "Disable biometric feature flag, invalidate new biometric sessions and route users to MPIN.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-045",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "name": "Release Checklist",
+    "target_audience": [
+      "Release Team"
+    ],
+    "required_sections": [
+      "Code freeze",
+      "approvals",
+      "tests",
+      "monitoring",
+      "backups",
+      "communications"
+    ],
+    "sample_realistic_data": "All P1/P2 defects closed; performance test at 5,000 TPS passed.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-046",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "name": "Go-Live Plan",
+    "target_audience": [
+      "SRE",
+      "Operations"
+    ],
+    "required_sections": [
+      "Timeline",
+      "commands",
+      "validation",
+      "ownership",
+      "checkpoints"
+    ],
+    "sample_realistic_data": "00:30 deploy; 00:45 smoke tests; 01:00 enable 10% cohort; 02:00 review KPIs.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-047",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "name": "Hypercare Plan",
+    "target_audience": [
+      "Operations",
+      "Support"
+    ],
+    "required_sections": [
+      "Duration",
+      "war room",
+      "KPIs",
+      "escalation",
+      "staffing",
+      "exit criteria"
+    ],
+    "sample_realistic_data": "72-hour hypercare with login success rate, crash-free sessions and authentication latency monitored.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-048",
+    "pillar": "AI SDLC",
+    "submenu": "Release",
+    "name": "Release Notes",
+    "target_audience": [
+      "Business",
+      "Support",
+      "Customers"
+    ],
+    "required_sections": [
+      "Features",
+      "fixes",
+      "known issues",
+      "operational changes",
+      "support guidance"
+    ],
+    "sample_realistic_data": "Introduces biometric login with secure MPIN fallback for enrolled devices.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-049",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "AI Use Case Register",
+    "target_audience": [
+      "AI Governance Council"
+    ],
+    "required_sections": [
+      "Use case",
+      "owner",
+      "purpose",
+      "model",
+      "data",
+      "users",
+      "risk tier",
+      "status"
+    ],
+    "sample_realistic_data": "Use case: AI Fraud Detection; owner: Payments Risk; risk tier: High; human review required.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-050",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "Model Card",
+    "target_audience": [
+      "Model Risk",
+      "Engineering"
+    ],
+    "required_sections": [
+      "Model purpose",
+      "version",
+      "training data",
+      "metrics",
+      "limits",
+      "risks",
+      "monitoring"
+    ],
+    "sample_realistic_data": "Fraud model v3.2: precision 91%, recall 88%, monthly drift threshold PSI 0.2.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-051",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "AI Approval Pack",
+    "target_audience": [
+      "AI Governance Committee"
+    ],
+    "required_sections": [
+      "Use case",
+      "risk",
+      "controls",
+      "validation",
+      "approvals",
+      "conditions"
+    ],
+    "sample_realistic_data": "Conditional approval subject to quarterly bias testing and manual review for high-value declines.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-052",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "Prompt Review Report",
+    "target_audience": [
+      "GenAI Governance"
+    ],
+    "required_sections": [
+      "Prompt purpose",
+      "data exposure",
+      "injection risk",
+      "output constraints",
+      "mitigation"
+    ],
+    "sample_realistic_data": "System prompt blocks disclosure of internal policies and requires evidence citations.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-053",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "Bias Assessment",
+    "target_audience": [
+      "Model Risk",
+      "Compliance"
+    ],
+    "required_sections": [
+      "Protected groups",
+      "metrics",
+      "disparities",
+      "thresholds",
+      "remediation"
+    ],
+    "sample_realistic_data": "False-positive rate variance across customer segments remains below 3 percentage points.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-054",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "AI Risk Assessment",
+    "target_audience": [
+      "Risk",
+      "CISO",
+      "Model Risk"
+    ],
+    "required_sections": [
+      "Risk categories",
+      "inherent risk",
+      "controls",
+      "residual risk",
+      "owner"
+    ],
+    "sample_realistic_data": "Residual risk: Medium due to explainability limitations in graph-based fraud scoring.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-055",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "Responsible AI Checklist",
+    "target_audience": [
+      "AI Governance"
+    ],
+    "required_sections": [
+      "Fairness",
+      "transparency",
+      "privacy",
+      "security",
+      "accountability",
+      "sustainability"
+    ],
+    "sample_realistic_data": "Human appeal process documented and tested for adverse customer decisions.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-056",
+    "pillar": "Governance",
+    "submenu": "AI Oversight",
+    "name": "Human Oversight Report",
+    "target_audience": [
+      "Operations",
+      "Governance"
+    ],
+    "required_sections": [
+      "Decision points",
+      "reviewer role",
+      "escalation",
+      "override",
+      "logging"
+    ],
+    "sample_realistic_data": "Transactions above ₹2 lakh require analyst confirmation before permanent account restriction.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-057",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "name": "Audit Evidence Pack",
+    "target_audience": [
+      "Auditors",
+      "Compliance"
+    ],
+    "required_sections": [
+      "Scope",
+      "controls",
+      "evidence list",
+      "source",
+      "period",
+      "validation",
+      "sign-off"
+    ],
+    "sample_realistic_data": "PCI DSS 8.4.2 evidence includes MFA configuration, privileged-access logs and quarterly access review.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-058",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "name": "Compliance Report",
+    "target_audience": [
+      "CISO",
+      "Compliance",
+      "CIO"
+    ],
+    "required_sections": [
+      "Framework score",
+      "open gaps",
+      "overdue actions",
+      "trends",
+      "recommendations"
+    ],
+    "sample_realistic_data": "RBI C-SITE compliance score: 91%; 4 high-priority observations remain open.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-059",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "name": "Gap Assessment",
+    "target_audience": [
+      "Control Owners"
+    ],
+    "required_sections": [
+      "Control",
+      "expected state",
+      "current state",
+      "gap",
+      "severity",
+      "remediation"
+    ],
+    "sample_realistic_data": "Certificate pinning is not enforced for Android clients; severity High.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-060",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "name": "Control Matrix",
+    "target_audience": [
+      "Audit",
+      "Governance"
+    ],
+    "required_sections": [
+      "Framework",
+      "control",
+      "system",
+      "evidence",
+      "owner",
+      "frequency",
+      "status"
+    ],
+    "sample_realistic_data": "PCI 10.2.1 → Authentication Service → immutable login audit log → monthly → compliant.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-061",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "name": "Remediation Tracker",
+    "target_audience": [
+      "PMO",
+      "Control Owners"
+    ],
+    "required_sections": [
+      "Action",
+      "owner",
+      "target date",
+      "status",
+      "evidence",
+      "dependency"
+    ],
+    "sample_realistic_data": "Implement Android certificate pinning by 31 Aug; owner: Mobile Platform Head.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-062",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "name": "Regulatory Submission",
+    "target_audience": [
+      "Compliance",
+      "Regulatory Liaison"
+    ],
+    "required_sections": [
+      "Executive response",
+      "findings",
+      "action plan",
+      "evidence",
+      "dates"
+    ],
+    "sample_realistic_data": "Bank confirms remediation design approval and commits production deployment by 30 Sep.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-063",
+    "pillar": "Governance",
+    "submenu": "Compliance Automation",
+    "name": "Audit Closure Report",
+    "target_audience": [
+      "Auditor",
+      "Compliance"
+    ],
+    "required_sections": [
+      "Observation",
+      "root cause",
+      "remediation",
+      "evidence",
+      "validation",
+      "closure"
+    ],
+    "sample_realistic_data": "Observation closed after independent validation of certificate pinning across supported Android versions.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-064",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "name": "Architecture Review Report",
+    "target_audience": [
+      "Architecture Review Board"
+    ],
+    "required_sections": [
+      "Scope",
+      "scores",
+      "findings",
+      "risks",
+      "recommendations",
+      "decision"
+    ],
+    "sample_realistic_data": "Overall score 88/100; approved with conditions to add rate limiting and cross-zone failover.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-065",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "name": "Technology Standards Report",
+    "target_audience": [
+      "Enterprise Architecture"
+    ],
+    "required_sections": [
+      "Technology inventory",
+      "approved status",
+      "EOL",
+      "exceptions",
+      "actions"
+    ],
+    "sample_realistic_data": "Java 21 and PostgreSQL 16 approved; WebLogic 12c exception requires retirement plan.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-066",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "name": "API Review Report",
+    "target_audience": [
+      "API Council",
+      "Developers"
+    ],
+    "required_sections": [
+      "Naming",
+      "versioning",
+      "auth",
+      "errors",
+      "pagination",
+      "limits",
+      "observability"
+    ],
+    "sample_realistic_data": "API requires idempotency key for withdrawal initiation and standardized error envelope.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-067",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "name": "Cloud Readiness Assessment",
+    "target_audience": [
+      "Cloud Council",
+      "Architecture"
+    ],
+    "required_sections": [
+      "12-factor score",
+      "containers",
+      "state",
+      "scaling",
+      "resilience",
+      "security"
+    ],
+    "sample_realistic_data": "Readiness 82%; remove local file dependency and externalize session state before GKE deployment.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-068",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "name": "Technology Exception Report",
+    "target_audience": [
+      "CTO",
+      "Architecture"
+    ],
+    "required_sections": [
+      "Technology",
+      "reason",
+      "risk",
+      "compensating controls",
+      "expiry",
+      "approval"
+    ],
+    "sample_realistic_data": "Oracle 12c exception approved until 31 Dec 2027 with quarterly patch attestation.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-069",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "name": "Architecture Approval Note",
+    "target_audience": [
+      "Architecture Review Board"
+    ],
+    "required_sections": [
+      "Decision",
+      "conditions",
+      "observations",
+      "approvers",
+      "validity"
+    ],
+    "sample_realistic_data": "Approved with conditions: implement mTLS, add DR test and complete capacity benchmark.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-070",
+    "pillar": "Governance",
+    "submenu": "Architecture Assurance",
+    "name": "Modernization Recommendation",
+    "target_audience": [
+      "CTO",
+      "Application Owner"
+    ],
+    "required_sections": [
+      "Current state",
+      "target state",
+      "migration pattern",
+      "cost",
+      "benefit",
+      "roadmap"
+    ],
+    "sample_realistic_data": "Decompose authentication module from monolith into stateless service on GKE.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-071",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "name": "Audit Pack",
+    "target_audience": [
+      "Auditors",
+      "Compliance"
+    ],
+    "required_sections": [
+      "Scope",
+      "collected evidence",
+      "validation status",
+      "control mapping",
+      "exceptions"
+    ],
+    "sample_realistic_data": "Collected 48 evidence items from SharePoint, Jira, ServiceNow and SonarQube; 45 validated.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-072",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "name": "Release Readiness Report",
+    "target_audience": [
+      "Release Manager",
+      "CAB"
+    ],
+    "required_sections": [
+      "Builds",
+      "defects",
+      "scans",
+      "test evidence",
+      "approvals",
+      "readiness"
+    ],
+    "sample_realistic_data": "Release readiness 93%; one medium SonarQube finding accepted with documented exception.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-073",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "name": "Architecture Pack",
+    "target_audience": [
+      "Architecture Review Board"
+    ],
+    "required_sections": [
+      "HLD",
+      "APIs",
+      "dependencies",
+      "standards",
+      "findings",
+      "approvals"
+    ],
+    "sample_realistic_data": "Architecture pack consolidates Confluence design pages, API specs and technology standards results.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-074",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "name": "Evidence Register",
+    "target_audience": [
+      "Audit",
+      "Control Owners"
+    ],
+    "required_sections": [
+      "Evidence ID",
+      "type",
+      "source",
+      "owner",
+      "period",
+      "hash",
+      "status"
+    ],
+    "sample_realistic_data": "EV-PCI-2026-014: MFA configuration export; source SharePoint; SHA-256 verified.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-075",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "name": "Connector Summary",
+    "target_audience": [
+      "Platform Admin",
+      "SRE"
+    ],
+    "required_sections": [
+      "Connector",
+      "status",
+      "last sync",
+      "records",
+      "errors",
+      "next action"
+    ],
+    "sample_realistic_data": "Jira: healthy, 1,240 issues synchronized; SonarQube: 3 projects with 12 open findings.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-076",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "name": "Executive Summary",
+    "target_audience": [
+      "CIO",
+      "CISO"
+    ],
+    "required_sections": [
+      "Coverage",
+      "risk",
+      "notable gaps",
+      "decisions",
+      "recommended actions"
+    ],
+    "sample_realistic_data": "Evidence coverage is 96%; certificate pinning and privileged-access review require executive attention.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-077",
+    "pillar": "Enterprise AI",
+    "submenu": "Enterprise Evidence Hub",
+    "name": "Control Evidence Matrix",
+    "target_audience": [
+      "Compliance",
+      "Auditors"
+    ],
+    "required_sections": [
+      "Control",
+      "evidence",
+      "source",
+      "validation",
+      "gap",
+      "owner"
+    ],
+    "sample_realistic_data": "RBI IAM-04 mapped to Entra access review, ServiceNow approval and login audit logs.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-078",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "name": "Knowledge Summary",
+    "target_audience": [
+      "All Delivery Roles"
+    ],
+    "required_sections": [
+      "Query",
+      "top sources",
+      "summary",
+      "citations",
+      "confidence",
+      "gaps"
+    ],
+    "sample_realistic_data": "Five prior authentication initiatives identified; Passkey pilot BRD has 82% semantic similarity.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-079",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "name": "Similarity Report",
+    "target_audience": [
+      "BA",
+      "Architecture",
+      "QA"
+    ],
+    "required_sections": [
+      "Reference artifact",
+      "similarity",
+      "reusable sections",
+      "conflicts",
+      "recommendation"
+    ],
+    "sample_realistic_data": "Reuse 14 of 19 acceptance criteria from the Device Binding project.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-080",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "name": "Document Recommendation",
+    "target_audience": [
+      "Project Team"
+    ],
+    "required_sections": [
+      "Recommended documents",
+      "relevance",
+      "owner",
+      "recency",
+      "use"
+    ],
+    "sample_realistic_data": "Recommended: Mobile IAM Reference Architecture v4.1 and Secure Device Standard 2026.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-081",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "name": "Standards Mapping",
+    "target_audience": [
+      "Architecture",
+      "Compliance"
+    ],
+    "required_sections": [
+      "Requirement",
+      "applicable standard",
+      "clause",
+      "evidence",
+      "gap"
+    ],
+    "sample_realistic_data": "Biometric login maps to IAM Standard 7.3, Mobile Security Standard 4.2 and Audit Logging Standard 2.1.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-082",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "name": "Reuse Analysis",
+    "target_audience": [
+      "PMO",
+      "Engineering"
+    ],
+    "required_sections": [
+      "Reusable assets",
+      "estimated effort saved",
+      "adaptation",
+      "risks"
+    ],
+    "sample_realistic_data": "Reuse of API contract and test suite is estimated to save 18 person-days.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-083",
+    "pillar": "Enterprise AI",
+    "submenu": "Knowledge Intelligence",
+    "name": "Enterprise Knowledge Report",
+    "target_audience": [
+      "Knowledge Owners",
+      "CIO"
+    ],
+    "required_sections": [
+      "Knowledge coverage",
+      "stale content",
+      "reuse trends",
+      "gaps",
+      "actions"
+    ],
+    "sample_realistic_data": "37% of architecture documents are older than 24 months and require owner confirmation.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-084",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "name": "User Audit Report",
+    "target_audience": [
+      "Platform Admin",
+      "Security"
+    ],
+    "required_sections": [
+      "Users",
+      "status",
+      "last login",
+      "roles",
+      "anomalies",
+      "actions"
+    ],
+    "sample_realistic_data": "14 dormant accounts identified; 3 retain privileged access and require immediate review.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-085",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "name": "RBAC Matrix",
+    "target_audience": [
+      "Security",
+      "Platform Admin"
+    ],
+    "required_sections": [
+      "Role",
+      "permissions",
+      "modules",
+      "conflicts",
+      "approval"
+    ],
+    "sample_realistic_data": "Executive Viewer cannot generate artifacts; Platform Admin cannot approve AI use cases.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-086",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "name": "Connector Status Report",
+    "target_audience": [
+      "SRE",
+      "Platform Admin"
+    ],
+    "required_sections": [
+      "Connector",
+      "endpoint",
+      "status",
+      "latency",
+      "last sync",
+      "errors"
+    ],
+    "sample_realistic_data": "SharePoint connector healthy at 420 ms; Prisma connector degraded due to rate limiting.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-087",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "name": "Model Inventory",
+    "target_audience": [
+      "AI Platform",
+      "Governance"
+    ],
+    "required_sections": [
+      "Provider",
+      "model",
+      "version",
+      "use cases",
+      "status",
+      "owner",
+      "risk tier"
+    ],
+    "sample_realistic_data": "Qwen3:8B enabled for local development; Gemini provider approved for UAT only.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-088",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "name": "Platform Configuration Report",
+    "target_audience": [
+      "Platform Admin",
+      "Audit"
+    ],
+    "required_sections": [
+      "Feature flags",
+      "auth mode",
+      "retention",
+      "integrations",
+      "deviations"
+    ],
+    "sample_realistic_data": "Production target requires OIDC mode; current demo environment uses disabled authentication.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  },
+  {
+    "artifact_id": "AR-089",
+    "pillar": "Enterprise AI",
+    "submenu": "Administration",
+    "name": "Administration Health Report",
+    "target_audience": [
+      "CIO",
+      "Platform Owner"
+    ],
+    "required_sections": [
+      "Availability",
+      "jobs",
+      "connectors",
+      "storage",
+      "errors",
+      "actions"
+    ],
+    "sample_realistic_data": "Platform health 94%; connector retry backlog is the only amber condition.",
+    "formats": [
+      "docx",
+      "pdf",
+      "json"
+    ],
+    "review_status": "Draft for review"
+  }
+]

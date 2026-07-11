@@ -8,6 +8,7 @@ import { MultiLineChart } from '../components/charts/MultiLineChart';
 import { colors } from '../theme/colors';
 import { useFilteredSimulation } from '../hooks/useFilteredSimulation';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { DevelopmentIntakeWorkflow } from '../components/development/DevelopmentIntakeWorkflow';
 import { HubWorkflowActions } from '../components/workflow/HubWorkflowActions';
 import { SdlcBackendStrip } from '../components/common/SdlcBackendStrip';
@@ -23,7 +24,10 @@ export function DevelopmentHub() {
 
   return (
     <Box>
-      <AIWorkspacePanel module="development" number={1} />
+      <EnterpriseArtifactWorkspace pillar="AI SDLC" submenu="Development" />
+      <Box sx={{ mt: 0.5 }}>
+        <AIWorkspacePanel module="development" number={1} />
+      </Box>
       <SdlcBackendStrip
         hubLabel="Development"
         loading={backend.loading}

@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { AIAdvisor } from './AIAdvisor';
+import { AIAdvisorProvider } from '../../context/AIAdvisorContext';
 import { DemoModeBanner } from './DemoModeBanner';
 import { KpiDrilldownDrawer } from '../common/KpiDrilldownDrawer';
 import { ExecutiveSummaryDrawer } from '../common/ExecutiveSummaryDrawer';
@@ -229,6 +230,7 @@ export function AppLayout() {
       <DemoModeBanner />
       <Sidebar />
       <TopBar title={meta.title} subtitle={meta.subtitle} />
+      <AIAdvisorProvider>
       <AIAdvisor />
       <KpiDrilldownDrawer />
       <ExecutiveSummaryDrawer />
@@ -250,6 +252,7 @@ export function AppLayout() {
           </PageTransition>
         </AnimatePresence>
       </Box>
+      </AIAdvisorProvider>
       <Box
         sx={{
           position: 'fixed',

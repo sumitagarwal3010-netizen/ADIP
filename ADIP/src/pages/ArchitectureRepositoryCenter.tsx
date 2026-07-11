@@ -14,6 +14,7 @@ import { GlassCard } from '../components/common/GlassCard';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
 import { AIWorkspacePanel } from '../components/workflow/AIWorkspacePanel';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { ExecutiveArchitectureDashboardPanel } from '../components/architectureRepository/ExecutiveArchitectureDashboardPanel';
 import { ArchitectureDomainsPanel, BusinessCapabilitiesPanel, ApplicationArchitecturePanel } from '../components/architectureRepository/DomainInventoryPanels';
 import { ReviewBoardPanel, ArchitectureFindingsPanel, ArchitectureExceptionsPanel } from '../components/architectureRepository/ReviewBoardPanels';
@@ -171,7 +172,10 @@ export function ArchitectureRepositoryCenter({ initialTab = 'domains' }: Archite
 
   return (
     <Box>
-      <AIWorkspacePanel module="enterprise-architecture" number={1} />
+      <EnterpriseArtifactWorkspace pillar="Governance" submenu="Architecture Assurance" />
+      <Box sx={{ mt: 0.5 }}>
+        <AIWorkspacePanel module="enterprise-architecture" number={1} />
+      </Box>
 
       <GlassCard sx={{ p: 2, mb: 1.5 }} glow="blue" hover={false}>
         <AIInsightBox

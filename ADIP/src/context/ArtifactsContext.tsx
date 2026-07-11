@@ -18,6 +18,8 @@ interface ArtifactsContextValue {
   artifacts: Artifact[];
   /** Append one or more artifacts. Duplicates by id are silently ignored. */
   recordArtifacts: (artifacts: Artifact[]) => void;
+  /** Update approval status (or other fields) for a registered artifact by id. */
+  updateArtifact: (id: string, updates: Partial<Pick<Artifact, 'approvalStatus'>>) => void;
   /** Wipe the registry (used by the page-level "Clear" affordance). */
   clear: () => void;
 }
@@ -37,11 +39,17 @@ export function ArtifactsProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const updateArtifact = useCallback((id: string, updates: Partial<Pick<Artifact, 'approvalStatus'>>) => {
+    setArtifacts((prev) =>
+      prev.map((a) => (a.id === id ? { ...a, ...updates } : a)),
+    );
+  }, []);
+
   const clear = useCallback(() => setArtifacts([]), []);
 
   const value = useMemo(
-    () => ({ artifacts, recordArtifacts, clear }),
-    [artifacts, recordArtifacts, clear],
+    () => ({ artifacts, recordArtifacts, updateArtifact, clear }),
+    [artifacts, recordArtifacts, updateArtifact, clear],
   );
 
   return <ArtifactsContext.Provider value={value}>{children}</ArtifactsContext.Provider>;
@@ -54,6 +62,7 @@ export function useArtifactsRegistry(): ArtifactsContextValue {
     return {
       artifacts: [],
       recordArtifacts: () => undefined,
+      updateArtifact: () => undefined,
       clear: () => undefined,
     };
   }

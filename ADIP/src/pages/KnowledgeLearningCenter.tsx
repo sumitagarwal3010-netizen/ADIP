@@ -15,6 +15,7 @@ import { Navigate } from 'react-router-dom';
 import { GlassCard } from '../components/common/GlassCard';
 import { AIInsightBox } from '../components/common/AIInsightBox';
 import { HubArtifactGenerator } from '../components/workflow/HubArtifactGenerator';
+import { EnterpriseArtifactWorkspace } from '../components/workflow/EnterpriseArtifactWorkspace';
 import { KnowledgeDashboardPanel } from '../components/knowledge/KnowledgeDashboardPanel';
 import { LessonsLearnedPanel } from '../components/knowledge/LessonsLearnedPanel';
 import { BestPracticesPanel } from '../components/knowledge/BestPracticesPanel';
@@ -89,6 +90,8 @@ export function KnowledgeLearningCenter({ initialTab = 'dashboard' }: KnowledgeL
           </Box>
         </Box>
       </GlassCard>
+
+      <EnterpriseArtifactWorkspace pillar="Enterprise AI" submenu="Knowledge Intelligence" />
 
       <GlassCard sx={{ p: 2, mb: 1.5 }} glow="green" hover={false}>
         <AIInsightBox title="Knowledge Intelligence Search" insight="Deterministic enterprise knowledge lookups for policy, delivery, architecture, testing, and controls." />
